@@ -197,6 +197,12 @@ Last updated: 2026-09-28 (branch `local-models`).
 - Working files: `src/sora/mt/mt_vector_old.cpp` and `src/sora/ip/ip_network_producer.cpp` restored to upstream state (`d0e7803` content); no uncommitted source changes pending.
 - Upstream `main` is still at `345952a` — no upstream work to incorporate as of this checkpoint.
 
+### Completion audit (2026-09-28, commit `1ffc2d5`)
+
+- Reproducibility: deleted `ok`, the matched unit object, and `objdiff-report.json`, then rebuilt — `ninja build/RSBE01_02/ok` → **127 files OK**; fresh `-d` report regenerates identical state (3,351 incomplete; `fn_8028A040` 100%; ft_purin 17/457, 6.18%).
+- Coverage: 3,351 of 4,417 units incomplete = 22 source-mapped + 3,329 auto/original (~15,531,732 code bytes). First linked matching object: `sora/misc/fn_8028A040.cpp`.
+- Open prerequisites (concrete): (1) scheduling-class units (14) need original-idiom recovery via Melee source comparison; (2) `ft_marth` (5 units, 0/510 fns) and `ft_purin` (17/457) need whole-file decompilation; (3) `__init_cpp_exceptions` (112 B) needs runtime-lib idioms; (4) 3,329 auto/original units need the splits→source→Matching recipe applied per unit; (5) ft_purin testBuilder() scaffolding must be replaced by reconstructed call paths before that unit can flip; (6) cross-module import `lbl_27_bss_1B18` (ft_purin → sora_melee) is resolved-by-evidence, pending full-link proof at ft_purin completion.
+
 ### Milestone status
 
 - Milestones 1–3 complete (fork/checkout, verified baseline, target selection).
