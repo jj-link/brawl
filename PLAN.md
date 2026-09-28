@@ -180,12 +180,39 @@ Separate attempted work from accepted work. Never mark a milestone complete base
 
 ## Current checkpoint
 
-- Planning only; this document is the first workspace file created for this effort.
-- The user has chosen an independently maintained GitHub fork as the primary repository. No fork has been created or verified as part of this work, and its owner/URL have not yet been established.
-- Repository checkout and `local-models` branch creation have not been performed.
-- Game dump location, local toolchain availability, baseline build, and matching progress have not been verified locally.
-- No decompilation changes or cluster/model configuration changes have been made.
-- Next execution step: Milestone 1, identifying or creating the user's fork and preserving this plan while establishing the checkout, remotes, and `local-models` branch.
+Last updated: 2026-09-28 (branch `local-models`).
+
+### Accepted state
+
+- Repository: `C:\Users\josep\Projects\personal\games\brawl-decomp`; remotes `origin` = https://github.com/jj-link/brawl.git (push default), `upstream` = https://github.com/doldecomp/brawl.git (fetch only).
+- Branch `local-models`, first commit `78f739a` ("Add decompilation plan") on top of upstream base `345952a` ("Decompile nt_send.cpp (#125)"). Submodules: BrawlHeaders `e1c66b3`, OpenRVL `5acdab3`.
+- Game input `orig/RSBE01_02/` = USA Rev 2 ISO, SHA-1 `59432f150bf6b871ab378bb5b28e92005e0862f6`.
+- Baseline build verified: `python configure.py` + `ninja` → **127/127 files OK** against `config/RSBE01_02/build.sha1` (checked via dtk CHECK and Python re-hash; note: Git-for-Windows `sha1sum -c` misreports 6 files as FAILED — trust the Python/dtk check).
+- Baseline progress (objdiff report, 4417 units): **All 1.20% matched / 1.01% linked**; Code 189,716/15,833,548 bytes (2,429/92,524 functions); Data 826,796/5,667,492. 22 incomplete source units.
+- Working files: `src/sora/mt/mt_vector_old.cpp` and `src/sora/ip/ip_network_producer.cpp` restored to upstream state (`d0e7803` content); no uncommitted source changes pending.
+- Upstream `main` is still at `345952a` — no upstream work to incorporate as of this checkpoint.
+
+### Milestone status
+
+- Milestones 1–3 complete (fork/checkout, verified baseline, target selection).
+- Milestone 4 in progress. No object fully matched yet; detailed findings below.
+
+### Target investigations (evidence, not accepted work)
+
+1. `mt_vector_old.cpp` `vlRotateFix` (280 B, 98%): target allocates `cos(theta)` to `f5`; current build allocates `f2`. Declaration-order permutations (temps-first, sin/cos-first, load reorder) do not change the allocation. Source restored to upstream; blocked.
+2. `ip_network_producer.cpp` `networkInCallback` (244 B, 98.5%): reconstructed instruction **sequence** is identical for all 62 words; only register roles differ — target assigns producer pointer→`r7`/cursor→`r6`, our build assigns pointer→`r6`/cursor→`r7` (plus `add` operand order from the same swap). Tried: byte-alias vs struct-field access forms, cursor/pointer declaration order, `int` cursor, explicit `u8 b = r7[0]` local, ternary clamp, separate `r4 = r7 + unk0` base for the `unk1` store, `u16*` message base — none changed the allocation (21-word best). Working tree restored to upstream.
+3. `cm_controller_menu_fixed.cpp` `init` (108 B, 23.2%): target writes `unkFA` as u16 RMW on `0xfa` (`lhz/ori/sth`, three stores `|0x80`, `|0x82`, `|0x82|0x40`) and stages values through stack spills (`stfs f0, 0x8(r1)`, `stfs f1, 0xc(r1)`); our builds either use byte bitfields on `0xfb` (`lbz/stb`) or fold the three mask stores into two (`ori r0, r0, 0xC2`). Tried: locals for CC/angle/rot, cached `gfCamera*`, u16 `m_mask |=` chains, explicit mask local, bitfield orders, flag2-before-rot reorder — none reproduced the three-store u16 shape. Source restored to upstream.
+4. `ut_relocate.cpp` `resolveReference` (272 B, 98.75%): same regswap class as (2) — callee-saved roles differ (`symtab` r23↔r26, `limit` r24↔r23, `step` r25↔r24, outer step r26↔r25, found addr r27↔r23); instruction sequence otherwise identical.
+
+### Interpretation
+
+These are MWCC 3.0a5.2 register-allocation differences, not semantic differences: reconstructed structure matches, compiler assigns different registers. Pure source-reordering has not overcome them. Next actions should try different levers (see below) rather than more declaration shuffles.
+
+### Next concrete actions
+
+1. For the regswap class: test whether the original object used a different inline method (e.g. `getPublicAddress` attribute, `#pragma inline` off) or an earlier MWCC `-ipa` behavior; consider `-inline` directives per function as a documented, evidence-backed lever (Milestone 4 forbids global flag changes but per-function pragmas in the candidate source are part of the reconstruction).
+2. Alternative first target with different failure mode: `sc_adv_gameover` `create` (216 B, 90.1%) or `em_external_value_accesser` `getFaceTexPtr` (132 B, 90.8%) — inspect before committing.
+3. When an object matches end-to-end: flip its `configure.py` entry to `Object(Matching, ...)`, `python configure.py && ninja`, verify 127/127 hashes, regenerate `build/RSBE01_02/report.json`, and record the progress delta here.
 
 ## References
 
