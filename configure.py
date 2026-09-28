@@ -162,7 +162,7 @@ config.asflags = [
     "-I include",
     f"-I build/{config.version}/include",
     f"--defsym BUILD_VERSION={version_num}",
-    f"--defsym VERSION_{config.version}",
+    f"--defsym VERSION_{config.version}=1",
 ]
 config.ldflags = [
     "-fp hardware",
@@ -277,7 +277,11 @@ config.libs = [
         "host": False,
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
+            Object(
+                Matching,
+                "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp",
+                source="Runtime.PPCEABI.H/__init_cpp_exceptions.s",
+            ),
         ],
     },
     # The DOL
