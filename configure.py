@@ -288,6 +288,7 @@ config.libs = [
         "host": False,
         "objects": [
             Object(Matching, "sora/sr/sr_getappname.cpp"),
+            Object(Matching, "sora/misc/fn_8028A040.cpp"),
             Object(Matching, "sora/sr/sr_common.cpp"),
             Object(Matching, "sora/sr/sr_revision.cpp"),
             Object(Matching, "sora/main.cpp"),
