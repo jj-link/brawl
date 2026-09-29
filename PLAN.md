@@ -162,6 +162,7 @@ Use the first small batch to learn which targets the workflow handles well and w
 - **fifty-second–fifty-fourth units** (agent batch 8): `fn_803FC7C8` (228 B; 57 insns; 3 fns incl. `fwide`), `fn_803FC8AC` (208 B; 52 insns; calls `fn_801D536C`/`fn_802285C0`/`fn_80228608`), `fn_803F602C` (204 B; 51 insns; calls `fn_803F619C`/`fn_803F6258`/`fn_803F6300`/`fn_803F63C0` still-auto); verified instruction-exact before merge; integrated through `9486138`; incomplete 3,302 → 3,299.
 - **fifty-fifth–fifty-seventh units** (agent batch 9): `fn_803F5A88` (192 B; 48 insns), `dtor_803F0B20` (188 B; 47 insns; `__dl__FPv`), `fn_803F0DCC` (184 B; 46 insns; 4 fns — `__ptmf_test`, `__ptmf_scall` + 2); verified instruction-exact before merge; integrated through `35cc6d8`; incomplete 3,299 → 3,296.
 - **fifty-eighth–sixtieth units** (agent batch 10): `fn_803F861C` (200 B; 50 insns; `__pformatter_803F7CFC`, `fwide`), `fn_803F86E4` (196 B; 49 insns; same calls), `fn_803FA1D0` (176 B; 44 insns; `exit`); verified instruction-exact before merge; integrated through `6d40e5e`; incomplete 3,296 → 3,293.
+- **sixty-first–sixty-third units** (agent batch 11): `fn_803FC570` (168 B; 42 insns; calls matched `fn_803FBC7C`), `fn_803FA078` (144 B; 36 insns), `fn_803FBBF8` (132 B; 33 insns; calls matched `fn_803FA804`); verified instruction-exact before merge; integrated through `e94b99e`; incomplete 3,293 → 3,290.
 
 ## Verification rules
 
