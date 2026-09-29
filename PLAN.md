@@ -158,6 +158,7 @@ Use the first small batch to learn which targets the workflow handles well and w
 - **fortieth–forty-second units** (agent batch 4): `fn_803F8C64` (1716 B; 429 insns; no calls), `fn_803FC0AC` (1220 B; 305 insns; `__div2u`), `fn_803F9318` (3424 B; 856 insns; 13 calls incl. cross-refs to still-auto labels); verified instruction-exact before merge; integrated through `7164e3b`; incomplete 3,314 → 3,311.
 - **forty-third–forty-fifth units** (agent batch 5): `fn_803FA804` (5108 B; 1285 insns; calls `fn_803F48B0` still-auto, `fn_80400D90`, `memset`), `fn_803FBC7C` (1072 B; 268 insns), `fn_803F60F8` (884 B; 7 functions incl. `memchr`/`__memrchr`); verified instruction-exact (robust pair-compare) before merge; integrated through `59b453e`; incomplete 3,311 → 3,308.
 - **forty-sixth–forty-eighth units** (agent batch 6): `fn_803F5250` (832 B; 208 insns; `fwide` x3, `fn_803F3600`, `fn_803F5098`, `memcpy`, `__prep_buffer`; extab+extabindex), `fn_803F07E0` (572 B; 143 insns), `fn_803F6B74` (552 B; 138 insns); verified instruction-exact before merge; integrated through `fe1e25d`; incomplete 3,308 → 3,305.
+- **forty-ninth–fifty-first units** (agent batch 7): `fn_803FA280` (848 B; 212 insns; 8 libc str functions — `strcpy`, `strncpy`, `strcat`, `strncat`, `strcmp`, `strncmp` + 2 more), `fn_803F5B48` (240 B; 60 insns; `strlen`), `fn_803FC618` (236 B; 59 insns; calls matched `fn_803FBC7C`); verified instruction-exact before merge; integrated through `32e0b43`; incomplete 3,305 → 3,302.
 
 ## Verification rules
 
