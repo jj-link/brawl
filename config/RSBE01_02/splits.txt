@@ -360,3 +360,8 @@ Runtime.PPCEABI.H/fn_803F1D14.s:
 	extab       start:0x8000953C end:0x80009544
 	extabindex  start:0x8000C544 end:0x8000C550
 	.text       start:0x803F1D14 end:0x803F1EC4
+
+Runtime.PPCEABI.H/fn_803F1EC4.s:
+	extab       start:0x80009544 end:0x8000954C
+	extabindex  start:0x8000C550 end:0x8000C55C
+	.text       start:0x803F1EC4 end:0x803F243C
