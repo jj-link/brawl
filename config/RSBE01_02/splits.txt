@@ -354,6 +354,11 @@ Runtime.PPCEABI.H/dtor_803F0B20.s:
 Runtime.PPCEABI.H/fn_803F0DCC.s:
 	.text       start:0x803F0DCC end:0x803F0E84
 
+Runtime.PPCEABI.H/fn_803F0E84.s:
+	extab       start:0x80009514 end:0x8000951C
+	extabindex  start:0x8000C508 end:0x8000C514
+	.text       start:0x803F0E84 end:0x803F0F04
+
 Runtime.PPCEABI.H/fn_803F0F04.s:
 	extab       start:0x8000951C end:0x80009524
 	extabindex  start:0x8000C514 end:0x8000C520
