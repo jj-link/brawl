@@ -451,3 +451,8 @@ Runtime.PPCEABI.H/fn_803F45AC.s:
 	extab       start:0x800095C4 end:0x800095CC
 	extabindex  start:0x8000C5EC end:0x8000C5F8
 	.text       start:0x803F45AC end:0x803F4710
+
+Runtime.PPCEABI.H/fn_803F4710.s:
+	extab       start:0x800095CC end:0x800095D4
+	extabindex  start:0x8000C5F8 end:0x8000C604
+	.text       start:0x803F4710 end:0x803F48B0
