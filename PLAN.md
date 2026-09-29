@@ -251,8 +251,8 @@ Last updated: 2026-09-28 (branch `local-models`).
 
 ### `fn_803F1EC4` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F1EC4` (auto unit `auto_fn_803F1EC4_text`: `fn_803F1EC4` 0x578 + `extab` 0x8 @ 0x80009544 + `extabindex` 0xC @ 0x8000C55C) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 1400/1400 code, 20/20 data, 1/1 functions. Sixth linked matching unit (3,347→3,346 incomplete).
-- **Source is hand-written asm** (`fn_803F1EC4.s`), mechanically transcribed. Function is position-independent (zero relocations in `.text`), saves r27-r31 via `_savegpr_27`/`_restgpr_27` (owned by `auto_03_803F11E0_text`, resolved at link — first calls into that unit).
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F1EC4` (auto unit `auto_fn_803F1EC4_text`: `fn_803F1EC4` 0x578 + `extab` 0x8 @ 0x80009544 + `extabindex` 0xC @ 0x8000C550) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 1400/1400 code, 20/20 data, 1/1 functions. Sixth linked matching unit (3,347→3,346 incomplete).
+- **Source is hand-written asm** (`fn_803F1EC4.s`), mechanically transcribed. No data relocations; `.text` has 2 call relocations (`_savegpr_27`, `_restgpr_27`), saves r27-r31 via `_savegpr_27`/`_restgpr_27` (owned by `auto_03_803F11E0_text`, resolved at link — first calls into that unit).
 - **Gotcha fixed**: the MW extab flags word is per-function — EC4 uses `0x280A0000` (Has Elf Vector: Yes, Large Frame, saved GPR r27-r31) vs B64/D14's `0x10080000` (No Elf Vector, saved r30-r31). First DOL-hash attempt failed solely on this byte; always read the dtk flag comment in the target unit disasm when writing the `.s` extab by hand.
 - The contiguous exception-runtime cluster `0x803F1A78..0x803F243C` is now fully linked-matching source: `Gecko_ExceptionPPC.c` → `fn_803F1B64.s` → `fn_803F1D14.s` → `fn_803F1EC4.s`.
 
@@ -260,13 +260,14 @@ Last updated: 2026-09-28 (branch `local-models`).
 
 - **Accepted**: `Runtime.PPCEABI.H/fn_803F07D4` (12 code bytes; carved out of the giant `auto_03_803D620C_text`, which shrank 108,560→107,976) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 12/12 code, 1/1 functions. Seventh linked matching unit (3,346→3,345 incomplete).
 - It is a 3-instruction tail-call trampoline: `lwz r12, lbl_8059FF28@sda21(r0)` / `mtctr` / `bctr` — dispatches through a function pointer in `.sdata` (owner: `lbl_8059FF28` = 8-byte object @ 0x8059FF28, resolved at link). Called by `fn_803F1D14` — that dependency is now fully matched.
+- **C-first policy (2026-09-28)**: PLAN.md's goal is reconstructed C/C++. New runtime units get a C attempt first; asm is reserved for units where C demonstrably cannot match (the fn_803F1B64 register-allocation case). Small GPR/FPR save-restore stubs, syscall trampolines (`fn_803F07D4`), and compiler-helper math (__div2u etc.) are canonical asm in MW's own runtime library — those stay asm without a C attempt.
 - **Carving recipe** (claiming a function from inside an auto unit): add a splits.txt entry with exactly the function's `.text` range — `dtk dol split` re-splits the surrounding region automatically (no manual edit of neighboring ranges needed). No extab/extabindex for non-exception-scoped functions.
 
 ### `fn_803F243C` unit complete (2026-09-28)
 
 - **Accepted**: `Runtime.PPCEABI.H/fn_803F243C` (auto unit `auto_fn_803F243C_text`: `fn_803F243C` 0x50C + `extab` 0x14 @ 0x8000954C + `extabindex` 0xC @ 0x8000C55C) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 1292/1292 code, 32/32 data, 1/1 functions. Eighth linked matching unit (3,345→3,344 incomplete).
 - Hand-written asm. First unit with a **non-trivial extab**: 0x14 bytes — flags `0x50080000` (saved GPR r22-r31), an action-table offset word `0x54`, and real PC/exception actions (`PC=0x4E8 → Action TERMINATE with end bit + NULL` entries, words `0x01250010 0x00000000 0x8E000000`). dtk's parsed flag/action comment above each `.obj` in the target disasm is the transcription source — copy the `.4byte` values verbatim, don't try to re-encode.
-- References `jumptable_80493DD4` (external `.data`, link-resolved), no calls.
+- Calls `fn_803F07D4`, `fn_803F1B64`, `fn_803F1EC4`; references `jumptable_80493DD4` (external `.data`, link-resolved).
 
 ### `fn_803F2A4C` unit complete (2026-09-28)
 
@@ -285,11 +286,11 @@ Last updated: 2026-09-28 (branch `local-models`).
 
 ### `fn_803F2E4C` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F2E4C` (auto unit `auto_03_803F2E4C_text`: `fn_803F2E4C` + `fn_803F2F90`, 0x1FC code, no extab) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 508/508 code, 2/2 functions. Twelfth linked matching unit (3,341→3,340 incomplete). Hand-written asm; refs `lbl_8041F478` (rodata) + `lbl_8059E9B0` (.sdata) external. Runtime region 0x803F07D4..0x803F3048 now contiguous matched source.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F2E4C` (auto unit `auto_03_803F2E4C_text`: `fn_803F2E4C` + `fn_803F2F90`, 0x1FC code, no extab) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 508/508 code, 2/2 functions. Twelfth linked matching unit (3,341→3,340 incomplete). Hand-written asm; refs `lbl_8041F478` (rodata) + `lbl_8059E9B0` (.sdata) external. Only the named units are matched — still-auto gaps remain between them (e.g. `auto_03_803F07E0_text`, `auto_03_803F0D4C_text`, `auto_03_803F0DCC_text`, `auto_fn_803F0E84_text`, `auto_fn_803F0F04_text`, `auto_fn_803F11A0_text`).
 
 ### `fn_803F3048` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F3048` (auto unit `auto_fn_803F3048_text`: `fn_803F3048` 0x150 + `extab` 0x8 @ 0x80009574 + `extabindex` 0xC @ 0x8000C574) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 336/336 code, 20/20 data, 1/1 functions. Thirteenth linked matching unit (3,340→3,339 incomplete). Hand-written asm; extab `0x10080000` (saved r30-r31), no external refs.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F3048` (auto unit `auto_fn_803F3048_text`: `fn_803F3048` 0x150 + `extab` 0x8 @ 0x80009574 + `extabindex` 0xC @ 0x8000C574) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 336/336 code, 20/20 data, 1/1 functions. Thirteenth linked matching unit (3,340→3,339 incomplete). Hand-written asm; extab `0x10080000` (saved r30-r31); calls `fn_803F3198`.
 
 ### `fn_803F3198` unit complete (2026-09-28)
 
@@ -309,15 +310,15 @@ Last updated: 2026-09-28 (branch `local-models`).
 
 ### `fn_803F3600` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F3600` (auto unit `auto_fn_803F3600_text`: `fn_803F3600` 0x84 + `extab` 0x8 @ 0x80009594 + `extabindex` 0xC @ 0x8000C5A4) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 132/132 code, 20/20 data, 1/1 functions. Eighteenth linked matching unit (3,335→3,334 incomplete). Hand-written asm; extab `0x10080000`, no external refs.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F3600` (auto unit `auto_fn_803F3600_text`: `fn_803F3600` 0x84 + `extab` 0x8 @ 0x80009594 + `extabindex` 0xC @ 0x8000C5A4) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 132/132 code, 20/20 data, 1/1 functions. Eighteenth linked matching unit (3,335→3,334 incomplete). Hand-written asm; extab `0x10080000`; calls `fn_803F5954` (still-auto unit), refs `__files`.
 
 ### `fn_803F3684` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F3684` (auto unit `auto_fn_803F3684_text`: `fn_803F3684` 0x6C + `extab` 0x8 @ 0x8000959C + `extabindex` 0xC @ 0x8000C5B0) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 108/108 code, 20/20 data, 1/1 functions. Nineteenth linked matching unit (3,334→3,333 incomplete). Hand-written asm; extab `0x10080000`, ref `__files` external.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F3684` (auto unit `auto_fn_803F3684_text`: `fn_803F3684` 0x6C + `extab` 0x8 @ 0x8000959C + `extabindex` 0xC @ 0x8000C5B0) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 108/108 code, 20/20 data, 1/1 functions. Nineteenth linked matching unit (3,334→3,333 incomplete). Hand-written asm; extab `0x10080000`; calls `fn_803F5954` (still-auto unit), refs `__files`.
 
 ### `fn_803F36F0` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F36F0` (auto unit `auto_fn_803F36F0_text`: `fn_803F36F0` 0xDC + `extab` 0x8 @ 0x800095A4 + `extabindex` 0xC @ 0x8000C5BC) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 220/220 code, 20/20 data, 1/1 functions. Twentieth linked matching unit (3,333→3,332 incomplete). Hand-written asm; extab `0x18080000`, no external refs.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F36F0` (auto unit `auto_fn_803F36F0_text`: `fn_803F36F0` 0xDC + `extab` 0x8 @ 0x800095A4 + `extabindex` 0xC @ 0x8000C5BC) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 220/220 code, 20/20 data, 1/1 functions. Twentieth linked matching unit (3,333→3,332 incomplete). Hand-written asm; extab `0x18080000`; calls `__div2u`/`__mod2u` (runtime_emu_803F11E0).
 
 ### `fn_803F37CC` unit complete (2026-09-28)
 
@@ -338,15 +339,15 @@ Last updated: 2026-09-28 (branch `local-models`).
 
 ### `fn_803F4090` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F4090` (auto unit `auto_fn_803F4090_text`: `fn_803F4090` 0x51C + `extab` 0x8 @ 0x800095BC + `extabindex` 0xC @ 0x8000C5E0) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 1308/1308 code, 20/20 data, 1/1 functions. Twenty-fifth linked matching unit (3,328→3,327 incomplete). Hand-written asm; extab `0x68080000` (largest saved-GPR range yet: r20-r31 + FPR saves), no external refs.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F4090` (auto unit `auto_fn_803F4090_text`: `fn_803F4090` 0x51C + `extab` 0x8 @ 0x800095BC + `extabindex` 0xC @ 0x8000C5E0) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 1308/1308 code, 20/20 data, 1/1 functions. Twenty-fifth linked matching unit (3,328→3,327 incomplete). Hand-written asm; extab `0x68080000` (largest saved-GPR range yet: r20-r31 + FPR saves), no external refs or calls.
 
 ### `fn_803F45AC` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F45AC` (auto unit `auto_fn_803F45AC_text`: `fn_803F45AC` 0x164 + `extab` 0x8 @ 0x800095C4 + `extabindex` 0xC @ 0x8000C5EC) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 356/356 code, 20/20 data, 1/1 functions. Twenty-sixth linked matching unit (3,327→3,326 incomplete). Hand-written asm; extab `0x18480000`, ref `lbl_805A4B68` (.sdata2) external.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F45AC` (auto unit `auto_fn_803F45AC_text`: `fn_803F45AC` 0x164 + `extab` 0x8 @ 0x800095C4 + `extabindex` 0xC @ 0x8000C5EC) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 356/356 code, 20/20 data, 1/1 functions. Twenty-sixth linked matching unit (3,327→3,326 incomplete). Hand-written asm; extab `0x18480000`; calls `fn_803F1960`, `fn_803F36F0`, `fn_803F37CC`, `fn_803F3B40`, `fn_803F64D0`, `fn_803F64E8`, `fn_804006F0`, `fn_80400778`; ref `lbl_805A4B68` (.sdata2) external.
 
 ### `fn_803F4710` unit complete (2026-09-28)
 
-- **Accepted**: `Runtime.PPCEABI.H/fn_803F4710` (auto unit `auto_fn_803F4710_text`: `fn_803F4710` 0x1A0 + `extab` 0x8 @ 0x800095CC + `extabindex` 0xC @ 0x8000C5F8) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 416/416 code, 20/20 data, 1/1 functions. Twenty-seventh linked matching unit (3,326→3,325 incomplete). Hand-written asm; extab `0x10080000`, no external refs.
+- **Accepted**: `Runtime.PPCEABI.H/fn_803F4710` (auto unit `auto_fn_803F4710_text`: `fn_803F4710` 0x1A0 + `extab` 0x8 @ 0x800095CC + `extabindex` 0xC @ 0x8000C5F8) — `ninja build/RSBE01_02/ok` = **127 files OK**; objdiff `-d`: 416/416 code, 20/20 data, 1/1 functions. Twenty-seventh linked matching unit (3,326→3,325 incomplete). Hand-written asm; extab `0x10080000`; calls `fn_803F45AC`.
 
 ### `fn_803F5060` unit complete (2026-09-28)
 
@@ -372,7 +373,7 @@ Findings 2, 4, 6, 8 share one root cause: **MWCC 3.0a5.2 instruction-scheduling 
 1. **Diff-measurement infrastructure**: batch-compile candidate variants headlessly (direct `sjiswrap.exe mwcceppc.exe` calls with the object's `build.ninja` cflags, quoted pragmas rejoined) and word-diff against `build/RSBE01_02/<module>/asm/...` targets — established and working in this session.
 2. Study the MWCC scheduling deltas via Melee (100% decompiled, same compiler family): find Melee functions with equivalent constructs (inlined ctor constant scheduling, `base + i` add operand order, call-result-in-place usage) and compare their SOURCE text to ours to recover the original idioms.
 3. **Incomplete-unit inventory (2026-09-28 report)**: 3,351 of 4,417 units are incomplete = **22 non-auto units with source mapping** (the active reconstruction backlog, listed in the report; triage below) + **3,329 auto/original units (~15.53 MB code)** — machine-split pieces of the original DOL/RELs not yet assigned to source units. The auto units are the long-term bulk of Milestone-4 scope; the systematic loop is: pick a small auto split → add its range to `splits.txt` → write source → flip `Matching` → hash-verify (recipe proven on `fn_8028A040`, see Milestone status).
-   - Non-auto triage: (a) regswap/scheduling class — `mt_vector_old`, `mt_trig`, `ip_network_producer`, `ut_relocate`, `nt_send`, `nt_report`, `em_external_value_accesser`, `ac_cmd_interpreter`, `gf_task_scheduler`, `gf_slow_manager`, `ty_fig_listmng`, `st_emblem`, `sc_adv_gameover`, `cm_controller_menu_fixed` (all ≥34.8%, most ≥97%, blocked on scheduling-class idioms); (b) unimplemented bulk — `ft_marth` (5 units, 439+ fns, 0%), `ft_purin` (17/457, 6.18%); (c) runtime lib — `__init_cpp_exceptions`, `Gecko_ExceptionPPC.c`, `fn_803F1B64`, `fn_803F1D14`, `fn_803F1EC4`, `fn_803F07D4`, `runtime_emu_803F11E0`, `fn_803F243C`, `fn_803F2948`, `fn_803F2A4C`, `fn_803F2E4C`, `fn_803F3048`, `fn_803F3198`, `fn_803F3240`, `fn_803F342C`, `__close_all`, `fn_803F3600`, `fn_803F3684`, `fn_803F36F0`, `fn_803F37CC`, `fn_803F3A54`, `fn_803F3B40`, `fn_803F3EAC`, `fn_803F4090`, `fn_803F45AC`, `fn_803F4710`, and `fn_803F5060` all **DONE 2026-09-28** (see checkpoints above).
+   - Non-auto triage: (a) regswap/scheduling class — `mt_vector_old`, `mt_trig`, `ip_network_producer`, `ut_relocate`, `nt_send`, `nt_report`, `em_external_value_accesser`, `ac_cmd_interpreter`, `gf_task_scheduler`, `gf_slow_manager`, `ty_fig_listmng`, `st_emblem`, `sc_adv_gameover`, `cm_controller_menu_fixed` (all ≥34.8%, most ≥97%, blocked on scheduling-class idioms); (b) unimplemented bulk — `ft_marth` (5 units, 439+ fns, 0%), `ft_purin` (17/457, 6.18%); (c) runtime lib — `__init_cpp_exceptions`, `Gecko_ExceptionPPC.c`, `fn_803F1B64`, `fn_803F1D14`, `fn_803F1EC4`, `fn_803F07D4`, `runtime_emu_803F11E0`, `fn_803F243C`, `fn_803F2948`, `fn_803F2A4C`, `fn_803F2E4C`, `fn_803F3048`, `fn_803F3198`, `fn_803F3240`, `fn_803F342C`, `__close_all`, `fn_803F3600`, `fn_803F3684`, `fn_803F36F0`, `fn_803F37CC`, `fn_803F3A54`, `fn_803F3B40`, `fn_803F3EAC`, `fn_803F4090`, `fn_803F45AC`, `fn_803F4710`, and `fn_803F5060` all **DONE 2026-09-28** (see checkpoints above; only these named units are matched — still-auto gaps remain between them, e.g. `auto_03_803F07E0_text` 0x23C, `auto_03_803F0D4C_text` 0x80, `auto_03_803F0DCC_text` 0xB8, `auto_fn_803F0E84_text` 0x80, `auto_fn_803F0F04_text` 0x40, `auto_fn_803F11A0_text` 0x40, `auto_fn_803F48B0_text` 0x7B0).
    - **ft_purin precedent (2026-09-28)**: the 8 named `soAnimCmd`-cluster functions matched once emitted (see Accepted state); incremental function backlog remains — next candidates: the small anonymous-function family `fn_124_A9D0…B028` (7× 52B, stride 0xE8, self-contained: `bit7(byte@5)` gate + `byte@6` check + tail-call vtable slot 0xC — pattern-identical bodies, need an owner class context to emit as real methods), or the 0x14-byte group at `0x80C4–0x823C`. For any future unit with header-inline class methods, remember: emission (a use site or vtable reference in the TU) is the prerequisite, and `-d` dedup scoring exposes weak-symbol matches. CAVEAT: the testBuilder() emission references are SCAFFOLDING inside a `FIXME: Test code ... delete once ftPurin is done` function — they force-emit code but are not real uses; when the owning classes/vtables are reconstructed, replace the scaffolding with genuine construction paths so the emitted code comes from reconstructed call sites (purin remains incremental function backlog, not the first-linked-object gate — that is now `fn_8028A040`).
 4. When an object matches end-to-end: flip its `configure.py` entry to `Object(Matching, ...)`, `python configure.py && ninja`, verify 127/127 hashes, regenerate `build/RSBE01_02/report.json`, and record the progress delta here.
 
