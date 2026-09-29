@@ -325,6 +325,7 @@ config.libs = [
             Object(Matching, "Runtime.PPCEABI.H/fn_803F5EAC.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803FC9BC.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803FC984.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_803F64D0.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F4710.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F45AC.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F4090.s"),
