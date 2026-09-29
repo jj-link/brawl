@@ -387,3 +387,8 @@ Runtime.PPCEABI.H/fn_803F2A4C.s:
 
 Runtime.PPCEABI.H/fn_803F2E4C.s:
 	.text       start:0x803F2E4C end:0x803F3048
+
+Runtime.PPCEABI.H/fn_803F3048.s:
+	extab       start:0x80009574 end:0x8000957C
+	extabindex  start:0x8000C574 end:0x8000C580
+	.text       start:0x803F3048 end:0x803F3198
