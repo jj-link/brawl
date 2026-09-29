@@ -155,6 +155,7 @@ Use the first small batch to learn which targets the workflow handles well and w
 - **thirtieth–thirty-third units** (agent batch 1): `fn_803F524C`, `fn_803F5C38`, `fn_803F5EF4`, `fn_803F5EA8` — Runtime.PPCEABI.H; 4 + 172 + 128 + 4 B; agents transcribed from dtk disasm in junctioned worktrees; integrated through `59ebcc1`; incomplete 3,324 → 3,320.
 - **thirty-fourth–thirty-sixth units** (agent batch 2): `fn_803F0F04`, `fn_803F11A0` (64 B each; extab 0x8 + extabindex 0xC; `bl __dl__FPv`), `fn_803F5898` (188 B; calls `fn_803F5954`/`fn_803F342C`); verified instruction-exact against targets before merge; integrated through `dfa76c7`; incomplete 3,320 → 3,317.
 - **thirty-seventh–thirty-ninth units** (agent batch 3): `fn_803F5954` (308 B; calls `fn_803F3684`/`fn_803F5CE0`/`__flush_buffer`), `fn_803F7404` (296 B; text-only), `fn_803F8ACC` (368 B; extab-carrying; shift-heavy); verified instruction-exact (77/74/92 insns) before merge; integrated through `2311e80`; incomplete 3,317 → 3,314.
+- **fortieth–forty-second units** (agent batch 4): `fn_803F8C64` (1716 B; 429 insns; no calls), `fn_803FC0AC` (1220 B; 305 insns; `__div2u`), `fn_803F9318` (3424 B; 856 insns; 13 calls incl. cross-refs to still-auto labels); verified instruction-exact before merge; integrated through `7164e3b`; incomplete 3,314 → 3,311.
 
 ## Verification rules
 
