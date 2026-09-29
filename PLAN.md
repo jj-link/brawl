@@ -163,6 +163,7 @@ Use the first small batch to learn which targets the workflow handles well and w
 - **fifty-fifth–fifty-seventh units** (agent batch 9): `fn_803F5A88` (192 B; 48 insns), `dtor_803F0B20` (188 B; 47 insns; `__dl__FPv`), `fn_803F0DCC` (184 B; 46 insns; 4 fns — `__ptmf_test`, `__ptmf_scall` + 2); verified instruction-exact before merge; integrated through `35cc6d8`; incomplete 3,299 → 3,296.
 - **fifty-eighth–sixtieth units** (agent batch 10): `fn_803F861C` (200 B; 50 insns; `__pformatter_803F7CFC`, `fwide`), `fn_803F86E4` (196 B; 49 insns; same calls), `fn_803FA1D0` (176 B; 44 insns; `exit`); verified instruction-exact before merge; integrated through `6d40e5e`; incomplete 3,296 → 3,293.
 - **sixty-first–sixty-third units** (agent batch 11): `fn_803FC570` (168 B; 42 insns; calls matched `fn_803FBC7C`), `fn_803FA078` (144 B; 36 insns), `fn_803FBBF8` (132 B; 33 insns; calls matched `fn_803FA804`); verified instruction-exact before merge; integrated through `e94b99e`; incomplete 3,293 → 3,290.
+- **sixty-fourth–sixty-sixth units** (agent batch 12): `fn_803F0D4C` (128 B; 32 insns; `__dla__FPv`), `fn_803F0E84` (128 B; 32 insns; `fn_803F2E4C`), `fn_803F64E8` (128 B; 32 insns; no calls); verified instruction-exact before merge; integrated through `d8e30c7`; incomplete 3,290 → 3,287.
 
 ## Verification rules
 
