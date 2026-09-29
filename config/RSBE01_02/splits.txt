@@ -343,6 +343,9 @@ sora/misc/fn_8028A040.cpp:
 Runtime.PPCEABI.H/fn_803F07D4.s:
 	.text       start:0x803F07D4 end:0x803F07E0
 
+Runtime.PPCEABI.H/runtime_emu_803F11E0.s:
+	.text       start:0x803F11E0 end:0x803F1A08
+
 Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
 	.text       start:0x803F1A08 end:0x803F1A78
 	.ctors      start:0x804064E0 end:0x804064E4 rename:.ctors$10
