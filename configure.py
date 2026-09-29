@@ -280,6 +280,7 @@ config.libs = [
             Object(Matching, "Runtime.PPCEABI.H/Gecko_ExceptionPPC.c"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F07D4.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F1B64.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_803F2E4C.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F2948.s"),
             Object(Matching, "Runtime.PPCEABI.H/runtime_emu_803F11E0.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F2A4C.s"),
