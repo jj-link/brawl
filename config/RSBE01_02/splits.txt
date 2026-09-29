@@ -510,6 +510,11 @@ Runtime.PPCEABI.H/fn_803F5EA8.s:
 Runtime.PPCEABI.H/fn_803F5EF4.s:
 	.text       start:0x803F5EF4 end:0x803F5F74
 
+Runtime.PPCEABI.H/fn_803F602C.s:
+	extab       start:0x8000962C end:0x80009634
+	extabindex  start:0x8000C688 end:0x8000C694
+	.text       start:0x803F602C end:0x803F60F8
+
 Runtime.PPCEABI.H/fn_803F60F8.s:
 	.text       start:0x803F60F8 end:0x803F646C
 
