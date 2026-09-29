@@ -478,6 +478,11 @@ Runtime.PPCEABI.H/fn_803F5098.c:
 Runtime.PPCEABI.H/fn_803F524C.s:
 	.text       start:0x803F524C end:0x803F5250
 
+Runtime.PPCEABI.H/fn_803F5250.s:
+	extab       start:0x800095EC end:0x800095F4
+	extabindex  start:0x8000C628 end:0x8000C634
+	.text       start:0x803F5250 end:0x803F5590
+
 Runtime.PPCEABI.H/fn_803F5898.s:
 	extab       start:0x800095FC end:0x80009604
 	extabindex  start:0x8000C640 end:0x8000C64C
