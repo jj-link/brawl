@@ -343,6 +343,11 @@ sora/misc/fn_8028A040.cpp:
 Runtime.PPCEABI.H/fn_803F07D4.s:
 	.text       start:0x803F07D4 end:0x803F07E0
 
+Runtime.PPCEABI.H/fn_803F0F04.s:
+	extab       start:0x8000951C end:0x80009524
+	extabindex  start:0x8000C514 end:0x8000C520
+	.text       start:0x803F0F04 end:0x803F0F44
+
 Runtime.PPCEABI.H/fn_803F11A0.s:
 	extab       start:0x8000952C end:0x80009534
 	extabindex  start:0x8000C52C end:0x8000C538
@@ -486,8 +491,3 @@ Runtime.PPCEABI.H/fn_803F5EA8.s:
 
 Runtime.PPCEABI.H/fn_803F5EF4.s:
 	.text       start:0x803F5EF4 end:0x803F5F74
-
-Runtime.PPCEABI.H/fn_803F0F04.s:
-	extab       start:0x8000951C end:0x80009524
-	extabindex  start:0x8000C514 end:0x8000C520
-	.text       start:0x803F0F04 end:0x803F0F44
