@@ -169,6 +169,7 @@ Use the first small batch to learn which targets the workflow handles well and w
 - **seventy-third–seventy-fifth units** (agent batch 15): `fn_803F8C3C` (40 B; 10 insns; 2 fns `rand`/`fn_803F8C5C`), `fn_803F64D0` (24 B; 6 insns), `fn_803F6568` (16 B; 4 insns; libc `__stdio_atexit`); verified instruction-exact before merge; integrated through `06231cf`; incomplete 3,281 → 3,278.
 - **seventy-sixth–seventy-seventh units** (agent batch 16): `fn_803FC97C` (8 B; 2 insns), `fn_803FC9B8` (4 B; 1 insn); verified instruction-exact before merge; integrated through `417f167`; incomplete 3,278 → 3,276. Small 803F-unit pool exhausted (only `auto_03_803FC9FC_text` 39624 B remains in 803F).
 - **seventy-eighth–seventy-ninth units** (agent batch 17): `fn_803F48B0` (1968 B; 492 insns; savegpr/restgpr, ~20 calls), `fn_803FC9FC` (172 B; 43 insns; 2 fns `stricmp`/`fn_803FCAA4`, first carve-out of the 39624-B C9FC libc block — remainder regenerates as `auto_03_803FCAA8_text`); verified instruction-exact before merge; integrated through `bb03932`; incomplete 3,276 → 3,274.
+- **eightieth–eighty-first units** (agent batch 18): `fn_803FCAA8` (880 B; 220 insns; 3 fns `fn_803FCAA8`/`itoa`/`fn_803FCB54`), `fn_803FCE18` (1288 B; 322 insns; 2 fns `fn_803FCE18`/`fn_803FD0B0`); verified instruction-exact before merge; integrated through `9a4c1dc`; incomplete 3,274 → 3,272.
 
 ## Verification rules
 
