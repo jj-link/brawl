@@ -150,6 +150,11 @@ Do not change global compiler settings just to improve one candidate's score. In
 
 Use the first small batch to learn which targets the workflow handles well and where human investigation is needed. Do not assume that local-model assistance guarantees any particular rate of progress or completion date.
 
+## Batch Log
+
+- **thirtieth–thirty-third units** (agent batch 1): `fn_803F524C`, `fn_803F5C38`, `fn_803F5EF4`, `fn_803F5EA8` — Runtime.PPCEABI.H; 4 + 172 + 128 + 4 B; agents transcribed from dtk disasm in junctioned worktrees; integrated through `59ebcc1`; incomplete 3,324 → 3,320.
+- **thirty-fourth–thirty-sixth units** (agent batch 2): `fn_803F0F04`, `fn_803F11A0` (64 B each; extab 0x8 + extabindex 0xC; `bl __dl__FPv`), `fn_803F5898` (188 B; calls `fn_803F5954`/`fn_803F342C`); verified instruction-exact against targets before merge; integrated through `dfa76c7`; incomplete 3,320 → 3,317.
+
 ## Verification rules
 
 An object is complete only when all applicable gates pass:
