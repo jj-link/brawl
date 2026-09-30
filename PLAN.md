@@ -427,3 +427,24 @@ Findings 2, 4, 6, 8 share one root cause: **MWCC 3.0a5.2 instruction-scheduling 
 - Existing Brawl headers: https://github.com/Sammi-Husky/BrawlHeaders
 - Functional module reimplementations: https://github.com/Sammi-Husky/BrawlModules
 - Object comparison tooling: https://github.com/encounter/objdiff
+
+
+# Substantive reconstruction wave 1 (2026-09-29)
+
+Three parallel agents own investigation AND implementation per PLAN.md "Subagent assignments". No transcription; recovered C/C++ only. Assembly copies remain in the repo until each unit is genuinely reconstructed.
+
+| Agent | Worktree / branch | Units |
+| --- | --- | --- |
+| ReconstructStrings | brawl-agent-test / agent-test | fn_803FA280 (strcpy family), fn_803F60F8 (memchr family), fn_803F5B48 (itoa), fn_803FA798 (strstr) |
+| ReconstructStdio | brawl-agent-b / agent-b | fn_803F5060 (+__prep_buffer), __close_all, fn_803F3600, fn_803F3684 |
+| ReconstructTRK | brawl-agent-c / agent-c | fn_80400D90 (TRKNubMainLoop cluster), fn_8040123C, fn_80401358, fn_804014D8 |
+
+- Pending batch-36 transcription commits (055DC/05730/05994) discarded at user instruction before this wave; branches now start at `1399e6d`.
+- Acceptance: object comparison 100% AND `127 files OK` with the reconstructed source actually linked. Agent success reports alone are not acceptance.
+- Known hard case flagged: standalone `__prep_buffer` register coloring (historical blocker); agents instructed to try static-inline-first and to report genuine C blockers rather than shipping assembly.
+
+## Source reconstruction checkpoint (2026-09-30)
+
+- `fn_803F861C.c` (printf, 200 B), `fn_803F86E4.c` (fprintf, 196 B), and `fn_803FC570.c` (integer string conversion wrapper, 168 B) replace three `.s` registrations. CodeWarrior `__builtin_va_info` reproduces the PPC EABI variadic prologues; the parser wrapper uses the existing `fn_803FA078` callback ABI (`int(void*, int, int)`).
+- After source registration and per-unit `-Cpp_exceptions on`, `ninja build/RSBE01_02/ok` reports **127 files OK**. Objdiff `-d` reports 200/200, 196/196, and 168/168 matched code bytes respectively, each 1/1 matched functions. These are reconstructed C, not assembly matches.
+- Other concurrent stdio/MSL/formatting drafts remain unregistered until source-object and linked-hash verification. Objdiff aggregate percentages include assembly units and are not the C-decompiled percentage; the source-only delta here is 564 code bytes across three functions.
