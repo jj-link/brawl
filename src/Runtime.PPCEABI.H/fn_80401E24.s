@@ -5,12 +5,6 @@
 .text
 .balign 4
 
-# .text:0x0 | 0x80401E1C | size: 0x8
-.fn TRKInitializeDispatcher, global
-/* 80401E1C 003F7B9C  38 60 00 00 */	li r3, 0x0
-/* 80401E20 003F7BA0  4E 80 00 20 */	blr
-.endfn TRKInitializeDispatcher
-
 # .text:0x8 | 0x80401E24 | size: 0xCC
 .fn fn_80401E24, global
 /* 80401E24 003F7BA4  94 21 FF B0 */	stwu r1, -0x50(r1)
