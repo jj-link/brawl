@@ -5,24 +5,6 @@
 .text
 .balign 4
 
-# .text:0x0 | 0x804035B4 | size: 0x8
-.fn fn_804035B4, global
-/* 804035B4 003F9334  38 60 00 00 */	li r3, 0x0
-/* 804035B8 003F9338  4E 80 00 20 */	blr
-.endfn fn_804035B4
-
-# .text:0x8 | 0x804035BC | size: 0x8
-.fn fn_804035BC, global
-/* 804035BC 003F933C  38 60 00 00 */	li r3, 0x0
-/* 804035C0 003F9340  4E 80 00 20 */	blr
-.endfn fn_804035BC
-
-# .text:0x10 | 0x804035C4 | size: 0x8
-.fn fn_804035C4, global
-/* 804035C4 003F9344  38 60 00 00 */	li r3, 0x0
-/* 804035C8 003F9348  4E 80 00 20 */	blr
-.endfn fn_804035C4
-
 # .text:0x18 | 0x804035CC | size: 0x98
 .fn fn_804035CC, global
 /* 804035CC 003F934C  94 21 FF E0 */	stwu r1, -0x20(r1)
