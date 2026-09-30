@@ -1,43 +1,9 @@
 .include "macros.inc"
-.file "fn_803F60F8"
+.file "fn_803F6150"
 
-# 0x803F60F8..0x803F646C | size: 0x374
+# 0x803F6150..0x803F646C | size: 0x31C
 .text
 .balign 4
-
-# .text:0x0 | 0x803F60F8 | size: 0x2C
-.fn memchr, global
-/* 803F60F8 003EBE78  54 84 06 3E */	clrlwi r4, r4, 24
-/* 803F60FC 003EBE7C  38 63 FF FF */	subi r3, r3, 0x1
-/* 803F6100 003EBE80  38 A5 00 01 */	addi r5, r5, 0x1
-/* 803F6104 003EBE84  48 00 00 10 */	b .L_803F6114
-.L_803F6108:
-/* 803F6108 003EBE88  8C 03 00 01 */	lbzu r0, 0x1(r3)
-/* 803F610C 003EBE8C  7C 00 20 40 */	cmplw r0, r4
-/* 803F6110 003EBE90  4D 82 00 20 */	beqlr
-.L_803F6114:
-/* 803F6114 003EBE94  34 A5 FF FF */	subic. r5, r5, 0x1
-/* 803F6118 003EBE98  40 82 FF F0 */	bne .L_803F6108
-/* 803F611C 003EBE9C  38 60 00 00 */	li r3, 0x0
-/* 803F6120 003EBEA0  4E 80 00 20 */	blr
-.endfn memchr
-
-# .text:0x2C | 0x803F6124 | size: 0x2C
-.fn __memrchr, global
-/* 803F6124 003EBEA4  7C 63 2A 14 */	add r3, r3, r5
-/* 803F6128 003EBEA8  54 84 06 3E */	clrlwi r4, r4, 24
-/* 803F612C 003EBEAC  38 A5 00 01 */	addi r5, r5, 0x1
-/* 803F6130 003EBEB0  48 00 00 10 */	b .L_803F6140
-.L_803F6134:
-/* 803F6134 003EBEB4  8C 03 FF FF */	lbzu r0, -0x1(r3)
-/* 803F6138 003EBEB8  7C 00 20 40 */	cmplw r0, r4
-/* 803F613C 003EBEBC  4D 82 00 20 */	beqlr
-.L_803F6140:
-/* 803F6140 003EBEC0  34 A5 FF FF */	subic. r5, r5, 0x1
-/* 803F6144 003EBEC4  40 82 FF F0 */	bne .L_803F6134
-/* 803F6148 003EBEC8  38 60 00 00 */	li r3, 0x0
-/* 803F614C 003EBECC  4E 80 00 20 */	blr
-.endfn __memrchr
 
 # .text:0x58 | 0x803F6150 | size: 0x4C
 .fn fn_803F6150, global
