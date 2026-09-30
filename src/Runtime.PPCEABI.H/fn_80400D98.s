@@ -3,16 +3,6 @@
 .text
 .balign 4
 
-# .text:0x0 | 0x80400D90 | size: 0x4
-.fn fn_80400D90, global
-/* 80400D90 003F6B10  4E 80 00 20 */	blr
-.endfn fn_80400D90
-
-# .text:0x4 | 0x80400D94 | size: 0x4
-.fn fn_80400D94, global
-/* 80400D94 003F6B14  4B FF FD B4 */	b fn_80400B48
-.endfn fn_80400D94
-
 # .text:0x8 | 0x80400D98 | size: 0xF8
 .fn TRKNubMainLoop, global
 /* 80400D98 003F6B18  94 21 FF E0 */	stwu r1, -0x20(r1)
