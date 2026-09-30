@@ -278,7 +278,7 @@ config.libs = [
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
             Object(Matching, "Runtime.PPCEABI.H/Gecko_ExceptionPPC.c"),
-            Object(Matching, "Runtime.PPCEABI.H/fn_803F07D4.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_803F07D4.c"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F1B64.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F5060.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F5098.c", extra_cflags=["-Cpp_exceptions on"]),
