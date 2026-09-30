@@ -549,22 +549,22 @@ Runtime.PPCEABI.H/fn_803F602C.s:
 Runtime.PPCEABI.H/fn_803F60F8.s:
 	.text       start:0x803F60F8 end:0x803F646C
 
-Runtime.PPCEABI.H/fn_803F646C.s:
+Runtime.PPCEABI.H/fn_803F646C.c:
 	extab       start:0x80009634 end:0x8000963C
 	extabindex  start:0x8000C694 end:0x8000C6A0
 	.text       start:0x803F646C end:0x803F64D0
 
-Runtime.PPCEABI.H/fn_803F64D0.s:
+Runtime.PPCEABI.H/fn_803F64D0.c:
 	extab       start:0x8000963C end:0x80009644
 	extabindex  start:0x8000C6A0 end:0x8000C6AC
 	.text       start:0x803F64D0 end:0x803F64E8
 
-Runtime.PPCEABI.H/fn_803F64E8.s:
+Runtime.PPCEABI.H/fn_803F64E8.c:
 	extab       start:0x80009644 end:0x8000964C
 	extabindex  start:0x8000C6AC end:0x8000C6B8
 	.text       start:0x803F64E8 end:0x803F6568
 
-Runtime.PPCEABI.H/fn_803F6568.s:
+Runtime.PPCEABI.H/fn_803F6568.c:
 	.text       start:0x803F6568 end:0x803F6578
 
 Runtime.PPCEABI.H/fn_803F6B74.s:
@@ -593,7 +593,7 @@ Runtime.PPCEABI.H/fn_803F8ACC.s:
 	extabindex  start:0x8000C760 end:0x8000C76C
 	.text       start:0x803F8ACC end:0x803F8C3C
 
-Runtime.PPCEABI.H/fn_803F8C3C.s:
+Runtime.PPCEABI.H/fn_803F8C3C.c:
 	.text       start:0x803F8C3C end:0x803F8C64
 
 Runtime.PPCEABI.H/fn_803F8C64.s:
@@ -658,18 +658,18 @@ Runtime.PPCEABI.H/fn_803FC8AC.s:
 	extabindex  start:0x8000C808 end:0x8000C814
 	.text       start:0x803FC8AC end:0x803FC97C
 
-Runtime.PPCEABI.H/fn_803FC97C.s:
+Runtime.PPCEABI.H/fn_803FC97C.c:
 	.text       start:0x803FC97C end:0x803FC984
 
-Runtime.PPCEABI.H/fn_803FC984.s:
+Runtime.PPCEABI.H/fn_803FC984.c:
 	extab       start:0x80009734 end:0x8000973C
 	extabindex  start:0x8000C814 end:0x8000C820
 	.text       start:0x803FC984 end:0x803FC9B8
 
-Runtime.PPCEABI.H/fn_803FC9B8.s:
+Runtime.PPCEABI.H/fn_803FC9B8.c:
 	.text       start:0x803FC9B8 end:0x803FC9BC
 
-Runtime.PPCEABI.H/fn_803FC9BC.s:
+Runtime.PPCEABI.H/fn_803FC9BC.c:
 	extab       start:0x8000973C end:0x80009744
 	extabindex  start:0x8000C820 end:0x8000C82C
 	.text       start:0x803FC9BC end:0x803FC9FC
