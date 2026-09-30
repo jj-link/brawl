@@ -96,22 +96,3 @@
 	addi r1, r1, 0x20
 	blr
 .endfn TRKInitializeMessageBuffers
-
-# .text:0x20C | 0x80401AA4 | size: 0x8
-.fn fn_80401AA4, global
-	li r3, 0x0
-	blr
-.endfn fn_80401AA4
-
-# .text:0x214 | 0x80401AAC | size: 0x24
-.fn TRKInitializeSerialHandler, global
-	lis r3, lbl_8059B928@ha
-	li r5, -0x1
-	addi r4, r3, lbl_8059B928@l
-	li r0, 0x0
-	stw r5, 0x0(r4)
-	li r3, 0x0
-	stw r0, 0x8(r4)
-	stw r0, 0xc(r4)
-	blr
-.endfn TRKInitializeSerialHandler
