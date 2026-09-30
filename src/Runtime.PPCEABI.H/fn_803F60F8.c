@@ -23,3 +23,23 @@ void* __memrchr(const void* s, int c, unsigned long n) {
     }
     return 0;
 }
+
+
+// Compare bytes lexicographically, returning the sign of the first difference.
+int fn_803F6150(const void* lhs, const void* rhs, unsigned long n) {
+    unsigned long cnt;
+    const unsigned char* p1;
+    const unsigned char* p2;
+    p2 = (const unsigned char*)rhs - 1;
+    p1 = (const unsigned char*)lhs - 1;
+    cnt = n + 1;
+    while (--cnt != 0) {
+        if (*++p1 != *++p2) {
+            if (*p1 < *p2) {
+                return -1;
+            }
+            return 1;
+        }
+    }
+    return 0;
+}

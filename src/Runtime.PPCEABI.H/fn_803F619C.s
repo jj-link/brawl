@@ -1,34 +1,9 @@
 .include "macros.inc"
-.file "fn_803F6150"
+.file "fn_803F619C"
 
-# 0x803F6150..0x803F646C | size: 0x31C
+# 0x803F619C..0x803F646C | size: 0x2D0
 .text
 .balign 4
-
-# .text:0x58 | 0x803F6150 | size: 0x4C
-.fn fn_803F6150, global
-/* 803F6150 003EBED0  38 E4 FF FF */	subi r7, r4, 0x1
-/* 803F6154 003EBED4  38 C3 FF FF */	subi r6, r3, 0x1
-/* 803F6158 003EBED8  38 85 00 01 */	addi r4, r5, 0x1
-/* 803F615C 003EBEDC  48 00 00 30 */	b .L_803F618C
-.L_803F6160:
-/* 803F6160 003EBEE0  8C 66 00 01 */	lbzu r3, 0x1(r6)
-/* 803F6164 003EBEE4  8C 07 00 01 */	lbzu r0, 0x1(r7)
-/* 803F6168 003EBEE8  7C 03 00 40 */	cmplw r3, r0
-/* 803F616C 003EBEEC  41 82 00 20 */	beq .L_803F618C
-/* 803F6170 003EBEF0  88 86 00 00 */	lbz r4, 0x0(r6)
-/* 803F6174 003EBEF4  38 60 00 01 */	li r3, 0x1
-/* 803F6178 003EBEF8  88 07 00 00 */	lbz r0, 0x0(r7)
-/* 803F617C 003EBEFC  7C 04 00 40 */	cmplw r4, r0
-/* 803F6180 003EBF00  4C 80 00 20 */	bgelr
-/* 803F6184 003EBF04  38 60 FF FF */	li r3, -0x1
-/* 803F6188 003EBF08  4E 80 00 20 */	blr
-.L_803F618C:
-/* 803F618C 003EBF0C  34 84 FF FF */	subic. r4, r4, 0x1
-/* 803F6190 003EBF10  40 82 FF D0 */	bne .L_803F6160
-/* 803F6194 003EBF14  38 60 00 00 */	li r3, 0x0
-/* 803F6198 003EBF18  4E 80 00 20 */	blr
-.endfn fn_803F6150
 
 # .text:0xA4 | 0x803F619C | size: 0xBC
 .fn fn_803F619C, global
