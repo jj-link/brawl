@@ -3,14 +3,6 @@
 .text
 .balign 4
 
-# .text:0x0 | 0x80403D94 | size: 0x10
-.fn fn_80403D94, global
-/* 80403D94 003F9B14  3C 60 80 5A */	lis r3, gTRKCPUState@ha
-/* 80403D98 003F9B18  38 63 B9 F0 */	addi r3, r3, gTRKCPUState@l
-/* 80403D9C 003F9B1C  80 63 00 80 */	lwz r3, 0x80(r3)
-/* 80403DA0 003F9B20  4E 80 00 20 */	blr
-.endfn fn_80403D94
-
 # .text:0x10 | 0x80403DA4 | size: 0x7C
 .fn fn_80403DA4, global
 /* 80403DA4 003F9B24  2C 05 00 00 */	cmpwi r5, 0x0

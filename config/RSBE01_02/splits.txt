@@ -851,8 +851,11 @@ Runtime.PPCEABI.H/fn_80403B74.c:
 Runtime.PPCEABI.H/fn_80403B94.s:
 	.text       start:0x80403B94 end:0x80403D94
 
-Runtime.PPCEABI.H/fn_80403D94.s:
-	.text       start:0x80403D94 end:0x804041A4
+Runtime.PPCEABI.H/fn_80403D94.c:
+	.text       start:0x80403D94 end:0x80403DA4
+
+Runtime.PPCEABI.H/fn_80403DA4.s:
+	.text       start:0x80403DA4 end:0x804041A4
 
 Runtime.PPCEABI.H/fn_804041A4.s:
 	.text       start:0x804041A4 end:0x80404C58
