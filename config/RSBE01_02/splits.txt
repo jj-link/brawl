@@ -834,7 +834,19 @@ Runtime.PPCEABI.H/fn_804037BC.s:
 	.text       start:0x804037BC end:0x80403B28
 
 Runtime.PPCEABI.H/fn_80403B28.s:
-	.text       start:0x80403B28 end:0x80403D94
+	.text       start:0x80403B28 end:0x80403B4C
+
+Runtime.PPCEABI.H/fn_80403B4C.c:
+	.text       start:0x80403B4C end:0x80403B5C
+
+Runtime.PPCEABI.H/fn_80403B5C.s:
+	.text       start:0x80403B5C end:0x80403B74
+
+Runtime.PPCEABI.H/fn_80403B74.c:
+	.text       start:0x80403B74 end:0x80403B94
+
+Runtime.PPCEABI.H/fn_80403B94.s:
+	.text       start:0x80403B94 end:0x80403D94
 
 Runtime.PPCEABI.H/fn_80403D94.s:
 	.text       start:0x80403D94 end:0x804041A4
