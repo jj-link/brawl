@@ -322,7 +322,7 @@ config.libs = [
             Object(Matching, "Runtime.PPCEABI.H/fn_803F88A4.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803FA798.c"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F646C.s"),
-            Object(Matching, "Runtime.PPCEABI.H/fn_803F5EAC.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_803F5EAC.c", extra_cflags=["-Cpp_exceptions on"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_803FC9BC.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803FC984.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_803F8C3C.s"),
