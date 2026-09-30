@@ -50,14 +50,3 @@
 	bctr
 .endfn __ptmf_scall
 
-.fn fn_803F0E60, global
-	lwz r0, 0x0(r4)
-	lwz r6, 0x4(r4)
-	add r3, r0, r3
-	lwz r0, 0x8(r4)
-	stw r3, 0x0(r5)
-	mr r3, r5
-	stw r6, 0x4(r5)
-	stw r0, 0x8(r5)
-	blr
-.endfn fn_803F0E60
