@@ -60,7 +60,3 @@
 /* 803FCAA0 003F2820  4E 80 00 20 */	blr
 .endfn stricmp
 
-# .text:0xA8 | 0x803FCAA4 | size: 0x4
-.fn fn_803FCAA4, global
-/* 803FCAA4 003F2824  4B FF 8F E4 */	b fn_803F5A88
-.endfn fn_803FCAA4
