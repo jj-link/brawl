@@ -3,35 +3,6 @@
 .text
 .balign 4
 
-.fn fn_80400B30, global
-	b fn_803FCB54
-.endfn fn_80400B30
-
-# .text:0x250 | 0x80400B34 | size: 0x4
-.fn fn_80400B34, global
-	b fn_803FCE18
-.endfn fn_80400B34
-
-# .text:0x254 | 0x80400B38 | size: 0x4
-.fn atan2, global
-	b fn_803FD0B0
-.endfn atan2
-
-# .text:0x258 | 0x80400B3C | size: 0x4
-.fn fn_80400B3C, global
-	b fn_803FD320
-.endfn fn_80400B3C
-
-# .text:0x25C | 0x80400B40 | size: 0x4
-.fn fn_80400B40, global
-	b fn_803FD904
-.endfn fn_80400B40
-
-# .text:0x260 | 0x80400B44 | size: 0x4
-.fn fn_80400B44, global
-	b fn_803FDA18
-.endfn fn_80400B44
-
 # .text:0x264 | 0x80400B48 | size: 0x248
 .fn fn_80400B48, global
 	stwu r1, -0x20(r1)
