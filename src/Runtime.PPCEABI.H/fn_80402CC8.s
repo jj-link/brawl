@@ -151,10 +151,3 @@ mtlr r0
 addi r1, r1, 0x50
 blr
 .endfn fn_80402E5C
-
-# .text:0x21C | 0x80402EE4 | size: 0xC
-.fn fn_80402EE4, global
-lis r4, lbl_8059B944@ha
-stw r3, lbl_8059B944@l(r4)
-blr
-.endfn fn_80402EE4

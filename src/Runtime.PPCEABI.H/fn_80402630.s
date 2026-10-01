@@ -460,16 +460,3 @@
 /* 80402CB0 003F8A30  7D 41 53 78 */	mr r1, r10
 /* 80402CB4 003F8A34  4E 80 00 20 */	blr
 .endfn fn_80402A70
-
-# .text:0xA28 | 0x80402CB8 | size: 0x8
-.fn fn_80402CB8, global
-/* 80402CB8 003F8A38  38 60 00 00 */	li r3, 0x0
-/* 80402CBC 003F8A3C  4E 80 00 20 */	blr
-.endfn fn_80402CB8
-
-# .text:0xA30 | 0x80402CC0 | size: 0x8
-.fn fn_80402CC0, global
-/* 80402CC0 003F8A40  38 60 00 00 */	li r3, 0x0
-/* 80402CC4 003F8A44  4E 80 00 20 */	blr
-.endfn fn_80402CC0
-

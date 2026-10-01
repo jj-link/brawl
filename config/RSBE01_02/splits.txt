@@ -816,10 +816,16 @@ Runtime.PPCEABI.H/fn_80402290.s:
 	.text       start:0x80402290 end:0x80402630
 
 Runtime.PPCEABI.H/fn_80402630.s:
-	.text       start:0x80402630 end:0x80402CC8
+	.text       start:0x80402630 end:0x80402CB8
+
+Runtime.PPCEABI.H/fn_80402CB8.c:
+	.text       start:0x80402CB8 end:0x80402CC8
 
 Runtime.PPCEABI.H/fn_80402CC8.s:
-	.text       start:0x80402CC8 end:0x80402EF0
+	.text       start:0x80402CC8 end:0x80402EE4
+
+Runtime.PPCEABI.H/fn_80402EE4.c:
+	.text       start:0x80402EE4 end:0x80402EF0
 
 Runtime.PPCEABI.H/fn_80402EF0.s:
 	.text       start:0x80402EF0 end:0x804035B4
