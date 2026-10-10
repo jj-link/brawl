@@ -1,5 +1,5 @@
 // Signed integer formatting with the target's reversed-digit pass.
-// The only caller is an assembly tail branch; keep this entry in the linked image.
+// Keep the integer-formatting entry used by itoa's tail call in the linked image.
 typedef unsigned long u32;
 
 extern int strlen(const char*);
