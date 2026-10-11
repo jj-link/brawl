@@ -1102,6 +1102,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_article_null_adjustors.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_weapon_flag_adjustors.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_weapon_kind_adjustor.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_observer_event_adjustors.cpp", cflags=cflags_fighter),
         ],
     },
     {

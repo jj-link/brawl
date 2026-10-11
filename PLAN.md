@@ -127,7 +127,9 @@ python tools/reconstruction_progress.py build/RSBE01_02/report.json
 - Exclude assembly registrations, assembly source overrides, mixed inline-assembly units, unregistered drafts, and partial or nonmatching units. The calculator uses each unit's resolved `source_path` and `complete` flag.
 - Calculate completion as `accepted source code bytes / total target code bytes × 100`, and remaining bytes as `total target code bytes − accepted source code bytes`.
 - Record the accepted change's code-byte delta, whole-project percentage to six decimal places, accepted/total code bytes, and remaining code bytes in `CHANGELOG.md`.
-- Keep the existing dashboard's progress synchronized with each accepted checkpoint recorded in `CHANGELOG.md`, including accepted/total code bytes, completion percentage, and remaining bytes.
+- At every accepted checkpoint, the reconstruction owner publishes the exact newly verified `build/RSBE01_02/report.json` to the existing dashboard input location, and the parent records the same checkpoint in `CHANGELOG.md`.
+- Refresh every dashboard progress surface for that checkpoint: completion percentage, accepted/total/remaining bytes, accepted-unit count, module totals, the unit map, and the accepted-bytes history graph.
+- Verify that the rendered dashboard, report-derived module/unit data, and latest persisted graph point agree with the accepted checkpoint before completing publication.
 - Maintain accurate current-agent status and activity in the dashboard as work proceeds.
 - Keep batch or wave subtotals distinct from whole-project progress. Do not substitute aggregate matched/linked percentages, generated source-line counts, data bytes, executable-section spans, or ISO size for accepted C/C++ code progress.
 

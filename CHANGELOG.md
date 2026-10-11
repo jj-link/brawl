@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstruction — Ness observer-event adjustors
+
+- Accepted `.text 0x16354..0x16384`: **48 C++ code bytes** and **1 source unit**, owned through integration by `ResumeSolNessAdjustors`. The corrected ABI draft is accepted; the withdrawn initial draft and its history remain preserved. Sol history remains one initial candidate and one correction.
+- The owner verified the combined `9447977` baseline: six exact source-linked exports, exact relocations, **127 passing DOL/REL hashes**, and the four preceding accepted units retained. Only the reviewed source, registration, and split changes were integrated into main. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.029209%** — **321,296 / 15,833,556 code bytes**, with **15,512,260 bytes remaining** and **866 accepted source units**. This restart has accepted **604 bytes across 5 units**.
+- Mario's second-article initializer reached ten Sol and ten Astra corrections without matching and is set aside with zero source credit. Astra's best checkpoint 1 remains 956 text bytes against 948 original bytes, with all 40 rodata bytes exact. Complete drafts, recipes, comparisons, inherited histories, and original-linked verification remain in `build/isolated-workers/AstraMarioInitializer/build/reconstruct-ft_mario_article_second_initialize-astra/`.
+- Lucas jostle-state also reached ten Sol and ten Astra corrections and is set aside with zero source credit. The inherited best remains 236 bytes against 232 original bytes, with exact relocations. Complete histories and original-linked verification remain in `build/isolated-workers/AstraLucasJostle/build/RSBE01_02/reconstruct-ft_lucas-jostle-state-astra/`.
+- Updated `PLAN.md` to publish the owner-verified report with every accepted checkpoint and verify all dashboard figures, module/unit data, and the history graph together. The Ness owner refreshed the existing dashboard report from this exact verified snapshot: headline and map agree on 321,296 accepted bytes and 866 units, map provenance is current, and the latest persisted graph point is 321,296 bytes.
+
 ## Accepted reconstruction — Meta Knight parameter-accessor destructors
 
 - Accepted `.text 0x82FC..0x83B8`: **188 C++ code bytes** and **1 source unit**, owned through integration by `ResumeSolMetaDtors`. Preserved Sol history totals one initial candidate and two corrections: the original object-match correction and a measured integration correction retaining the otherwise discarded second destructor.
