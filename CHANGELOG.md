@@ -2,6 +2,25 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstructions — Luigi, Ness, and runtime continuation
+
+| Reconstruction | Added C/C++ code bytes | Added source units |
+| --- | ---: | ---: |
+| Luigi energy dynamic update | 208 | 1 |
+| Luigi energy event dispatch | 296 | 1 |
+| Luigi energy context | 80 | 1 |
+| Luigi kinetic gravity dispatch | 200 | 1 |
+| Luigi kinetic gravity attribute | 152 | 1 |
+| Ness transition kinetic entry | 708 | 1 |
+| Ness absolute-value helper | 8 | 1 |
+| Ness special-main callback | 1,056 | 1 |
+| Runtime debugger dispatcher `fn_804035CC` | 152 | 1 |
+
+- The reconstruction owners integrated their bounded source and registration changes. Current-main verification by the Luigi energy-context and gravity-attribute owners passes **127 DOL/REL hashes** with **890 accepted source units**; the report retains the preceding accepted work and includes all nine additions. Gameplay and the runtime debugger path were not exercised.
+- Cumulative accepted-source progress is **2.061243%** — **326,368 / 15,833,556 code bytes**, with **15,507,188 bytes remaining**. This checkpoint adds **2,860 code bytes across 9 units**; the restart has accepted **5,676 bytes across 29 units**.
+- The matching verified report from `SolLuigiEnergyContext` has SHA-256 `4e11231dd87c930bba197472d0b95b2178f34f230a07210a478b71bd5fa47308`. The coordinated report writer is `SolNessSpecialCallback`.
+- Preserved drafts and actual correction histories remain intact. Luigi gravity attribute used one additional measured recipe correction during current integration, bringing its Sol count to one. The runtime dispatcher retains its initial and two GLM corrections; the separate 56-byte `TRK_flush_cache` remains original assembly and receives no source credit.
+
 ## Reconstruction continuation — fresh owners and preserved GLM handoff
 
 - Published the preceding fifteen reconstruction units and dashboard warning fix in `349a541`, pushed to `origin/main`. That verified checkpoint remains **323,508 / 15,833,556 code bytes**, **2.043180%**, **15,510,048 bytes remaining**, and **881 accepted source units**.

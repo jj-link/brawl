@@ -26,6 +26,9 @@ mo_fighter/ft_ness/ness_air_parameter_accessor.cpp:
 mo_fighter/ft_ness/ness_angle_helper.cpp:
 	.text       start:0x0000BD7C end:0x0000BDA0
 
+mo_fighter/ft_ness/ness_absolute_value_helper.cpp:
+	.text       start:0x0000CA34 end:0x0000CA3C
+
 mo_fighter/ft_ness/ness_speed_assignment_helper.cpp:
 	.text       start:0x0000FE5C end:0x0000FE70
 
@@ -48,12 +51,19 @@ mo_fighter/ft_ness/ness_status_initializer.cpp:
 mo_fighter/ft_ness/ness_special_entry_callbacks.cpp:
 	.text       start:0x000117A8 end:0x00011814
 
+mo_fighter/ft_ness/ness_special_main_callback.cpp:
+	.text       start:0x00011814 end:0x00011C34
+	.rodata     start:0x00000030 end:0x00000054
+
 mo_fighter/ft_ness/ness_special_exit_callbacks.cpp:
 	.text       start:0x00011C34 end:0x00011D20
 
 mo_fighter/ft_ness/ness_transition_initializer.cpp:
 	.text       start:0x00011D20 end:0x00011D78
 	.ctors      start:0x00000014 end:0x00000018
+
+mo_fighter/ft_ness/ness_transition_kinetic_entry.cpp:
+	.text       start:0x00011D78 end:0x0001203C
 
 mo_fighter/ft_ness/ness_transition_orientation.cpp:
 	.text       start:0x0001203C end:0x000120F4
