@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstruction — Luigi energy-vector reset
+
+- Accepted `.text 0xAA44..0xAB2C`: **232 C++ code bytes** and **1 source unit**, reconstructed by `ResumeSolLuigiReset`. Preserved Sol history remains one initial candidate and zero corrections; original rodata ownership receives no additional credit.
+- The same owner integrated the bounded source, registration, and split changes after verifying the combined `38ae093` baseline: exact allocated bytes and relocations, all four functions source-linked and complete, the accepted Pikachu accessor retained, and **127 passing DOL/REL hashes**. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.026910%** — **320,932 / 15,833,556 code bytes**, with **15,512,624 bytes remaining** and **863 accepted source units**. This restart has accepted **240 bytes across 2 units**.
+- Fresh Sol owners received the preserved 64-byte Luigi energy-accessor unit and 56-byte Ness article-event adjustor unit. Lucas jostle-state reached ten Sol corrections and passed to a fresh Astra owner with best checkpoint 4 and all attempts preserved.
+- Lucario's 976-byte kinetic-energy constructor reached ten Sol and ten Astra corrections without an exact match and is set aside with zero source credit. Best Astra correction 3 matches 242/244 instruction words and all 66 relocations. Its draft, compiler recipe, full attempts, and original-linked verification remain in `build/isolated-workers/ResumeAstraLucarioKinetic/build/RSBE01_02/reconstruct-ft_lucario-kinetic_energy_constructor-astra/`.
+
 ## Accepted reconstruction — Pikachu observer-byte accessor
 
 - Accepted `fn_98_9C28`, `.text 0x9C28..0x9C30`: **8 C++ code bytes** and **1 source unit**, reconstructed by `ResumeSolPikachuByte` from the preserved initial match. Sol history remains one initial candidate and zero corrections.

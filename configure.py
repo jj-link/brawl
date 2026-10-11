@@ -859,6 +859,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_global_initializer.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_energy_vector_reset.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-inline off"]),
         ],
     },
     {
