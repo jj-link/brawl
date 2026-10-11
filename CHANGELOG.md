@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Marth side-special
+
+- Registered `ft_marth_status_uniq_process_special_s.cpp` as matching: **3,780 additional C++ code bytes**. Preserved the initial-plus-ten Sol stage and four separately recorded integration measurements.
+- The owner verified all **945 instruction words**, **400 data/constructor/storage bytes**, and relocations. The original constructor-list pointer is explicitly retained through the module configuration; the final build links the reconstructed source rather than the original object.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.374650% complete** — **217,656 / 15,833,556 accepted code bytes**, with **15,615,900 code bytes remaining** and **513 accepted source units**. Existing configuration/linker notices were not suppressed. Gameplay was not exercised.
+
 ## Preserved unmatched Emblem stage reconstruction
 
 - Set aside `st_emblem.cpp` after initial-plus-ten Sol and Astra stages. All checkpoints remain preserved, including one separately recorded failed Astra compile; the selected Astra-ten source was published under a source-only grant.
