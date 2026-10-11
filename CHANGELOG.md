@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — decimal subtraction
+
+- Replaced the `fn_803F4090` assembly registration with reconstructed C for aligned decimal subtraction, borrowing, discarded-tail handling, and normalization: **1,308 code bytes, one unit, one function**.
+- Matched after three Sol corrections. The registered C object matches all 327 instruction words, its 20 bytes of exception metadata, and every relocation; obsolete assembly was removed.
+- `python configure.py && ninja --quiet build/RSBE01_02/ok` passed **127 files OK**. The regenerated report records **1.115530% complete** — **176,628 / 15,833,556 accepted source code bytes**, with **15,656,928 code bytes remaining**. Current-wave accepted C: **88 units, 119 functions, 15,928 code bytes**.
+
 ## Accepted source reconstruction — five-unit batch
 
 - Replaced assembly registrations with reconstructed C for signed conversion (`fn_803FC618`, 236 bytes), decimal powers (`fn_803F3B40`, 876 bytes), decimal comparisons (`fn_803F3EAC` and `fn_803F3F90`, 484 bytes), `strcpy` (`fn_803FA280`, 192 bytes), and debugger support requests (`TRKTargetSupportRequest` in `fn_80403B94`, 512 bytes).
