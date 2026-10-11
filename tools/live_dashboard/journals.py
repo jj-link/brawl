@@ -476,9 +476,10 @@ class JournalTracker:
 class JournalWatcher:
     """Discovers the current session family and tails its journals."""
 
-    def __init__(self, root, session_dir=None):
+    def __init__(self, root, session_dir=None, session_id=None):
         self.root = Path(root)
         self.explicit_dir = Path(session_dir) if session_dir else None
+        self.requested_session_id = session_id
         self.trackers = {}
         self.offsets = {}
         self.buffers = {}
@@ -569,13 +570,18 @@ class JournalWatcher:
             cwd = info.get("cwd")
             if not cwd or _norm(cwd) != _norm(self.root):
                 continue
+            if self.requested_session_id and info.get("id") != self.requested_session_id:
+                continue
+            if self.parent_session_id and info.get("id") != self.parent_session_id:
+                continue
             try:
                 mtime = path.stat().st_mtime_ns
             except OSError:
                 continue
             if best is None or mtime > best[0]:
                 best = (mtime, path, info)
-        if best is None and self.explicit_dir is not None:
+        if best is None and self.explicit_dir is not None and not (
+                self.requested_session_id or self.parent_session_id):
             # Explicit session dir: fall back to the newest journal anywhere
             # in the tree and say so.
             for path in candidates:
@@ -593,8 +599,9 @@ class JournalWatcher:
                 )
         if best is None:
             self.warnings["session"] = (
-                f"no session journal with cwd {_norm(self.root)} found; "
-                "agents unavailable (pass --session-dir to override)"
+                f"no session journal with cwd {_norm(self.root)} found"
+                f" for root session {self.requested_session_id or self.parent_session_id or '(auto)'}; "
+                "agents unavailable (check --session-id and --session-dir)"
             )
             self.parent_path = None
             return []

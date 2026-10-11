@@ -17,7 +17,7 @@ browsing, never mutates reconstruction files, and persists nothing outside
 
 Usage:
     python tools/live_dashboard/server.py [--port 8765] [--session-dir DIR]
-        [--root DIR] [--report PATH] [--interval SECONDS] [--verbose]
+        [--session-id ROOT_UUID] [--root DIR] [--report PATH] [--interval SECONDS] [--verbose]
 
 API:
     GET /api/state   full dashboard state snapshot (JSON)
@@ -216,7 +216,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 self._send_json(503, json.dumps({
                     "connected": False,
                     "error": str(exc),
-                    "prerequisite": "Load .omp/extensions/live-output.js in the owning omp runner; restart/resume is required.",
+                    "prerequisite": "Use --session-id to select the owning root session; its omp runner must load .omp/extensions/live-output.js.",
                 }).encode("utf-8"))
         elif path == "/api/live":
             self._handle_live()
@@ -257,7 +257,11 @@ class DashboardHandler(BaseHTTPRequestHandler):
             status = json.load(response)
         expected = self.dashboard["watcher"].session_label()
         if not expected or status.get("rootSessionId") != expected:
-            raise ValueError("Observer does not belong to the dashboard's current root session")
+            raise ValueError(
+                f"Observer root session {status.get('rootSessionId') or '(unknown)'} "
+                f"does not match dashboard root session {expected or '(not found)'}. "
+                "Start the dashboard with --session-id set to the intended owning root session."
+            )
         return status
 
     def _handle_live(self):
@@ -265,8 +269,8 @@ class DashboardHandler(BaseHTTPRequestHandler):
         try:
             self._observer_status()
             upstream = urlopen(OBSERVER_URL + "/events", timeout=15)
-        except (OSError, ValueError, URLError):
-            self._send_json(503, b'{"connected":false,"error":"owning runner observer not loaded or unavailable"}')
+        except (OSError, ValueError, URLError) as exc:
+            self._send_json(503, json.dumps({"connected": False, "error": str(exc)}).encode("utf-8"))
             return
         with upstream:
             self.send_response(200)
@@ -339,6 +343,9 @@ def parse_args(argv=None):
                         help="explicit omp session directory (default: auto-discover"
                              " the session matching the repo cwd under"
                              " ~/.omp/agent/sessions)")
+    parser.add_argument("--session-id", default=None, metavar="ROOT_UUID",
+                        help="pin to this root session UUID; default selects the newest"
+                             " matching root once and retains it until restart")
     parser.add_argument("--root", type=Path, default=None, metavar="DIR",
                         help="project root (default: the repository containing"
                              " tools/live_dashboard)")
@@ -365,7 +372,7 @@ def main(argv=None):
     history_path = root / "build" / "live-dashboard" / "history.json"
     static_dir = Path(__file__).resolve().parent
 
-    watcher = JournalWatcher(root, session_dir=args.session_dir)
+    watcher = JournalWatcher(root, session_dir=args.session_dir, session_id=args.session_id)
     progress = ProgressTracker(report_path, root, history_path)
 
     stop = threading.Event()

@@ -1145,14 +1145,29 @@
     const liveItems = new Map();
     const historyItems = new Map();
     let connected = false, source = null, historyRevision = null;
+    let connectionError = 'Connecting to the owning runner observer…';
     let historyBusy = false, pendingSnapshot = null, showHistory = false, retryTimer = null;
     try { showHistory = localStorage.getItem('brawldash.streamHistory') === '1'; } catch (_) {}
 
     function status() {
       setText('streams-status', S.paused ? 'Paused — Resume reconnects to retained observer output.' :
         connected ? 'Live observer connected · visible generated text, not journal polling' :
-          'Live observer disconnected — owning omp must load the bridge. No live text is being received.');
+          'Live observer disconnected — ' + connectionError);
       $('streams-status').classList.toggle('is-error', !connected && !S.paused);
+    }
+
+    async function diagnoseConnection(failedSource) {
+      let message;
+      try {
+        const response = await fetch('/api/live-status', { cache: 'no-store' });
+        const data = await response.json();
+        message = data.error || 'Observer is available; reconnecting to its text stream.';
+      } catch (error) {
+        message = 'Cannot read observer status: ' + error.message;
+      }
+      if (connected || S.paused || (source && source !== failedSource)) return;
+      connectionError = message;
+      status();
     }
 
     function createPanel(a) {
@@ -1189,7 +1204,10 @@
       panel.identity.textContent = [a.model, a.definition, a.target,
         a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · ');
       panel.identity.title = panel.key;
-      const live = Array.from(liveItems.values()).filter(x => String(x.agentId) === panel.key)
+      // Providers may emit newline-only text blocks between tool calls. Keep
+      // them in liveItems so later text updates can make them visible.
+      const live = Array.from(liveItems.values()).filter(x =>
+        String(x.agentId) === panel.key && /\S/.test(String(x.text || '')))
         .sort((a, b) => tsOf(a.at) - tsOf(b.at) || Number(a.sequence) - Number(b.sequence));
       const historical = showHistory ? (historyItems.get(panel.key) || []) : [];
       const list = [...historical.map(item => ({ item, historical: true })),
@@ -1227,8 +1245,8 @@
       }
       if (!list.length) {
         if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
-        panel.empty.textContent = connected ? 'No visible generated text observed for this worker yet.' :
-          'Waiting for the owning runner observer. Recorded history is available only through Show history.';
+        panel.empty.textContent = connected ? 'No visible generated text observed for this worker yet. Tool activity and hidden reasoning are not shown.' :
+          'Live observer disconnected. No retained visible text for this worker; Show history loads recorded text.';
         if (!panel.empty.isConnected) log.append(panel.empty);
       } else panel.empty?.remove();
       panel.count.textContent = live.length + ' live messages' +
@@ -1279,7 +1297,7 @@
       if (source || retryTimer || S.paused) return;
       source = new EventSource('/api/live');
       source.addEventListener('snapshot', event => {
-        try { connected = true; applySnapshot(JSON.parse(event.data)); status(); }
+        try { connected = true; connectionError = ''; applySnapshot(JSON.parse(event.data)); status(); }
         catch (e) { logErr('live snapshot', e); }
       });
       source.addEventListener('agent', event => {
@@ -1313,8 +1331,10 @@
       });
       source.addEventListener('error', () => {
         connected = false;
+        connectionError = 'Connection lost; checking observer status…';
+        diagnoseConnection(source);
         status();
-        // HTTP 503 (bridge not loaded) closes EventSource permanently. Retry
+        // HTTP 503 (observer unavailable or mismatched) closes EventSource permanently. Retry
         // that case ourselves; established SSE reconnects use native retry.
         if (source?.readyState === EventSource.CLOSED) {
           source.close(); source = null;
