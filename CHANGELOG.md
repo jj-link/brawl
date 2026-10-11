@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — enemy value accessor
+
+- Registered `sora_enemy/em_external_value_accesser.cpp` as matching: **916 additional C++ code bytes**, after the initial candidate and five Sol corrections.
+- The owner verified all **229 instruction words**, relocations, section alignment, and source linkage for all eleven exports. Compiler settings, headers, splits, and symbols remain unchanged.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.397336% complete** — **221,248 / 15,833,556 accepted code bytes**, with **15,612,308 code bytes remaining** and **515 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Marth final-special
 
 - Registered `ft_marth_status_uniq_process_special_final.cpp` and its constants-only companion: **2,676 additional C++ code bytes**. Preserved initial-plus-ten Sol corrections and one separately recorded post-match ABI measurement.
