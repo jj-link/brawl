@@ -2,6 +2,24 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction continuation — next Sol owners and GLM replacement
+
+- Refilled the eight completed Sol slots with fresh bounded owners. The runtime context-restoration handoff retains the completed GLM initial and ten corrections; its new Sol stage continues from the preserved draft and evidence.
+
+| Fresh Sol owner | Assigned range | Code bytes | Preserved history |
+| --- | --- | ---: | --- |
+| `SolContextRestoreHandoff` | Runtime `0x803F2948..0x803F2A4C` | 260 | GLM initial + 10 corrections |
+| `SolLuigiMainAttribute` | Luigi `0xB43C..0xB4D4` | 152 | Sol initial, 0 corrections |
+| `SolLuigiFlagTwo` | Luigi `0xB524..0xB5BC` | 152 | Sol initial, 0 corrections |
+| `SolLuigiFlagFour` | Luigi `0xB60C..0xB6A4` | 152 | Sol initial, 0 corrections |
+| `SolLuigiFlagEight` | Luigi `0xB6F4..0xB784` | 144 | Sol initial, 0 corrections |
+| `SolLuigiMainEnergyHelpers` | Luigi `0xB33C..0xB38C` | 80 | Fresh range; check and retain any prior trials |
+| `SolLuigiFlagTwoHelpers` | Luigi `0xB4D4..0xB524` | 80 | Fresh range; check and retain any prior trials |
+| `SolLuigiFlagFourHelpers` | Luigi `0xB5BC..0xB60C` | 80 | Fresh range; check and retain any prior trials |
+
+- Replaced completed GLM debugger owner `ResumeGlmDebugCommand` with fresh `GlmLuigiGravityHelpers`, assigned the 56-byte Luigi range `0xB1A4..0xB1DC`. `GlmLuigiMainDispatch` retains its existing separate assignment. Both original Qwen assignments continue.
+- These assignments add no accepted source credit; the preceding verified checkpoint remains authoritative until their owners complete the acceptance gates.
+
 ## Accepted reconstructions — Luigi, Ness, and runtime continuation
 
 | Reconstruction | Added C/C++ code bytes | Added source units |
@@ -20,6 +38,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Cumulative accepted-source progress is **2.061243%** — **326,368 / 15,833,556 code bytes**, with **15,507,188 bytes remaining**. This checkpoint adds **2,860 code bytes across 9 units**; the restart has accepted **5,676 bytes across 29 units**.
 - The matching verified report from `SolLuigiEnergyContext` has SHA-256 `4e11231dd87c930bba197472d0b95b2178f34f230a07210a478b71bd5fa47308`. The coordinated report writer is `SolNessSpecialCallback`.
 - Preserved drafts and actual correction histories remain intact. Luigi gravity attribute used one additional measured recipe correction during current integration, bringing its Sol count to one. The runtime dispatcher retains its initial and two GLM corrections; the separate 56-byte `TRK_flush_cache` remains original assembly and receives no source credit.
+- Committed and pushed the nine-unit checkpoint in `4f38666`. The coordinated publisher and reconstruction owners observed agreement across the rendered summary, module totals, unit map, and persisted history; both graph and map canvases rendered.
+- An older queued GLM report briefly replaced the combined dashboard input. The original owners restored the exact newer report and verified all surfaces again; the GLM debugger owner ended with no further report writes.
 
 ## Reconstruction continuation — fresh owners and preserved GLM handoff
 
