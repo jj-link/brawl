@@ -642,7 +642,11 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_lucas/ft_lucas_general_work.cpp",
+                   cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
+                   extra_cflags=["-schedule off"]),
+        ],
     },
     {
         "lib": "ft_luigi",
