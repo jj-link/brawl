@@ -634,6 +634,7 @@ config.libs = [
         "host": False,
         "objects": [
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_leaf_callbacks.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_input_destructors.cpp", cflags=cflags_fighter),
         ],
     },
     {
@@ -665,12 +666,6 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_mario/ft_mario_status_uniq_process_special_s.cpp",
                    mw_version="GC/3.0a5", cflags=cflags_fighter,
                    extra_cflags=["-RTTI off", "-opt nodeadstore"]),
-            Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_leaf.cpp",
-                   mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
-            Object(Matching, "mo_fighter/ft_mario/ft_mario_scalar_multiplier.cpp",
-                   mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
-            Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_interface.cpp",
-                   mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
         ],
     },
     {
@@ -710,14 +705,20 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_ness/wn_weapon_accessors.cpp", mw_version="GC/3.0a5", cflags=cflags_fighter),
+        ],
     },
     {
         "lib": "ft_peach",
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_peach/ft_peach_array_aggregate.cpp",
+                   cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
+                   extra_cflags=["-schedule off"]),
+        ],
     },
     {
         "lib": "ft_pikachu",
