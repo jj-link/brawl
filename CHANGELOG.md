@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — command interpreter
+
+- Registered `ac_cmd_interpreter.cpp`: **13,252 additional C++ code bytes** across all 49 original functions, with instruction bytes and relocation tuples exact. Preserved Sol initial-plus-ten and Astra initial-plus-ten histories; the registered candidate is the retained Astra tenth correction.
+- Owner verification compared the actual linked code and **447 owned data bytes** against the original image and confirmed source attribution in a fresh link map. Raw whole-object equality is **false**: two unused weak functions and an unused weak vtable are excluded by the linker. **29 original-only data bytes** remain unreconstructed and are not claimed as source-owned.
+- The BrawlHeaders dependency commit `7fbcfc4` preserves the public constructor ABI and layout while declaring the stack through its existing array interface. The affected effect-interpreter object's **148 code and 112 data bytes**, including relocations, remained unchanged.
+- Owner-run final verification passed **127 files OK**, with no accepted-source regressions. Source reconstruction is now **1.492981% complete** — **236,392 / 15,833,556 accepted code bytes**, with **15,597,164 code bytes remaining** and **522 accepted source units**. Gameplay was not exercised.
+
 ## Worker isolation replaces the shared-build queue
 
 - Replaced parent-issued shared-build windows with isolated worker checkouts and build directories. Each reconstruction owner performs its own registration, comparisons, final hashes, and merge-conflict resolution without a separate integration worker.

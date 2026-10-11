@@ -729,9 +729,19 @@ void acCmdInterpreter::systemCmdFuncJump() {
 }
 
 // Note: Equivalent to systemCmdFuncEnd, but generates slightly different asm
-// NONMATCHING: r30/r31 regswap
 void acCmdInterpreter::systemCmdFuncReturn() {
-    const s32 i = getIdxOfStackData(acCmdInterpreterStackData::ReturnAddress);
+    s32 popCount;
+    s32 popped;
+    s32 i;
+    s32 cursor;
+    for (cursor = m_stack->size() - 1; cursor >= 0; cursor--) {
+        if (m_stack->at(cursor).kind == acCmdInterpreterStackData::ReturnAddress) {
+            i = cursor;
+            goto returnFrameFound;
+        }
+    }
+    i = -1;
+returnFrameFound:
     if (i < 0) {
         m_currentCmd = 0;
         m_stack->clear();
@@ -741,7 +751,17 @@ void acCmdInterpreter::systemCmdFuncReturn() {
         if (returnAddr) {
             m_currentCmd = returnAddr;
         }
-        popStackToSize(i);
+        popCount = m_stack->size();
+        if (i >= 0 && i < popCount) {
+            if (i == popCount - 1) {
+                m_stack->pop();
+            } else {
+                popCount -= i;
+                for (popped = 0; popped < popCount; popped++) {
+                    m_stack->pop();
+                }
+            }
+        }
     }
 }
 
