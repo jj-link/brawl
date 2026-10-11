@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — unaligned memmove engines
+
+- Replaced the assembly-backed `fn_803F6300` and `fn_803F63C0` pair with **364 code bytes of reconstructed C**, continuing ten Sol corrections through the spawned Astra worker's third correction.
+- Both engines' registered source object matches all **91 instruction words**, allocated sections, and relocations. Obsolete assembly was removed; the full linked check passed **127 files OK**.
+- The regenerated report records **1.137205% complete** — **180,060 / 15,833,556 accepted source code bytes**, with **15,653,496 code bytes remaining**. Current-wave accepted C: **95 units, 133 functions, 19,360 code bytes**.
+
 ## Autonomous worker correction loops
 
 - Assigned targeted compilation, object comparison, and source revision to reconstruction subagents, using the existing tooling without waiting for parent feedback after each attempt.
