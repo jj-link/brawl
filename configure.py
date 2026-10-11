@@ -688,6 +688,11 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_mario/ft_mario_status_uniq_process_special_lw_shoot.cpp",
                    mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_mario/ft_mario_parameter_accessors.cpp",
+                   mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_mario/ft_mario_parameter_defaults.cpp",
+                   mw_version="GC/3.0a5", cflags=cflags_fighter,
+                   extra_cflags=["-RTTI off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_leaf.cpp",
                    mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_destructors.cpp",
