@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved unmatched Emblem stage reconstruction
+
+- Set aside `st_emblem.cpp` after initial-plus-ten Sol and Astra stages. All checkpoints remain preserved, including one separately recorded failed Astra compile; the selected Astra-ten source was published under a source-only grant.
+- Fifty-three of fifty-five original function bodies match. Five instruction-word differences across the remaining two bodies, an extra eight-byte weak method, and metadata relocation differences prevent acceptance. A project-recipe targeted compilation reproduced the preserved best object; registration remains `NonMatching`, original code remains linked, and no source bytes were accepted.
+
 ## Accepted source reconstruction — figure-list manager
 
 - Registered `sora/ty/ty_fig_listmng.cpp` as matching: **3,628 additional C++ code bytes**, preserving initial-plus-ten Sol and initial-plus-one Astra histories.
