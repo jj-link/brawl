@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_lucas/ft_lucas_float_magnitude.cpp:
+	.text       start:0x0000C4CC end:0x0000C4D4
+
+mo_fighter/ft_lucas/ft_lucas_vector_transfer.cpp:
+	.text       start:0x0000C4D4 end:0x0000C4EC
+
+mo_fighter/ft_lucas/ft_lucas_scalar_result_getters.cpp:
+	.text       start:0x0000C6AC end:0x0000C6BC
+
 mo_fighter/ft_lucas/ft_lucas_parameter_destructor_pair.cpp:
 	.text       start:0x0000C854 end:0x0000C914
 
@@ -109,6 +118,15 @@ mo_fighter/ft_lucas/ft_lucas_subobject_setup.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_energy_traversal.cpp:
 	.text       start:0x0000F904 end:0x0000FB98
+
+mo_fighter/ft_lucas/ft_lucas_state_traversal.cpp:
+	.text       start:0x0000FB98 end:0x0000FCC0
+
+mo_fighter/ft_lucas/ft_lucas_energy_array_update.cpp:
+	.text       start:0x0000FCC0 end:0x0000FD94
+
+mo_fighter/ft_lucas/ft_lucas_short_value_copy.cpp:
+	.text       start:0x00010520 end:0x0001052C
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00020EA4 end:0x00020F40
