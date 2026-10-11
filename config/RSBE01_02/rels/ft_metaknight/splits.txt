@@ -11,8 +11,29 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_metaknight/ft_metaknight_event_owner_lifetime.cpp:
+	.text       start:0x000083B8 end:0x00008448
+
+mo_fighter/ft_metaknight/ft_metaknight_observer_registration.cpp:
+	.text       start:0x00008448 end:0x00008470
+
+mo_fighter/ft_metaknight/ft_metaknight_observer_aux.cpp:
+	.text       start:0x00008470 end:0x000084BC
+
+mo_fighter/ft_metaknight/ft_metaknight_observer_callbacks.cpp:
+	.text       start:0x000084BC end:0x0000865C
+
+mo_fighter/ft_metaknight/ft_metaknight_sound_generator_pair.cpp:
+	.text       start:0x0000865C end:0x0000871C
+
+mo_fighter/ft_metaknight/ft_metaknight_component_access.cpp:
+	.text       start:0x0000871C end:0x0000876C
+
+mo_fighter/ft_metaknight/ft_metaknight_kinetic_vector.cpp:
+	.text       start:0x0000876C end:0x000087D4
+
 mo_fighter/ft_metaknight/ft_metaknight_general_work.cpp:
-	.text       start:0x00008848 end:0x00008A08
+	.text       start:0x000087D4 end:0x00008A08
 
 mo_fighter/ft_metaknight/ft_metaknight_array_aggregate.cpp:
 	.text       start:0x00008A08 end:0x00008C70
@@ -109,6 +130,9 @@ mo_fighter/ft_metaknight/ft_metaknight_factory.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_secondary_adjustors.cpp:
 	.text       start:0x0000C5A8 end:0x0000C5C0
+
+mo_fighter/ft_metaknight/ft_metaknight_fighter_adjustors.cpp:
+	.text       start:0x0000C5C0 end:0x0000C710
 
 mo_fighter/ft_metaknight/ft_metaknight_posture_tilt.cpp:
 	.text       start:0x0000C710 end:0x0000C820

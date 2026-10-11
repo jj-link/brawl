@@ -3,15 +3,8 @@
 extern "C" const float lbl_111_rodata_8;
 
 // These entries share the general-work storage layout used by Meta Knight's builder.
-extern "C" u32 fn_111_8848(const soGeneralWorkSimple* work, u32 mask, u32 index) {
-    if (work->m_flagWorks[index] & mask) {
-        return 1;
-    }
-    return 0;
-}
-
-extern "C" void fn_111_8864(soGeneralWorkSimple* work, u32 mask, u32 index) {
-    work->soGeneralWorkSimple::offFlag(mask, index);
+extern "C" u32 fn_111_87D4(soGeneralWorkSimple* work, u32 mask, u32 index) {
+    return work->soGeneralWorkSimple::turnOffFlag(mask, index);
 }
 
 extern "C" void fn_111_887C(soGeneralWorkSimple* work, u32 index) {
