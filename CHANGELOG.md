@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Clarified shared Sol pool
+
+- Clarified that the arrangement is two GLM workers and eight Sol workers, not eight independent Sol workers plus extra Sol handoff workers.
+- Each Sol assignment may start fresh or inherit a GLM draft. GLM is not a mandatory first stage; unmatched GLM work goes to an available worker among the same eight Sol workers.
+- Kept ten corrections at every model stage, preserved history, and spawned Astra handoffs after an unmatched Sol stage.
+
 ## Added GLM reconstruction tier
 
 - Added two GLM workers alongside the eight independent GPT-6.1 Sol workers. GLM uses the existing `spark-cluster/GLM-5.3-Flash-EXL3` model route; no serving configuration was changed.

@@ -47,10 +47,10 @@ This is the current arrangement, not a permanent restriction; the user may chang
 
 | Model | Workers | Role |
 | --- | ---: | --- |
-| GPT-6.1 Sol | 8 | Independent, nonoverlapping reconstruction assignments, continuing preserved drafts and evidence where available. |
-| GLM | 2 | Independent, nonoverlapping reconstruction assignments, handing unmatched work to GPT-6.1 Sol after ten corrections. |
+| GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM handoffs. |
+| GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
 
-The independent pool starts work with eight Sol workers and two GLM workers. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Handoffs use spawned reconstruction subagents of the next model tier. The parent handles assignments, progress-preserving handoffs, integration, independent verification of registered objects, final binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing correction counts carry forward when work resumes.
+The pool contains eight Sol workers and two GLM workers. GLM is not a mandatory first stage: each Sol assignment may start fresh or inherit GLM progress. A GLM handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. The parent handles assignments, progress-preserving handoffs, integration, independent verification of registered objects, final binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -67,8 +67,8 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to GLM, GPT-6.1 Sol, and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
 
-1. After GLM completes ten correction attempts without a match, hand the same function to a spawned GPT-6.1 Sol reconstruction subagent.
-2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent. Independent Sol assignments enter the workflow at this tier.
+1. After GLM completes ten correction attempts without a match, hand the same function to an available GPT-6.1 Sol worker in the eight-worker pool. GLM is optional history, not a prerequisite for a Sol assignment.
+2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has GLM history.
 3. After that Astra subagent completes ten correction attempts without a match, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
