@@ -48,9 +48,21 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 3. Compile with the project's compiler version and the settings appropriate to that object or library.
 4. Compare the candidate with the original using `objdiff`, including relevant data and relocations.
 5. Resolve differences using evidence about types, signedness, layouts, calling conventions, control flow, data placement, inlining, and compiler behavior.
-6. Continue resolving mismatches toward an exact match. Keep partial work explicitly identified and record concrete blockers and next actions separately from accepted work.
+6. Resolve remaining mismatches using the escalation sequence below. Keep partial work explicitly identified and record concrete blockers and next actions separately from accepted work.
 
 Do not change global compiler settings merely to improve one candidate's score. Investigate compiler-setting changes only when supported by binary and project evidence. Recheck affected objects when shared declarations or layouts change.
+
+#### Escalation for unmatched code
+
+At every model stage, allow one initial draft or continuation of the inherited draft, followed by at most three correction attempts. If the candidate matches, proceed to integration and verification without further escalation.
+
+1. Start with GLM or Qwen. If the code remains unmatched after that stage's correction attempts, hand the same function to GPT-6.1 Sol.
+2. If GPT-6.1 Sol cannot achieve a match within its initial attempt and three correction attempts, hand the same function to Astra.
+3. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
+
+At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
+
+Setting a function aside does not discard its reconstruction or count it as complete. Retain the draft and comparison evidence for future work; keep the original assembly in the build until a reconstructed source replacement meets the acceptance criteria.
 
 ### 4. Integrate, verify, and commit
 

@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction escalation policy
+
+- Documented the agreed escalation for an unmatched function: GLM or Qwen, then GPT-6.1 Sol, then Astra, then set aside if still unmatched.
+- Each stage permits an initial draft or continuation plus at most three correction attempts. Handoffs preserve the best draft, compiler settings, remaining binary differences, and previous attempts.
+- Documentation-only change; no reconstruction work resumed or accepted-source progress added.
+
 ## Original pre-setup note (superseded)
 
 - This document is the plan, not a record of completed implementation. Repository setup, branch creation, and builds have not yet been performed.
