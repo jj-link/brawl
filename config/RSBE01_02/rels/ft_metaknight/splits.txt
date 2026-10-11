@@ -14,6 +14,15 @@ global_destructor_chain.c:
 mo_fighter/ft_metaknight/ft_metaknight_general_work.cpp:
 	.text       start:0x00008848 end:0x00008A08
 
+mo_fighter/ft_metaknight/ft_metaknight_array_aggregate.cpp:
+	.text       start:0x00008A08 end:0x00008C70
+
+mo_fighter/ft_metaknight/ft_metaknight_event_access.cpp:
+	.text       start:0x0000C2FC end:0x0000C314
+
+mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp:
+	.text       start:0x0000C3A4 end:0x0000C3B8
+
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000112A4 end:0x00011340
 	.data       start:0x000068A8 end:0x000068B7

@@ -727,6 +727,11 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_general_work.cpp",
                    cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
                    extra_cflags=["-schedule off"]),
+            Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_array_aggregate.cpp",
+                   cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
+                   extra_cflags=["-schedule off"]),
+            Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_event_access.cpp"),
+            Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp"),
         ],
     },
     {
