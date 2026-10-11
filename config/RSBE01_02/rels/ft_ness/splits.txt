@@ -14,8 +14,14 @@ global_destructor_chain.c:
 mo_fighter/ft_ness/ness_callback_constructor.cpp:
 	.text       start:0x0001150C end:0x0001151C
 
+mo_fighter/ft_ness/ness_reflector_flag_callback.cpp:
+	.text       start:0x0001151C end:0x00011614
+
 mo_fighter/ft_ness/ness_deleting_destructor.cpp:
 	.text       start:0x00011614 end:0x00011654
+
+mo_fighter/ft_ness/ness_status_parameter_callback.cpp:
+	.text       start:0x000116AC end:0x00011720
 
 mo_fighter/ft_ness/wn_weapon_accessors.cpp:
 	.text       start:0x00015C78 end:0x00015CE8

@@ -755,6 +755,8 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_deleting_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_callback_constructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/wn_weapon_deleting_destructors.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_status_parameter_callback.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_reflector_flag_callback.cpp", cflags=cflags_fighter),
         ],
     },
     {
