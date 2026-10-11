@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstruction — Pikachu observer-byte accessor
+
+- Accepted `fn_98_9C28`, `.text 0x9C28..0x9C30`: **8 C++ code bytes** and **1 source unit**, reconstructed by `ResumeSolPikachuByte` from the preserved initial match. Sol history remains one initial candidate and zero corrections.
+- The reconstruction owner verified exact allocated bytes and relocations, registered source linkage with a complete report entry, and **127 passing DOL/REL hashes**. The owner integrated only its source, registration, and split changes into main and confirmed all three files are byte-identical to the verified isolated snapshot. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.025445%** — **320,700 / 15,833,556 code bytes**, with **15,512,856 bytes remaining** and **862 accepted source units**.
+- A fresh Sol owner received the separate saved 60-byte Pikachu registration-group draft. Mario's initializer exhausted its remaining nine Sol corrections, reaching ten total, and passed to a fresh Astra owner with best checkpoint 6 and the complete attempt history preserved.
+
 ## Reconstruction resumed — thirteen fresh assignment owners
 
 - Launched the approved **eight Sol, two GLM, two Qwen, and one Astra** agents from `main` revision `70bb468ebca4b99bb8c22f2221d62004f5324792`. Each owns one bounded assignment in a separate working copy, carrying forward saved drafts and actual correction history through integration and final verification or the prescribed handoff.
