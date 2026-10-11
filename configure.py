@@ -747,6 +747,8 @@ config.libs = [
                    extra_cflags=["-schedule off"]),
             Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_event_access.cpp"),
             Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp"),
+            Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_param_lookup.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_metaknight/ft_metaknight_embedded_destructor.cpp", cflags=cflags_fighter),
         ],
     },
     {

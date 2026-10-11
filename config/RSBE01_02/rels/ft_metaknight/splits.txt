@@ -17,6 +17,12 @@ mo_fighter/ft_metaknight/ft_metaknight_general_work.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_array_aggregate.cpp:
 	.text       start:0x00008A08 end:0x00008C70
 
+mo_fighter/ft_metaknight/ft_metaknight_param_lookup.cpp:
+	.text       start:0x00008C70 end:0x00008D30
+
+mo_fighter/ft_metaknight/ft_metaknight_embedded_destructor.cpp:
+	.text       start:0x00008D30 end:0x00008D90
+
 mo_fighter/ft_metaknight/ft_metaknight_event_access.cpp:
 	.text       start:0x0000C2FC end:0x0000C314
 
