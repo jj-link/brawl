@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Live dashboard — observer activated and live delivery verified
+
+- The user's restart/resume loaded the observer into the owning root session `01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a`, resolving the preceding activation blocker. The dashboard reports the live observer connected.
+- The original Sol owner verified genuine generated commentary through the actual SSE transport and rendered terminal. One message produced **145 distinct incomplete transport updates and 145 incomplete UI updates** before its completion update; the first text appeared **12.066 seconds before rendered completion**. A second message produced 120 incomplete transport updates before completion. No message records or text were injected.
+- During the second message, the earlier row and text node remained attached and the selected text stayed intact. Pause/resume restored the same live message identities. The full-width map with Agent streams below remained intact; the removed Agents and activity-log sections remained absent.
+- Only one actual worker was active. Simultaneous generation in two worker panes remains untested; two messages in one pane are not evidence of concurrent workers. No screenshot review is claimed.
+- Verification required no implementation changes. Temporary browser observers/subscriptions were removed and verification tabs released. Reconstruction workers and model services were not restarted.
+- Accepted reconstruction progress is unchanged: **320,692 / 15,833,556 code bytes**, **2.025395%**, **15,512,864 bytes remaining**, and **861 accepted source units**.
+
 ## Live dashboard — consolidated terminals; observer activation pending
 
 - Applied the user's revised layout: the All modules/unit-map card spans the dashboard width, with one Agent streams section below. Removed the separate Agents section and activity log, including their obsolete frontend code and styles.
