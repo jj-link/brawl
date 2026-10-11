@@ -391,7 +391,7 @@ Runtime.PPCEABI.H/Gecko_ExceptionPPC.c:
 	.text       start:0x803F1A78 end:0x803F1B64
 	.bss        start:0x80599BE0 end:0x80599BEC
 
-Runtime.PPCEABI.H/fn_803F1B64.s:
+Runtime.PPCEABI.H/fn_803F1B64.c:
 	extab       start:0x80009534 end:0x8000953C
 	extabindex  start:0x8000C538 end:0x8000C544
 	.text       start:0x803F1B64 end:0x803F1D14
