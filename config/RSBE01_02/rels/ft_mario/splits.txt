@@ -59,3 +59,82 @@ mo_fighter/ft_mario/ft_mario_parameter_defaults.cpp:
 
 mo_fighter/ft_mario/ft_mario_mantle_teardown.cpp:
 	.text       start:0x0000F9D4 end:0x0000FAA0
+
+mo_fighter/ft_mario/ft_mario_mantle_aggregate_teardown.cpp:
+	.text       start:0x0000FAA0 end:0x0000FBD8
+
+mo_fighter/ft_mario/ft_mario_mantle_submodule_teardown.cpp:
+	.text       start:0x0000FBD8 end:0x0000FE04
+
+mo_fighter/ft_mario/ft_mario_mantle_parameter_constructor.cpp:
+	.text       start:0x0000FE04 end:0x0000FE5C
+
+mo_fighter/ft_mario/ft_mario_mantle_initialize.cpp:
+	.text       start:0x0000FE5C end:0x0000FF8C
+
+mo_fighter/ft_mario/ft_mario_mantle_singleton.cpp:
+	.text       start:0x0000FFFC end:0x00010080
+
+mo_fighter/ft_mario/ft_mario_parameter_singleton.cpp:
+	.text       start:0x000103D4 end:0x00010480
+
+mo_fighter/ft_mario/ft_mario_article_teardown.cpp:
+	.text       start:0x00011E50 end:0x00012168
+
+mo_fighter/ft_mario/ft_mario_article_aggregate_teardown.cpp:
+	.text       start:0x00012168 end:0x000125D0
+
+mo_fighter/ft_mario/ft_mario_article_node_teardown.cpp:
+	.text       start:0x000129B8 end:0x00012E08
+
+mo_fighter/ft_mario/ft_mario_article_submodule_teardown.cpp:
+	.text       start:0x00012E08 end:0x00013118
+
+mo_fighter/ft_mario/ft_mario_article_parameter_constructor.cpp:
+	.text       start:0x00013118 end:0x000131E4
+
+mo_fighter/ft_mario/ft_mario_article_initialize.cpp:
+	.text       start:0x000131E4 end:0x00013358
+
+mo_fighter/ft_mario/ft_mario_article_launch.cpp:
+	.text       start:0x00013358 end:0x00013550
+
+mo_fighter/ft_mario/ft_mario_article_resource_helpers.cpp:
+	.text       start:0x000140C4 end:0x00014190
+
+mo_fighter/ft_mario/ft_mario_article_node_access.cpp:
+	.text       start:0x000141A0 end:0x00014284
+
+mo_fighter/ft_mario/ft_mario_article_rotation_adapter.cpp:
+	.text       start:0x00014434 end:0x000144D4
+
+mo_fighter/ft_mario/ft_mario_article_global_initialize.cpp:
+	.text       start:0x000144D4 end:0x0001452C
+	.ctors      start:0x00000010 end:0x00000014
+	.bss        start:0x00000330 end:0x00000340
+
+mo_fighter/ft_mario/ft_mario_article_second_teardown.cpp:
+	.text       start:0x00015D54 end:0x00016080
+
+mo_fighter/ft_mario/ft_mario_article_second_aggregate_teardown.cpp:
+	.text       start:0x00016080 end:0x0001620C
+
+mo_fighter/ft_mario/ft_mario_article_second_submodule_teardown.cpp:
+	.text       start:0x0001620C end:0x00016554
+
+mo_fighter/ft_mario/ft_mario_article_transform_helpers.cpp:
+	.text       start:0x00016908 end:0x00016A20
+
+mo_fighter/ft_mario/ft_mario_article_second_resource_helpers.cpp:
+	.text       start:0x00016B14 end:0x00016B94
+
+mo_fighter/ft_mario/ft_mario_article_second_parameter_singleton.cpp:
+	.text       start:0x00016B94 end:0x00016C40
+
+mo_fighter/ft_mario/ft_mario_article_velocity_rotation.cpp:
+	.text       start:0x00016C80 end:0x00016D54
+
+mo_fighter/ft_mario/ft_mario_article_second_global_initialize.cpp:
+	.text       start:0x00016D54 end:0x00016DEC
+	.ctors      start:0x00000014 end:0x00000018
+	.bss        start:0x00000398 end:0x000003A8
