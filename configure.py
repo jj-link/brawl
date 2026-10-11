@@ -725,7 +725,10 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_vortex_status_uniq_process.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+        ],
     },
     {
         "lib": "ft_pikmin",

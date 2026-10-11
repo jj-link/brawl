@@ -502,7 +502,7 @@ modules:
   hash: 6a72e0dc89b94a23a867e18ad99499cea6e844fa
   splits: config/RSBE01_02/rels/ft_pikachu/splits.txt
   symbols: config/RSBE01_02/rels/ft_pikachu/symbols.txt
-  force_active: [HomeBtnIcon]
+  force_active: [HomeBtnIcon, vortexInitializer]
 - object: files/module/ft_luigi.rel
   hash: 2617ddef4734da80fa2c6f9f0a7ff84d3a456635
   splits: config/RSBE01_02/rels/ft_luigi/splits.txt
