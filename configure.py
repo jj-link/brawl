@@ -694,7 +694,9 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_ness/wn_weapon_accessors.cpp", mw_version="GC/3.0a5", cflags=cflags_fighter),
+        ],
     },
     {
         "lib": "ft_peach",
