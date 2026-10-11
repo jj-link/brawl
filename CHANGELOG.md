@@ -2,6 +2,16 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — vector rotation utility
+
+- Registered `sora/mt/mt_vector_old.cpp` as matching: **280 additional C++ code bytes**, after the initial candidate and two Sol corrections.
+- The owner verified all **70 instruction words** and relocations, with unchanged headers, split boundaries, and compiler settings.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.316091% complete** — **208,384 / 15,833,556 accepted code bytes**, with **15,625,172 code bytes remaining** and **508 accepted source units**. Gameplay was not exercised.
+
+## Preserved unmatched Marth down-special reconstruction
+
+- Set aside `ft_marth_status_uniq_process_special_lw.cpp` after actual initial-plus-ten Sol and Astra stages; three rejected preinitial Sol compiles remain separately recorded. Preserved and published the Astra-ten best draft under its granted source window. Eight of nine functions match, but the whole unit remains `NonMatching`; no source bytes were accepted.
+
 ## Accepted source reconstruction — trigonometry utilities
 
 - Registered `sora/mt/mt_trig.cpp` as matching: **616 additional C++ code bytes** across `mtSinf`, `mtCosf`, and `mtSinCosf`. Preserved the initial-plus-nine Sol history.
