@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Worker isolation replaces the shared-build queue
+
+- Replaced parent-issued shared-build windows with isolated worker checkouts and build directories. Each reconstruction owner performs its own registration, comparisons, final hashes, and merge-conflict resolution without a separate integration worker.
+- Main-branch acceptance commits remain sequential; worker reconstruction and verification do not wait for a shared-build slot. The eight Sol, two GLM, and two Qwen arrangement and existing ten-correction handoff rules remain unchanged.
+
 ## Accepted source reconstruction — Lucario leaf callbacks
 
 - Registered `ft_lucario_leaf_callbacks.cpp` at text `0x13A10..0x13A60`: **80 additional C++ code bytes** across five exports, after the initial candidate and two Sol corrections.

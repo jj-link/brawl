@@ -19,7 +19,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 ## Work ownership
 
 - The parent must not write or modify code under any circumstances, including inline or throwaway code. All coding belongs to subagents.
-- Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. The parent coordinates nonoverlapping access to shared files instead of making the edits.
+- Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, merge-conflict resolution, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. Each agent uses an isolated working copy and build directory, not a parent-controlled shared-build queue.
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
 
 ### Hands-off orchestration
@@ -28,7 +28,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent must not send implementation advice, compiler-tuning suggestions, diagnoses, proposed fixes, pseudocode, or step-by-step correction instructions.
 - Assignments and handoffs provide scope, preserved artifact locations, actual attempt counts, and acceptance criteria—not the parent’s preferred solution.
 - Agents independently investigate, implement, compile, compare, correct, and verify their work.
-- The parent handles assignments, shared-file scheduling, handoffs, attempt tracking, evidence review, documentation, and commits. An unmet acceptance criterion goes back to its owner without a prescribed technical fix.
+- The parent handles assignments, isolated-workspace ownership, handoffs, attempt tracking, evidence review, documentation, and commits. An unmet acceptance criterion or merge conflict goes back to its reconstruction owner without a prescribed technical fix.
 - “Helping,” speeding things up, integration, or an agent encountering difficulty are not exceptions.
 
 ## Work sequence
@@ -54,7 +54,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Begin with small, low-dependency objects or nearly matching implementations to establish the workflow; then prioritize shared types and helpers that unblock other work, followed by coherent subsystem groups.
 - Define each target's boundaries, original size, compiler settings, dependencies, matching requirements, and known blockers before implementation.
 - Use Brawl headers and related reverse-engineering work as evidence. Verify layouts and implementations against Brawl's binaries rather than assuming another project's code is interchangeable.
-- Organize independent targets for parallel work without overlapping edits. Keep per-function assignments and status separate from this plan.
+- Organize independent targets for parallel work in isolated working copies with separate mutable configuration, headers, and build outputs. Agents perform their own registration and final builds without requesting a shared-build slot. Keep per-function assignments and status separate from this plan.
 
 #### Current worker arrangement
 
@@ -75,7 +75,7 @@ The pool contains eight Sol workers, two GLM workers, and two Qwen workers. Neit
 3. The assigned subagent compiles its candidate with the project's compiler version and the settings appropriate to that object or library.
 4. The subagent compares the candidate with the original using the existing object-comparison tooling, including relevant data and relocations.
 5. The subagent uses the observed differences to revise and recompile within its allowance, preserving the best draft and each measured attempt. It does not wait for the parent to run this loop or author corrections.
-6. Return a matching candidate with its compiler recipe and comparison evidence for parent review. Return an unmatched draft for escalation only after completing the stage's ten correction attempts. Identify any remaining shared integration or data migration work; the same reconstruction agent performs it, with the parent coordinating shared-file access. Do not claim a complete object match before that work is verified.
+6. Return a matching candidate with its compiler recipe and comparison evidence for parent review. Return an unmatched draft for escalation only after completing the stage's ten correction attempts. Finish integration and any data migration in the same owner's isolated working copy without waiting for a parent-issued build grant. Do not claim a complete object match before that work is verified.
 
 Do not change global compiler settings merely to improve one candidate's score. Investigate compiler-setting changes only when supported by binary and project evidence. Recheck affected objects when shared declarations or layouts change.
 
@@ -95,11 +95,11 @@ Setting a function aside does not discard its reconstruction or count it as comp
 
 ### 4. Integrate, verify, and commit
 
-1. The same reconstruction agent registers its matching reconstruction using the existing source/split/build conventions.
+1. The same reconstruction agent registers its matching reconstruction in its isolated working copy using the existing source/split/build conventions.
 2. The subagent compares the registered source object with the original and confirms that the matching build actually includes it rather than retaining its original-code replacement.
-3. The subagent builds and verifies all expected DOL/REL hashes, including outputs affected by shared changes, and returns the observed evidence to the parent.
-4. The parent reviews the change and verification evidence for unexplained assumptions, unrelated edits, original game material, and regressions. Any required edits or further verification go back to a subagent.
-5. The parent commits accepted changes in small, independently reviewable units.
+3. The subagent builds and verifies all expected DOL/REL hashes in its own build directory, including outputs affected by shared declarations, and returns the observed evidence with the verified baseline and exact changed paths.
+4. The parent reviews the change and verification evidence for unexplained assumptions, unrelated edits, original game material, and regressions. The reconstruction owner reconciles its changes with the current main working branch and handles any merge conflicts or required re-verification; there is no separate integration worker.
+5. The parent commits accepted changes in small, independently reviewable units. Main-branch commits are sequential, but there is no shared-build queue or permission gate that halts other agents' reconstruction and verification.
 6. The parent records completed work, observed verification results, and progress measurements in `CHANGELOG.md`, not in this plan.
 7. Continue with related targets to reuse verified types and compiler knowledge; do not wait for an upstream pull request.
 
