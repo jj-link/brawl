@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — multiplication and interrupt notifications
+
+- Replaced assembly registrations with reconstructed C for decimal multiplication (`fn_803F37CC`, 648 bytes) and the six stepping/interrupt-notification functions in `fn_80403DA4` (1,024 bytes): **1,672 code bytes across two units and seven functions**.
+- The interrupt unit matched at Sol correction six. Multiplication matched on the parent's initial Astra continuation after ten Sol corrections, before the explicit spawned-subagent role clarification; that matching work was preserved rather than repeated.
+- Both registered C objects match all allocated bytes and relocations, including multiplication's 20 bytes of exception metadata. Obsolete assembly was removed. The full linked check passed **127 files OK**.
+- The regenerated report records **1.132658% complete** — **179,340 / 15,833,556 accepted source code bytes**, with **15,654,216 code bytes remaining**. Current-wave accepted C: **93 units, 130 functions, 18,640 code bytes**.
+
 ## Explicit reconstruction ownership
 
 - Clarified that reconstruction source edits belong to subagents. The parent handles orchestration, compiler feedback, integration, binary verification, commits, and progress reporting.
