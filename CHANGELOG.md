@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — debugger memory transfers
+
+- Replaced `fn_80402630`, `fn_80402854`, and `fn_80402A70` assembly with **1,672 code bytes of reconstructed C**. The spawned Astra worker independently compiled and compared its fourth correction after the autonomous-loop change, preserving the prior ten Sol corrections.
+- Migrated the original two 28-byte jump tables at `.data 0x80494768–0x804947A0` into the same unit. The registered C object matches all **418 instruction words**, all **56 data bytes**, and every relocation. Obsolete assembly was removed.
+- The full linked check passed **127 files OK**. The regenerated report records **1.147765% complete** — **181,732 / 15,833,556 accepted source code bytes**, with **15,651,824 code bytes remaining**. Current-wave accepted C: **96 units, 136 functions, 21,032 code bytes**.
+
 ## Accepted source reconstruction — unaligned memmove engines
 
 - Replaced the assembly-backed `fn_803F6300` and `fn_803F63C0` pair with **364 code bytes of reconstructed C**, continuing ten Sol corrections through the spawned Astra worker's third correction.
