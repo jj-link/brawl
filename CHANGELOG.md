@@ -2,6 +2,36 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_10130`
+
+- `SolLuigiFunction10130` published its 64-byte reconstruction after one initial candidate and zero corrections. Registered text and its relocation matched exactly, compiled source was linked, and **127 DOL/REL hashes passed** with all preceding 942 accepted units retained.
+- Cumulative accepted-source progress is **2.099693%** — **332,456 / 15,833,556 code bytes**, with **15,501,100 bytes remaining** and **943 accepted source units**. This checkpoint adds **64 code bytes / 1 unit**.
+- Published report SHA-256: `e20408eb11d44a79d74defd5bdc881a0cb433db7cb01073818616bb53e9938e2`. Rendered counters, all 127 module totals, complete unit map and persisted history agreed before release to 10170. Cleanup removed 11,492 disposable files totaling 425,642,648 logical bytes, preserving source/header/configuration/Git trees and all measured evidence; 129 canonical original files were verified unchanged.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_100D4`
+
+- `SolLuigiFunction100D4` published its independently verified 92-byte reconstruction after one initial candidate and zero corrections. **127 DOL/REL hashes passed**, and all preceding 941 accepted units were retained.
+- Cumulative accepted-source progress is **2.099288%** — **332,392 / 15,833,556 code bytes**, with **15,501,164 bytes remaining** and **942 accepted source units**. This checkpoint adds **92 code bytes / 1 unit**.
+- Published report SHA-256: `eadca9bce8fae01ffd6d5710d0323d58f998e52c58c2b84edd8535e6633a6e8f`. Rendered counters, target card, all 127 module totals, unit map and API/persisted history agreed before release to 10130. Cleanup removed 11,282 disposable files totaling 416,034,097 logical bytes; 2,352 protected files, 129 canonical originals and retained evidence were verified unchanged.
+- Publication ownership conflict: 10018 reported an obsolete 941 republication following a delayed predecessor release. The parent stopped its shared writes and reaffirmed 100D4's ownership. 100D4's direct observation remained the verified 942 report; it did not directly observe an intervening rollback and performed no restoration. Both owners recorded coherent 942 state afterward, with the conflicting messages and source evidence preserved.
+
+## Verified reconstruction checkpoint — four additional Luigi units after FED4
+
+- `SolLuigiFunctionFFA0` published an independently verified union adding F510 (120 bytes), FF34 (108 bytes), 10018 (92 bytes) and 10074 (96 bytes). All preceding 937 accepted units were retained and **127 DOL/REL hashes passed**, including an independent file-by-file check.
+- Cumulative accepted-source progress is **2.098707%** — **332,300 / 15,833,556 code bytes**, with **15,501,256 bytes remaining** and **941 accepted source units**. This checkpoint adds **416 code bytes / 4 units**; FFA0's own 120 bytes were already accepted in the preceding checkpoint.
+- Published report SHA-256: `055fdc5dd8e8d4d42e28186c474e38e9d7db6d3017375012d6b046501c364c21`. FFA0's registered 120-byte source object and three relocations matched exactly and its compiled source was linked. Rendered counters, all 4,996 unit-map entries, 127 module totals and API/persisted history agreed before release to FE00.
+
+| Completed owner cleanup | Disposable entries removed | Logical bytes removed |
+| --- | ---: | ---: |
+| `SolLuigiFunctionFFA0` | 11,289 | 416,049,455 |
+| `SolLuigiFunctionFE00` | 380 | 95,706,592 |
+| `SolLuigiFunction10074` | 11,992 | 547,096,176 |
+| `SolLuigiFunction10018` | 11,285 | 416,041,321 |
+| `SolLuigiFunctionFF34` | 23,197 | 1,233,875,601 |
+
+- Source/header/configuration/Git trees, attempts, compiler recipes, original/best/registered objects and comparison/hash/report/rendered evidence were retained; canonical inputs and retained evidence were verified unchanged. The 10074 total includes disposable private browser files; FF34's total covers two separate generated-output cleanup passes.
+- FE00's terminal relocation count was corrected from seven to the six records in its preserved measured comparison. The original conflicting receipts remain preserved; source, objects, attempt counts and binary verification did not change.
+
 ## Verified reconstruction checkpoint — four additional Luigi units
 
 - `SolLuigiFunctionFED4` published the next independently verified union, adding F994 (96 bytes), FE00 (120 bytes), FFA0 (120 bytes) and FED4 (96 bytes) while retaining all 933 previously accepted units. Registered source was linked and **127 DOL/REL hashes passed**.
@@ -118,6 +148,9 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Completed FCA8 and FD88 slots were replaced by fresh `SolLuigiFunction10018` (`0x10018..0x10074`, 92 bytes) and `SolLuigiFunction10074` (`0x10074..0x100D4`, 96 bytes).
 - Completed FD2C's slot was replaced by fresh `SolLuigiFunction100D4`, owning the separate 92-byte `0x100D4..0x10130` range.
 - Completed FE78 and FED4 slots were replaced by fresh `SolLuigiFunction10130` (`0x10130..0x10170`, 64 bytes) and `SolLuigiFunction10170` (`0x10170..0x1029C`, 300 bytes).
+- Completed FE00, 10074, FFA0 and 10018 slots were replaced by fresh `SolLuigiFunction1029C` (`0x1029C..0x102DC`, 64 bytes), `SolLuigiFunction102DC` (`0x102DC..0x1033C`, 96 bytes), `SolLuigiFunction1033C` (`0x1033C..0x10394`, 88 bytes), and `SolLuigiFunction10394` (`0x10394..0x103D4`, 64 bytes).
+- Completed FF34 and 100D4 slots were replaced by fresh `SolLuigiFunction103D4` (`0x103D4..0x1054C`, 376 bytes) and `SolLuigiFunction1054C` (`0x1054C..0x105B4`, 104 bytes).
+- Completed 10130's slot was replaced by fresh `SolLuigiFunction105B4`, owning the separate 148-byte `0x105B4..0x10648` range.
 
 ## Verified reconstruction checkpoint — Luigi `fn_99_F928`
 
