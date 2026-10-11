@@ -2,6 +2,21 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — runtime parsing and fighter lifecycle
+
+| Reconstruction group | Added C/C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Mario parameter dispatch and mantle teardown | 316 | 2 |
+| Ness transitions, initialization, and support callbacks | 2,480 | 12 |
+| MSL unsigned-long parser | 1,072 | 1 |
+| Lucario parameter and module lifecycle helpers | 2,744 | 11 |
+| Lucario late flag callback group | 256 | 1 |
+
+- The owners verified exact registered allocated-section bytes and relocations and actual C/C++ source linkage. The final Lucario callback owner verified the exact combined publication snapshot with **127 passing binary hashes**, preserving every previously accepted source path.
+- The parser matched its initial GLM candidate and replaces its obsolete assembly source. The Lucario callback matched after **ten Sol corrections followed by five Astra corrections**; both initial candidates and all measured histories remain preserved. Original reconstruction owners resolved their own publication conflicts; unrelated work and executable file modes were retained.
+- These groups add **6,868 code bytes** across **27 source units**. Cumulative accepted-source accounting is **1.621139%** — **256,684 / 15,833,556 code bytes**, with **15,576,872 bytes remaining** and **608 accepted source units**. Gameplay was not exercised.
+- Separately, Lucas kinetic adapters at `0xFD94..0xFE30` (156 bytes) remain unmatched after Sol initial-plus-ten and Astra initial-plus-ten. The preserved best is 160 bytes, not the required 156; the original implementation remains linked. Its 127 passing restoration hashes do not constitute source acceptance, and this set-aside contributes zero accepted bytes.
+
 ## Accepted isolated reconstructions — parameter access and Vortex helpers
 
 | Reconstruction group | Added C++ code bytes | Source units |
