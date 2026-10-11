@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_ness/ness_support_base_destructor.cpp:
 	.text       start:0x00003B0C end:0x00003B4C
 
+mo_fighter/ft_ness/ness_article_base_destructors.cpp:
+	.text       start:0x00005D14 end:0x00005DD4
+
 mo_fighter/ft_ness/ness_nullable_support_constructor.cpp:
 	.text       start:0x00009210 end:0x00009224
 
@@ -106,6 +109,9 @@ mo_fighter/ft_ness/ness_input_null_singleton.cpp:
 mo_fighter/ft_ness/wn_weapon_deleting_destructors.cpp:
 	.text       start:0x00015D6C end:0x00015DEC
 
+mo_fighter/ft_ness/ness_article_null_methods.cpp:
+	.text       start:0x00015EA4 end:0x00015F3C
+
 mo_fighter/ft_ness/ness_support_value_accessors.cpp:
 	.text       start:0x00016104 end:0x00016174
 
@@ -114,6 +120,18 @@ mo_fighter/ft_ness/ness_input_null_callbacks.cpp:
 
 mo_fighter/ft_ness/ness_parameter_table_getters.cpp:
 	.text       start:0x00016200 end:0x00016258
+
+mo_fighter/ft_ness/ness_article_null_callback.cpp:
+	.text       start:0x00016258 end:0x00016304
+
+mo_fighter/ft_ness/ness_article_null_adjustors.cpp:
+	.text       start:0x00016304 end:0x00016314
+
+mo_fighter/ft_ness/ness_weapon_kind_adjustor.cpp:
+	.text       start:0x0001634C end:0x00016354
+
+mo_fighter/ft_ness/ness_weapon_flag_adjustors.cpp:
+	.text       start:0x000163B4 end:0x000163C4
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00024B28 end:0x00024BC4
