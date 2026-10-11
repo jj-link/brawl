@@ -403,7 +403,7 @@ config.libs = [
             Object(Matching, "Runtime.PPCEABI.H/fn_804041A4.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_80404C58.c", mw_version="GC/1.3.2", cflags=[flag for flag in cflags_runtime if flag != "-enc SJIS"], extra_cflags=["-sdata 0"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_80404D4C.c"),
-            Object(Matching, "Runtime.PPCEABI.H/fn_80404D98.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_80404D98.c", mw_version="GC/1.3.2", cflags=[flag for flag in cflags_runtime if flag != "-enc SJIS"], extra_cflags=["-sdata 0"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_80405368.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_804051A8.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_80405520.c"),

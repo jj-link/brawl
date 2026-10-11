@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — MetroTRK memory routines
+
+- Registered `fn_80404D98.c`, including `fn_80404EE4`, and removed the superseded assembly: **1,008 additional C code bytes**. Preserved initial-plus-ten Sol and initial-plus-nine Astra histories.
+- The owner verified all **252 instruction words** and relocations against the registered original object; both reconstructed functions are source-linked and complete.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.325236% complete** — **209,832 / 15,833,556 accepted code bytes**, with **15,623,724 code bytes remaining** and **510 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — fixed menu camera controller
 
 - Registered `sora/cm/cm_controller_menu_fixed.cpp` as matching: **440 additional C++ code bytes** across four functions. Preserved the initial-plus-four Sol history and restored best correction two.
