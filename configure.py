@@ -653,7 +653,10 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_status_uniq_process_special_s_ram.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+        ],
     },
     {
         "lib": "ft_mario",
