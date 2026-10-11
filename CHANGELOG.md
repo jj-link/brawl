@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Mario down-special shooting state
+
+- Registered `ft_mario_status_uniq_process_special_lw_shoot.cpp` at text `0xE1B0..0xE3C4`: **532 additional C++ code bytes** across four exports, after the initial candidate and two Sol corrections. The unchanged-object symbol-scope comparison remains separately recorded.
+- The owner verified all **133 instruction words**, **164 data/constructor/storage bytes**, relocations, and actual source linkage. The original initializer is retained at its constructor-list slot; the shared zero remains globally available and unrelated ranges stay original.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.408780% complete** — **223,060 / 15,833,556 accepted code bytes**, with **15,610,496 code bytes remaining** and **520 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Marth array aggregate
 
 - Registered `ft_marth_array_aggregate.cpp` at text `0x83D8..0x8640`: **616 additional C++ code bytes** across four exports, after the initial candidate and four Sol corrections.
