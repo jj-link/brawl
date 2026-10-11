@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Prohibited parent-authored code
+
+- Updated `PLAN.md` to prohibit the parent from writing or modifying any code under any circumstances, including inline or throwaway code.
+- Assigned all coding, shared build/data changes, code removal, compilation, comparison, integration, and final verification to subagents. The parent coordinates work, reviews changes and evidence, maintains documentation, reports progress, and commits accepted results.
+- Kept integration and verification with the same agent that reconstructs the unit, not a separate integration worker or pool.
+- Removed the plan's assignment of hands-on integration and verification to the parent. Worker counts, escalation rules, correction allowances, and acceptance gates are unchanged.
+- Documentation-only change: reconstruction remains stopped, the unfinished code batch is untouched, and no additional source bytes are counted as accepted.
+
 ## Clarified shared Sol pool
 
 - Clarified that the arrangement is two GLM workers and eight Sol workers, not eight independent Sol workers plus extra Sol handoff workers.

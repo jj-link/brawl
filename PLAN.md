@@ -16,6 +16,12 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Reconstruct C/C++, not assembly transcriptions. Do not count existing assembly, inline-assembly substitutions, stubs, or merely plausible implementations as completed C/C++ reconstruction.
 - Keep game dumps, extracted originals, generated binaries, and credentials out of commits.
 
+## Work ownership
+
+- The parent must not write or modify code under any circumstances, including inline or throwaway code. All coding belongs to subagents.
+- Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. The parent coordinates nonoverlapping access to shared files instead of making the edits.
+- The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
+
 ## Work sequence
 
 ### 1. Establish or reuse a verified baseline
@@ -50,7 +56,7 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM handoffs. |
 | GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
 
-The pool contains eight Sol workers and two GLM workers. GLM is not a mandatory first stage: each Sol assignment may start fresh or inherit GLM progress. A GLM handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. The parent handles assignments, progress-preserving handoffs, integration, independent verification of registered objects, final binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing correction counts carry forward when work resumes.
+The pool contains eight Sol workers and two GLM workers. GLM is not a mandatory first stage: each Sol assignment may start fresh or inherit GLM progress. A GLM handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -59,7 +65,7 @@ The pool contains eight Sol workers and two GLM workers. GLM is not a mandatory 
 3. The assigned subagent compiles its candidate with the project's compiler version and the settings appropriate to that object or library.
 4. The subagent compares the candidate with the original using the existing object-comparison tooling, including relevant data and relocations.
 5. The subagent uses the observed differences to revise and recompile within its allowance, preserving the best draft and each measured attempt. It does not wait for the parent to run this loop or author corrections.
-6. Return a matching candidate with its compiler recipe and comparison evidence for parent integration. Return an unmatched draft for escalation only after completing the stage's ten correction attempts. Report any integration-owned data migration separately rather than claiming a complete object match.
+6. Return a matching candidate with its compiler recipe and comparison evidence for parent review. Return an unmatched draft for escalation only after completing the stage's ten correction attempts. Identify any remaining shared integration or data migration work; the same reconstruction agent performs it, with the parent coordinating shared-file access. Do not claim a complete object match before that work is verified.
 
 Do not change global compiler settings merely to improve one candidate's score. Investigate compiler-setting changes only when supported by binary and project evidence. Recheck affected objects when shared declarations or layouts change.
 
@@ -79,19 +85,19 @@ Setting a function aside does not discard its reconstruction or count it as comp
 
 ### 4. Integrate, verify, and commit
 
-1. Register a matching reconstruction using the existing source/split/build conventions.
-2. Confirm that the matching build actually includes the reconstructed source object rather than retaining its original-code replacement.
-3. Build and verify all expected DOL/REL hashes, including outputs affected by shared changes.
-4. Review the change for unexplained assumptions, unrelated edits, original game material, and regressions.
-5. Commit accepted changes in small, independently reviewable units.
-6. Record completed work, observed verification results, and progress measurements in `CHANGELOG.md`, not in this plan.
+1. The same reconstruction agent registers its matching reconstruction using the existing source/split/build conventions.
+2. The subagent compares the registered source object with the original and confirms that the matching build actually includes it rather than retaining its original-code replacement.
+3. The subagent builds and verifies all expected DOL/REL hashes, including outputs affected by shared changes, and returns the observed evidence to the parent.
+4. The parent reviews the change and verification evidence for unexplained assumptions, unrelated edits, original game material, and regressions. Any required edits or further verification go back to a subagent.
+5. The parent commits accepted changes in small, independently reviewable units.
+6. The parent records completed work, observed verification results, and progress measurements in `CHANGELOG.md`, not in this plan.
 7. Continue with related targets to reuse verified types and compiler knowledge; do not wait for an upstream pull request.
 
-Where runtime behavior needs investigation and Dolphin is available, run the rebuilt game and exercise the affected path. Record exactly what was exercised or that runtime verification was unavailable. Booting is not a replacement for matching checks; a build alone does not establish that a gameplay path was exercised.
+Where runtime behavior needs investigation and Dolphin is available, the reconstruction agent runs the rebuilt game and exercises the affected path. Record exactly what was exercised or that runtime verification was unavailable. Booting is not a replacement for matching checks; a build alone does not establish that a gameplay path was exercised.
 
 ### 5. Record source-reconstruction progress
 
-After the linked hash check passes, regenerate the report and calculate accepted source progress:
+After the linked hash check passes, the reconstruction agent regenerates the report and calculates accepted source progress using the existing commands, then returns the results for the parent to record:
 
 ```sh
 ninja --quiet build/RSBE01_02/report.json
