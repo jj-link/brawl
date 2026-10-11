@@ -138,3 +138,36 @@ mo_fighter/ft_mario/ft_mario_article_second_global_initialize.cpp:
 	.text       start:0x00016D54 end:0x00016DEC
 	.ctors      start:0x00000014 end:0x00000018
 	.bss        start:0x00000398 end:0x000003A8
+
+mo_fighter/ft_mario/ft_mario_article_reflect_speed.cpp:
+	.text       start:0x00016A20 end:0x00016B14
+
+mo_fighter/ft_mario/ft_mario_article_third_teardown.cpp:
+	.text       start:0x000185F4 end:0x000189AC
+
+mo_fighter/ft_mario/ft_mario_article_third_aggregate_teardown.cpp:
+	.text       start:0x000189AC end:0x00018B20
+
+mo_fighter/ft_mario/ft_mario_article_third_submodule_teardown.cpp:
+	.text       start:0x00018B20 end:0x00018D74
+
+mo_fighter/ft_mario/ft_mario_article_third_initialize.cpp:
+	.text       start:0x00018D74 end:0x00018EC4
+
+mo_fighter/ft_mario/ft_mario_article_third_position_reset.cpp:
+	.text       start:0x00018EC4 end:0x00018F3C
+
+mo_fighter/ft_mario/ft_mario_article_third_resource_helpers.cpp:
+	.text       start:0x00018F3C end:0x00018F9C
+
+mo_fighter/ft_mario/ft_mario_article_third_parameter_singleton.cpp:
+	.text       start:0x00018F9C end:0x00019048
+
+mo_fighter/ft_mario/ft_mario_article_third_interface_adapters.cpp:
+	.text       start:0x00019048 end:0x00019088
+
+mo_fighter/ft_mario/ft_mario_article_third_node_work.cpp:
+	.text       start:0x00019088 end:0x00019184
+
+mo_fighter/ft_mario/ft_mario_article_third_ground_effect.cpp:
+	.text       start:0x00019184 end:0x000192D0
