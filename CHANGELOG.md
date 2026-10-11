@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — exception dispatcher
+
+- Registered `fn_803F2A4C.cpp` and removed its superseded assembly: **1,024 additional C++ code bytes**. Preserved the actual initial-plus-ten Sol history, including the ninth-correction best checkpoint and retained tenth-correction source.
+- The owner verified all **256 instruction words**, **100 allocated data/exception bytes**, and **36 relocations**. Objdiff's aggregate data score remains **80%** despite the exact allocated sections; the original and compiler-local exception symbols have different extents. No object patching was used.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.267460% complete** — **200,684 / 15,833,556 accepted code bytes**, with **15,632,872 code bytes remaining** and **496 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — format parser and integer formatter
 
 - Registered `fn_803F6578.c`, reconstructing `parse_format_803F6578` and `long2str_803F6B74`: **2,084 additional C code bytes**.
@@ -21,6 +27,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Retained the best drafts and actual initial-plus-ten histories at both Sol and Astra for `fn_803F243C`, `fn_803F9318`, `fn_803FA804`, and `fn_803FCE18`. These remain assembly-backed and contribute no accepted source bytes.
 - The `fn_803F243C` continuation recovered exact compiler-generated exception metadata but not matching code. The `fn_803FA804` interrupted-stage recovery verified the saved best draft and completed the stage record without adding attempts or claiming acceptance.
 - The `fn_803FD904`/`fn_803FDA18` draft retains exact instruction bytes, but the preserved data-layout blocker prevents whole-object acceptance after its completed Sol and Astra allowances. Original assembly remains registered.
+- Set aside the three-export `fn_804041A4` unit after actual initial-plus-ten Sol and Astra stages. Restored Astra correction six, preserved all attempts, and retained the original assembly registration. The best candidate remains 2,744 bytes against the 2,740-byte target; no source bytes were accepted.
 
 ## Added two Spark1 Qwen workers
 

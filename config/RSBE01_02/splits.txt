@@ -415,10 +415,11 @@ Runtime.PPCEABI.H/fn_803F243C.s:
 Runtime.PPCEABI.H/fn_803F2948.s:
 	.text       start:0x803F2948 end:0x803F2A4C
 
-Runtime.PPCEABI.H/fn_803F2A4C.s:
+Runtime.PPCEABI.H/fn_803F2A4C.cpp:
 	extab       start:0x80009560 end:0x80009574
 	extabindex  start:0x8000C568 end:0x8000C574
 	.text       start:0x803F2A4C end:0x803F2E4C
+	.data       start:0x80493E18 end:0x80493E5C
 
 Runtime.PPCEABI.H/fn_803F2E4C.s:
 	.text       start:0x803F2E4C end:0x803F3048
