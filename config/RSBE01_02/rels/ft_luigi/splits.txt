@@ -14,6 +14,11 @@ global_destructor_chain.c:
 mo_fighter/ft_luigi/ft_luigi_leaf_destructors.cpp:
 	.text       start:0x000041E0 end:0x00004300
 
+mo_fighter/ft_luigi/ft_luigi_global_initializer.cpp:
+	.text       start:0x0000B880 end:0x0000B8E4
+	.ctors      start:0x00000000 end:0x00000004
+	.bss        start:0x00000008 end:0x00000194
+
 mo_fighter/ft_luigi/ft_luigi_param_constructor.cpp:
 	.text       start:0x0000B8E4 end:0x0000B92C
 
@@ -25,6 +30,21 @@ mo_fighter/ft_luigi/ft_luigi_fighter_factory.cpp:
 
 mo_fighter/ft_luigi/ft_luigi_interface_adjustments.cpp:
 	.text       start:0x0000BA70 end:0x0000BA90
+
+mo_fighter/ft_luigi/ft_luigi_event_adjustments.cpp:
+	.text       start:0x0000BA90 end:0x0000BAA8
+
+mo_fighter/ft_luigi/ft_luigi_local_callback_adjustments.cpp:
+	.text       start:0x0000BAA8 end:0x0000BAC0
+
+mo_fighter/ft_luigi/ft_luigi_status_adjustments.cpp:
+	.text       start:0x0000BAC0 end:0x0000BAD0
+
+mo_fighter/ft_luigi/ft_luigi_observer_adjustments.cpp:
+	.text       start:0x0000BAD0 end:0x0000BB48
+
+mo_fighter/ft_luigi/ft_luigi_member_adjustments.cpp:
+	.text       start:0x0000BB48 end:0x0000BBD0
 
 mo_fighter/ft_luigi/ft_luigi_kinetic_reset_dispatch.cpp:
 	.text       start:0x0000BBD0 end:0x0000BD80
