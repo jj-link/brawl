@@ -675,6 +675,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_composite_storage_hierarchy.cpp", cflags=cflags_fighter, extra_cflags=["-inline off"]),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_component_lifetime_destructors.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_native_module_constructors.cpp", cflags=cflags_fighter, extra_cflags=['-pragma "use_simple_stdpnew on"']),
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_general_work_constructor.cpp", cflags=cflags_fighter),
         ],
     },
     {

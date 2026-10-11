@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstruction — Lucario general-work constructor
+
+- Accepted `fn_118_7E14`, `.text 0x7E14..0x7E94`: **128 C++ code bytes** and **1 source unit**. `ResumeSolLucarioWork` preserved the initial matched candidate and zero-correction Sol history.
+- The owner verified the combined `9b86e6d` baseline with the accepted Pikachu and Luigi units retained: **32/32 instruction words**, **5/5 relocations**, complete registered C++ source linkage, and **127 passing DOL/REL hashes**. Its three integrated main files are byte-identical to the verified private inputs. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.027719%** — **321,060 / 15,833,556 code bytes**, with **15,512,496 bytes remaining** and **864 accepted source units**. This restart has accepted **368 bytes across 3 units**.
+
 ## Accepted reconstruction — Luigi energy-vector reset
 
 - Accepted `.text 0xAA44..0xAB2C`: **232 C++ code bytes** and **1 source unit**, reconstructed by `ResumeSolLuigiReset`. Preserved Sol history remains one initial candidate and zero corrections; original rodata ownership receives no additional credit.
