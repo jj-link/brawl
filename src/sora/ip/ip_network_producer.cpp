@@ -3,41 +3,40 @@
 #include <sr/sr_common.h>
 #include <types.h>
 
-static ipNetworkProducer* g_ipNetworkProducer;
+ipNetworkProducer* g_ipNetworkProducer;
+
+static inline void initializeProducer(ipNetworkProducer* producer) {
+    void (*setCallback)(NtShared::ntConsumedDataCallback_t) = NtShared::ntSetConsumedDataCallback;
+    setCallback(reinterpret_cast<NtShared::ntConsumedDataCallback_t>(ipNetworkProducer::networkInCallback));
+    producer->clear();
+}
 
 ipNetworkProducer* ipNetworkProducer::getInstance() {
     if (!g_ipNetworkProducer) {
-        g_ipNetworkProducer = new (Heaps::SystemFW) ipNetworkProducer;
+        ipNetworkProducer* producer = new (Heaps::SystemFW) ipNetworkProducer;
+        if (producer) {
+            initializeProducer(producer);
+        }
+        g_ipNetworkProducer = producer;
     }
     return g_ipNetworkProducer;
 }
 
-// NONMATCHING regswaps
-void ipNetworkProducer::networkInCallback(const u16* p1) {
+void ipNetworkProducer::networkInCallback(const u16* input) {
     if (!g_ipNetworkProducer) {
-        g_ipNetworkProducer = new (Heaps::SystemFW) ipNetworkProducer(true);
+        ipNetworkProducer* producer = new (Heaps::SystemFW) ipNetworkProducer;
+        if (producer) {
+            NtShared::ntSetConsumedDataCallback(
+                reinterpret_cast<NtShared::ntConsumedDataCallback_t>(networkInCallback));
+            producer->clear();
+        }
+        g_ipNetworkProducer = producer;
     }
-    ipNetworkProducer* ip = g_ipNetworkProducer;
-    u8* r7 = reinterpret_cast<u8*>(ip);
-    u8 r6 = 0;
-    if (ip->unk0) {
-        r6 = r7[ip->unk0] + 1;
-    }
-    if (r6 >= 1) {
-        r6 = 0;
-    }
-
-    r7[ip->unk0 + 1] = r6;
-    UnkIpNetworkMsg* r5 = &ip->unk2 + r6;
-    for (s32 i = 0; i < 8; i++) {
-        r5->unk0[i] = p1[i];
-    }
-
-    ip->unk0++;
+    g_ipNetworkProducer->push(input);
 }
 
 UnkIpNetworkMsg* ipNetworkProducer::front() {
-    return &unk2 + unk1;
+    return &unk2 + unk1[0];
 }
 
 void ipNetworkProducer::pop() {
@@ -46,5 +45,5 @@ void ipNetworkProducer::pop() {
 
 void ipNetworkProducer::clear() {
     unk0 = 0;
-    unk1 = 0xFF;
+    unk1[0] = 0xFF;
 }

@@ -179,7 +179,7 @@ sora/ip/ip_human.cpp:
 
 sora/ip/ip_network_producer.cpp:
 	.text       start:0x8004AE14 end:0x8004AFB4
-	.sbss       start:0x805A00D8 end:0x805A00E0
+	.sbss       start:0x805A00D8 end:0x805A00DC
 
 sora/ef/ef_screen_handle.cpp:
 	.text       start:0x8005E5C8 end:0x8005E5E8

@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — network producer
+
+- Registered `sora/ip/ip_network_producer.cpp` as matching: **416 additional C++ code bytes**, after the initial candidate and nine Sol corrections.
+- The owner verified all **104 instruction words**, **4 singleton-storage bytes**, and **15 relocations**. The callback ABI and its callers were migrated together; original trailing padding remains outside the reconstructed source split.
+- The required header changes are recorded in BrawlHeaders submodule commit `68a710a`; the project records that dependency revision. Neither repository was pushed.
+- Owner-run full build and **127/127 final binary hashes** passed with no prior accepted-source regressions. Source reconstruction is now **1.327863% complete** — **210,248 / 15,833,556 accepted code bytes**, with **15,623,308 code bytes remaining** and **511 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — MetroTRK memory routines
 
 - Registered `fn_80404D98.c`, including `fn_80404EE4`, and removed the superseded assembly: **1,008 additional C code bytes**. Preserved initial-plus-ten Sol and initial-plus-nine Astra histories.
@@ -20,9 +27,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - The owner verified all **70 instruction words** and relocations, with unchanged headers, split boundaries, and compiler settings.
 - Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.316091% complete** — **208,384 / 15,833,556 accepted code bytes**, with **15,625,172 code bytes remaining** and **508 accepted source units**. Gameplay was not exercised.
 
-## Preserved unmatched Marth down-special reconstruction
+## Preserved unmatched Marth reconstructions
 
 - Set aside `ft_marth_status_uniq_process_special_lw.cpp` after actual initial-plus-ten Sol and Astra stages; three rejected preinitial Sol compiles remain separately recorded. Preserved and published the Astra-ten best draft under its granted source window. Eight of nine functions match, but the whole unit remains `NonMatching`; no source bytes were accepted.
+- Set aside `ft_marth_status_uniq_process_special_hi.cpp` after initial-plus-ten Sol and Astra stages. The best Astra-nine draft and its private ABI header remain preserved; the live source was restored to its inherited Sol snapshot. Nine of ten normalized function bodies match, but extra code, data, and relocation differences prevent acceptance. Eleven failed Sol compiles and one unchanged restoration remain separately recorded.
+- Set aside `if_marth_final.cpp` after initial-plus-ten Sol and Astra stages. Published the preserved Sol-five best draft under a source-only grant, following a successful existing-project-recipe compilation. Twenty-five of twenty-six functions match; one extra instruction prevents acceptance. Three rejected Astra compiler-compatibility invocations remain separate from measured corrections. The neighboring final-special constant reservation remains unchanged; no source bytes were accepted.
 
 ## Accepted source reconstruction — trigonometry utilities
 
