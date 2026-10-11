@@ -2,6 +2,55 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Live dashboard — consolidated terminals; observer activation pending
+
+- Applied the user's revised layout: the All modules/unit-map card spans the dashboard width, with one Agent streams section below. Removed the separate Agents section and activity log, including their obsolete frontend code and styles.
+- Added `.omp/extensions/live-output.js`, a read-only native omp observer using the confirmed v18.8.9 per-session extension event contract. It forwards sanitized visible assistant text updates through a loopback listener; the dashboard relays them immediately after checking the owning root-session identity. It does not create model sessions or substitute completed journals for live output.
+- Current-worker panes are shown together. **Show history** remains opt-in and explicitly labels completed recorded assistant messages. Live panes retain reading position, with a Latest control and pause/resume.
+- The Sol owner verified the running browser layout, history preference, retained pane/row identity and reading position, Latest, and pause/resume. At a 1,440-pixel viewport, the map and streams each measured 1,389 pixels wide, with streams below the map; the removed sections were absent. API state, units, and recorded history returned 200; foreign Host and Origin requests returned 403. JavaScript syntax checks and Python syntax parsing passed. Screenshot review was unavailable.
+- **Activation remains blocked on gracefully restarting the owning omp host.** The extension is saved but not loaded in the current process. The actual live-status and live endpoints return 503; real pre-completion generated-text delivery and simultaneous live worker output have not been verified. The host is not supervisor-managed and no supported safe restart control is exposed to this session. Resume the existing root session `01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a` from this project with `.omp/extensions/live-output.js` loaded, then perform those remaining live checks.
+- The persistent `brawl-dashboard-observer` service remains on port 8765. No reconstruction or model services were restarted. `PLAN.md` now requires ongoing dashboard progress and agent-activity maintenance.
+- Accepted reconstruction progress remains **320,692 / 15,833,556 code bytes**, **2.025395%**, **15,512,864 bytes remaining**, and **861 accepted source units**. Dashboard work receives no reconstruction credit.
+
+## Live dashboard — stable event-feed updates
+
+- Fixed the feed replacing all 400 DOM rows on each arrival. A measured pre-fix update detached and reinserted 399 historical rows, restarted their entrance animations, and displaced the row being read by approximately 24 pixels despite unchanged total scroll height.
+- The feed now updates keyed rows in place and preserves scroll-back position against a surviving row. Ordering, the 400-row bound, pause/resume, and the new-event jump control remain intact.
+- The Sol owner exercised real incoming journal events in the running dashboard. Across four measured batches, retained rows were not detached or reanimated and the reading anchor stayed at the same layout offset. Pause/resume, jump-to-latest, shallow scroll-back, and the current/history stream filter also passed runtime checks. Screenshot capture remained unavailable; verification used DOM identities, layout offsets, animation state, and actual event arrivals.
+- Changes are local and uncommitted. Reconstruction progress is unchanged.
+
+## Live dashboard — current streams by default
+
+- Stream panels now default to current workers, using the existing working/blocked/waiting classification. **Show history** reveals historical agents; **Hide history** returns to current workers only. Counts and explanatory text reflect the visible selection.
+- Selecting a historical agent's **Read visible stream** action enables history and opens that stream. Hiding history preserves retained contents and expansion state.
+- The Sol implementation owner exercised the running dashboard: 2 current streams with 253 historical agents hidden, 255 streams after enabling history, and 2 again after hiding it. Historical navigation and live message arrivals worked. Browser-injected state transitions verified that completed/stopped agents disappear from the default view and working agents reappear; reloading restored actual backend data and history-off mode.
+- Screenshot capture remained unavailable. Changes are local and uncommitted; reconstruction progress is unchanged.
+
+## Live dashboard — changelog progress, subagent streams, and activity log
+
+- The dashboard at `http://127.0.0.1:8765/` follows the latest verified cumulative checkpoint in this changelog. It displays exact accepted/total/remaining bytes, six-decimal completion, and checkpoint provenance. The separately report-derived unit map is explicitly labeled when its counts are stale.
+- Added **Watch all streams**, with independently expandable agent streams, retained historical activity, pause/resume, and reconnection recovery. These are complete recorded visible messages and tool events, refreshed about every two seconds—not generated-token streaming. Retention is bounded to 200 entries or 128 KiB per agent; individual text is capped at 4,000 characters with visible truncation labels.
+- Fixed overlapping activity snapshots reintroducing evicted older events as new. The feed remains bounded to 400 rows, and selected-agent activity refreshes after event ingestion.
+- Fixed journal tailing across larger/same-size rewrites and partial records; genuine malformed records retain byte-offset diagnostics. A scan of 254 actual journals found zero malformed complete records. The old parser's stale-offset defect was reproduced, but the exact historical rewrite responsible for the old warnings was not recorded.
+- Both dashboard implementation owners exercised the running backend and browser UI: exact checkpoint figures, simultaneous streams, real message/tool arrivals, retained historical activity, pause/resume, and restored expanded streams after an actual server restart. Backend checks also exercised checkpoint refresh, malformed records, cursor resets, and loopback HTTP protections. Smoke fixtures were removed.
+- Browser verification inspected rendered text, interactions, network responses, and narrow-viewport dimensions. Screenshot capture was unavailable: the attached browser rejected capture and a separately launched browser's capture timed out. No screenshot-based visual review is claimed.
+- Accepted reconstruction totals remain **320,692 / 15,833,556 code bytes**, **2.025395%**, **15,512,864 bytes remaining**, and **861 accepted source units**. Dashboard work adds no reconstruction credit.
+- The verified dashboard service was left running. Reconstruction workers were not restarted. These dashboard changes are local and have not been committed or pushed.
+
+## Accepted reconstructions — activation, state traversal, and native constructors
+
+| Commit | Reconstruction | Added C++ code bytes | New source units |
+| --- | --- | ---: | ---: |
+| `d39b957` | Pikachu owner activation | 696 | 1 |
+| `078c061` | Lucas state traversal and energy updates | 568 | 6 |
+| `5f35946` | Lucario native module constructors | 240 | 1 |
+
+These three commits add **1,504 code bytes** across **8 source units**. They are committed on local `main` and remain unpushed at this checkpoint.
+
+The original Lucario reconstruction owner verified the combined committed snapshot `5f3594685f8b29b455b3b6c002ef225c0e1f7e84` (tree `f8db8700a4ae74da1ea109a5699b80a6097a1cb7`) with **127 passing DOL/REL hashes**. The registered constructor object has 240 exact allocated code bytes, 60 matching instruction words, and 11 matching relocations, and is linked from compiled source. All 158 previously accepted dependencies in its affected closure retain their baseline allocated bytes; the sole relocation difference is the reviewed constructor-symbol rename at the same destination. The newly included Pikachu activation dependency also matches its original-header baseline.
+
+Cumulative accepted-source progress is **2.025395%** — **320,692 / 15,833,556 code bytes**, with **15,512,864 bytes remaining** and **861 accepted source units**. Existing caller/declaration changes receive no additional code-byte credit. Publication verification added no reconstruction corrections. Gameplay was not exercised.
+
 ## Accepted isolated reconstructions — storage control and article lifetimes
 
 | Reconstruction group | Added C++ code bytes | New source units |

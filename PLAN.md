@@ -22,6 +22,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent must not write or modify code under any circumstances, including inline or throwaway code. All coding belongs to subagents.
 - Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, merge-conflict resolution, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. Each agent uses an isolated working copy and build directory, not a parent-controlled shared-build queue.
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
+- Maintain project work history and progress exclusively in the existing `CHANGELOG.md`.
 
 ### Hands-off orchestration
 
@@ -119,6 +120,8 @@ python tools/reconstruction_progress.py build/RSBE01_02/report.json
 - Exclude assembly registrations, assembly source overrides, mixed inline-assembly units, unregistered drafts, and partial or nonmatching units. The calculator uses each unit's resolved `source_path` and `complete` flag.
 - Calculate completion as `accepted source code bytes / total target code bytes × 100`, and remaining bytes as `total target code bytes − accepted source code bytes`.
 - Record the accepted change's code-byte delta, whole-project percentage to six decimal places, accepted/total code bytes, and remaining code bytes in `CHANGELOG.md`.
+- Keep the existing dashboard's progress synchronized with each accepted checkpoint recorded in `CHANGELOG.md`, including accepted/total code bytes, completion percentage, and remaining bytes.
+- Maintain accurate current-agent status and activity in the dashboard as work proceeds.
 - Keep batch or wave subtotals distinct from whole-project progress. Do not substitute aggregate matched/linked percentages, generated source-line counts, data bytes, executable-section spans, or ISO size for accepted C/C++ code progress.
 
 ## Acceptance criteria

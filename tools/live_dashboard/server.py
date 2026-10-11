@@ -2,13 +2,14 @@
 """Read-only live dashboard server for the brawl-decomp project.
 
 Serves the static dashboard (index.html / style.css / app.js, allowlisted)
-plus a small JSON + SSE API.  All data comes from live project artifacts:
+plus a small JSON + SSE API. Data comes from live project artifacts and
+the narrowly scoped in-process omp observer:
 
-* omp agent session journals (agents, states, events) -- read-only,
-  incrementally tailed; prompts, thinking, tool arguments/outputs and
-  credentials are never extracted.
-* ``build/RSBE01_02/report.json`` progress via the existing
-  ``tools/reconstruction_progress.py`` counter (reused, never modified).
+* omp session journals supply identity/status and opt-in recorded history.
+* The owning runner's loopback observer supplies sanitized visible text
+  updates; journal polling is never substituted for generated-text streaming.
+* ``CHANGELOG.md`` verified checkpoints for headline progress, with the
+  existing report/counter retained as a separately labelled unit-map source.
 
 The server binds the loopback interface only, performs no filesystem
 browsing, never mutates reconstruction files, and persists nothing outside
@@ -23,6 +24,9 @@ API:
     GET /api/units   per-unit classification map (JSON, revision-tagged)
     GET /api/events  Server-Sent Events: ``state`` snapshots (~2 s cadence)
                      with comment keepalives; clients reconnect and refetch
+    GET /api/streams opt-in, labeled completed assistant-message history
+    GET /api/live   immediate SSE relay from the owning runner observer
+    GET /api/live-status observer connectivity (503 when not loaded)
 """
 
 from __future__ import annotations
@@ -35,6 +39,9 @@ import time
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
+from urllib.error import URLError
+from urllib.request import urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -49,6 +56,7 @@ STATIC_FILES = {
 }
 SSE_KEEPALIVE_SECONDS = 15.0
 MAX_WARNINGS = 12
+OBSERVER_URL = "http://127.0.0.1:8766"
 
 
 def _utc_now_iso():
@@ -95,6 +103,7 @@ def refresher_loop(stop, watcher, progress, state, interval, wake_progress):
         progress_dict, report_updated_at, revision, history, progress_warnings = (
             progress.state_parts()
         )
+        streams = watcher.stream_metadata()
         state_obj = {
             "version": 1,
             "updatedAt": _utc_now_iso(),
@@ -102,9 +111,11 @@ def refresher_loop(stop, watcher, progress, state, interval, wake_progress):
             "session": watcher.session_label(),
             "progress": progress_dict,
             "agents": agents,
-            "events": events,
             "history": history,
             "unitsRevision": revision or "pending",
+            "unitsProvenance": progress.units_provenance(),
+            "streamRevision": streams.pop("revision"),
+            "streams": streams,
             "warnings": (journal_warnings + progress_warnings)[:MAX_WARNINGS],
         }
         state.publish(state_obj, progress.units_bytes())
@@ -197,6 +208,32 @@ class DashboardHandler(BaseHTTPRequestHandler):
         elif path == "/api/units":
             _, _, payload = self.dashboard["state"].snapshot()
             self._send_json(200, payload)
+        elif path == "/api/live-status":
+            try:
+                observer = self._observer_status()
+                self._send_json(200, json.dumps(observer).encode("utf-8"))
+            except (OSError, ValueError, URLError) as exc:
+                self._send_json(503, json.dumps({
+                    "connected": False,
+                    "error": str(exc),
+                    "prerequisite": "Load .omp/extensions/live-output.js in the owning omp runner; restart/resume is required.",
+                }).encode("utf-8"))
+        elif path == "/api/live":
+            self._handle_live()
+        elif path == "/api/streams":
+            query = parse_qs(urlsplit(self.path).query)
+            try:
+                limit = int(query.get("limit", ["300"])[0])
+                if not 1 <= limit <= 1000:
+                    raise ValueError
+            except (ValueError, TypeError):
+                self._send_json(400, b'{"error":"limit must be an integer from 1 to 1000"}')
+                return
+            payload = self.dashboard["watcher"].streams(
+                agent=query.get("agent", [None])[0],
+                cursor=query.get("cursor", [None])[0], limit=limit,
+            )
+            self._send_json(200, json.dumps(payload, separators=(",", ":")).encode("utf-8"))
         elif path == "/api/events":
             self._handle_sse()
         elif path in STATIC_FILES:
@@ -207,7 +244,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(self):
         path = self.path.split("?", 1)[0].split("#", 1)[0]
-        if path == "/api/events":
+        if path in ("/api/events", "/api/live"):
             self._send_json(405, b'{"error":"method not allowed"}', {"Allow": "GET"})
         else:
             self.do_GET()
@@ -215,6 +252,39 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self._send_json(405, b'{"error":"method not allowed"}', {"Allow": "GET, HEAD"})
 
+    def _observer_status(self):
+        with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
+            status = json.load(response)
+        expected = self.dashboard["watcher"].session_label()
+        if not expected or status.get("rootSessionId") != expected:
+            raise ValueError("Observer does not belong to the dashboard's current root session")
+        return status
+
+    def _handle_live(self):
+        """Relay actual observer frames immediately, without journal backfill."""
+        try:
+            self._observer_status()
+            upstream = urlopen(OBSERVER_URL + "/events", timeout=15)
+        except (OSError, ValueError, URLError):
+            self._send_json(503, b'{"connected":false,"error":"owning runner observer not loaded or unavailable"}')
+            return
+        with upstream:
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.close_connection = True
+            try:
+                while not self.dashboard["stop"].is_set():
+                    # Observer heartbeats arrive every 10 seconds, inside the
+                    # socket deadline. Flush lines, not two-second state ticks.
+                    line = upstream.readline(2 * 1024 * 1024)
+                    if not line:
+                        break
+                    self.wfile.write(line)
+                    self.wfile.flush()
+            except (OSError, ValueError):
+                pass  # downstream close or upstream restart; EventSource reconnects
     # -- SSE -----------------------------------------------------------
     def _handle_sse(self):
         state = self.dashboard["state"]
@@ -227,7 +297,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"retry: 3000\n\n")
             self.wfile.flush()
             version, payload, _ = state.snapshot()
-            self._write_state(payload)
+            self._write_state(payload, version)
             last_version, last_keepalive = version, time.monotonic()
             while not self.dashboard["stop"].is_set():
                 with state.sse:
@@ -235,7 +305,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 version, payload, _ = state.snapshot()
                 now = time.monotonic()
                 if version != last_version:
-                    self._write_state(payload)
+                    self._write_state(payload, version)
                     last_version = version
                     last_keepalive = now
                 elif now - last_keepalive >= SSE_KEEPALIVE_SECONDS:
@@ -245,8 +315,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
         except (BrokenPipeError, ConnectionResetError, OSError):
             pass  # client disconnected; end this handler thread cleanly
 
-    def _write_state(self, payload):
-        self.wfile.write(b"event: state\ndata: " + payload + b"\n\n")
+    def _write_state(self, payload, version):
+        self.wfile.write(f"id: {version}\nevent: state\ndata: ".encode("ascii")
+                         + payload + b"\n\n")
         self.wfile.flush()
 
 
@@ -255,9 +326,9 @@ def parse_args(argv=None):
         description="Read-only live decompilation dashboard server (localhost only).",
         epilog=(
             "Data sources: omp session journals (auto-discovered from the repo cwd,"
-            " override with --session-dir) and build/RSBE01_02/report.json via the"
-            " existing reconstruction_progress counter. Persisted state lives only"
-            " in build/live-dashboard/."
+            " override with --session-dir), latest verified CHANGELOG.md checkpoint,"
+            " and a separately labelled report-derived unit map. Persisted state"
+            " lives only in build/live-dashboard/."
         ),
     )
     parser.add_argument("--port", type=int, default=8765,
@@ -302,6 +373,7 @@ def main(argv=None):
     dashboard = DashboardState()
     DashboardHandler.dashboard = {
         "state": dashboard,
+        "watcher": watcher,
         "static_dir": static_dir,
         "stop": stop,
         "verbose": args.verbose,
@@ -319,9 +391,11 @@ def main(argv=None):
         "session": None,
         "progress": progress_dict,
         "agents": [],
-        "events": [],
         "history": history,
         "unitsRevision": revision or "pending",
+        "unitsProvenance": progress.units_provenance(),
+        "streamRevision": f"{watcher.stream_epoch}:0",
+        "streams": {"available": False, "retentionPerAgent": 200},
         "warnings": ["dashboard starting: agent list and progress fill in on the first scan"],
     }, progress.units_bytes())
 

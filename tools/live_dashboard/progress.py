@@ -1,11 +1,10 @@
 """Progress computation for the live dashboard.
 
-Reuses ``tools/reconstruction_progress.py`` (read-only import; the counter
-module is never modified) as the accepted-source gate, and replicates its
-per-unit rule -- complete C/C++ source without inline assembly -- for the
-per-unit map.  Report refreshes are fingerprint-gated (mtime + size) so the
-~4.5k source files are only rescanned when the report actually changes, and
-any failure keeps the last-good snapshot instead of faking zeros.
+The latest verified cumulative checkpoint in CHANGELOG.md supplies headline
+progress. The existing counter supplies the separately labelled report unit
+map; the two sources are never presented as the same checkpoint merely because
+a build report exists. Each input is fingerprint-cached, and refresh failures
+retain the last-good data with explicit provenance and warnings.
 """
 
 from __future__ import annotations
@@ -14,6 +13,7 @@ import hashlib
 import importlib.util
 import json
 import threading
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -47,6 +47,10 @@ class ProgressTracker:
         self.report_path = Path(report_path)
         self.root = Path(root)
         self.history_path = Path(history_path)
+        self.changelog_path = self.root / "CHANGELOG.md"
+        self._changelog_fp = None
+        self._checkpoint = None
+        self._report_progress = None
         if counter_path is None:
             counter_path = Path(__file__).resolve().parents[1] / "reconstruction_progress.py"
         self._counter = _load_counter(counter_path)
@@ -71,18 +75,21 @@ class ProgressTracker:
             return None
         return f"{st.st_mtime_ns}:{st.st_size}"
 
+    def _changelog_fingerprint(self):
+        try:
+            st = self.changelog_path.stat()
+            return f"{st.st_mtime_ns}:{st.st_size}"
+        except OSError:
+            return None
+
     def poll(self):
-        """True when the report inputs changed since the last recompute."""
-        fp = self.fingerprint()
-        return fp is not None and fp != self._fingerprint
+        """Watch both artifacts, including changelog-only publications."""
+        return (self.fingerprint() != self._fingerprint
+                or self._changelog_fingerprint() != self._changelog_fp)
 
     def refresh(self):
-        """Recompute only when report inputs changed; keep last-good on failure.
-
-        Called every loop tick, so it is deliberately cheap when the
-        fingerprint is unchanged (a single stat) and memoizes persistent
-        failures per fingerprint instead of rescanning sources each second.
-        """
+        """Refresh independent inputs, preserving their last-good snapshots."""
+        self._refresh_checkpoint()
         fp = self.fingerprint()
         if fp is None:
             if not self._missing:
@@ -110,13 +117,35 @@ class ProgressTracker:
 
     def state_parts(self):
         with self._lock:
+            progress = dict(self._progress)
+            updated = _parse_ts(progress.get("updatedAt") or "")
+            progress["ageSeconds"] = (
+                max(0, int((datetime.now(timezone.utc) - updated).total_seconds()))
+                if updated else None
+            )
             return (
-                dict(self._progress),
+                progress,
                 self._report_updated_at,
                 self._revision,
                 list(self._history[-HISTORY_SERVE_POINTS:]),
                 list(self._warnings.values()),
             )
+
+    def units_provenance(self):
+        with self._lock:
+            report = self._report_progress or {}
+            stale = (not report or bool(self._warnings.get("report"))
+                     or any(report.get(k) != self._progress.get(k)
+                            for k in ("acceptedBytes", "totalBytes", "acceptedUnits")))
+            return {
+                "source": "report", "updatedAt": self._report_updated_at,
+                "acceptedBytes": report.get("acceptedBytes"),
+                "acceptedUnits": report.get("acceptedUnits"), "stale": stale,
+                "reason": ("Report-derived unit map differs from the displayed checkpoint "
+                           "or its report is unavailable; it is not the changelog checkpoint."
+                           if stale else "Report counts agree with the displayed checkpoint; "
+                           "unit classifications still come from report.json."),
+            }
 
     def units_bytes(self):
         with self._lock:
@@ -144,23 +173,20 @@ class ProgressTracker:
             "acceptedBytes": int(result["accepted_source_code_bytes"]),
             "totalBytes": int(result["total_code_bytes"]),
             "remainingBytes": int(result["remaining_code_bytes"]),
-            "percent": round(float(result["percent_complete"]), 4),
+            "percent": round(float(result["percent_complete"]), 6),
             "acceptedUnits": int(result["accepted_source_units"]),
             "error": None,
+            "source": "report", "updatedAt": report_updated_iso,
+            "commit": None, "checkpointTitle": None, "precision": 6,
+            "lastGood": False,
         }
 
-        now = datetime.now(timezone.utc)
-        history = list(self._history)
-        if self._history_should_append(history, progress["acceptedBytes"], now):
-            history.append({
-                "at": now.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
-                "acceptedBytes": progress["acceptedBytes"],
-            })
-            del history[:-HISTORY_MAX_POINTS]
-            self._persist_history(history)
 
         payload = json.dumps(
-            {"revision": revision, "units": units}, separators=(",", ":")
+            {"revision": revision, "source": "report", "updatedAt": report_updated_iso,
+             "acceptedBytes": progress["acceptedBytes"],
+             "acceptedUnits": progress["acceptedUnits"], "units": units},
+            separators=(",", ":")
         ).encode("utf-8")
 
         warnings = dict(self._warnings)
@@ -176,12 +202,93 @@ class ProgressTracker:
 
         with self._lock:
             self._fingerprint = fp
-            self._progress = progress
+            self._report_progress = progress
             self._report_updated_at = report_updated_iso
             self._revision = revision
             self._units_payload = payload
-            self._history = history
+            self._select_progress()
             self._warnings = warnings
+
+    def _refresh_checkpoint(self):
+        fp = self._changelog_fingerprint()
+        if fp == self._changelog_fp and fp is not None:
+            return
+        try:
+            if fp is None:
+                raise ValueError("CHANGELOG.md is unavailable")
+            text = self.changelog_path.read_text(encoding="utf-8")
+            checkpoint = self._parse_checkpoint(text)
+            checkpoint.update({
+                "available": True, "source": "changelog", "precision": 6,
+                "updatedAt": datetime.fromtimestamp(
+                    self.changelog_path.stat().st_mtime, timezone.utc
+                ).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+                "timestampMeaning": "CHANGELOG.md modification time, not verification time",
+                "error": None, "lastGood": False,
+            })
+        except (OSError, ValueError) as exc:
+            with self._lock:
+                self._changelog_fp = fp
+                self._warnings["changelog"] = f"checkpoint refresh failed: {exc}"
+                if self._checkpoint:
+                    self._checkpoint = dict(self._checkpoint, lastGood=True)
+                self._select_progress()
+            return
+        with self._lock:
+            self._changelog_fp = fp
+            self._checkpoint = checkpoint
+            self._warnings.pop("changelog", None)
+            self._select_progress()
+
+    @staticmethod
+    def _parse_checkpoint(text):
+        # CHANGELOG is newest-first. Only a section recording verification and
+        # cumulative accepted-source accounting can supply a checkpoint.
+        for section in re.split(r"(?m)^## ", text)[1:]:
+            plain = section.replace("**", "")
+            if not re.search(r"verified|verification|passing.*hashes", plain, re.I):
+                continue
+            if not re.search(r"cumulative accepted-source|source reconstruction is now",
+                             plain, re.I):
+                continue
+            counts = re.search(
+                r"([\d,]+)\s*/\s*([\d,]+)\s+(?:accepted\s+)?code bytes", plain)
+            remaining = re.search(r"([\d,]+)\s+(?:code\s+)?bytes remaining", plain)
+            units = re.findall(r"([\d,]+)\s+accepted source units", plain)
+            percent = re.search(r"(\d+\.\d+)%", plain)
+            if not counts or not remaining or not units or not percent:
+                raise ValueError("latest verified cumulative section lacks complete counts")
+            accepted, total = (int(s.replace(",", "")) for s in counts.groups())
+            left = int(remaining.group(1).replace(",", ""))
+            pct = float(percent.group(1))
+            if total <= 0 or accepted < 0 or left != total - accepted \
+                    or abs(pct - 100 * accepted / total) > 0.00000051:
+                raise ValueError("latest verified checkpoint has inconsistent accounting")
+            commit = re.search(
+                r"(?:committed snapshot|snapshot)\s+`([0-9a-f]{7,40})`", section)
+            return {
+                "acceptedBytes": accepted, "totalBytes": total,
+                "remainingBytes": left, "percent": round(pct, 6),
+                "acceptedUnits": int(units[-1].replace(",", "")),
+                "commit": commit.group(1) if commit else None,
+                "checkpointTitle": section.splitlines()[0].strip(),
+            }
+        raise ValueError("no verified cumulative accepted-source checkpoint found")
+
+    def _select_progress(self):
+        """Caller holds the lock; history records only displayed checkpoints."""
+        selected = self._checkpoint or self._report_progress
+        if selected is None:
+            return
+        self._progress = dict(selected)
+        now = datetime.now(timezone.utc)
+        if self._history_should_append(self._history, selected["acceptedBytes"], now):
+            self._history.append({
+                "at": now.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+                "acceptedBytes": selected["acceptedBytes"],
+            })
+            del self._history[:-HISTORY_MAX_POINTS]
+            self._persist_history(self._history)
 
     def _classify_units(self, report):
         """Per-unit accepted flags using the counter's exact rule."""
@@ -232,12 +339,12 @@ class ProgressTracker:
 
     def _fail(self, message):
         with self._lock:
-            if self._progress.get("available"):
-                # Keep last-good numbers; the warning explains the staleness.
-                self._warnings["report"] = message
-            else:
+            if self._report_progress:
+                self._report_progress = dict(self._report_progress, lastGood=True)
+            if not self._checkpoint and not self._report_progress:
                 self._progress = dict(INITIAL_PROGRESS, error=message)
-                self._warnings["report"] = message
+            self._warnings["report"] = message
+            self._select_progress()
 
     # ------------------------------------------------------------------
     # history (observed snapshots only; persisted under build/live-dashboard)

@@ -24,7 +24,7 @@
 
     <div class="pills" role="status" aria-live="polite">
       <span class="pill" id="pill-conn"><span class="dot" id="conn-dot" aria-hidden="true"></span><span id="conn-text">connecting…</span></span>
-      <span class="pill" id="pill-report" title="Age of the underlying progress report">report <span id="report-age">—</span></span>
+      <span class="pill" id="pill-report" title="Age of the unit-map build report, not the accepted changelog checkpoint">map report <span id="report-age">—</span></span>
       <span class="pill" id="pill-sync" title="Time since last successful sync">sync <span id="sync-age">—</span></span>
       <span class="pill mono" id="pill-session" hidden title=""></span>
     </div>
@@ -70,6 +70,7 @@
       </div>
     </div>
     <div id="hero-note" class="hero-note" hidden></div>
+    <div id="progress-provenance" class="provenance" aria-live="polite"></div>
   </section>
 
   <main id="grid">
@@ -84,6 +85,7 @@
       </div>
       <div class="card-sub">
         <span id="recent-strip" class="recent-strip" hidden></span>
+        <span id="map-provenance" class="map-provenance"></span>
       </div>
       <div id="treemap-wrap" class="treemap-wrap">
         <canvas id="treemap" tabindex="0" role="application"
@@ -94,36 +96,19 @@
       </div>
     </section>
 
-    <aside id="side">
-      <section id="agents-card" class="card" aria-label="Agents">
+      <section id="streams-card" class="card" aria-label="Agent streams">
         <div class="card-head">
-          <span class="card-kicker">agents <span class="count mono" id="agents-count"></span></span>
-          <input id="agent-search" class="input" type="search" placeholder="Search agents…" aria-label="Search agents" autocomplete="off" spellcheck="false" />
+          <span class="card-kicker">Agent streams <span class="count mono" id="streams-count"></span></span>
+          <button class="btn btn-small" id="streams-history" type="button" aria-pressed="false">Show history</button>
         </div>
-        <div class="seg" id="agent-filter" role="group" aria-label="Filter agents">
-          <button class="seg-btn" type="button" data-filter="active">Active<span class="cnt mono" data-cnt="active"></span></button>
-          <button class="seg-btn" type="button" data-filter="waiting">Waiting<span class="cnt mono" data-cnt="waiting"></span></button>
-          <button class="seg-btn" type="button" data-filter="historical">History<span class="cnt mono" data-cnt="historical"></span></button>
-          <button class="seg-btn is-on" type="button" data-filter="all">All<span class="cnt mono" data-cnt="all"></span></button>
-        </div>
-        <div id="agent-detail" class="agent-detail" hidden></div>
-        <div id="agent-list" class="agent-list" role="list"></div>
+        <p id="streams-status" class="stream-status" role="status">Connecting to the owning runner…</p>
+        <p class="stream-note" id="streams-note">Current workers only. Visible generated text comes from the read-only runner observer; recorded history is opt-in and never labeled live.</p>
+        <div id="streams-grid" class="streams-grid"></div>
       </section>
-
-      <section id="feed-card" class="card" aria-label="Live event feed">
-        <div class="card-head">
-          <span class="card-kicker">event feed <span class="count mono" id="feed-count"></span></span>
-        </div>
-        <div id="feed-new" class="feed-new" hidden>
-          <button id="feed-new-btn" class="btn btn-small" type="button">new events — jump</button>
-        </div>
-        <div id="feed" class="feed" role="log" aria-live="off" aria-label="Live event feed"></div>
-      </section>
-    </aside>
   </main>
 
   <footer id="foot">
-    <span>read-only observation of live reconstruction journals</span>
+    <span>read-only runner output · optional recorded history</span>
     <span class="mono dim" id="foot-meta"></span>
   </footer>
 </div>

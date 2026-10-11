@@ -1,10 +1,10 @@
 """Read-only discovery, tailing, and interpretation of omp session journals.
 
-Journals are append-only JSONL files under ``~/.omp/agent/sessions``.  This
-module only ever reads them.  Only record kinds that carry safe, structured
-signals are interpreted: tool intents, tool result statuses, session/model
-metadata, and exit records.  User prompts, system prompts, thinking content,
-raw tool arguments/outputs, and credentials are never extracted or emitted.
+Journals are read-only JSONL files under ``~/.omp/agent/sessions``. Visible
+assistant text, peer messages and tool activity are delivered separately from
+state summaries. Thinking, prompts, provider payloads and credential metadata
+are never extracted. Tool arguments are summarized rather than dumped; visible
+output has credential patterns redacted and bounded retention.
 
 States are derived strictly from recorded evidence:
 
@@ -25,6 +25,9 @@ from __future__ import annotations
 
 import json
 import os
+import re
+import threading
+import uuid
 from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,13 +40,44 @@ MAX_TARGET_CHARS = 160
 HEADER_PEEK_BYTES = 65536
 MAX_INITIAL_READ = 256 * 1024 * 1024
 MAX_TRACKED_CALLS = 4096
+STREAMS_PER_JOURNAL = 200
+MAX_STREAM_CHARS = 4000
+MAX_STREAM_BYTES_PER_JOURNAL = 128 * 1024
+TAIL_ANCHOR_BYTES = 256
+
+
+def _visible_text(value):
+    """Only call on visible text, never on reasoning or provider metadata."""
+    if not isinstance(value, str):
+        return ""
+    text = re.sub(
+        r"<(system(?:-reminder|-notice)?|developer|thinking|analysis|contextSnapshot)"
+        r"\b[^>]*>.*?</\1>", "[private context omitted]", value,
+        flags=re.I | re.S,
+    )
+    text = re.sub(r"-----BEGIN [^-]*PRIVATE KEY-----.*?"
+                  r"-----END [^-]*PRIVATE KEY-----", "[credential redacted]",
+                  text, flags=re.S)
+    text = re.sub(
+        r"(?i)(\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|"
+        r"client[_-]?secret|password|passwd|authorization|credential)"
+        r"[\"']?\s*[:=]\s*)(?:\"[^\"\n]*\"|'[^'\n]*'|[^\s,;]+)",
+        r"\1[redacted]", text,
+    )
+    text = re.sub(r"(?i)\b(Bearer|Basic)\s+[A-Za-z0-9+/_.=-]+",
+                  r"\1 [redacted]", text)
+    text = re.sub(r"\b(?:sk-[A-Za-z0-9_-]{16,}|gh[pousr]_[A-Za-z0-9_]{16,}|"
+                  r"github_pat_[A-Za-z0-9_]{16,}|AKIA[A-Z0-9]{16})\b",
+                  "[credential redacted]", text)
+    text = re.sub(r"(https?://)[^/\s:@]+:[^/\s@]+@", r"\1[redacted]@", text)
+    return text
 
 
 def _clean(value, limit):
     """Collapse whitespace and clamp; returns None for non-strings/empty."""
     if not isinstance(value, str):
         return None
-    text = " ".join(value.split())
+    text = " ".join(_visible_text(value).split())
     return text[:limit] or None
 
 
@@ -109,7 +143,7 @@ def _extract_correction(data, depth=0):
 class JournalTracker:
     """Incrementally derived, journal-backed state for one agent."""
 
-    def __init__(self, path, name, is_parent):
+    def __init__(self, path, name, is_parent, stream_sink=None):
         self.path = Path(path)
         self.name = name
         self.is_parent = is_parent
@@ -130,7 +164,37 @@ class JournalTracker:
         self.last_target_seq = None
         self.correction = None
         self._seq = 0
+        self._stream_seq = 0
         self.events = deque(maxlen=EVENTS_PER_JOURNAL)
+        self.stream = deque()
+        self.stream_bytes = 0
+        self.evicted_order = 0
+        self._stream_sink = stream_sink
+
+    def _add_stream(self, record, kind, text, suffix="", **fields):
+        text = _visible_text(text)
+        if not text:
+            return
+        self._stream_seq += 1
+        sid = self.session_id or self.path.stem
+        rid = record.get("id") or str(self._seq)
+        item = {
+            "id": f"{sid}:{rid}:{kind}:{suffix}", "agentId": sid,
+            "agent": self.name, "at": record.get("timestamp") or self.last_seen,
+            "sequence": self._stream_seq, "kind": kind, "role": None,
+            "tool": None, "callId": None, "intent": None, "isError": False,
+            "text": text[:MAX_STREAM_CHARS], "truncated": len(text) > MAX_STREAM_CHARS,
+        }
+        item.update(fields)
+        if self._stream_sink:
+            self._stream_sink(item)
+        self.stream.append(item)
+        self.stream_bytes += len(item["text"].encode("utf-8"))
+        while len(self.stream) > STREAMS_PER_JOURNAL \
+                or self.stream_bytes > MAX_STREAM_BYTES_PER_JOURNAL:
+            removed = self.stream.popleft()
+            self.evicted_order = removed.get("_order", 0)
+            self.stream_bytes -= len(removed["text"].encode("utf-8"))
 
     # ------------------------------------------------------------------
     # record application
@@ -175,9 +239,22 @@ class JournalTracker:
             self._apply_message(record)
         elif kind == "custom":
             self._apply_custom(record)
-        # All other kinds (thinking_level_change, mode_change, compaction,
-        # model_usage, credential_pin, custom_message, todo_*) carry no safe
-        # dashboard signal and are ignored.
+        elif kind == "custom_message" and record.get("display") is True:
+            if record.get("customType") == "irc:incoming":
+                details = record.get("details") or {}
+                if isinstance(details, dict):
+                    sender = _clean(details.get("from"), 80) or "peer"
+                    self._add_stream(record, "message", details.get("message"),
+                                     role="peer", sender=sender)
+            elif record.get("customType") == "async-result":
+                # The visible completion body is useful; wrapper system notice
+                # tags are removed, not interpreted as privileged instructions.
+                body = record.get("content")
+                if isinstance(body, str):
+                    body = re.sub(r"</?system-notice[^>]*>", "", body)
+                    self._add_stream(record, "tool_result", body, role="tool")
+        # Other record kinds, including compaction summaries, credential pins,
+        # developer messages and provider metadata, are intentionally ignored.
 
     def _apply_message(self, record):
         message = record.get("message")
@@ -199,8 +276,14 @@ class JournalTracker:
             content = message.get("content")
             if not isinstance(content, list):
                 return
-            for block in content:
-                if not isinstance(block, dict) or block.get("type") != "toolCall":
+            for index, block in enumerate(content):
+                if not isinstance(block, dict):
+                    continue
+                if block.get("type") == "text":
+                    self._add_stream(record, "message", block.get("text"),
+                                     suffix=str(index), role="assistant")
+                    continue
+                if block.get("type") != "toolCall":
                     continue
                 cid = block.get("id")
                 tool = _clean(block.get("name"), 60)
@@ -208,12 +291,19 @@ class JournalTracker:
                 args = args if isinstance(args, dict) else {}
                 intent = block.get("intent") or args.get("i")
                 intent = _clean(intent, MAX_INTENT_CHARS)
+                target = _clean(args.get("path"), 200)
+                text = f"{tool or 'tool'}: {intent or 'called'}"
+                if target:
+                    text += f"\nTarget: {target}"
+                self._add_stream(record, "tool_call", text, suffix=str(index),
+                                 role="assistant", tool=tool, callId=cid, intent=intent)
                 if tool and intent:
                     self.last_intent = intent
                 if cid and tool:
                     self.calls[cid] = {
                         "tool": tool,
                         "intent": intent,
+                        "target": target,
                         # type: string (or absent) is a terminal yield;
                         # type: array is an incremental section yield.
                         "yield_terminal": tool == "yield"
@@ -228,6 +318,21 @@ class JournalTracker:
             details = message.get("details")
             details = details if isinstance(details, dict) else {}
             call = self.calls.get(cid) or {}
+            content = message.get("content")
+            visible = "\n".join(
+                b.get("text", "") for b in content
+                if isinstance(b, dict) and b.get("type") == "text"
+                and isinstance(b.get("text"), str)
+            ) if isinstance(content, list) else ""
+            target = (call.get("target") or "").lower()
+            if any(s in target for s in (
+                    "history://", "skill://", "omp://", ".env", "credential",
+                    "secrets", "id_rsa", "id_ed25519")):
+                visible = "[private target output omitted]"
+            self._add_stream(record, "tool_result",
+                             visible or f"{tool or 'tool'} - {'error' if is_error else 'ok'}",
+                             role="tool", tool=tool, callId=cid,
+                             intent=call.get("intent"), isError=is_error)
             self.pending.pop(cid, None)
             if tool == "yield":
                 data = details.get("data")
@@ -291,12 +396,14 @@ class JournalTracker:
             return
         sid = self.session_id or self.path.stem
         self.events.append({
-            "id": f"{sid}:{rid}",
+            "id": f"{sid}:{rid}:{kind}",
             "agent": self.name,
             "at": at,
             "kind": kind,
             "text": _clean(text, MAX_INTENT_CHARS + 40) or kind,
         })
+        if kind in ("spawn", "exit"):
+            self._add_stream(record, "lifecycle", text)
 
     # ------------------------------------------------------------------
     # derivation
@@ -376,6 +483,13 @@ class JournalWatcher:
         self.offsets = {}
         self.buffers = {}
         self.headers = {}  # path -> (mtime_ns, size, info)
+        self.anchors = {}
+        self.identities = {}
+        self.lock = threading.RLock()
+        self.stream_epoch = uuid.uuid4().hex[:12]
+        self.stream_order = 0
+        self.rewrites = {}
+        self.parser_issues = {}
         self.parent_path = None
         self.parent_session_id = None
         self.warnings = {
@@ -537,6 +651,10 @@ class JournalWatcher:
     # tailing
     # ------------------------------------------------------------------
     def poll(self):
+        with self.lock:
+            self._poll()
+
+    def _poll(self):
         """Rescan discovery targets and incrementally ingest new records."""
         try:
             family = self._discover()
@@ -559,6 +677,10 @@ class JournalWatcher:
             self.trackers.pop(gone, None)
             self.offsets.pop(gone, None)
             self.buffers.pop(gone, None)
+            self.anchors.pop(gone, None)
+            self.identities.pop(gone, None)
+            self.parser_issues.pop(gone, None)
+            self.rewrites.pop(gone, None)
         if family:
             self.warnings.pop("initializing", None)
 
@@ -574,57 +696,86 @@ class JournalWatcher:
         stem = path.stem
         return (stem.rsplit(".", 1)[-1] if "." in stem else stem), False
 
+    def _stream_sink(self, item):
+        self.stream_order += 1
+        item["_order"] = self.stream_order
+
     def _sync(self, path):
         st = path.stat()
         size = st.st_size
-        if path not in self.trackers:
-            info = self._peek(path) or {}
-            name, is_parent = self._tracker_name(path, info)
-            self.trackers[path] = JournalTracker(path, name, is_parent)
-            self.offsets[path] = 0
-            self.buffers[path] = b""
-        tracker = self.trackers[path]
+        identity = (st.st_dev, st.st_ino)
         offset = self.offsets.get(path, 0)
-        if size < offset:
-            # Truncated or replaced on disk: start over honestly.
-            self.trackers[path] = JournalTracker(path, tracker.name, tracker.is_parent)
-            tracker = self.trackers[path]
-            offset = 0
-            self.buffers[path] = b""
-            self.warnings[f"truncated:{path.name}"] = (
-                f"journal {path.name}: truncated/replaced on disk; re-read from start"
-            )
-        if size == offset:
-            return
-        read_len = min(size - offset, MAX_INITIAL_READ)
+        rewrite = size < offset or (
+            path in self.identities and self.identities[path] != identity)
         with open(path, "rb") as handle:
+            anchor = self.anchors.get(path)
+            if offset and anchor and not rewrite:
+                handle.seek(offset - len(anchor))
+                rewrite = handle.read(len(anchor)) != anchor
+            if path not in self.trackers or rewrite:
+                info = self._peek(path) or {}
+                name, is_parent = self._tracker_name(path, info)
+                self.trackers[path] = JournalTracker(
+                    path, name, is_parent, stream_sink=self._stream_sink)
+                offset = 0
+                self.buffers[path] = b""
+                self.anchors.pop(path, None)
+                self.offsets[path] = 0
+                self.identities[path] = identity
+                self.parser_issues.pop(path, None)
+                self.warnings.pop(f"malformed:{path.name}", None)
+                if rewrite:
+                    self.stream_epoch = uuid.uuid4().hex[:12]
+                    self.rewrites[path] = self.rewrites.get(path, 0) + 1
+                    self.warnings[f"rewritten:{path.name}"] = (
+                        f"journal {path.name}: content changed at the saved tail "
+                        f"({self.rewrites[path]} rewrite(s)); safely re-read from start"
+                    )
+            tracker = self.trackers[path]
             handle.seek(offset)
-            chunk = handle.read(read_len)
-        if not chunk:
-            return
-        data = self.buffers.get(path, b"") + chunk
-        lines = data.split(b"\n")
-        self.buffers[path] = lines.pop()  # trailing partial record
-        malformed_before = tracker.malformed
-        for line in lines:
-            if not line.strip():
-                continue
-            try:
-                record = json.loads(line)
-            except ValueError:
-                tracker.malformed += 1
-                continue
-            tracker.apply(record)
-        self.offsets[path] = offset + len(chunk)
-        if tracker.malformed > malformed_before:
+            chunk = handle.read(min(max(0, size - offset), MAX_INITIAL_READ))
+            if not chunk:
+                return
+            buffered = self.buffers.get(path, b"")
+            data_start = offset - len(buffered)
+            lines = (buffered + chunk).split(b"\n")
+            self.buffers[path] = lines.pop()
+            line_offset = data_start
+            for line in lines:
+                if line.strip():
+                    try:
+                        record = json.loads(line)
+                        if not isinstance(record, dict):
+                            raise ValueError("record must be a JSON object")
+                    except (ValueError, UnicodeDecodeError) as exc:
+                        tracker.malformed += 1
+                        self.parser_issues[path] = {
+                            "journal": path.name, "byteOffset": line_offset,
+                            "bytes": len(line), "error": str(exc),
+                            "count": tracker.malformed,
+                        }
+                    else:
+                        tracker.apply(record)
+                line_offset += len(line) + 1
+            new_offset = offset + len(chunk)
+            self.anchors[path] = (self.anchors.get(path, b"") + chunk)[-TAIL_ANCHOR_BYTES:]
+        self.offsets[path] = new_offset
+        self.identities[path] = identity
+        issue = self.parser_issues.get(path)
+        if issue:
             self.warnings[f"malformed:{path.name}"] = (
-                f"journal {path.name}: {tracker.malformed} malformed record(s) skipped"
+                f"journal {path.name}: {issue['count']} invalid complete record(s); "
+                f"last at byte {issue['byteOffset']}: {issue['error']}"
             )
 
     # ------------------------------------------------------------------
     # snapshots
     # ------------------------------------------------------------------
     def snapshot(self):
+        with self.lock:
+            return self._snapshot()
+
+    def _snapshot(self):
         """Return (agents, events, warnings) derived from current journals."""
         now_dt = datetime.now(timezone.utc)
         agents = [t.agent_dict(now_dt) for t in self.trackers.values()]
@@ -635,6 +786,71 @@ class JournalWatcher:
         events.sort(key=lambda e: (e.get("at") or "", e.get("id") or ""))
         del events[:-MAX_EVENTS_GLOBAL]
         return agents, events, list(self.warnings.values())[:12]
+
+    def stream_metadata(self):
+        with self.lock:
+            return {
+                "revision": f"{self.stream_epoch}:{self.stream_order}",
+                "available": bool(self.trackers),
+                "retentionPerAgent": STREAMS_PER_JOURNAL,
+                "maxTextChars": MAX_STREAM_CHARS,
+                "maxBytesPerAgent": MAX_STREAM_BYTES_PER_JOURNAL,
+                "visibility": "assistant text, peer messages, tool summaries and visible output; "
+                              "no prompts, thinking or provider metadata",
+                "parserIssues": list(self.parser_issues.values()),
+                "journalRewrites": [
+                    {"journal": path.name, "count": count}
+                    for path, count in self.rewrites.items()
+                ],
+            }
+
+    def streams(self, agent=None, cursor=None, limit=300):
+        with self.lock:
+            # Historical transport is deliberately narrower than the internal
+            # status parser: tool output/peer assignments can contain private
+            # prompts or provider payloads. Only visible assistant text crosses.
+            items = [
+                item for tracker in self.trackers.values() for item in tracker.stream
+                if (agent is None or item["agentId"] == agent)
+                and item["kind"] == "message" and item.get("role") == "assistant"
+            ]
+            items.sort(key=lambda item: item["_order"])
+            reset = False
+            after = None
+            if cursor:
+                try:
+                    epoch, number = cursor.split(":")
+                    after = int(number)
+                    reset = epoch != self.stream_epoch or after > self.stream_order \
+                        or after < 0
+                    # Per-agent eviction can produce holes, not just prefix loss.
+                    reset = reset or any(
+                        tracker.evicted_order > after
+                        for tracker in self.trackers.values()
+                        if agent is None or (tracker.session_id or tracker.path.stem) == agent
+                    )
+                except (ValueError, AttributeError):
+                    reset = True
+            if after is None or reset:
+                items.sort(key=lambda item: (item["at"] or "", item["_order"]))
+                chosen = items[-limit:]
+                next_order = self.stream_order
+                has_more = False
+            else:
+                pending = [item for item in items if item["_order"] > after]
+                chosen = pending[:limit]
+                has_more = len(pending) > limit
+                next_order = chosen[-1]["_order"] if has_more else self.stream_order
+            return {
+                "cursor": f"{self.stream_epoch}:{next_order}", "reset": reset,
+                "hasMore": has_more, "retentionPerAgent": STREAMS_PER_JOURNAL,
+                "source": "recorded-history",
+                "items": [
+                    {**{k: v for k, v in item.items() if k != "_order"},
+                     "source": "recorded-history", "complete": True}
+                    for item in chosen
+                ],
+            }
 
     def session_label(self):
         if self.parent_path in self.trackers:

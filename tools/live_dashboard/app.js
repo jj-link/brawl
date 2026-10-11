@@ -1,6 +1,7 @@
 /* Brawl Decomp — Live Dashboard
  * Standalone frontend. No frameworks, no build step, no external assets.
- * Talks to the fixed contract: GET /api/state, GET /api/units, SSE GET /api/events (event: state).
+ * GET /api/state and /api/units preserve project progress; /api/events carries
+ * state snapshots, /api/live relays real runner text, /api/streams is opt-in history.
  * All dynamic content is rendered via textContent — agent names, paths and event text are never trusted as HTML.
  */
 'use strict';
@@ -123,12 +124,6 @@
     paused: false,
     motion: true,
     agents: [],
-    agentSig: '',
-    agentsFilter: 'all',
-    agentQuery: '',
-    selectedAgentKey: null,
-    events: [],
-    eventKeys: new Set(),
     units: [],
     unitsRevision: null,
     unitsById: new Map(),
@@ -136,7 +131,6 @@
   };
   let unitCardOpen = null;
 
-  const MAX_EVENTS = 400;
   const STATE_STALE_S = 30;
 
   // ------------------------------------------------------------------ network
@@ -214,8 +208,8 @@
     S.agents = Array.isArray(s.agents) ? s.agents : [];
     safe('renderHeader', () => renderHeader());
     safe('renderHero', () => renderHero());
-    safe('renderAgents', () => renderAgents());
-    safe('applyEvents', () => Feed.apply(Array.isArray(s.events) ? s.events : []));
+    safe('renderStreams', () => Streams.update());
+    safe('renderProvenance', () => renderProvenance());
     safe('renderWarnings', () => renderWarnings(s));
     safe('sparkline', () => Sparkline.update(s));
     if (s.unitsRevision && s.unitsRevision !== S.unitsRevision) refreshUnits();
@@ -246,6 +240,7 @@
       }
     });
     updateUnitsCounter();
+    safe('renderProvenance', () => renderProvenance());
     if (!firstLoad && newly.length) {
       safe('pulse', () => { Treemap.pulse(newly); RecentStrip.show(newly); });
     }
@@ -286,7 +281,8 @@
       const a = Math.max(0, Math.floor((now - rAt) / 1000));
       setText('report-age', fmtAge(a));
       rep.classList.toggle('is-old', a > 30 * 60);
-      rep.title = 'report updated ' + new Date(rAt).toLocaleString();
+      rep.title = 'Unit-map build report updated ' + new Date(rAt).toLocaleString() + '; accepted totals use ' +
+        ((S.state && S.state.progress && S.state.progress.source) || 'report') + '.';
     } else {
       setText('report-age', 'age unknown');
       rep.classList.add('is-old');
@@ -343,11 +339,14 @@
       return;
     }
     note.hidden = true;
-    countTo($('big-pct'), Number(p.percent) || 0, (v) => (Math.round(v * 100) / 100).toFixed(2));
+    countTo($('big-pct'), Number(p.percent) || 0, (v) => v.toFixed(p.precision === 6 ? 6 : 3));
     countTo($('c-accepted'), Number(p.acceptedBytes) || 0, fmtBytes);
     countTo($('c-total'), Number(p.totalBytes) || 0, fmtBytes);
     countTo($('c-remaining'), Number(p.remainingBytes) || 0, fmtBytes);
     setText('hero-total-label', fmtBytes(Number(p.totalBytes) || 0));
+    for (const [id, value] of [['c-accepted', p.acceptedBytes], ['c-total', p.totalBytes], ['c-remaining', p.remainingBytes]]) {
+      $(id).title = Number(value).toLocaleString() + ' bytes';
+    }
     const pct = Math.max(0, Math.min(100, Number(p.percent) || 0));
     $('meter-fill').style.width = pct.toFixed(2) + '%';
     $('meter').setAttribute('aria-valuenow', pct.toFixed(1));
@@ -358,8 +357,37 @@
     const p = S.state && S.state.progress;
     if (!p || !p.available) { setText('c-units', '—'); return; }
     const acc = p.acceptedUnits != null ? p.acceptedUnits : '—';
-    const tot = S.units.length ? S.units.length : '—';
-    setText('c-units', acc + ' / ' + tot);
+    const tot = p.source !== 'changelog' && S.units.length ? S.units.length : null;
+    setText('c-units', String(acc) + (tot != null ? ' / ' + tot : ' accepted'));
+  }
+
+  function renderProvenance() {
+    const s = S.state || {};
+    const p = s.progress || {};
+    const host = $('progress-provenance');
+    if (!p.available) { host.replaceChildren(); return; }
+    const source = p.source === 'changelog' ? 'Accepted checkpoint · CHANGELOG.md' : 'Build report progress';
+    const at = p.updatedAt ? new Date(p.updatedAt).toLocaleString() : 'timestamp unknown';
+    const exact = Number(p.acceptedBytes).toLocaleString() + ' / ' + Number(p.totalBytes).toLocaleString() +
+      ' bytes · ' + Number(p.percent).toFixed(p.precision === 6 ? 6 : 3) + '% · ' +
+      Number(p.remainingBytes).toLocaleString() + ' bytes remaining';
+    host.replaceChildren(
+      el('strong', { text: source }),
+      document.createTextNode(' · ' + at + (p.lastGood ? ' · last good checkpoint (see warnings)' : '')),
+      el('span', { class: 'checkpoint', text: exact }),
+      el('span', { class: 'checkpoint', text: [p.checkpointTitle, p.commit ? 'commit ' + p.commit : null].filter(Boolean).join(' · ') })
+    );
+    const u = s.unitsProvenance || {};
+    const reportAt = u.updatedAt || s.reportUpdatedAt;
+    const text = 'Unit map · ' + (u.source || 'build report') + ' · ' +
+      (reportAt ? new Date(reportAt).toLocaleString() : 'timestamp unknown') +
+      (u.acceptedUnits != null ? ' · ' + u.acceptedUnits + ' report-accepted units' : '') +
+      (u.acceptedBytes != null ? ' · ' + Number(u.acceptedBytes).toLocaleString() + ' report-accepted bytes' : '') +
+      (u.reason ? ' · ' + u.reason : '') +
+      (p.source === 'changelog' ? ' · Map is report-backed, not a per-unit view of the changelog checkpoint.' : '');
+    setText('map-provenance', text);
+    $('map-provenance').classList.toggle('is-old', !!u.stale);
+    $('pill-report').title = 'Unit-map report only; accepted totals use ' + (p.source || 'report') + '. ' + (reportAt || 'Timestamp unknown');
   }
 
   // ------------------------------------------------------------------ sparkline
@@ -1099,13 +1127,6 @@
     return String(raw).toLowerCase();
   }
 
-  function statePrio(raw) {
-    const s = stateOf(raw);
-    const order = ['working', 'blocked', 'waiting', 'completed', 'quiet', 'stopped', 'unknown'];
-    const i = order.indexOf(s);
-    return i === -1 ? 7 : i;
-  }
-
   function groupOf(raw) {
     const s = stateOf(raw);
     if (s === 'working' || s === 'blocked') return 'active';
@@ -1113,234 +1134,236 @@
     return 'historical';
   }
 
-  function stateBadge(raw) {
-    const s = stateOf(raw);
-    const cls = 'state-badge st-' + s.replace(/[^a-z0-9_-]/g, '');
-    return el('span', { class: cls }, el('i', { class: 'sdot', attrs: { 'aria-hidden': 'true' } }), el('span', { text: s }));
-  }
-
   const keyOf = (a) => String(a.id ?? a.name ?? '');
 
-  // correction is an int (attempts from latest yield's structured data) or null
-  function correctionText(c) {
-    if (typeof c === 'number') return 'correction: ' + c + (c === 1 ? ' attempt' : ' attempts');
-    return String(c);
-  }
+  // One simultaneously visible terminal per worker. Only the observer's
+  // allowlisted text updates are live; journal backfill is explicitly opted
+  // into and labeled. Retained DOM nodes keep selection and reading stable.
+  const Streams = (() => {
+    const panels = new Map();
+    const liveAgents = new Map();
+    const liveItems = new Map();
+    const historyItems = new Map();
+    let connected = false, source = null, historyRevision = null;
+    let historyBusy = false, pendingSnapshot = null, showHistory = false, retryTimer = null;
+    try { showHistory = localStorage.getItem('brawldash.streamHistory') === '1'; } catch (_) {}
 
-  function renderAgents() {
-    const agents = S.agents;
-    const counts = { active: 0, waiting: 0, historical: 0, all: agents.length };
-    for (const a of agents) counts[groupOf(a.state)]++;
-    for (const [k, v] of Object.entries(counts)) {
-      const n = document.querySelector('#agent-filter .cnt[data-cnt="' + k + '"]');
-      if (n) n.textContent = String(v);
+    function status() {
+      setText('streams-status', S.paused ? 'Paused — Resume reconnects to retained observer output.' :
+        connected ? 'Live observer connected · visible generated text, not journal polling' :
+          'Live observer disconnected — owning omp must load the bridge. No live text is being received.');
+      $('streams-status').classList.toggle('is-error', !connected && !S.paused);
     }
-    setText('agents-count', '· ' + agents.length);
 
-    const sig = JSON.stringify(agents.map((a) => [a.id, a.name, a.model, a.state, a.activity, a.target, a.correction, a.lastSeen]));
-    if (sig === S.agentSig) return;
-    S.agentSig = sig;
+    function createPanel(a) {
+      const key = keyOf(a);
+      const name = el('span', { class: 'stream-heading' });
+      const state = el('span', { class: 'stream-state' });
+      const identity = el('div', { class: 'stream-identity' });
+      const count = el('span', { class: 'stream-count' });
+      const log = el('div', { class: 'stream-log', attrs: {
+        role: 'log', 'aria-live': 'off', tabindex: '0',
+        'aria-label': String(a.name || a.id) + ' terminal output'
+      } });
+      const jump = el('button', { class: 'btn btn-small', type: 'button', text: 'Latest' });
+      jump.addEventListener('click', () => { log.scrollTop = log.scrollHeight; });
+      const node = el('section', { class: 'stream-panel', attrs: { 'data-agent': key } },
+        el('div', { class: 'stream-panel-head' }, name, state), identity,
+        el('div', { class: 'stream-toolbar' }, count, jump), log);
+      return { key, node, name, state, identity, count, log, rows: new Map(), agent: a };
+    }
 
-    const q = S.agentQuery.trim().toLowerCase();
-    const list = agents.filter((a) => {
-      if (S.agentsFilter !== 'all' && groupOf(a.state) !== S.agentsFilter) return false;
-      if (!q) return true;
-      return [a.name, a.model, a.state, a.activity, a.target, a.correction]
-        .some((v) => v != null && String(v).toLowerCase().includes(q));
-    });
-    list.sort((a, b) => statePrio(a.state) - statePrio(b.state) || tsOf(b.lastSeen) - tsOf(a.lastSeen));
+    function row(item, historical) {
+      const label = el('span');
+      const text = el('pre', { class: 'stream-text' });
+      const node = el('article', { class: 'stream-entry' + (historical ? ' stream-history' : ''),
+        attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id) } },
+        el('div', { class: 'stream-entry-head' }, label), text);
+      return { node, label, text };
+    }
 
-    const CAP = 300;
-    const nodes = [];
-    if (!list.length) {
-      nodes.push(el('div', { class: 'agent-empty', text: agents.length ? 'No agents match the current filter.' : 'No agents observed yet.' }));
-    } else {
-      for (const a of list.slice(0, CAP)) nodes.push(agentCard(a));
-      if (list.length > CAP) {
-        nodes.push(el('div', { class: 'agent-list-note', text: 'showing ' + CAP + ' of ' + list.length + ' — refine filter or search' }));
+    function renderPanel(panel) {
+      const a = panel.agent;
+      panel.name.textContent = String(a.name || a.id);
+      panel.state.textContent = stateOf(a.state) + (a.observed && !connected ? ' · last observed' : '');
+      panel.identity.textContent = [a.model, a.definition, a.target,
+        a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · ');
+      panel.identity.title = panel.key;
+      const live = Array.from(liveItems.values()).filter(x => String(x.agentId) === panel.key)
+        .sort((a, b) => tsOf(a.at) - tsOf(b.at) || Number(a.sequence) - Number(b.sequence));
+      const historical = showHistory ? (historyItems.get(panel.key) || []) : [];
+      const list = [...historical.map(item => ({ item, historical: true })),
+        ...live.map(item => ({ item, historical: false }))];
+      const log = panel.log;
+      const follow = log.scrollHeight - log.scrollTop - log.clientHeight < 35;
+      const oldTop = log.scrollTop;
+      const anchor = Array.from(log.children).find(n => n.offsetTop + n.offsetHeight > oldTop);
+      const anchorOffset = anchor ? anchor.offsetTop - oldTop : 0;
+      const keys = new Set();
+      let cursor = log.firstElementChild;
+      for (const { item, historical } of list) {
+        const key = (historical ? 'history:' : 'live:') + item.id;
+        keys.add(key);
+        let entry = panel.rows.get(key);
+        if (!entry) { entry = row(item, historical); panel.rows.set(key, entry); }
+        const label = historical ? 'Recorded history · completed message · ' + (item.at || '') :
+          'Live generated text · ' + (item.complete ? 'message complete' : 'generating…') +
+          (item.truncated ? ' · retained text limit reached' : '');
+        if (entry.label.textContent !== label) entry.label.textContent = label;
+        const text = String(item.text || '');
+        const oldText = entry.text.textContent;
+        if (oldText !== text) {
+          // Append to the existing text node whenever possible so a reader's
+          // selection is not replaced as a generating message grows.
+          if (entry.text.firstChild && text.startsWith(oldText)) entry.text.firstChild.appendData(text.slice(oldText.length));
+          else entry.text.textContent = text;
+        }
+        entry.node.dataset.complete = String(!!item.complete);
+        if (entry.node === cursor) cursor = cursor.nextElementSibling;
+        else log.insertBefore(entry.node, cursor);
       }
-    }
-    $('agent-list').replaceChildren(...nodes);
-    highlightSelected();
-    renderAgentDetail();
-  }
-
-  function agentCard(a) {
-    const key = keyOf(a);
-    const card = el('div', { class: 'agent', attrs: { 'data-agent': key, role: 'listitem', tabindex: '0' } });
-    card.append(el('div', { class: 'agent-top' },
-      stateBadge(a.state),
-      el('span', { class: 'agent-name', text: String(a.name || a.id || 'unknown') }),
-      a.model ? el('span', { class: 'agent-model', text: String(a.model) }) : null,
-      (() => { const t = el('span', { class: 'agent-lastseen' }); registerTime(t, a.lastSeen, 'seen '); return t; })()
-    ));
-    if (a.activity != null) card.append(el('div', { class: 'agent-activity', text: String(a.activity), attrs: { title: String(a.activity) } }));
-    if (a.target) {
-      card.append(el('div', { class: 'agent-target', attrs: { title: String(a.target) } },
-        el('b', { text: '▸ ' }), document.createTextNode(trunc(String(a.target), 64))
-      ));
-    }
-    if (a.correction != null && a.correction !== '') {
-      card.append(el('div', { class: 'agent-correction', text: correctionText(a.correction) }));
-    }
-    const open = () => selectAgentByKey(key);
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
-    return card;
-  }
-
-  function highlightSelected() {
-    document.querySelectorAll('#agent-list .agent').forEach((n) => {
-      n.classList.toggle('is-selected', n.dataset.agent === S.selectedAgentKey);
-    });
-  }
-
-  function selectAgentByKey(key) {
-    S.selectedAgentKey = key;
-    highlightSelected();
-    renderAgentDetail();
-  }
-
-  function clearSelectedAgent() {
-    S.selectedAgentKey = null;
-    highlightSelected();
-    renderAgentDetail();
-  }
-
-  function resolveSelected() {
-    const k = S.selectedAgentKey;
-    if (!k) return null;
-    let a = S.agents.find((x) => keyOf(x) === k);
-    if (!a && k.startsWith('__name:')) {
-      const n = k.slice(7);
-      a = S.agents.find((x) => String(x.name ?? '') === n) || { name: n };
-    }
-    return a;
-  }
-
-  function renderAgentDetail() {
-    const host = $('agent-detail');
-    const a = resolveSelected();
-    if (!a) { host.hidden = true; host.replaceChildren(); return; }
-    host.hidden = false;
-    const close = el('button', { class: 'unit-card-close', type: 'button', text: '×', attrs: { 'aria-label': 'Close agent details' } });
-    close.addEventListener('click', clearSelectedAgent);
-
-    const dl = el('dl', { class: 'ad-grid' });
-    const row = (dt, dd) => dl.append(el('dt', { text: dt }), dd);
-    if (a.model) row('model', el('dd', { text: String(a.model) }));
-    row('state', el('dd', {}, stateBadge(a.state)));
-    const seen = el('dd', {});
-    const seenT = el('span', {});
-    registerTime(seenT, a.lastSeen, '');
-    seen.append(seenT, document.createTextNode(a.lastSeen ? ' (' + new Date(a.lastSeen).toLocaleString() + ')' : ''));
-    row('last observed', seen);
-    if (a.activity != null) row('latest action', el('dd', { class: 'ad-activity', text: String(a.activity) }));
-    if (a.target) row('target', el('dd', { class: 'uc-path', text: String(a.target) }));
-    if (a.correction != null && a.correction !== '') row('correction', el('dd', { class: 'ad-correction', text: correctionText(a.correction) }));
-
-    const evWrap = el('div', { class: 'ad-events' });
-    evWrap.append(el('div', { class: 'ad-events-title', text: 'recent events' }));
-    const evs = S.events.filter((e) => e.agent != null && (e.agent === a.id || e.agent === a.name)).slice(0, 20);
-    if (!evs.length) evWrap.append(el('div', { class: 'ad-ev' }, el('span', { class: 'x dim', text: 'no events recorded for this agent yet' })));
-    for (const e of evs) {
-      const t = el('span', { class: 't' });
-      registerTime(t, e.at, '');
-      evWrap.append(el('div', { class: 'ad-ev' }, t, el('span', { class: 'x', text: (e.kind ? '[' + e.kind + '] ' : '') + (e.text != null ? String(e.text) : '') })));
-    }
-
-    host.replaceChildren(
-      el('div', { class: 'ad-head' }, el('span', { class: 'ad-name', text: String(a.name || a.id || 'agent') }), close),
-      dl,
-      evWrap
-    );
-  }
-
-  // ------------------------------------------------------------------ events feed
-
-  const Feed = (() => {
-    const feedEl = $('feed');
-    const newWrap = $('feed-new');
-    const nodeMap = new Map();
-    let unread = 0;
-
-    const evKey = (e) => String(e.agent ?? '') + '\u0000' + String(e.id ?? '');
-
-    function kindClass(k) {
-      return k ? ' k-' + String(k).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
-    }
-
-    function agentChip(name) {
-      const b = el('button', { class: 'ev-agent', type: 'button', text: trunc(String(name), 20), attrs: { title: String(name) } });
-      b.addEventListener('click', () => selectAgentByKey('__name:' + String(name)));
-      return b;
-    }
-
-    function evNode(e) {
-      const row = el('div', { class: 'ev' });
-      row.__evkey = evKey(e);
-      const t = el('span', { class: 'ev-time', attrs: { title: e.at || '' } });
-      registerTime(t, e.at, '');
-      row.append(t);
-      if (e.agent) row.append(agentChip(e.agent));
-      if (e.kind) row.append(el('span', { class: 'ev-kind' + kindClass(e.kind), text: String(e.kind) }));
-      if (e.text != null) row.append(el('span', { class: 'ev-text', text: String(e.text) }));
-      return row;
-    }
-
-    function apply(incoming) {
-      const fresh = [];
-      for (const e of incoming) {
-        if (!e || typeof e !== 'object') continue;
-        const k = evKey(e);
-        if (S.eventKeys.has(k) || nodeMap.has(k)) continue;
-        S.eventKeys.add(k);
-        fresh.push(e);
+      for (const [key, entry] of panel.rows) {
+        if (!keys.has(key)) { entry.node.remove(); panel.rows.delete(key); }
       }
-      if (!fresh.length) return;
-      fresh.sort((a, b) => tsOf(b.at) - tsOf(a.at) || evKey(b).localeCompare(evKey(a)));
-      S.events = fresh.concat(S.events);
-      if (S.events.length > MAX_EVENTS) {
-        S.events.length = MAX_EVENTS;
-        S.eventKeys = new Set(S.events.map(evKey));
-      }
-      setText('feed-count', '· ' + S.events.length);
+      if (!list.length) {
+        if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
+        panel.empty.textContent = connected ? 'No visible generated text observed for this worker yet.' :
+          'Waiting for the owning runner observer. Recorded history is available only through Show history.';
+        if (!panel.empty.isConnected) log.append(panel.empty);
+      } else panel.empty?.remove();
+      panel.count.textContent = live.length + ' live messages' +
+        (showHistory ? ' · ' + historical.length + ' recorded' : '');
+      if (follow) log.scrollTop = log.scrollHeight;
+      else log.scrollTop = anchor?.isConnected ? anchor.offsetTop - anchorOffset : oldTop;
+    }
 
-      const empty = feedEl.querySelector('.feed-empty');
-      if (empty) empty.remove();
+    function render() {
+      const merged = new Map(S.agents.filter(a => a.name !== 'main').map(a => [keyOf(a), a]));
+      for (const [key, a] of liveAgents) merged.set(key, { ...(merged.get(key) || {}), ...a });
+      const all = Array.from(merged.values());
+      const current = all.filter(a => groupOf(a.state) !== 'historical');
+      const visible = showHistory ? all : current;
+      // Identity ordering is stable when status/lastSeen changes.
+      visible.sort((a, b) => String(a.name || a.id).localeCompare(String(b.name || b.id)));
+      const keys = new Set(visible.map(keyOf));
+      for (const [key, panel] of panels) {
+        if (!keys.has(key)) { panel.node.remove(); panels.delete(key); }
+      }
+      for (const a of visible) {
+        const key = keyOf(a);
+        let panel = panels.get(key);
+        if (!panel) { panel = createPanel(a); panels.set(key, panel); $('streams-grid').append(panel.node); }
+        panel.agent = a;
+        renderPanel(panel);
+      }
+      setText('streams-count', '· ' + visible.length);
+      $('streams-history').setAttribute('aria-pressed', String(showHistory));
+      $('streams-history').textContent = showHistory ? 'Hide history' : 'Show history';
+      setText('streams-note', current.length + ' current workers · ' + (all.length - current.length) +
+        ' historical agents ' + (showHistory ? 'included. Recorded backfill is labeled separately; it is not live output.' :
+          'hidden. Show history explicitly opts into historical agents and completed-record backfill.') +
+        ' Each pane follows new text only while at its bottom; Latest resumes following. Prompts, hidden reasoning, tool payloads and provider metadata are not transported.');
+      status();
+    }
 
-      const frag = document.createDocumentFragment();
-      for (const e of fresh) {
-        const n = evNode(e);
-        nodeMap.set(n.__evkey, n);
-        frag.append(n);
-      }
-      feedEl.prepend(frag);
-      while (feedEl.children.length > MAX_EVENTS) {
-        const last = feedEl.lastElementChild;
-        if (!last) break;
-        nodeMap.delete(last.__evkey);
-        last.remove();
-      }
-      if (feedEl.scrollTop > 40) {
-        unread += fresh.length;
-        newWrap.hidden = false;
-        $('feed-new-btn').textContent = unread + ' new — jump';
+    function applySnapshot(data) {
+      if (S.paused) { pendingSnapshot = data; return; }
+      liveAgents.clear();
+      liveItems.clear();
+      for (const a of data.agents || []) liveAgents.set(String(a.id), a);
+      for (const item of data.items || []) liveItems.set(String(item.id), item);
+      render();
+    }
+
+    function connect() {
+      if (source || retryTimer || S.paused) return;
+      source = new EventSource('/api/live');
+      source.addEventListener('snapshot', event => {
+        try { connected = true; applySnapshot(JSON.parse(event.data)); status(); }
+        catch (e) { logErr('live snapshot', e); }
+      });
+      source.addEventListener('agent', event => {
+        if (S.paused) return;
+        try {
+          const a = JSON.parse(event.data);
+          liveAgents.set(String(a.id), a);
+          render();
+        } catch (e) { logErr('live agent', e); }
+      });
+      source.addEventListener('text', event => {
+        if (S.paused) return;
+        try {
+          const item = JSON.parse(event.data);
+          liveItems.set(String(item.id), item);
+          const panel = panels.get(String(item.agentId));
+          if (panel) renderPanel(panel);
+          else render();
+        } catch (e) { logErr('live text', e); }
+      });
+      source.addEventListener('evict', event => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.itemId) liveItems.delete(String(data.itemId));
+          else {
+            liveAgents.delete(String(data.agentId));
+            for (const [id, item] of liveItems) if (String(item.agentId) === String(data.agentId)) liveItems.delete(id);
+          }
+          render();
+        } catch (e) { logErr('live retention', e); }
+      });
+      source.addEventListener('error', () => {
+        connected = false;
+        status();
+        // HTTP 503 (bridge not loaded) closes EventSource permanently. Retry
+        // that case ourselves; established SSE reconnects use native retry.
+        if (source?.readyState === EventSource.CLOSED) {
+          source.close(); source = null;
+          retryTimer = setTimeout(() => { retryTimer = null; connect(); }, 3000);
+        }
+      });
+    }
+
+    async function loadHistory() {
+      if (!showHistory || historyBusy || S.paused || historyRevision === S.state?.streamRevision) return;
+      historyBusy = true;
+      const revision = S.state?.streamRevision;
+      try {
+        // Per-agent requests avoid a global limit starving less recent workers.
+        // Bounded batches, not hundreds of concurrent browser connections.
+        const agents = Array.from(panels.keys());
+        for (let i = 0; i < agents.length && showHistory && !S.paused; i += 4) {
+          await Promise.all(agents.slice(i, i + 4).map(async key => {
+            const result = await fetchJSON('/api/streams?agent=' + encodeURIComponent(key) + '&limit=200');
+            if (!showHistory || S.paused) return;
+            historyItems.set(key, (result.items || []).sort((a, b) => tsOf(a.at) - tsOf(b.at) || a.sequence - b.sequence));
+            const panel = panels.get(key);
+            if (panel) renderPanel(panel);
+          }));
+        }
+        if (showHistory && !S.paused) historyRevision = revision;
+      } catch (e) { logErr('recorded history', e); setText('streams-status', 'Recorded history unavailable: ' + e.message); }
+      finally { historyBusy = false; }
+    }
+
+    function update() {
+      if (S.paused) {
+        source?.close(); source = null; connected = false;
+        clearTimeout(retryTimer); retryTimer = null;
       } else {
-        feedEl.scrollTop = 0;
+        if (pendingSnapshot) { applySnapshot(pendingSnapshot); pendingSnapshot = null; }
+        connect();
       }
+      render();
+      loadHistory();
     }
 
-    function showEmpty() {
-      if (!feedEl.children.length) feedEl.append(el('div', { class: 'feed-empty', text: 'No events yet — waiting for the live feed…' }));
-    }
-
-    $('feed-new-btn').addEventListener('click', () => { feedEl.scrollTop = 0; unread = 0; newWrap.hidden = true; });
-    feedEl.addEventListener('scroll', () => {
-      if (feedEl.scrollTop < 10 && unread) { unread = 0; newWrap.hidden = true; }
+    $('streams-history').addEventListener('click', () => {
+      showHistory = !showHistory;
+      historyRevision = null;
+      try { localStorage.setItem('brawldash.streamHistory', showHistory ? '1' : '0'); } catch (_) {}
+      update();
     });
-
-    return { apply, showEmpty };
+    return { update };
   })();
 
   // ------------------------------------------------------------------ warnings
@@ -1373,6 +1396,7 @@
       if (pu) applyUnits(pu);
     }
     tickStatus();
+    Streams.update();
   }
 
   function setMotion(on) {
@@ -1393,23 +1417,9 @@
       ul.hidden = !ul.hidden;
       $('warnings-toggle').setAttribute('aria-expanded', String(!ul.hidden));
     });
-    $('agent-search').addEventListener('input', (e) => {
-      S.agentQuery = e.target.value || '';
-      S.agentSig = ''; // force re-render
-      renderAgents();
-    });
-    document.querySelectorAll('#agent-filter .seg-btn').forEach((b) => {
-      b.addEventListener('click', () => {
-        S.agentsFilter = b.dataset.filter || 'all';
-        document.querySelectorAll('#agent-filter .seg-btn').forEach((x) => x.classList.toggle('is-on', x === b));
-        S.agentSig = '';
-        renderAgents();
-      });
-    });
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return;
       if (!$('unit-card').hidden) { closeUnitCard(); return; }
-      if (!$('agent-detail').hidden) { clearSelectedAgent(); return; }
       Treemap.toRoot();
     });
   }
@@ -1424,7 +1434,7 @@
     bindControls();
     Treemap.init();
     Sparkline.init();
-    Feed.showEmpty();
+    Streams.update();
     connectSSE();
     refreshState();
     setInterval(() => { if (!S.sseOpen) refreshState(); }, 15000);
