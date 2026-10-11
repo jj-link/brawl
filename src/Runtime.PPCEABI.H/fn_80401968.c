@@ -14,7 +14,7 @@ extern const char lbl_80420488[];
 int fn_804035BC(void* buffer);
 int fn_804035B4(void* buffer);
 int fn_804035C4(void* buffer);
-void fn_80401C54(const char* text);
+int fn_80401C54(const char* text);
 
 static inline struct TRKMessageBuffer* get_message_buffer(int index) {
     struct TRKMessageBuffer* buffer = 0;

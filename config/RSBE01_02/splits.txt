@@ -803,8 +803,9 @@ Runtime.PPCEABI.H/fn_80401AAC.s:
 Runtime.PPCEABI.H/fn_80401AD0.c:
 	.text       start:0x80401AD0 end:0x80401B80
 
-Runtime.PPCEABI.H/fn_80401C54.s:
+Runtime.PPCEABI.H/fn_80401C54.c:
 	.text       start:0x80401C54 end:0x80401E1C
+	.data       start:0x804946F8 end:0x80494764
 
 Runtime.PPCEABI.H/fn_80401E1C.c:
 	.text       start:0x80401E1C end:0x80401E24
