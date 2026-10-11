@@ -2,6 +2,28 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction continuation — preserved helper handoffs and fresh Sol owners
+
+- Committed and pushed the preceding four-unit Luigi checkpoint in `dce06be`. Its owners observed agreement across the rendered summary, module/unit data, graph, and persisted history before closing publication.
+- Three separate 80-byte helper ranges reached one initial candidate plus ten measured Sol corrections without an exact match: main-energy helpers `0xB33C..0xB38C`, flag-two helpers `0xB4D4..0xB524`, and flag-four helpers `0xB5BC..0xB60C`. Each preserves its best 84-byte candidate, exact remaining differences, compiler recipes, and all measured attempts; none adds accepted source bytes.
+- Fresh `AstraLuigiMainEnergyHelpers`, `AstraLuigiFlagTwoHelpers`, and `AstraLuigiFlagFourHelpers` received the respective preserved packets and actual Sol counts. Each owns its separate Astra stage through matching acceptance or the existing ten-correction set-aside outcome.
+- Refilled seven completed Sol slots with the bounded assignments below. `SolLuigiFlagEightHelpers` retains the eighth slot and its existing separate 80-byte assignment.
+
+| Fresh Sol owner | Luigi function | Assigned text range | Code bytes |
+| --- | --- | --- | ---: |
+| `SolLuigiEnergyAccessorB424` | `fn_99_B424` | `0xB424..0xB43C` | 24 |
+| `SolLuigiFunctionECE8` | `fn_99_ECE8` | `0xECE8..0xED70` | 136 |
+| `SolLuigiFunctionED70` | `fn_99_ED70` | `0xED70..0xEDCC` | 92 |
+| `SolLuigiFunctionEDCC` | `fn_99_EDCC` | `0xEDCC..0xEE3C` | 112 |
+| `SolLuigiFunctionEE3C` | `fn_99_EE3C` | `0xEE3C..0xEECC` | 144 |
+| `SolLuigiFunctionEECC` | `fn_99_EECC` | `0xEECC..0xEF38` | 108 |
+| `SolLuigiFunctionEF38` | `fn_99_EF38` | `0xEF38..0xEFC4` | 140 |
+
+## Preserved set-aside — runtime context restoration
+
+- `fn_803F2948` remains original assembly after GLM, Sol, and Astra each completed one initial measurement and ten corrections: **33 reconstruction measurements and 30 corrections** total. The retained C draft is 20 bytes against 260 target bytes, has no aligned matching words, and does not implement complete context restoration. It receives zero accepted source credit.
+- All stages, best draft, recipes, source/object comparisons, and complete instruction differences remain preserved under `build/isolated-workers/AstraContextRestore/build/verification/`, including unchanged inherited Sol/GLM evidence. The owner verified all 140 inherited artifact hashes and exact retained assembly. Its 127 unchanged-baseline hash checks are not a new reconstructed-source result.
+
 ## Accepted reconstructions — Luigi main attribute and observer flags
 
 | Reconstruction | Added C++ code bytes | Added source units |
