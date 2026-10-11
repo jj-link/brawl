@@ -20,6 +20,7 @@ struct soLogAttackInfo {
 };
 
 class soArticle : public soNullable, public soEventPresenter<soArticleEventObserver> {
+public:
     // TODO
     virtual ~soArticle();
     virtual void remove() = 0;

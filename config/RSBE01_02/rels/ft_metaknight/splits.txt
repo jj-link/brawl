@@ -26,6 +26,9 @@ mo_fighter/ft_metaknight/ft_metaknight_embedded_destructor.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_controller_poll.cpp:
 	.text       start:0x00009798 end:0x000097F8
 
+mo_fighter/ft_metaknight/ft_metaknight_module_access.cpp:
+	.text       start:0x000097F8 end:0x00009884
+
 mo_fighter/ft_metaknight/ft_metaknight_controller_access.cpp:
 	.text       start:0x00009884 end:0x0000989C
 
@@ -62,6 +65,9 @@ mo_fighter/ft_metaknight/ft_metaknight_energy_activation.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_energy_update.cpp:
 	.text       start:0x0000A870 end:0x0000AB04
 
+mo_fighter/ft_metaknight/ft_metaknight_energy_event_dispatch.cpp:
+	.text       start:0x0000AB04 end:0x0000AC2C
+
 mo_fighter/ft_metaknight/ft_metaknight_energy_context.cpp:
 	.text       start:0x0000AE98 end:0x0000AEE8
 
@@ -94,6 +100,24 @@ mo_fighter/ft_metaknight/ft_metaknight_energy_event.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp:
 	.text       start:0x0000C3A4 end:0x0000C3B8
+
+mo_fighter/ft_metaknight/ft_metaknight_metadata.cpp:
+	.text       start:0x0000C41C end:0x0000C540
+
+mo_fighter/ft_metaknight/ft_metaknight_factory.cpp:
+	.text       start:0x0000C540 end:0x0000C5A8
+
+mo_fighter/ft_metaknight/ft_metaknight_secondary_adjustors.cpp:
+	.text       start:0x0000C5A8 end:0x0000C5C0
+
+mo_fighter/ft_metaknight/ft_metaknight_posture_tilt.cpp:
+	.text       start:0x0000C710 end:0x0000C820
+
+mo_fighter/ft_metaknight/ft_metaknight_posture_exit.cpp:
+	.text       start:0x0000C820 end:0x0000C8E4
+
+mo_fighter/ft_metaknight/ft_metaknight_null_callbacks.cpp:
+	.text       start:0x0000C8E4 end:0x0000C960
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000112A4 end:0x00011340
