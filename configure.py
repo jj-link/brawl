@@ -895,6 +895,12 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_nested_module_destructors.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_module_aggregate_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_input_null_singleton.cpp", cflags=cflags_fighter, extra_cflags=["-opt nodeadstore"]),
+            Object(Matching, "mo_fighter/ft_ness/ness_nullable_support_constructor.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_support_base_destructor.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_air_parameter_accessor.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_input_null_callbacks.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_support_value_accessors.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_parameter_table_getters.cpp", cflags=cflags_fighter),
         ],
     },
     {

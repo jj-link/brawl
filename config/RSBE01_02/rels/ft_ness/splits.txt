@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_ness/ness_support_base_destructor.cpp:
+	.text       start:0x00003B0C end:0x00003B4C
+
+mo_fighter/ft_ness/ness_nullable_support_constructor.cpp:
+	.text       start:0x00009210 end:0x00009224
+
+mo_fighter/ft_ness/ness_air_parameter_accessor.cpp:
+	.text       start:0x0000B640 end:0x0000B650
+
 mo_fighter/ft_ness/ness_angle_helper.cpp:
 	.text       start:0x0000BD7C end:0x0000BDA0
 
@@ -96,6 +105,15 @@ mo_fighter/ft_ness/ness_input_null_singleton.cpp:
 
 mo_fighter/ft_ness/wn_weapon_deleting_destructors.cpp:
 	.text       start:0x00015D6C end:0x00015DEC
+
+mo_fighter/ft_ness/ness_support_value_accessors.cpp:
+	.text       start:0x00016104 end:0x00016174
+
+mo_fighter/ft_ness/ness_input_null_callbacks.cpp:
+	.text       start:0x00016174 end:0x00016200
+
+mo_fighter/ft_ness/ness_parameter_table_getters.cpp:
+	.text       start:0x00016200 end:0x00016258
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00024B28 end:0x00024BC4
