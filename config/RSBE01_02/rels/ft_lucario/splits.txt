@@ -50,6 +50,30 @@ mo_fighter/ft_lucario/ft_lucario_storage_member_destructors.cpp:
 mo_fighter/ft_lucario/ft_lucario_guarded_storage_destructors.cpp:
 	.text       start:0x00003C0C end:0x00003E2C
 
+mo_fighter/ft_lucario/ft_lucario_composite_storage_wrappers.cpp:
+	.text       start:0x00003E2C end:0x0000403C
+
+mo_fighter/ft_lucario/ft_lucario_storage_base_destructors.cpp:
+	.text       start:0x0000403C end:0x0000420C
+
+mo_fighter/ft_lucario/ft_lucario_component_storage_destructors.cpp:
+	.text       start:0x0000420C end:0x000043F4
+
+mo_fighter/ft_lucario/ft_lucario_model_resource_storage.cpp:
+	.text       start:0x000043F4 end:0x00004614
+
+mo_fighter/ft_lucario/ft_lucario_event_storage_destructors.cpp:
+	.text       start:0x00004614 end:0x0000481C
+
+mo_fighter/ft_lucario/ft_lucario_nested_lifetime_wrappers.cpp:
+	.text       start:0x0000481C end:0x00004A0C
+
+mo_fighter/ft_lucario/ft_lucario_composite_storage_hierarchy.cpp:
+	.text       start:0x00004A0C end:0x00004DD8
+
+mo_fighter/ft_lucario/ft_lucario_component_lifetime_destructors.cpp:
+	.text       start:0x00004DD8 end:0x00004F70
+
 mo_fighter/ft_lucario/ft_lucario_member_initializers.cpp:
 	.text       start:0x0001180C end:0x0001185C
 
