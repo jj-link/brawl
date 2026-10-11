@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Marth general-work accessors
+
+- Registered the bounded `ft_marth_general_work.cpp` group at text `0x8218..0x83D8`: **448 additional C++ code bytes** across twenty-one exports, after the initial candidate and seven Sol corrections.
+- The owner verified all **112 instruction words**, relocations, and actual source linkage. The remaining main-object text and all original data retain their ownership; the adjacent aggregate group remains original until its separate completion.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.400166% complete** — **221,696 / 15,833,556 accepted code bytes**, with **15,611,860 code bytes remaining** and **516 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — enemy value accessor
 
 - Registered `sora_enemy/em_external_value_accesser.cpp` as matching: **916 additional C++ code bytes**, after the initial candidate and five Sol corrections.

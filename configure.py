@@ -662,6 +662,9 @@ config.libs = [
         "host": False,
         "objects": [
             Object(NonMatching, "mo_fighter/ft_marth/ft_marth.cpp"),
+            Object(Matching, "mo_fighter/ft_marth/ft_marth_general_work.cpp",
+                   cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
+                   extra_cflags=["-schedule off"]),
             Object(Matching, "mo_fighter/ft_marth/ft_marth_status_uniq_process_special_s.cpp", mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(NonMatching, "mo_fighter/ft_marth/ft_marth_status_uniq_process_special_hi.cpp"),
             Object(NonMatching, "mo_fighter/ft_marth/ft_marth_status_uniq_process_special_lw.cpp"),
