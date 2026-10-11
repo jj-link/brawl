@@ -2,6 +2,34 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — storage control and article lifetimes
+
+| Reconstruction group | Added C++ code bytes | New source units |
+| --- | ---: | ---: |
+| Pikachu storage control, collision references, and forwarding | 2,084 | 14 |
+| Luigi callback adjustments and global initialization | 420 | 6 |
+| Peach base cleanup chain | 2,464 | 21 |
+| Meta Knight observers, fighter adjustments, and kinetic access | 1,504 | 8 |
+| Mario third-article lifetimes, initialization, and effects | 3,536 | 11 |
+
+- The owners verified exact registered allocated-section bytes and relocations and actual compiled-source linkage. The Mario owner verified the combined committed snapshot `bb0af04` with **127 passing binary hashes**, no regressions among the **793 previously accepted source units**, and **853 accepted source units** in the final report.
+- These groups add **10,008 code bytes** across **60 new source units**. The total includes a 116-byte expansion of the existing Meta Knight general-work unit, not an additional new unit. Luigi's owned constructor and BSS storage is excluded from code-byte progress.
+- Cumulative accepted-source accounting is **2.015896%** — **319,188 / 15,833,556 code bytes**, with **15,514,368 bytes remaining**. Later private reconstructions remain excluded. Gameplay was not exercised.
+- Correction histories remain preserved, including Meta Knight observer registration's three compiler-rejected candidates within its ten corrections. Mario's eleven units used eleven initial candidates and three corrections; final publication verification added no reconstruction corrections.
+
+### Preserved unmatched handoffs
+
+The following units remain original-linked after Sol initial-plus-ten and Astra initial-plus-ten measured correction loops. Their drafts and histories are retained; none contributes accepted source bytes.
+
+| Unit | Target code bytes | Preserved draft code bytes |
+| --- | ---: | ---: |
+| Luigi observer signals, `0xB784..0xB880` | 252 | 256 |
+| Lucario transition/posture constructors, `0x72EC..0x73F8` | 268 | 272 |
+| Pikachu article capacity, `0x18CA8..0x18E2C` | 388 | 408 |
+| Pikachu article factory, `0x185A8..0x188A8` | 768 | 816 |
+
+Each Astra stage recorded eleven successful candidate compilations. Lucario additionally preserves one compiler-rejected candidate; the other three recorded no candidate compiler failures. Unchanged restoration or registered-verification compilations are recorded separately. Each owner observed 127 passing restoration hashes on its recorded baseline; these confirm the original-linked build, not acceptance of the unmatched draft. The two Pikachu units' 68-byte data sections are not counted as reconstructed code.
+
 ## Accepted isolated reconstructions — article defaults and component storage
 
 | Reconstruction group | Added C++ code bytes | Source units |
