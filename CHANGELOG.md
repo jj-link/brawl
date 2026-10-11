@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_F9F4`
+
+- `SolLuigiFunctionF9F4` published its 92-byte reconstructed unit after exact registered-object and two-relocation comparison, compiled-source linkage and **127 passing DOL/REL hashes**. All 921 previously accepted units remain accepted.
+- Cumulative accepted-source progress is **2.086455%** — **330,360 / 15,833,556 code bytes**, with **15,503,196 bytes remaining** and **922 accepted source units**. This checkpoint adds **92 code bytes / 1 unit**.
+- Published report SHA-256: `7ed69ecded167e09898a3d98677c8c6ff9533a8534e21e5bec0bf4bafec9e6fb`. Rendered headline, exact counters, module/unit map and persisted history agreed before release to FB68. The owner removed 11,226 disposable generated files totaling 415,907,208 logical bytes, preserving its checkout, Git metadata, attempts, comparison/publication evidence and canonical originals.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_F868`
+
+- `SolLuigiFunctionF868` integrated its 96-byte reconstruction after an exact initial candidate with zero corrections, verified both relocations and compiled-source linkage, and passed **127 DOL/REL hashes** with all preceding accepted units retained.
+- Cumulative accepted-source progress is **2.085874%** — **330,268 / 15,833,556 code bytes**, with **15,503,288 bytes remaining** and **921 accepted source units**. This checkpoint adds **96 code bytes / 1 unit**.
+- Published report SHA-256: `fb00def6ce208afcd5e4440ec0cfa265c39b2a819dc562e493f56613f57c58f4`. Rendered headline, exact counters, module/unit map and persisted history agreed before release to F9F4. The owner removed 11,228 disposable generated files totaling 422,891,314 logical bytes, preserving 45 evidence files and its checkout/Git metadata; 2,281 protected checkout files and 129 canonical original files remained unchanged.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_F8C8`
 
 - `SolLuigiFunctionF8C8` published its 96-byte reconstruction after an exact initial match, compiled-source linkage, and **127 passing DOL/REL hashes**, retaining all preceding accepted units.
@@ -13,6 +25,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - `GlmLuigiGravityHelpers` returned the unmatched 56-byte `0xB1A4..0xB1DC` range with a best 60-byte candidate and its complete recorded history. Its record reports **28 measured trials, approximately 27 corrections**: 15 earlier measurements plus 13 continuation measurements. This exceeded the agreed ten-correction GLM limit; the actual history is retained, not reset or rewritten as ten.
 - Fresh `SolLuigiGravityHelpersHandoff` received the preserved workspace, sources, objects, recipes, comparisons, and count discrepancy for an existing Sol slot. Its Sol stage follows the unchanged initial-plus-ten-corrections rule. Original assembly remains active and the unmatched GLM stage adds zero accepted bytes.
 - Fresh `SolLuigiFunctionF9F4` received the separate 92-byte `0xF9F4..0xFA50` range in another completed Sol slot. Fresh `GlmLuigiFunctionF994` received the 96-byte `0xF994..0xF9F4` range in the vacated GLM slot; `GlmLuigiFunctionF510` continues its separate assignment.
+- After the Sol successor independently inherited 1,546 evidence/input files totaling 15,342,840 bytes, the GLM predecessor removed 10,842,509,855 logical bytes of private compiler/tool, generated-build and game-input copies. Its draft, best object, experiment history, recipes, source/configuration trees and Git metadata remain; the original 56-byte target also remains available in the canonical build and inherited evidence.
+- Post-cleanup checks passed all 127 binary hashes. The canonical original ISO retained its 8,511,160,320-byte size and SHA-256 `8c5973f26f7d9eb716cd79e92a2dd9c01d3bdcf4fdf4d38d006c133112feb7cf`; root toolchain samples and the canonical target object retained their recorded hashes. These are logical removed sizes, not a measured physical free-space gain.
 
 ## Four completed Sol slots refilled
 
@@ -24,6 +38,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 | `SolLuigiFunctionFABC` | `0xFABC..0xFB28` | 108 |
 | `SolLuigiFunctionFB28` | `0xFB28..0xFB68` | 64 |
 | `SolLuigiFunctionFB68` | `0xFB68..0xFBC8` | 96 |
+
+- After F8C8 completed its publication and cleanup, fresh `SolLuigiFunctionFBC8` replaced it with the separate 92-byte `0xFBC8..0xFC24` assignment.
 
 ## Verified reconstruction checkpoint — Luigi `fn_99_F928`
 
