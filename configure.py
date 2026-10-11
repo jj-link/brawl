@@ -633,6 +633,7 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_late_flag_callback.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_leaf_callbacks.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_input_destructors.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_late_leaf_accessors.cpp", cflags=cflags_fighter),
