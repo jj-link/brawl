@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_ness/ness_angle_helper.cpp:
+	.text       start:0x0000BD7C end:0x0000BDA0
+
 mo_fighter/ft_ness/ness_callback_constructor.cpp:
 	.text       start:0x0001150C end:0x0001151C
 
@@ -22,6 +25,44 @@ mo_fighter/ft_ness/ness_deleting_destructor.cpp:
 
 mo_fighter/ft_ness/ness_status_parameter_callback.cpp:
 	.text       start:0x000116AC end:0x00011720
+
+mo_fighter/ft_ness/ness_status_initializer.cpp:
+	.text       start:0x00011760 end:0x000117A8
+	.ctors      start:0x00000010 end:0x00000014
+
+mo_fighter/ft_ness/ness_special_entry_callbacks.cpp:
+	.text       start:0x000117A8 end:0x00011814
+
+mo_fighter/ft_ness/ness_special_exit_callbacks.cpp:
+	.text       start:0x00011C34 end:0x00011D20
+
+mo_fighter/ft_ness/ness_transition_initializer.cpp:
+	.text       start:0x00011D20 end:0x00011D78
+	.ctors      start:0x00000014 end:0x00000018
+
+mo_fighter/ft_ness/ness_transition_orientation.cpp:
+	.text       start:0x0001203C end:0x000120F4
+
+mo_fighter/ft_ness/ness_transition_reset.cpp:
+	.text       start:0x000129F0 end:0x00012B44
+
+mo_fighter/ft_ness/ness_transition_parameter.cpp:
+	.text       start:0x00012B44 end:0x00012C50
+	.ctors      start:0x00000018 end:0x0000001C
+
+mo_fighter/ft_ness/ness_air_energy_reset.cpp:
+	.text       start:0x00012C50 end:0x00012E5C
+	.ctors      start:0x0000001C end:0x00000020
+
+mo_fighter/ft_ness/ness_effect_sound_exit.cpp:
+	.text       start:0x0001304C end:0x000131A4
+
+mo_fighter/ft_ness/ness_following_process_initializer.cpp:
+	.text       start:0x000131A4 end:0x000131FC
+	.ctors      start:0x00000024 end:0x00000028
+
+mo_fighter/ft_ness/ness_support_deleting_destructors.cpp:
+	.text       start:0x0001571C end:0x000157DC
 
 mo_fighter/ft_ness/wn_weapon_accessors.cpp:
 	.text       start:0x00015C78 end:0x00015CE8
