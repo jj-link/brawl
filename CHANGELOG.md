@@ -2,6 +2,24 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — fighter interfaces and MetroTRK
+
+| Reconstruction group | Added C/C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Ness support lifecycle, input callbacks, and parameter access | 3,404 | 15 |
+| Lucario command and storage lifecycle | 7,360 | 14 |
+| Lucas module access, observer callbacks, and parameter lifecycle | 1,356 | 9 |
+| Meta Knight metadata and posture callbacks | 1,448 | 8 |
+| Luigi dispatch and lifecycle interfaces | 1,148 | 6 |
+| Peach class information and member lifecycle | 1,172 | 10 |
+| Mario mantle and article lifecycle | 10,124 | 25 |
+| MetroTRK serial-option handler | 204 | 1 |
+
+- The owners verified exact registered allocated-section bytes and relocations and actual C/C++ linker inputs. The serial-handler owner verified the exact combined publication snapshot with **127 passing binary hashes**, preserving all **777 previously accepted source units**.
+- The 204-byte serial handler matched after **GLM initial-plus-ten, Sol initial-plus-ten, and Astra initial-plus-two**. Its obsolete assembly source was replaced; the pre-existing untracked C draft was preserved byte-for-byte before the original owner resolved the publication collision. All 23 captured unrelated dirty or untracked files retained their contents and modes.
+- These groups add **26,216 code bytes** across **88 source units**. Cumulative accepted-source accounting is **1.921034%** — **304,168 / 15,833,556 code bytes**, with **15,529,388 bytes remaining** and **778 accepted source units**. Owned data and constructor storage are excluded from code-byte progress. Gameplay was not exercised.
+- Separately, Pikachu storage-position callbacks at `0x183FC..0x18494` (152 bytes) remain unmatched after Sol initial-plus-ten and Astra initial-plus-ten. Both stages completed eleven successful measured compilations with no compiler failures. The best preserved draft matches 36 of 38 instruction words and all text relocations; the original implementation remains linked. Its passing restoration hashes are not source acceptance, and this set-aside contributes zero accepted bytes.
+
 ## Accepted isolated reconstructions — fighter lifetimes and storage
 
 | Reconstruction group | Added C++ code bytes | Source units |
