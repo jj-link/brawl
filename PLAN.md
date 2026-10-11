@@ -49,7 +49,7 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | --- | ---: | --- |
 | GPT-6.1 Sol | 8 | Independent, nonoverlapping reconstruction assignments, continuing preserved drafts and evidence where available. |
 
-Sol is the starting model for the current pool; there is no reserved local-model handoff role. The parent handles compiler feedback, integration, binary verification, commits, and progress reporting. Existing Sol correction counts carry forward when work resumes.
+Sol is the starting model for the current pool; there is no reserved local-model handoff role. Reconstruction source edits belong to subagents. The parent remains the orchestrator, handling assignments, compiler feedback, integration, binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing Sol correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -66,8 +66,8 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At each model stage, allow one initial draft or continuation of the inherited draft, followed by at most ten correction attempts for GPT-6.1 Sol or three for Astra. If the candidate matches, proceed to integration and verification without further escalation.
 
-1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and ten correction attempts, hand the same function to Astra.
-2. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
+1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and ten correction attempts, hand the same function to a spawned Astra reconstruction subagent, not to the parent.
+2. If that Astra subagent cannot achieve a match within its initial continuation and three correction attempts, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
 

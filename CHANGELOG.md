@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Explicit reconstruction ownership
+
+- Clarified that reconstruction source edits belong to subagents. The parent handles orchestration, compiler feedback, integration, binary verification, commits, and progress reporting.
+- Sol handoffs now explicitly go to spawned Astra reconstruction subagents, preserving the same function, best draft, compiler settings, differences, and attempt history. The eight-Sol arrangement and correction allowances are unchanged.
+
 ## Accepted source reconstruction — rounding and debugger reads
 
 - Replaced assembly registrations with reconstructed C for decimal rounding (`fn_803F4710`, 416 bytes), debugger byte-array and u64 reads (`fn_80401358` and `fn_804013F0`, 384 bytes), and debugger word-array reads (`fn_80401268`, 240 bytes).
