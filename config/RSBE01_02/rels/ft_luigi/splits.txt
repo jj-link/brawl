@@ -11,6 +11,25 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_luigi/ft_luigi_leaf_destructors.cpp:
+	.text       start:0x000041E0 end:0x00004300
+
+mo_fighter/ft_luigi/ft_luigi_param_constructor.cpp:
+	.text       start:0x0000B8E4 end:0x0000B92C
+
+mo_fighter/ft_luigi/ft_luigi_class_info_lifecycle.cpp:
+	.text       start:0x0000B92C end:0x0000BA08
+
+mo_fighter/ft_luigi/ft_luigi_fighter_factory.cpp:
+	.text       start:0x0000BA08 end:0x0000BA70
+
+mo_fighter/ft_luigi/ft_luigi_interface_adjustments.cpp:
+	.text       start:0x0000BA70 end:0x0000BA90
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_reset_dispatch.cpp:
+	.text       start:0x0000BBD0 end:0x0000BD80
+	.data       start:0x000062E8 end:0x00006310
+
 mo_fighter/ft_luigi/ft_luigi_kinetic_charge_reset.cpp:
 	.text       start:0x0000BD80 end:0x0000BE98
 
