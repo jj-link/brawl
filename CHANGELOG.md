@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Marth array aggregate
+
+- Registered `ft_marth_array_aggregate.cpp` at text `0x83D8..0x8640`: **616 additional C++ code bytes** across four exports, after the initial candidate and four Sol corrections.
+- The owner verified all **154 instruction words**, four relocations, and source linkage. The adjacent general-work source, remaining original text, and all original data retain their ownership. The original const accessor's reference-to-temporary lifetime behavior is explicitly documented and preserved rather than changed.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.405420% complete** — **222,528 / 15,833,556 accepted code bytes**, with **15,611,028 code bytes remaining** and **519 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — debugger stop initializer
 
 - Registered `fn_80403B5C.c` and removed its superseded assembly: **24 additional C code bytes**. Recovered the earlier initial-plus-two Sol history and completed matching correction three without resetting it.
