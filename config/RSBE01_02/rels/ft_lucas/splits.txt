@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_lucas/ft_lucas_parameter_destructor_pair.cpp:
+	.text       start:0x0000C854 end:0x0000C914
+
+mo_fighter/ft_lucas/ft_lucas_observer_root_teardown.cpp:
+	.text       start:0x0000C914 end:0x0000C9A4
+
+mo_fighter/ft_lucas/ft_lucas_observer_registration.cpp:
+	.text       start:0x0000C9A4 end:0x0000CA04
+
 mo_fighter/ft_lucas/ft_lucas_callback_forwarding.cpp:
 	.text       start:0x0000CA04 end:0x0000CB68
 
