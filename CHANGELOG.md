@@ -2,6 +2,31 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Worker pool restored while historical cleanup continues
+
+- Committed and pushed the nine-unit verified checkpoint below in `33faa9b`.
+- After the preceding eight Sol owners and the main-dispatch GLM owner finished, their vacant reconstruction slots were refilled with fresh owners below. `GlmLuigiGravityHelpers`, `ResumeQwenDebugUnit`, and `ResumeQwenHexFormatter` retain their existing assignments and attempt histories: eight Sol, two GLM, and two Qwen reconstruction workers, separate from the two historical-cleanup workers.
+- Each new owner received one nonoverlapping function, the current verified baseline, the ten-correction stage rule, ownership through integration and verification, and the approved completion-cleanup requirements. Historical cleanup explicitly excludes these active workspaces.
+
+| Fresh owner | Luigi text range | Target code bytes |
+| --- | --- | ---: |
+| `SolLuigiFunctionF050` | `0xF050..0xF0DC` | 140 |
+| `SolLuigiFunctionF0DC` | `0xF0DC..0xF168` | 140 |
+| `SolLuigiFunctionF168` | `0xF168..0xF2E8` | 384 |
+| `SolLuigiFunctionF2E8` | `0xF2E8..0xF344` | 92 |
+| `SolLuigiFunctionF344` | `0xF344..0xF3A0` | 92 |
+| `SolLuigiFunctionF3A0` | `0xF3A0..0xF424` | 132 |
+| `SolLuigiFunctionF424` | `0xF424..0xF4B0` | 140 |
+| `SolLuigiFunctionF4B0` | `0xF4B0..0xF510` | 96 |
+| `GlmLuigiFunctionF510` | `0xF510..0xF588` | 120 |
+
+## Workspace cleanup — completion rule and completed current owners
+
+- Added the approved evidence-preserving cleanup step to the worker lifecycle and pushed it in `58e1ed5`. The plan now explicitly retains source/header/configuration trees and Git metadata in place.
+- The eight preceding Sol owners cleaned their completed workspaces after verification: **90,746 file entries / 4,100,628,922 logical bytes removed**. Their receipts verify retained drafts, attempts, target/best objects, recipes, comparison/hash/report evidence, and original inputs. These logical sizes include some shared hardlink entries and are not a claim of equivalent physical disk space reclaimed.
+- `GlmLuigiMainDispatch` initially exceeded the approved scope by removing its whole copied checkout. The same owner restored the source/header/configuration checkout and registration at its original path, including the nine preserved source drafts and registration changes. Its draft and matching evidence remain in `build/isolated-workers/GlmLuigiMainDispatch-evidence/`. The original worktree index/`ORIG_HEAD` metadata, timestamps, and a line-ending-only Pikachu-symbol difference were not recovered exactly; the corrected receipt records these limits.
+- `CleanupSolWorkspaces` and `CleanupOtherWorkspaces` continue the separate historical-workspace sweep, retaining active, blocked, uncertain, and dependent workspaces. Their final results are pending.
+
 ## Verified reconstruction checkpoint — Luigi dispatch and eight Sol units
 
 | Reconstruction | Added C++ code bytes | Added source units |
