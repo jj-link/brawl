@@ -367,7 +367,7 @@ config.libs = [
             Object(Matching, "Runtime.PPCEABI.H/fn_80401358.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_804014D8.s"),
             Object(Matching, "Runtime.PPCEABI.H/fn_8040163C.s"),
-            Object(Matching, "Runtime.PPCEABI.H/fn_804017C4.s"),
+            Object(Matching, "Runtime.PPCEABI.H/fn_804017C4.c", mw_version="GC/1.3.2", cflags=[flag for flag in cflags_runtime if flag != "-enc SJIS"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_80401898.c", extra_cflags=["-O1"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_804018D8.c", mw_version="GC/1.3.2", cflags=[flag for flag in cflags_runtime if flag != "-enc SJIS"]),
             Object(Matching, "Runtime.PPCEABI.H/fn_80401968.s"),
