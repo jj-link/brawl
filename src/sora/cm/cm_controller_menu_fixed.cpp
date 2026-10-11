@@ -3,6 +3,8 @@
 #include <gf/gf_camera_controller.h>
 #include <types.h>
 
+extern "C" void fn_80018778(gfCamera* camera);
+
 class cmMenuFixedController : public gfCameraController {
     bool unk8 : 1;
     float unkC;
@@ -34,7 +36,6 @@ void cmMenuFixedController::storeDefault() {
     unk8 = true;
 }
 
-// NONMATCHING
 void cmMenuFixedController::init() {
     gfCamera& cam = m_cameraManager->m_cameras[0];
     cam.unkCC = unkC;
@@ -42,10 +43,19 @@ void cmMenuFixedController::init() {
     cam.m_targetPos = unk10;
     cam.unkFA.m_mask |= 0x2;  // m_flag1
     cam.unkD0 = unk1C;
-    cam.m_rot.m_x = 0.0f;
-    cam.m_rot.m_y = 0.0f;
+    const Vec2f rotation(0.0f, 0.0f);
+    cam.m_rot.m_x = rotation.m_x;
+    cam.m_rot.m_y = rotation.m_y;
     cam.m_rot.m_z = 0.0f;
     cam.unkFA.m_mask |= 0x40; // m_rotate
 }
 
-// TODO: cmMenuFixedController::update
+void cmMenuFixedController::update(float) {
+    gfCameraManager* manager = m_cameraManager;
+    if (!unk8) {
+        storeDefault();
+    }
+    init();
+    manager->m_cameras[0].m_transformFlag.m_mask = 0xE1;
+    fn_80018778(&manager->m_cameras[0]);
+}

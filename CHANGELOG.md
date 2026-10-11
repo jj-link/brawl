@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — fixed menu camera controller
+
+- Registered `sora/cm/cm_controller_menu_fixed.cpp` as matching: **440 additional C++ code bytes** across four functions. Preserved the initial-plus-four Sol history and restored best correction two.
+- The owner verified all **110 instruction words**, **72 real owned data bytes**, and their relocations. Raw allocated-object comparison is not exact: the compiler also emits **27 bytes of identical existing weak base RTTI**, while the original includes **eight alignment-tail bytes**. Symbol-level comparison and final hashes verify the owned data, weak coalescing, and layout; objdiff's data score remains **30%**, not 100%.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.318870% complete** — **208,824 / 15,833,556 accepted code bytes**, with **15,624,732 code bytes remaining** and **509 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — vector rotation utility
 
 - Registered `sora/mt/mt_vector_old.cpp` as matching: **280 additional C++ code bytes**, after the initial candidate and two Sol corrections.
