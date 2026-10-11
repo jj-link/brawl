@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction workflow — one assignment per agent session
+
+- Updated `PLAN.md` to spawn a fresh agent for each bounded reconstruction assignment, retain that owner through verification or the agreed handoff, end the session at its terminal outcome, and fill the available worker slot with a fresh agent for the next assignment.
+- Reconciled model-handoff and next-target wording with that lifecycle. Worker counts, correction allowances, preserved progress, and escalation thresholds remain unchanged; no elapsed-time limit was added.
+- Documentation-only change. Reconstruction workers remain stopped and accepted reconstruction progress is unchanged.
+
 ## Live dashboard — observer activated and live delivery verified
 
 - The user's restart/resume loaded the observer into the owning root session `01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a`, resolving the preceding activation blocker. The dashboard reports the live observer connected.

@@ -24,6 +24,13 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
 - Maintain project work history and progress exclusively in the existing `CHANGELOG.md`.
 
+### Assignment lifecycle
+
+1. Spawn a fresh agent for one bounded reconstruction assignment.
+2. Keep that agent responsible for the assignment through integration and final verification or the agreed model handoff.
+3. End the agent's session after verified completion, a preserved model handoff, or the existing Astra set-aside outcome.
+4. Fill the available worker slot with a fresh agent for the next assignment, carrying forward relevant verified knowledge and preserved handoff artifacts.
+
 ### Hands-off orchestration
 
 - The parent must not write code or solve an agent’s assigned reconstruction problem.
@@ -68,7 +75,7 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
 | Qwen3.8-Flash-Next (Spark1) | 2 | Nonoverlapping reconstruction assignments, with the same ten-correction and shared-Sol-pool handoff rules as GLM. |
 
-The pool contains eight Sol workers, two GLM workers, and two Qwen workers. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
+The pool contains eight Sol worker slots, two GLM worker slots, and two Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -85,8 +92,8 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to GLM, Qwen, GPT-6.1 Sol, and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
 
-1. After GLM or Qwen completes ten correction attempts without a match, hand the same function to an available GPT-6.1 Sol worker in the eight-worker pool. Local-model history is optional, not a prerequisite for a Sol assignment.
-2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has local-model history.
+1. After GLM or Qwen completes ten correction attempts without a match, hand the same function to a fresh GPT-6.1 Sol agent in an available slot in the eight-worker pool. Local-model history is optional, not a prerequisite for a Sol assignment.
+2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a fresh Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has local-model history.
 3. After that Astra subagent completes ten correction attempts without a match, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
@@ -103,7 +110,7 @@ Setting a function aside does not discard its reconstruction or count it as comp
 4. The parent reviews the change and verification evidence for unexplained assumptions, unrelated edits, original game material, and regressions. The reconstruction owner reconciles its changes with the current main working branch and handles any merge conflicts or required re-verification; there is no separate integration worker.
 5. The parent commits accepted changes in small, independently reviewable units and pushes them to the user's `main`. Main-branch commits and pushes are sequential, but there is no shared-build queue or permission gate that halts other agents' reconstruction and verification.
 6. The parent records completed work, observed verification results, and progress measurements in `CHANGELOG.md`, not in this plan.
-7. Continue with related targets to reuse verified types and compiler knowledge; do not wait for an upstream pull request.
+7. Assign the next related target to a fresh agent in the available worker slot, passing on verified types and compiler knowledge.
 
 Where runtime behavior needs investigation and Dolphin is available, the reconstruction agent runs the rebuilt game and exercises the affected path. Record exactly what was exercised or that runtime verification was unavailable. Booting is not a replacement for matching checks; a build alone does not establish that a gameplay path was exercised.
 
