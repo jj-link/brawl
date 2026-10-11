@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Marth final-special
+
+- Registered `ft_marth_status_uniq_process_special_final.cpp` and its constants-only companion: **2,676 additional C++ code bytes**. Preserved initial-plus-ten Sol corrections and one separately recorded post-match ABI measurement.
+- The owner verified all **669 instruction words**, both registered objects' data and relocations, and actual source linkage. The approved readonly ownership migration preserves the neighboring interface's text, data, and remaining constants. The original final-special constructor-list entry is retained explicitly in the module configuration.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.391551% complete** — **220,332 / 15,833,556 accepted code bytes**, with **15,613,224 code bytes remaining** and **514 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Marth side-special
 
 - Registered `ft_marth_status_uniq_process_special_s.cpp` as matching: **3,780 additional C++ code bytes**. Preserved the initial-plus-ten Sol stage and four separately recorded integration measurements.

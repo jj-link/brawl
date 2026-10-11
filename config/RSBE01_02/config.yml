@@ -542,7 +542,7 @@ modules:
   hash: 4481da553b34f121d9aeec01565f4606a61c720b
   splits: config/RSBE01_02/rels/ft_marth/splits.txt
   symbols: config/RSBE01_02/rels/ft_marth/symbols.txt
-  force_active: [HomeBtnIcon, sideInitializer]
+  force_active: [HomeBtnIcon, sideInitializer, finalInitializer]
 - object: files/module/ft_gamewatch.rel
   hash: dbc1033e161ae04343a20f88b0825735f8ac49b8
   splits: config/RSBE01_02/rels/ft_gamewatch/splits.txt
