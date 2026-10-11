@@ -2,6 +2,20 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — fighter lifetimes and storage
+
+| Reconstruction group | Added C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Meta Knight energy and lifecycle helpers | 6,288 | 22 |
+| Lucas lifecycle and embedded interfaces | 5,592 | 17 |
+| Luigi kinetic controls, fall, and launch | 3,724 | 11 |
+| Peach vector and attribute helpers | 1,560 | 17 |
+| Pikachu owner and Vortex storage lifecycle | 4,104 | 15 |
+
+- The owners verified exact registered allocated-section bytes and relocations, actual C++ source linkage, and final binary hashes. The Pikachu owner verified the exact combined publication snapshot with **127 passing binary hashes**, retaining all **675 previously accepted source units** without regressions.
+- Original owners preserved their measured correction histories and resolved their own publication conflicts. The Pikachu reconciliation retained pre-existing symbol contents, executable file modes, and 21 captured unrelated user files. Later private reconstructions and unmatched drafts are excluded.
+- These groups add **21,268 code bytes** across **82 source units**. Cumulative accepted-source accounting is **1.755462%** — **277,952 / 15,833,556 code bytes**, with **15,555,604 bytes remaining** and **690 accepted source units**. Constructor, read-only-data, and BSS ownership changes are excluded from the code-byte delta. Gameplay was not exercised.
+
 ## Accepted isolated reconstructions — runtime parsing and fighter lifecycle
 
 | Reconstruction group | Added C/C++ code bytes | Source units |
