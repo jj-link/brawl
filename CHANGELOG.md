@@ -2,6 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — fighter helpers and kinetic setup
+
+| Reconstruction group | Added C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Mario mantle and adapter interfaces | 600 | 5 |
+| Ness callback and weapon lifecycle helpers | 208 | 3 |
+| Peach member, flag, and element accessors | 96 | 4 |
+| Lucario scalar callbacks and destructor | 244 | 3 |
+| Lucas array helpers, nested destructor, and parameter context | 724 | 4 |
+| Meta Knight array and leaf callbacks | 660 | 3 |
+| Luigi kinetic setup, vector constructor, and callbacks | 524 | 3 |
+
+- The owners verified registered C++ objects, exact allocated-section bytes and relocations, actual source linkage, and **127 passing final binary hashes**. The Luigi owner's final snapshot includes the six preceding accepted groups and reports no accepted-source regressions.
+- Preserved measured histories: Mario mantle leaves used one Sol correction, the Lucas nested destructor used two, and the Meta Knight leaf callbacks used one. The other units matched their initial candidates. The Meta Knight owner restored `configure.py`'s executable mode without changing its current content or registrations.
+- These groups add **3,056 code bytes** across **25 source units**. Cumulative accepted-source accounting is **1.552728%** — **245,852 / 15,833,556 code bytes**, with **15,587,704 bytes remaining** and **556 accepted source units**. Gameplay was not exercised.
+- Separately, Pikachu Vortex transform `fn_98_1B69C` (`0x1B69C..0x1B76C`, 208 code bytes) remains unmatched after Sol initial-plus-ten and Astra initial-plus-ten. Both measured histories and the best draft are preserved privately; the original implementation remains linked. This set-aside contributes **zero accepted bytes**.
+
 ## Accepted isolated reconstructions — Pikachu Vortex and Luigi special states
 
 | Source unit | Added C++ code bytes | Functions | Measured corrections after the initial draft |
