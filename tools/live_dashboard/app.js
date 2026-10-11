@@ -396,6 +396,9 @@
     const canvas = $('sparkline');
     const ctx = canvas.getContext('2d');
     let data = [];
+    let history = [];
+    let rangeHours = 0;
+    let windowStart = 0, windowEnd = 0;
     let sig = null;
     let hoverX = null;
 
@@ -403,14 +406,35 @@
       const h = s && Array.isArray(s.history) ? s.history : [];
       const last = h[h.length - 1];
       const nsig = h.length + ':' + (last ? last.at + '|' + last.acceptedBytes : '');
-      if (nsig === sig) return;
-      sig = nsig;
-      data = h
-        .map((p) => ({ t: tsOf(p.at), v: Number(p.acceptedBytes) || 0 }))
-        .filter((p) => p.t > 0)
-        .sort((a, b) => a.t - b.t);
+      if (nsig !== sig) {
+        sig = nsig;
+        history = h
+          .map((p) => ({ t: tsOf(p.at), v: Number(p.acceptedBytes) || 0 }))
+          .filter((p) => p.t > 0)
+          .sort((a, b) => a.t - b.t);
+      } else if (!rangeHours) return;
+      selectRange();
+    }
+
+    function selectRange() {
+      // Fixed ranges use the current clock; All preserves the full supplied history.
+      windowEnd = Date.now();
+      windowStart = windowEnd - rangeHours * 60 * 60 * 1000;
+      data = rangeHours ? history.filter(p => p.t >= windowStart && p.t <= windowEnd) : history;
+      canvas.setAttribute('aria-label', 'Accepted bytes history — ' + (rangeHours ? rangeHours + 'h' : 'All'));
       rangeLabel();
       draw();
+    }
+
+    for (const button of document.querySelectorAll('.spark-timescales button')) {
+      button.addEventListener('click', () => {
+        rangeHours = Number(button.dataset.hours);
+        hoverX = null;
+        for (const option of document.querySelectorAll('.spark-timescales button')) {
+          option.setAttribute('aria-pressed', String(option === button));
+        }
+        selectRange();
+      });
     }
 
     function rangeLabel() {
@@ -449,7 +473,7 @@
         ctx.fillStyle = 'rgba(111, 101, 85, 0.8)';
         ctx.font = '12px ' + SANS;
         ctx.textAlign = 'center';
-        ctx.fillText('no history yet', w / 2, h / 2);
+        ctx.fillText(rangeHours ? 'no history in this range' : 'no history yet', w / 2, h / 2);
         ctx.textAlign = 'left';
         return;
       }
@@ -457,7 +481,8 @@
       const vs = data.map((p) => p.v);
       let mn = Math.min(...vs), mx = Math.max(...vs);
       if (mx - mn < 1) { mx = mn + 1; }
-      const t0 = data[0].t, t1 = data[data.length - 1].t || t0 + 1;
+      const t0 = rangeHours ? windowStart : data[0].t;
+      const t1 = rangeHours ? windowEnd : data[data.length - 1].t;
       const X = (t) => padL + (t1 === t0 ? 0 : ((t - t0) / (t1 - t0)) * iw);
       const Y = (v) => padT + (1 - (v - mn) / (mx - mn)) * ih;
 
@@ -477,7 +502,7 @@
       ctx.textAlign = 'left';
 
       if (data.length === 1) {
-        const x = padL + iw / 2, y = Y(data[0].v);
+        const x = rangeHours ? X(data[0].t) : padL + iw / 2, y = Y(data[0].v);
         ctx.fillStyle = '#ffc464';
         ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
         return;

@@ -386,11 +386,14 @@ body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
 
 .spark-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
   gap: 10px;
   font-size: 11px;
 }
+
+.spark-timescales { display: flex; gap: 4px; margin-left: auto; }
 
 /* wrapper owns layout; canvas is absolutely sized so its pixel
    dimensions can never feed back into CSS layout (dpr-safe) */
