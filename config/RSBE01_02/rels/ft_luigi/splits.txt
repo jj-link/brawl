@@ -11,14 +11,50 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_luigi/ft_luigi_kinetic_charge_reset.cpp:
+	.text       start:0x0000BD80 end:0x0000BE98
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_brake_reset.cpp:
+	.text       start:0x0000BE98 end:0x0000BFB0
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_launch_reset.cpp:
+	.text       start:0x0000BFB0 end:0x0000C22C
+	.rodata     start:0x00000018 end:0x00000020
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_stop_reset.cpp:
+	.text       start:0x0000C22C end:0x0000C338
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_fall_reset.cpp:
+	.text       start:0x0000C338 end:0x0000C4C8
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_ground_reset.cpp:
+	.text       start:0x0000C4C8 end:0x0000C610
+
 mo_fighter/ft_luigi/ft_luigi_kinetic_vector.cpp:
 	.text       start:0x0000C610 end:0x0000C620
 
 mo_fighter/ft_luigi/ft_luigi_kinetic_reset.cpp:
 	.text       start:0x0000C620 end:0x0000C7A0
 
+mo_fighter/ft_luigi/ft_luigi_kinetic_gravity.cpp:
+	.text       start:0x0000C7A0 end:0x0000C850
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_stop_update.cpp:
+	.text       start:0x0000C850 end:0x0000C914
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_gravity_update.cpp:
+	.text       start:0x0000C914 end:0x0000CA84
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_control_update.cpp:
+	.text       start:0x0000CA84 end:0x0000CD44
+
 mo_fighter/ft_luigi/ft_luigi_status_uniq_process_callbacks.cpp:
 	.text       start:0x0000CD44 end:0x0000CDC0
+
+mo_fighter/ft_luigi/ft_luigi_status_process_singleton.cpp:
+	.text       start:0x0000CDC0 end:0x0000CE18
+	.ctors      start:0x00000004 end:0x00000008
+	.bss        start:0x000001C0 end:0x000001D0
 
 mo_fighter/ft_luigi/ft_luigi_status_uniq_process_special_s_ram.cpp:
 	.text       start:0x0000CE18 end:0x0000D184
