@@ -2,6 +2,16 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — serial handler initialization
+
+- Registered `fn_80401AAC.c` (`TRKInitializeSerialHandler`) and removed the superseded assembly: **36 additional C code bytes**, matched after the initial candidate and two Sol corrections.
+- The owner verified all **nine instruction words** and relocations, then passed **127 files OK** in the final linked check.
+- Source reconstruction is now **1.280319% complete** — **202,720 / 15,833,556 accepted code bytes**, with **15,630,836 code bytes remaining** and **500 accepted source units**. Gameplay was not exercised.
+
+## Preserved unmatched relocation utility
+
+- Set aside `sora/ut/ut_relocate.cpp` after actual initial-plus-ten Sol and Astra stages. Restored the inherited best source and retained all measured attempts. The candidate remains unmatched in instructions and data; the source, header, and `NonMatching` registration have no net changes, and no additional source bytes were accepted.
+
 ## Accepted source reconstruction — 64-bit integer formatter
 
 - Registered `longlong2str.c`: **672 additional C code bytes**, matched after the initial candidate and one Sol correction.
