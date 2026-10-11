@@ -1,0 +1,23 @@
+#include <sr/sr_common.h>
+#include <types.h>
+
+extern "C" {
+void* fn_27_D2AA4(void* member, s16 deleteFlag);
+void* fn_103_5C7C(void* base, s16 deleteFlag);
+
+void* fn_103_5C04(void* object, s16 deleteFlag) {
+    if (object != nullptr) {
+        s16 memberDeleteFlag = -1;
+        fn_27_D2AA4(static_cast<u8*>(object) + 0x154, memberDeleteFlag);
+        void* base = object;
+        if (base != nullptr) {
+            s16 baseDeleteFlag = 0;
+            fn_103_5C7C(base, baseDeleteFlag);
+        }
+        if (static_cast<s16>(deleteFlag) > 0) {
+            ::operator delete(object);
+        }
+    }
+    return object;
+}
+}
