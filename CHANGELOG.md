@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Current worker arrangement
+
+- Recorded the user-adjustable arrangement of two GLM workers, two Qwen workers, one GPT-6.1 Sol worker dedicated to local-model handoffs, and one GPT-6.1 Sol worker on independent reconstruction assignments.
+- Both Sol roles retain the same correction allowance and escalation to Astra. Handoffs retain the existing draft and comparison evidence.
+
 ## Reconstruction escalation policy
 
 - Documented the agreed escalation for an unmatched function: GLM or Qwen, then GPT-6.1 Sol, then Astra, then set aside if still unmatched.

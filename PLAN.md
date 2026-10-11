@@ -39,7 +39,20 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Begin with small, low-dependency objects or nearly matching implementations to establish the workflow; then prioritize shared types and helpers that unblock other work, followed by coherent subsystem groups.
 - Define each target's boundaries, original size, compiler settings, dependencies, matching requirements, and known blockers before implementation.
 - Use Brawl headers and related reverse-engineering work as evidence. Verify layouts and implementations against Brawl's binaries rather than assuming another project's code is interchangeable.
-- Organize independent targets for parallel work without overlapping edits. Keep worker assignments separate from this plan.
+- Organize independent targets for parallel work without overlapping edits. Keep per-function assignments and status separate from this plan.
+
+#### Current worker arrangement
+
+This is the current arrangement, not a permanent restriction; the user may change worker counts and models.
+
+| Model | Workers | Role |
+| --- | ---: | --- |
+| GLM | 2 | Independent local reconstruction assignments. |
+| Qwen | 2 | Independent local reconstruction assignments. |
+| GPT-6.1 Sol | 1 | Dedicated to functions handed off after local models exhaust their correction attempts; continue from preserved progress. |
+| GPT-6.1 Sol | 1 | Independent reconstruction assignments. |
+
+The independent Sol worker starts at the Sol stage of the escalation sequence. Either Sol worker hands an unresolved function to Astra after its allowed attempts.
 
 ### 3. Reconstruct and compare
 
@@ -56,7 +69,7 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At every model stage, allow one initial draft or continuation of the inherited draft, followed by at most three correction attempts. If the candidate matches, proceed to integration and verification without further escalation.
 
-1. Start with GLM or Qwen. If the code remains unmatched after that stage's correction attempts, hand the same function to GPT-6.1 Sol.
+1. For work starting with GLM or Qwen, if the code remains unmatched after that stage's correction attempts, hand the same function to the dedicated GPT-6.1 Sol escalation worker.
 2. If GPT-6.1 Sol cannot achieve a match within its initial attempt and three correction attempts, hand the same function to Astra.
 3. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
 
