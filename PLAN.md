@@ -49,25 +49,25 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | --- | ---: | --- |
 | GPT-6.1 Sol | 8 | Independent, nonoverlapping reconstruction assignments, continuing preserved drafts and evidence where available. |
 
-Sol is the starting model for the current pool; there is no reserved local-model handoff role. Reconstruction source edits belong to subagents. The parent remains the orchestrator, handling assignments, compiler feedback, integration, binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing Sol correction counts carry forward when work resumes.
+Sol is the starting model for the current pool; there is no reserved local-model handoff role. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. The parent handles assignments, progress-preserving handoffs, integration, independent verification of registered objects, final binary verification, commits, and progress reporting; it does not take over reconstruction edits. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
 1. Read the target assembly, relevant callers and callees, declarations, data references, and object boundaries.
 2. Implement a bounded C/C++ candidate in the repository's existing source and header structure.
-3. Compile with the project's compiler version and the settings appropriate to that object or library.
-4. Compare the candidate with the original using `objdiff`, including relevant data and relocations.
-5. Resolve differences using evidence about types, signedness, layouts, calling conventions, control flow, data placement, inlining, and compiler behavior.
-6. Resolve remaining mismatches using the escalation sequence below. Keep partial work explicitly identified and record concrete blockers and next actions separately from accepted work.
+3. The assigned subagent compiles its candidate with the project's compiler version and the settings appropriate to that object or library.
+4. The subagent compares the candidate with the original using the existing object-comparison tooling, including relevant data and relocations.
+5. The subagent uses the observed differences to revise and recompile within its allowance, preserving the best draft and each measured attempt. It does not wait for the parent to run this loop or author corrections.
+6. Return a matching candidate with its compiler recipe and comparison evidence for parent integration, or return the best unmatched draft and concrete remaining differences for escalation. Report any integration-owned data migration separately rather than claiming a complete object match.
 
 Do not change global compiler settings merely to improve one candidate's score. Investigate compiler-setting changes only when supported by binary and project evidence. Recheck affected objects when shared declarations or layouts change.
 
 #### Escalation for unmatched code
 
-At each model stage, allow one initial draft or continuation of the inherited draft, followed by at most ten correction attempts for GPT-6.1 Sol or three for Astra. If the candidate matches, proceed to integration and verification without further escalation.
+At each model stage, allow one initial draft or continuation of the inherited draft, followed by at most ten correction attempts for either GPT-6.1 Sol or Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. These are escalation allowances, not mandatory attempts: do not invent revisions merely to consume them. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches, proceed to integration and verification without further escalation.
 
 1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and ten correction attempts, hand the same function to a spawned Astra reconstruction subagent, not to the parent.
-2. If that Astra subagent cannot achieve a match within its initial continuation and three correction attempts, set the function aside for now.
+2. If that Astra subagent cannot achieve a match within its initial continuation and ten correction attempts, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
 

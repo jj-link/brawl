@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Autonomous worker correction loops
+
+- Assigned targeted compilation, object comparison, and source revision to reconstruction subagents, using the existing tooling without waiting for parent feedback after each attempt.
+- Kept assignments, spawned-model handoffs, integration, registered-object verification, final binary hashes, commits, and progress reporting with the parent.
+- Raised Astra's allowance to an initial continuation plus ten corrections, matching Sol. Existing counts and best drafts carry forward; changing the workflow does not reset them.
+- Updated both model-specific worker definitions. The current eight-Sol arrangement remains user-adjustable and unchanged.
+
 ## Accepted source reconstruction — decimal conversion
 
 - Replaced `fn_803F45AC` assembly with **356 code bytes of reconstructed C** after the spawned Astra subagent's first correction, continuing the preserved Sol initial attempt and ten corrections.
