@@ -62,10 +62,11 @@ This is the current arrangement, not a permanent restriction; the user may chang
 
 | Model | Workers | Role |
 | --- | ---: | --- |
-| GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM handoffs. |
+| GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM/Qwen handoffs. |
 | GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
+| Qwen3.8-Flash-Next (Spark1) | 2 | Nonoverlapping reconstruction assignments, with the same ten-correction and shared-Sol-pool handoff rules as GLM. |
 
-The pool contains eight Sol workers and two GLM workers. GLM is not a mandatory first stage: each Sol assignment may start fresh or inherit GLM progress. A GLM handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code. Existing correction counts carry forward when work resumes.
+The pool contains eight Sol workers, two GLM workers, and two Qwen workers. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff uses an available worker among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a spawned Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -80,10 +81,10 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 #### Escalation for unmatched code
 
-At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to GLM, GPT-6.1 Sol, and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
+At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to GLM, Qwen, GPT-6.1 Sol, and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
 
-1. After GLM completes ten correction attempts without a match, hand the same function to an available GPT-6.1 Sol worker in the eight-worker pool. GLM is optional history, not a prerequisite for a Sol assignment.
-2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has GLM history.
+1. After GLM or Qwen completes ten correction attempts without a match, hand the same function to an available GPT-6.1 Sol worker in the eight-worker pool. Local-model history is optional, not a prerequisite for a Sol assignment.
+2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has local-model history.
 3. After that Astra subagent completes ten correction attempts without a match, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.

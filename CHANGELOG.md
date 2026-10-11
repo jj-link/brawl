@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Added two Spark1 Qwen workers
+
+- Added two Qwen3.8-Flash-Next reconstruction workers alongside the eight Sol and two GLM workers. Spark1's existing model endpoint reports `Qwen3.8-Flash-Next`; the worker uses `spark1/Qwen3.8-Flash-Next`. No serving configuration was changed.
+- Applied the same rules as GLM: an initial attempt plus ten corrections unless matching sooner, preserved progress, and unmatched handoff to an available slot among the existing eight Sol workers. Neither local model is mandatory before Sol.
+- Kept same-agent completion, hands-off parent orchestration, and all acceptance gates unchanged. This arrangement change accepts no additional source bytes.
+
 ## Explicit hands-off orchestration
 
 - Added the approved prohibition on parent technical steering to `PLAN.md`: no implementation advice, compiler-tuning suggestions, diagnoses, proposed fixes, pseudocode, or correction instructions.
