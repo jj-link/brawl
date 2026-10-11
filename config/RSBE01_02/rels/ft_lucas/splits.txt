@@ -20,8 +20,14 @@ mo_fighter/ft_lucas/ft_lucas_array_aggregate_size.cpp:
 mo_fighter/ft_lucas/ft_lucas_array_aggregate_tuple.cpp:
 	.text       start:0x0000D014 end:0x0000D1C8
 
+mo_fighter/ft_lucas/ft_lucas_parameter_float.cpp:
+	.text       start:0x0000D1C8 end:0x0000D220
+
 mo_fighter/ft_lucas/ft_lucas_parameter_context.cpp:
 	.text       start:0x0000D220 end:0x0000D22C
+
+mo_fighter/ft_lucas/ft_lucas_parameter_int.cpp:
+	.text       start:0x0000D22C end:0x0000D288
 
 mo_fighter/ft_lucas/ft_lucas_nested_destructor.cpp:
 	.text       start:0x0000D288 end:0x0000D2E8

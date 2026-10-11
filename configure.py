@@ -662,6 +662,8 @@ config.libs = [
                    cflags=cflags_fighter,
                    extra_cflags=["-schedule off"]),
             Object(Matching, "mo_fighter/ft_lucas/ft_lucas_parameter_context.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucas/ft_lucas_parameter_float.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucas/ft_lucas_parameter_int.cpp", cflags=cflags_fighter),
         ],
     },
     {
