@@ -23,8 +23,74 @@ mo_fighter/ft_metaknight/ft_metaknight_param_lookup.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_embedded_destructor.cpp:
 	.text       start:0x00008D30 end:0x00008D90
 
+mo_fighter/ft_metaknight/ft_metaknight_controller_poll.cpp:
+	.text       start:0x00009798 end:0x000097F8
+
+mo_fighter/ft_metaknight/ft_metaknight_controller_access.cpp:
+	.text       start:0x00009884 end:0x0000989C
+
+mo_fighter/ft_metaknight/ft_metaknight_array_destructors.cpp:
+	.text       start:0x0000989C end:0x0000995C
+
+mo_fighter/ft_metaknight/ft_metaknight_initial_destructors.cpp:
+	.text       start:0x0000995C end:0x00009B3C
+
+mo_fighter/ft_metaknight/ft_metaknight_base_destructors.cpp:
+	.text       start:0x00009B3C end:0x00009E04
+
+mo_fighter/ft_metaknight/ft_metaknight_member_destructors.cpp:
+	.text       start:0x00009E04 end:0x0000A058
+
+mo_fighter/ft_metaknight/ft_metaknight_root_destructors.cpp:
+	.text       start:0x0000A058 end:0x0000A1F0
+
+mo_fighter/ft_metaknight/ft_metaknight_lower_destructors.cpp:
+	.text       start:0x0000A1F0 end:0x0000A4B8
+
+mo_fighter/ft_metaknight/ft_metaknight_nested_destructors.cpp:
+	.text       start:0x0000A4B8 end:0x0000A5EC
+
+mo_fighter/ft_metaknight/ft_metaknight_vector_state.cpp:
+	.text       start:0x0000A5EC end:0x0000A6EC
+
+mo_fighter/ft_metaknight/ft_metaknight_vector_access.cpp:
+	.text       start:0x0000A6EC end:0x0000A714
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_activation.cpp:
+	.text       start:0x0000A714 end:0x0000A870
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_update.cpp:
+	.text       start:0x0000A870 end:0x0000AB04
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_context.cpp:
+	.text       start:0x0000AE98 end:0x0000AEE8
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array.cpp:
+	.text       start:0x0000B0C8 end:0x0000B178
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_b360.cpp:
+	.text       start:0x0000B360 end:0x0000B410
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_b5f0.cpp:
+	.text       start:0x0000B5F0 end:0x0000B6A0
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_b88c.cpp:
+	.text       start:0x0000B88C end:0x0000B93C
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_bb28.cpp:
+	.text       start:0x0000BB28 end:0x0000BBD8
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_bdc4.cpp:
+	.text       start:0x0000BDC4 end:0x0000BE74
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_array_c060.cpp:
+	.text       start:0x0000C060 end:0x0000C110
+
 mo_fighter/ft_metaknight/ft_metaknight_event_access.cpp:
 	.text       start:0x0000C2FC end:0x0000C314
+
+mo_fighter/ft_metaknight/ft_metaknight_energy_event.cpp:
+	.text       start:0x0000C314 end:0x0000C3A4
 
 mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp:
 	.text       start:0x0000C3A4 end:0x0000C3B8
