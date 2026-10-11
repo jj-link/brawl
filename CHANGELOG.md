@@ -2,6 +2,27 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction continuation — fresh owners and preserved GLM handoff
+
+- Published the preceding fifteen reconstruction units and dashboard warning fix in `349a541`, pushed to `origin/main`. That verified checkpoint remains **323,508 / 15,833,556 code bytes**, **2.043180%**, **15,510,048 bytes remaining**, and **881 accepted source units**.
+- Refilled all eight completed Sol slots with fresh owners. Each receives one bounded saved reconstruction and retains its previous initial candidate, correction history, compiler recipe, and comparison evidence.
+
+| Owner | Assigned reconstruction | Code bytes | Preserved Sol corrections |
+| --- | --- | ---: | ---: |
+| `SolLuigiDynamicUpdate` | Luigi energy dynamic update | 208 | 2 |
+| `SolLuigiEventDispatch` | Luigi energy event dispatch | 296 | 0 |
+| `SolLuigiEnergyContext` | Luigi energy context | 80 | 0 |
+| `SolLuigiGravityDispatch` | Luigi kinetic gravity dispatch | 200 | 0 |
+| `SolLuigiGravityAttribute` | Luigi kinetic gravity attribute | 152 | 0 |
+| `SolNessKineticEntry` | Ness transition kinetic entry | 708 | 1 |
+| `SolNessAbsolute` | Ness absolute-value helper | 8 | 2 |
+| `SolNessSpecialCallback` | Ness special-main callback | 1,056 | 8 |
+
+- The two Ness helper/caller owners have separate source-file ownership and the later preserved matched caller revision. The callback's failed compile and metadata recomparison remain recorded alongside its correction history.
+- `ResumeGlmContextRestore` completed one initial measurement and ten measured GLM corrections for `fn_803F2948` without a match. Its best draft, recipes, per-attempt sources/comparisons, and handoff remain in `build/isolated-workers/ResumeGlmContextRestore/build/verification/`. It contributes zero accepted bytes and awaits a fresh owner in the next available slot of the eight-Sol pool.
+- Refilled that completed GLM slot with fresh owner `GlmLuigiMainDispatch`, assigned the saved 152-byte Luigi kinetic-main dispatcher at `0xB38C..0xB424`. Its prior matched Sol initial and zero corrections remain preserved; this is not an exhausted-Sol handoff.
+- These dispatches add no accepted source credit. Each owner remains responsible through its own integration and final verification.
+
 ## Dashboard — handled journal rewrites remain diagnostic
 
 - Removed successfully handled journal-rewrite notices from the warning banner. Automatic rereading, stream/cursor reset, rewrite counts, and visible history are preserved; genuine malformed-record and unreadable-file errors remain visible.
