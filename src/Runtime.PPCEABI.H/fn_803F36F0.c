@@ -6,10 +6,10 @@ struct DecimalRecord {
     u8 unused;
     s16 exponent;
     u8 count;
-    u8 digits[20];
+    u8 digits[36];
 };
 
-void fn_803F36F0(struct DecimalRecord* record, int unused, unsigned long long value) {
+void fn_803F36F0(struct DecimalRecord* record, unsigned long long value) {
     u8* right;
     u8* left;
     record->sign = 0;

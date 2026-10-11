@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — decimal conversion
+
+- Replaced `fn_803F45AC` assembly with **356 code bytes of reconstructed C** after the spawned Astra subagent's first correction, continuing the preserved Sol initial attempt and ten corrections.
+- The same subagent aligned `fn_803F36F0` with its natural output-pointer/unsigned-long-long ABI and 42-byte decimal record. Both registered objects match their original allocated bytes and relocations; the constructor's existing code remains unchanged.
+- The full linked check passed **127 files OK**. The regenerated report records **1.134906% complete** — **179,696 / 15,833,556 accepted source code bytes**, with **15,653,860 code bytes remaining**. Current-wave accepted C: **94 units, 131 functions, 18,996 code bytes**.
+
 ## Accepted source reconstruction — multiplication and interrupt notifications
 
 - Replaced assembly registrations with reconstructed C for decimal multiplication (`fn_803F37CC`, 648 bytes) and the six stepping/interrupt-notification functions in `fn_80403DA4` (1,024 bytes): **1,672 code bytes across two units and seven functions**.
