@@ -29,6 +29,57 @@ mo_fighter/ft_peach/ft_peach_vector_assign.cpp:
 mo_fighter/ft_peach/ft_peach_short_assign.cpp:
 	.text       start:0x0000C888 end:0x0000C894
 
+mo_fighter/ft_peach/ft_peach_short_copy.cpp:
+	.text       start:0x0000CF2C end:0x0000CF38
+
+mo_fighter/ft_peach/ft_peach_array_empty.cpp:
+	.text       start:0x0000B374 end:0x0000B3A8
+
+mo_fighter/ft_peach/ft_peach_member_leaves.cpp:
+	.text       start:0x0000B328 end:0x0000B348
+
+mo_fighter/ft_peach/ft_peach_member_arrays.cpp:
+	.text       start:0x0000B348 end:0x0000B374
+
+mo_fighter/ft_peach/ft_peach_vector_reset.cpp:
+	.text       start:0x0000C188 end:0x0000C220
+
+mo_fighter/ft_peach/ft_peach_vector_utilities.cpp:
+	.text       start:0x0000C238 end:0x0000C25C
+
+mo_fighter/ft_peach/ft_peach_vector_set.cpp:
+	.text       start:0x00009594 end:0x000095A4
+
+mo_fighter/ft_peach/ft_peach_vector_clear.cpp:
+	.text       start:0x0000C13C end:0x0000C174
+
+mo_fighter/ft_peach/ft_peach_attribute_update.cpp:
+	.text       start:0x0000C8AC end:0x0000C93C
+
+mo_fighter/ft_peach/ft_peach_attribute_secondary.cpp:
+	.text       start:0x0000C93C end:0x0000C944
+
+mo_fighter/ft_peach/ft_peach_attribute_propagate.cpp:
+	.text       start:0x0000C994 end:0x0000CA24
+
+mo_fighter/ft_peach/ft_peach_attribute_ca44.cpp:
+	.text       start:0x0000CA44 end:0x0000CAD4
+
+mo_fighter/ft_peach/ft_peach_attribute_caf4.cpp:
+	.text       start:0x0000CAF4 end:0x0000CB84
+
+mo_fighter/ft_peach/ft_peach_attribute_cbdc.cpp:
+	.text       start:0x0000CBDC end:0x0000CC6C
+
+mo_fighter/ft_peach/ft_peach_attribute_ccc4.cpp:
+	.text       start:0x0000CCC4 end:0x0000CD54
+
+mo_fighter/ft_peach/ft_peach_attribute_cdac.cpp:
+	.text       start:0x0000CDAC end:0x0000CE3C
+
+mo_fighter/ft_peach/ft_peach_attribute_ce94.cpp:
+	.text       start:0x0000CE94 end:0x0000CF24
+
 mo_fighter/ft_peach/ft_peach_array_aggregate.cpp:
 	.text       start:0x0000A2E4 end:0x0000A54C
 
