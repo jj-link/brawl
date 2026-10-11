@@ -8,9 +8,10 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 
 ## Scope
 
-- Use the user's fork as `origin`, `doldecomp/brawl` as the reference `upstream`, and `local-models` as the working branch. Preserve upstream history and the user's existing work.
-- Accept verified changes locally without waiting for upstream review. Pushes and upstream contributions require the user's instruction; inspect and verify upstream changes before incorporating them.
+- Use the user's fork as `origin`, `doldecomp/brawl` as the reference `upstream`, and `main` as the working and publication branch. Preserve upstream history and the user's existing work.
+- Commit and push accepted changes to the user's `main` without waiting for upstream review. Upstream contributions require a separate user instruction; inspect and verify upstream changes before incorporating them.
 - Use the project's existing source structure, headers, symbols, splits, compiler toolchain, and build infrastructure. Check provenance and license compatibility before importing external source.
+- Track the existing BrawlHeaders files directly under `include/lib/BrawlHeaders` in this repository, preserving accepted contents and license notices. Do not require a separate BrawlHeaders repository or submodule for a normal checkout.
 - Use native Windows tooling. Do not introduce Docker, move builds onto the Spark cluster, change cluster services or model-serving configuration, or build a model router, scheduler, inference client, or orchestration platform.
 - The user controls model selection and switching. Model changes do not alter the acceptance criteria.
 - Reconstruct C/C++, not assembly transcriptions. Do not count existing assembly, inline-assembly substitutions, stubs, or merely plausible implementations as completed C/C++ reconstruction.
@@ -99,7 +100,7 @@ Setting a function aside does not discard its reconstruction or count it as comp
 2. The subagent compares the registered source object with the original and confirms that the matching build actually includes it rather than retaining its original-code replacement.
 3. The subagent builds and verifies all expected DOL/REL hashes in its own build directory, including outputs affected by shared declarations, and returns the observed evidence with the verified baseline and exact changed paths.
 4. The parent reviews the change and verification evidence for unexplained assumptions, unrelated edits, original game material, and regressions. The reconstruction owner reconciles its changes with the current main working branch and handles any merge conflicts or required re-verification; there is no separate integration worker.
-5. The parent commits accepted changes in small, independently reviewable units. Main-branch commits are sequential, but there is no shared-build queue or permission gate that halts other agents' reconstruction and verification.
+5. The parent commits accepted changes in small, independently reviewable units and pushes them to the user's `main`. Main-branch commits and pushes are sequential, but there is no shared-build queue or permission gate that halts other agents' reconstruction and verification.
 6. The parent records completed work, observed verification results, and progress measurements in `CHANGELOG.md`, not in this plan.
 7. Continue with related targets to reuse verified types and compiler knowledge; do not wait for an upstream pull request.
 

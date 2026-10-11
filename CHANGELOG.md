@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Main branch and single-repository headers
+
+- Continued the existing `local-models` history on `main` without rewriting commits or discarding unfinished drafts. Accepted changes are now committed and pushed to the user's `main`; isolated reconstruction workers continue without a shared-build queue.
+- Replaced the BrawlHeaders submodule and its existing nested OpenRVL submodule with **1,206 ordinary tracked files** at their existing paths. Preserved accepted BrawlHeaders commit `7fbcfc41efb4f3bf9598b3e6cc33584241a232e8` and OpenRVL commit `5acdab3e30408226c422ce32492bac66802e6bf9` contents, including every existing notice and attribution.
+- The original header owner verified that all staged file modes and Git blob IDs match those accepted trees, working-file bytes are unchanged, and both an offline archive and a normal Git checkout materialize all 1,206 files correctly without fetching submodules. No gitlinks remain. Both original Git histories were preserved locally; private evidence and history bundles are not publication files.
+- Neither dependency supplied a repository-wide license file. Existing per-file notices, including the Sun fdlibm notice, remain unchanged; no blanket licensing or relicensing claim is made.
+- This changes repository packaging, not reconstructed code. Accepted-source progress remains **1.492981%** — **236,392 / 15,833,556 code bytes**, with **15,597,164 bytes remaining** and **522 accepted source units**. No game build or gameplay run was performed for this byte-preserving packaging change.
+
 ## Accepted source reconstruction — command interpreter
 
 - Registered `ac_cmd_interpreter.cpp`: **13,252 additional C++ code bytes** across all 49 original functions, with instruction bytes and relocation tuples exact. Preserved Sol initial-plus-ten and Astra initial-plus-ten histories; the registered candidate is the retained Astra tenth correction.
