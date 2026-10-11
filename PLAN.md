@@ -58,18 +58,20 @@ Sol is the starting model for the current pool; there is no reserved local-model
 3. The assigned subagent compiles its candidate with the project's compiler version and the settings appropriate to that object or library.
 4. The subagent compares the candidate with the original using the existing object-comparison tooling, including relevant data and relocations.
 5. The subagent uses the observed differences to revise and recompile within its allowance, preserving the best draft and each measured attempt. It does not wait for the parent to run this loop or author corrections.
-6. Return a matching candidate with its compiler recipe and comparison evidence for parent integration, or return the best unmatched draft and concrete remaining differences for escalation. Report any integration-owned data migration separately rather than claiming a complete object match.
+6. Return a matching candidate with its compiler recipe and comparison evidence for parent integration. Return an unmatched draft for escalation only after completing the stage's ten correction attempts. Report any integration-owned data migration separately rather than claiming a complete object match.
 
 Do not change global compiler settings merely to improve one candidate's score. Investigate compiler-setting changes only when supported by binary and project evidence. Recheck affected objects when shared declarations or layouts change.
 
 #### Escalation for unmatched code
 
-At each model stage, allow one initial draft or continuation of the inherited draft, followed by at most ten correction attempts for either GPT-6.1 Sol or Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. These are escalation allowances, not mandatory attempts: do not invent revisions merely to consume them. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches, proceed to integration and verification without further escalation.
+At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to both GPT-6.1 Sol and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
 
-1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and ten correction attempts, hand the same function to a spawned Astra reconstruction subagent, not to the parent.
-2. If that Astra subagent cannot achieve a match within its initial continuation and ten correction attempts, set the function aside for now.
+1. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a spawned Astra reconstruction subagent, not to the parent.
+2. After that Astra subagent completes ten correction attempts without a match, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
+
+The parent must not accept an unmatched stage as complete before its ten correction attempts. Actual tool or environment failures are reported as blocked work, not as a completed or exhausted stage. The user's stop instructions take precedence.
 
 Setting a function aside does not discard its reconstruction or count it as complete. Retain the draft and comparison evidence for future work; keep the original assembly in the build until a reconstructed source replacement meets the acceptance criteria.
 

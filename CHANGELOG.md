@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Corrected early-stop rule
+
+- Removed the unauthorized early-stop exception from `PLAN.md` and both reconstruction worker definitions. Sol and Astra must each continue until an exact match or ten correction attempts have been completed after the initial candidate; lack of further ideas does not end a stage.
+- Required the parent to reject premature unmatched handoffs. Actual tool/environment failures remain blocked work, not completed stages; user stop instructions take precedence.
+- Preserved actual attempt counts and drafts. Earlier stops below ten are not relabeled as exhausted attempts.
+
 ## Accepted source reconstruction — debugger memory transfers
 
 - Replaced `fn_80402630`, `fn_80402854`, and `fn_80402A70` assembly with **1,672 code bytes of reconstructed C**. The spawned Astra worker independently compiled and compared its fourth correction after the autonomous-loop change, preserving the prior ten Sol corrections.
