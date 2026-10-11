@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — MetroTRK runtime helper
+
+- Registered `fn_80404C58.c` and removed its superseded assembly: **244 additional C code bytes**. Preserved initial-plus-ten Sol and initial-plus-two Astra histories.
+- The owner verified all **61 instruction words** and **eight relocations** against the registered original object.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.283047% complete** — **203,152 / 15,833,556 accepted code bytes**, with **15,630,404 code bytes remaining** and **502 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — runtime dispatch
 
 - Registered `fn_80405520.c`: **188 additional C code bytes**, matched by the initial Sol candidate with no corrections. Removed only its superseded portion from the composite assembly source.
