@@ -41,6 +41,18 @@ mo_fighter/ft_luigi/ft_luigi_kinetic_gravity_dispatch.cpp:
 mo_fighter/ft_luigi/ft_luigi_kinetic_gravity_attribute.cpp:
 	.text       start:0x0000B2A4 end:0x0000B33C
 
+mo_fighter/ft_luigi/ft_luigi_kinetic_main_attribute.cpp:
+	.text       start:0x0000B43C end:0x0000B4D4
+
+mo_fighter/ft_luigi/ft_luigi_observer_flag_two.cpp:
+	.text       start:0x0000B524 end:0x0000B5BC
+
+mo_fighter/ft_luigi/ft_luigi_observer_flag_four.cpp:
+	.text       start:0x0000B60C end:0x0000B6A4
+
+mo_fighter/ft_luigi/ft_luigi_observer_flag_eight.cpp:
+	.text       start:0x0000B6F4 end:0x0000B784
+
 mo_fighter/ft_luigi/ft_luigi_global_initializer.cpp:
 	.text       start:0x0000B880 end:0x0000B8E4
 	.ctors      start:0x00000000 end:0x00000004

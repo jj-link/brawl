@@ -2,6 +2,26 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstructions — Luigi main attribute and observer flags
+
+| Reconstruction | Added C++ code bytes | Added source units |
+| --- | ---: | ---: |
+| Luigi kinetic main attribute | 152 | 1 |
+| Luigi observer flag two | 152 | 1 |
+| Luigi observer flag four | 152 | 1 |
+| Luigi observer flag eight | 144 | 1 |
+
+- The owners integrated their bounded source and registration changes. The coordinated `SolLuigiFlagEight` checkpoint verifies exact allocated bytes and relocations for all four units, complete compiled-source linkage, prior accepted work retained, and **127 passing DOL/REL hashes**. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.065032%** — **326,968 / 15,833,556 code bytes**, with **15,506,588 bytes remaining** and **894 accepted source units**. This checkpoint adds **600 code bytes across 4 units**.
+- The exact verified report published by `SolLuigiFlagEight` has SHA-256 `4eb29333c4f39103769a38b0852078276376c6c1470f0bfa96c5a61c13ceb096`.
+- Existing drafts and measured histories remain preserved. Flag two used one current recipe correction to restore its saved compiler settings; its cumulative Sol correction count is one. Flag four's recovered disk-capacity failures remain environmental failures, not reconstruction corrections.
+
+## Preserved escalation — runtime context restoration
+
+- `fn_803F2948` reached ten measured Sol corrections after the previous ten GLM corrections: one initial measurement and ten corrections at each stage, **22 reconstruction measurements** total. No exact or semantically complete C implementation was found; accepted-source delta remains zero.
+- Fresh `AstraContextRestore` received the best draft, complete recipes, all measured sources/objects/comparisons, full instruction differences, and inherited GLM evidence from `build/isolated-workers/SolContextRestoreHandoff/build/verification/`. Both preceding stages remain preserved; the Astra stage starts with its own ten-correction allowance.
+- Fresh `SolLuigiFlagEightHelpers` replaced the finished Sol owner, assigned only the unregistered 80-byte Luigi range `0xB6A4..0xB6F4`, with original symbols and known caller locations supplied.
+
 ## Reconstruction continuation — next Sol owners and GLM replacement
 
 - Refilled the eight completed Sol slots with fresh bounded owners. The runtime context-restoration handoff retains the completed GLM initial and ten corrections; its new Sol stage continues from the preserved draft and evidence.
