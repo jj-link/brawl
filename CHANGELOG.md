@@ -2,6 +2,44 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_F588` and `fn_99_F5C8`
+
+- `SolLuigiFunctionF588` published the verified union of its 64-byte reconstruction and `SolLuigiFunctionF5C8`'s 96-byte reconstruction. Both owners passed their private **127 DOL/REL hash checks**, and the combined checkpoint retains all preceding accepted units.
+- Cumulative accepted-source progress is **2.080341%** — **329,392 / 15,833,556 code bytes**, with **15,504,164 bytes remaining** and **913 accepted source units**. This checkpoint adds **160 code bytes / 2 units**.
+- Published report SHA-256: `295a2f5aeff9e11ff6c3fc6a3106ce72a8d5f0c0105d750cb95189a1b892cb7d`. The resumed F050 owner independently observed matching rendered headline, module/unit map, module totals, and persisted history after this changelog update.
+
+## Reconstruction continuation — refilling completed Sol slots
+
+- As owners completed verification, publication agreement, and cleanup, fresh owners received the following separate functions. The GLM and Qwen assignments continue independently; correction limits and handoff rules are unchanged.
+
+| Fresh Sol owner | Luigi text range | Target code bytes |
+| --- | --- | ---: |
+| `SolLuigiFunctionF588` | `0xF588..0xF5C8` | 64 |
+| `SolLuigiFunctionF5C8` | `0xF5C8..0xF628` | 96 |
+| `SolLuigiFunctionF628` | `0xF628..0xF69C` | 116 |
+| `SolLuigiFunctionF69C` | `0xF69C..0xF738` | 156 |
+| `SolLuigiFunctionF738` | `0xF738..0xF794` | 92 |
+| `SolLuigiFunctionF794` | `0xF794..0xF80C` | 120 |
+| `SolLuigiFunctionF80C` | `0xF80C..0xF868` | 92 |
+
+## Verified reconstruction checkpoint — Luigi `fn_99_F3A0` and `fn_99_F424`
+
+- `SolLuigiFunctionF424` published its independently verified superset containing the 132-byte `fn_99_F3A0` and 140-byte `fn_99_F424` reconstructions. Both matched allocated bytes and relocations on their initial candidates with zero corrections; the combined isolated build passed **127 DOL/REL hashes** and retained all preceding accepted units.
+- Cumulative accepted-source progress is **2.079331%** — **329,232 / 15,833,556 code bytes**, with **15,504,324 bytes remaining** and **911 accepted source units**. This checkpoint adds **272 code bytes / 2 units**; the eight-function Sol continuation adds **1,216 code bytes / 8 units** across its three checkpoints.
+- Published report SHA-256: `cc2774f98f93b3cec8cc9704dd1b3b40deb613db68e0e0c87c5933d354d4d312`. Its owners observed agreement across rendered headline, exact counters, module/unit data, and latest persisted history before completion cleanup.
+
+## Verified reconstruction checkpoint — five further Luigi functions
+
+- `SolLuigiFunctionF0DC` published its independently rebuilt and verified combined checkpoint containing `fn_99_F050`, `fn_99_F0DC`, `fn_99_F168`, `fn_99_F2E8`, and `fn_99_F344`, retaining the preceding accepted units. All five owners reported exact initial allocated-byte/relocation matches with zero corrections; the combined isolated build passed **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.077613%** — **328,960 / 15,833,556 code bytes**, with **15,504,596 bytes remaining** and **909 accepted source units**. This checkpoint adds **848 code bytes across 5 units** since the preceding F4B0 checkpoint.
+- Published report SHA-256: `3ebce6e0fbb88f1e886c0cb57b3697605e78ee0b94976dfdbcc220cacbc47242`. The owners observed agreement across rendered headline, exact counters, module/unit data, and persisted history before releasing report publication to the next owner.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_F4B0`
+
+- `SolLuigiFunctionF4B0` reconstructed and integrated the 96-byte `0xF4B0..0xF510` function. Its initial candidate matched all allocated code bytes and both relocations with zero corrections; its isolated final build passed all **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.072257%** — **328,112 / 15,833,556 code bytes**, with **15,505,444 bytes remaining** and **904 accepted source units**. This checkpoint adds **96 code bytes / 1 unit** and retains the preceding checkpoint.
+- The owner published report SHA-256 `7a883a3c36475f4eb1ea37af63348987e3c98d489ac3888ab9e5f05ac487a6b5`, observed agreement across rendered headline, exact counters, module/unit map and persisted history, then released report publication to the next owner.
+
 ## Worker pool restored while historical cleanup continues
 
 - Committed and pushed the nine-unit verified checkpoint below in `33faa9b`.
@@ -25,7 +63,9 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Added the approved evidence-preserving cleanup step to the worker lifecycle and pushed it in `58e1ed5`. The plan now explicitly retains source/header/configuration trees and Git metadata in place.
 - The eight preceding Sol owners cleaned their completed workspaces after verification: **90,746 file entries / 4,100,628,922 logical bytes removed**. Their receipts verify retained drafts, attempts, target/best objects, recipes, comparison/hash/report evidence, and original inputs. These logical sizes include some shared hardlink entries and are not a claim of equivalent physical disk space reclaimed.
 - `GlmLuigiMainDispatch` initially exceeded the approved scope by removing its whole copied checkout. The same owner restored the source/header/configuration checkout and registration at its original path, including the nine preserved source drafts and registration changes. Its draft and matching evidence remain in `build/isolated-workers/GlmLuigiMainDispatch-evidence/`. The original worktree index/`ORIG_HEAD` metadata, timestamps, and a line-ending-only Pikachu-symbol difference were not recovered exactly; the corrected receipt records these limits.
-- `CleanupSolWorkspaces` and `CleanupOtherWorkspaces` continue the separate historical-workspace sweep, retaining active, blocked, uncertain, and dependent workspaces. Their final results are pending.
+- `CleanupSolWorkspaces` finished the eligible historical Sol sweep: **15,701 files / 33,381,316,352 logical bytes removed from 32 workspaces**, including three independently stored, byte-identical ISO copies. It verified **425,663 retained files** and **335 canonical input/tool files** unchanged by identity and SHA-256; two eligible workspaces needed no removal.
+- Seven older Sol workspaces remain intact because later work or dependencies lack terminal closure: `SolLuigiWallIsolated`, `SolNessAccessorsIsolated`, `SolPikachuVortexIsolated`, `SolLucasWorkIsolated`, `SolMarioSideIsolated`, `SolMetaWorkIsolated`, and `SolPeachArrayIsolated`. Differing ISO content and shared canonical-file aliases were also preserved rather than treated as disposable duplicates.
+- `CleanupOtherWorkspaces` continues the separate non-Sol historical sweep. Current and newly spawned reconstruction workspaces remain excluded from both historical cleanup scopes.
 
 ## Verified reconstruction checkpoint — Luigi dispatch and eight Sol units
 
