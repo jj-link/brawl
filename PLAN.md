@@ -445,6 +445,23 @@ Three parallel agents own investigation AND implementation per PLAN.md "Subagent
 
 ## Source reconstruction checkpoint (2026-09-30)
 
+### Changelog progress accounting
+
+Every new accepted reconstruction entry must record the whole-project completion percentage and remaining code bytes, in addition to its unit delta. Use **accepted, source-linked C/C++ code**, not objdiff's aggregate matched/linked percentage: assembly registrations, assembly source overrides, mixed inline-assembly units, unregistered drafts, and partial/nonmatching units do not count as completed source reconstruction.
+
+The denominator is objdiff's target code-byte total across the main DOL and all 126 RELs for `RSBE01_02`, not ISO size, data bytes, or raw executable-section spans. `complete % = accepted source code bytes / total target code bytes × 100`; `remaining = total − accepted`. This is a conservative whole-unit acceptance metric; partially matched functions in incomplete units remain in the backlog. The separate “current-wave” totals below measure only this reconstruction wave, not whole-project completion.
+
+After the linked hash gate passes, regenerate and calculate:
+
+```sh
+ninja --quiet build/RSBE01_02/report.json
+python tools/reconstruction_progress.py build/RSBE01_02/report.json
+```
+
+The calculator follows each report unit's resolved `source_path` and `complete` flag, excludes assembly-backed sources, and conservatively excludes C/C++ translation units containing explicit inline assembly. Copy its percentage, accepted/total bytes, and remaining bytes into the accepted entry; retain six decimal places so small functions produce visible progress.
+
+### Accepted reconstruction entries
+
 - `fn_803F861C.c` (printf, 200 B), `fn_803F86E4.c` (fprintf, 196 B), and `fn_803FC570.c` (integer string conversion wrapper, 168 B) replace three `.s` registrations. CodeWarrior `__builtin_va_info` reproduces the PPC EABI variadic prologues; the parser wrapper uses the existing `fn_803FA078` callback ABI (`int(void*, int, int)`).
 - After source registration and per-unit `-Cpp_exceptions on`, `ninja build/RSBE01_02/ok` reports **127 files OK**. Objdiff `-d` reports 200/200, 196/196, and 168/168 matched code bytes respectively, each 1/1 matched functions. These are reconstructed C, not assembly matches.
 - Other concurrent stdio/MSL/formatting drafts remain unregistered until source-object and linked-hash verification. Objdiff aggregate percentages include assembly units and are not the C-decompiled percentage; the source-only delta here is 564 code bytes across three functions.
@@ -499,3 +516,4 @@ Three parallel agents own investigation AND implementation per PLAN.md "Subagent
 - Replaced `fn_80401C54.s` with C for debugger text output and `TRKDispatchMessage` (456/456 code bytes, 2/2 functions), migrating the 108-byte, 27-entry jump table at `0x804946F8` into the same C unit. All 48 code/data relocations and allocated bytes match. GPT-6.1-Sol supplied the implementation and one correction restoring the text routine's integer status return; parent integration updated the existing pool caller declaration and data ownership, without implementation edits. Actual PPC32 big-endian execution passed **783 cases**: every command byte with three handler statuses, seek-before-dispatch, all nonzero character bytes, NUL termination, and per-character request save/clear/report/restore ordering with controlled callbacks. The registered C object and linked gate pass (**127 files OK**). Current-wave verified C: **78 units, 102 functions, 9,568 code bytes**.
 - Replaced `fn_80401EF0.s` with C for stop-status replies and execution-control requests (`fn_80401EF0`, `fn_80401FBC`; 928/928 code bytes, 2/2 functions, all thirty relocations exact). GPT-6.1-Sol supplied the implementation and one lifetime/declaration-order correction; no parent implementation edits were needed. Actual PPC32 big-endian execution passed **3,054 cases** covering error mapping, operation/count/range/stopped-state precedence, inclusive unsigned address bounds, acknowledgement-before-operation ordering, operation return propagation, complete 64-byte reply payloads, and sequence-counter wrap. The registered C object matches and the linked gate passes **127 files OK**. Current-wave verified C: **79 units, 104 functions, 10,496 code bytes**.
 - Replaced `fn_80402290.s` with C for continuation and register-range commands (`fn_80402290`, `fn_80402374`; 928/928 code bytes, 2/2 functions, all thirty relocations exact). GPT-6.1-Sol supplied the draft and one compiler-feedback correction to status lifetime and successful-header construction; no parent implementation edits were needed. Actual PPC32 big-endian execution passed **1,035 cases** covering stopped/continue ordering, all four register-class callbacks, unsigned 16-bit ranges, validation precedence, every mapped error, reset/append/send ordering and failures, complete packet contents, and single-header versus double-acknowledgement sequence increments with wrap. The registered C object matches and the linked gate passes **127 files OK**. Current-wave verified C: **80 units, 106 functions, 11,424 code bytes**.
+  - Whole-project accepted source reconstruction after `d16237b`: **1.087084% complete** — **172,124 / 15,833,556 code bytes**, with **15,661,432 code bytes remaining**. The regenerated report's additional **60,100 assembly-backed linked code bytes** are excluded. All 127 linked-file hashes pass.
