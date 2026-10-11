@@ -733,6 +733,10 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_peach/ft_peach_member_access.cpp"),
+            Object(Matching, "mo_fighter/ft_peach/ft_peach_flag_access.cpp"),
+            Object(Matching, "mo_fighter/ft_peach/ft_peach_flag_setters.cpp"),
+            Object(Matching, "mo_fighter/ft_peach/ft_peach_single_element.cpp"),
             Object(Matching, "mo_fighter/ft_peach/ft_peach_array_aggregate.cpp",
                    cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
                    extra_cflags=["-schedule off"]),

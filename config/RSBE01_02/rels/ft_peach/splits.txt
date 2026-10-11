@@ -11,6 +11,18 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_peach/ft_peach_flag_access.cpp:
+	.text       start:0x000072A4 end:0x000072AC
+
+mo_fighter/ft_peach/ft_peach_member_access.cpp:
+	.text       start:0x00009120 end:0x00009130
+
+mo_fighter/ft_peach/ft_peach_single_element.cpp:
+	.text       start:0x0000B3B8 end:0x0000B3E8
+
+mo_fighter/ft_peach/ft_peach_flag_setters.cpp:
+	.text       start:0x0000C220 end:0x0000C238
+
 mo_fighter/ft_peach/ft_peach_array_aggregate.cpp:
 	.text       start:0x0000A2E4 end:0x0000A54C
 
