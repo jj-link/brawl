@@ -22,6 +22,15 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. The parent coordinates nonoverlapping access to shared files instead of making the edits.
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
 
+### Hands-off orchestration
+
+- The parent must not write code or solve an agent’s assigned reconstruction problem.
+- The parent must not send implementation advice, compiler-tuning suggestions, diagnoses, proposed fixes, pseudocode, or step-by-step correction instructions.
+- Assignments and handoffs provide scope, preserved artifact locations, actual attempt counts, and acceptance criteria—not the parent’s preferred solution.
+- Agents independently investigate, implement, compile, compare, correct, and verify their work.
+- The parent handles assignments, shared-file scheduling, handoffs, attempt tracking, evidence review, documentation, and commits. An unmet acceptance criterion goes back to its owner without a prescribed technical fix.
+- “Helping,” speeding things up, integration, or an agent encountering difficulty are not exceptions.
+
 ## Work sequence
 
 ### 1. Establish or reuse a verified baseline

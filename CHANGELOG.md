@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Explicit hands-off orchestration
+
+- Added the approved prohibition on parent technical steering to `PLAN.md`: no implementation advice, compiler-tuning suggestions, diagnoses, proposed fixes, pseudocode, or correction instructions.
+- Restricted assignments and handoffs to scope, preserved artifact locations, actual counts, and acceptance criteria. Technical investigation and decisions remain with the reconstruction owner.
+- Aligned all three model-specific worker instructions with agent-owned completion and the hands-off boundary. Worker counts, correction allowances, and acceptance gates remain unchanged; this documentation change accepts no additional source bytes.
+
 ## Prohibited parent-authored code
 
 - Updated `PLAN.md` to prohibit the parent from writing or modifying any code under any circumstances, including inline or throwaway code.
