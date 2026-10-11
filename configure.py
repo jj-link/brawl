@@ -729,6 +729,7 @@ config.libs = [
         "host": False,
         "objects": [
             Object(NonMatching, "mo_fighter/ft_purin/ft_purin.cpp"),
+            Object(Matching, "mo_fighter/ft_purin/ft_purin_param_lookup.cpp"),
         ],
     },
     {

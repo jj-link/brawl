@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Purin parameter accessors
+
+- Registered `ft_purin_param_lookup.cpp` at text `0x88F8..0x89B8`: **192 additional C++ code bytes** across three exports, matching on the inherited initial candidate with zero corrections. Their former definitions were removed from the remaining main source.
+- The owner verified all **48 instruction words**, relocations, original-slice equivalence, and source linkage in both module link stages. Other text, data, and shared variation storage remain original and outside the reconstructed group.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.401378% complete** — **221,888 / 15,833,556 accepted code bytes**, with **15,611,668 code bytes remaining** and **517 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Marth general-work accessors
 
 - Registered the bounded `ft_marth_general_work.cpp` group at text `0x8218..0x83D8`: **448 additional C++ code bytes** across twenty-one exports, after the initial candidate and seven Sol corrections.
