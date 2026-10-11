@@ -487,7 +487,7 @@ Runtime.PPCEABI.H/fn_803F45AC.s:
 	extabindex  start:0x8000C5EC end:0x8000C5F8
 	.text       start:0x803F45AC end:0x803F4710
 
-Runtime.PPCEABI.H/fn_803F4710.s:
+Runtime.PPCEABI.H/fn_803F4710.c:
 	extab       start:0x800095CC end:0x800095D4
 	extabindex  start:0x8000C5F8 end:0x8000C604
 	.text       start:0x803F4710 end:0x803F48B0
@@ -771,10 +771,10 @@ Runtime.PPCEABI.H/fn_80400E90.c:
 Runtime.PPCEABI.H/fn_8040123C.c:
 	.text       start:0x8040123C end:0x80401268
 
-Runtime.PPCEABI.H/fn_80401268.s:
+Runtime.PPCEABI.H/fn_80401268.c:
 	.text       start:0x80401268 end:0x80401358
 
-Runtime.PPCEABI.H/fn_80401358.s:
+Runtime.PPCEABI.H/fn_80401358.c:
 	.text       start:0x80401358 end:0x804014D8
 
 Runtime.PPCEABI.H/fn_804014D8.c:

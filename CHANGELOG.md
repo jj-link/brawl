@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — rounding and debugger reads
+
+- Replaced assembly registrations with reconstructed C for decimal rounding (`fn_803F4710`, 416 bytes), debugger byte-array and u64 reads (`fn_80401358` and `fn_804013F0`, 384 bytes), and debugger word-array reads (`fn_80401268`, 240 bytes).
+- Added **1,040 code bytes across three units and four functions**. Each matched at Sol correction six. Every registered C object's allocated bytes and relocations match the original; the rounding unit also matches its 20 bytes of exception metadata. Obsolete assembly was removed.
+- `python configure.py && ninja --quiet build/RSBE01_02/ok` passed **127 files OK**. The regenerated report records **1.122098% complete** — **177,668 / 15,833,556 accepted source code bytes**, with **15,655,888 code bytes remaining**. Current-wave accepted C: **91 units, 123 functions, 16,968 code bytes**.
+
 ## Accepted source reconstruction — decimal subtraction
 
 - Replaced the `fn_803F4090` assembly registration with reconstructed C for aligned decimal subtraction, borrowing, discarded-tail handling, and normalization: **1,308 code bytes, one unit, one function**.
