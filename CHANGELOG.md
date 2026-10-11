@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Added GLM reconstruction tier
+
+- Added two GLM workers alongside the eight independent GPT-6.1 Sol workers. GLM uses the existing `spark-cluster/GLM-5.3-Flash-EXL3` model route; no serving configuration was changed.
+- Documented GLM → spawned GPT-6.1 Sol → spawned Astra → set aside. Every stage uses one initial candidate or continuation plus ten corrections unless an exact match is reached sooner. Independent Sol assignments start at the Sol tier.
+- Updated worker instructions to retain the best draft, compiler recipe, comparison evidence, and each model's actual attempt history across handoffs. Parent responsibilities remain orchestration and integration.
+
 ## Corrected early-stop rule
 
 - Removed the unauthorized early-stop exception from `PLAN.md` and both reconstruction worker definitions. Sol and Astra must each continue until an exact match or ten correction attempts have been completed after the initial candidate; lack of further ideas does not end a stage.
