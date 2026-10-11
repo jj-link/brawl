@@ -29,8 +29,44 @@ mo_fighter/ft_pikachu/wn_pikachu_parameter_binding.cpp:
 mo_fighter/ft_pikachu/wn_pikachu_owner_reset.cpp:
 	.text       start:0x00017AF0 end:0x00017B44
 
+mo_fighter/ft_pikachu/wn_pikachu_storage_secondary.cpp:
+	.text       start:0x00017CC8 end:0x00017D10
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_setter.cpp:
+	.text       start:0x00017D10 end:0x00017D34
+
 mo_fighter/ft_pikachu/wn_pikachu_storage_accessor.cpp:
 	.text       start:0x00017D34 end:0x00017D58
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_vector.cpp:
+	.text       start:0x00017D58 end:0x00017DEC
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_range_gate.cpp:
+	.text       start:0x00017DEC end:0x00017F20
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_setter_callback.cpp:
+	.text       start:0x00017F20 end:0x00017F24
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_expiration.cpp:
+	.text       start:0x00017F24 end:0x00017FF4
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_activation.cpp:
+	.text       start:0x00017FF4 end:0x000180A4
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_dispatch.cpp:
+	.text       start:0x000180A4 end:0x000181C0
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_selection.cpp:
+	.text       start:0x000181C0 end:0x00018248
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_manager.cpp:
+	.text       start:0x00018248 end:0x0001829C
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_release.cpp:
+	.text       start:0x0001829C end:0x0001834C
+
+mo_fighter/ft_pikachu/wn_pikachu_collision_log_reference.cpp:
+	.text       start:0x0001834C end:0x000183FC
 
 mo_fighter/ft_pikachu/wn_pikachu_vortex_storage_availability.cpp:
 	.text       start:0x00019004 end:0x00019078
