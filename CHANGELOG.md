@@ -2,6 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — parameter access and Vortex helpers
+
+| Reconstruction group | Added C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Mario parameter accessors and defaults | 252 | 2 |
+| Ness status and reflector helpers | 364 | 2 |
+| Peach vector and short assignments | 32 | 2 |
+| Lucario input and archive accessors | 236 | 2 |
+| Lucas float and integer parameter lookups | 180 | 2 |
+| Meta Knight parameter access and embedded destructor | 288 | 2 |
+| Pikachu parameter and Vortex helpers | 2,612 | 13 |
+
+- The owners verified exact registered allocated-section bytes and relocations, actual C++ source linkage, and **127 passing final binary hashes**. The Pikachu owner's final combined snapshot includes all six preceding groups and reports **581 accepted source units**.
+- The Pikachu owner resolved the publication collision while retaining all pre-existing split entries, preserving the original patch and snapshots, and verifying that 24 other modified or untracked files remained untouched. Later private reconstructions are excluded from this publication.
+- These groups add **3,964 code bytes** across **25 source units**. Cumulative accepted-source accounting is **1.577763%** — **249,816 / 15,833,556 code bytes**, with **15,583,740 bytes remaining**. Gameplay was not exercised.
+- Separately, Peach `fn_103_C944` (52 bytes) and the Ness effect/sound-entry group at `0x12E5C..0x1304C` (496 code bytes) remain unmatched after Sol initial-plus-ten and Astra initial-plus-ten. Their best drafts, compiler recipes, and measured histories are preserved; original implementations remain linked. Neither contributes accepted bytes. No final acceptance build was claimed for those unmatched Astra drafts.
+
 ## Accepted isolated reconstructions — fighter helpers and kinetic setup
 
 | Reconstruction group | Added C++ code bytes | Source units |
