@@ -11,6 +11,27 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_lucario/ft_lucario_embedded_destructor.cpp:
+	.text       start:0x00012E98 end:0x00012F20
+
+mo_fighter/ft_lucario/ft_lucario_nested_destructors.cpp:
+	.text       start:0x00012F20 end:0x00013020
+
+mo_fighter/ft_lucario/ft_lucario_member_destructors.cpp:
+	.text       start:0x00013020 end:0x00013250
+
+mo_fighter/ft_lucario/ft_lucario_module_destructor.cpp:
+	.text       start:0x00013250 end:0x000133C4
+
+mo_fighter/ft_lucario/ft_lucario_submodule_destructors.cpp:
+	.text       start:0x000133C4 end:0x00013658
+
+mo_fighter/ft_lucario/ft_lucario_scalar_wrappers.cpp:
+	.text       start:0x00013658 end:0x00013754
+
+mo_fighter/ft_lucario/ft_lucario_parameter_lifetime.cpp:
+	.text       start:0x00013754 end:0x000137EC
+
 mo_fighter/ft_lucario/ft_lucario_leaf_callbacks.cpp:
 	.text       start:0x00013A10 end:0x00013A60
 
@@ -31,6 +52,18 @@ mo_fighter/ft_lucario/ft_lucario_input_accessors.cpp:
 
 mo_fighter/ft_lucario/ft_lucario_archive_accessors.cpp:
 	.text       start:0x00013CEC end:0x00013D44
+
+mo_fighter/ft_lucario/ft_lucario_resource_accessors.cpp:
+	.text       start:0x00013D44 end:0x00013DB4
+
+mo_fighter/ft_lucario/ft_lucario_input_defaults.cpp:
+	.text       start:0x00013DB4 end:0x00013E40
+
+mo_fighter/ft_lucario/ft_lucario_parameter_lookups.cpp:
+	.text       start:0x00013E40 end:0x00013E98
+
+mo_fighter/ft_lucario/ft_lucario_scalar_adjustors.cpp:
+	.text       start:0x00013F44 end:0x00013F54
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000140AC end:0x00014148
