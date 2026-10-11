@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted reconstruction — Meta Knight parameter-accessor destructors
+
+- Accepted `.text 0x82FC..0x83B8`: **188 C++ code bytes** and **1 source unit**, owned through integration by `ResumeSolMetaDtors`. Preserved Sol history totals one initial candidate and two corrections: the original object-match correction and a measured integration correction retaining the otherwise discarded second destructor.
+- The owner verified current baseline `1427fe9` plus the unit: **47/47 instruction words**, exact relocations, complete registered C++ source linkage, **127 passing DOL/REL hashes**, and the accepted Pikachu, Luigi, and Lucario contributions retained. Its bounded source, registration, and split changes are integrated into main. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.028906%** — **321,248 / 15,833,556 code bytes**, with **15,512,308 bytes remaining** and **865 accepted source units**. This restart has accepted **556 bytes across 4 units**.
+- Fresh Sol owners received the preserved 348-byte Luigi energy-activation unit and 48-byte Ness team-support accessor unit.
+- The Ness reconstruction owner resolved a private reconciliation collision caused by worktrees sharing `refs/stash`: a peer stash arrived between its push and pop. Both stash commits and accidental imports were preserved; the owner restored its bounded assignment, reverified it, and shared the finding with peers. Main and peer working copies were not modified by that recovery.
+
 ## Accepted reconstruction — Lucario general-work constructor
 
 - Accepted `fn_118_7E14`, `.text 0x7E14..0x7E94`: **128 C++ code bytes** and **1 source unit**. `ResumeSolLucarioWork` preserved the initial matched candidate and zero-correction Sol history.

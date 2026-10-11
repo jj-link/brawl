@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_metaknight/ft_metaknight_param_accesser_destructors.cpp:
+	.text       start:0x000082FC end:0x000083B8
+
 mo_fighter/ft_metaknight/ft_metaknight_event_owner_lifetime.cpp:
 	.text       start:0x000083B8 end:0x00008448
 
