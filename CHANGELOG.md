@@ -2,6 +2,29 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_FD88`
+
+- `SolLuigiFunctionFD88` published its 120-byte reconstruction after one initial candidate and zero corrections. Registered text and all six relocations matched exactly, compiled source was linked, and **127 DOL/REL hashes passed** with prior accepted units retained.
+- Cumulative accepted-source progress is **2.092190%** — **331,268 / 15,833,556 code bytes**, with **15,502,288 bytes remaining** and **931 accepted source units**. This checkpoint adds **120 code bytes / 1 unit**.
+- Published report SHA-256: `fc8f41040ac2d7fe57c1694149e4a64ba4666d986bf9e4aa83d5fc31e3283ab2`. Rendered counters, accepted-unit/module map and API/persisted history agreed before release to FD2C. Cleanup removed 11,253 disposable files totaling 415,933,425 logical bytes, preserving the checkout, Git metadata, evidence and canonical input hashes.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_FCA8`
+
+- `SolLuigiFunctionFCA8` published its 132-byte reconstruction after one initial candidate and zero corrections. Registered text and six relocations matched exactly, compiled source was linked, and **127 DOL/REL hashes passed** with all preceding 929 accepted units retained.
+- Cumulative accepted-source progress is **2.091432%** — **331,148 / 15,833,556 code bytes**, with **15,502,408 bytes remaining** and **930 accepted source units**. This checkpoint adds **132 code bytes / 1 unit**.
+- Published report SHA-256: `2ff0c94133e49c4d5caacd64dd5edd2b9f0387836f6b18b69e427a5c6810ed2c`. Rendered counters, module/unit data, provenance and API/persisted history agreed before release to FD88. Cleanup removed 11,252 disposable files totaling 415,941,031 logical bytes; retained source/header/configuration/Git trees and evidence were preserved, and all 127 canonical original hashes remained unchanged.
+
+## Local-model measured-attempt checkpoint
+
+| Owner | Measured initial candidates | Measured corrections | Reported state |
+| --- | ---: | ---: | --- |
+| `GlmLuigiFunctionF510` | 1 | 1 | Assembly/relocation inspection matched; formal comparison and integrated verification continuing after a tool-mode failure. |
+| `GlmLuigiFunctionF994` | 1 | 0 | Initial object comparison reported exact; registered-object and full linked verification continuing. |
+| `ResumeQwenDebugUnit` | 1 | 0 | Initial candidate is 376 bytes against the 288-byte target, with six unwanted relocations; first correction in progress. Earlier retained probes were not measured whole-unit candidates. |
+| `ResumeQwenHexFormatter` | 0 | 0 | Assembly investigation completed; first candidate not yet compiled. No inherited measured attempts or saved draft found. |
+
+- These receipts do not add accepted-source credit or reset stage history. Both Qwen owners reported no current environment blocker; all four owners continue under the existing ten-correction rule.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_FC24`
 
 - `SolLuigiFunctionFC24` published its 132-byte reconstruction after one initial candidate and zero corrections. Registered text and seven relocations matched exactly, compiled source was linked, and **127 DOL/REL hashes passed** with all preceding 928 accepted units retained.
@@ -74,6 +97,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - After F868 and F9F4 completed, fresh `SolLuigiFunctionFC24` and `SolLuigiFunctionFCA8` replaced them, each owning one 132-byte range: `0xFC24..0xFCA8` and `0xFCA8..0xFD2C`, respectively. Worker counts remain eight Sol, two GLM, and two Qwen reconstruction slots.
 - Completed FB68, gravity-helper, FABC and FBC8 slots were replaced by fresh `SolLuigiFunctionFD2C`, `SolLuigiFunctionFD88`, `SolLuigiFunctionFE00` and `SolLuigiFunctionFE78`. Their separate ranges are `0xFD2C..0xFD88` (92 bytes), `0xFD88..0xFE00` (120 bytes), `0xFE00..0xFE78` (120 bytes), and `0xFE78..0xFED4` (92 bytes), respectively.
 - Completed FB28, FC24 and FA50 slots were replaced by fresh `SolLuigiFunctionFED4` (`0xFED4..0xFF34`, 96 bytes), `SolLuigiFunctionFF34` (`0xFF34..0xFFA0`, 108 bytes), and `SolLuigiFunctionFFA0` (`0xFFA0..0x10018`, 120 bytes).
+- Completed FCA8 and FD88 slots were replaced by fresh `SolLuigiFunction10018` (`0x10018..0x10074`, 92 bytes) and `SolLuigiFunction10074` (`0x10074..0x100D4`, 96 bytes).
 
 ## Verified reconstruction checkpoint — Luigi `fn_99_F928`
 
