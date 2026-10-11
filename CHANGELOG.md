@@ -2,6 +2,41 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard — handled journal rewrites remain diagnostic
+
+- Removed successfully handled journal-rewrite notices from the warning banner. Automatic rereading, stream/cursor reset, rewrite counts, and visible history are preserved; genuine malformed-record and unreadable-file errors remain visible.
+- The original dashboard backend owner verified the running API and rendered dashboard with no handled-rewrite warning entries. Focused smoke checks using isolated copies of actual recorded logs confirmed larger/smaller rewrites recover, while malformed JSON and a real filesystem permission failure still produce actionable errors.
+- Restarted only the existing dashboard service with the same pinned root session. Model services and reconstruction workers were left running. Browser DOM verification passed; screenshot capture was unavailable.
+
+## Accepted reconstructions — Ness speed assignment and Luigi energy update
+
+- Accepted Ness `fn_101_FE5C`, `.text 0xFE5C..0xFE70`: **20 C++ code bytes** and **1 source unit**, integrated by `SolNessSpeedAssignment`. The initial candidate remains exact with zero Sol corrections.
+- Accepted Luigi `.text 0xACC8..0xAF5C`: **660 C++ code bytes** and **1 source unit**, integrated by `SolLuigiEnergyUpdate`. Its preserved initial candidate remains exact with zero Sol corrections.
+- Both owners verified exact allocated bytes and applicable relocations, complete compiled-source linkage, prior accepted work retained, and **127 passing DOL/REL hashes**. The latest combined report includes both additions and the preceding Peach checkpoint. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.043180%** — **323,508 / 15,833,556 code bytes**, with **15,510,048 bytes remaining** and **881 accepted source units**. This checkpoint adds **680 bytes across 2 units**; the restart has accepted **2,816 bytes across 20 units**.
+- The matching published dashboard report has SHA-256 `34557cd7ec56e1d37783fa6842acc49e0f5aa1371b81a396725581746629c9e8`.
+
+## Accepted reconstructions — Peach cleanup and constructor packet
+
+- Accepted the fixed eight-unit Peach packet at `.text 0x6E24..0x71E0`: **956 C++ code bytes** and **8 source units**, integrated and verified by its original reconstruction owner. Original data and vtables retain their ownership.
+- The combined input tree `35717a62d722eca6c916ab11e322c99387371834` includes this packet and the preceding five continuation units. All thirteen additions have exact allocated bytes and relocations, complete compiled-source linkage, and **127 passing DOL/REL hashes**. Gameplay was not exercised.
+- Cumulative accepted-source progress is **2.038885%** — **322,828 / 15,833,556 code bytes**, with **15,510,728 bytes remaining** and **879 accepted source units**. This restart has accepted **2,136 bytes across 18 units**.
+- The matching verified dashboard report has SHA-256 `0a1ba9954df2a512e872e478c142808649155e11f0134fa94ec326c2cfa29791`. The packet preserves its eight initial candidates and seven total corrections, all seven belonging to the event-storage cleanup unit.
+
+## Accepted reconstructions — Luigi, Ness, and Pikachu continuation units
+
+| Reconstruction | Added C++ code bytes | Added source units |
+| --- | ---: | ---: |
+| Luigi energy accessors | 64 | 1 |
+| Luigi energy activation | 348 | 1 |
+| Ness team-support accessors | 48 | 1 |
+| Ness article-event adjustors | 56 | 1 |
+| Pikachu observer registration group | 60 | 1 |
+
+- The original owners integrated their bounded changes and verified the combined five-unit input tree `48ea34e1e6f3b6eb81ac20c972f1547d9d39dad2`: exact allocated bytes and relocations for all five, complete compiled-source linkage, and **127 passing DOL/REL hashes**. Gameplay was not exercised.
+- This checkpoint adds **576 code bytes across 5 units**. Cumulative accepted-source progress is **2.032847%** — **321,872 / 15,833,556 code bytes**, with **15,511,684 bytes remaining** and **871 accepted source units**. This restart has accepted **1,180 bytes across 10 units**.
+- The exact verified dashboard report has SHA-256 `1a887bc43b8c08c9ebfb8eb893da3ef25df903e218955c517a5ff8c05c292b4a`. This checkpoint excludes the later Peach packet, whose combined verification remains separate.
+
 ## Accepted reconstruction — Ness observer-event adjustors
 
 - Accepted `.text 0x16354..0x16384`: **48 C++ code bytes** and **1 source unit**, owned through integration by `ResumeSolNessAdjustors`. The corrected ABI draft is accepted; the withdrawn initial draft and its history remain preserved. Sol history remains one initial candidate and one correction.

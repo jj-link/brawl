@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_pikachu/ft_pikachu_observer_byte_accessor.cpp:
 	.text       start:0x00009C28 end:0x00009C30
 
+mo_fighter/ft_pikachu/ft_pikachu_observer_registration_group.cpp:
+	.text       start:0x00009C34 end:0x00009C70
+
 mo_fighter/ft_pikachu/wn_pikachu_owner_destructor.cpp:
 	.text       start:0x000170B0 end:0x00017140
 

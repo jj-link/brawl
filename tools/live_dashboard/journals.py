@@ -733,11 +733,9 @@ class JournalWatcher:
                 self.warnings.pop(f"malformed:{path.name}", None)
                 if rewrite:
                     self.stream_epoch = uuid.uuid4().hex[:12]
+                    # Successful resynchronization is diagnostic metadata, not
+                    # a warning; unreadable/malformed errors remain reportable.
                     self.rewrites[path] = self.rewrites.get(path, 0) + 1
-                    self.warnings[f"rewritten:{path.name}"] = (
-                        f"journal {path.name}: content changed at the saved tail "
-                        f"({self.rewrites[path]} rewrite(s)); safely re-read from start"
-                    )
             tracker = self.trackers[path]
             handle.seek(offset)
             chunk = handle.read(min(max(0, size - offset), MAX_INITIAL_READ))
