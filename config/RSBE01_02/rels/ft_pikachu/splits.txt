@@ -11,6 +11,52 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_pikachu/wn_pikachu_owner_destructor.cpp:
+	.text       start:0x000170B0 end:0x00017140
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_destructors.cpp:
+	.text       start:0x00017140 end:0x00017350
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_component_destructors.cpp:
+	.text       start:0x00017350 end:0x000175D4
+
+mo_fighter/ft_pikachu/wn_pikachu_storage_element_destructors.cpp:
+	.text       start:0x000175D4 end:0x0001776C
+
+mo_fighter/ft_pikachu/wn_pikachu_parameter_binding.cpp:
+	.text       start:0x0001776C end:0x00017838
+
+mo_fighter/ft_pikachu/wn_pikachu_owner_reset.cpp:
+	.text       start:0x00017AF0 end:0x00017B44
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_storage_availability.cpp:
+	.text       start:0x00019004 end:0x00019078
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_mediator_dispatch.cpp:
+	.text       start:0x00019078 end:0x00019088
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_storage_lookup.cpp:
+	.text       start:0x00019088 end:0x000190D0
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_owner_initializer.cpp:
+	.text       start:0x000190D0 end:0x00019118
+	.ctors      start:0x00000018 end:0x0000001C
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_owner_adapters.cpp:
+	.text       start:0x00019118 end:0x000191B0
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_owner_cast.cpp:
+	.text       start:0x000191B0 end:0x000191D4
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_periodic_article.cpp:
+	.text       start:0x000191D4 end:0x000192B4
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_owner_dispatch.cpp:
+	.text       start:0x000192B4 end:0x000192F8
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_storage_destructors.cpp:
+	.text       start:0x0001AB8C end:0x0001B0C4
+
 mo_fighter/ft_pikachu/wn_pikachu_vortex_aggregate_destructors.cpp:
 	.text       start:0x0001B0C4 end:0x0001B1C0
 
