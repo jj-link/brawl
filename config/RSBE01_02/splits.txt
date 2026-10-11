@@ -605,6 +605,12 @@ Runtime.PPCEABI.H/fn_803F752C.c:
 	extabindex  start:0x8000C6DC end:0x8000C6E8
 	.text       start:0x803F752C end:0x803F7CFC
 
+Runtime.PPCEABI.H/pformatter.c:
+	extab       start:0x8000966C end:0x80009674
+	extabindex  start:0x8000C6E8 end:0x8000C6F4
+	.text       start:0x803F7CFC end:0x803F8558
+	.data       start:0x8049452C end:0x80494550 align:4 rename:.data$pformatter
+
 Runtime.PPCEABI.H/fn_803F8558.c:
 	extab       start:0x80009674 end:0x8000967C
 	extabindex  start:0x8000C6F4 end:0x8000C700

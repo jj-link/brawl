@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — main printf formatter
+
+- Registered `pformatter.c` (`__pformatter_803F7CFC`): **2,140 additional C code bytes**. Preserved Sol initial-plus-ten, Astra initial-plus-five, and the separately recorded integration measurements.
+- The owner verified all **535 instruction words**, **36 jump-table bytes**, **20 exception-metadata bytes**, relocations, and section alignments.
+- Added a compiler-declared `.data$pformatter` section and the main-module `ldscript.tpl`, selected through the existing DTK configuration, to retain the original four-byte table alignment. No tooling-code changes or object-byte patches were used. DTK reports an unknown-section warning for this custom input section; the template explicitly maps it into `.data`.
+- Owner-run final verification passed all **127 binary hashes**. Source reconstruction is now **1.310432% complete** — **207,488 / 15,833,556 accepted code bytes**, with **15,626,068 code bytes remaining** and **506 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — floating-point formatter
 
 - Registered `fn_803F752C.c` (`float2str_803F752C`): **2,000 additional C code bytes**. Preserved the actual initial-plus-ten Sol history; normalized code first matched at correction nine.
@@ -38,6 +45,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Set aside `sora/gf/gf_slow_manager.cpp` after actual initial-plus-ten Sol and Astra stages. Restored the inherited best source and header, with all attempts preserved. Seven of eight functions match, but the unit remains unmatched and registered `NonMatching`; no additional source bytes were accepted.
 - Set aside `sora/nt/nt_report.cpp` after actual initial-plus-ten Sol and Astra stages. Eleven of twelve functions match, but the initializer and whole-object comparison remain unmatched. Live source/header changes were not applied; the best private source, header, compiler recipe, and all attempts are preserved.
 - Set aside `sora/gf/gf_task_scheduler.cpp` after actual initial-plus-ten Sol and Astra stages. Preserved the valid Astra-three best draft and all attempts, including the separately rejected unsafe Sol experiment. The unit remains registered `NonMatching`; no source bytes were accepted.
+- Set aside `sora/nt/nt_send.cpp` after actual initial-plus-ten Sol and Astra stages. Preserved the Astra-one best private draft and all attempts; its remaining extra instruction prevents acceptance. Live source, headers, and registration remain unchanged, and no source bytes were accepted.
 
 ## Accepted source reconstruction — 64-bit integer formatter
 

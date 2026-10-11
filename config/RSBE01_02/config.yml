@@ -5,6 +5,7 @@ splits: config/RSBE01_02/splits.txt
 symbols: config/RSBE01_02/symbols.txt
 mw_comment_version: 14 # GC 3.0a5.2 linker
 quick_analysis: true # Faster reruns after full analysis
+ldscript_template: config/RSBE01_02/ldscript.tpl
 
 extract:
 - symbol: HomeBtnIcon
