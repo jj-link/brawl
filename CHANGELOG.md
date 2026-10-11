@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — format parser and integer formatter
+
+- Registered `fn_803F6578.c`, reconstructing `parse_format_803F6578` and `long2str_803F6B74`: **2,084 additional C code bytes**.
+- The reconstruction owner verified all **521 instruction words**, **424 real jump-table bytes**, **20 exception-metadata bytes**, and all relocations. The legitimate combined source places the formatter's table at its original interior address, resolving the preserved standalone alignment blocker without padding or binary postprocessing.
+- Preserved the parser's initial-plus-eight and formatter's initial-plus-eight Sol histories. Removed the superseded standalone formatter source and assembly; adjacent units remain unchanged.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.260993% complete** — **199,660 / 15,833,556 accepted code bytes**, with **15,633,896 code bytes remaining** and **495 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — runtime and math batch
 
 - Replaced **16 assembly units with 15,844 code bytes of reconstructed C across 22 functions**: `fn_803F07E0`, `fn_803F1D14`, `fn_803F1EC4`, `fn_803F3048`, `fn_803F3240`, `fn_803F5250`, `fn_803F7404`, `fn_803FA3FC`, `fn_803FD320`, `fn_803FE260`, `fn_803FE708`, `fn_803FFE14`, `fn_804004AC`, `fn_804006F0`, `fn_804008E4`, and `fn_80400B48`.
