@@ -41,6 +41,12 @@ mo_fighter/ft_luigi/ft_luigi_kinetic_gravity_dispatch.cpp:
 mo_fighter/ft_luigi/ft_luigi_kinetic_gravity_attribute.cpp:
 	.text       start:0x0000B2A4 end:0x0000B33C
 
+mo_fighter/ft_luigi/ft_luigi_kinetic_main_dispatch.cpp:
+	.text       start:0x0000B38C end:0x0000B424
+
+mo_fighter/ft_luigi/ft_luigi_energy_accessor_b424.cpp:
+	.text       start:0x0000B424 end:0x0000B43C
+
 mo_fighter/ft_luigi/ft_luigi_kinetic_main_attribute.cpp:
 	.text       start:0x0000B43C end:0x0000B4D4
 
@@ -148,9 +154,30 @@ mo_fighter/ft_luigi/ft_luigi_status_uniq_process_special_s_wall.cpp:
 	.data       start:0x000064B8 end:0x00006580
 	.bss        start:0x000001E0 end:0x000001F0
 
+mo_fighter/ft_luigi/ft_luigi_destructor_ed70.cpp:
+	.text       start:0x0000ED70 end:0x0000EDCC
+
+mo_fighter/ft_luigi/ft_luigi_function_ECE8.cpp:
+	.text       start:0x0000ECE8 end:0x0000ED70
+
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00010EAC end:0x00010F48
 	.data       start:0x00006ED8 end:0x00006EE7
 
 home_button_icon.cpp:
 	.data       start:0x00006F00 end:0x000087C0
+
+mo_fighter/ft_luigi/ft_luigi_function_edcc.cpp:
+	.text       start:0x0000EDCC end:0x0000EE3C
+
+mo_fighter/ft_luigi/ft_luigi_aggregate_destructor.cpp:
+	.text       start:0x0000EE3C end:0x0000EECC
+
+mo_fighter/ft_luigi/ft_luigi_function_ef38.cpp:
+	.text       start:0x0000EF38 end:0x0000EFC4
+
+mo_fighter/ft_luigi/ft_luigi_component_destructor_eecc.cpp:
+	.text       start:0x0000EECC end:0x0000EF38
+
+mo_fighter/ft_luigi/ft_luigi_function_efc4.cpp:
+	.text       start:0x0000EFC4 end:0x0000F050

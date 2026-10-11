@@ -2,6 +2,30 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi dispatch and eight Sol units
+
+| Reconstruction | Added C++ code bytes | Added source units |
+| --- | ---: | ---: |
+| Luigi kinetic main dispatch | 152 | 1 |
+| Luigi energy accessor `fn_99_B424` | 24 | 1 |
+| Luigi `fn_99_ECE8` | 136 | 1 |
+| Luigi `fn_99_ED70` | 92 | 1 |
+| Luigi `fn_99_EDCC` | 112 | 1 |
+| Luigi `fn_99_EE3C` | 144 | 1 |
+| Luigi `fn_99_EECC` | 108 | 1 |
+| Luigi `fn_99_EF38` | 140 | 1 |
+| Luigi `fn_99_EFC4` | 140 | 1 |
+
+- The reconstruction owners landed their bounded sources and registration changes. `GlmLuigiMainDispatch` verified the combined source-linked build against all **127 DOL/REL hashes**, retained the preceding 894 accepted units, and published report SHA-256 `503bb19dca92bc9920d34bd71b409caf70e6700c6a5321df36148dd7f0b59788`. Multiple Sol owners independently reproduced the combined checkpoint; gameplay was not exercised.
+- Cumulative accepted-source progress is **2.071651%** — **328,016 / 15,833,556 code bytes**, with **15,505,540 bytes remaining** and **903 accepted source units**. This checkpoint adds **1,048 code bytes across 9 units**.
+- The eight Sol units matched on the initial candidate except `fn_99_EF38`, which required one measured correction. Main dispatch continued a preserved exact initial candidate with zero corrections. `SolLuigiFunctionEFC4` was blocked by disk exhaustion after its exact initial match and integration; after approved workspace cleanup recovered capacity, the same owner resumed its saved work, independently passed all **127 hashes**, confirmed dashboard/history agreement, and completed its own evidence-preserving cleanup without resetting attempts.
+- The report-backed unit map updated before this changelog checkpoint; the owners' earlier headline/history mismatch reports were valid. After this entry, the resumed owners observed agreement across the real rendered headline, module/unit map, API state, and latest persisted graph point at **328,016 bytes / 903 units**.
+
+## Preserved set-asides — Luigi helper ranges
+
+- Main-energy `0xB33C..0xB38C`, flag-two `0xB4D4..0xB524`, flag-four `0xB5BC..0xB60C`, and flag-eight `0xB6A4..0xB6F4` helpers each reached one initial candidate plus ten corrections at both Sol and Astra. Each retains its best 84-byte candidate against an 80-byte target, with the extra instruction and all measured attempts preserved. Original assembly remains active; these outcomes add zero accepted bytes.
+- The flag-eight Sol-to-Astra handoff preserved all ten corrections; fresh `SolLuigiFunctionEFC4` filled that Sol slot with the separate `0xEFC4..0xF050` assignment. The Astra owner resolved the inherited hash-count discrepancy from retained ANSI-coloured logs: 127 original-fallback successes, not reconstructed-source acceptance.
+
 ## Reconstruction continuation — preserved helper handoffs and fresh Sol owners
 
 - Committed and pushed the preceding four-unit Luigi checkpoint in `dce06be`. Its owners observed agreement across the rendered summary, module/unit data, graph, and persisted history before closing publication.
