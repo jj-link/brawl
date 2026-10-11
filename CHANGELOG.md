@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_103D4`
+
+- `SolLuigiFunction1033C` published the independently verified union containing 103D4's 376-byte reconstruction, with **127 DOL/REL hashes passing** and all 949 preceding accepted units retained.
+- Cumulative accepted-source progress is **2.106589%** — **333,548 / 15,833,556 code bytes**, with **15,500,008 bytes remaining** and **950 accepted source units**. This checkpoint adds **376 code bytes / 1 unit**.
+- Published report SHA-256: `b8723a805b5c882eea75b14a6a4094da7c88ba3e6a6e7a11cf053a8a6032f862`. Rendered counters, all 127 module totals, all 5,005 unit classifications and persisted history agreed before release to 10394. The 1033C owner matched its 88-byte function on the initial candidate with zero corrections and three exact relocations; cleanup removed 11,312 generated files totaling 416,110,537 logical bytes, preserving checkout/Git trees, canonical originals and reconstruction evidence.
+- Completed 1029C's slot was refilled with fresh `SolLuigiFunction106A8`, owning only `fn_99_106A8` at `.text 0x106A8..0x106B0` (8 bytes). The five preceding 949-checkpoint reconstructions and their progress record were committed and pushed as `98e70f7`.
+- Completed 1033C's slot was refilled with fresh `SolLuigiFunction106B0`, owning only `fn_99_106B0` at `.text 0x106B0..0x106B8` (8 bytes).
+- The F510 GLM owner supplied measured cleanup totaling 618,539,748 logical bytes, retaining 2,346 files and the checkout/Git/evidence trees. The deleted bulk build's file count was not captured and remains unknown. Its divergent dashboard snapshot is retained; final same-checkpoint rendered agreement remains with that owner, without new reconstruction attempts or shared report writes.
+
 ## Verified reconstruction checkpoint — Luigi through 1029C's published union
 
 - `SolLuigiFunction1029C` confirmed publication of an independently verified union containing `fn_99_1029C` (64 bytes), `fn_99_102DC` (96), `fn_99_1033C` (88), `fn_99_10394` (64) and `fn_99_1054C` (104), with all **127 DOL/REL hashes passing**.
