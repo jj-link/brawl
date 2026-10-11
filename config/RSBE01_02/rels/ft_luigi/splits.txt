@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_luigi/ft_luigi_kinetic_vector.cpp:
+	.text       start:0x0000C610 end:0x0000C620
+
+mo_fighter/ft_luigi/ft_luigi_kinetic_reset.cpp:
+	.text       start:0x0000C620 end:0x0000C7A0
+
+mo_fighter/ft_luigi/ft_luigi_status_uniq_process_callbacks.cpp:
+	.text       start:0x0000CD44 end:0x0000CDC0
+
 mo_fighter/ft_luigi/ft_luigi_status_uniq_process_special_s_ram.cpp:
 	.text       start:0x0000CE18 end:0x0000D184
 	.ctors      start:0x00000008 end:0x0000000C

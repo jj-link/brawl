@@ -672,6 +672,12 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_status_uniq_process_special_s_wall.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_status_uniq_process_callbacks.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_kinetic_vector.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_kinetic_reset.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
         ],
     },
     {
