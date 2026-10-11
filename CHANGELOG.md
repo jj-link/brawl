@@ -2,6 +2,19 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — runtime and math batch
+
+- Replaced **16 assembly units with 15,844 code bytes of reconstructed C across 22 functions**: `fn_803F07E0`, `fn_803F1D14`, `fn_803F1EC4`, `fn_803F3048`, `fn_803F3240`, `fn_803F5250`, `fn_803F7404`, `fn_803FA3FC`, `fn_803FD320`, `fn_803FE260`, `fn_803FE708`, `fn_803FFE14`, `fn_804004AC`, `fn_804006F0`, `fn_804008E4`, and `fn_80400B48`.
+- Reconstruction owners completed registered-object comparison and source-linkage verification. All allocated code, applicable data, exception metadata, and relocations match. The cutover includes the unwind iterator's 68-byte table and three private eight-byte conversion constants; superseded assembly files were removed.
+- Preserved per-object compiler recipes, including GC/3.0a5 for `fn_803FFE14` and `fn_80400B48`; global compiler settings were not changed. Existing external-source notices were retained.
+- The final owner-run linked check passed **127 files OK**. The regenerated source-reconstruction report records **1.247831% complete** — **197,576 / 15,833,556 accepted source code bytes**, with **15,635,980 code bytes remaining** and **494 accepted source units**. Gameplay was not exercised.
+
+## Preserved unmatched runtime work
+
+- Retained the best drafts and actual initial-plus-ten histories at both Sol and Astra for `fn_803F243C`, `fn_803F9318`, `fn_803FA804`, and `fn_803FCE18`. These remain assembly-backed and contribute no accepted source bytes.
+- The `fn_803F243C` continuation recovered exact compiler-generated exception metadata but not matching code. The `fn_803FA804` interrupted-stage recovery verified the saved best draft and completed the stage record without adding attempts or claiming acceptance.
+- The `fn_803FD904`/`fn_803FDA18` draft retains exact instruction bytes, but the preserved data-layout blocker prevents whole-object acceptance after its completed Sol and Astra allowances. Original assembly remains registered.
+
 ## Added two Spark1 Qwen workers
 
 - Added two Qwen3.8-Flash-Next reconstruction workers alongside the eight Sol and two GLM workers. Spark1's existing model endpoint reports `Qwen3.8-Flash-Next`; the worker uses `spark1/Qwen3.8-Flash-Next`. No serving configuration was changed.
