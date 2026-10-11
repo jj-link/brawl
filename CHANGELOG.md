@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved unmatched adventure game-over scene
+
+- Set aside `sora_scene/sc_adv_gameover.cpp` after initial-plus-ten Sol and Astra stages. The best Astra-initial source, private headers, compiler recipe, and every measured checkpoint remain preserved; one failed preinitial Astra compile is recorded separately.
+- Four of five function bodies match, but five instruction differences, an extra four-byte weak method, and metadata relocation differences prevent whole-object acceptance. Live source and registration remain unchanged, original assembly remains linked, and no source bytes were accepted.
+
 ## Accepted source reconstruction — network producer
 
 - Registered `sora/ip/ip_network_producer.cpp` as matching: **416 additional C++ code bytes**, after the initial candidate and nine Sol corrections.
