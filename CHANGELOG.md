@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — trigonometry utilities
+
+- Registered `sora/mt/mt_trig.cpp` as matching: **616 additional C++ code bytes** across `mtSinf`, `mtCosf`, and `mtSinCosf`. Preserved the initial-plus-nine Sol history.
+- The owner verified all **154 instruction words**, **44 constant bytes**, relocations, and section alignments. The nine unit-private constant symbols now match compiler-local ownership; source split boundaries and compiler settings remain unchanged.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.314323% complete** — **208,104 / 15,833,556 accepted code bytes**, with **15,625,452 code bytes remaining** and **507 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — main printf formatter
 
 - Registered `pformatter.c` (`__pformatter_803F7CFC`): **2,140 additional C code bytes**. Preserved Sol initial-plus-ten, Astra initial-plus-five, and the separately recorded integration measurements.

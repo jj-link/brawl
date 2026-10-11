@@ -39,26 +39,31 @@ float mtCosf(float angle) {
     return mtSinf(angle + HALF_PI);
 }
 
-// NONMATCHING regswaps - should simply interleave calls to mtCosf and mtSinf
 void mtSinCosf(float rad, float* sinOut, float* cosOut) {
-    s32 s0 = RAD_TO_FIXED_PT * rad;
-    s32 c0 = RAD_TO_FIXED_PT * (rad + HALF_PI);
+    s32 fixedAngle;
+    s32 sinReduced;
+    s32 cosReduced;
+    fixedAngle = RAD_TO_FIXED_PT * rad;
+    sinReduced = fixedAngle + 0x400000;
+    sinReduced &= 0x00FFFFFF;
+    fixedAngle = RAD_TO_FIXED_PT * (rad + HALF_PI);
+    cosReduced = fixedAngle + 0x400000;
+    cosReduced &= 0x00FFFFFF;
+    sinReduced = fitToRange(sinReduced);
+    cosReduced = fitToRange(cosReduced);
 
-    s32 s1 = reduceRange(s0);
-    s32 c1 = reduceRange(c0);
-
-    s32 c2 = fitToRange(s1);
-    s32 s2 = fitToRange(c1);
-
-    float s3 = s2;
-    float c3 = c2;
-
-    float c4 = FIXED_PT_TO_RAD * c3;
-    float s4 = FIXED_PT_TO_RAD * s3;
-
-    float s5 = taylor(s4);
-    float c5 = taylor(c4);
-
-    *sinOut = s5;
-    *cosOut = c5;
+    float cosAngle;
+    float sinSquare;
+    float cosSquare;
+    float sinAngle;
+    sinAngle = FIXED_PT_TO_RAD * sinReduced;
+    cosAngle = FIXED_PT_TO_RAD * cosReduced;
+    sinSquare = sinAngle * sinAngle;
+    cosSquare = cosAngle * cosAngle;
+    float sinApprox = sinAngle * (1.0f + sinSquare * (-0.16666657f + sinSquare *
+        (0.0083330255f + sinSquare * (-0.00019807414f + 0.000002601887f * sinSquare))));
+    float cosApprox = cosAngle * (1.0f + cosSquare * (-0.16666657f + cosSquare *
+        (0.0083330255f + cosSquare * (-0.00019807414f + 0.000002601887f * cosSquare))));
+    *sinOut = sinApprox;
+    *cosOut = cosApprox;
 }
