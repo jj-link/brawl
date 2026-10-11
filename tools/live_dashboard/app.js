@@ -442,10 +442,12 @@
         const vs = data.map((p) => p.v);
         const mn = Math.min(...vs), mx = Math.max(...vs);
         const d = data[data.length - 1].v - data[0].v;
-        const span = data.length > 1 ? fmtAge((data[data.length - 1].t - data[0].t) / 1000) : null;
+        const span = !rangeHours && data.length > 1 ? fmtAge((data[data.length - 1].t - data[0].t) / 1000) : null;
         txt = fmtBytes(mn) + ' – ' + fmtBytes(mx) +
           (data.length > 1 ? ' · ' + (d >= 0 ? '+' : '−') + fmtBytes(Math.abs(d)) + (span ? ' over ' + span : '') : '');
       }
+      // Fixed windows describe the selected period, not the spacing of samples.
+      if (rangeHours) txt += (txt ? ' · ' : '') + 'last ' + rangeHours + 'h';
       setText('spark-range', txt);
     }
 
