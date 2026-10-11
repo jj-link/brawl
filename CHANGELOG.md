@@ -2,20 +2,6 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
-## Live dashboard — pinned reconstruction session
-
-- Added `--session-id ROOT_UUID` to select an exact root journal without falling back to another conversation. Automatic discovery now retains its first selected root until restart instead of switching whenever another root journal becomes newer.
-- The persistent dashboard now runs as `python tools/live_dashboard/server.py --session-id 01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a`. Only the dashboard was restarted; reconstruction workers and the owning observer were left running.
-- Observer session isolation remains enforced. Both live endpoints return the actual failure reason, including both root UUIDs for a mismatch; the browser fetches that diagnostic after a stream connection failure rather than always claiming the bridge is unloaded.
-- Exercised explicit selection, automatic selection stability after a competing journal update, missing requested roots, and deletion of the pinned journal. An isolated mismatch endpoint returned HTTP 503 and its exact error appeared in the browser. After restoring the real transport, `/api/state` reported the intended reconstruction UUID and the browser showed 13 worker panes with the observer connected. Screenshot capture was unavailable for this check because the browser relay reported the tab was not visible.
-
-## Live dashboard — whitespace-only worker text
-
-- Compared retained observer SSE items with Qwen worker journals: the blank cards contained newline-only visible text blocks between tool calls, not missing generated prose.
-- Live panes now omit whitespace-only blocks from rows and message counts, retaining their data so subsequent non-whitespace updates appear normally. Empty panes explain that tool activity and hidden reasoning are not shown.
-- Browser verification replayed the captured observer snapshot: the affected Qwen panes previously displayed two and five blank rows, then displayed zero visible messages after the fix. A synthetic update to the same item appeared, grew, and completed without replacing its row's text element; screenshot review confirmed the surface. This was replay verification, not fresh model generation.
-- The running dashboard currently rejects the observer because their root-session identities differ. The isolation guard remains unchanged; this rendering fix does not reconnect mismatched sessions.
-
 ## Reconstruction resumed — thirteen fresh assignment owners
 
 - Launched the approved **eight Sol, two GLM, two Qwen, and one Astra** agents from `main` revision `70bb468ebca4b99bb8c22f2221d62004f5324792`. Each owns one bounded assignment in a separate working copy, carrying forward saved drafts and actual correction history through integration and final verification or the prescribed handoff.
