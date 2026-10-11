@@ -6,8 +6,9 @@ plus a small JSON + SSE API. Data comes from live project artifacts and
 the narrowly scoped in-process omp observer:
 
 * omp session journals supply identity/status and opt-in recorded history.
-* The owning runner's loopback observer supplies sanitized visible text
-  updates; journal polling is never substituted for generated-text streaming.
+* The owning runner's loopback observer supplies assistant text and sanitized
+  tool execution/output updates in the same stream. Journal polling is never
+  substituted for live events; loading observer changes requires runner restart.
 * ``CHANGELOG.md`` verified checkpoints for headline progress, with the
   existing report/counter retained as a separately labelled unit-map source.
 

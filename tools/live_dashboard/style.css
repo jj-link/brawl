@@ -426,7 +426,6 @@ body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
 
 /* ---------- tiled agent terminals ---------- */
 #streams-card { min-width: 0; flex: 1; }
-.stream-note { margin: 2px 14px 12px; color: var(--tx2); font-size: 12px; }
 .stream-status { margin: 4px 14px 8px; color: var(--mint); font-size: 12px; }
 .stream-status.is-error { color: var(--amber2); }
 .streams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px; padding: 0 14px 14px; align-items: start; }

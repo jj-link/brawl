@@ -1,6 +1,7 @@
 /* Read-only omp v18.8.9 observer. Native project extension discovery loads this
  * at startup and rebinds the factory to existing/revived child sessions.
  * No tools, prompts, provider hooks, session mutation or model calls.
+ * Relays assistant prose plus sanitized tool lifecycle/output over one SSE feed.
  */
 import { createServer } from 'node:http';
 import { randomUUID } from 'node:crypto';
@@ -24,6 +25,7 @@ const retained = new Map();
 let retainedChars = 0;
 let server;
 let sequence = 0;
+let fallbackCalls = 0;
 let failure = null;
 let rootSessionId = null;
 
@@ -31,7 +33,9 @@ let rootSessionId = null;
 // otherwise a credential split between provider deltas could leak its prefix.
 // Sensitive labels suppress the rest of that line, including spaced/quoted
 // values. Private tags/keys suppress even unterminated blocks. False positives
-// deliberately favor privacy. There is no raw-event or tool-result transport.
+// deliberately favor privacy. Tool results are relayed only as sanitized
+// result.content text blocks; raw events, call arguments, prompts and details
+// payloads are never transported.
 function visible(raw, flush) {
   let text = raw;
   if (!flush) {
@@ -46,6 +50,61 @@ function visible(raw, flush) {
   text = text.replace(/\b(?:sk-[A-Za-z0-9_-]*|gh[pousr]_[A-Za-z0-9_]*|github_pat_[A-Za-z0-9_]*|AKIA[A-Z0-9]*)/g, '[credential redacted]');
   text = text.replace(/(https?:\/\/)[^/\s:@]+:[^/\s@]*(?:@|$)/g, '$1[redacted]@');
   return text.replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, '');
+}
+
+// Visible-tool privacy gate, mirroring the journal pipeline's target redaction
+// (history/skill/omp/agent resources, agent state and settings, env and
+// credential files). Matched against the call target and every direct string
+// argument; a hit suppresses that call's streamed and final output entirely.
+// Over-blocking deliberately favors privacy; prompts are never emitted anyway.
+const PRIVATE_TARGETS = ['history://', 'skill://', 'omp://', 'agent://', '.omp/agent',
+  '.omp/settings', '.env', 'credential', 'secrets', 'id_rsa', 'id_ed25519', '.pem'];
+
+function argString(args, key) {
+  return args && typeof args === 'object' && typeof args[key] === 'string' ? args[key] : '';
+}
+
+function isPrivateTarget(args, target) {
+  const values = [target];
+  if (args && typeof args === 'object') {
+    for (const value of Object.values(args)) {
+      if (typeof value === 'string') values.push(value);
+    }
+  }
+  const lowered = values.join('\n').replace(/\\/g, '/').toLowerCase();
+  return PRIVATE_TARGETS.some(marker => lowered.includes(marker));
+}
+
+// Canonical visible tool text: result.content text blocks only. Images,
+// thinking, details payloads and every other block kind are never transported.
+function resultText(payload) {
+  const content = payload && typeof payload === 'object' ? payload.content : undefined;
+  if (!Array.isArray(content)) return '';
+  return content.filter(block => block && typeof block === 'object' && block.type === 'text' &&
+      typeof block.text === 'string').map(block => block.text).join('\n');
+}
+
+function toolCallId(event) {
+  const call = visible(String(event?.toolCallId ?? ''), true).slice(0, 200);
+  return call || `tool-${++fallbackCalls}`;
+}
+
+function toolText(tool, intent, target) {
+  return `${tool}: ${intent || 'called'}${target ? `\nTarget: ${target}` : ''}`;
+}
+
+// One item per call: name/intent/target summary at start, never full args.
+// Caps mirror the journal pipeline (tool 60, intent 120, target 200). `id` is
+// passed precomputed where the caller already resolved it, so the Map key and
+// item.id can never diverge.
+function toolItem(agent, event, args, id) {
+  const tool = visible(String(event.toolName ?? ''), true).slice(0, 60) || 'tool';
+  const intent = visible(String(event.intent ?? argString(args, 'i')), true).slice(0, 120);
+  const target = argString(args, 'path');
+  return { id: id || `${agent.id}:${toolCallId(event)}`, agentId: agent.id,
+    at: new Date().toISOString(), kind: 'tool', tool, raw: toolText(tool, intent,
+      visible(target, true).slice(0, 200)), text: '', complete: false, isError: false,
+    truncated: false, sequence: 0, private: isPrivateTarget(args, target) };
 }
 
 function frame(type, data) {
@@ -74,8 +133,12 @@ function publicAgent(agent) {
 }
 
 function publicItem(item) {
-  return { id: item.id, agentId: item.agentId, at: item.at, sequence: item.sequence,
-    kind: 'message', role: 'assistant', text: item.text, complete: item.complete,
+  const base = { id: item.id, agentId: item.agentId, at: item.at, sequence: item.sequence };
+  if (item.kind === 'tool') {
+    return { ...base, kind: 'tool', tool: item.tool, text: item.text, complete: item.complete,
+      isError: item.isError, truncated: item.truncated, source: 'live' };
+  }
+  return { ...base, kind: 'message', role: 'assistant', text: item.text, complete: item.complete,
     truncated: item.truncated, source: 'live' };
 }
 
@@ -158,7 +221,7 @@ function ensureServer() {
     if (request.url === '/status') {
       response.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
       response.end(JSON.stringify({ connected: true, epoch, rootSessionId, sequence, pid: process.pid,
-        agents: agents.size, contract: 'omp-v18.8.9-extension-text-delta' }));
+        agents: agents.size, contract: 'omp-v18.8.9-extension-visible-output' }));
       return;
     }
     if (request.url !== '/events') { response.writeHead(404); response.end(); return; }
@@ -184,6 +247,7 @@ function ensureServer() {
 /** @param {import('@oh-my-pi/pi-coding-agent').ExtensionAPI} pi */
 export default function liveOutput(pi) {
   const completedMessages = new Set();
+  const completedCalls = new Set();
   const eligible = ctx => resolve(ctx.cwd).toLowerCase() === project.toLowerCase() && ctx.agent.kind === 'sub';
   const messageKey = (ctx, message) => `${ctx.sessionManager.getSessionId()}:${message.timestamp}`;
   const observe = (ctx, state) => {
@@ -249,5 +313,77 @@ export default function liveOutput(pi) {
     for (const item of agent.items.values()) {
       if (item.id.startsWith(prefix)) { item.complete = true; publish(agent, item, true); }
     }
+  });
+
+  // Visible tool lifecycle, one item per call: stable id = session UUID plus
+  // provider call id. Start carries only the name/intent/target summary (never
+  // full args); update/end carry sanitized result.content text blocks, never a
+  // details payload. End evidence wins over a straggling update, so a
+  // completed call is never regressed or resurrected; only a genuine new
+  // execution (repeated start) may reopen the item.
+  pi.on('tool_execution_start', (event, ctx) => {
+    const agent = observe(ctx, 'working');
+    if (!agent) return;
+    const args = event.args && typeof event.args === 'object' ? event.args : null;
+    const fresh = toolItem(agent, event, args);
+    completedCalls.delete(fresh.id);
+    const item = agent.items.get(fresh.id) || fresh;
+    item.kind = 'tool'; item.tool = fresh.tool; item.raw = fresh.raw;
+    item.complete = false; item.isError = false; item.truncated = false;
+    item.private = fresh.private;
+    agent.items.set(fresh.id, item);
+    publish(agent, item, true);
+  });
+  pi.on('tool_execution_update', (event, ctx) => {
+    if (!eligible(ctx)) return;
+    const id = `${ctx.sessionManager.getSessionId()}:${toolCallId(event)}`;
+    if (completedCalls.has(id)) return;
+    const agent = observe(ctx, 'working');
+    if (!agent) return;
+    let item = agent.items.get(id);
+    if (!item) {
+      // Binding revived mid-call: rebuild from the update's own args. A later
+      // end still finalizes; a completed call never resurrects here.
+      item = toolItem(agent, event, event.args && typeof event.args === 'object' ? event.args : null, id);
+      agent.items.set(id, item);
+      publish(agent, item, true);
+    }
+    if (item.complete || item.private) return;
+    const text = resultText(event.partialResult);
+    if (!text) return;
+    item.truncated ||= text.length > MAX_TEXT;
+    item.raw = text.slice(0, MAX_TEXT);
+    publish(agent, item);
+  });
+  pi.on('tool_execution_end', (event, ctx) => {
+    if (!eligible(ctx)) return;
+    const id = `${ctx.sessionManager.getSessionId()}:${toolCallId(event)}`;
+    const agent = observe(ctx, null);
+    if (!agent) return;
+    let item = agent.items.get(id);
+    const fresh = !item;
+    if (fresh) {
+      // Without start/update arguments, the result's target cannot be checked.
+      // Keep the completion status, but do not expose unclassified output.
+      item = toolItem(agent, event, null, id);
+      item.private = true;
+      agent.items.set(id, item);
+    }
+    completedCalls.add(id);
+    if (completedCalls.size > MAX_ENTRIES) completedCalls.delete(completedCalls.values().next().value);
+    item.complete = true;
+    item.isError = event.isError === true;
+    if (item.private) {
+      item.raw = '[private target output omitted]';
+    } else {
+      const text = resultText(event.result);
+      if (text) {
+        item.truncated ||= text.length > MAX_TEXT;
+        item.raw = text.slice(0, MAX_TEXT);
+      } else if (fresh) {
+        item.raw = `${item.tool} - ${item.isError ? 'error' : 'ok'}`;
+      }
+    }
+    publish(agent, item, true);
   });
 }

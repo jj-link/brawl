@@ -1150,9 +1150,8 @@
     try { showHistory = localStorage.getItem('brawldash.streamHistory') === '1'; } catch (_) {}
 
     function status() {
-      setText('streams-status', S.paused ? 'Paused — Resume reconnects to retained observer output.' :
-        connected ? 'Live observer connected · visible generated text, not journal polling' :
-          'Live observer disconnected — ' + connectionError);
+      setText('streams-status', S.paused ? 'Paused' :
+        connected ? 'Connected' : 'Disconnected — ' + connectionError);
       $('streams-status').classList.toggle('is-error', !connected && !S.paused);
     }
 
@@ -1161,7 +1160,7 @@
       try {
         const response = await fetch('/api/live-status', { cache: 'no-store' });
         const data = await response.json();
-        message = data.error || 'Observer is available; reconnecting to its text stream.';
+        message = data.error || 'Observer is available; reconnecting to its output stream.';
       } catch (error) {
         message = 'Cannot read observer status: ' + error.message;
       }
@@ -1225,7 +1224,9 @@
         let entry = panel.rows.get(key);
         if (!entry) { entry = row(item, historical); panel.rows.set(key, entry); }
         const label = historical ? 'Recorded history · completed message · ' + (item.at || '') :
-          'Live generated text · ' + (item.complete ? 'message complete' : 'generating…') +
+          (item.kind === 'tool' ?
+            'Live tool · ' + item.tool + ' · ' + (item.complete ? (item.isError ? 'failed' : 'complete') : 'running…') :
+            'Live generated text · ' + (item.complete ? 'message complete' : 'generating…')) +
           (item.truncated ? ' · retained text limit reached' : '');
         if (entry.label.textContent !== label) entry.label.textContent = label;
         const text = String(item.text || '');
@@ -1245,11 +1246,11 @@
       }
       if (!list.length) {
         if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
-        panel.empty.textContent = connected ? 'No visible generated text observed for this worker yet. Tool activity and hidden reasoning are not shown.' :
-          'Live observer disconnected. No retained visible text for this worker; Show history loads recorded text.';
+        panel.empty.textContent = connected ? 'Waiting for visible worker output. Hidden reasoning is not shown.' :
+          'Live observer disconnected. No retained worker output; Show history loads recorded text.';
         if (!panel.empty.isConnected) log.append(panel.empty);
       } else panel.empty?.remove();
-      panel.count.textContent = live.length + ' live messages' +
+      panel.count.textContent = live.length + ' live entries' +
         (showHistory ? ' · ' + historical.length + ' recorded' : '');
       if (follow) log.scrollTop = log.scrollHeight;
       else log.scrollTop = anchor?.isConnected ? anchor.offsetTop - anchorOffset : oldTop;
@@ -1277,10 +1278,6 @@
       setText('streams-count', '· ' + visible.length);
       $('streams-history').setAttribute('aria-pressed', String(showHistory));
       $('streams-history').textContent = showHistory ? 'Hide history' : 'Show history';
-      setText('streams-note', current.length + ' current workers · ' + (all.length - current.length) +
-        ' historical agents ' + (showHistory ? 'included. Recorded backfill is labeled separately; it is not live output.' :
-          'hidden. Show history explicitly opts into historical agents and completed-record backfill.') +
-        ' Each pane follows new text only while at its bottom; Latest resumes following. Prompts, hidden reasoning, tool payloads and provider metadata are not transported.');
       status();
     }
 
