@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — Pikachu Vortex and Luigi special states
+
+| Source unit | Added C++ code bytes | Functions | Measured corrections after the initial draft |
+| --- | ---: | ---: | --- |
+| Pikachu Vortex status | 1,836 | 19 | Sol: 4 |
+| Luigi ram-special | 876 | 5 | Sol: 10; Astra continuation: 0 |
+| Luigi wall-special | 676 | 4 | Sol: 2 |
+
+- Each original owner verified exact allocated-section bytes and relocations, actual registered C++ source linkage, and **127 passing final binary hashes**. The ram-special handoff preserved the exhausted Sol history and matched on the initial Astra continuation.
+- The Luigi owners preserved pre-existing source drafts and resolved their own publication-path collisions. The final wall-special publication tree retains both original constructor-list entries, every previously accepted registration, and unrelated work; its isolated verification passed all 127 hashes without accepted-source regressions.
+- These three units add **3,388 code bytes**. Cumulative accepted-source accounting is **1.533427%** — **242,796 / 15,833,556 code bytes**, with **15,590,760 bytes remaining** and **531 accepted source units**. Gameplay was not exercised.
+
 ## Accepted isolated reconstruction — Meta Knight general work
 
 - Registered `ft_metaknight_general_work.cpp` at text `0x8848..0x8A08`: **448 additional C++ code bytes** across 21 exports, matching the preserved initial Sol candidate with zero reconstruction corrections.
