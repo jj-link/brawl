@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#0f0d0a" />
+<title>Brawl Decomp · Live Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23161310'/%3E%3Crect x='3' y='7' width='10' height='6' rx='1' fill='%23f2a33c'/%3E%3Crect x='3' y='3' width='4' height='3' rx='1' fill='%2343dfa2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<noscript><div class="noscript">This dashboard requires JavaScript to observe the live reconstruction feed.</div></noscript>
+
+<div id="app">
+  <header id="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div class="brand-text">
+        <span class="brand-title">BRAWL <em>decomp</em></span>
+        <span class="brand-sub">live reconstruction · command center</span>
+      </div>
+    </div>
+
+    <div class="pills" role="status" aria-live="polite">
+      <span class="pill" id="pill-conn"><span class="dot" id="conn-dot" aria-hidden="true"></span><span id="conn-text">connecting…</span></span>
+      <span class="pill" id="pill-report" title="Age of the underlying progress report">report <span id="report-age">—</span></span>
+      <span class="pill" id="pill-sync" title="Time since last successful sync">sync <span id="sync-age">—</span></span>
+      <span class="pill mono" id="pill-session" hidden title=""></span>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="btn-pause" aria-pressed="false" title="Pause live updates — incoming data is buffered and applied on resume">Pause</button>
+      <button class="btn" id="btn-motion" aria-pressed="true" title="Toggle motion and animations">Motion: on</button>
+    </div>
+  </header>
+
+  <div id="warnings" class="warnings" hidden>
+    <button id="warnings-toggle" class="warnings-toggle" type="button" aria-expanded="false">
+      <span class="warn-ic" aria-hidden="true"></span><span id="warnings-label">warnings</span><span class="warn-caret" aria-hidden="true">▸</span>
+    </button>
+    <ul id="warnings-list" hidden></ul>
+  </div>
+
+  <section id="hero" class="card" aria-label="Overall decompilation progress">
+    <div class="hero-left">
+      <div class="big-meter">
+        <div class="big-pct-row">
+          <span class="big-pct" id="big-pct">—</span><span class="pct-sign">%</span>
+        </div>
+        <div class="big-label">of <span id="hero-total-label">—</span> source accepted</div>
+        <div class="meter" id="meter" role="progressbar" aria-label="Accepted bytes progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="meter-fill" id="meter-fill"></div>
+        </div>
+      </div>
+      <dl class="counters">
+        <div class="counter counter-amber"><dt>accepted</dt><dd id="c-accepted">—</dd></div>
+        <div class="counter"><dt>remaining</dt><dd id="c-remaining">—</dd></div>
+        <div class="counter"><dt>total</dt><dd id="c-total">—</dd></div>
+        <div class="counter"><dt>units</dt><dd id="c-units">—</dd></div>
+      </dl>
+    </div>
+    <div class="hero-right">
+      <div class="spark-head">
+        <span class="card-kicker">accepted bytes · history</span>
+        <span class="mono dim" id="spark-range"></span>
+      </div>
+      <div class="spark-canvas-wrap">
+        <canvas id="sparkline" aria-label="Progress history sparkline" role="img"></canvas>
+      </div>
+    </div>
+    <div id="hero-note" class="hero-note" hidden></div>
+  </section>
+
+  <main id="grid">
+    <section id="map-card" class="card" aria-label="Unit map">
+      <div class="card-head">
+        <nav class="crumbs" id="crumbs" aria-label="Unit map level"></nav>
+        <div class="legend" aria-hidden="true">
+          <span class="lg"><i class="sw sw-accepted"></i>accepted</span>
+          <span class="lg"><i class="sw sw-matched"></i>matched · not accepted</span>
+          <span class="lg"><i class="sw sw-unmatched"></i>no match</span>
+        </div>
+      </div>
+      <div class="card-sub">
+        <span id="recent-strip" class="recent-strip" hidden></span>
+      </div>
+      <div id="treemap-wrap" class="treemap-wrap">
+        <canvas id="treemap" tabindex="0" role="application"
+          aria-label="Byte-weighted treemap of decompilation units. Use arrow keys to move between blocks, Enter to zoom in or inspect a block, Escape to zoom out."></canvas>
+        <div id="tt" class="tooltip" hidden></div>
+        <div id="unit-card" class="unit-card" hidden></div>
+        <div id="map-empty" class="map-empty" hidden>Waiting for unit data…</div>
+      </div>
+    </section>
+
+    <aside id="side">
+      <section id="agents-card" class="card" aria-label="Agents">
+        <div class="card-head">
+          <span class="card-kicker">agents <span class="count mono" id="agents-count"></span></span>
+          <input id="agent-search" class="input" type="search" placeholder="Search agents…" aria-label="Search agents" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="seg" id="agent-filter" role="group" aria-label="Filter agents">
+          <button class="seg-btn" type="button" data-filter="active">Active<span class="cnt mono" data-cnt="active"></span></button>
+          <button class="seg-btn" type="button" data-filter="waiting">Waiting<span class="cnt mono" data-cnt="waiting"></span></button>
+          <button class="seg-btn" type="button" data-filter="historical">History<span class="cnt mono" data-cnt="historical"></span></button>
+          <button class="seg-btn is-on" type="button" data-filter="all">All<span class="cnt mono" data-cnt="all"></span></button>
+        </div>
+        <div id="agent-detail" class="agent-detail" hidden></div>
+        <div id="agent-list" class="agent-list" role="list"></div>
+      </section>
+
+      <section id="feed-card" class="card" aria-label="Live event feed">
+        <div class="card-head">
+          <span class="card-kicker">event feed <span class="count mono" id="feed-count"></span></span>
+        </div>
+        <div id="feed-new" class="feed-new" hidden>
+          <button id="feed-new-btn" class="btn btn-small" type="button">new events — jump</button>
+        </div>
+        <div id="feed" class="feed" role="log" aria-live="off" aria-label="Live event feed"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer id="foot">
+    <span>read-only observation of live reconstruction journals</span>
+    <span class="mono dim" id="foot-meta"></span>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

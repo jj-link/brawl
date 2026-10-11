@@ -113,3 +113,43 @@ Download the latest release from [encounter/objdiff](https://github.com/encounte
 Select an object from the left sidebar to begin diffing. Changes to the project will rebuild automatically: changes to source files, headers, `configure.py`, `splits.txt` or `symbols.txt`.
 
 ![](assets/objdiff.png)
+
+Live reconstruction dashboard
+=============================
+
+From the repository root, run:
+
+```sh
+python tools/live_dashboard/server.py --port 8765
+```
+
+Open **http://127.0.0.1:8765/**. Only Python's standard library and a modern
+browser are required; there is no frontend build or package installation.
+
+- The byte-weighted map shows all modules. Select a module to inspect its
+  source units; amber means accepted C/C++, while cyan means a byte match
+  that has not met the source-acceptance rules.
+- Agent cards and the event feed update approximately every two seconds from
+  this project's OMP session journals. Search or filter agents, then select
+  one for its recorded activity. A quiet agent has no recent recorded
+  activity; it is not automatically considered stopped. A completed agent
+  turn does not itself mean its source was accepted.
+- Progress uses `tools/reconstruction_progress.py` and
+  `build/RSBE01_02/report.json`, not the aggregate fuzzy-match percentage.
+  New byte totals appear when reconstruction workers refresh that report.
+  The report's age is shown separately from the live connection status.
+- Pause buffers incoming updates until resumed. Motion can be disabled
+  independently. The map supports arrow keys, Enter, and Escape.
+
+The server discovers the newest session belonging to this checkout, including
+nested agents. Use `--session-dir PATH` to select a session directory explicitly,
+or `--report PATH` for another build report. Run `--help` for all options.
+Missing inputs are reported in the UI; disconnected clients retain their last
+snapshot with a stale indicator and reconnect automatically.
+
+The dashboard is read-only with respect to reconstruction work: it does not
+compile, launch agents, or modify source, configuration, or journals. Observed
+progress history is stored in the ignored `build/live-dashboard/` directory.
+It binds only to loopback, does not expose raw journals or reasoning, and
+requires a local server; publishing the static files alone cannot provide
+live agent data.
