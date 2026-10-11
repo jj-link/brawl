@@ -61,11 +61,38 @@ mo_fighter/ft_ness/ness_following_process_initializer.cpp:
 	.text       start:0x000131A4 end:0x000131FC
 	.ctors      start:0x00000024 end:0x00000028
 
+mo_fighter/ft_ness/ness_nested_module_destructors.cpp:
+	.text       start:0x00014C68 end:0x00014DF0
+
+mo_fighter/ft_ness/ness_collision_support_destructors.cpp:
+	.text       start:0x00014DF0 end:0x00015020
+
+mo_fighter/ft_ness/ness_module_aggregate_destructor.cpp:
+	.text       start:0x00015020 end:0x000151C4
+
+mo_fighter/ft_ness/ness_composite_support_destructors.cpp:
+	.text       start:0x000151C4 end:0x00015438
+
+mo_fighter/ft_ness/ness_dependent_support_destructors.cpp:
+	.text       start:0x00015438 end:0x000155C4
+
+mo_fighter/ft_ness/ness_inherited_support_destructors.cpp:
+	.text       start:0x000155C4 end:0x00015664
+
+mo_fighter/ft_ness/ness_support_constructors.cpp:
+	.text       start:0x00015664 end:0x0001571C
+
 mo_fighter/ft_ness/ness_support_deleting_destructors.cpp:
 	.text       start:0x0001571C end:0x000157DC
 
+mo_fighter/ft_ness/ness_linked_support_destructor.cpp:
+	.text       start:0x000157DC end:0x00015838
+
 mo_fighter/ft_ness/wn_weapon_accessors.cpp:
 	.text       start:0x00015C78 end:0x00015CE8
+
+mo_fighter/ft_ness/ness_input_null_singleton.cpp:
+	.text       start:0x00015CE8 end:0x00015D6C
 
 mo_fighter/ft_ness/wn_weapon_deleting_destructors.cpp:
 	.text       start:0x00015D6C end:0x00015DEC
