@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — Lucario leaf callbacks
+
+- Registered `ft_lucario_leaf_callbacks.cpp` at text `0x13A10..0x13A60`: **80 additional C++ code bytes** across five exports, after the initial candidate and two Sol corrections.
+- The owner verified all **20 instruction words**, section alignment, empty relocation sets, and source linkage. Existing vtables, thunks, and all other original text/data remain outside the reconstructed group.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.409285% complete** — **223,140 / 15,833,556 accepted code bytes**, with **15,610,416 code bytes remaining** and **521 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Mario down-special shooting state
 
 - Registered `ft_mario_status_uniq_process_special_lw_shoot.cpp` at text `0xE1B0..0xE3C4`: **532 additional C++ code bytes** across four exports, after the initial candidate and two Sol corrections. The unchanged-object symbol-scope comparison remains separately recorded.
