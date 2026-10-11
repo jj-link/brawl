@@ -28,8 +28,16 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 
 1. Spawn a fresh agent for one bounded reconstruction assignment.
 2. Keep that agent responsible for the assignment through integration and final verification or the agreed model handoff.
-3. End the agent's session after verified completion, a preserved model handoff, or the existing Astra set-aside outcome.
+3. After verified completion, a preserved model handoff, or the existing Astra set-aside outcome, perform the evidence-preserving workspace cleanup below, then end the agent's session.
 4. Fill the available worker slot with a fresh agent for the next assignment, carrying forward relevant verified knowledge and preserved handoff artifacts.
+
+### Workspace cleanup
+
+- The reconstruction owner cleans its completed workspace as part of finishing the assignment.
+- Preserve source drafts, every measured attempt, compiler recipes, input identities, comparison results, best and target objects used as evidence, verification logs and hashes, progress reports, and handoff or set-aside packets.
+- Remove redundant workspace copies of game inputs and disposable generated build outputs after verifying that retained originals and reconstruction evidence remain available. Resolve filesystem links and shared dependencies before removal so cleanup affects only the intended workspace files.
+- Keep active, blocked, or still-needed workspaces intact. Before cleaning a handed-off workspace, confirm that the receiving owner has the required preserved inputs and evidence.
+- Verify that retained evidence and the project's original game files are unchanged. Return the cleanup results, removed byte counts, and any retained files requiring further decisions to the parent for `CHANGELOG.md`.
 
 ### Hands-off orchestration
 
