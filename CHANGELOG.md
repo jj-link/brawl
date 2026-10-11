@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi through 1029C's published union
+
+- `SolLuigiFunction1029C` confirmed publication of an independently verified union containing `fn_99_1029C` (64 bytes), `fn_99_102DC` (96), `fn_99_1033C` (88), `fn_99_10394` (64) and `fn_99_1054C` (104), with all **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.104215%** — **333,172 / 15,833,556 code bytes**, with **15,500,384 bytes remaining** and **949 accepted source units**. This checkpoint adds **416 code bytes / 5 units** to the preceding 944-unit checkpoint.
+- Published report SHA-256: `e49aaa44bf673b7852d5ab4cb032a5fa4e9e8580276ed37a5e5d3769fa02a85d`. Rendered counters, the accepted source card, all module/unit records and persisted history agreed before release to 1033C. The 1029C owner matched on its initial candidate with zero corrections and one exact relocation; cleanup removed 11,305 generated files totaling 415,986,635 logical bytes, preserving its checkout/Git trees, evidence and 135 canonical originals.
+- Completed 10170's slot was refilled with fresh `SolLuigiFunction10648`, owning only `fn_99_10648` at `.text 0x10648..0x106A8` (96 bytes).
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_10170`
 
 - `SolLuigiFunction10170` published its 300-byte reconstruction after an exact initial candidate with zero corrections. Registered text and all 21 relocations matched exactly, compiled source was linked, and **127 DOL/REL hashes passed** with all preceding 943 accepted units retained.
