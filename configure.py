@@ -635,6 +635,9 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_leaf_callbacks.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_lucario/ft_lucario_input_destructors.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_late_leaf_accessors.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_scalar_callbacks.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_lucario/ft_lucario_scalar_destructor.cpp", cflags=cflags_fighter),
         ],
     },
     {

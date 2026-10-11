@@ -17,6 +17,15 @@ mo_fighter/ft_lucario/ft_lucario_leaf_callbacks.cpp:
 mo_fighter/ft_lucario/ft_lucario_input_destructors.cpp:
 	.text       start:0x00013AE4 end:0x00013B64
 
+mo_fighter/ft_lucario/ft_lucario_late_leaf_accessors.cpp:
+	.text       start:0x00013B64 end:0x00013B84
+
+mo_fighter/ft_lucario/ft_lucario_scalar_callbacks.cpp:
+	.text       start:0x00013B84 end:0x00013BFC
+
+mo_fighter/ft_lucario/ft_lucario_scalar_destructor.cpp:
+	.text       start:0x00013BFC end:0x00013C58
+
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000140AC end:0x00014148
 	.data       start:0x00007350 end:0x0000735F
