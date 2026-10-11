@@ -5,6 +5,11 @@ progress. The existing counter supplies the separately labelled report unit
 map; the two sources are never presented as the same checkpoint merely because
 a build report exists. Each input is fingerprint-cached, and refresh failures
 retain the last-good data with explicit provenance and warnings.
+
+Chart history backfills verified cumulative totals at their recorded dates or
+Git publication dates, then merges the retained dashboard observations. Historical
+checkpoints are not subject to the observation serving limit or used as headline
+progress. An undated checkpoint is omitted rather than assigned a guessed time.
 """
 
 from __future__ import annotations
@@ -12,10 +17,13 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import subprocess
 import threading
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+
+from checkpoint_history import read_checkpoint_history
 
 HISTORY_MAX_POINTS = 5000
 HISTORY_SERVE_POINTS = 1000
@@ -63,6 +71,7 @@ class ProgressTracker:
         self._revision = None
         self._units_payload = b'{"revision":"pending","units":[]}'
         self._history = self._load_history()
+        self._checkpoint_history = []
         self._warnings = {}
 
     # ------------------------------------------------------------------
@@ -78,9 +87,19 @@ class ProgressTracker:
     def _changelog_fingerprint(self):
         try:
             st = self.changelog_path.stat()
-            return f"{st.st_mtime_ns}:{st.st_size}"
         except OSError:
             return None
+        # A commit can date a previously uncommitted checkpoint without changing
+        # the working file's mtime. Unrelated commits need no history rebuild.
+        try:
+            revision = subprocess.run(
+                ["git", "log", "-1", "--format=%H", "--", "CHANGELOG.md"],
+                cwd=self.root, text=True, encoding="utf-8", errors="replace",
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=3, check=True,
+            ).stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            revision = ""
+        return f"{st.st_mtime_ns}:{st.st_size}:{revision}"
 
     def poll(self):
         """Watch both artifacts, including changelog-only publications."""
@@ -127,7 +146,7 @@ class ProgressTracker:
                 progress,
                 self._report_updated_at,
                 self._revision,
-                list(self._history[-HISTORY_SERVE_POINTS:]),
+                self._chart_history(),
                 list(self._warnings.values()),
             )
 
@@ -234,10 +253,29 @@ class ProgressTracker:
                     self._checkpoint = dict(self._checkpoint, lastGood=True)
                 self._select_progress()
             return
+        history, history_warning = read_checkpoint_history(
+            self.root, text, checkpoint["totalBytes"])
         with self._lock:
             self._changelog_fp = fp
             self._checkpoint = checkpoint
             self._warnings.pop("changelog", None)
+            # Retain previously dated points if some dates cannot be recovered.
+            if history_warning:
+                retained = {
+                    (point["checkpointTitle"], point["acceptedBytes"]): point
+                    for point in self._checkpoint_history
+                }
+                retained.update({
+                    (point["checkpointTitle"], point["acceptedBytes"]): point
+                    for point in history
+                })
+                self._checkpoint_history = list(retained.values())
+            else:
+                self._checkpoint_history = history
+            if history_warning:
+                self._warnings["history"] = history_warning
+            else:
+                self._warnings.pop("history", None)
             self._select_progress()
 
     @staticmethod
@@ -347,8 +385,17 @@ class ProgressTracker:
             self._select_progress()
 
     # ------------------------------------------------------------------
-    # history (observed snapshots only; persisted under build/live-dashboard)
+    # history (persisted observations plus independently dated checkpoints)
     # ------------------------------------------------------------------
+    def _chart_history(self):
+        # Prefer checkpoint provenance for an identical timestamp/value pair.
+        points = {}
+        for point in self._history[-HISTORY_SERVE_POINTS:] + self._checkpoint_history:
+            at = _parse_ts(point["at"])
+            if at is not None:
+                points[(at, point["acceptedBytes"])] = point
+        return sorted(points.values(), key=lambda point: _parse_ts(point["at"]))
+
     def _load_history(self):
         try:
             data = json.loads(self.history_path.read_text(encoding="utf-8"))
@@ -391,6 +438,7 @@ class ProgressTracker:
 
 def _parse_ts(value):
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        date = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return date if date.tzinfo else date.replace(tzinfo=timezone.utc)
     except ValueError:
         return None

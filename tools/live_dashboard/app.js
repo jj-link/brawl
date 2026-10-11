@@ -404,8 +404,7 @@
 
     function update(s) {
       const h = s && Array.isArray(s.history) ? s.history : [];
-      const last = h[h.length - 1];
-      const nsig = h.length + ':' + (last ? last.at + '|' + last.acceptedBytes : '');
+      const nsig = h.map(p => p.at + '|' + p.acceptedBytes).join(';');
       if (nsig !== sig) {
         sig = nsig;
         history = h
