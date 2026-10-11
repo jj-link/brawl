@@ -699,6 +699,8 @@ config.libs = [
                    extra_cflags=["-RTTI off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_mario/ft_mario_parameter_dispatch.cpp",
                    mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_teardown.cpp",
+                   mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_leaf.cpp",
                    mw_version="GC/3.0a5", cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_mario/ft_mario_mantle_destructors.cpp",
