@@ -32,6 +32,57 @@ mo_fighter/ft_lucas/ft_lucas_parameter_int.cpp:
 mo_fighter/ft_lucas/ft_lucas_nested_destructor.cpp:
 	.text       start:0x0000D288 end:0x0000D2E8
 
+mo_fighter/ft_lucas/ft_lucas_subobject_traversal.cpp:
+	.text       start:0x0000E5BC end:0x0000E6E8
+
+mo_fighter/ft_lucas/ft_lucas_embedded_interfaces.cpp:
+	.text       start:0x0000E6E8 end:0x0000E778
+
+mo_fighter/ft_lucas/ft_lucas_subobject_accessors.cpp:
+	.text       start:0x0000E778 end:0x0000E930
+
+mo_fighter/ft_lucas/ft_lucas_destructor_leaf_chain.cpp:
+	.text       start:0x0000E930 end:0x0000EAB0
+
+mo_fighter/ft_lucas/ft_lucas_destructor_lower_layer.cpp:
+	.text       start:0x0000EAB0 end:0x0000EC30
+
+mo_fighter/ft_lucas/ft_lucas_destructor_intermediate.cpp:
+	.text       start:0x0000EC30 end:0x0000EDC0
+
+mo_fighter/ft_lucas/ft_lucas_destructor_ancestor.cpp:
+	.text       start:0x0000EDC0 end:0x0000EF58
+
+mo_fighter/ft_lucas/ft_lucas_destructor_predecessor.cpp:
+	.text       start:0x0000EF58 end:0x0000F0EC
+
+mo_fighter/ft_lucas/ft_lucas_destructor_root_layer.cpp:
+	.text       start:0x0000F0EC end:0x0000F284
+
+mo_fighter/ft_lucas/ft_lucas_destructor_layer.cpp:
+	.text       start:0x0000F284 end:0x0000F418
+
+mo_fighter/ft_lucas/ft_lucas_destructor_stage.cpp:
+	.text       start:0x0000F418 end:0x0000F4EC
+
+mo_fighter/ft_lucas/ft_lucas_embedded_destructor_pair.cpp:
+	.text       start:0x0000F4EC end:0x0000F5AC
+
+mo_fighter/ft_lucas/ft_lucas_base_destructor.cpp:
+	.text       start:0x0000F5AC end:0x0000F624
+
+mo_fighter/ft_lucas/ft_lucas_member_destructor.cpp:
+	.text       start:0x0000F624 end:0x0000F680
+
+mo_fighter/ft_lucas/ft_lucas_vector_state.cpp:
+	.text       start:0x0000F684 end:0x0000F7A8
+
+mo_fighter/ft_lucas/ft_lucas_subobject_setup.cpp:
+	.text       start:0x0000F7A8 end:0x0000F904
+
+mo_fighter/ft_lucas/ft_lucas_energy_traversal.cpp:
+	.text       start:0x0000F904 end:0x0000FB98
+
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00020EA4 end:0x00020F40
 	.data       start:0x0000B538 end:0x0000B547
