@@ -222,7 +222,10 @@ sora/cm/cm_stage_param.cpp:
 
 sora/ty/ty_fig_listmng.cpp:
 	.text       start:0x800AC9DC end:0x800AD808
-	.data       start:0x80455120 end:0x80455180
+	.data       start:0x80455120 end:0x8045517D
+
+auto_07_8045517D_data:
+	.data       start:0x8045517D end:0x80455180 align:1
 
 sora/if/if_wifipr_task.cpp:
 	.text       start:0x800FD110 end:0x800FD1F8

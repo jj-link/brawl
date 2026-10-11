@@ -2,6 +2,7 @@
 #include <gf/gf_heap_manager.h>
 #include <gm/gm_lib.h>
 #include <memory.h>
+#include <stddef.h>
 #include <ty/ty_fig_listmng.h>
 #include <ut/ut_relocate.h>
 
@@ -43,10 +44,6 @@ bool tyFigListDataManager::isLoadFinish() {
     return true;
 }
 
-// NONMATCHING
-// Can get closer to a match by initializing the pointers to
-// "m_bySeries-2" and "m_byKind-2", then adding back the 2 when
-// dereferencing, but this would still result in UB
 void tyFigListDataManager::setData(void* fileBuf, u32 fileSz) {
     utRelocate object(reinterpret_cast<u8*>(fileBuf), fileSz);
     m_data = static_cast<tyFigListData*>(object.getPublicAddress("tyDataList"));
@@ -55,20 +52,29 @@ void tyFigListDataManager::setData(void* fileBuf, u32 fileSz) {
         m_count++;
     }
 
-    u32* bySeries = m_bySeries;
+    // Byte cursors traverse the enclosing object, not before either array.
+    u8* bySeries = reinterpret_cast<u8*>(this);
+    u32 seriesOffset;
     for (u32 i = 0; i < 22; i++) {
-        for (u32 j = 0; j < m_count; j++) {
-            if (i == m_data[j].series) {
-                *bySeries++ = j;
+        u32 j = 0;
+        seriesOffset = 0;
+        for (; j < m_count; seriesOffset += sizeof(tyFigListData), j++) {
+            if (i == reinterpret_cast<tyFigListData*>(reinterpret_cast<u8*>(m_data) + seriesOffset)->series) {
+                *reinterpret_cast<u32*>(bySeries + offsetof(tyFigListDataManager, m_bySeries)) = j;
+                bySeries += sizeof(u32);
             }
         }
     }
 
-    u32* byKind = m_byKind;
+    u8* byKind = reinterpret_cast<u8*>(this);
+    u32 kindOffset;
     for (u32 i = 23; i < 33; i++) {
-        for (u32 j = 0; j < m_count; j++) {
-            if (i == m_data[j].kind) {
-                *byKind++ = j;
+        u32 j = 0;
+        kindOffset = 0;
+        for (; j < m_count; kindOffset += sizeof(tyFigListData), j++) {
+            if (i == reinterpret_cast<tyFigListData*>(reinterpret_cast<u8*>(m_data) + kindOffset)->kind) {
+                *reinterpret_cast<u32*>(byKind + offsetof(tyFigListDataManager, m_byKind)) = j;
+                byKind += sizeof(u32);
             }
         }
     }

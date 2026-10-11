@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — figure-list manager
+
+- Registered `sora/ty/ty_fig_listmng.cpp` as matching: **3,628 additional C++ code bytes**, preserving initial-plus-ten Sol and initial-plus-one Astra histories.
+- The owner verified all **907 instruction words**, **93 owned data bytes**, and relocations. Four strings have their original unit-local ownership; the genuine three-byte trailing alignment gap remains original-only in an explicit byte-aligned split. Its missing-configuration notice is retained and documented, not suppressed.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.350777% complete** — **213,876 / 15,833,556 accepted code bytes**, with **15,619,680 code bytes remaining** and **512 accepted source units**. Gameplay was not exercised.
+
 ## Preserved unmatched adventure game-over scene
 
 - Set aside `sora_scene/sc_adv_gameover.cpp` after initial-plus-ten Sol and Astra stages. The best Astra-initial source, private headers, compiler recipe, and every measured checkpoint remain preserved; one failed preinitial Astra compile is recorded separately.
