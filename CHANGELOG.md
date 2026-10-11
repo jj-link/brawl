@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — write callbacks
+
+- Registered `fn_803F8558.c` (`__FileWrite`) and `fn_803F85B0.c` (`__StringWrite`): **196 additional C code bytes**. Both initial Sol candidates matched without corrections.
+- The owner verified all **49 instruction words**, **40 exception-metadata bytes**, and all relocations. Removed only the two approved stale location comments in `fn_803F88A4.c`; its rebuilt object remains exact.
+- Owner-run final verification passed all **127 binary hashes**. Source reconstruction is now **1.284285% complete** — **203,348 / 15,833,556 accepted code bytes**, with **15,630,208 code bytes remaining** and **504 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — MetroTRK runtime helper
 
 - Registered `fn_80404C58.c` and removed its superseded assembly: **244 additional C code bytes**. Preserved initial-plus-ten Sol and initial-plus-two Astra histories.

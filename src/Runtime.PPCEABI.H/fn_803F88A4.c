@@ -5,8 +5,6 @@
 // r5=va_list): run __pformatter over a __OutStrCtrl{CharStr=s, MaxCharCount=-1,
 // CharsWritten=0}, then NUL-terminate at s[end] (the unsigned bound is the -1
 // sentinel held in r30, so the s[max-1] arm is unreachable in practice).
-// __StringWrite itself lives in auto_StringWrite_text.o and is only referenced
-// here, matching the original object (which has no local copy of it).
 
 typedef unsigned long size_t;
 typedef struct { int __x[1]; } __va_list;

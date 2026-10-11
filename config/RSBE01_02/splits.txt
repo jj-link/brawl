@@ -600,6 +600,16 @@ Runtime.PPCEABI.H/longlong2str.c:
 Runtime.PPCEABI.H/fn_803F7404.c:
 	.text       start:0x803F7404 end:0x803F752C
 
+Runtime.PPCEABI.H/fn_803F8558.c:
+	extab       start:0x80009674 end:0x8000967C
+	extabindex  start:0x8000C6F4 end:0x8000C700
+	.text       start:0x803F8558 end:0x803F85B0
+
+Runtime.PPCEABI.H/fn_803F85B0.c:
+	extab       start:0x8000967C end:0x80009684
+	extabindex  start:0x8000C700 end:0x8000C70C
+	.text       start:0x803F85B0 end:0x803F861C
+
 Runtime.PPCEABI.H/fn_803F861C.c:
 	extab       start:0x80009684 end:0x8000968C
 	extabindex  start:0x8000C70C end:0x8000C718
