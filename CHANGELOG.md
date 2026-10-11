@@ -2,6 +2,28 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstruction — Meta Knight general work
+
+- Registered `ft_metaknight_general_work.cpp` at text `0x8848..0x8A08`: **448 additional C++ code bytes** across 21 exports, matching the preserved initial Sol candidate with zero reconstruction corrections.
+- The owner verified **112/112 instruction words**, both external-zero relocations, actual source linkage, and **127 passing final binary hashes**. The shared zero remains original-owned; no allocated data, constructors, or storage were transferred.
+- The original owner resolved the publication conflict while preserving all previously accepted registrations. The Mario owner separately restored the original executable-mode contract for `configure.py`; its final content blob equals the accepted pre-correction configuration exactly.
+- Cumulative accepted-source accounting is **1.512029%** — **239,408 / 15,833,556 code bytes**, with **15,594,148 bytes remaining** and **528 accepted source units**. Gameplay was not exercised.
+
+## Accepted isolated reconstructions — Peach, Lucario, Ness, Mario, and Lucas
+
+| Source unit | Added C++ code bytes | Functions | Preserved Sol corrections after initial draft |
+| --- | ---: | ---: | ---: |
+| Peach array aggregate | 616 | 4 | 0 |
+| Lucario input destructor pair | 128 | 2 | 0 |
+| Ness weapon accessors | 112 | 8 | 4 |
+| Mario side-special | 1,264 | 7 | 5 |
+| Lucas general work | 448 | 21 | 0 |
+
+- Each reconstruction owner completed source registration, exact allocated-section/relocation comparison, actual source-linkage verification, and **127 passing final binary hashes** in its isolated checkout. Existing attempts and best drafts were preserved; unchanged registration checks and recovered setup failures were not counted as fresh reconstruction corrections.
+- Mario side-special also owns **220 data/constructor/storage bytes**. Its original constructor-list slot is retained; adjacent MarioMantle data and the externally referenced zero remain outside that unit. The other four units add no allocated-data ownership.
+- The Lucario and Lucas owners preserved pre-existing untracked copies before resolving publication-path collisions. No unrelated draft was discarded. Gameplay was not exercised.
+- These five accepted units add **2,568 code bytes**. Cumulative accepted-source accounting is **1.509200%** — **238,960 / 15,833,556 code bytes**, with **15,594,596 bytes remaining** and **527 accepted source units**.
+
 ## Main branch and single-repository headers
 
 - Continued the existing `local-models` history on `main` without rewriting commits or discarding unfinished drafts. Accepted changes are now committed and pushed to the user's `main`; isolated reconstruction workers continue without a shared-build queue.
