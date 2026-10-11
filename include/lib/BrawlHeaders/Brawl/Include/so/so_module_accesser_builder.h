@@ -140,10 +140,10 @@ public:
         m_modelModule(
             acc,
             &m_nodeSetUps,
+            modelScale,
             extendNodeTbl,
             &m_virtualNodes,
-            regDesc,
-            modelScale
+            regDesc
         ) {
     }
 };
@@ -167,10 +167,10 @@ public:
         m_modelModule(
             acc,
             &m_nodeSetUps,
+            modelScale,
             extendNodeTable,
             &getNullArray<soModelVirtualNode>(),
-            regDesc,
-            modelScale
+            regDesc
         ) {
     }
 };

@@ -19,10 +19,10 @@ class soModelModuleImpl : public soModelModuleSimple, public soAnimCmdEventObser
 public:
     soModelModuleImpl(soModuleAccesser* acc,
                       soArray<soModelNodeSetUp>* nodeSetUps,
+                      float f1,
                       void* extendNodeTbl,
                       soArray<soModelVirtualNode>* virtualNodes,
-                      soEventObserverRegistrationDesc* regDesc,
-                      float f1);
+                      soEventObserverRegistrationDesc* regDesc);
     // TODO: Verify Params
     virtual void setUpMtx(u32 nodeId);
     virtual void setUpMtx(u32* nodeIds, s32 numNodeIds);

@@ -13,10 +13,10 @@ soModelModuleImplVariable::soModelModuleImplVariable(soModuleAccesser* acc,
     soModelModuleImpl(
         acc,
         nodeSetUps,
+        f1,
         extendNodeTbl,
         virtualNodes,
-        regDesc,
-        f1
+        regDesc
     ),
     unkCC(0) {
 }
