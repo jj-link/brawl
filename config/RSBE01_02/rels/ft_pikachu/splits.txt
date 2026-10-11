@@ -11,6 +11,45 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_pikachu/wn_pikachu_vortex_aggregate_destructors.cpp:
+	.text       start:0x0001B0C4 end:0x0001B1C0
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_member_destructor.cpp:
+	.text       start:0x0001B1C0 end:0x0001B21C
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_component_destructor.cpp:
+	.text       start:0x0001B21C end:0x0001B294
+
+mo_fighter/ft_pikachu/ft_pikachu_param_base_destructor.cpp:
+	.text       start:0x0001B294 end:0x0001B2D4
+
+mo_fighter/ft_pikachu/ft_pikachu_param_destructor.cpp:
+	.text       start:0x0001B2D4 end:0x0001B334
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_initialize.cpp:
+	.text       start:0x0001B334 end:0x0001B634
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_cleanup.cpp:
+	.text       start:0x0001B634 end:0x0001B69C
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_event.cpp:
+	.text       start:0x0001B76C end:0x0001B82C
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_event.cpp:
+	.text       start:0x0001B82C end:0x0001B904
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_effect.cpp:
+	.text       start:0x0001B904 end:0x0001BA7C
+
+mo_fighter/ft_pikachu/ft_pikachu_param_lookup.cpp:
+	.text       start:0x0001BA7C end:0x0001BAD4
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_article_callback.cpp:
+	.text       start:0x0001BAD4 end:0x0001BB80
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_adjusters.cpp:
+	.text       start:0x0001BB80 end:0x0001BBC8
+
 mo_fighter/ft_pikachu/wn_pikachu_vortex_status_uniq_process.cpp:
 	.text       start:0x0001BBC8 end:0x0001C2F4
 	.ctors      start:0x0000001C end:0x00000020
