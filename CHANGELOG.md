@@ -2,7 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
-## Current worker arrangement
+## Eight-Sol worker pool
+
+- Adopted eight independent GPT-6.1 Sol workers as the current adjustable allocation, replacing the local-model/Sol arrangement.
+- Preserved the initial-attempt-plus-three-corrections allowance, escalation to Astra, and existing drafts, comparison evidence, and Sol correction counts.
+
+## Previous local-model/Sol worker arrangement
 
 - Recorded the user-adjustable arrangement of two GLM workers, two Qwen workers, one GPT-6.1 Sol worker dedicated to local-model handoffs, and one GPT-6.1 Sol worker on independent reconstruction assignments.
 - Both Sol roles retain the same correction allowance and escalation to Astra. Handoffs retain the existing draft and comparison evidence.

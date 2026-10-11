@@ -47,12 +47,9 @@ This is the current arrangement, not a permanent restriction; the user may chang
 
 | Model | Workers | Role |
 | --- | ---: | --- |
-| GLM | 2 | Independent local reconstruction assignments. |
-| Qwen | 2 | Independent local reconstruction assignments. |
-| GPT-6.1 Sol | 1 | Dedicated to functions handed off after local models exhaust their correction attempts; continue from preserved progress. |
-| GPT-6.1 Sol | 1 | Independent reconstruction assignments. |
+| GPT-6.1 Sol | 8 | Independent, nonoverlapping reconstruction assignments, continuing preserved drafts and evidence where available. |
 
-The independent Sol worker starts at the Sol stage of the escalation sequence. Either Sol worker hands an unresolved function to Astra after its allowed attempts.
+Sol is the starting model for the current pool; there is no reserved local-model handoff role. The parent handles compiler feedback, integration, binary verification, commits, and progress reporting. Existing Sol correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -69,9 +66,8 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At every model stage, allow one initial draft or continuation of the inherited draft, followed by at most three correction attempts. If the candidate matches, proceed to integration and verification without further escalation.
 
-1. For work starting with GLM or Qwen, if the code remains unmatched after that stage's correction attempts, hand the same function to the dedicated GPT-6.1 Sol escalation worker.
-2. If GPT-6.1 Sol cannot achieve a match within its initial attempt and three correction attempts, hand the same function to Astra.
-3. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
+1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and three correction attempts, hand the same function to Astra.
+2. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.
 
