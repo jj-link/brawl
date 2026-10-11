@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — 64-bit integer formatter
+
+- Registered `longlong2str.c`: **672 additional C code bytes**, matched after the initial candidate and one Sol correction.
+- The owner verified all **168 instruction words**, **132 jump-table bytes**, **20 exception-metadata bytes**, and all relocations against the registered original object.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.280091% complete** — **202,684 / 15,833,556 accepted code bytes**, with **15,630,872 code bytes remaining** and **499 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — unwind lookup
 
 - Registered `fn_803F1B64.c` and removed its superseded assembly: **432 additional C code bytes**. Preserved the initial-plus-ten Sol history; the Astra initial candidate matched without corrections.
