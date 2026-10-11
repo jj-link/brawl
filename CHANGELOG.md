@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — runtime math pair
+
+- Registered `fn_8040012C.c`, including `fn_8040036C`, and removed the superseded assembly: **896 additional C code bytes**. Preserved the initial-plus-ten Sol history and initial-plus-one Astra continuation.
+- The owner verified all **224 instruction words**, **152 constant-table bytes**, and all relocations against the registered original object.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.273119% complete** — **201,580 / 15,833,556 accepted code bytes**, with **15,631,976 code bytes remaining** and **497 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — exception dispatcher
 
 - Registered `fn_803F2A4C.cpp` and removed its superseded assembly: **1,024 additional C++ code bytes**. Preserved the actual initial-plus-ten Sol history, including the ninth-correction best checkpoint and retained tenth-correction source.
