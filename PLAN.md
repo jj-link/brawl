@@ -64,9 +64,9 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 #### Escalation for unmatched code
 
-At every model stage, allow one initial draft or continuation of the inherited draft, followed by at most three correction attempts. If the candidate matches, proceed to integration and verification without further escalation.
+At each model stage, allow one initial draft or continuation of the inherited draft, followed by at most ten correction attempts for GPT-6.1 Sol or three for Astra. If the candidate matches, proceed to integration and verification without further escalation.
 
-1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and three correction attempts, hand the same function to Astra.
+1. If GPT-6.1 Sol cannot achieve a match within its initial attempt and ten correction attempts, hand the same function to Astra.
 2. If Astra cannot achieve a match within its initial attempt and three correction attempts, set the function aside for now.
 
 At every handoff, preserve the best draft, compiler settings, remaining binary differences, and previous attempts. The next model continues from that progress rather than starting over. Preserve the best draft even if a later attempt regresses.

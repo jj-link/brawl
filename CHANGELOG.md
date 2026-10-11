@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Sol correction allowance
+
+- Raised GPT-6.1 Sol's allowance from three to ten correction attempts after the initial attempt; existing attempt counts carry forward.
+- Astra retains three correction attempts after its initial attempt. The eight-Sol worker arrangement and progress-preserving handoffs are unchanged.
+
 ## Eight-Sol worker pool
 
 - Adopted eight independent GPT-6.1 Sol workers as the current adjustable allocation, replacing the local-model/Sol arrangement.
