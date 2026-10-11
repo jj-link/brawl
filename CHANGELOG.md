@@ -2,15 +2,22 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — runtime dispatch
+
+- Registered `fn_80405520.c`: **188 additional C code bytes**, matched by the initial Sol candidate with no corrections. Removed only its superseded portion from the composite assembly source.
+- The owner verified all **47 instruction words** and **three relocations**. The separate **888-byte trap/architecture remainder** also compares exactly and remains assembly-backed, contributing no accepted C bytes.
+- Owner-run final verification passed **127 files OK**. Source reconstruction is now **1.281506% complete** — **202,908 / 15,833,556 accepted code bytes**, with **15,630,648 code bytes remaining** and **501 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — serial handler initialization
 
 - Registered `fn_80401AAC.c` (`TRKInitializeSerialHandler`) and removed the superseded assembly: **36 additional C code bytes**, matched after the initial candidate and two Sol corrections.
 - The owner verified all **nine instruction words** and relocations, then passed **127 files OK** in the final linked check.
 - Source reconstruction is now **1.280319% complete** — **202,720 / 15,833,556 accepted code bytes**, with **15,630,836 code bytes remaining** and **500 accepted source units**. Gameplay was not exercised.
 
-## Preserved unmatched relocation utility
+## Preserved unmatched game utilities
 
 - Set aside `sora/ut/ut_relocate.cpp` after actual initial-plus-ten Sol and Astra stages. Restored the inherited best source and retained all measured attempts. The candidate remains unmatched in instructions and data; the source, header, and `NonMatching` registration have no net changes, and no additional source bytes were accepted.
+- Set aside `sora/gf/gf_slow_manager.cpp` after actual initial-plus-ten Sol and Astra stages. Restored the inherited best source and header, with all attempts preserved. Seven of eight functions match, but the unit remains unmatched and registered `NonMatching`; no additional source bytes were accepted.
 
 ## Accepted source reconstruction — 64-bit integer formatter
 
