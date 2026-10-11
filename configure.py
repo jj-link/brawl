@@ -1208,6 +1208,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_position_dispatch.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_float_forward.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
         ],
     },
     {
