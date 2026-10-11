@@ -2,6 +2,19 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted isolated reconstructions — article defaults and component storage
+
+| Reconstruction group | Added C++ code bytes | Source units |
+| --- | ---: | ---: |
+| Pikachu primary storage accessor | 36 | 1 |
+| Ness article defaults and weapon adjustors | 556 | 6 |
+| Lucario component storage lifetimes | 4,420 | 8 |
+
+- The owners verified exact registered allocated-section bytes and relocations and actual C++ source linkage. The Lucario owner verified committed snapshot `b30981d` with **127 passing binary hashes** and no regressions among the 787 accepted units in its frozen baseline; the six additional Ness units are included in the combined progress report.
+- Ness used three corrections across its six initial candidates. The Pikachu accessor and eight Lucario units matched their initial candidates. Final publication verification added no reconstruction corrections; later private work remains excluded.
+- These groups add **5,012 code bytes** across **15 source units**. Cumulative accepted-source accounting is **1.952688%** — **309,180 / 15,833,556 code bytes**, with **15,524,376 bytes remaining** and **793 accepted source units**. Gameplay was not exercised.
+- Separately, Lucas pointer bindings at `0xC6BC..0xC854` (408 bytes) remain unmatched after Sol initial-plus-ten and Astra initial-plus-ten. Each stage recorded eleven successful candidate compilations, zero compiler failures, and one separate unchanged-best restoration compilation. The best preserved draft matches 98 of 102 instruction words; original code remains linked. Its 127 passing restoration hashes do not constitute source acceptance, and this set-aside contributes zero accepted bytes.
+
 ## Accepted isolated reconstructions — fighter interfaces and MetroTRK
 
 | Reconstruction group | Added C/C++ code bytes | Source units |
