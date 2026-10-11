@@ -80,6 +80,36 @@ mo_fighter/ft_peach/ft_peach_attribute_cdac.cpp:
 mo_fighter/ft_peach/ft_peach_attribute_ce94.cpp:
 	.text       start:0x0000CE94 end:0x0000CF24
 
+mo_fighter/ft_peach/ft_peach_extend_param_construct.cpp:
+	.text       start:0x0000CF9C end:0x0000CFE4
+
+mo_fighter/ft_peach/ft_peach_class_info_construct.cpp:
+	.text       start:0x0000CFE4 end:0x0000D03C
+
+mo_fighter/ft_peach/ft_peach_class_info_create.cpp:
+	.text       start:0x0000D0C0 end:0x0000D128
+
+mo_fighter/ft_peach/ft_peach_class_info_destruct.cpp:
+	.text       start:0x0000D03C end:0x0000D0C0
+
+mo_fighter/ft_peach/ft_peach_nullable_destruct.cpp:
+	.text       start:0x000052FC end:0x0000533C
+
+mo_fighter/ft_peach/ft_peach_nullable_cleanup.cpp:
+	.text       start:0x0000533C end:0x0000541C
+
+mo_fighter/ft_peach/ft_peach_member_cleanup.cpp:
+	.text       start:0x0000541C end:0x00005494
+
+mo_fighter/ft_peach/ft_peach_member_cleanup_5494.cpp:
+	.text       start:0x00005494 end:0x00005530
+
+mo_fighter/ft_peach/ft_peach_member_cleanup_5530.cpp:
+	.text       start:0x00005530 end:0x0000558C
+
+mo_fighter/ft_peach/ft_peach_member_cleanup_558c.cpp:
+	.text       start:0x0000558C end:0x00005604
+
 mo_fighter/ft_peach/ft_peach_array_aggregate.cpp:
 	.text       start:0x0000A2E4 end:0x0000A54C
 
