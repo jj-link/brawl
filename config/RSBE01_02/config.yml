@@ -467,7 +467,7 @@ modules:
   hash: 0d70854560b6d334c16ba2159bd5a61e4c27d8a2
   splits: config/RSBE01_02/rels/ft_mario/splits.txt
   symbols: config/RSBE01_02/rels/ft_mario/symbols.txt
-  force_active: [HomeBtnIcon, shootInitializer]
+  force_active: [HomeBtnIcon, shootInitializer, marioSideInitializer]
 - object: files/module/ft_donkey.rel
   hash: b4d81d29f8c5384d694f8ff4f127c5f918b2dfd6
   splits: config/RSBE01_02/rels/ft_donkey/splits.txt
