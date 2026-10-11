@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — debugger stop initializer
+
+- Registered `fn_80403B5C.c` and removed its superseded assembly: **24 additional C code bytes**. Recovered the earlier initial-plus-two Sol history and completed matching correction three without resetting it.
+- The owner verified all **six instruction words**, both relocations, source-object linkage, and the final linked function bytes.
+- Owner-run final verification passed **127 files OK** with no accepted-source regressions. Source reconstruction is now **1.401530% complete** — **221,912 / 15,833,556 accepted code bytes**, with **15,611,644 code bytes remaining** and **518 accepted source units**. Gameplay was not exercised.
+
 ## Accepted source reconstruction — Purin parameter accessors
 
 - Registered `ft_purin_param_lookup.cpp` at text `0x88F8..0x89B8`: **192 additional C++ code bytes** across three exports, matching on the inherited initial candidate with zero corrections. Their former definitions were removed from the remaining main source.
