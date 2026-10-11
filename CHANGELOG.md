@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Reconstruction resumed — thirteen fresh assignment owners
+
+- Launched the approved **eight Sol, two GLM, two Qwen, and one Astra** agents from `main` revision `70bb468ebca4b99bb8c22f2221d62004f5324792`. Each owns one bounded assignment in a separate working copy, carrying forward saved drafts and actual correction history through integration and final verification or the prescribed handoff.
+- Sol assignments: Lucas jostle-state, Mario second-article initialization, Meta Knight parameter-accessor destructors, corrected Ness observer-event adjustors, Luigi energy-vector reset, Lucario general-work constructor, the fixed eight-unit Peach cleanup/constructor packet, and Pikachu observer-byte accessor.
+- GLM assignments: the saved `fn_804035CC` debugger match and the `fn_803F2948` context-restore draft. Qwen assignments: the saved `fn_8040369C` debugger-unit draft and `double2hex_803F703C`.
+- Astra received the preserved 976-byte Lucario kinetic-energy constructor after its ten exhausted Sol corrections. This is its first Astra stage, with the existing ten-correction allowance.
+- Saved matches await their owners' current-baseline integration and final verification. Dispatch adds no accepted reconstruction credit. Accepted progress remains **320,692 / 15,833,556 code bytes**, **2.025395%**, **15,512,864 bytes remaining**, and **861 accepted source units**.
+
 ## Reconstruction workflow — one assignment per agent session
 
 - Updated `PLAN.md` to spawn a fresh agent for each bounded reconstruction assignment, retain that owner through verification or the agreed handoff, end the session at its terminal outcome, and fill the available worker slot with a fresh agent for the next assignment.
