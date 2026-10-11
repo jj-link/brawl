@@ -10,7 +10,6 @@ struct dec {
     short exp;               // +0x02
     unsigned char count;     // +0x04
     unsigned char dig[36];   // +0x05..0x28
-    unsigned short tail;     // +0x2A (sizeof 44 == frame stride; never touched)
 };
 
 void fn_803F3A54(struct dec* rec, const char* s, int n) {

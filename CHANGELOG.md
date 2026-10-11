@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Accepted source reconstruction — five-unit batch
+
+- Replaced assembly registrations with reconstructed C for signed conversion (`fn_803FC618`, 236 bytes), decimal powers (`fn_803F3B40`, 876 bytes), decimal comparisons (`fn_803F3EAC` and `fn_803F3F90`, 484 bytes), `strcpy` (`fn_803FA280`, 192 bytes), and debugger support requests (`TRKTargetSupportRequest` in `fn_80403B94`, 512 bytes).
+- Added **2,300 code bytes across five units and six functions**. Every registered C object's allocated bytes and relocations match the original. The decimal-power unit now owns its original 292-byte, 73-entry jump table; the decimal constructor's unused tail member was removed to agree with the target's 42-byte record copies, without changing its exact code.
+- The signed parser matched on its first Sol continuation after the preserved GLM attempts; decimal comparisons and debugger support matched after one Sol correction, and `strcpy` after two. The preserved decimal-power draft required no instruction correction during this integration.
+- `python configure.py && ninja --quiet build/RSBE01_02/ok` passed **127 files OK**. Regenerated the report and calculated **1.107269% complete** — **175,320 / 15,833,556 accepted source code bytes**, with **15,658,236 code bytes remaining**. Current-wave accepted C: **87 units, 118 functions, 14,620 code bytes**.
+
 ## Sol correction allowance
 
 - Raised GPT-6.1 Sol's allowance from three to ten correction attempts after the initial attempt; existing attempt counts carry forward.
