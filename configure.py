@@ -566,7 +566,10 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_captain/ft_captain_function_49d4.cpp",
+                   cflags=cflags_fighter),
+        ],
     },
     {
         "lib": "ft_dedede",
