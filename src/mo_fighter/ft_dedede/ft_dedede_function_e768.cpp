@@ -1,5 +1,6 @@
 #include <so/so_module_accesser.h>
 #include <so/so_value_accesser.h>
+#include <mo_fighter/ft_dedede/ft_dedede_speed.h>
 #include <cmath>
 
 extern "C" {
@@ -7,7 +8,6 @@ extern const float lbl_117_rodata_28[3] = {0.0f, -1.0f, 180.0f};
 extern const char lbl_117_data_84DC[], lbl_117_data_83A8[], lbl_117_data_36A8[];
 void* __dynamic_cast(void*, long, const void*, const void*, short);
 Vec3f* fn_117_92AC(Vec3f*, float, float, float);
-Vec2f* fn_117_D134(Vec2f*, const Vec2f*);
 }
 struct DededeKineticEnable { unsigned char enabled : 1; };
 
@@ -56,19 +56,19 @@ extern "C" void fn_117_E768(void*, soModuleAccesser* accesser) {
     Vec2f acceleration;
     acceleration.m_x = constants[0];
     acceleration.m_y = constants[0];
-    fn_117_D134(reinterpret_cast<Vec2f*>(reinterpret_cast<unsigned char*>(stop) + 0x10), &acceleration);
+    fn_117_D134(reinterpret_cast<DededeSpeed*>(reinterpret_cast<unsigned char*>(stop) + 0x10), reinterpret_cast<const DededeSpeed*>(&acceleration));
     Vec2f brake;
     brake.m_x = horizontal;
     brake.m_y = constants[0];
-    fn_117_D134(reinterpret_cast<Vec2f*>(reinterpret_cast<unsigned char*>(stop) + 0x18), &brake);
+    fn_117_D134(reinterpret_cast<DededeSpeed*>(reinterpret_cast<unsigned char*>(stop) + 0x18), reinterpret_cast<const DededeSpeed*>(&brake));
     Vec2f limit;
     limit.m_x = constants[0];
     limit.m_y = constants[0];
-    fn_117_D134(reinterpret_cast<Vec2f*>(reinterpret_cast<unsigned char*>(stop) + 0x20), &limit);
+    fn_117_D134(reinterpret_cast<DededeSpeed*>(reinterpret_cast<unsigned char*>(stop) + 0x20), reinterpret_cast<const DededeSpeed*>(&limit));
     Vec2f stable;
     stable.m_x = horizontal;
     stable.m_y = constants[0];
-    fn_117_D134(reinterpret_cast<Vec2f*>(reinterpret_cast<unsigned char*>(stop) + 0x28), &stable);
+    fn_117_D134(reinterpret_cast<DededeSpeed*>(reinterpret_cast<unsigned char*>(stop) + 0x28), reinterpret_cast<const DededeSpeed*>(&stable));
     reinterpret_cast<DededeKineticEnable*>(reinterpret_cast<unsigned char*>(stop) + 5)->enabled = 1;
     reinterpret_cast<signed char*>(accesser->getKineticModule().getEnergy(2))[5] &= ~0x80;
     accesser->getWorkManageModule().onFlag(0x22000011);

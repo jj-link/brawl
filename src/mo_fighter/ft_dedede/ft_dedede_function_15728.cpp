@@ -33,7 +33,6 @@ extern "C" {
 extern const float lbl_117_rodata_C8;
 DededeSpeed fn_27_899AC(const DededeSpeed*, const DededeSpeed*);
 void fn_117_15C24(const DededeSpeed*, const DededeSpeed*, DededeSpeed*);
-void fn_117_D134(DededeSpeed*, const DededeSpeed*);
 }
 
 inline DededeSpeed addSpeed(const DededeSpeed& lhs, const DededeSpeed& rhs) {

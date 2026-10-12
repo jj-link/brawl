@@ -1,11 +1,11 @@
 #pragma once
 
 #include <so/ground/so_ground_module_impl.h>
+#include <mo_fighter/ft_dedede/ft_dedede_speed.h>
 
 // Declaration-only ABI view of soGroundModule through getTouchNormal. The
 // original speed getter returns a trivial two-word aggregate rather than the
 // nontrivial Vec2f class, so its result is carried in r3/r4.
-struct DededeSpeed { float x, y; };
 class DededeGroundSpeedView : public soNull, public soNullable {
 public:
     virtual ~DededeGroundSpeedView();
