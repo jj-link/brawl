@@ -27,6 +27,10 @@ mo_fighter/ft_pikachu/ft_pikachu_observer_byte_accessor.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_observer_registration_group.cpp:
 	.text       start:0x00009C34 end:0x00009C70
 
+mo_fighter/ft_pikachu/ft_pikachu_final_position.cpp:
+	.text       start:0x0001525C end:0x000157D4
+	.rodata     start:0x000000C0 end:0x000000C8 align:4
+
 mo_fighter/ft_pikachu/wn_pikachu_owner_destructor.cpp:
 	.text       start:0x000170B0 end:0x00017140
 

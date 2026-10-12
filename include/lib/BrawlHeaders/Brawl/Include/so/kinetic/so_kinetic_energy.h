@@ -48,9 +48,12 @@ public:
                 bool m_main : 1;
             };
             AttributeMask m_mask;
+            short m_signedMask;
         };
         inline AttributeFlag() : m_mask(ATTRIBUTE_MASK_NONE) {}
         inline AttributeFlag(AttributeMask bits) : m_mask(bits) {}
+        enum AllAttributesTag { AllAttributes };
+        inline AttributeFlag(AllAttributesTag) : m_signedMask(-1) {}
         inline ~AttributeFlag() {}
 
         AttributeFlag(soAttributeFlag f) : m_mask(f.m_mask) { }
