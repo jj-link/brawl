@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_pikachu/ft_pikachu_special_hi_kinetic_reset.cpp:
+	.text       start:0x0000F5D0 end:0x0000FA14
+
 mo_fighter/ft_pikachu/ft_pikachu_article_allocate.cpp:
 	.text       start:0x0000A548 end:0x0000AAC8
 	.data       start:0x00003090 end:0x000030D4 align:4 rename:.data$pikachuA548
