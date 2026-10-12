@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede projectile status handling
+
+- `CommittedDashboardPublisher` published verified committed source `aa8de6af`, adding Dedede `fn_117_22F4C` (736 code bytes; Sol initial candidate plus one correction). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.713452%** — **429,636 / 15,833,556 code bytes**, with **15,403,920 bytes remaining** and **1,203 accepted source units**. This checkpoint adds **736 code bytes / 1 unit**, retaining all 1,202 previous units with unchanged code sizes.
+- Published report SHA-256: `f42db2c044906f37ccec8944cf35e49cf3b96ff8a017a99eba08fde71d577260`. Accepted Git blobs, frozen configuration, actual root source presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,402 served unit classifications agreed. Persisted and served history both record **429,636 bytes at `2026-10-12T19:03:50.938Z`**; no browser verification was performed.
+- All owned code and five normalized relocations match; there is no owned data or emitted helper code. The owner's `a8641158` build remains separately identified. A whole-file configuration packet was rejected before staging and repaired by the same owner without changing source, recipe, registration, or correction count. Prior evidence qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
 ## Preserved set-aside — Dedede `fn_117_1A6E0`
 
 - Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction six at **98.63547%** fuzzy match: candidate and target are both 6,112 code bytes with 288 relocations, but saved-register allocation, constructor-argument ordering, and two relocation offsets remain unmatched. The generated 12-byte literal pool was not accepted or transferred from the original data.
