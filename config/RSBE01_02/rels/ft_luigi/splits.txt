@@ -6,6 +6,12 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_fighter/ft_luigi/ft_luigi_function_10cbc.cpp:
+	.text       start:0x00010CBC end:0x00010CC4
+
+mo_fighter/ft_luigi/ft_luigi_function_10c84.cpp:
+	.text       start:0x00010C84 end:0x00010C8C
+
 mo_fighter/ft_luigi/ft_luigi_function_10c9c.cpp:
 	.text       start:0x00010C9C end:0x00010CA4
 
