@@ -22,7 +22,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent must not write or modify code under any circumstances, including inline or throwaway code. All coding belongs to subagents.
 - Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, merge-conflict resolution, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. Each agent uses an isolated working copy and build directory, not a parent-controlled shared-build queue.
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
-- One dedicated dashboard-update subagent generates and publishes cumulative progress from committed results and verifies the rendered dashboard and history independently of the reconstruction worker slots.
+- One dedicated dashboard-update subagent generates and publishes cumulative progress from committed results and verifies dashboard progress and history through the existing data endpoints independently of the reconstruction worker slots.
 - Maintain project work history and progress exclusively in the existing `CHANGELOG.md`.
 
 ### Assignment lifecycle
@@ -85,12 +85,12 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | --- | ---: | --- |
 | GPT-6.1 Sol | 8 | Larger, independent functions within coherent subsystem groups, or preserved GLM/Qwen work picked up later. |
 | GLM | 2 | 8-byte functions; preserve unmatched work after ten corrections for later Sol pickup. |
-| Qwen3.8-Flash-Next (Spark1) | 2 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
+| Qwen3.8-Flash-Next (Spark1) | 3 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
 | GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
 GLM concurrency is capped at two active subagents across all assignments, including recovery work.
 
-The pool contains eight Sol worker slots, two GLM worker slots, and two Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
+The pool contains eight Sol worker slots, two GLM worker slots, and three Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
@@ -145,7 +145,7 @@ python tools/reconstruction_progress.py build/RSBE01_02/report.json
 - The dashboard-update agent uses an isolated checkout of committed results to generate and verify cumulative progress while reconstruction owners continue their assignments independently.
 - The dashboard-update agent publishes the verified `build/RSBE01_02/report.json` to the existing dashboard input location and reports its source commit and exact measurements to the parent. The parent records the same checkpoint in `CHANGELOG.md`.
 - Refresh every dashboard progress surface for that checkpoint: completion percentage, accepted/total/remaining bytes, accepted-unit count, module totals, the unit map, and the accepted-bytes history graph.
-- The dashboard-update agent verifies that the rendered dashboard, report-derived module/unit data, and latest persisted graph point agree with the accepted checkpoint before completing publication.
+- Use the existing dashboard data endpoints and persisted history to verify that headline counters, report-derived module/unit data, and the latest graph point agree with the accepted checkpoint before completing publication.
 - Maintain accurate current-agent status and activity in the dashboard as work proceeds.
 - Keep batch or wave subtotals distinct from whole-project progress. Do not substitute aggregate matched/linked percentages, generated source-line counts, data bytes, executable-section spans, or ISO size for accepted C/C++ code progress.
 
