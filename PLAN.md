@@ -38,7 +38,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Keep the workspace's source, header, and configuration trees and its Git metadata in place.
 - Remove redundant workspace copies of game inputs and disposable generated build outputs after verifying that retained originals and reconstruction evidence remain available. Resolve filesystem links and shared dependencies before removal so cleanup affects only the intended workspace files.
 - Keep active, blocked, or still-needed workspaces intact. Before cleaning a handed-off workspace, confirm that the receiving owner has the required preserved inputs and evidence.
-- Verify that retained evidence and the project's original game files are unchanged. Return the cleanup results, removed byte counts, and any retained files requiring further decisions to the parent for `CHANGELOG.md`.
+- Verify that retained evidence and the project's original game files are unchanged. Return cleanup results, removed byte counts, and any retained files requiring further decisions privately to the parent.
 
 ### Hands-off orchestration
 
