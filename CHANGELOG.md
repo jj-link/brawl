@@ -2,6 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain kinetic transitions
+
+- `CommittedDashboardPublisher` published verified committed source `f2bdbc8a`, adding Captain Falcon `fn_100_D490` (608 code bytes; Sol correction four). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.608460%** — **413,012 / 15,833,556 code bytes**, with **15,420,544 bytes remaining** and **1,183 accepted source units**. This checkpoint adds **608 code bytes / 1 unit**, retaining all 1,182 previous units.
+- Published report SHA-256: `1e3193d04e7f2fff760f7b82028d5af51a12b8bfad5f8012d9181615c6be43b6`. Accepted Git blobs, actual root source files, and the new registered unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,362 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code and normalized relocations match; there is no owned data. The build binds RTTI references to existing strong `lbl_100_data_6294` and `lbl_100_data_16D4` symbols without rewriting compiler code or data. The unused, unlinked 184 generated RTTI data bytes and 64 helper code bytes are excluded; raw whole-emitted-ELF identity is not claimed. Prior qualifications remain applicable. Existing splitter and `gf_shutdown` `FORCEACTIVE` warnings remain unsuppressed. Gameplay was not exercised.
+
+## Preserved set-aside — Captain Falcon `fn_100_10DC0`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction seven at **97.91585%**: 6,076 candidate code bytes versus 6,084 target bytes. Register allocation, constructor argument ordering, constant addressing, motion-list temporaries, and final zero-argument reuse remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolNessFunction1A078/evidence/10DC0/astra/` and its preserved predecessor evidence. The original-fallback build at `8645641d` passed all 127 hashes. The unmatched draft remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
+## Corrected handoff accounting — Dedede `fn_117_7EE0`
+
+- Sol performed one initial candidate, ten matching-loop corrections, and one additional rejected registration recipe: **eleven actual corrections**, exceeding its ten-correction allowance by one. The excess is explicitly retained rather than omitted from the count. Best correction seven remains **79.39535%**, with 1,124 candidate code bytes versus 1,204 target bytes; code and normalized relocations are not exact.
+- The fresh Astra owner validated the preserved manifests, archives, original inputs, and trial chronology before receiving the same function in `build/isolated-workers/SolNessFunction1E1E8/`; the sender confirmed its inputs and outputs are frozen. The original-fallback build at `d39a4e2f` passed all 127 hashes. No unmatched draft was installed in the root checkout, and this handoff adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Captain item visibility
 
 - `CommittedDashboardPublisher` published verified committed source `d39a4e2f`, adding Captain Falcon `fn_100_10070` (536 code bytes; Sol correction three). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
