@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness aggregate destruction and Luigi interface adapter
+
+- `CommittedDashboardPublisher` published verified committed source `fa996a5c`, adding exact, source-linked Ness `fn_101_204E8` (396 code bytes; initial Sol match) and Luigi `fn_99_10D1C` (8 code bytes; initial GLM match), with **127 DOL/REL hashes passing**. Neither function owns associated data.
+- Cumulative accepted-source progress is **2.265265%** — **358,672 / 15,833,556 code bytes**, with **15,474,884 bytes remaining** and **1,081 accepted source units**. This checkpoint adds **404 code bytes / 2 units**, retaining all 1,079 previously accepted units.
+- Published report SHA-256: `9d3dde44a2938330c36a62fb7daf454a28988ad501c9c620ac956c992bb80c03`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,182 served unit classifications, and persisted/served history, without opening a browser.
+
 ## Verified reconstruction checkpoint — Ness article operations and counting
 
 - `CommittedDashboardPublisher` published verified committed source `6acbc8c1`, adding exact, source-linked Ness `fn_101_19D10` (472 code bytes; initial Sol match) and `fn_101_1997C` (528 code bytes; Sol correction three), with **127 DOL/REL hashes passing**. Their 136 associated data bytes are excluded from code credit.
