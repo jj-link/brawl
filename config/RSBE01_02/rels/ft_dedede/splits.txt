@@ -112,6 +112,10 @@ mo_fighter/ft_dedede/ft_dedede_function_14f18.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_15728.cpp:
 	.text       start:0x00015728 end:0x00015C24
 
+mo_fighter/ft_dedede/ft_dedede_function_15c48.cpp:
+	.text       start:0x00015C48 end:0x00015DF0
+	.data       start:0x00009340 end:0x00009384 align:4 rename:.data$dedede15C48
+
 mo_fighter/ft_dedede/ft_dedede_function_15df0.cpp:
 	.text       start:0x00015DF0 end:0x00016014
 
