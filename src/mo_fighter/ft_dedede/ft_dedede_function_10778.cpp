@@ -8,7 +8,7 @@
 extern "C" {
 extern const float lbl_117_rodata_7C;
 extern const float lbl_117_rodata_80[];
-void fn_117_92AC(Vec3f*, float, float, float);
+Vec3f* fn_117_92AC(Vec3f*, float, float, float);
 void fn_27_28E108(BaseItem*, float, Vec3f*, float);
 }
 
