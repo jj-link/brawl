@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain aggregate teardown
+
+- `CommittedDashboardPublisher` published verified committed source `10417ed3`, adding Captain Falcon `fn_100_28AC` (672 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.580393%** — **408,568 / 15,833,556 code bytes**, with **15,424,988 bytes remaining** and **1,175 accepted source units**. This checkpoint adds **672 code bytes / 1 unit**, retaining all 1,174 previous units.
+- Published report SHA-256: `8bd11f3e89ec0bf932c14b3293e380b6d0838cb9355a81066d42b11eb4511130`. Accepted Git blobs, actual root source files, and the new registered unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,350 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code and all 48 normalized relocations match; there is no owned data or emitted helper. Prior qualifications and unsuppressed custom-section/linker warnings remain applicable. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Luigi secondary-interface accessor
 
 - `CommittedDashboardPublisher` published verified committed source `63152a5a`, adding Luigi `fn_99_10D5C` (8 code bytes; initial GLM match, zero corrections). The same owner completed actual root installation before acceptance. The reconstructed object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
