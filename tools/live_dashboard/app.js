@@ -505,13 +505,22 @@
         return;
       }
 
+      // Hold each recorded total until the next checkpoint; never interpolate.
+      const firstX = X(data[0].t), firstY = Y(data[0].v);
+      let previousY = firstY;
       // area fill
       const grad = ctx.createLinearGradient(0, padT, 0, h - padB);
       grad.addColorStop(0, 'rgba(242, 163, 60, 0.30)');
       grad.addColorStop(1, 'rgba(242, 163, 60, 0)');
       ctx.beginPath();
-      ctx.moveTo(X(data[0].t), h - padB);
-      for (const p of data) ctx.lineTo(X(p.t), Y(p.v));
+      ctx.moveTo(firstX, h - padB);
+      ctx.lineTo(firstX, firstY);
+      for (let i = 1; i < data.length; i++) {
+        const x = X(data[i].t), y = Y(data[i].v);
+        ctx.lineTo(x, previousY);
+        ctx.lineTo(x, y);
+        previousY = y;
+      }
       ctx.lineTo(X(data[data.length - 1].t), h - padB);
       ctx.closePath();
       ctx.fillStyle = grad;
@@ -519,7 +528,14 @@
 
       // line
       ctx.beginPath();
-      data.forEach((p, i) => (i ? ctx.lineTo(X(p.t), Y(p.v)) : ctx.moveTo(X(p.t), Y(p.v))));
+      ctx.moveTo(firstX, firstY);
+      previousY = firstY;
+      for (let i = 1; i < data.length; i++) {
+        const x = X(data[i].t), y = Y(data[i].v);
+        ctx.lineTo(x, previousY);
+        ctx.lineTo(x, y);
+        previousY = y;
+      }
       ctx.strokeStyle = '#f2a33c';
       ctx.lineWidth = 1.5;
       ctx.lineJoin = 'round';
