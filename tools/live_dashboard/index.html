@@ -22,8 +22,10 @@
       </div>
     </div>
 
+    <!-- Completion stays beside the title, separate from connection status. -->
+    <span class="pill mono" id="pill-progress" role="status" aria-live="polite" title="Current accepted-source completion"><span id="banner-pct">—</span> accepted</span>
+
     <div class="pills" role="status" aria-live="polite">
-      <span class="pill mono" id="pill-progress" title="Current accepted-source completion"><span id="banner-pct">—</span> accepted</span>
       <span class="pill" id="pill-conn"><span class="dot" id="conn-dot" aria-hidden="true"></span><span id="conn-text">connecting…</span></span>
       <span class="pill" id="pill-report" title="When the build report was generated">Last updated: <span id="report-age">—</span></span>
     </div>
