@@ -334,7 +334,7 @@ public:
     virtual void changeStatus(int statusKind);
     virtual void setVisibilityWhole(u8);
     virtual void setVisibilityWholeForce(u8);
-    virtual u8 getVisibilityWhole();
+    virtual int getVisibilityWhole();
     virtual void setSituationKind(SituationKind);
     virtual bool isConstraint();
     virtual void setConstraintTargetNode(int);
