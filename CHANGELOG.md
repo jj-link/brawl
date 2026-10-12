@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness thunder setup and Luigi interface adapter
+
+- `CommittedDashboardPublisher` published verified committed source `f1849c41`, adding exact, source-linked Ness `fn_101_1886C` (592 bytes; initial Sol match), `fn_101_18EF4` (576 bytes; Sol correction one), `fn_101_19228` (548 bytes; Sol correction one), and Luigi `fn_99_10D14` (8 bytes; GLM correction one), with **127 DOL/REL hashes passing**. The 24 associated read-only data bytes are excluded from code credit.
+- Cumulative accepted-source progress is **2.253947%** — **356,880 / 15,833,556 code bytes**, with **15,476,676 bytes remaining** and **1,076 accepted source units**. This checkpoint adds **1,724 code bytes / 4 units**, retaining all 1,072 previously accepted units.
+- Published report SHA-256: `4b2fdb9ee45c5f97b1ae6c9ec0ee271d810007ac9b90852dd0f75f9b32e5f164`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,174 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-aside — Ness `fn_101_23E40`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages, retaining compiler-rejected drafts and logs. The best retained Astra correction-nine draft (tied with correction six) compares at **91.2236%**: 648 candidate code bytes against 644 target bytes. Both objects contain 17 relocations, but code and relocation offsets remain unmatched.
+- Both stages' histories, restored best source/object, target, recipes, and comparison evidence remain under `build/isolated-workers/SolNessFunction23E40/evidence-astra/` and its inherited evidence directory. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness article destruction and linked events
 
 - `CommittedDashboardPublisher` published verified committed source `7c572792`, adding exact, source-linked Ness `fn_101_18430` (436 bytes; initial Sol match) and `fn_101_11034` (556 bytes; Sol correction one), with **127 DOL/REL hashes passing**.
