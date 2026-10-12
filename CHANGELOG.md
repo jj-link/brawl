@@ -2,6 +2,24 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_106C8`
+
+- `ResumeSol106C8` completed the preserved reconstruction with one initial candidate and one correction. Registered 20-byte code matched exactly, with no allocated data or relocations; compiled source was linked and **127 DOL/REL hashes passed**.
+- Cumulative accepted-source progress is **2.108358%** — **333,828 / 15,833,556 code bytes**, with **15,499,728 bytes remaining** and **955 accepted source units**. This checkpoint adds **20 code bytes / 1 unit**.
+- Published report SHA-256: `bd8f005a586c950eed174b84319f057b06f6e3630fa814cd73db3b2a58e02b13309`. All preceding 954 accepted units were retained. Rendered counters, all 5,013 unit records, all 127 module totals and persisted history agreed before release to 10708.
+
+## Verified reconstruction checkpoint — Luigi 10648, 106A8 and 106B0
+
+- `SolLuigiFunction105B4` published the independently verified union containing `fn_99_10648` (96 bytes), `fn_99_106A8` (8) and `fn_99_106B0` (8). All **127 DOL/REL hashes passed** and all 951 preceding accepted units were retained. Rendered counters, module/unit data and persisted history agreed. These three source reconstructions were committed and pushed as `71ed340`.
+- Cumulative accepted-source progress is **2.108231%** — **333,808 / 15,833,556 code bytes**, with **15,499,748 bytes remaining** and **954 accepted source units**. This checkpoint adds **112 code bytes / 3 units**.
+- Published report SHA-256: `46cffc7d7e66c6e28dfe0629c35b77e20430e6f6b49b014d9505085b75dd85ba`. Previously accepted 105B4 bytes receive no duplicate credit.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_105B4`
+
+- `SolLuigiFunction1054C` published the independently verified union containing 105B4's 148-byte reconstruction, with **127 DOL/REL hashes passing** and all 950 preceding accepted units retained. Rendered counters, module/unit data and persisted history agreed. The source was committed and pushed as `140efb1`.
+- Cumulative accepted-source progress is **2.107524%** — **333,696 / 15,833,556 code bytes**, with **15,499,860 bytes remaining** and **951 accepted source units**. This checkpoint adds **148 code bytes / 1 unit**.
+- Published report SHA-256: `a8945a6035d712e21f65c0ad04b6de8240458af863fc8b4802a527665c5fd5fa`. The 105B4 owner matched after one initial candidate and one correction, including three exact relocations.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_103D4`
 
 - `SolLuigiFunction1033C` published the independently verified union containing 103D4's 376-byte reconstruction, with **127 DOL/REL hashes passing** and all 949 preceding accepted units retained.
