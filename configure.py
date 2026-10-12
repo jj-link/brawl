@@ -1727,6 +1727,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_df6c.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp",
