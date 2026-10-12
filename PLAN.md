@@ -136,6 +136,9 @@ python tools/reconstruction_progress.py build/RSBE01_02/report.json
 - Exclude assembly registrations, assembly source overrides, mixed inline-assembly units, unregistered drafts, and partial or nonmatching units. The calculator uses each unit's resolved `source_path` and `complete` flag.
 - Calculate completion as `accepted source code bytes / total target code bytes × 100`, and remaining bytes as `total target code bytes − accepted source code bytes`.
 - Record the accepted change's code-byte delta, whole-project percentage to six decimal places, accepted/total code bytes, and remaining code bytes in `CHANGELOG.md`.
+- Owners report publication readiness after completing verification and preparing a report that retains the currently accepted source contributions. When the shared report is available, the parent selects the next publisher from the ready owners.
+- One owner publishes to the shared report and completes dashboard/history agreement at a time. Other owners continue reconstruction, integration, and verification independently.
+- The publishing owner reports completion to the parent, who then selects from the owners ready at that time. Each owner retains responsibility through publication and workspace cleanup.
 - At every accepted checkpoint, the reconstruction owner publishes the exact newly verified `build/RSBE01_02/report.json` to the existing dashboard input location, and the parent records the same checkpoint in `CHANGELOG.md`.
 - Refresh every dashboard progress surface for that checkpoint: completion percentage, accepted/total/remaining bytes, accepted-unit count, module totals, the unit map, and the accepted-bytes history graph.
 - Verify that the rendered dashboard, report-derived module/unit data, and latest persisted graph point agree with the accepted checkpoint before completing publication.
