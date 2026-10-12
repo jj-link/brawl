@@ -1701,6 +1701,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_81d4.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_event_storage.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_vortex_destructor.cpp",
