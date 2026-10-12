@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu movement and storage
+
+- `CommittedDashboardPublisher` published verified committed source `6bacd136`, adding Pikachu `fn_98_E554` (180 code bytes; Sol correction one), `fn_98_11A08` (292; Sol correction one), `fn_98_10B10` (264; Sol correction two), `fn_98_145A0` (328; initial Sol match), `fn_98_C948` (296; Astra correction two after Sol's initial draft and ten corrections), and `fn_98_3CF8` (536; Sol correction one). All six reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.508217%** — **397,140 / 15,833,556 code bytes**, with **15,436,416 bytes remaining** and **1,152 accepted source units**. This checkpoint adds **1,896 code bytes / 6 units**, retaining all 1,146 previous units.
+- Published report SHA-256: `12578d8f4198e29600a982230f703716dc9a760ef34bafb32968ea75422f63d1`. Accepted Git blobs, actual root source files, and all six new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,310 served unit classifications, and persisted/served history agree; no browser was opened.
+- All six units have no owned data; 10B10's unused 64-byte compiler helper is excluded from accepted code credit. Owned code and normalized relocations match; prior helper and data qualifications remain applicable. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu article traversal and root transform
 
 - `CommittedDashboardPublisher` published verified committed source `f6077cfb`, adding Pikachu `fn_98_B4A8` (244 code bytes; initial Sol match) and `fn_98_14328` (356 code bytes; Sol correction five, including one compiler rejection). Both reconstructed source objects are linked and **127 DOL/REL hashes pass**.
