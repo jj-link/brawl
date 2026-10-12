@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved set-aside — Dedede `fn_117_7AB0`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction nine at **97.72541%** fuzzy match: 972 candidate code bytes versus 976 target bytes, with 66 relocations each. A folded bank address leaves an instruction absent and code/relocation-offset differences unresolved.
+- The restored best and complete histories remain under `build/isolated-workers/SolLuigiFunction2834/evidence/7AB0-Astra-*`. The original-fallback build at `f52a528a` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**. Misleading 100% reports from constructor-name trials five/six were rejected by exact owned-code checks; the original reports and qualified comparisons remain preserved.
+
 ## Verified reconstruction checkpoint — Dedede linked events and handler flag
 
 - `CommittedDashboardPublisher` published verified committed source `c2620d7e`, adding Dedede `fn_117_1FCD0` (944 code bytes; Sol initial plus five corrections, including one rejected compile), `fn_117_1A290` (668 code bytes; Sol initial plus five corrections), and `fn_117_A2B8` (8 code bytes; initial GLM match, zero corrections). All three reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
