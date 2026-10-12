@@ -3,6 +3,7 @@
  * GET /api/state and /api/units preserve project progress; /api/events carries
  * state snapshots, /api/live relays session output, /api/streams is opt-in history.
  * The sticky banner shows the same completion percentage and precision as the hero.
+ * Updates always run live; the banner reports connection and build-report age.
  * Text is never trusted as HTML; image blocks use only session-provided raster data.
  */
 'use strict';
@@ -117,12 +118,9 @@
 
   const S = {
     state: null,
-    pendingState: null,
-    pendingUnits: null,
     lastStateAt: 0,
     everConnected: false,
     sseOpen: false,
-    paused: false,
     motion: true,
     agents: [],
     units: [],
@@ -163,8 +161,7 @@
     unitsBusy = true;
     try {
       const j = await fetchJSON('/api/units');
-      if (S.paused) { S.pendingUnits = j; }
-      else applyUnits(j);
+      applyUnits(j);
     } catch (e) {
       logErr('units refresh', e);
       const want = S.state && S.state.unitsRevision;
@@ -185,7 +182,7 @@
       S.sseOpen = true;
       tickStatus();
       refreshState();          // reconnect => refetch to close any gap
-      if (!S.paused) refreshUnits();
+      refreshUnits();
     });
     es.addEventListener('state', (ev) => {
       S.sseOpen = true;
@@ -199,7 +196,6 @@
 
   function ingest(s) {
     if (!s || typeof s !== 'object') return;
-    if (S.paused) { S.pendingState = s; tickStatus(); return; }
     applyState(s);
   }
 
@@ -251,14 +247,6 @@
 
   function renderHeader() {
     const s = S.state || {};
-    const sess = s.session;
-    const pill = $('pill-session');
-    if (sess) {
-      pill.hidden = false;
-      const t = String(sess);
-      pill.textContent = t.length > 30 ? t.slice(0, 12) + '…' + t.slice(-10) : t;
-      pill.title = 'session: ' + t;
-    }
     setText('foot-meta', s.updatedAt ? 'server state: ' + new Date(s.updatedAt).toLocaleString() : '');
   }
 
@@ -268,8 +256,7 @@
 
     const conn = $('pill-conn');
     let cls, txt;
-    if (S.paused) { cls = 'is-warn'; txt = 'paused'; }
-    else if (S.sseOpen && (ageS == null || ageS <= 15)) { cls = 'is-live'; txt = 'live'; }
+    if (S.sseOpen && (ageS == null || ageS <= 15)) { cls = 'is-live'; txt = 'Connected'; }
     else if (S.sseOpen) { cls = 'is-warn'; txt = 'lagging · ' + fmtAge(ageS); }
     else if (ageS == null) { cls = 'is-down'; txt = 'connecting…'; }
     else { cls = 'is-down'; txt = 'stale · ' + fmtAge(ageS) + ' old'; }
@@ -280,23 +267,18 @@
     const rAt = S.state && S.state.reportUpdatedAt ? Date.parse(S.state.reportUpdatedAt) : NaN;
     if (isFinite(rAt)) {
       const a = Math.max(0, Math.floor((now - rAt) / 1000));
-      setText('report-age', fmtAge(a));
+      setText('report-age', a < 5 ? 'just now' : fmtAge(a) + ' ago');
       rep.classList.toggle('is-old', a > 30 * 60);
-      rep.title = 'Unit-map build report updated ' + new Date(rAt).toLocaleString() + '; accepted totals use ' +
-        ((S.state && S.state.progress && S.state.progress.source) || 'report') + '.';
+      rep.title = 'Build report generated ' + new Date(rAt).toLocaleString();
     } else {
       setText('report-age', 'age unknown');
       rep.classList.add('is-old');
       rep.title = 'report timestamp unavailable';
     }
 
-    setText('sync-age', ageS == null ? '—' : fmtAge(ageS) + ' ago');
-    $('pill-sync').title = 'last successful sync: ' + (S.lastStateAt ? new Date(S.lastStateAt).toLocaleString() : 'never');
-
     const stale = ageS != null && (ageS > STATE_STALE_S || !S.sseOpen);
     document.body.classList.toggle('is-stale', stale);
-    document.body.classList.toggle('is-paused', S.paused);
-    $('treemap-wrap').dataset.flag = stale && S.paused ? 'stale · paused' : stale ? 'stale data' : S.paused ? 'paused' : '';
+    $('treemap-wrap').dataset.flag = stale ? 'stale data' : '';
 
     for (const [node, rec] of timeEls) {
       if (!node.isConnected) { timeEls.delete(node); continue; }
@@ -310,7 +292,7 @@
   function countTo(node, target, fmt) {
     const prev = typeof node.__v === 'number' ? node.__v : null;
     node.__v = target;
-    if (prev === null || !S.motion || S.paused || prev === target) {
+    if (prev === null || !S.motion || prev === target) {
       if (node.__raf) cancelAnimationFrame(node.__raf);
       node.textContent = fmt(target);
       return;
@@ -1089,7 +1071,7 @@
       requestDraw();
     }
 
-    return { init, setData, pulse, reveal, toRoot, motionChanged: () => { pulses.clear(); requestDraw(); } };
+    return { init, setData, pulse, reveal, toRoot };
   })();
 
   // ------------------------------------------------------------------ unit card
@@ -1195,7 +1177,7 @@
     let flushing = false, gridReady = false;
     let connectionError = 'Connecting to the owning runner observer…';
     let showHistory = false, historyBusy = false, historyAgain = false;
-    let historyGeneration = 0, historyWanted = false, wasPaused = false;
+    let historyGeneration = 0, historyWanted = false;
     let historyStateRevision;
     try { showHistory = localStorage.getItem('brawldash.streamHistory') === '1'; } catch (_) {}
 
@@ -1204,13 +1186,12 @@
     }
 
     function status() {
-      writeText($('streams-status'), S.paused ? 'Paused' :
-        connected ? 'Connected' : 'Disconnected — ' + connectionError);
-      $('streams-status').classList.toggle('is-error', !connected && !S.paused);
+      writeText($('streams-status'), connected ? 'Connected' : 'Disconnected — ' + connectionError);
+      $('streams-status').classList.toggle('is-error', !connected);
     }
 
     function requestFlush() {
-      if (!frame && !flushing && !S.paused) frame = requestAnimationFrame(flush);
+      if (!frame && !flushing) frame = requestAnimationFrame(flush);
     }
 
     function dirtyPanel(key, full = false, itemId = null) {
@@ -1281,7 +1262,7 @@
       } catch (error) {
         message = 'Cannot read observer status: ' + error.message;
       }
-      if (connected || S.paused || (source && source !== failedSource)) return;
+      if (connected || (source && source !== failedSource)) return;
       connectionError = message;
       status();
     }
@@ -1524,7 +1505,7 @@
 
     function flush() {
       frame = 0;
-      if (!S.paused) flushPending();
+      flushPending();
     }
 
     function flushPending() {
@@ -1665,10 +1646,10 @@
     }
 
     function connect() {
-      if (source || retryTimer || S.paused) return;
+      if (source || retryTimer) return;
       const liveSource = new EventSource('/api/live');
       source = liveSource;
-      const current = () => source === liveSource && !S.paused;
+      const current = () => source === liveSource;
       liveSource.addEventListener('snapshot', event => {
         if (!current()) return;
         try {
@@ -1723,7 +1704,7 @@
     }
 
     async function loadHistory() {
-      if (!showHistory || S.paused) return;
+      if (!showHistory) return;
       const revision = S.state?.streamRevision;
       const agents = Array.from(panels.values()).filter(panel => panel.visible &&
         (!historyLoaded.has(panel.key) || historyLoaded.get(panel.key) !== revision)).map(panel => panel.key);
@@ -1733,17 +1714,17 @@
       const generation = historyGeneration;
       try {
         // Bounded per-agent batches avoid starving less recent workers.
-        for (let i = 0; i < agents.length && showHistory && !S.paused && generation === historyGeneration; i += 4) {
+        for (let i = 0; i < agents.length && showHistory && generation === historyGeneration; i += 4) {
           await Promise.all(agents.slice(i, i + 4).map(async key => {
             const result = await fetchJSON('/api/streams?agent=' + encodeURIComponent(key) + '&limit=200');
-            if (!showHistory || S.paused || generation !== historyGeneration) return;
+            if (!showHistory || generation !== historyGeneration) return;
             historyItems.set(key, (result.items || []).sort((a, b) => tsOf(a.at) - tsOf(b.at) || a.sequence - b.sequence));
             historyLoaded.set(key, revision);
             dirtyPanel(key, true);
           }));
         }
       } catch (e) {
-        if (showHistory && !S.paused && generation === historyGeneration) {
+        if (showHistory && generation === historyGeneration) {
           logErr('recorded history', e);
           writeText($('streams-status'), 'Recorded history unavailable: ' + e.message);
         }
@@ -1760,21 +1741,9 @@
         historyStateRevision = revision;
         historyGeneration++;
       }
-      if (S.paused) {
-        source?.close(); source = null;
-        clearTimeout(retryTimer); retryTimer = null;
-        if (frame) { cancelAnimationFrame(frame); frame = 0; }
-        if (!wasPaused) historyGeneration++;
-        setConnected(false);
-        // Finish already received output once; subsequent callbacks from the
-        // closed source are ignored. History controls still work while paused.
-        flushPending();
-      } else {
-        connect();
-        historyWanted = true;
-        requestFlush();
-      }
-      wasPaused = S.paused;
+      connect();
+      historyWanted = true;
+      requestFlush();
       const historyButton = $('streams-history'), pressed = String(showHistory);
       if (historyButton.getAttribute('aria-pressed') !== pressed) historyButton.setAttribute('aria-pressed', pressed);
       writeText(historyButton, showHistory ? 'Hide history' : 'Show history');
@@ -1809,36 +1778,7 @@
 
   // ------------------------------------------------------------------ controls
 
-  function setPaused(on) {
-    S.paused = on;
-    const b = $('btn-pause');
-    b.textContent = on ? 'Resume' : 'Pause';
-    b.setAttribute('aria-pressed', String(on));
-    if (!on) {
-      const ps = S.pendingState;
-      S.pendingState = null;
-      if (ps) applyState(ps);
-      const pu = S.pendingUnits;
-      S.pendingUnits = null;
-      if (pu) applyUnits(pu);
-    }
-    tickStatus();
-    Streams.update();
-  }
-
-  function setMotion(on) {
-    S.motion = on;
-    document.body.classList.toggle('no-motion', !on);
-    const b = $('btn-motion');
-    b.textContent = 'Motion: ' + (on ? 'on' : 'off');
-    b.setAttribute('aria-pressed', String(on));
-    try { localStorage.setItem('brawldash.motion', on ? '1' : '0'); } catch (e) { /* private mode */ }
-    Treemap.motionChanged();
-  }
-
   function bindControls() {
-    $('btn-pause').addEventListener('click', () => setPaused(!S.paused));
-    $('btn-motion').addEventListener('click', () => setMotion(!S.motion));
     $('warnings-toggle').addEventListener('click', () => {
       const ul = $('warnings-list');
       ul.hidden = !ul.hidden;
@@ -1854,9 +1794,8 @@
   // ------------------------------------------------------------------ boot
 
   function init() {
-    let stored = null;
-    try { stored = localStorage.getItem('brawldash.motion'); } catch (e) { /* ignore */ }
-    setMotion(stored == null ? !window.matchMedia('(prefers-reduced-motion: reduce)').matches : stored === '1');
+    S.motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.body.classList.toggle('no-motion', !S.motion);
 
     bindControls();
     Treemap.init();

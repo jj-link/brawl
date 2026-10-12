@@ -104,7 +104,6 @@ body::before {
 }
 
 body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
-body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
 
 .brand {
   display: flex;
@@ -189,7 +188,6 @@ body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
   50% { opacity: 0.35; }
 }
 
-.controls { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .btn {
   font: inherit;
@@ -637,10 +635,9 @@ body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
   padding: 2px 4px 0;
 }
 
-/* ---------- stale / paused / motion ---------- */
+/* ---------- stale data ---------- */
 
-body.is-stale #treemap-wrap::after,
-body.is-paused #treemap-wrap::after {
+body.is-stale #treemap-wrap::after {
   content: attr(data-flag);
   position: absolute;
   top: 10px;
@@ -657,11 +654,6 @@ body.is-paused #treemap-wrap::after {
   pointer-events: none;
 }
 
-body.is-paused #treemap-wrap::after {
-  color: var(--amber2);
-  border-color: rgba(242, 163, 60, 0.5);
-}
-
 /* ---------- responsive ---------- */
 
 @media (max-width: 1180px) {
@@ -673,7 +665,6 @@ body.is-paused #treemap-wrap::after {
   #topbar { margin: -10px -10px 0; padding: 8px 10px; gap: 8px; }
   .brand-sub { display: none; }
   .pills { margin-left: 0; order: 3; width: 100%; }
-  .controls { margin-left: auto; }
   #hero { padding: 14px; gap: 14px; }
   .hero-left { gap: 14px; }
   .counters { grid-template-columns: repeat(2, minmax(100px, 1fr)); width: 100%; }

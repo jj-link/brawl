@@ -25,15 +25,9 @@
     <div class="pills" role="status" aria-live="polite">
       <span class="pill mono" id="pill-progress" title="Current accepted-source completion"><span id="banner-pct">—</span> accepted</span>
       <span class="pill" id="pill-conn"><span class="dot" id="conn-dot" aria-hidden="true"></span><span id="conn-text">connecting…</span></span>
-      <span class="pill" id="pill-report" title="Age of the unit-map build report, not the accepted changelog checkpoint">map report <span id="report-age">—</span></span>
-      <span class="pill" id="pill-sync" title="Time since last successful sync">sync <span id="sync-age">—</span></span>
-      <span class="pill mono" id="pill-session" hidden title=""></span>
+      <span class="pill" id="pill-report" title="When the build report was generated">Last updated: <span id="report-age">—</span></span>
     </div>
 
-    <div class="controls">
-      <button class="btn" id="btn-pause" aria-pressed="false" title="Pause live updates — incoming data is buffered and applied on resume">Pause</button>
-      <button class="btn" id="btn-motion" aria-pressed="true" title="Toggle motion and animations">Motion: on</button>
-    </div>
   </header>
 
   <div id="warnings" class="warnings" hidden>
