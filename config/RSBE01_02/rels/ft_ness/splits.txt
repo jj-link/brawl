@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_ness/ness_large_aggregate_destructor.cpp:
+	.text       start:0x00002B2C end:0x00002DD8
+
 mo_fighter/ft_ness/ness_support_base_destructor.cpp:
 	.text       start:0x00003B0C end:0x00003B4C
 

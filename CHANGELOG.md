@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — nine Luigi functions
+
+- `CommittedDashboardPublisher` published verified committed source `43277d8a`, adding nine exact, source-linked 8-byte reconstructions with **127 DOL/REL hashes passing**: `fn_99_1094C`, `fn_99_10C74`, `fn_99_10C7C`, `fn_99_10C84`, `fn_99_10C8C`, `fn_99_10C94`, `fn_99_10CAC`, `fn_99_10CB4`, and `fn_99_10CBC`. `1094C` matched its initial GLM candidate; the other eight matched their initial Sol candidates, all without corrections.
+- Cumulative accepted-source progress is **2.118286%** — **335,400 / 15,833,556 code bytes**, with **15,498,156 bytes remaining** and **1,024 accepted source units**. This checkpoint adds **72 code bytes / 9 units**, retaining all 1,015 previously accepted units.
+- Published report SHA-256: `88eef611696b0be76fe6ca91a8a5ac81d9c7e21d04907b0c94b92b73d8c7e591`. The dedicated publisher confirmed rendered counters, all module/unit data, and persisted and drawn history agreement for this committed checkpoint.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_10CA4` and `fn_99_10C9C`
 
 - `CommittedDashboardPublisher` published verified committed source `6f16058b`, adding two exact, source-linked 8-byte reconstructions with **127 DOL/REL hashes passing**. Both Sol candidates matched initially without corrections.
