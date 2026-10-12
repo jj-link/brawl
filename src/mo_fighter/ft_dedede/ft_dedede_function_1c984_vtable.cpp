@@ -20,7 +20,7 @@ void fn_27_1DA030();
 void fn_27_581C();
 void fn_27_5A78();
 void fn_27_5C04();
-void fn_117_1F7B0();
+void fn_117_1F7B0(void*);
 void processCamera__6gfTaskFv();
 void fn_27_1DA038();
 void processEffect__6gfTaskFv();
