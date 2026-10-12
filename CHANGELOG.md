@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved set-aside — Dedede `fn_117_16AB4`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections, with no compiler rejections. Best remains Sol correction ten at **97.16994%** fuzzy match: 604 candidate code bytes versus 612 target bytes. A missing summed-speed word-copy pair, stack offsets, and register allocation remain unmatched; ten relocation edges have the same kind/symbol/addend sequence but different offsets. Three unused weak destructor helpers are excluded.
+- The restored best and Astra evidence remain under `build/isolated-workers/SolPikachuFunction10114/evidence-Astra16AB4`; preceding Sol and workspace histories are retained. The original-fallback build at `e43a16ba` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**. The initial terminal source-hash transcription was corrected against the preserved authoritative manifest; that correction and both stages' measurements remain recorded.
+
 ## Preserved set-aside — Dedede `fn_117_16850`
 
 - Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction two at **98.62745%** fuzzy match: 612 candidate and target code bytes, 42 differing instruction words, and ten matching normalized function relocations. Register allocation remains unmatched; the 64-byte unused, unlinked helper is excluded. Sol's initial and correction-eight compiler rejections remain recorded.
