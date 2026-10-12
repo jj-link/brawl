@@ -720,6 +720,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_10778.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_14f18.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_15728.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_17aac.cpp",
