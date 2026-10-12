@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_10718`
+
+- `SolLuigiFunction10718` published its registered, source-linked 132-byte reconstruction with exact code, 17 relocations, no allocated data, and **127 DOL/REL hashes passing**. Its initial candidate matched without corrections.
+- Cumulative accepted-source progress is **2.113284%** — **334,608 / 15,833,556 code bytes**, with **15,498,948 bytes remaining** and **971 accepted source units**. This checkpoint adds **132 code bytes / 1 unit**.
+- Published report SHA-256: `77d42394a3c6301f422290ab4a6c912b281fb0eb5a105fad5b1a36c860216e68`. Rendered checkpoint agreement was confirmed before release to 10A7C.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_10AA8`
 
 - `SolLuigiFunction10AA8` published its registered, source-linked 28-byte reconstruction with exact code, no allocated data or relocations, and **127 DOL/REL hashes passing**. Its initial candidate matched without corrections; all 969 predecessor units were retained.
