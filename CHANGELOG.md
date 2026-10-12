@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain articles, control energy, and Luigi flags
+
+- `CommittedDashboardPublisher` published verified committed source `8d954f8a`, adding Captain Falcon `fn_100_A348` (632 code bytes; Sol correction five), `fn_100_CDB8` (624; Sol correction five), Luigi `fn_99_10D64` (8; initial GLM match), and Captain Falcon `fn_100_A110` (568; initial Sol match). All four reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.601235%** — **411,868 / 15,833,556 code bytes**, with **15,421,688 bytes remaining** and **1,181 accepted source units**. This checkpoint adds **1,832 code bytes / 4 units**, retaining all 1,177 previous units.
+- Published report SHA-256: `34d32ddd732ff4b850cdae3e0f65c3e71a0020f732896b4189b3908bb27c68ac`. Accepted Git blobs, actual root source files, and all four new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,358 served unit classifications, and persisted/served history agree; no browser was opened.
+- A348 and A110's 136 data bytes receive no code credit. CDB8's unused 64-byte weak `AttributeFlag` destructor is absent from the final Captain PLF and excluded from its owned match and contribution; raw whole-emitted-ELF identity is not claimed. Owned code, applicable data, and normalized relocations match. Prior qualifications remain applicable; `.data$captainA348`, `.data$captainA110`, and earlier custom-section/linker warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Captain final hits and process dispatch
 
 - `CommittedDashboardPublisher` published verified committed source `0d0e9f10`, adding Captain Falcon `fn_100_EFF0` (808 code bytes; Astra correction six after Sol's initial candidate and ten corrections) and `fn_100_BA60` (660; initial Sol match). Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
