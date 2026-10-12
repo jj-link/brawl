@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu kinetic state and Ness activation
+
+- `CommittedDashboardPublisher` published verified committed source `2006c6e8`, adding exact, source-linked Pikachu `fn_98_EB60` (1,236 bytes; Sol correction six), Ness `fn_101_1E1E8` (372 bytes; initial Sol match), Pikachu `fn_98_F5D0` (1,092 bytes; Sol correction six, including its ABI repair), and Luigi `fn_99_10D24` (8 bytes; initial GLM match), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.381929%** — **377,144 / 15,833,556 code bytes**, with **15,456,412 bytes remaining** and **1,112 accepted source units**. This checkpoint adds **2,708 code bytes / 4 units**, retaining all 1,108 previously accepted units.
+- Published report SHA-256: `dd19447283c0cc5f288d336bc39c73f3387cf5215feaa4c163f3609fcc7bdb60`. The publisher checked accepted Git blobs and all four new registered units, and confirmed agreement across live counters/delta, 127 module totals, 5,238 served unit classifications, and persisted/served history without opening a browser. Uncommitted working-tree units are excluded.
+- F5D0's owner reconciled its shared helper return declaration with EB60 without changing generated object bytes, then repeated source-linked verification. A prerequisite operation also re-extracted shared tools: required tool identities match the earlier canonical manifest and original game identities are preserved, but pre-operation hashes are unavailable for 76 older-package files. Their historical byte identity is unverified; retained incident evidence is `SolPikachuFunctionF5D0/evidence/shared-tool-impact.json`.
+
+## Preserved set-asides — Pikachu `fn_98_F0F4` and `fn_98_FA14`
+
+- Both functions completed one initial candidate plus ten corrections at each of the Sol and Astra stages. F0F4's best Astra correction eight reached **98.59736%** with 1,224 candidate versus 1,212 target code bytes, eight extra rodata bytes, and nonexact relocations. FA14's best Astra correction ten reached **99.63028%** with 1,140 candidate versus 1,136 target code bytes and eight extra rodata bytes.
+- Complete histories and best drafts remain in their original isolated-workspace evidence directories. Each owner verified all 127 final hashes with original fallback still linked. These unmatched outcomes add **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness activation and fighter article dispatch
 
 - `CommittedDashboardPublisher` published verified committed source `b8e347f7`, adding exact, source-linked Ness `fn_101_1C528` (256 bytes; Sol correction two), Luigi `fn_99_8D30` (300 bytes; Sol correction one), Luigi `fn_99_9330` (568 bytes; initial Sol match), Ness `fn_101_1E680` (724 bytes; Sol correction seven), Luigi `fn_99_9964` (564 bytes; initial Sol match), Luigi `fn_99_10D2C` (8 bytes; initial GLM match), and Pikachu `fn_98_A548` (1,408 bytes; Sol correction five), with **127 DOL/REL hashes passing**. Their 204 associated data bytes are excluded from code credit; existing caller ABI corrections receive no additional code credit.

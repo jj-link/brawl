@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_pikachu/wn_pikachu_vortex_destructor.cpp:
+	.text       start:0x00005034 end:0x00005384
+
 mo_fighter/ft_pikachu/ft_pikachu_special_hi_kinetic_reset.cpp:
 	.text       start:0x0000F5D0 end:0x0000FA14
 
