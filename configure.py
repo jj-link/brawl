@@ -578,6 +578,8 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_79e8.cpp", extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_9dac.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_captain/ft_captain_function_a348.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_ba60.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_ecec.cpp",
