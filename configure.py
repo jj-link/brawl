@@ -186,11 +186,11 @@ pikachu_bias_object = config.out_path() / "src/mo_fighter/ft_pikachu/ft_pikachu_
 config.custom_build_rules = [{
     "name": "pikachu_export_conversion_bias",
     "command": (
-        f'cmd /c ""{pikachu_bias_objcopy}" --globalize-symbol=lbl_98_rodata_70 '
-        '--redefine-sym=@2243=lbl_98_rodata_70 "$in" && type nul > "$out""'
+        f'cmd /c ""{pikachu_bias_objcopy}" --preserve-dates --globalize-symbol=lbl_98_rodata_70 '
+        '--redefine-sym=@9540=lbl_98_rodata_70 "$in" && type nul > "$out""'
         if sys.platform == "win32" else
-        f'"{pikachu_bias_objcopy}" --globalize-symbol=lbl_98_rodata_70 '
-        '--redefine-sym=@2243=lbl_98_rodata_70 "$in" && touch "$out"'
+        f'"{pikachu_bias_objcopy}" --preserve-dates --globalize-symbol=lbl_98_rodata_70 '
+        '--redefine-sym=@9540=lbl_98_rodata_70 "$in" && touch "$out"'
     ),
     "description": "EXPORT Pikachu conversion bias",
 }]

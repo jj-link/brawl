@@ -74,3 +74,47 @@ extern "C" void fn_98_10660(void*, soModuleAccesser* accesser) {
     reinterpret_cast<signed char*>(kinetic.getEnergy(2))[5] &= ~0x80;
     reinterpret_cast<signed char*>(kinetic.getEnergy(0))[5] &= ~0x80;
 }
+
+#include <so/so_module_accesser.h>
+#include <so/so_value_accesser.h>
+
+extern "C" {
+extern unsigned char lbl_98_data_769C[], lbl_98_data_723C[], lbl_98_data_24B0[];
+extern const float lbl_98_rodata_68;
+void* __dynamic_cast(void*, long, const void*, const void*, short);
+Vec2f* fn_98_C46C(Vec2f*, const Vec2f*);
+}
+
+#pragma always_inline on
+#pragma inline_depth(8)
+extern "C" void fn_98_108C8(void*, soModuleAccesser* accesser) {
+    soWorkManageModule& work = accesser->getWorkManageModule();
+    soKineticModule& kinetic = accesser->getKineticModule();
+    soKineticEnergy* gravity = static_cast<soKineticEnergy*>(__dynamic_cast(
+        kinetic.getEnergy(1), 0, lbl_98_data_769C, lbl_98_data_24B0, 1));
+    soKineticEnergy* stop = static_cast<soKineticEnergy*>(__dynamic_cast(
+        kinetic.getEnergy(3), 0, lbl_98_data_723C, lbl_98_data_24B0, 1));
+    if (work.isFlag(0x22000012)) {
+        float acceleration = soValueAccesser::getConstantFloat(accesser, 0xfb3, 0);
+        float terminalSpeed = soValueAccesser::getConstantFloat(accesser, 0xfb0, 0);
+        *reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(gravity) + 0x10) = -acceleration;
+        *reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(gravity) + 0x1c) = terminalSpeed;
+        Vec2f braking(-soValueAccesser::getConstantFloat(accesser, 0xfb2, 0), lbl_98_rodata_68);
+        fn_98_C46C(reinterpret_cast<Vec2f*>(reinterpret_cast<unsigned char*>(stop) + 0x10), &braking);
+    } else {
+        float acceleration = soValueAccesser::getConstantFloat(accesser, 0xfaf, 0);
+        float terminalSpeed = soValueAccesser::getConstantFloat(accesser, 0xfb0, 0);
+        *reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(gravity) + 0x10) = -acceleration;
+        *reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(gravity) + 0x1c) = terminalSpeed;
+    }
+    soCollisionAttackModule& attack = accesser->getCollisionAttackModule();
+    soWorkManageModule& currentWork = accesser->getWorkManageModule();
+    if (!currentWork.isFlag(0x22000013)) {
+        float base = soValueAccesser::getConstantFloat(accesser, 0xfa7, 0);
+        float charge = currentWork.getInt(0x20000000);
+        float perCharge = soValueAccesser::getConstantFloat(accesser, 0xfa8, 0);
+        float powerMultiplier = (base + charge * perCharge) / base;
+        attack.setPowerMulStatus(powerMultiplier);
+        currentWork.onFlag(0x22000013);
+    }
+}
