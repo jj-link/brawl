@@ -2,6 +2,22 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness recovery callback and Luigi observer adjustor
+
+- `CommittedDashboardPublisher` published verified committed source `10979e6a`, adding exact, source-linked Ness `fn_101_BDA0` (452 bytes) and Luigi `fn_99_10CC4` (8 bytes), with **127 DOL/REL hashes passing**. `BDA0` matched after one Sol correction with seven exact relocations; `10CC4` matched its initial Sol candidate.
+- Cumulative accepted-source progress is **2.176769%** — **344,660 / 15,833,556 code bytes**, with **15,488,896 bytes remaining** and **1,042 accepted source units**. This checkpoint adds **460 code bytes / 2 units**, retaining all 1,040 previously accepted units.
+- Published report SHA-256: `5cc9694fe2188bbdcd162809240f2f4d5442946ecf031859d1c7118b785bb308`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
+## Preserved set-aside — Ness `fn_101_BAB8`
+
+- `fn_101_BAB8` (`0xBAB8..0xBD60`, 680 target bytes) remains unmatched after Sol and Astra each completed one initial measurement plus ten measured corrections. Astra improved the best comparison to **93.38824%**, but its 684-byte candidate remains larger than the target. Original assembly remains active; this outcome adds **zero accepted bytes**.
+- The best draft, recipes, objects, complete Sol/Astra histories, and rejected compile variants are preserved under `build/isolated-workers/AstraNessFunctionBAB8/evidence/`. Its 127 passing original-fallback hashes are not reconstructed-source acceptance.
+
+## Preserved set-aside — Ness `fn_101_B2D8`
+
+- `fn_101_B2D8` (`0xB2D8..0xB468`, 400 target bytes) remains unmatched after Sol and Astra each completed one initial candidate plus ten corrections. Astra correction six reached **99.45%** with exact size and all 17 relocations, but 11 instruction words still differ in register allocation. Original assembly remains active; this outcome adds **zero accepted bytes**.
+- The restored best draft, recipes, objects, complete Sol/Astra histories, and comparison evidence are preserved under `build/isolated-workers/AstraNessFunctionB2D8/evidence/`. Its 127 passing original-fallback hashes are not reconstructed-source acceptance.
+
 ## Verified reconstruction checkpoint — Ness recovery processing and three Luigi functions
 
 - `CommittedDashboardPublisher` published verified committed source `a6238c7e`, adding exact, source-linked Ness `fn_101_B68C` (664 bytes) and Luigi `fn_99_10944`, `fn_99_10CDC`, and `fn_99_10CFC` (8 bytes each), with **127 DOL/REL hashes passing**. `B68C` matched after three Sol corrections; the Luigi functions matched their initial GLM or Sol candidates.
