@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_fighter/ft_ness/ness_function_1e1e8.cpp:
+	.text       start:0x0001E1E8 end:0x0001E35C
+
 mo_fighter/ft_ness/ness_function_1e680.cpp:
 	.text       start:0x0001E680 end:0x0001E954
 
