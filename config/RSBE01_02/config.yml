@@ -507,6 +507,7 @@ modules:
   hash: 2617ddef4734da80fa2c6f9f0a7ff84d3a456635
   splits: config/RSBE01_02/rels/ft_luigi/splits.txt
   symbols: config/RSBE01_02/rels/ft_luigi/symbols.txt
+  ldscript_template: config/RSBE01_02/rels/ft_luigi/ldscript.tpl
   force_active: [HomeBtnIcon, luigiGlobalInitializer, luigiStatusInitializer, luigiRamInitializer, luigiWallInitializer, luigiInitializer10E54]
 - object: files/module/ft_captain.rel
   hash: 8f52685f06de477d0d128fe8e01c1bf0c13f5e4c

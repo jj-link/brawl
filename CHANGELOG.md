@@ -2,6 +2,19 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi lifetime management and Ness collision events
+
+- `CommittedDashboardPublisher` published verified committed source `68c45cea`, adding exact, source-linked Luigi `fn_99_35B8` (1,652 bytes; Sol correction one), the native `LuigiEventStorage` constructor at `0x6180` (852 bytes; initial Sol match), Ness `fn_101_23A78` (360 bytes; Sol correction two), and `fn_101_23BE0` (268 bytes; Sol correction one), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.293736%** — **363,180 / 15,833,556 code bytes**, with **15,470,376 bytes remaining** and **1,088 accepted source units**. This checkpoint adds **3,132 code bytes / 4 units**, retaining all 1,084 previously accepted units.
+- Published report SHA-256: `e31f5f0e854ccf27860ca827b54a094afa04c02b146da08ca8eec24bb90cefbd`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,193 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-asides — Ness fire-article and Luigi fighter constructors
+
+- Both functions completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Complete histories and best drafts remain preserved; original fallback remains linked with all 127 final DOL/REL hashes passing. These outcomes add **zero accepted bytes**.
+
+- Ness `fn_101_1CA14`: best Astra correction eight at **98.5188%**, 5,848 candidate code bytes against 5,852 target bytes; register allocation, stack placement, and scheduling remain unmatched. Evidence: `build/isolated-workers/SolNessFunction1CA14/evidence/`.
+- Luigi `fn_99_70`: best Astra correction one at **99.65462%**, 6,196 candidate and target code bytes, with 99 differing bytes across 49 instructions; all 218 relocations match. Evidence: `build/isolated-workers/SolLuigiFunction70/evidence/`. The initial missing-output verification failure is retained alongside the subsequent passing final-build verification; reconstruction attempts were not restarted.
+
 ## Verified reconstruction checkpoint — Ness linked events and yoyo activation
 
 - `CommittedDashboardPublisher` published verified committed source `b04327e2`, adding exact, source-linked Ness `fn_101_20A3C` (372 bytes; Sol correction one), `fn_101_2368C` (364 bytes; Sol correction three), and `fn_101_237F8` (640 bytes; Sol correction one), with **127 DOL/REL hashes passing**. The reconciled `fn_101_CB28` caller remains 336 bytes and 100% matching, with no additional credit.
