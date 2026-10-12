@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu kinetic entry and vortex articles
+
+- `CommittedDashboardPublisher` published verified committed source `2c52eac0`, adding Pikachu `fn_98_10C18` (300 code bytes; initial Sol match), `fn_98_188A8` (496; Sol correction one), and `fn_98_185A8` (768; initial Sol match). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.518095%** — **398,704 / 15,833,556 code bytes**, with **15,434,852 bytes remaining** and **1,155 accepted source units**. This checkpoint adds **1,564 code bytes / 3 units**, retaining all 1,152 previous units.
+- Published report SHA-256: `412e6dda84f5d35c1f606685d5ed41d07f58b927224e134c4cadd645395ac7a1`. Accepted Git blobs, actual root source files, and all three new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,314 served unit classifications, and persisted/served history agree; no browser was opened.
+- The 136 associated data bytes receive no code credit. Owned code, data, and normalized relocations match; prior helper and data qualifications remain applicable. The successful build retains unsuppressed splitter warnings, including `.data$pikachu185A8` and `.data$pikachu188A8`. Gameplay was not exercised.
+- During 10C18's initial private build, Ninja re-downloaded shared `dtk` v1.7.5. Its prior byte identity was not recorded, so historical unchanged-tool identity is not claimed; subsequent owner builds used explicit tool paths.
+
 ## Verified reconstruction checkpoint — Pikachu movement and storage
 
 - `CommittedDashboardPublisher` published verified committed source `6bacd136`, adding Pikachu `fn_98_E554` (180 code bytes; Sol correction one), `fn_98_11A08` (292; Sol correction one), `fn_98_10B10` (264; Sol correction two), `fn_98_145A0` (328; initial Sol match), `fn_98_C948` (296; Astra correction two after Sol's initial draft and ten corrections), and `fn_98_3CF8` (536; Sol correction one). All six reconstructed source objects are linked and **127 DOL/REL hashes pass**.
