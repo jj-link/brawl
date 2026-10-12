@@ -22,13 +22,14 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent must not write or modify code under any circumstances, including inline or throwaway code. All coding belongs to subagents.
 - Each reconstruction agent owns its unit's source and build changes, data ownership changes, code removal, compilation, comparison, corrections, integration, merge-conflict resolution, and final verification. The same agent carries its work through completion; there is no separate integration worker or pool. Each agent uses an isolated working copy and build directory, not a parent-controlled shared-build queue.
 - The parent assigns work, manages handoffs and preserved attempt counts, reviews agent-provided changes and evidence, maintains this plan and the changelog, reports progress, and commits accepted work. If a task requires code, the parent delegates it rather than writing or supplying the code.
+- One dedicated dashboard-update subagent generates and publishes cumulative progress from committed results and verifies the rendered dashboard and history independently of the reconstruction worker slots.
 - Maintain project work history and progress exclusively in the existing `CHANGELOG.md`.
 
 ### Assignment lifecycle
 
 1. Spawn a fresh agent for one bounded reconstruction assignment.
 2. Keep that agent responsible for the assignment through integration and final verification or the agreed model handoff.
-3. After verified completion, a preserved model handoff, or the existing Astra set-aside outcome, perform the evidence-preserving workspace cleanup below, then end the agent's session.
+3. After verified source integration and binary verification, return the source patch and evidence, perform the evidence-preserving workspace cleanup below, and end the reconstruction agent's session. Preserved model handoffs and Astra set-aside outcomes follow the same evidence-preserving cleanup lifecycle.
 4. Fill the available worker slot with a fresh agent for the next assignment, carrying forward relevant verified knowledge and preserved handoff artifacts.
 
 ### Workspace cleanup
@@ -83,6 +84,7 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM/Qwen handoffs. |
 | GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
 | Qwen3.8-Flash-Next (Spark1) | 2 | Nonoverlapping reconstruction assignments, with the same ten-correction and shared-Sol-pool handoff rules as GLM. |
+| GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
 The pool contains eight Sol worker slots, two GLM worker slots, and two Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
@@ -125,7 +127,7 @@ Where runtime behavior needs investigation and Dolphin is available, the reconst
 
 ### 5. Record source-reconstruction progress
 
-After the linked hash check passes, the reconstruction agent regenerates the report and calculates accepted source progress using the existing commands, then returns the results for the parent to record:
+Reconstruction owners return their verified unit contribution and evidence with their source changes. The dedicated dashboard-update agent generates cumulative progress from committed results using the existing commands:
 
 ```sh
 ninja --quiet build/RSBE01_02/report.json
@@ -136,12 +138,10 @@ python tools/reconstruction_progress.py build/RSBE01_02/report.json
 - Exclude assembly registrations, assembly source overrides, mixed inline-assembly units, unregistered drafts, and partial or nonmatching units. The calculator uses each unit's resolved `source_path` and `complete` flag.
 - Calculate completion as `accepted source code bytes / total target code bytes × 100`, and remaining bytes as `total target code bytes − accepted source code bytes`.
 - Record the accepted change's code-byte delta, whole-project percentage to six decimal places, accepted/total code bytes, and remaining code bytes in `CHANGELOG.md`.
-- Owners report publication readiness after completing verification and preparing a report that retains the currently accepted source contributions. When the shared report is available, the parent selects the next publisher from the ready owners.
-- One owner publishes to the shared report and completes dashboard/history agreement at a time. Other owners continue reconstruction, integration, and verification independently.
-- The publishing owner reports completion to the parent, who then selects from the owners ready at that time. Each owner retains responsibility through publication and workspace cleanup.
-- At every accepted checkpoint, the reconstruction owner publishes the exact newly verified `build/RSBE01_02/report.json` to the existing dashboard input location, and the parent records the same checkpoint in `CHANGELOG.md`.
+- The dashboard-update agent uses an isolated checkout of committed results to generate and verify cumulative progress while reconstruction owners continue their assignments independently.
+- The dashboard-update agent publishes the verified `build/RSBE01_02/report.json` to the existing dashboard input location and reports its source commit and exact measurements to the parent. The parent records the same checkpoint in `CHANGELOG.md`.
 - Refresh every dashboard progress surface for that checkpoint: completion percentage, accepted/total/remaining bytes, accepted-unit count, module totals, the unit map, and the accepted-bytes history graph.
-- Verify that the rendered dashboard, report-derived module/unit data, and latest persisted graph point agree with the accepted checkpoint before completing publication.
+- The dashboard-update agent verifies that the rendered dashboard, report-derived module/unit data, and latest persisted graph point agree with the accepted checkpoint before completing publication.
 - Maintain accurate current-agent status and activity in the dashboard as work proceeds.
 - Keep batch or wave subtotals distinct from whole-project progress. Do not substitute aggregate matched/linked percentages, generated source-line counts, data bytes, executable-section spans, or ISO size for accepted C/C++ code progress.
 
@@ -153,7 +153,7 @@ A reconstruction is complete only when all applicable gates pass:
 - Object comparison matches the original code and applicable data and relocation requirements.
 - The matching build actually links the reconstructed source object.
 - Final DOL/REL hash checks pass, including outputs affected by shared changes.
-- Progress reporting reflects the accepted source contribution without regressions.
+- The reconstruction owner returns the verified source contribution and supporting evidence for cumulative progress reporting.
 - The proposed commit has been reviewed for unexplained assumptions, accidental unrelated edits, and original game material.
 
 A worker's success report, model switch, plausible implementation, successful compilation, or unchanged final binary alone does not prove that a new source object was accepted. Upstream review or merge status is not an additional acceptance gate.
