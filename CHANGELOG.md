@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain final hits and process dispatch
+
+- `CommittedDashboardPublisher` published verified committed source `0d0e9f10`, adding Captain Falcon `fn_100_EFF0` (808 code bytes; Astra correction six after Sol's initial candidate and ten corrections) and `fn_100_BA60` (660; initial Sol match). Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.589665%** — **410,036 / 15,833,556 code bytes**, with **15,423,520 bytes remaining** and **1,177 accepted source units**. This checkpoint adds **1,468 code bytes / 2 units**, retaining all 1,175 previous units.
+- Published report SHA-256: `3f90c786bccc7cd03006ae03fb6e8456ab88270728fdf6811a6625bea0507eb3`. Accepted Git blobs, actual root source files, and both new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,353 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code and normalized relocations match; neither unit owns data or emits additional helpers. Prior qualifications and unsuppressed custom-section/linker warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Captain Falcon `fn_100_70`
+
+- Sol completed a rejected initial candidate and ten compiled corrections; Astra completed an initial candidate and ten corrections. Retained best is Astra correction ten, tied with corrections two and three, at **98.552246%**: 6,320 candidate code bytes versus 6,316 target bytes. Exact code and normalized-relocation acceptance was not achieved.
+- Source, header, objects, recipes, all trials, and inherited histories remain under `build/isolated-workers/SolNessFunction1BF44/evidence/captain70/astra/` and its preserved predecessor evidence. The original-fallback build at `581f9a10` passed all 127 hashes. The unmatched draft remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Captain aggregate teardown
 
 - `CommittedDashboardPublisher` published verified committed source `10417ed3`, adding Captain Falcon `fn_100_28AC` (672 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
