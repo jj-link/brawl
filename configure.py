@@ -1857,6 +1857,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto,level=8", "-schedule off", "-opt nocse"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_destructors.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_buffer_destructor.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nocse"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_component_destructors.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_element_destructors.cpp",
