@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_dedede/ft_dedede_function_2944.cpp:
+	.text       start:0x00002944 end:0x00002BF0
+
 mo_fighter/ft_dedede/ft_dedede_function_67d4.cpp:
 	.text       start:0x000067D4 end:0x000067DC
 mo_fighter/ft_dedede/ft_dedede_function_67dc.cpp:
