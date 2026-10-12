@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede projectile initialization and ground-contact handling
+
+- `CommittedDashboardPublisher` published verified committed source `c157fc5c`, adding Dedede `fn_117_1F2EC` (1,124 code bytes; rejected Sol initial candidate plus nine corrections) and `fn_117_23464` (804 code bytes; Sol initial candidate plus three corrections). Both new source objects and the migrated caller are linked; a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.708804%** — **428,900 / 15,833,556 code bytes**, with **15,404,656 bytes remaining** and **1,202 accepted source units**. This checkpoint adds **1,928 code bytes / 2 units**, retaining all 1,200 previous units with unchanged code sizes.
+- Published report SHA-256: `bb9ac7add9da99da00e89a3c0429107e8289303828d8106366eb7aa7ddef2660`. Accepted Git blobs, frozen configuration and ABI headers, actual root source presence, and all three affected registered units were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,400 served unit classifications agreed. Persisted and served history both record **428,900 bytes at `2026-10-12T18:46:17.613Z`**; no browser verification was performed.
+- The new functions match all owned code and 19/9 normalized relocations respectively; neither adds owned data or emitted helpers. The shared declaration and `fn_117_8F34` caller migration were accepted together with the initializer; the caller remains an exact 888-byte unit with **zero additional credit** (Astra initial plus eight corrections after Sol initial plus ten). External constants/RTTI remain original inputs without additional credit. Prior evidence qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_1CD50`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction three at **98.40749%**: 6,604 candidate code bytes versus 6,616 target bytes, with 341 versus 340 relocations. Code and normalized relocations remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolLuigiFunction65C4/evidence-1CD50-Astra/` and predecessor evidence. The original-fallback build at `cfd9d70c` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**. The inherited interactive-comparison timeout qualification remains preserved; all eleven Astra candidates compiled and were compared.
+
 ## Verified reconstruction checkpoint — Dedede handler-word accessor
 
 - `CommittedDashboardPublisher` published verified committed source `a84a4f8b`, adding Dedede `fn_117_99D8` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
