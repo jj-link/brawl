@@ -1181,7 +1181,8 @@
   // Group the configured OpenAI and Spark model routes without rebuilding panes.
   const Streams = (() => {
     const grid = $('streams-grid');
-    const sections = ['OpenAI', 'Spark 1 · Qwen', 'Spark 2 + 3 · GLM', 'Other'].map((title, i) => {
+    // Local model sections lead; OpenAI stays last, including when Other is visible.
+    const sections = ['Spark 1 · Qwen', 'Spark 2 + 3 · GLM', 'Other', 'OpenAI'].map((title, i) => {
       const count = el('span', { class: 'count' });
       const heading = el('h3', { class: 'stream-group-title', attrs: { id: 'stream-group-' + i } },
         document.createTextNode(title + ' '), count);
@@ -1194,15 +1195,15 @@
 
     function sectionOf(a) {
       const model = String(a.model || '').toLowerCase();
-      if (model.includes('qwen')) return 1;
-      if (model.includes('glm')) return 2;
-      if (model.includes('gpt-') || model.startsWith('openai')) return 0;
+      if (model.includes('qwen')) return 0;
+      if (model.includes('glm')) return 1;
+      if (model.includes('gpt-') || model.startsWith('openai')) return 3;
       if (!model) {
-        if (a.definition === 'spark1-qwen') return 1;
-        if (a.definition === 'glm-reconstruction') return 2;
-        if (a.definition === 'sol61-reconstruction' || a.definition === 'astra-reconstruction') return 0;
+        if (a.definition === 'spark1-qwen') return 0;
+        if (a.definition === 'glm-reconstruction') return 1;
+        if (a.definition === 'sol61-reconstruction' || a.definition === 'astra-reconstruction') return 3;
       }
-      return 3;
+      return 2;
     }
     const panels = new Map();
     const recordedAgents = new Map();
