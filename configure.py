@@ -1759,6 +1759,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_event_storage.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_7898.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off", "-opt noprop"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_11624.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_1187c.cpp",
