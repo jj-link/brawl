@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness linked events and yoyo activation
+
+- `CommittedDashboardPublisher` published verified committed source `b04327e2`, adding exact, source-linked Ness `fn_101_20A3C` (372 bytes; Sol correction one), `fn_101_2368C` (364 bytes; Sol correction three), and `fn_101_237F8` (640 bytes; Sol correction one), with **127 DOL/REL hashes passing**. The reconciled `fn_101_CB28` caller remains 336 bytes and 100% matching, with no additional credit.
+- Cumulative accepted-source progress is **2.273955%** — **360,048 / 15,833,556 code bytes**, with **15,473,508 bytes remaining** and **1,084 accepted source units**. This checkpoint adds **1,376 code bytes / 3 units**, retaining all 1,081 previously accepted units.
+- Published report SHA-256: `afb54206cd4dd1c36ced541bd66ebd138f4646e808ac7ead8228e1c83099a866`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,187 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-aside — Ness `fn_101_1A62C`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Best Astra correction five compares at **98.58485%**: 6,172 candidate code bytes against 6,176 target bytes, with 290 candidate relocations against 289 target relocations.
+- Both stages' histories, restored best source/object, target, recipes, and comparisons remain under `build/isolated-workers/AstraNessFunction1A62C/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness aggregate destruction and Luigi interface adapter
 
 - `CommittedDashboardPublisher` published verified committed source `fa996a5c`, adding exact, source-linked Ness `fn_101_204E8` (396 code bytes; initial Sol match) and Luigi `fn_99_10D1C` (8 code bytes; initial GLM match), with **127 DOL/REL hashes passing**. Neither function owns associated data.

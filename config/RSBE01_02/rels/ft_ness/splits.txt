@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_ness/ness_function_23be0.cpp:
+	.text       start:0x00023BE0 end:0x00023CEC
+
 mo_fighter/ft_ness/ness_function_23a78.cpp:
 	.text       start:0x00023A78 end:0x00023BE0
 
