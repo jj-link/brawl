@@ -247,6 +247,28 @@ config.custom_build_steps["post-compile"].append({
     "outputs": config.out_path() / "ft_captain/d490_rtti.bound",
 })
 
+# Capture processing owns the signed conversion bias referenced by other Dedede units.
+dedede_f938_object = config.out_path() / "src/mo_fighter/ft_dedede/ft_dedede_function_f938.o"
+config.custom_build_rules.append({
+    "name": "dedede_f938_export_conversion_bias",
+    "command": (
+        f'cmd /c ""{pikachu_bias_objcopy}" --preserve-dates '
+        '--globalize-symbol=lbl_117_rodata_58 --redefine-sym=@9711=lbl_117_rodata_58 '
+        '"$in" && type nul > "$out""'
+        if sys.platform == "win32" else
+        f'"{pikachu_bias_objcopy}" --preserve-dates '
+        '--globalize-symbol=lbl_117_rodata_58 --redefine-sym=@9711=lbl_117_rodata_58 '
+        '"$in" && touch "$out"'
+    ),
+    "description": "EXPORT Dedede capture conversion bias",
+})
+config.custom_build_steps["post-compile"].append({
+    "rule": "dedede_f938_export_conversion_bias",
+    "inputs": dedede_f938_object,
+    "implicit": pikachu_bias_objcopy,
+    "outputs": config.out_path() / "ft_dedede/f938_conversion_bias.exported",
+})
+
 # Optional numeric ID for decomp.me preset
 # Can be overridden in libraries or objects
 config.scratch_preset_id = None
@@ -663,6 +685,8 @@ config.libs = [
                    cflags=cflags_fighter,
                    extra_cflags=["-RTTI off", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_e768.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_f938.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_1014c.cpp",
                    cflags=cflags_fighter),
