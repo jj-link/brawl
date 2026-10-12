@@ -2,6 +2,22 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness transforms and activation, Luigi parameter binding
+
+- `CommittedDashboardPublisher` published verified committed source `05ec20db`, adding exact, source-linked Ness `fn_101_1C788` (500 bytes; Sol correction two), Luigi `fn_99_83A8` (392 bytes; Sol correction five), and Ness `fn_101_1C220` (768 bytes; Sol correction nine), with **127 DOL/REL hashes passing**. Ness's eight associated rodata bytes are excluded from code credit.
+- Cumulative accepted-source progress is **2.340649%** — **370,608 / 15,833,556 code bytes**, with **15,462,948 bytes remaining** and **1,101 accepted source units**. This checkpoint adds **1,660 code bytes / 3 units**, retaining all 1,098 previously accepted units.
+- Published report SHA-256: `357f28abcc1a1819917a3be91b5418cd6948f5975548eb1f25333429ce29719f`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,221 served unit classifications, and persisted/served history, without opening a browser. Accepted Git blobs were checked and all three new registered units matched completely. Existing custom-section, compiler, and linker warnings remained unsuppressed in the successful build.
+
+## Preserved set-aside — Pikachu `fn_98_70`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Best Astra correction ten compares at **99.84405%**: 6,284 candidate and target code bytes, with 79 differing bytes across 41 instructions; all 238 relocations match exactly.
+- Both stages' histories, restored best source/object, target, recipes, comparisons, and final verification remain under `build/isolated-workers/SolPikachuFunction70/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
+## Preserved set-aside — Pikachu `fn_98_192F8`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Best Astra correction seven compares at **98.66179%**: 6,288 candidate code bytes against 6,292 target bytes. Both have 295 relocations with matching symbol/type/addend multisets; full allocated exactness is not achieved, and associated data remains original and unmigrated.
+- Both stages' histories, restored best source/object, original associated-data inventory/objects, recipes, comparisons, and final verification remain under `build/isolated-workers/SolPikachuFunction192F8/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — aggregate teardown, Ness steering, and Luigi capacity
 
 - `CommittedDashboardPublisher` published verified committed source `0d7af452`, adding exact, source-linked Ness `fn_101_1BF44` (384 bytes; initial Sol match), Luigi `fn_99_2834` (672 bytes; initial Sol match), Ness `fn_101_1A078` (856 bytes; four matching corrections followed by one helper-ABI repair), and Luigi `fn_99_97E0` (388 bytes; Sol correction one), with **127 DOL/REL hashes passing**. Luigi's 68 associated data bytes are excluded from code credit.
