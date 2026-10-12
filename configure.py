@@ -821,6 +821,8 @@ config.libs = [
                    cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_23464.cpp",
                    cflags=cflags_fighter, extra_cflags=["-schedule off", "-opt nodeadstore"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_23880.cpp",
+                   cflags=cflags_fighter),
         ],
     },
     {
