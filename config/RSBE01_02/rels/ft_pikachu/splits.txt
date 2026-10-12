@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:8
 	.bss        type:bss align:8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_e8d0.cpp:
+	.text       start:0x0000E8D0 end:0x0000EA24
+
 mo_fighter/ft_pikachu/ft_pikachu_function_e608.cpp:
 	.text       start:0x0000E608 end:0x0000E704
 
