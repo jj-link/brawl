@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_106EC`
+
+- `ResumeGlm106EC` published its registered, source-linked 28-byte reconstruction with exact code and **127 DOL/REL hashes passing**. All 978 predecessor units were retained; the preserved GLM stage used one initial candidate and one correction.
+- Cumulative accepted-source progress is **2.115684%** — **334,988 / 15,833,556 code bytes**, with **15,498,568 bytes remaining** and **979 accepted source units**. This checkpoint adds **28 code bytes / 1 unit**.
+- Published report SHA-256: `84d032186eb0040f9b49b4681aedcbdbd0d0ccd949ca75fa1466ae29f56d9103`. Rendered checkpoint agreement was confirmed before release to 109EC.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_109DC`
 
 - `SolLuigiFunction109DC` published its registered, source-linked 16-byte reconstruction after the preceding owner's release, with **127 DOL/REL hashes passing**. Its initial candidate matched without corrections.
