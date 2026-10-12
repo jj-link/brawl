@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness article destruction and linked events
+
+- `CommittedDashboardPublisher` published verified committed source `7c572792`, adding exact, source-linked Ness `fn_101_18430` (436 bytes; initial Sol match) and `fn_101_11034` (556 bytes; Sol correction one), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.243059%** — **355,156 / 15,833,556 code bytes**, with **15,478,400 bytes remaining** and **1,072 accepted source units**. This checkpoint adds **992 code bytes / 2 units**, retaining all 1,070 previously accepted units.
+- Published report SHA-256: `c37b4c06fca530c1f392542ae1e4b60fc7a209ea1e56b3ff34139e17dc889a3a`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,167 served unit classifications, and persisted/served history, without opening a browser. The `15B34` owner corrected its compiler-generated literal's local-symbol metadata; source stayed unchanged, the `lbl_101_rodata_B0` warning disappeared, and this repair adds no code credit. Other preexisting warnings remain unsuppressed.
+
 ## Verified reconstruction checkpoint — Ness physics totals and aggregate destruction
 
 - `CommittedDashboardPublisher` published verified committed source `7455a927`, adding exact, source-linked Ness `fn_101_20E54` (276 bytes; Sol correction one) and `fn_101_23320` (408 bytes; initial Sol match), with **127 DOL/REL hashes passing**.
