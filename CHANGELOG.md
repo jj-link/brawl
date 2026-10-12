@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede input, events, and storage
+
+- `CommittedDashboardPublisher` published verified committed source `dd015a45`, adding Dedede `fn_117_1014C` (1,212 code bytes; Sol correction four), `fn_117_94DC` (1,276; Sol correction seven after a rejected initial candidate), Luigi `fn_99_10D6C` (8; initial GLM match), Dedede `fn_117_75F8` (904; initial Sol match), and `fn_117_22354` (1,016; Sol correction two). All five reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.650700%** — **419,700 / 15,833,556 code bytes**, with **15,413,856 bytes remaining** and **1,189 accepted source units**. This checkpoint adds **4,416 code bytes / 5 units**, retaining all 1,184 previous units.
+- Published report SHA-256: `48577868e687bc8bc36332fb9d26025fdf041d470afbabfdcb25ff0e29299cd6`. Accepted Git blobs, frozen configuration, actual root source files, and all five new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,376 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code, applicable data, and normalized relocations match. The 28 associated data bytes receive no code credit; no additional helpers are emitted. The 1014C conversion-bias export changes symbol bindings only. The 10D6C headless comparison wrapper outlived its printed result; retained object/relocation and source-linked hash proofs support acceptance. Older owner verification baselines remain distinguished from this fresh cumulative build. Prior qualifications remain applicable; the new `FORCEACTIVE` warning for `lbl_117_rodata_130`, earlier splitter warnings, and `gf_shutdown` `FORCEACTIVE` warning remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede article allocation
 
 - `CommittedDashboardPublisher` published verified committed source `9db1b5a3`, adding King Dedede `fn_117_AC18` (2,272 code bytes; Sol correction two). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
