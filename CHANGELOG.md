@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede ground-speed dispatch
+
+- `CommittedDashboardPublisher` published verified committed source `6477feb2`, adding Dedede `fn_117_15728` (1,276 code bytes; Astra correction two after Sol's rejected initial candidate and ten corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.669192%** — **422,628 / 15,833,556 code bytes**, with **15,410,928 bytes remaining** and **1,192 accepted source units**. This checkpoint adds **1,276 code bytes / 1 unit**, retaining all 1,191 previous units.
+- Published report SHA-256: `b20e0d3137d4ea2f78fa0da66c8b69f95a0d78305cc8ec32f99d7c4fa825414f`. Accepted Git blobs, frozen configuration, actual root source files, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,381 served unit classifications agreed. Persisted and served history both record **422,628 bytes at `2026-10-12T17:33:33.601Z`**; no browser verification was performed.
+- Owned code and all 31 normalized relocations match; there is no owned data or emitted helper. The compile-time empty energy-slot types are an inferred source design, not a claim about original source spelling. Sol's earlier unmatched root installation was removed by its owner before the validated handoff; only the exact Astra result is accepted. Prior qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Captain Falcon `fn_100_E990`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction nine at **84.95238%**: 604 candidate code bytes versus 588 target bytes. Scalar subtraction in place of paired-single instructions, model-name address materialization, and displaced branch/relocation offsets remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolPikachuFunction3650/Evidence-E990/Astra/` and its preserved predecessor evidence. The original-fallback build at `9792b522` passed all 127 hashes. The unmatched draft remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Dedede event storage and article availability
 
 - `CommittedDashboardPublisher` published verified committed source `73276808`, adding Dedede's event-storage constructor at `0x67DC` (852 code bytes; initial Sol match, exported as `__ct__18DededeEventStorageFv`) and `fn_117_B4F8` (800; Sol correction three). Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
