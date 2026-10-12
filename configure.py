@@ -1747,6 +1747,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_kinetic_mediator_update.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_cfc8.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_energy_d4fc_update.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-RTTI off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_energy_update_cd2c.cpp",
