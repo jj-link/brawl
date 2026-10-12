@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain lifecycle and Pikachu parameter lookup
+
+- `CommittedDashboardPublisher` published verified committed source `b8a808fd`, adding Captain Falcon `fn_100_6C68` (852 code bytes; initial Sol match), Pikachu `fn_98_A2C8` (300; Astra correction seven after Sol's initial candidate and ten corrections), Captain Falcon `fn_100_ECEC` (772; Sol correction three after a rejected initial candidate), and Captain Falcon `fn_100_3440` (892; initial Sol match). All four reconstructed source units are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.576099%** — **407,888 / 15,833,556 code bytes**, with **15,425,668 bytes remaining** and **1,173 accepted source units**. This checkpoint adds **2,816 code bytes / 4 units**, retaining all 1,169 previous units.
+- Published report SHA-256: `50a67f85092ac0bbc9cc32c092c98c3153b8ff90155c3ed8728e4d2112d2f174`. Accepted Git blobs, actual root source files, and all four new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,346 served unit classifications, and persisted/served history agree; no browser was opened.
+- These four units own no data and emit no additional helpers. Owned code and normalized relocations match. The 6C68 constructor is exported as `__ct__19CaptainEventStorageFv`; its entry address and original caller instruction are unchanged, with no stale source callers found. Prior qualifications and unsuppressed custom-section/linker warnings remain applicable. Gameplay was not exercised.
+- During 6C68's initial private Ninja request, shared `dtk` v1.7.5 was re-downloaded byte-identically against its recorded prior SHA-256. Subsequent commands used absolute immutable tool paths; earlier unrecorded tool-history qualifications remain unchanged.
+
 ## Verified reconstruction checkpoint — Captain articles and Pikachu charge calculations
 
 - `CommittedDashboardPublisher` published verified committed source `cb86c15d`, adding Captain Falcon `fn_100_79E8` (904 code bytes; Sol correction three), Captain Falcon `fn_100_9DAC` (868; initial Sol match), and Pikachu `fn_98_10510` (336; Astra correction eight after Sol's initial candidate and ten corrections). All three affected reconstructed source units are linked and **127 DOL/REL hashes pass**.
