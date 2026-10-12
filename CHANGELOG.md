@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness `fn_101_36DC`, `fn_101_90CC`, and `fn_101_5994`
+
+- `CommittedDashboardPublisher` published verified committed source `e107bd01`, adding exact, source-linked `fn_101_36DC` (916 bytes), `fn_101_90CC` (324 bytes), and `fn_101_5994` (576 bytes) with **127 DOL/REL hashes passing**. Their Sol correction counts were four, zero, and one respectively.
+- Cumulative accepted-source progress is **2.154690%** — **341,164 / 15,833,556 code bytes**, with **15,492,392 bytes remaining** and **1,033 accepted source units**. This checkpoint adds **1,816 code bytes / 3 units**, retaining all 1,030 previously accepted units.
+- Published report SHA-256: `c6d19f86877f60277d8222ff80f3703050e1edbd28566091666f307625be6186`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
 ## Verified reconstruction checkpoint — Ness `fn_101_5F7C` and `fn_101_6DF0`
 
 - `CommittedDashboardPublisher` published verified committed source `dc0dc131`, adding the exact, source-linked `fn_101_5F7C` (772 bytes) and `fn_101_6DF0` (300 bytes) with **127 DOL/REL hashes passing**. Both initial Sol candidates matched without corrections, including all 49 and 21 relocations respectively.
