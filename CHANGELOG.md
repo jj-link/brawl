@@ -2,6 +2,20 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness article capacity
+
+- `CommittedDashboardPublisher` published verified committed source `38772928`, adding exact, source-linked Ness `fn_101_19B8C` (388 code bytes; Sol correction nine), with **127 DOL/REL hashes passing**. Its 68 associated data bytes use the project's existing aligned-subsection convention and are excluded from code credit.
+- Cumulative accepted-source progress is **2.256398%** — **357,268 / 15,833,556 code bytes**, with **15,476,288 bytes remaining** and **1,077 accepted source units**. This checkpoint adds **388 code bytes / 1 unit**, retaining all 1,076 previously accepted units.
+- Published report SHA-256: `b2b98f8c434cf2892e1b5964e255edf59cc7d1834cdce778c856efdae0727352`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,177 served unit classifications, and persisted/served history, without opening a browser. The successful build emitted an unsuppressed splitter warning for the custom `.data$ness19b8c` section.
+
+## Preserved set-asides — three Ness functions
+
+- Each function completed one initial candidate plus ten corrections at both the Sol and Astra stages. Complete histories and best drafts remain preserved; original fallback remains linked with all 127 final DOL/REL hashes passing. These outcomes add **zero accepted bytes**.
+
+- `fn_101_20F6C`: best remains Sol correction ten at **99.66514%**, 1,740 candidate code bytes against 1,744 target bytes; 16 read-only data bytes match, but code and relocations do not. Evidence: `build/isolated-workers/AstraNessFunction20F6C/evidence/`. The inherited 126/127 snapshot failure and its resolution are preserved separately from the final passing fallback verification.
+- `fn_101_21738`: best Astra correction ten at **97.45609%**, 6,360 candidate code bytes against 6,332 target bytes, with 295 candidate relocations against 294 target relocations. Evidence: `build/isolated-workers/AstraNessFunction21738/evidence/`. Final fallback verification resolved the inherited 126/127 snapshot failure without restarting reconstruction attempts or changing peer root files.
+- `fn_101_24728`: best Astra correction nine (tied with correction one) at **92.28662%**, 612 candidate code bytes against 628 target bytes; 24 read-only data bytes match, but code and relocations do not. Evidence: `build/isolated-workers/AstraNessFunction24728/evidence/`.
+
 ## Verified reconstruction checkpoint — Ness thunder setup and Luigi interface adapter
 
 - `CommittedDashboardPublisher` published verified committed source `f1849c41`, adding exact, source-linked Ness `fn_101_1886C` (592 bytes; initial Sol match), `fn_101_18EF4` (576 bytes; Sol correction one), `fn_101_19228` (548 bytes; Sol correction one), and Luigi `fn_99_10D14` (8 bytes; GLM correction one), with **127 DOL/REL hashes passing**. The 24 associated read-only data bytes are excluded from code credit.
