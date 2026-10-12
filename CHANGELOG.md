@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain articles and Pikachu charge calculations
+
+- `CommittedDashboardPublisher` published verified committed source `cb86c15d`, adding Captain Falcon `fn_100_79E8` (904 code bytes; Sol correction three), Captain Falcon `fn_100_9DAC` (868; initial Sol match), and Pikachu `fn_98_10510` (336; Astra correction eight after Sol's initial candidate and ten corrections). All three affected reconstructed source units are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.558313%** — **405,072 / 15,833,556 code bytes**, with **15,428,484 bytes remaining** and **1,169 accepted source units**. This checkpoint adds **2,108 code bytes / 2 units**, retaining all 1,167 previous units.
+- Published report SHA-256: `9b2d103e57f63a129721c78aa703250136b93d8d67c3bda7020a6c01d2825b5b`. Accepted Git blobs, actual root source files, and the two new units plus the extended Pikachu unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,338 served unit classifications, and persisted/served history agree; no browser was opened.
+- Pikachu's existing `10660` translation unit grows from 1,200 to 1,536 code bytes; only the additional 336 bytes count. Its shared eight data bytes are not duplicated, and 9DAC's exact 68-byte jump table receives no code credit. No additional helpers are emitted. Owned code, applicable data, and normalized relocations match. Prior qualifications remain applicable; `.data$captain9DAC` and earlier custom-section/linker warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — aggregate destruction and kinetic transitions
 
 - `CommittedDashboardPublisher` published verified committed source `07d67046`, adding Pikachu `fn_98_4C34` (300 code bytes; Sol correction six), Pikachu `fn_98_11190` (436; initial Sol match), and Captain Falcon `fn_100_49D4` (848; initial Sol match). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
