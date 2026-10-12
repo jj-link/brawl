@@ -2,6 +2,28 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede article dispatch and parameters
+
+- `CommittedDashboardPublisher` published verified committed source `f19f356b`, adding Dedede `fn_117_D378` (660 code bytes; initial Sol match), `fn_117_17AAC` (652 bytes; rejected initial candidate plus one correction), `fn_117_9F40` (8 bytes; initial GLM match), `fn_117_BD5C` (632 bytes; initial plus four actual corrections), and `fn_117_2205C` (760 bytes; initial plus six corrections). All five reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.749376%** — **435,324 / 15,833,556 code bytes**, with **15,398,232 bytes remaining** and **1,213 accepted source units**. This checkpoint adds **2,712 code bytes / 5 units**, retaining all 1,208 previous units with unchanged code sizes.
+- Published report SHA-256: `dda68f182f8c60e34616ac28a0de786e8015a7e73ae4b0ac399445de2939154a`. Accepted Git blobs, frozen configurations, actual root source presence, and all five registered units were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,425 served unit classifications agreed. Persisted and served history both record **435,324 bytes at `2026-10-12T19:53:11.584Z`**; no browser verification was performed.
+- All owned code and 18/23/0/45/26 normalized relocations match respectively. The 212 owned data bytes also match and are excluded from code progress; no helpers were emitted. Owner build contexts, context-only packet repairs, and private tool/process recovery remain separately qualified. BD5C's initial Ninja download wrote the shared DTK executable without a captured pre-write identity; subsequent proof used explicit tool overrides, and unchanged shared-tool bytes are not claimed. New `.data$dededeBD5C`, `.data$dedede17AAC`, and `.data$dedede2205C` warnings and prior custom-section/`FORCEACTIVE` warnings remain unsuppressed. Unfinished peer sources are excluded. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_70`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction ten at **98.786026%** fuzzy match, with 6,468 candidate and target code bytes and 237 matching normalized relocations. Code still differs in register allocation and constructor argument/address ordering; 14 unlinked header-emitted helpers and their associated data are excluded.
+- The restored best and complete histories remain under `build/isolated-workers/SolLuigiFunction8D30/evidence/70-astra-*`. The original-fallback build at `69f1cb2b` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**. The private-build timeout and successful recovery evidence remain preserved.
+
+## Preserved set-aside — Dedede `fn_117_8BE8`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction six at **94.63636%** fuzzy match, with 660 code bytes, no owned data, and no helpers. Register allocation and node-name/model-load instruction ordering remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolLuigiFunction9964/evidence/fn_117_8BE8/astra`. The original-fallback build at `f2351282` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**. The failed nonexistent Ninja `all` target invocation and successful default-target retry are both preserved.
+
+## Preserved set-aside — Dedede `fn_117_17178`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best remains Sol correction eight at **98.71951%** fuzzy match, with 656 code bytes, 42 differing instruction words, 12 matching normalized relocations, and no owned data.
+- The restored best and complete histories remain under `build/isolated-workers/SolNessFunction1C220/evidence/17178`. Rehashing retained original-fallback outputs from `69f1cb2b` passed all 127 hashes; this is not a fresh current-main build. The candidate was not installed in root and adds **zero accepted bytes**. Actual compiler `GC/3.0a5.2` is distinguished from the scratch metadata label. The sender's binutils download through a shared junction lacked pre-download canonical identities; the incident and private-tool receipt remain preserved, without claiming unchanged shared-tool bytes.
+
 ## Preserved set-aside — Dedede `fn_117_7AB0`
 
 - Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction nine at **97.72541%** fuzzy match: 972 candidate code bytes versus 976 target bytes, with 66 relocations each. A folded bank address leaves an instruction absent and code/relocation-offset differences unresolved.
