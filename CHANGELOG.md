@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu mediator updates, article capacities, and aggregate teardown
+
+- `CommittedDashboardPublisher` published verified committed source `d10358e7`: Pikachu `fn_98_CD2C` (492 bytes; Astra correction one after Sol initial-plus-ten), `fn_98_D4FC` (492 bytes; initial Sol match), `fn_98_CFC8` (492 bytes; Sol correction two), `fn_98_13724` (396 bytes; initial Sol match), `fn_98_B0E0` (388 bytes; initial Sol match), and `fn_98_DCD0` (492 bytes; Sol correction one). All six reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.463527%** — **390,064 / 15,833,556 code bytes**, with **15,443,492 bytes remaining** and **1,133 accepted source units**. This checkpoint adds **2,752 code bytes / 6 units**, retaining all 1,127 previously accepted units.
+- Published report SHA-256: `f24a1fe125ecb9b4242b064f3c97e434251ba991c8e8216b9684ec895bbc8277`. Accepted Git blobs and all six new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,284 served unit classifications, and persisted/served history agree; no browser was opened. Later commits, including the 108C8 extension, are excluded; this snapshot retains the standalone 616-byte 10660 unit.
+- The 196 associated data bytes and stripped compiler helpers receive no code credit. Owned code, data, and normalized relocations match; raw whole-object identity is not claimed where unused helpers remain in compiler output. CD2C retains both model histories and its same-function Astra handoff.
+- The successful build retains unsuppressed splitter warnings, including `.data$pikachuB0E0`, `.data$pikachuCD2C`, `.data$pikachuCFC8`, `.data$pikachuD4FC`, and `.data$pikachuDCD0`. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu energy updates and Luigi forwarding
 
 - `CommittedDashboardPublisher` published verified committed source `e1fc09b6`: Luigi `fn_99_10D34` (8 bytes; initial GLM match), Pikachu `fn_98_11624` (600 bytes; Sol correction five), `fn_98_CA70` (620 bytes; Sol correction four), and standalone `fn_98_10660` (616 bytes; Sol correction ten). All four reconstructed source objects are linked and **127 DOL/REL hashes pass**.
