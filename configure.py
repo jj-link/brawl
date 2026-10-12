@@ -201,6 +201,28 @@ config.custom_build_steps = {"post-compile": [{
     "outputs": config.out_path() / "ft_pikachu/conversion_bias.exported",
 }]}
 
+# Reuse Captain's shared RTTI records; this unit does not own their data.
+captain_d490_object = config.out_path() / "src/mo_fighter/ft_captain/ft_captain_function_d490.o"
+config.custom_build_rules.append({
+    "name": "captain_d490_bind_rtti",
+    "command": (
+        f'cmd /c ""{pikachu_bias_objcopy}" --preserve-dates '
+        '--redefine-sym=__RTTI__22ftKineticEnergyGravity=lbl_100_data_6294 '
+        '--redefine-sym=__RTTI__15soKineticEnergy=lbl_100_data_16D4 "$in" && type nul > "$out""'
+        if sys.platform == "win32" else
+        f'"{pikachu_bias_objcopy}" --preserve-dates '
+        '--redefine-sym=__RTTI__22ftKineticEnergyGravity=lbl_100_data_6294 '
+        '--redefine-sym=__RTTI__15soKineticEnergy=lbl_100_data_16D4 "$in" && touch "$out"'
+    ),
+    "description": "BIND Captain kinetic RTTI",
+})
+config.custom_build_steps["post-compile"].append({
+    "rule": "captain_d490_bind_rtti",
+    "inputs": captain_d490_object,
+    "implicit": pikachu_bias_objcopy,
+    "outputs": config.out_path() / "ft_captain/d490_rtti.bound",
+})
+
 # Optional numeric ID for decomp.me preset
 # Can be overridden in libraries or objects
 config.scratch_preset_id = None
@@ -584,6 +606,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_ba60.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_captain/ft_captain_function_d490.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore", "-gen-fsel"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_ecec.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_eff0.cpp",
