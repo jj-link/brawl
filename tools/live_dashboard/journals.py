@@ -1,10 +1,10 @@
 """Read-only discovery, tailing, and interpretation of omp session journals.
 
-Journals are read-only JSONL files under ``~/.omp/agent/sessions``. Visible
-assistant text, peer messages and tool activity are delivered separately from
-state summaries. Thinking, prompts, provider payloads and credential metadata
-are never extracted. Tool arguments are summarized rather than dumped; visible
-output has credential patterns redacted and bounded retention.
+Journals are read-only JSONL files under ``~/.omp/agent/sessions``. Recorded
+user/assistant text and thinking, peer messages, tool arguments and result
+content are delivered separately from state summaries. Session content is
+preserved without path/tag filtering or per-item truncation; retention bounds
+whole entries only. Provider payloads, auth headers and signatures are not sent.
 
 States are derived strictly from recorded evidence:
 
@@ -30,7 +30,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import threading
 import uuid
 from collections import deque
@@ -46,36 +45,46 @@ HEADER_PEEK_BYTES = 65536
 MAX_INITIAL_READ = 256 * 1024 * 1024
 MAX_TRACKED_CALLS = 4096
 STREAMS_PER_JOURNAL = 200
-MAX_STREAM_CHARS = 4000
-MAX_STREAM_BYTES_PER_JOURNAL = 128 * 1024
 TAIL_ANCHOR_BYTES = 256
 
 
 def _visible_text(value):
-    """Only call on visible text, never on reasoning or provider metadata."""
-    if not isinstance(value, str):
-        return ""
-    text = re.sub(
-        r"<(system(?:-reminder|-notice)?|developer|thinking|analysis|contextSnapshot)"
-        r"\b[^>]*>.*?</\1>", "[private context omitted]", value,
-        flags=re.I | re.S,
+    """Preserve session text verbatim, without reading provider metadata."""
+    return value if isinstance(value, str) else ""
+
+
+def _content_blocks(content):
+    """Select documented user-visible content fields, not provider signatures."""
+    if isinstance(content, str):
+        return [{"type": "text", "text": content}]
+    blocks = []
+    if not isinstance(content, list):
+        return blocks
+    for block in content:
+        if not isinstance(block, dict):
+            continue
+        kind = block.get("type")
+        fields = {
+            "text": ("text",),
+            "thinking": ("thinking", "summary"),
+            "reasoning": ("text", "thinking", "reasoning", "summary"),
+            "image": ("data", "mimeType"),
+        }.get(kind)
+        if fields is not None:
+            blocks.append({"type": kind, **{
+                key: block[key] for key in fields
+                if key in block and (key != "summary" or isinstance(block[key], bool))
+            }})
+    return blocks
+
+
+def _content_text(blocks):
+    """Faithful textual projection; images remain available in ``blocks``."""
+    return "\n".join(
+        _visible_text(block.get("text") if block.get("type") == "text" else
+                      block.get("thinking", block.get("reasoning", block.get("text"))))
+        for block in blocks if block.get("type") != "image"
     )
-    text = re.sub(r"-----BEGIN [^-]*PRIVATE KEY-----.*?"
-                  r"-----END [^-]*PRIVATE KEY-----", "[credential redacted]",
-                  text, flags=re.S)
-    text = re.sub(
-        r"(?i)(\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|"
-        r"client[_-]?secret|password|passwd|authorization|credential)"
-        r"[\"']?\s*[:=]\s*)(?:\"[^\"\n]*\"|'[^'\n]*'|[^\s,;]+)",
-        r"\1[redacted]", text,
-    )
-    text = re.sub(r"(?i)\b(Bearer|Basic)\s+[A-Za-z0-9+/_.=-]+",
-                  r"\1 [redacted]", text)
-    text = re.sub(r"\b(?:sk-[A-Za-z0-9_-]{16,}|gh[pousr]_[A-Za-z0-9_]{16,}|"
-                  r"github_pat_[A-Za-z0-9_]{16,}|AKIA[A-Z0-9]{16})\b",
-                  "[credential redacted]", text)
-    text = re.sub(r"(https?://)[^/\s:@]+:[^/\s@]+@", r"\1[redacted]@", text)
-    return text
 
 
 def _clean(value, limit):
@@ -198,13 +207,14 @@ class JournalTracker:
         self._stream_seq = 0
         self.events = deque(maxlen=EVENTS_PER_JOURNAL)
         self.stream = deque()
-        self.stream_bytes = 0
         self.evicted_order = 0
         self._stream_sink = stream_sink
 
     def _add_stream(self, record, kind, text, suffix="", **fields):
         text = _visible_text(text)
-        if not text:
+        if not text and kind != "tool" and not any(
+                fields.get(key) is not None
+                for key in ("blocks", "args", "details", "errorMessage", "stopReason")):
             return
         self._stream_seq += 1
         sid = self.session_id or self.path.stem
@@ -214,18 +224,15 @@ class JournalTracker:
             "agent": self.name, "at": record.get("timestamp") or self.last_seen,
             "sequence": self._stream_seq, "kind": kind, "role": None,
             "tool": None, "callId": None, "intent": None, "isError": False,
-            "text": text[:MAX_STREAM_CHARS], "truncated": len(text) > MAX_STREAM_CHARS,
+            "text": text, "complete": True,
         }
         item.update(fields)
         if self._stream_sink:
             self._stream_sink(item)
         self.stream.append(item)
-        self.stream_bytes += len(item["text"].encode("utf-8"))
-        while len(self.stream) > STREAMS_PER_JOURNAL \
-                or self.stream_bytes > MAX_STREAM_BYTES_PER_JOURNAL:
+        while len(self.stream) > STREAMS_PER_JOURNAL:
             removed = self.stream.popleft()
             self.evicted_order = removed.get("_order", 0)
-            self.stream_bytes -= len(removed["text"].encode("utf-8"))
 
     # ------------------------------------------------------------------
     # record application
@@ -281,17 +288,21 @@ class JournalTracker:
                 details = record.get("details") or {}
                 if isinstance(details, dict):
                     sender = _clean(details.get("from"), 80) or "peer"
-                    self._add_stream(record, "message", details.get("message"),
-                                     role="peer", sender=sender)
+                    blocks = _content_blocks(details.get("message", record.get("content")))
+                    self._add_stream(record, "message", _content_text(blocks),
+                                     role="peer", sender=sender, blocks=blocks)
             elif record.get("customType") == "async-result":
-                # The visible completion body is useful; wrapper system notice
-                # tags are removed, not interpreted as privileged instructions.
                 body = record.get("content")
-                if isinstance(body, str):
-                    body = re.sub(r"</?system-notice[^>]*>", "", body)
-                    self._add_stream(record, "tool_result", body, role="tool")
-        # Other record kinds, including compaction summaries, credential pins,
-        # developer messages and provider metadata, are intentionally ignored.
+                blocks = _content_blocks(body)
+                self._add_stream(record, "tool", _content_text(blocks),
+                                 role="tool", blocks=blocks,
+                                 details=record.get("details"))
+            else:
+                blocks = _content_blocks(record.get("content"))
+                self._add_stream(record, "message", _content_text(blocks),
+                                 role="custom", blocks=blocks)
+        # Other record kinds, including compaction summaries, credential pins
+        # and raw provider metadata, are intentionally ignored.
 
     def _apply_message(self, record):
         message = record.get("message")
@@ -301,7 +312,7 @@ class JournalTracker:
         if role == "user":
             # A steering assignment supersedes any previously reported target;
             # reused agents resume without emitting a new session_init.
-            # Message content itself is never interpreted or stored.
+            # Preserve only recorded content, not provider request metadata.
             self.last_target = None
             self.last_target_seq = None
             self.last_yield = None
@@ -310,6 +321,9 @@ class JournalTracker:
             self.assignment_started_at = _parse_ts(record.get("timestamp"))
             self.assignment_retired_at = None
             self.tail = ("spawn", {})
+            blocks = _content_blocks(message.get("content"))
+            self._add_stream(record, "message", _content_text(blocks),
+                             role="user", blocks=blocks)
             return
         if role == "assistant":
             model = message.get("model")
@@ -317,37 +331,44 @@ class JournalTracker:
                 self.model = model
             self.tail = ("assistant", {"stop": message.get("stopReason")})
             self.last_yield = None
+            outcome = {
+                key: message[key] for key in ("stopReason", "errorMessage")
+                if message.get(key) is not None
+            }
+            outcome["isError"] = message.get("stopReason") in ("error", "aborted")
+            stream_before = self._stream_seq
             content = message.get("content")
+            if isinstance(content, str):
+                content = [{"type": "text", "text": content}]
             if not isinstance(content, list):
-                return
+                content = []
             for index, block in enumerate(content):
                 if not isinstance(block, dict):
                     continue
-                if block.get("type") == "text":
-                    self._add_stream(record, "message", block.get("text"),
-                                     suffix=str(index), role="assistant")
-                    continue
                 if block.get("type") != "toolCall":
+                    blocks = _content_blocks([block])
+                    if blocks:
+                        fields = {"role": "assistant", "blocks": blocks, **outcome}
+                        if block.get("type") in ("thinking", "reasoning"):
+                            fields["channel"] = "thinking"
+                        self._add_stream(record, "message", _content_text(blocks),
+                                         suffix=str(index), **fields)
                     continue
                 cid = block.get("id")
                 tool = _clean(block.get("name"), 60)
-                args = block.get("arguments")
-                args = args if isinstance(args, dict) else {}
+                arguments = block.get("arguments")
+                args = arguments if isinstance(arguments, dict) else {}
                 intent = block.get("intent") or args.get("i")
                 intent = _clean(intent, MAX_INTENT_CHARS)
-                target = _clean(args.get("path"), 200)
-                text = f"{tool or 'tool'}: {intent or 'called'}"
-                if target:
-                    text += f"\nTarget: {target}"
-                self._add_stream(record, "tool_call", text, suffix=str(index),
-                                 role="assistant", tool=tool, callId=cid, intent=intent)
+                self._add_stream(record, "tool", "", suffix=str(index),
+                                 role="assistant", tool=tool, callId=cid, intent=intent,
+                                 args=arguments, complete=False)
                 if tool and intent:
                     self.last_intent = intent
                 if cid and tool:
                     self.calls[cid] = {
                         "tool": tool,
                         "intent": intent,
-                        "target": target,
                         # type: string (or absent) is a terminal yield;
                         # type: array is an incremental section yield.
                         "yield_terminal": tool == "yield"
@@ -358,6 +379,10 @@ class JournalTracker:
                     }
                     if len(self.calls) > MAX_TRACKED_CALLS:
                         self.calls.clear()
+            if self._stream_seq == stream_before and (
+                    outcome["isError"] or outcome.get("errorMessage")):
+                self._add_stream(record, "message", "", suffix="outcome",
+                                 role="assistant", **outcome)
         elif role == "toolResult":
             tool = _clean(message.get("toolName"), 60)
             cid = message.get("toolCallId")
@@ -365,21 +390,12 @@ class JournalTracker:
             details = message.get("details")
             details = details if isinstance(details, dict) else {}
             call = self.calls.get(cid) or {}
-            content = message.get("content")
-            visible = "\n".join(
-                b.get("text", "") for b in content
-                if isinstance(b, dict) and b.get("type") == "text"
-                and isinstance(b.get("text"), str)
-            ) if isinstance(content, list) else ""
-            target = (call.get("target") or "").lower()
-            if any(s in target for s in (
-                    "history://", "skill://", "omp://", ".env", "credential",
-                    "secrets", "id_rsa", "id_ed25519")):
-                visible = "[private target output omitted]"
-            self._add_stream(record, "tool_result",
-                             visible or f"{tool or 'tool'} - {'error' if is_error else 'ok'}",
+            blocks = _content_blocks(message.get("content"))
+            self._add_stream(record, "tool", _content_text(blocks),
                              role="tool", tool=tool, callId=cid,
-                             intent=call.get("intent"), isError=is_error)
+                             intent=call.get("intent"), isError=is_error,
+                             blocks=blocks, details=message.get("details"),
+                             status="error" if is_error else "completed")
             self.pending.pop(cid, None)
             if tool == "yield":
                 data = details.get("data")
@@ -422,7 +438,7 @@ class JournalTracker:
                         and 0 <= wall < 3_600_000:
                     text += f" ({int(wall)} ms)"
             self._add_event(record, "result", text)
-        # role "user" and anything else: never interpreted.
+        # Other roles and provider metadata are not interpreted.
 
     def _apply_custom(self, record):
         ctype = record.get("customType")
@@ -516,11 +532,10 @@ class JournalTracker:
         return "unknown"
 
     def _target(self):
-        # Only structured target identifiers/paths reported by the agent's
-        # own yields are shown; assignment/prompt text is never exposed and
-        # unknown stays null.  A new user steering message or session_init
-        # clears the previous value so completed work is not presented as
-        # current.
+        # Target summaries use only structured identifiers/paths reported by
+        # the agent's yields, never guesses from assignment text. Recorded
+        # session content is streamed separately. A new steering message or
+        # session_init clears the old target; unknown stays null.
         return self.last_target
 
     def agent_dict(self, now_dt):
@@ -958,10 +973,9 @@ class JournalWatcher:
                 "revision": f"{self.stream_epoch}:{self.stream_order}",
                 "available": bool(self.trackers),
                 "retentionPerAgent": STREAMS_PER_JOURNAL,
-                "maxTextChars": MAX_STREAM_CHARS,
-                "maxBytesPerAgent": MAX_STREAM_BYTES_PER_JOURNAL,
-                "visibility": "assistant text, peer messages, tool summaries and visible output; "
-                              "no prompts, thinking or provider metadata",
+                "retentionUnit": "whole entries",
+                "visibility": "user/assistant text and thinking, peer messages, tool arguments "
+                              "and result content; no provider metadata",
                 "parserIssues": list(self.parser_issues.values()),
                 "journalRewrites": [
                     {"journal": path.name, "count": count}
@@ -971,13 +985,11 @@ class JournalWatcher:
 
     def streams(self, agent=None, cursor=None, limit=300):
         with self.lock:
-            # Historical transport is deliberately narrower than the internal
-            # status parser: tool output/peer assignments can contain private
-            # prompts or provider payloads. Only visible assistant text crosses.
+            # All extracted session-output categories share the history
+            # transport. Retention evicts whole entries, never clips content.
             items = [
                 item for tracker in self.trackers.values() for item in tracker.stream
                 if (agent is None or item["agentId"] == agent)
-                and item["kind"] == "message" and item.get("role") == "assistant"
             ]
             items.sort(key=lambda item: item["_order"])
             reset = False
@@ -1012,7 +1024,7 @@ class JournalWatcher:
                 "source": "recorded-history",
                 "items": [
                     {**{k: v for k, v in item.items() if k != "_order"},
-                     "source": "recorded-history", "complete": True}
+                     "source": "recorded-history"}
                     for item in chosen
                 ],
             }

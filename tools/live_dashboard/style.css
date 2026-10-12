@@ -442,6 +442,11 @@ body.is-paused #topbar { border-bottom-color: rgba(242, 163, 60, 0.55); }
 .stream-log:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
 .stream-entry { border-top: 1px solid var(--line); padding: 8px 0; font-size: 12px; }
 .stream-entry-head { font: 9.5px var(--mono); color: var(--cyan); overflow-wrap: anywhere; }
+.stream-entry[data-channel="thinking"] > .stream-entry-head { color: var(--tx2); }
+.stream-entry[data-channel="tool"] > .stream-entry-head { color: var(--mint); }
+.stream-part-label { margin-top: 6px; color: var(--tx2); font: 9.5px var(--mono); }
+/* Reserve image space so decoding cannot shift a reader's scroll anchor. */
+.stream-image { display: block; width: 100%; height: 180px; object-fit: contain; margin-top: 6px; }
 .stream-history .stream-entry-head { color: var(--amber2); }
 .stream-history .stream-text { color: var(--tx2); }
 .stream-text { margin: 6px 0 0; font: 11.5px/1.5 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--tx); }

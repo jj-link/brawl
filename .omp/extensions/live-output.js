@@ -1,34 +1,29 @@
-/* Read-only omp v18.8.9 observer. Native project extension discovery loads this
+/* Read-only omp v18.9.2 observer. Native project extension discovery loads this
  * at startup and rebinds the factory to existing/revived child sessions.
- * No tools, prompts, provider hooks, session mutation or model calls.
- * Relays assistant prose plus sanitized tool lifecycle/output over one SSE feed.
- * Assignment membership comes from the owning AgentRegistry, not model turns.
+ * No tools, provider hooks, session mutation or model calls.
+ * Relays session-visible messages, reasoning, tool arguments/results and images
+ * over one SSE feed. Provider credentials, headers and replay metadata are not
+ * event sources. Assignment membership comes from the owning AgentRegistry.
  */
 import { createServer } from 'node:http';
 import { randomUUID } from 'node:crypto';
 import { openSync, readSync, closeSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { AgentRegistry, MAIN_AGENT_ID } from '@oh-my-pi/pi-coding-agent/registry/agent-registry';
 
 const PORT = 8766;
 const DASHBOARD_PORT = 8765;
-const MAX_TEXT = 16000;
 const MAX_ENTRIES = 200;
-const MAX_AGENT_CHARS = 128 * 1024;
 const MAX_AGENTS = 512;
 const MAX_CLIENT_QUEUE = 8 * 1024 * 1024;
-const MAX_TOTAL_CHARS = 2 * 1024 * 1024;
 const MAX_TOTAL_ENTRIES = 2000;
-const project = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-let epoch = randomUUID();
+const PINNED_ROOT_SESSION_ID = '01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a';
+const epoch = randomUUID();
 const agents = new Map();
 const clients = new Set();
 const retained = new Map();
-let retainedChars = 0;
 let server;
 let sequence = 0;
-let fallbackCalls = 0;
 let failure = null;
 let rootSessionId = null;
 let rootSessionFile = null;
@@ -132,93 +127,78 @@ function publicMembership() {
 
 function bindRoot(ctx) {
   const id = ctx.sessionManager.getSessionId();
-  if (rootSessionId && id !== rootSessionId) {
-    epoch = randomUUID();
-    agents.clear(); retained.clear(); retainedChars = 0; sequence = 0;
-    membership = null; memberActivity.clear();
-  }
+  if (id !== PINNED_ROOT_SESSION_ID) return;
   rootSessionId = id;
   rootSessionFile = ctx.sessionManager.getSessionFile() || null;
   refreshMembership();
   broadcast('snapshot', snapshot());
 }
 
-// Sanitize BEFORE transport. Retain the unfinished whitespace-delimited token:
-// otherwise a credential split between provider deltas could leak its prefix.
-// Sensitive labels suppress the rest of that line, including spaced/quoted
-// values. Private tags/keys suppress even unterminated blocks. False positives
-// deliberately favor privacy. Tool results are relayed only as sanitized
-// result.content text blocks; raw events, call arguments, prompts and details
-// payloads are never transported.
-function visible(raw, flush) {
-  let text = raw;
-  if (!flush) {
-    const end = Math.max(text.lastIndexOf(' '), text.lastIndexOf('\n'), text.lastIndexOf('\t'), text.lastIndexOf('\r'));
-    text = end < 0 ? '' : text.slice(0, end + 1);
+// Select documented user-visible block fields, not provider replay signatures,
+// encrypted reasoning, request payloads or authentication metadata. Session
+// text itself is unchanged: no path gates, regex suppression or word buffering.
+function contentBlock(block) {
+  if (!block || typeof block !== 'object') return null;
+  if (block.type === 'text' && typeof block.text === 'string') {
+    return { type: 'text', text: block.text };
   }
-  text = text.replace(/<(system(?:-reminder|-notice)?|developer|thinking|analysis|contextSnapshot)\b[^>]*(?:>[\s\S]*?(?:<\/\1\s*>|$)|$)/gi, '[private context omitted]');
-  // Withhold an unfinished tag, even when its name itself is split.
-  text = text.replace(/<[^>]*$/, '');
-  text = text.replace(/-----BEGIN [^\n]*PRIVATE KEY-----[\s\S]*?(?:-----END [^\n]*PRIVATE KEY-----|$)/g, '[credential redacted]');
-  text = text.replace(/\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|client[_-]?secret|password|passwd|authorization|credential|Bearer|Basic)\b[^\n]*/gi, '[credential redacted]');
-  text = text.replace(/\b(?:sk-[A-Za-z0-9_-]*|gh[pousr]_[A-Za-z0-9_]*|github_pat_[A-Za-z0-9_]*|AKIA[A-Z0-9]*)/g, '[credential redacted]');
-  text = text.replace(/(https?:\/\/)[^/\s:@]+:[^/\s@]*(?:@|$)/g, '$1[redacted]@');
-  return text.replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, '');
+  if (block.type === 'thinking' && typeof block.thinking === 'string') {
+    return { type: 'thinking', thinking: block.thinking,
+      ...(typeof block.summary === 'boolean' ? { summary: block.summary } : {}) };
+  }
+  if (block.type === 'image' && typeof block.data === 'string' && typeof block.mimeType === 'string') {
+    return { type: 'image', data: block.data, mimeType: block.mimeType };
+  }
+  return null;
 }
 
-// Visible-tool privacy gate, mirroring the journal pipeline's target redaction
-// (history/skill/omp/agent resources, agent state and settings, env and
-// credential files). Matched against the call target and every direct string
-// argument; a hit suppresses that call's streamed and final output entirely.
-// Over-blocking deliberately favors privacy; prompts are never emitted anyway.
-const PRIVATE_TARGETS = ['history://', 'skill://', 'omp://', 'agent://', '.omp/agent',
-  '.omp/settings', '.env', 'credential', 'secrets', 'id_rsa', 'id_ed25519', '.pem'];
+function contentBlocks(content) {
+  if (typeof content === 'string') return [{ type: 'text', text: content }];
+  return Array.isArray(content) ? content.map(contentBlock).filter(Boolean) : [];
+}
+
+function blocksText(blocks) {
+  return blocks.map(block => block.type === 'text' ? block.text :
+    block.type === 'thinking' ? block.thinking : '').filter(text => text !== '').join('\n');
+}
 
 function argString(args, key) {
   return args && typeof args === 'object' && typeof args[key] === 'string' ? args[key] : '';
 }
 
-function isPrivateTarget(args, target) {
-  const values = [target];
-  if (args && typeof args === 'object') {
-    for (const value of Object.values(args)) {
-      if (typeof value === 'string') values.push(value);
-    }
-  }
-  const lowered = values.join('\n').replace(/\\/g, '/').toLowerCase();
-  return PRIVATE_TARGETS.some(marker => lowered.includes(marker));
-}
-
-// Canonical visible tool text: result.content text blocks only. Images,
-// thinking, details payloads and every other block kind are never transported.
-function resultText(payload) {
-  const content = payload && typeof payload === 'object' ? payload.content : undefined;
-  if (!Array.isArray(content)) return '';
-  return content.filter(block => block && typeof block === 'object' && block.type === 'text' &&
-      typeof block.text === 'string').map(block => block.text).join('\n');
-}
 
 function toolCallId(event) {
-  const call = visible(String(event?.toolCallId ?? ''), true).slice(0, 200);
-  return call || `tool-${++fallbackCalls}`;
+  return typeof event.toolCallId === 'string' ? event.toolCallId : '';
 }
 
 function toolText(tool, intent, target) {
-  return `${tool}: ${intent || 'called'}${target ? `\nTarget: ${target}` : ''}`;
+  return `${tool}${intent ? `: ${intent}` : ''}${target ? `\nTarget: ${target}` : ''}`;
 }
 
-// One item per call: name/intent/target summary at start, never full args.
-// Caps mirror the journal pipeline (tool 60, intent 120, target 200). `id` is
-// passed precomputed where the caller already resolved it, so the Map key and
-// item.id can never diverge.
-function toolItem(agent, event, args, id) {
-  const tool = visible(String(event.toolName ?? ''), true).slice(0, 60) || 'tool';
-  const intent = visible(String(event.intent ?? argString(args, 'i')), true).slice(0, 120);
-  const target = argString(args, 'path');
-  return { id: id || `${agent.id}:${toolCallId(event)}`, agentId: agent.id,
-    at: new Date().toISOString(), kind: 'tool', tool, raw: toolText(tool, intent,
-      visible(target, true).slice(0, 200)), text: '', complete: false, isError: false,
-    truncated: false, sequence: 0, private: isPrivateTarget(args, target) };
+// One item per actual call. Arguments stay separate from the textual
+// compatibility projection; end events can create an item even without start.
+function toolItem(agent, event) {
+  const callId = toolCallId(event);
+  const tool = String(event.toolName ?? 'tool');
+  return { id: `${agent.id}:${callId}`, agentId: agent.id, callId,
+    at: new Date().toISOString(), kind: 'tool', tool,
+    ...(event.args !== undefined ? { args: event.args } : {}),
+    text: toolText(tool, String(event.intent ?? argString(event.args, 'i')), argString(event.args, 'path')),
+    complete: false, isError: false, status: 'running', sequence: 0 };
+}
+
+function toolResult(item, result, complete = false) {
+  // AgentToolResult supports text/images and optional UI details. A supplied
+  // empty final content array replaces partial output instead of retaining it.
+  const content = typeof result === 'string' ? result : result?.content;
+  if (typeof content === 'string' || Array.isArray(content)) {
+    item.blocks = contentBlocks(content);
+    item.text = blocksText(item.blocks);
+  }
+  if (complete) delete item.details;
+  if (result && typeof result === 'object' && Object.hasOwn(result, 'details')) {
+    item.details = result.details;
+  }
 }
 
 function frame(type, data) {
@@ -226,9 +206,9 @@ function frame(type, data) {
 }
 
 function send(client, value) {
-  // Bound slow consumers without blocking generation. A reconnect receives a
-  // fresh retained snapshot, never a duplicated append or invented missed text.
-  if (client.response.writableLength + Buffer.byteLength(value) > MAX_CLIENT_QUEUE) {
+  // Bound already-backlogged consumers without cutting any incoming frame.
+  // Even an individual image/result larger than the queue budget is sent whole.
+  if (client.response.writableLength > MAX_CLIENT_QUEUE) {
     client.response.destroy();
     clients.delete(client);
     return;
@@ -262,13 +242,15 @@ function publishAgent(agent) {
 }
 
 function publicItem(item) {
-  const base = { id: item.id, agentId: item.agentId, at: item.at, sequence: item.sequence };
-  if (item.kind === 'tool') {
-    return { ...base, kind: 'tool', tool: item.tool, text: item.text, complete: item.complete,
-      isError: item.isError, truncated: item.truncated, source: 'live' };
+  const result = { id: item.id, agentId: item.agentId, at: item.at, sequence: item.sequence,
+    kind: item.kind || 'message', text: item.text, complete: item.complete, source: 'live' };
+  const fields = item.kind === 'tool' ?
+    ['tool', 'callId', 'args', 'blocks', 'details', 'isError', 'status'] :
+    ['role', 'channel', 'blocks', 'details', 'customType', 'sender', 'stopReason', 'errorMessage', 'isError'];
+  for (const key of fields) {
+    if (item[key] !== undefined) result[key] = item[key];
   }
-  return { ...base, kind: 'message', role: 'assistant', text: item.text, complete: item.complete,
-    truncated: item.truncated, source: 'live' };
+  return result;
 }
 
 function snapshot() {
@@ -283,20 +265,19 @@ function touch(ctx, state) {
   const id = ctx.sessionManager.getSessionId();
   let agent = agents.get(id);
   if (!agent) {
-    agent = { id, name: visible(String(ctx.agent.id), true).slice(0, 120),
-      definition: visible(String(ctx.agent.name), true).slice(0, 80), items: new Map() };
+    agent = { id, name: String(ctx.agent.id),
+      definition: String(ctx.agent.name), items: new Map() };
     agents.set(id, agent);
     if (agents.size > MAX_AGENTS) {
       const evicted = agents.keys().next().value;
       for (const item of agents.get(evicted).items.values()) {
-        retainedChars -= item.size || 0;
         retained.delete(item.id);
       }
       agents.delete(evicted);
       broadcast('evict', { agentId: evicted });
     }
   }
-  agent.model = ctx.model ? visible(String(ctx.model.id), true).slice(0, 120) : null;
+  agent.model = ctx.model ? String(ctx.model.id) : null;
   agent.lastSeen = new Date().toISOString();
   if (state) agent.state = state;
   agent.state ||= 'waiting';
@@ -307,33 +288,22 @@ function touch(ctx, state) {
 function evict(agent, item) {
   agent.items.delete(item.id);
   retained.delete(item.id);
-  retainedChars -= item.size || 0;
   broadcast('evict', { agentId: agent.id, itemId: item.id });
 }
 
 function trim(agent) {
-  let chars = 0;
-  const entries = [...agent.items.values()];
-  for (let i = entries.length - 1; i >= 0; --i) {
-    chars += entries[i].raw.length + entries[i].text.length;
-    if (i < entries.length - MAX_ENTRIES || chars > MAX_AGENT_CHARS) {
-      evict(agent, entries[i]);
-    }
+  // Retention removes whole old entries by count, never bytes from an item.
+  while (agent.items.size > MAX_ENTRIES) {
+    evict(agent, agent.items.values().next().value);
   }
-  while (retainedChars > MAX_TOTAL_CHARS || retained.size > MAX_TOTAL_ENTRIES) {
+  while (retained.size > MAX_TOTAL_ENTRIES) {
     const oldest = retained.values().next().value;
     evict(agents.get(oldest.agentId), oldest);
   }
 }
 
-function publish(agent, item, flush = false) {
-  const text = visible(item.raw, flush);
-  retainedChars -= item.size || 0;
-  item.size = item.raw.length + text.length;
-  retainedChars += item.size;
+function publish(agent, item) {
   retained.set(item.id, item);
-  if (text === item.text && !flush) { trim(agent); return; }
-  item.text = text;
   item.sequence = ++sequence;
   broadcast('text', publicItem(item));
   trim(agent);
@@ -352,7 +322,7 @@ function ensureServer() {
       response.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
       refreshMembership();
       response.end(JSON.stringify({ connected: true, epoch, rootSessionId, sequence, pid: process.pid,
-        agents: agents.size, membership: publicMembership(), contract: 'omp-v18.8.9-extension-visible-output' }));
+        agents: agents.size, membership: publicMembership(), contract: 'omp-v18.9.2-extension-session-output' }));
       return;
     }
     if (request.url !== '/events') { response.writeHead(404); response.end(); return; }
@@ -379,17 +349,131 @@ function ensureServer() {
 export default function liveOutput(pi) {
   const completedMessages = new Set();
   const completedCalls = new Set();
-  const eligible = ctx => resolve(ctx.cwd).toLowerCase() === project.toLowerCase() && ctx.agent.kind === 'sub';
-  const messageKey = (ctx, message) => `${ctx.sessionManager.getSessionId()}:${message.timestamp}`;
+  // Journal ancestry, not cwd: isolated worktrees still belong to this root.
+  const eligible = ctx => ctx.agent.kind === 'sub' && (scopedFile(ctx.sessionManager.getSessionFile()) ||
+    scopedFile(registry.get(ctx.agent.id)?.sessionFile));
+  const owningRoot = ctx => ctx.agent.kind === 'main' &&
+    ctx.sessionManager.getSessionId() === PINNED_ROOT_SESSION_ID;
+  const messageKey = (ctx, message) => `${ctx.sessionManager.getSessionId()}:${message.timestamp}` +
+    (message.role === 'assistant' ? '' : `:${message.role}${message.details?.id ? `:${message.details.id}` : ''}`);
   const observe = (ctx, state) => {
     if (!eligible(ctx)) return null;
     ensureServer();
     return touch(ctx, state);
   };
+  const remember = (set, id) => {
+    set.add(id);
+    if (set.size > MAX_TOTAL_ENTRIES) set.delete(set.values().next().value);
+  };
+  const messageItem = (agent, key, message, index) => {
+    const id = `${key}:${index}`;
+    let item = agent.items.get(id);
+    if (!item) {
+      item = { id, agentId: agent.id, at: new Date(message.timestamp).toISOString(),
+        kind: 'message', role: message.role, text: '', complete: false, sequence: 0 };
+      agent.items.set(id, item);
+    }
+    return item;
+  };
+  const captureCall = (agent, call, message) => {
+    if (typeof call.id !== 'string' || !call.id) return;
+    const event = { toolCallId: call.id, toolName: call.name, args: call.arguments, intent: call.intent };
+    const fresh = toolItem(agent, event);
+    let item = agent.items.get(fresh.id);
+    if (!item) {
+      if (completedCalls.has(fresh.id)) return;
+      item = fresh;
+      item.at = new Date(message.timestamp).toISOString();
+      item.status = 'pending';
+      agent.items.set(item.id, item);
+    } else if (item.args === undefined) {
+      item.args = call.arguments;
+    } else {
+      return;
+    }
+    publish(agent, item);
+  };
+  const finishTool = (event, ctx) => {
+    if (!eligible(ctx) || !toolCallId(event)) return;
+    const id = `${ctx.sessionManager.getSessionId()}:${toolCallId(event)}`;
+    if (completedCalls.has(id)) return;
+    const agent = observe(ctx, null);
+    const item = agent.items.get(id) || toolItem(agent, event);
+    agent.items.set(id, item);
+    remember(completedCalls, id);
+    toolResult(item, event.result, true);
+    item.complete = true;
+    item.isError = event.isError === true;
+    item.status = item.isError ? 'error' : 'completed';
+    publish(agent, item);
+  };
+  const relayMessage = (message, ctx, complete) => {
+    if (!eligible(ctx)) return;
+    if (message.role === 'toolResult') {
+      if (complete) finishTool({ toolCallId: message.toolCallId, toolName: message.toolName,
+        result: message, isError: message.isError }, ctx);
+      return;
+    }
+    // Displayable custom messages include injected peer/async-result records.
+    // The SDK has no irc_message extension hook: immediate receipt and
+    // nonpersisted relay observations are not exposed by these subscriptions.
+    if (message.role !== 'assistant' && message.role !== 'user' &&
+        !(['custom', 'hookMessage'].includes(message.role) && message.display === true)) return;
+    const key = messageKey(ctx, message);
+    if (completedMessages.has(key)) return;
+    const agent = observe(ctx, null);
+    if (complete) remember(completedMessages, key);
+    if (message.role !== 'assistant') {
+      const item = messageItem(agent, key, message, 'message');
+      item.blocks = contentBlocks(message.content);
+      item.text = blocksText(item.blocks);
+      item.complete = complete;
+      if (message.details !== undefined) item.details = message.details;
+      if (message.customType !== undefined) item.customType = message.customType;
+      if (typeof message.details?.from === 'string') item.sender = message.details.from;
+      publish(agent, item);
+      return;
+    }
+    const content = Array.isArray(message.content) ? message.content : [];
+    const published = new Set();
+    for (let index = 0; index < content.length; ++index) {
+      const block = content[index];
+      if (block.type === 'toolCall') { captureCall(agent, block, message); continue; }
+      const visibleBlock = contentBlock(block);
+      if (!visibleBlock) continue;
+      const item = messageItem(agent, key, message, index);
+      item.blocks = [visibleBlock];
+      item.text = blocksText(item.blocks);
+      if (visibleBlock.type === 'thinking') item.channel = 'thinking';
+      else delete item.channel;
+      item.complete = complete;
+      if (complete) {
+        item.stopReason = message.stopReason;
+        item.errorMessage = message.errorMessage;
+        item.isError = message.stopReason === 'error';
+      }
+      // First observations keep the original content-index ordering, even
+      // when the final snapshot also introduces a previously missed tool call.
+      publish(agent, item);
+      published.add(item.id);
+    }
+    if (!complete) return;
+    const prefix = `${key}:`;
+    let items = [...agent.items.values()].filter(item => item.kind === 'message' && item.id.startsWith(prefix));
+    if (!items.length && (message.stopReason === 'error' || message.stopReason === 'aborted' || message.errorMessage)) {
+      items = [messageItem(agent, key, message, 'outcome')];
+    }
+    for (const item of items) {
+      if (published.has(item.id)) continue;
+      item.complete = true;
+      item.stopReason = message.stopReason;
+      item.errorMessage = message.errorMessage;
+      item.isError = message.stopReason === 'error';
+      publish(agent, item);
+    }
+  };
   const unsubscribeLifecycle = pi.events.on('task:subagent:lifecycle', payload => {
     // Executor settlement, unlike agent_end, is an assignment boundary.
-    // Use only identity/status; task descriptions and progress payloads never
-    // enter transport. Warm follow-ups/wake turns emit started again.
     if (!payload || typeof payload !== 'object' || !scopedFile(payload.sessionFile)) return;
     const ref = registry.get(payload.id);
     if (!ref || ref.kind !== 'sub' ||
@@ -399,146 +483,100 @@ export default function liveOutput(pi) {
     refreshMembership();
   });
 
-  // Root binding starts the one shared listener; child bindings observe their
-  // own events concurrently. No assumption about task:subagent:event wrappers.
+  // The pinned root owns one listener; child bindings observe their own events
+  // concurrently, including children executing outside the root project's cwd.
   pi.on('session_start', (_event, ctx) => {
-    if (resolve(ctx.cwd).toLowerCase() !== project.toLowerCase()) return;
-    if (ctx.agent.kind === 'main') {
+    if (owningRoot(ctx)) {
       bindRoot(ctx);
       if (!registryUnsubscribe) registryUnsubscribe = registry.onChange(refreshMembership);
-      // attachSession emits no registry event. A managed poll closes that
-      // startup/revival gap without observing idle time or altering sessions.
+      // attachSession emits no registry event. A managed poll closes that gap.
       ctx.setInterval(refreshMembership, 1000);
+      ensureServer();
+    } else if (eligible(ctx)) {
+      ensureServer();
+      touch(ctx, 'waiting');
     }
-    ensureServer();
-    if (eligible(ctx)) touch(ctx, 'waiting');
   });
   pi.on('session_switch', (_event, ctx) => {
-    if (ctx.agent.kind === 'main' && resolve(ctx.cwd).toLowerCase() === project.toLowerCase()) bindRoot(ctx);
+    if (owningRoot(ctx)) bindRoot(ctx);
   });
   pi.on('agent_start', (_event, ctx) => observe(ctx, 'working'));
   pi.on('agent_end', (event, ctx) => observe(ctx, event.willContinue ? 'working' : 'waiting'));
   pi.on('session_shutdown', (_event, ctx) => {
     unsubscribeLifecycle();
     if (eligible(ctx)) { observe(ctx, 'stopped'); return; }
-    if (resolve(ctx.cwd).toLowerCase() !== project.toLowerCase()) return;
-    if (ctx.agent.kind !== 'main') return;
+    if (!owningRoot(ctx)) return;
     registryUnsubscribe?.(); registryUnsubscribe = undefined;
     for (const client of clients) client.response.end();
     clients.clear();
     server?.close();
     server = undefined;
   });
+  pi.on('message_start', (event, ctx) => relayMessage(event.message, ctx, false));
+  pi.on('message_end', (event, ctx) => relayMessage(event.message, ctx, true));
   pi.on('message_update', (event, ctx) => {
     if (!eligible(ctx) || event.message.role !== 'assistant') return;
+    const key = messageKey(ctx, event.message);
+    // Detached message_end wins over every queued, late streaming update.
+    if (completedMessages.has(key)) return;
     const delta = event.assistantMessageEvent;
-    if (delta.type !== 'text_delta' && delta.type !== 'text_end') return;
-    const key = messageKey(ctx, event.message);
-    const agent = observe(ctx, completedMessages.has(key) ? null : 'working');
-    // message_end is detached from the serialized update queue. Completion
-    // evidence must survive late updates, including a first text_end.
-    const id = `${key}:${delta.contentIndex}`;
-    let item = agent.items.get(id);
-    if (!item) {
-      item = { id, agentId: agent.id, at: new Date(event.message.timestamp).toISOString(),
-        raw: '', text: '', complete: completedMessages.has(key), truncated: false, sequence: 0 };
-      agent.items.set(id, item);
-    }
-    if (delta.type === 'text_delta') {
-      const next = item.raw + delta.delta;
-      item.truncated ||= next.length > MAX_TEXT;
-      item.raw = next.slice(0, MAX_TEXT);
-      publish(agent, item, item.complete);
+    if (!['text_start', 'text_delta', 'text_end', 'thinking_start', 'thinking_delta',
+      'thinking_end', 'image_end', 'toolcall_end'].includes(delta.type)) return;
+    const agent = observe(ctx, 'working');
+    if (delta.type === 'toolcall_end') { captureCall(agent, delta.toolCall, event.message); return; }
+    const item = messageItem(agent, key, event.message, delta.contentIndex);
+    if (item.complete) return;
+    const thinking = delta.type.startsWith('thinking_');
+    const partialBlock = contentBlock(event.message.content?.[delta.contentIndex]);
+    if (thinking) item.channel = 'thinking';
+    if (delta.type === 'image_end') {
+      const image = contentBlock(delta.content);
+      item.blocks = image ? [image] : [];
+      item.text = '';
     } else {
-      // text_end is not message completion. Flushing here preserves an
-      // unfinished last word, while complete stays false until message_end.
-      item.raw = delta.content.slice(0, MAX_TEXT);
-      item.truncated ||= delta.content.length > MAX_TEXT;
-      publish(agent, item, true);
+      if (delta.type.endsWith('_delta')) {
+        // The SDK partial is cumulative; it recovers a stream bound mid-word.
+        item.text = partialBlock ? blocksText([partialBlock]) : item.text + delta.delta;
+      } else if (delta.type.endsWith('_end')) {
+        item.text = delta.content;
+      } else if (partialBlock) {
+        item.text = blocksText([partialBlock]);
+      }
+      item.blocks = [thinking ? { ...partialBlock, type: 'thinking', thinking: item.text } :
+        { type: 'text', text: item.text }];
     }
-  });
-  pi.on('message_end', (event, ctx) => {
-    if (!eligible(ctx) || event.message.role !== 'assistant') return;
-    const key = messageKey(ctx, event.message);
-    completedMessages.add(key);
-    if (completedMessages.size > MAX_ENTRIES) completedMessages.delete(completedMessages.values().next().value);
-    const agent = agents.get(ctx.sessionManager.getSessionId());
-    if (!agent) return;
-    const prefix = `${key}:`;
-    for (const item of agent.items.values()) {
-      if (item.id.startsWith(prefix)) { item.complete = true; publish(agent, item, true); }
-    }
+    // Block-end closes streaming content, not the encompassing message.
+    publish(agent, item);
   });
 
-  // Visible tool lifecycle, one item per call: stable id = session UUID plus
-  // provider call id. Start carries only the name/intent/target summary (never
-  // full args); update/end carry sanitized result.content text blocks, never a
-  // details payload. End evidence wins over a straggling update, so a
-  // completed call is never regressed or resurrected; only a genuine new
-  // execution (repeated start) may reopen the item.
+  // Execution starts may reopen a repeated call. Updates never regress a
+  // completed result; missing starts do not suppress actual updates or ends.
   pi.on('tool_execution_start', (event, ctx) => {
+    if (!toolCallId(event)) return;
     const agent = observe(ctx, 'working');
     if (!agent) return;
-    const args = event.args && typeof event.args === 'object' ? event.args : null;
-    const fresh = toolItem(agent, event, args);
+    const fresh = toolItem(agent, event);
     completedCalls.delete(fresh.id);
     const item = agent.items.get(fresh.id) || fresh;
-    item.kind = 'tool'; item.tool = fresh.tool; item.raw = fresh.raw;
-    item.complete = false; item.isError = false; item.truncated = false;
-    item.private = fresh.private;
-    agent.items.set(fresh.id, item);
-    publish(agent, item, true);
+    item.tool = fresh.tool; item.args = event.args; item.text = fresh.text;
+    item.complete = false; item.isError = false; item.status = 'running';
+    delete item.blocks; delete item.details;
+    agent.items.set(item.id, item);
+    publish(agent, item);
   });
   pi.on('tool_execution_update', (event, ctx) => {
-    if (!eligible(ctx)) return;
+    if (!eligible(ctx) || !toolCallId(event)) return;
     const id = `${ctx.sessionManager.getSessionId()}:${toolCallId(event)}`;
     if (completedCalls.has(id)) return;
     const agent = observe(ctx, 'working');
-    if (!agent) return;
-    let item = agent.items.get(id);
-    if (!item) {
-      // Binding revived mid-call: rebuild from the update's own args. A later
-      // end still finalizes; a completed call never resurrects here.
-      item = toolItem(agent, event, event.args && typeof event.args === 'object' ? event.args : null, id);
-      agent.items.set(id, item);
-      publish(agent, item, true);
-    }
-    if (item.complete || item.private) return;
-    const text = resultText(event.partialResult);
-    if (!text) return;
-    item.truncated ||= text.length > MAX_TEXT;
-    item.raw = text.slice(0, MAX_TEXT);
+    const item = agent.items.get(id) || toolItem(agent, event);
+    if (item.complete) return;
+    if (event.args !== undefined) item.args = event.args;
+    item.status = 'running';
+    toolResult(item, event.partialResult);
+    if (typeof event.partialResult?.isError === 'boolean') item.isError = event.partialResult.isError;
+    agent.items.set(id, item);
     publish(agent, item);
   });
-  pi.on('tool_execution_end', (event, ctx) => {
-    if (!eligible(ctx)) return;
-    const id = `${ctx.sessionManager.getSessionId()}:${toolCallId(event)}`;
-    const agent = observe(ctx, null);
-    if (!agent) return;
-    let item = agent.items.get(id);
-    const fresh = !item;
-    if (fresh) {
-      // Without start/update arguments, the result's target cannot be checked.
-      // Keep the completion status, but do not expose unclassified output.
-      item = toolItem(agent, event, null, id);
-      item.private = true;
-      agent.items.set(id, item);
-    }
-    completedCalls.add(id);
-    if (completedCalls.size > MAX_ENTRIES) completedCalls.delete(completedCalls.values().next().value);
-    item.complete = true;
-    item.isError = event.isError === true;
-    if (item.private) {
-      item.raw = '[private target output omitted]';
-    } else {
-      const text = resultText(event.result);
-      if (text) {
-        item.truncated ||= text.length > MAX_TEXT;
-        item.raw = text.slice(0, MAX_TEXT);
-      } else if (fresh) {
-        item.raw = `${item.tool} - ${item.isError ? 'error' : 'ok'}`;
-      }
-    }
-    publish(agent, item, true);
-  });
+  pi.on('tool_execution_end', finishTool);
 }

@@ -8,9 +8,10 @@ the narrowly scoped in-process omp observer:
 * omp session journals supply identity/status and opt-in recorded history.
 * The owning runner's registry supplies optional per-UUID assignment membership;
   outages retain the last known snapshot, never imply retirement.
-* Its loopback observer supplies assistant text and sanitized tool updates.
+* Its loopback observer supplies session-visible messages, reasoning and actual
+  tool arguments/results, including supported content blocks and UI details.
   Journal polling is never substituted for live events. Observer module changes
-  require a coordinated runner restart; settings toggles do not reload code.
+  require explicit runner extension loading; settings toggles do not reload code.
 * ``CHANGELOG.md`` verified checkpoints for headline progress, with the
   existing report/counter retained as a separately labelled unit-map source.
 
@@ -27,7 +28,7 @@ API:
     GET /api/units   per-unit classification map (JSON, revision-tagged)
     GET /api/events  Server-Sent Events: ``state`` snapshots (~2 s cadence)
                      with comment keepalives; clients reconnect and refetch
-    GET /api/streams opt-in, labeled completed assistant-message history
+    GET /api/streams opt-in, labeled recorded message/reasoning/tool/peer history
     GET /api/live   immediate SSE relay from the owning runner observer
     GET /api/live-status observer connectivity (503 when not loaded)
 """

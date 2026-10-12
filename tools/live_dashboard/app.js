@@ -1,8 +1,8 @@
 /* Brawl Decomp — Live Dashboard
  * Standalone frontend. No frameworks, no build step, no external assets.
  * GET /api/state and /api/units preserve project progress; /api/events carries
- * state snapshots, /api/live relays real runner text, /api/streams is opt-in history.
- * All dynamic content is rendered via textContent — agent names, paths and event text are never trusted as HTML.
+ * state snapshots, /api/live relays session output, /api/streams is opt-in history.
+ * Text is never trusted as HTML; image blocks use only session-provided raster data.
  */
 'use strict';
 
@@ -1173,9 +1173,9 @@
 
   const keyOf = (a) => String(a.id ?? a.name ?? '');
 
-  // One simultaneously visible terminal per worker. Only the observer's
-  // allowlisted text updates are live; journal backfill is explicitly opted
-  // into and labeled. Retained DOM nodes keep selection and reading stable.
+  // One simultaneously visible terminal per worker. Live and recorded session
+  // output share text/thinking/tool/block rendering. Retained DOM and text nodes
+  // keep selection and reading stable; retention removes entries, not their text.
   const Streams = (() => {
     const grid = $('streams-grid');
     const panels = new Map();
@@ -1305,12 +1305,111 @@
 
     function row(item, historical) {
       const label = el('span');
-      const textNode = document.createTextNode('');
-      const text = el('pre', { class: 'stream-text' }, textNode);
+      const body = el('div', { class: 'stream-body' });
       const node = el('article', { class: 'stream-entry' + (historical ? ' stream-history' : ''),
         attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id) } },
-        el('div', { class: 'stream-entry-head' }, label), text);
-      return { node, label, textNode, renderedText: '', complete: null };
+        el('div', { class: 'stream-entry-head' }, label), body);
+      return { node, label, body, parts: new Map(), complete: null };
+    }
+
+    function updateText(part, text) {
+      const oldText = part.renderedText;
+      if (oldText === text) return;
+      // Append deltas to the existing node; edits replace only the changed span.
+      if (text.startsWith(oldText)) part.textNode.appendData(text.slice(oldText.length));
+      else {
+        let start = 0, oldEnd = oldText.length, newEnd = text.length;
+        while (start < oldEnd && start < newEnd && oldText[start] === text[start]) start++;
+        while (oldEnd > start && newEnd > start && oldText[oldEnd - 1] === text[newEnd - 1]) {
+          oldEnd--; newEnd--;
+        }
+        part.textNode.replaceData(start, oldEnd - start, text.slice(start, newEnd));
+      }
+      part.renderedText = text;
+    }
+
+    function structuredText(value) {
+      return typeof value === 'string' ? value : JSON.stringify(value, null, 2) ?? '';
+    }
+
+    function contentParts(item) {
+      const parts = [], texts = [];
+      if (item.args !== undefined) {
+        parts.push({ key: 'args', title: 'Arguments', text: structuredText(item.args) });
+      }
+      if (Array.isArray(item.blocks) && item.blocks.length) {
+        item.blocks.forEach((block, index) => {
+          const part = { key: 'block:' + index, title: '' };
+          if (block?.type === 'text') part.text = String(block.text ?? '');
+          else if (block?.type === 'thinking' || block?.type === 'reasoning') {
+            part.title = item.channel === 'thinking' ? '' : 'Thinking';
+            part.text = String(block.thinking ?? block.reasoning ?? block.text ?? '');
+          } else if (block?.type === 'image' && typeof block.data === 'string' &&
+            /^image\/(?:png|jpeg|gif|webp|bmp|avif)$/i.test(block.mimeType || '')) {
+            part.title = 'Image · ' + block.mimeType;
+            part.image = 'data:' + block.mimeType + ';base64,' + block.data;
+          } else {
+            // Keep unsupported visible content readable, rather than drop it.
+            part.title = String(block?.type || 'Content');
+            part.text = structuredText(block);
+          }
+          if (part.text !== undefined) texts.push(part.text);
+          parts.push(part);
+        });
+      } else {
+        const text = String(item.text ?? '');
+        texts.push(text);
+        if (text) parts.push({ key: 'block:0', title: '', text });
+      }
+      if (item.details !== undefined) {
+        const details = structuredText(item.details);
+        const duplicate = texts.some(text => {
+          if (text === details) return true;
+          try { return JSON.stringify(JSON.parse(text)) === JSON.stringify(item.details); }
+          catch (_) { return false; }
+        });
+        if (!duplicate) parts.push({ key: 'details', title: 'Details', text: details });
+      }
+      if (item.errorMessage && !texts.includes(String(item.errorMessage))) {
+        parts.push({ key: 'error', title: 'Error', text: String(item.errorMessage) });
+      }
+      return parts;
+    }
+
+    function renderContent(entry, item) {
+      const parts = contentParts(item), keys = new Set(parts.map(part => part.key));
+      for (const [key, part] of entry.parts) {
+        if (!keys.has(key)) { part.node.remove(); entry.parts.delete(key); }
+      }
+      let cursor = entry.body.firstElementChild;
+      for (const spec of parts) {
+        const kind = spec.image ? 'image' : 'text';
+        let part = entry.parts.get(spec.key);
+        if (part && part.kind !== kind) {
+          if (part.node === cursor) cursor = cursor.nextElementSibling;
+          part.node.remove(); entry.parts.delete(spec.key); part = null;
+        }
+        if (!part) {
+          const title = el('div', { class: 'stream-part-label' });
+          const node = el('div', { class: 'stream-part' }, title);
+          part = { node, title, kind, renderedText: '' };
+          if (kind === 'image') {
+            part.image = el('img', { class: 'stream-image', attrs: { alt: 'Session output image' } });
+            node.append(part.image);
+          } else {
+            part.textNode = document.createTextNode('');
+            node.append(el('pre', { class: 'stream-text' }, part.textNode));
+          }
+          entry.parts.set(spec.key, part);
+        }
+        writeText(part.title, spec.title);
+        part.title.hidden = !spec.title;
+        if (kind === 'image') {
+          if (part.source !== spec.image) { part.image.src = spec.image; part.source = spec.image; }
+        } else updateText(part, spec.text);
+        if (part.node === cursor) cursor = cursor.nextElementSibling;
+        else entry.body.insertBefore(part.node, cursor);
+      }
     }
 
     function renderHeader(panel) {
@@ -1325,28 +1424,23 @@
     }
 
     function renderRow(entry, item, historical) {
-      const label = historical ? 'Recorded history · completed message · ' + (item.at || '') :
-        (item.kind === 'tool' ?
-          'Live tool · ' + item.tool + ' · ' + (item.complete ? (item.isError ? 'failed' : 'complete') : 'running…') :
-          'Live generated text · ' + (item.complete ? 'message complete' : 'generating…')) +
-        (item.truncated ? ' · retained text limit reached' : '');
-      writeText(entry.label, label);
-      const text = String(item.text || ''), oldText = entry.renderedText;
-      if (oldText !== text) {
-        // Keep the same text node, including while messages grow, so browser
-        // selection is not replaced on each provider delta.
-        if (text.startsWith(oldText)) entry.textNode.appendData(text.slice(oldText.length));
-        else {
-          // Retention may trim a prefix; preserve any unchanged selected suffix.
-          let start = 0, oldEnd = oldText.length, newEnd = text.length;
-          while (start < oldEnd && start < newEnd && oldText[start] === text[start]) start++;
-          while (oldEnd > start && newEnd > start && oldText[oldEnd - 1] === text[newEnd - 1]) {
-            oldEnd--; newEnd--;
-          }
-          entry.textNode.replaceData(start, oldEnd - start, text.slice(start, newEnd));
-        }
-        entry.renderedText = text;
-      }
+      const source = historical ? 'Recorded history' : 'Live';
+      const tool = item.kind === 'tool' || item.kind === 'tool_call' || item.kind === 'tool_result';
+      const category = tool ? 'tool · ' + (item.tool || 'output') :
+        item.channel === 'thinking' ?
+          (item.blocks?.some(block => block?.summary === true) ? 'thinking (summary)' : 'thinking') :
+        (item.role === 'peer' || item.customType === 'irc:incoming') ?
+          'peer text' + (item.sender ? ' · ' + item.sender : '') :
+        item.role === 'user' ? 'user text' :
+        item.kind === 'lifecycle' ? 'lifecycle' : 'text';
+      const outcome = tool ? (historical && !item.complete ? 'arguments' :
+        item.status || (item.complete ? (item.isError ? 'failed' : 'complete') : 'running')) :
+        (item.isError ? 'failed' : item.complete ? 'complete' : 'generating');
+      writeText(entry.label, source + ' · ' + category + ' · ' + outcome +
+        (item.stopReason ? ' · ' + item.stopReason : '') +
+        (historical && item.at ? ' · ' + item.at : ''));
+      entry.node.dataset.channel = item.channel || (tool ? 'tool' : 'text');
+      renderContent(entry, item);
       const complete = !!item.complete;
       if (entry.complete !== complete) {
         entry.node.dataset.complete = String(complete);
@@ -1357,8 +1451,8 @@
     function renderEmpty(panel) {
       if (panel.rows.size) { panel.empty?.remove(); return; }
       if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
-      writeText(panel.empty, connected ? 'Waiting for visible worker output. Hidden reasoning is not shown.' :
-        'Live observer disconnected. No retained worker output; Show history loads recorded text.');
+      writeText(panel.empty, connected ? 'Waiting for worker output.' :
+        'Live observer disconnected. No retained worker output; Show history loads recorded output.');
       if (panel.empty.parentNode !== panel.log) panel.log.append(panel.empty);
     }
 
@@ -1373,7 +1467,7 @@
         ...live.map(record => ({ key: 'live:' + record.item.id, item: record.item, historical: false }))
       ];
       job.keys = new Set(job.list.map(entry => entry.key));
-      job.count = live.length + ' live entries' +
+      job.count = live.length + ' retained live entries' +
         (showHistory ? ' · ' + historical.length + ' recorded' : '');
     }
 
@@ -1525,7 +1619,9 @@
 
     function putItem(item) {
       const id = String(item.id), key = String(item.agentId), old = liveItems.get(id);
-      const record = { item, visible: /\S/.test(String(item.text || '')),
+      const record = { item, visible: !!String(item.text || '') ||
+        !!item.blocks?.length || item.args !== undefined || item.details !== undefined ||
+        item.kind === 'tool' || !!item.errorMessage || !!item.stopReason,
         time: tsOf(item.at), sequence: Number(item.sequence) || 0 };
       if (old && String(old.item.agentId) !== key) {
         const oldKey = String(old.item.agentId), items = itemsByAgent.get(oldKey);
@@ -1540,7 +1636,8 @@
       const structural = !old || String(old.item.agentId) !== key ||
         old.visible !== record.visible || old.time !== record.time || old.sequence !== record.sequence;
       if (structural) dirtyPanel(key, true);
-      else if (record.visible && ['text', 'kind', 'tool', 'complete', 'isError', 'truncated']
+      else if (record.visible && ['text', 'blocks', 'args', 'details', 'channel', 'role',
+        'sender', 'customType', 'kind', 'tool', 'complete', 'isError', 'status', 'stopReason', 'errorMessage']
         .some(field => old.item[field] !== item[field])) dirtyPanel(key, false, id);
     }
 
