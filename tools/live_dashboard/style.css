@@ -432,6 +432,9 @@ body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
 #streams-card { min-width: 0; flex: 1; }
 .stream-status { margin: 4px 14px 8px; color: var(--mint); font-size: 12px; }
 .stream-status.is-error { color: var(--amber2); }
+.stream-group { min-width: 0; }
+.stream-group-title { margin: 12px 14px 10px; color: var(--tx); font-size: 13px; font-weight: 600; }
+.stream-group-title .count { color: var(--tx2); font: 11.5px var(--mono); }
 .streams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px; padding: 0 14px 14px; align-items: start; }
 .stream-panel { min-width: 0; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #0b0d0e; overflow: hidden; }
 .stream-panel-head { padding: 8px 10px; display: flex; align-items: baseline; gap: 8px; background: var(--bg2); }

@@ -1178,8 +1178,32 @@
   // One simultaneously visible terminal per worker. Live and recorded session
   // output share text/thinking/tool/block rendering. Retained DOM and text nodes
   // keep selection and reading stable; retention removes entries, not their text.
+  // Group the configured OpenAI and Spark model routes without rebuilding panes.
   const Streams = (() => {
     const grid = $('streams-grid');
+    const sections = ['OpenAI', 'Spark 1 · Qwen', 'Spark 2 + 3 · GLM', 'Other'].map((title, i) => {
+      const count = el('span', { class: 'count' });
+      const heading = el('h3', { class: 'stream-group-title', attrs: { id: 'stream-group-' + i } },
+        document.createTextNode(title + ' '), count);
+      const body = el('div', { class: 'streams-grid' });
+      const node = el('section', { class: 'stream-group', attrs: { 'aria-labelledby': heading.id } }, heading, body);
+      node.hidden = true;
+      grid.append(node);
+      return { node, body, count };
+    });
+
+    function sectionOf(a) {
+      const model = String(a.model || '').toLowerCase();
+      if (model.includes('qwen')) return 1;
+      if (model.includes('glm')) return 2;
+      if (model.includes('gpt-') || model.startsWith('openai')) return 0;
+      if (!model) {
+        if (a.definition === 'spark1-qwen') return 1;
+        if (a.definition === 'glm-reconstruction') return 2;
+        if (a.definition === 'sol61-reconstruction' || a.definition === 'astra-reconstruction') return 0;
+      }
+      return 3;
+    }
     const panels = new Map();
     const recordedAgents = new Map();
     const liveAgents = new Map();
@@ -1564,7 +1588,11 @@
             gridChanged = true;
             if (visible) { dirtyPanel(key, true); historyWanted = true; }
           }
-          if (visible && String(panel.agent.name || panel.agent.id) !== String(a.name || a.id)) gridChanged = true;
+          if (visible && (String(panel.agent.name || panel.agent.id) !== String(a.name || a.id) ||
+              sectionOf(panel.agent) !== sectionOf(a))) {
+            gridChanged = true;
+            visibilityChanges.add(panel);
+          }
           panel.agent = a;
           if (visible) dirtyPanel(key).header = true;
         }
@@ -1596,10 +1624,17 @@
           else panel.node.remove();
         }
         visible.sort((a, b) => String(a.agent.name || a.agent.id).localeCompare(String(b.agent.name || b.agent.id)));
-        let cursor = grid.firstElementChild;
-        for (const panel of visible) {
-          if (panel.node === cursor) cursor = cursor.nextElementSibling;
-          else grid.insertBefore(panel.node, cursor);
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i];
+          let cursor = section.body.firstElementChild, count = 0;
+          for (const panel of visible) {
+            if (sectionOf(panel.agent) !== i) continue;
+            count++;
+            if (panel.node === cursor) cursor = cursor.nextElementSibling;
+            else section.body.insertBefore(panel.node, cursor);
+          }
+          section.node.hidden = count === 0;
+          writeText(section.count, '· ' + count);
         }
         writeText($('streams-count'), '· ' + visible.length);
       }
