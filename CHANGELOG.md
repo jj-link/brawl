@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness article creation and three Luigi functions
+
+- `CommittedDashboardPublisher` published verified committed source `6abb7591`, adding exact, source-linked Ness `fn_101_C3E4` (480 bytes) and Luigi `fn_99_10998`, `fn_99_10CD4`, and `fn_99_10CE4` (8 bytes each), with **127 DOL/REL hashes passing**. All four matched their initial GLM or Sol candidates; `C3E4` also matched all 18 relocations.
+- Cumulative accepted-source progress is **2.183414%** — **345,712 / 15,833,556 code bytes**, with **15,487,844 bytes remaining** and **1,048 accepted source units**. This checkpoint adds **504 code bytes / 4 units**, retaining all 1,044 previously accepted units.
+- Published report SHA-256: `4af6443145b2436ba53af04a9169da2a29d93408990b71ef40a720cd2bb0628b`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
 ## Verified reconstruction checkpoint — Ness link-event handler and Luigi interface adjustor
 
 - `CommittedDashboardPublisher` published verified committed source `ae38778a`, adding exact, source-linked Ness `fn_101_C0B0` (540 bytes) and Luigi `fn_99_10CCC` (8 bytes), with **127 DOL/REL hashes passing**. `C0B0` matched after two measured Sol corrections with six exact relocations; `10CCC` matched its initial Sol candidate.
