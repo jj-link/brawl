@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu article traversal and root transform
+
+- `CommittedDashboardPublisher` published verified committed source `f6077cfb`, adding Pikachu `fn_98_B4A8` (244 code bytes; initial Sol match) and `fn_98_14328` (356 code bytes; Sol correction five, including one compiler rejection). Both reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.496243%** — **395,244 / 15,833,556 code bytes**, with **15,438,312 bytes remaining** and **1,146 accepted source units**. This checkpoint adds **600 code bytes / 2 units**, retaining all 1,144 previous units.
+- Published report SHA-256: `b6dcda2c6c1d49ab95b088a42f2b0df41ef25e03ce45845f0d0b244b783456de`. Accepted Git blobs and both new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,303 served unit classifications, and persisted/served history agree; no browser was opened.
+- The four associated data bytes receive no code credit; neither new unit emits additional compiler helpers. Owned code, data, and normalized relocations match. The successful build retains unsuppressed splitter warnings, including `.data$pikachu14328`. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu energy control and shared-bias extension
 
 - `CommittedDashboardPublisher` published verified committed source `38d6c883`. New units are Pikachu `fn_98_DF6C` (492 bytes), `fn_98_D264` (488), `fn_98_C558` (348), `fn_98_1187C` (396), `fn_98_D798` (492), `fn_98_E608` (252), `fn_98_E704` (372), `fn_98_DA34` (492), `fn_98_E8D0` (340), `fn_98_EA24` (316), and Luigi `fn_99_10D3C` (8). D264 matched at Sol correction eight, 1187C at correction three, and E704 at correction one; the other Pikachu units matched initially, as did GLM's 10D3C. All reconstructed source objects are linked and **127 DOL/REL hashes pass**.
