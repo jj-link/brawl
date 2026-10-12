@@ -1385,6 +1385,7 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_ness/ness_function_20a3c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_204e8.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1997c.cpp", cflags=cflags_fighter,
                    extra_cflags=["-opt nodeadstore"]),
