@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede linked events and handler flag
+
+- `CommittedDashboardPublisher` published verified committed source `c2620d7e`, adding Dedede `fn_117_1FCD0` (944 code bytes; Sol initial plus five corrections, including one rejected compile), `fn_117_1A290` (668 code bytes; Sol initial plus five corrections), and `fn_117_A2B8` (8 code bytes; initial GLM match, zero corrections). All three reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.732248%** — **432,612 / 15,833,556 code bytes**, with **15,400,944 bytes remaining** and **1,208 accepted source units**. This checkpoint adds **1,620 code bytes / 3 units**, retaining all 1,205 previous units with unchanged code sizes.
+- Published report SHA-256: `2545447b8fb69c5319e9ef808092d299b33613aad7bdd18b59d795af983e45be`. Accepted Git blobs, frozen configuration and canonical link-event header, actual root source presence, and all three registered units were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,413 served unit classifications agreed. Persisted and served history both record **432,612 bytes at `2026-10-12T19:32:04.447Z`**; no browser verification was performed.
+- All owned code and 5/18/0 normalized relocations match respectively. The 52-byte `1A290` switch table also matches and is excluded from code progress; there are no emitted helpers. The shared callback declarations are consistent, with no obsolete local `1DB0F0` declaration. Older owner build contexts and prior evidence qualifications remain separately identified. The new `.data$dedede1A290` warning and prior custom-section/`FORCEACTIVE` warnings remain unsuppressed. Unfinished peer sources are excluded. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede reflection handling
 
 - `CommittedDashboardPublisher` published verified committed source `69f1cb2b`, adding Dedede `fn_117_20610` (672 code bytes; Sol initial candidate plus three corrections, including the shared-header migration after the first exact match). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
