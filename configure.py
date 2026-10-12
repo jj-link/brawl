@@ -201,6 +201,30 @@ config.custom_build_steps = {"post-compile": [{
     "outputs": config.out_path() / "ft_pikachu/conversion_bias.exported",
 }]}
 
+# Dedede's signed and unsigned conversion biases also have shared REL bindings.
+dedede_bias_object = config.out_path() / "src/mo_fighter/ft_dedede/ft_dedede_function_1014c.o"
+config.custom_build_rules.append({
+    "name": "dedede_export_conversion_biases",
+    "command": (
+        f'cmd /c ""{pikachu_bias_objcopy}" --preserve-dates '
+        '--globalize-symbol=lbl_117_rodata_68 --globalize-symbol=lbl_117_rodata_70 '
+        '--redefine-sym=@9699=lbl_117_rodata_68 --redefine-sym=@9701=lbl_117_rodata_70 '
+        '"$in" && type nul > "$out""'
+        if sys.platform == "win32" else
+        f'"{pikachu_bias_objcopy}" --preserve-dates '
+        '--globalize-symbol=lbl_117_rodata_68 --globalize-symbol=lbl_117_rodata_70 '
+        '--redefine-sym=@9699=lbl_117_rodata_68 --redefine-sym=@9701=lbl_117_rodata_70 '
+        '"$in" && touch "$out"'
+    ),
+    "description": "EXPORT Dedede conversion biases",
+})
+config.custom_build_steps["post-compile"].append({
+    "rule": "dedede_export_conversion_biases",
+    "inputs": dedede_bias_object,
+    "implicit": pikachu_bias_objcopy,
+    "outputs": config.out_path() / "ft_dedede/conversion_biases.exported",
+})
+
 # Reuse Captain's shared RTTI records; this unit does not own their data.
 captain_d490_object = config.out_path() / "src/mo_fighter/ft_captain/ft_captain_function_d490.o"
 config.custom_build_rules.append({
@@ -625,6 +649,8 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_ac18.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_1014c.cpp",
+                   cflags=cflags_fighter),
         ],
     },
     {
