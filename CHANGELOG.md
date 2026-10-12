@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede item creation and launch
+
+- `CommittedDashboardPublisher` published verified committed source `4adfd6ed`, adding Dedede `fn_117_10778` (928 code bytes; Sol correction four). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.675053%** — **423,556 / 15,833,556 code bytes**, with **15,410,000 bytes remaining** and **1,193 accepted source units**. This checkpoint adds **928 code bytes / 1 unit**, retaining all 1,192 previous units.
+- Published report SHA-256: `bfb82533a41bf14697cbf2a36ac1b9e9c18dd227d099711ce2547370e47a9829`. Accepted Git blobs, frozen configuration, actual root source files, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,383 served unit classifications agreed. Persisted and served history both record **423,556 bytes at `2026-10-12T17:40:14.030Z`**; no browser verification was performed.
+- Owned code and all 18 normalized relocations match; there is no owned data or emitted helper. Original shared constants `lbl_117_rodata_7C` and `lbl_117_rodata_80` remain bound without duplicate credit. Prior qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede ground-speed dispatch
 
 - `CommittedDashboardPublisher` published verified committed source `6477feb2`, adding Dedede `fn_117_15728` (1,276 code bytes; Astra correction two after Sol's rejected initial candidate and ten corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
