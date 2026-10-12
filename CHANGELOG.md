@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness article allocation and two Luigi functions
+
+- `CommittedDashboardPublisher` published verified committed source `2a18e60b`, adding exact, source-linked Ness `fn_101_D8AC` (2,228 code bytes, plus 68 data bytes excluded from code credit) and Luigi `fn_99_109B4` / `fn_99_10D0C` (8 code bytes each), with **127 DOL/REL hashes passing**. `D8AC` exhausted ten Sol corrections and achieved its first full allocated-object match on Astra correction four; both Luigi functions matched their initial candidates (GLM for `109B4`, Sol for `10D0C`).
+- Cumulative accepted-source progress is **2.210748%** — **350,040 / 15,833,556 code bytes**, with **15,483,516 bytes remaining** and **1,060 accepted source units**. This checkpoint adds **2,244 code bytes / 3 units**, retaining all 1,057 previously accepted units.
+- Published report SHA-256: `918682c8873f077249456ead775019b10466968ee5000965753629480309800a`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,147 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-aside — Ness `fn_101_12104`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. The best retained draft is Astra correction two at **98.37478%**: 2,304 candidate code bytes against 2,284 target bytes, eight extra rodata bytes, and 33 candidate relocations against 31 target relocations.
+- The restored best draft, compiler recipes, objects, and complete histories remain under `build/isolated-workers/AstraNessFunction12104/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness controller traversal and Luigi status adjustor
 
 - `CommittedDashboardPublisher` published verified committed source `972beafc`, adding exact, source-linked Ness `fn_101_ED14` (348 bytes) and Luigi `fn_99_10D04` (8 bytes), with **127 DOL/REL hashes passing**. Both matched their initial Sol candidates.
