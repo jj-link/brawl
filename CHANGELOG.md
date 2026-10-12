@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_106DC`
+
+- `ResumeSol106DC` published its registered, source-linked 16-byte reconstruction with exact code, no allocated data or relocations, and **127 DOL/REL hashes passing**. The preceding 956-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.108509%** — **333,852 / 15,833,556 code bytes**, with **15,499,704 bytes remaining** and **957 accepted source units**. This checkpoint adds **16 code bytes / 1 unit**.
+- Published report SHA-256: `cfb51f8b343c63a929405b9e460f5dda7aa66f21402a492c95875f1dc52fd1be`. Rendered checkpoint agreement was confirmed before release to 10710.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_10708`
+
+- `ResumeSol10708` published its registered, source-linked 8-byte reconstruction with **127 DOL/REL hashes passing** and the preceding accepted checkpoint retained. The preserved initial candidate matched without corrections, allocated data or relocations. Source changes were committed and pushed as `30047108`.
+- Cumulative accepted-source progress is **2.108408%** — **333,836 / 15,833,556 code bytes**, with **15,499,720 bytes remaining** and **956 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**.
+- Published report SHA-256: `34dc36487d50075b2a9597696e331fecd22a1874da3006be7ff63081ab876c62`. Rendered counters, all 5,013 unit records, all 127 module totals and persisted history agreed before release to 106DC.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_106C8`
 
 - `ResumeSol106C8` completed the preserved reconstruction with one initial candidate and one correction. Registered 20-byte code matched exactly, with no allocated data or relocations; compiled source was linked and **127 DOL/REL hashes passed**.
