@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede status-event dispatch
+
+- `CommittedDashboardPublisher` published verified committed source `26715649`, adding Dedede `fn_117_99E4` (776 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.691120%** — **426,100 / 15,833,556 code bytes**, with **15,407,456 bytes remaining** and **1,197 accepted source units**. This checkpoint adds **776 code bytes / 1 unit**, retaining all 1,196 previous units.
+- Published report SHA-256: `d4c13b6c5f06833481d51b757a9c9f45038d01ec4952c63337ef1f7aa5b074e2`. Accepted Git blobs, frozen configuration, root source presence, and the new registered unit were verified; the new root source also passed newline-normalized comparison with the committed source, with raw identities retained. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,392 served unit classifications agreed. Persisted and served history both record **426,100 bytes at `2026-10-12T18:08:25.659Z`**; no browser verification was performed.
+- Owned code, 140 data bytes, and all 40 normalized relocations match; data receives no code credit and there are no emitted helpers. The owner corrected an earlier source-byte-identity assertion: its private snapshot used CRLF while the actual root used LF. The actual LF source was then compiled and its code, data, and relocations matched the previously verified linked object. Rejected unrelated-EOL packets and prior evidence remain preserved; the fresh cumulative proof does not relabel the older owner build. The new `.data$dedede99E4` warning and prior custom-section/`FORCEACTIVE` warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede kinetic setup and article activation
 
 - `CommittedDashboardPublisher` published verified committed source `83239971`, adding Dedede `fn_117_E768` (872 code bytes; Astra correction four, including registration and interface corrections) and `fn_117_8F34` (888; Astra correction six). Both retain Sol's initial candidate plus ten corrections. Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
