@@ -647,6 +647,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_75f8.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_94dc.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_ac18.cpp",
