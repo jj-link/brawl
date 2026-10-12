@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness article-operation dispatch
+
+- `CommittedDashboardPublisher` published verified committed source `01eeab88`, adding exact, source-linked Ness `fn_101_EA6C` (680 code bytes plus 68 data bytes excluded from code credit; Sol correction seven), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.226032%** — **352,460 / 15,833,556 code bytes**, with **15,481,096 bytes remaining** and **1,064 accepted source units**. This checkpoint adds **680 code bytes / 1 unit**, retaining all 1,063 previously accepted units.
+- Published report SHA-256: `1f127e6c847ab939b2beb89e5ee32d3ff6458fabfe26f19d8045ffdf62031d3c`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,154 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-aside — Ness `fn_101_168B8`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. The best retained draft is Astra correction ten at **93.01713%**: 6,784 candidate code bytes against 6,772 target bytes, with 346 candidate relocation records against 345 target records. Code and relocations remain unmatched.
+- The best draft, inherited Sol history, all Astra attempts, objects, recipes, and comparison evidence remain under `build/isolated-workers/AstraNessFunction168B8/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness fire initialization, thunder allocation, and energy reset
 
 - `CommittedDashboardPublisher` published verified committed source `a814ac78`, adding exact, source-linked Ness `fn_101_15838` (560 bytes; Sol correction two), `fn_101_1944C` (832 code bytes plus 68 data bytes excluded from code credit; initial Sol match), and `fn_101_FF48` (348 bytes; initial Sol match), with **127 DOL/REL hashes passing**.
