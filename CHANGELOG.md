@@ -2,6 +2,19 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu kinetic mediation, article availability, and destructors
+
+- `CommittedDashboardPublisher` published verified committed source `3257cd59`: Luigi `fn_99_5F5C` (324 bytes; initial Sol match), Pikachu `fn_98_7454` (852 bytes; initial Sol match), `fn_98_C6B4` (660 bytes; initial Sol match), `fn_98_81D4` (904 bytes; initial Sol match), `fn_98_10114` (864 bytes; Sol correction two), `fn_98_AAC8` (716 bytes; Astra correction seven after Sol initial-plus-ten), `fn_98_3650` (672 bytes; Sol correction one), and `fn_98_288C` (672 bytes; initial Sol match). All eight reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.434501%** — **385,468 / 15,833,556 code bytes**, with **15,448,088 bytes remaining** and **1,123 accepted source units**. This checkpoint adds **5,664 code bytes / 8 units**, retaining all 1,115 previously accepted units.
+- Published report SHA-256: `3925f219479dbb066390136e36cf9ac6d1e626e177902e33296448a895611b45`. Accepted Git blobs and all eight new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,260 served unit classifications, and persisted/served history agree; no browser was opened. Uncommitted working-tree contributions remain excluded.
+- The 72 associated data bytes receive no code credit. Existing caller adapters remain unchanged and receive no additional credit. AAC8 preserves the full Sol and Astra histories; its 716 code bytes, 68 data bytes, and 23 relocations match exactly. The successful build retains unsuppressed splitter warnings, including the new `.data$pikachuAAC8` section. Gameplay was not exercised.
+
+## Preserved set-asides — Pikachu `fn_98_AD94` and `fn_98_B264`
+
+- AD94's best Astra correction ten reached **65.18484%**, with 676 candidate versus 844 target function bytes and a nonmatching 68-byte switch table. Its separate unlinked 32-byte compiler helper and one extra rodata byte do not count as reconstruction progress.
+- B264 retained its best Sol initial candidate at **64.53793%**, with 376 candidate versus 580 target code bytes and nonexact switch-table relocations. The later Astra stage did not improve on that preserved best.
+- Both completed one initial candidate plus ten corrections at each model stage. Their owners preserved all histories, retained original fallback, and freshly verified all 127 output hashes against committed baseline `3257cd59`, independently of unaccepted peer overlays. These outcomes add **zero accepted bytes**; gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu final position and aggregate lifetimes
 
 - `CommittedDashboardPublisher` published verified committed source `63df3d46`, adding source-linked Pikachu `fn_98_1525C` (1,400 bytes; Sol correction five), Luigi `fn_99_65C4` (412 bytes; Sol correction eight), and Pikachu `fn_98_5034` (848 bytes; Sol correction four), with **127 DOL/REL hashes passing**.
