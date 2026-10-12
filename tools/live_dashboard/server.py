@@ -17,11 +17,18 @@ the narrowly scoped in-process omp observer:
 
 The server binds the loopback interface only, performs no filesystem
 browsing, never mutates reconstruction files, and persists nothing outside
-``build/live-dashboard/`` (gitignored).
+``build/live-dashboard/`` (gitignored). Private HTTPS reverse-proxy access
+requires an explicit ``--proxy-origin``; this does not authenticate requests,
+so use it only behind a private proxy such as Tailscale Serve, never Funnel.
 
 Usage:
     python tools/live_dashboard/server.py [--port 8765] [--session-dir DIR]
         [--session-id ROOT_UUID] [--root DIR] [--report PATH] [--interval SECONDS] [--verbose]
+        [--proxy-origin https://HOST.tailnet.ts.net]
+
+Private Tailscale access (the observer remains local):
+    python tools/live_dashboard/server.py --proxy-origin https://HOST.tailnet.ts.net
+    tailscale serve --bg --https=443 http://127.0.0.1:8765
 
 API:
     GET /api/state   full dashboard state snapshot (JSON)
@@ -200,17 +207,17 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
     # -- guards --------------------------------------------------------
     def _host_allowed(self):
-        """Reject Host headers that do not name this loopback server.
+        """Reject hosts other than loopback or the explicitly trusted proxy.
 
-        A DNS-rebinding page reaches 127.0.0.1 with an attacker-controlled
-        Host; the allowlist keeps journal-derived API data localhost-only
-        without any auth or remote-access infrastructure.
+        Exact allowlisting blocks DNS-rebinding hosts. Private proxy access
+        is opt-in; the HTTP server itself still listens only on loopback.
         """
         port = self.server.server_address[1]
         host = (self.headers.get("Host") or "").strip().lower()
         return host in (
             f"127.0.0.1:{port}", "127.0.0.1",
             f"localhost:{port}", "localhost",
+            self.dashboard.get("proxy_host"),
         )
 
     def _origin_allowed(self):
@@ -221,6 +228,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
         port = self.server.server_address[1]
         return origin.strip().lower() in (
             f"http://127.0.0.1:{port}", f"http://localhost:{port}",
+            self.dashboard.get("proxy_origin"),
         )
 
     # -- routes --------------------------------------------------------
@@ -348,7 +356,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
-        description="Read-only live decompilation dashboard server (localhost only).",
+        description="Read-only live decompilation dashboard server (loopback with optional private HTTPS proxy).",
         epilog=(
             "Data sources: omp session journals (auto-discovered from the repo cwd,"
             " override with --session-dir), latest verified CHANGELOG.md checkpoint,"
@@ -360,6 +368,9 @@ def parse_args(argv=None):
                         help="TCP port to listen on (default: 8765)")
     parser.add_argument("--host", default="127.0.0.1",
                         help="bind address; loopback only (default: 127.0.0.1)")
+    parser.add_argument("--proxy-origin", default=None, metavar="HTTPS_ORIGIN",
+                        help="exact HTTPS origin of a trusted private reverse proxy;"
+                             " localhost-only requests remain allowed")
     parser.add_argument("--session-dir", type=Path, default=None, metavar="DIR",
                         help="explicit omp session directory (default: auto-discover"
                              " the session matching the repo cwd under"
@@ -383,6 +394,23 @@ def parse_args(argv=None):
         parser.error("--port must be 1-65535")
     if args.interval < 0.5:
         parser.error("--interval must be at least 0.5 seconds")
+    if args.proxy_origin is not None:
+        try:
+            proxy = urlsplit(args.proxy_origin)
+            proxy_port = proxy.port
+        except ValueError:
+            parser.error("--proxy-origin must be a valid HTTPS origin")
+        if (proxy.scheme != "https" or not proxy.hostname
+                or proxy.username is not None or proxy.password is not None
+                or proxy.path not in ("", "/") or proxy.query or proxy.fragment
+                or proxy_port == 0):
+            parser.error("--proxy-origin must be an HTTPS origin without credentials, path, query, or fragment")
+        authority = proxy.hostname.lower()
+        if ":" in authority:
+            authority = f"[{authority}]"
+        if proxy_port is not None and proxy_port != 443:
+            authority += f":{proxy_port}"
+        args.proxy_origin = f"https://{authority}"
     return args
 
 
@@ -405,6 +433,8 @@ def main(argv=None):
         "static_dir": static_dir,
         "stop": stop,
         "verbose": args.verbose,
+        "proxy_origin": args.proxy_origin,
+        "proxy_host": urlsplit(args.proxy_origin).netloc if args.proxy_origin else None,
     }
 
     # Publish a valid initializing snapshot so the port serves immediately;

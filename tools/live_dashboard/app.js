@@ -367,9 +367,7 @@
     const text = 'Unit map · ' + (u.source || 'build report') + ' · ' +
       (reportAt ? new Date(reportAt).toLocaleString() : 'timestamp unknown') +
       (u.acceptedUnits != null ? ' · ' + u.acceptedUnits + ' report-accepted units' : '') +
-      (u.acceptedBytes != null ? ' · ' + Number(u.acceptedBytes).toLocaleString() + ' report-accepted bytes' : '') +
-      (u.reason ? ' · ' + u.reason : '') +
-      (p.source === 'changelog' ? ' · Map is report-backed, not a per-unit view of the changelog checkpoint.' : '');
+      (u.acceptedBytes != null ? ' · ' + Number(u.acceptedBytes).toLocaleString() + ' report-accepted bytes' : '');
     setText('map-provenance', text);
     $('map-provenance').classList.toggle('is-old', !!u.stale);
     $('pill-report').title = 'Unit-map report only; accepted totals use ' + (p.source || 'report') + '. ' + (reportAt || 'Timestamp unknown');
