@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness parameter tables and Luigi pointer adjustor
+
+- `CommittedDashboardPublisher` published verified committed source `7e1b78f6`, adding exact, source-linked Ness `fn_101_CC80` (408 bytes) and Luigi `fn_99_10CEC` (8 bytes), with **127 DOL/REL hashes passing**. Both matched their initial Sol candidates.
+- Cumulative accepted-source progress is **2.186041%** — **346,128 / 15,833,556 code bytes**, with **15,487,428 bytes remaining** and **1,050 accepted source units**. This checkpoint adds **416 code bytes / 2 units**, retaining all 1,048 previously accepted units.
+- Published report SHA-256: `92dffcf585667c086227ddb56d96237dd69282bf000ae957bb5732e509079068`. The publisher confirmed agreement across the live endpoint counters/delta, all 127 module totals and 5,131 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-asides — Ness `fn_101_C6C0` and `fn_101_E160`
+
+- Both functions completed one initial candidate plus ten corrections at each of the Sol and Astra stages without an exact match. Their original code remains active; these outcomes add **zero accepted bytes**.
+- `C6C0` retains Astra correction five at **99.208145%**, with 221 candidate and target instructions but 34 differing instructions. Its restored best draft, recipes, objects, and full histories are preserved under `build/isolated-workers/AstraNessFunctionC6C0/evidence/`.
+- `E160` retains Astra correction one at **92.258064%**, with 1,016 allocated text bytes against 868 target bytes and remaining code/relocation differences. Its restored best draft, recipes, objects, and full histories are preserved under `build/isolated-workers/AstraNessFunctionE160/evidence/`.
+
 ## Verified reconstruction checkpoint — Ness article creation and three Luigi functions
 
 - `CommittedDashboardPublisher` published verified committed source `6abb7591`, adding exact, source-linked Ness `fn_101_C3E4` (480 bytes) and Luigi `fn_99_10998`, `fn_99_10CD4`, and `fn_99_10CE4` (8 bytes each), with **127 DOL/REL hashes passing**. All four matched their initial GLM or Sol candidates; `C3E4` also matched all 18 relocations.
