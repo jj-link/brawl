@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede article allocation
+
+- `CommittedDashboardPublisher` published verified committed source `9db1b5a3`, adding King Dedede `fn_117_AC18` (2,272 code bytes; Sol correction two). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.622809%** — **415,284 / 15,833,556 code bytes**, with **15,418,272 bytes remaining** and **1,184 accepted source units**. This checkpoint adds **2,272 code bytes / 1 unit**, retaining all 1,183 previous units.
+- Published report SHA-256: `2ea8f94cc80331b753ee3dcf599a27b8a4746ce1cafc66dc9739150478ec829c`. Accepted Git blobs, the ordered Dedede linker template and its module mapping, actual root source files, and the new registered unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,365 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code, 68 associated data bytes, and all 120 normalized relocations match; data receives no code credit and no additional helpers are emitted. Prior qualifications remain applicable. The new `.data$dededeAC18` and earlier splitter/`gf_shutdown` `FORCEACTIVE` warnings remain unsuppressed. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_7EE0`
+
+- Following Sol's initial candidate and eleven actual corrections, including its recorded excess registration rejection, Astra completed one initial candidate and exactly ten corrections. The restored best is Astra's initial candidate at **79.398674%**: 1,124 candidate code bytes versus 1,204 target bytes. Both have 109 relocations, but code and normalized relocation offsets remain nonexact; nested-pointer retention, stack layout, and temporary stores still differ.
+- Complete histories and the restored best remain under `build/isolated-workers/SolNessFunction1E1E8/evidence/`, including `7ee0-astra-set-aside.zip` and its retained manifest. The original-fallback build at `be76071f` passed all 127 hashes. The unmatched draft remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Captain kinetic transitions
 
 - `CommittedDashboardPublisher` published verified committed source `f2bdbc8a`, adding Captain Falcon `fn_100_D490` (608 code bytes; Sol correction four). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
