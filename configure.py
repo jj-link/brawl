@@ -569,6 +569,8 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_49d4.cpp",
                    cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_captain/ft_captain_function_6c68.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_79e8.cpp", extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_9dac.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
