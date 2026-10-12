@@ -547,10 +547,12 @@
         ctx.font = '10px ' + MONO;
         const tw = ctx.measureText(label).width;
         let lx = x + 8; if (lx + tw > w - padR) lx = x - tw - 8;
+        // Place high-point labels below the point, inside the canvas.
+        const ly = y >= 18 ? y - 16 : y + 8;
         ctx.fillStyle = 'rgba(12, 10, 8, 0.9)';
-        ctx.fillRect(lx - 3, y - 16, tw + 6, 13);
+        ctx.fillRect(lx - 3, ly, tw + 6, 13);
         ctx.fillStyle = '#ede6d8';
-        ctx.fillText(label, lx, y - 9);
+        ctx.fillText(label, lx, ly + 7);
       }
     }
 
