@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede handler-word accessor
+
+- `CommittedDashboardPublisher` published verified committed source `a84a4f8b`, adding Dedede `fn_117_99D8` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.696627%** — **426,972 / 15,833,556 code bytes**, with **15,406,584 bytes remaining** and **1,200 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**, retaining all 1,199 previous units.
+- Published report SHA-256: `6ccc2a0cbd3577c2b7208afdf9556dfcbc765990151910d16fd3389ec429a0d7`. Accepted Git blobs, frozen configuration, actual root source presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,396 served unit classifications agreed. Persisted and served history both record **426,972 bytes at `2026-10-12T18:39:31.240Z`**; no browser verification was performed.
+- The eight owned code bytes match exactly; there are no relocations, owned data, or emitted helpers. The fresh cumulative proof is distinct from the owner's older workspace build and later packet checks. Prior evidence qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_18284`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections, with one rejected compile in each stage. Best is Astra correction six at **98.225716%**: 5,472 candidate code bytes versus 5,476 target bytes. Code and relocation offsets remain unmatched despite equal relocation target/type/addend sequences.
+- The restored best and complete histories remain under `build/isolated-workers/SolPikachuFunction10114/evidence-Astra18284/` and predecessor evidence. The original-fallback build at `cfd9d70c` passed all 127 hashes. The private `NonMatching` candidate was not installed in root and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Dedede byte accessor
 
 - `CommittedDashboardPublisher` published verified committed source `7a7bf2f2`, adding Dedede `fn_117_67D4` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
