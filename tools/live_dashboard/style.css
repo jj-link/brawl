@@ -153,6 +153,9 @@ body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
   margin-left: auto;
 }
 
+/* Highlight only the completion number, not its "accepted" label. */
+#banner-pct { color: var(--amber2); }
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -393,9 +396,9 @@ body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
 
 .spark-timescales { display: flex; gap: 4px; margin-left: auto; }
 
-/* wrapper owns layout; canvas is absolutely sized so its pixel
-   dimensions can never feed back into CSS layout (dpr-safe) */
-.spark-canvas-wrap { position: relative; flex: 1 1 auto; min-height: 84px; }
+/* wrapper owns layout and reserves readable vertical space; canvas is
+   absolutely sized so its pixel dimensions cannot affect layout (dpr-safe) */
+.spark-canvas-wrap { position: relative; flex: 1 1 auto; min-height: 160px; }
 
 #sparkline { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
 
