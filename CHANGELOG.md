@@ -2,6 +2,21 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu parameter and storage operations
+
+- `CommittedDashboardPublisher` published verified committed source `6d0cb24a`, adding Pikachu `fn_98_18CA8` (388 code bytes; initial Sol match), `fn_98_7898` (412; Sol correction three), and `fn_98_398C` (352; Sol correction three). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.528402%** — **400,336 / 15,833,556 code bytes**, with **15,433,220 bytes remaining** and **1,160 accepted source units**. This checkpoint adds **1,152 code bytes / 3 units**, retaining all 1,157 previous units.
+- Published report SHA-256: `a251c782083ea05c174ccde123455e0c04f714840d83fca2d6ca647cf4619a2c`. Accepted Git blobs, actual root source files, and all three new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,322 served unit classifications, and persisted/served history agree; no browser was opened.
+- 18CA8's 68 data bytes and 17 unlinked compiler helpers totaling 1,088 bytes receive no code credit; only its 388 owned code bytes count. Raw whole-object identity is not claimed. Owned code, data, and normalized relocations match. Prior qualifications remain applicable; the successful build retains unsuppressed warnings, including `.data$pikachu18CA8`. Gameplay was not exercised.
+
+## Preserved set-asides — Pikachu dispatch and runtime helpers
+
+- Pikachu `fn_98_18A98`: Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction six at **97.992424%**: 536 candidate code bytes versus 528 target bytes, and 80 candidate data bytes versus 68 target bytes. The extra constant initializer and remaining code/relocation differences are preserved under `build/isolated-workers/SolLuigiFunction9964/evidence/fn_98_18A98/astra/`.
+- Pikachu `fn_98_8ABC`: Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction ten at **84.593990%**, with 516 candidate code bytes versus 532 target bytes. Remaining allocation/frame/instruction differences and complete histories are preserved under `build/isolated-workers/SolLuigiFunction2834/evidence/8ABC-Astra-*`. The earlier Sol symbol-name-mismatch 100% result remains disqualified.
+- Pikachu `fn_98_98C8`: Sol and Astra each completed one initial candidate plus ten corrections. Sol correction eight remains best at **99.83471%**, with 484 candidate and target code bytes, no data or relocations, and four initial instructions still differing in register allocation. The restored best and complete histories remain under `build/isolated-workers/SolNessFunction1BF44/evidence/98c8/`; its historical handoff patch remains unaccepted.
+- Runtime `fn_8040369C` remains one 288-byte, five-export unit. Qwen, Sol, and Astra each completed one initial candidate plus ten corrections: 33 compilation attempts and 32 comparisons, including one rejected Astra candidate. Best selected Astra correction three ties the inherited **69.30556%** result: 352 candidate bytes and six relocations versus 288 target bytes and zero relocations. Full histories remain under `build/isolated-workers/SolPikachuFunction108C8/build/RSBE01_02/reconstruct-fn_8040369C-astra/` and its preserved predecessor directories; this is not a universal C/C++ impossibility claim.
+- All four retain original fallback and add **zero accepted bytes**. Their final fallback builds passed all 127 hashes; no unmatched candidate was source-linked or accepted. Best drafts, objects, recipes, comparisons, rejection diagnostics, and inherited histories remain preserved.
+
 ## Verified reconstruction checkpoint — Pikachu article acceptance and Luigi accessor
 
 - `CommittedDashboardPublisher` published verified committed source `6f672b64`, adding Pikachu `fn_98_18E2C` (472 code bytes; Sol correction one) and Luigi `fn_99_10D44` (8; initial GLM match). Both reconstructed source objects are linked and **127 DOL/REL hashes pass**.
