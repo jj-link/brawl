@@ -86,6 +86,8 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | Qwen3.8-Flash-Next (Spark1) | 2 | Nonoverlapping reconstruction assignments, with the same ten-correction and shared-Sol-pool handoff rules as GLM. |
 | GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
+GLM concurrency is capped at two active subagents across all assignments, including recovery work.
+
 The pool contains eight Sol worker slots, two GLM worker slots, and two Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
