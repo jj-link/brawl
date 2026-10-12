@@ -48,6 +48,10 @@ mo_fighter/ft_pikachu/ft_pikachu_special_hi_kinetic_reset.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_kinetic_mediator_update.cpp:
 	.text       start:0x0000C6B4 end:0x0000C948
 
+mo_fighter/ft_pikachu/ft_pikachu_function_d264.cpp:
+	.text       start:0x0000D264 end:0x0000D44C
+	.data       start:0x000072A4 end:0x000072C4 align:4 rename:.data$pikachuD264
+
 mo_fighter/ft_pikachu/ft_pikachu_function_dcd0.cpp:
 	.text       start:0x0000DCD0 end:0x0000DEBC
 	.data       start:0x00007324 end:0x00007344 align:4 rename:.data$pikachuDCD0
