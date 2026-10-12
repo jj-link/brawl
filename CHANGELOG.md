@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness `fn_101_5F7C` and `fn_101_6DF0`
+
+- `CommittedDashboardPublisher` published verified committed source `dc0dc131`, adding the exact, source-linked `fn_101_5F7C` (772 bytes) and `fn_101_6DF0` (300 bytes) with **127 DOL/REL hashes passing**. Both initial Sol candidates matched without corrections, including all 49 and 21 relocations respectively.
+- Cumulative accepted-source progress is **2.143220%** — **339,348 / 15,833,556 code bytes**, with **15,494,208 bytes remaining** and **1,030 accepted source units**. This checkpoint adds **1,072 code bytes / 2 units**, retaining all 1,028 previously accepted units.
+- Published report SHA-256: `99f308e93413c00f9f347f4543d9ffe50bf85a0d1188aa368e8c68b30e6c1b3f`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
 ## Verified reconstruction checkpoint — Ness composite and extended-module destructors
 
 - `CommittedDashboardPublisher` published verified committed source `ccab9c37`, adding the exact, source-linked `fn_101_4DBC` (1,040 bytes) and `fn_101_53D8` (852 bytes) with **127 DOL/REL hashes passing**. `4DBC` matched after three Sol corrections, including exact verification of its affected caller; `53D8` matched its initial Sol candidate.
