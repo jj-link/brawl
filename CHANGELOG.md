@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi secondary-interface accessor
+
+- `CommittedDashboardPublisher` published verified committed source `63152a5a`, adding Luigi `fn_99_10D5C` (8 code bytes; initial GLM match, zero corrections). The same owner completed actual root installation before acceptance. The reconstructed object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.576149%** — **407,896 / 15,833,556 code bytes**, with **15,425,660 bytes remaining** and **1,174 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**, retaining all 1,173 previous units.
+- Published report SHA-256: `e911b7270034dbc0ad356bedd1bc30027e989f628e55fadffa35d5fec9672021`. Accepted Git blobs, actual root source files, and the new registered unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,348 served unit classifications, and persisted/served history agree; no browser was opened.
+- The eight owned code bytes and single normalized REL24 relocation match exactly; there is no owned data or emitted helper. Prior qualifications and unsuppressed custom-section/linker warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Captain Falcon `fn_100_7EA0`
+
+- Sol and Astra each completed one initial candidate plus ten measured corrections. Astra correction four is best at **97.9959%**, with 972 candidate code bytes versus 976 target bytes; exact code and normalized relocations still differ.
+- The restored best and complete histories remain under `build/isolated-workers/SolLuigiFunction9330/evidence7EA0/astra/` and its inherited Sol evidence. The original-fallback build at `b8a808fd` passed all 127 hashes. The unmatched candidate remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Captain lifecycle and Pikachu parameter lookup
 
 - `CommittedDashboardPublisher` published verified committed source `b8a808fd`, adding Captain Falcon `fn_100_6C68` (852 code bytes; initial Sol match), Pikachu `fn_98_A2C8` (300; Astra correction seven after Sol's initial candidate and ten corrections), Captain Falcon `fn_100_ECEC` (772; Sol correction three after a rejected initial candidate), and Captain Falcon `fn_100_3440` (892; initial Sol match). All four reconstructed source units are linked and **127 DOL/REL hashes pass**.
