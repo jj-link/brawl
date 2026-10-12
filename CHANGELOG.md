@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede reflection handling
+
+- `CommittedDashboardPublisher` published verified committed source `69f1cb2b`, adding Dedede `fn_117_20610` (672 code bytes; Sol initial candidate plus three corrections, including the shared-header migration after the first exact match). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.722016%** — **430,992 / 15,833,556 code bytes**, with **15,402,564 bytes remaining** and **1,205 accepted source units**. This checkpoint adds **672 code bytes / 1 unit**, retaining all 1,204 previous units with unchanged code sizes.
+- Published report SHA-256: `22c2ded83b255af106ee24dc640cd47ba8b3bdf809ee2eb8a7fc11e45d962534`. Accepted Git blobs, frozen configuration and reflection header, actual root source/header presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,406 served unit classifications agreed. Persisted and served history both record **430,992 bytes at `2026-10-12T19:23:07.487Z`**; no browser verification was performed.
+- All owned code and seven normalized relocations match; there is no owned data or emitted helper code. Constants `lbl_117_rodata_108` and `lbl_117_rodata_110` remain original inputs without additional credit. The owner's `39bee0f6` build remains separately identified; prior evidence qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Unfinished peer sources are excluded. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede embedded-module destruction
 
 - `CommittedDashboardPublisher` published verified committed source `14f73568`, adding Dedede `fn_117_2944` (684 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
