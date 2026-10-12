@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede embedded-module destruction
+
+- `CommittedDashboardPublisher` published verified committed source `14f73568`, adding Dedede `fn_117_2944` (684 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.717772%** — **430,320 / 15,833,556 code bytes**, with **15,403,236 bytes remaining** and **1,204 accepted source units**. This checkpoint adds **684 code bytes / 1 unit**, retaining all 1,203 previous units with unchanged code sizes.
+- Published report SHA-256: `7aea6b951ec3ac253bda986013be6374757c3cb79b233e00110237387e549036`. Accepted Git blobs, frozen configuration, actual root source presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,404 served unit classifications agreed. Persisted and served history both record **430,320 bytes at `2026-10-12T19:10:04.692Z`**; no browser verification was performed.
+- All owned code and 49 normalized relocations match; there is no owned data or emitted helper code. The owner's `aa8de6af` build remains separately identified. Recovered private-tool/input-refresh issues and prior evidence qualifications remain preserved; unfinished peer sources are excluded. Existing custom-section/`FORCEACTIVE` warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede projectile status handling
 
 - `CommittedDashboardPublisher` published verified committed source `aa8de6af`, adding Dedede `fn_117_22F4C` (736 code bytes; Sol initial candidate plus one correction). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
