@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu article acceptance and Luigi accessor
+
+- `CommittedDashboardPublisher` published verified committed source `6f672b64`, adding Pikachu `fn_98_18E2C` (472 code bytes; Sol correction one) and Luigi `fn_99_10D44` (8; initial GLM match). Both reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.521127%** — **399,184 / 15,833,556 code bytes**, with **15,434,372 bytes remaining** and **1,157 accepted source units**. This checkpoint adds **480 code bytes / 2 units**, retaining all 1,155 previous units.
+- Published report SHA-256: `399d732dcb6c1cb64a121df1a597d0a733129634acbf07123ecd50aa045a617f`. Accepted Git blobs, actual root source files, and both new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,317 served unit classifications, and persisted/served history agree; no browser was opened.
+- The 68 associated data bytes receive no code credit. Owned code, data, and normalized relocations match; neither new unit emits additional compiler helpers. Prior qualifications remain applicable. The successful build retains unsuppressed splitter warnings, including `.data$pikachu18E2C`. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu kinetic entry and vortex articles
 
 - `CommittedDashboardPublisher` published verified committed source `2c52eac0`, adding Pikachu `fn_98_10C18` (300 code bytes; initial Sol match), `fn_98_188A8` (496; Sol correction one), and `fn_98_185A8` (768; initial Sol match). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
