@@ -2,6 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede capture processing
+
+- `CommittedDashboardPublisher` published verified committed source `cfd9d70c`, adding Dedede `fn_117_F938` (856 code bytes; Sol correction six, including the registered shared-constant binding). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.696526%** — **426,956 / 15,833,556 code bytes**, with **15,406,600 bytes remaining** and **1,198 accepted source units**. This checkpoint adds **856 code bytes / 1 unit**, retaining all 1,197 previous units.
+- Published report SHA-256: `e6039a8b58fc562d34532ac3912cb5fbd154b410e6f82eee3edf24e96b85f444`. Accepted Git blobs, frozen configuration, actual root source presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,394 served unit classifications agreed. Persisted and served history both record **426,956 bytes at `2026-10-12T18:17:04.194Z`**; no browser verification was performed.
+- Owned code, eight data bytes, and all 19 normalized relocations match; data receives no code credit and there are no emitted helpers. The existing-pattern binding rule exports compiler constant `@9711` as `lbl_117_rodata_58` without rewriting instructions or data. The fresh cumulative proof is distinct from the owner's `5b607f6d` build. Prior qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_20080`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections; Sol's initial candidate was rejected by the compiler. Best is Astra correction four at **99.26733%**, with 1,212 candidate and target code bytes. Stack placement, constant-pool layout/relocation targets, and sound-call argument instructions remain unmatched.
+- The restored best and full histories remain under `build/isolated-workers/SolPikachuFunctionCA70/evidence-20080/`. The original-fallback build at `26715649` passed all 127 hashes. The unmatched candidate remains private, no root source was installed, and this function adds **zero accepted bytes**.
+
+## Preserved set-aside — Dedede `fn_117_F598`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction nine at **99.93535%**, with 928 candidate and target code bytes. Vector stack offsets, floating-multiply operand order, and two conversion-bias relocation bindings remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolPikachuFunction10660/evidenceF598/`. The original-fallback build at `cfd9d70c` passed all 127 hashes and preserves accepted F938's constant ownership. The candidate's unlinked 64-byte helper remains excluded. No root source was installed and this function adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Dedede status-event dispatch
 
 - `CommittedDashboardPublisher` published verified committed source `26715649`, adding Dedede `fn_117_99E4` (776 code bytes; initial Sol match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
