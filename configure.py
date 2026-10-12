@@ -1767,6 +1767,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_11a08.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_storage_aggregate_destructor.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nocse"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_vortex_destructor.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto,level=8", "-schedule off", "-opt nocse"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_module_aggregate_destructor.cpp",
