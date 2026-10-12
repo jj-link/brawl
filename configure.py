@@ -177,6 +177,30 @@ if args.map:
 # Use for any additional files that should cause a re-configure when modified
 config.reconfig_deps = []
 
+# This compiler-generated conversion bias is shared with other Pikachu units.
+# Publish its binding without changing any compiler-produced code or data.
+pikachu_bias_objcopy = (config.binutils_path or config.build_dir / "binutils") / (
+    "powerpc-eabi-objcopy.exe" if sys.platform == "win32" else "powerpc-eabi-objcopy"
+)
+pikachu_bias_object = config.out_path() / "src/mo_fighter/ft_pikachu/ft_pikachu_function_10660.o"
+config.custom_build_rules = [{
+    "name": "pikachu_export_conversion_bias",
+    "command": (
+        f'cmd /c ""{pikachu_bias_objcopy}" --globalize-symbol=lbl_98_rodata_70 '
+        '--redefine-sym=@2243=lbl_98_rodata_70 "$in" && type nul > "$out""'
+        if sys.platform == "win32" else
+        f'"{pikachu_bias_objcopy}" --globalize-symbol=lbl_98_rodata_70 '
+        '--redefine-sym=@2243=lbl_98_rodata_70 "$in" && touch "$out"'
+    ),
+    "description": "EXPORT Pikachu conversion bias",
+}]
+config.custom_build_steps = {"post-compile": [{
+    "rule": "pikachu_export_conversion_bias",
+    "inputs": pikachu_bias_object,
+    "implicit": pikachu_bias_objcopy,
+    "outputs": config.out_path() / "ft_pikachu/conversion_bias.exported",
+}]}
+
 # Optional numeric ID for decomp.me preset
 # Can be overridden in libraries or objects
 config.scratch_preset_id = None
@@ -1703,6 +1727,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-inline on,noauto", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_81d4.cpp",
