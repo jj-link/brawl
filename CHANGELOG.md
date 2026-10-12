@@ -2,6 +2,20 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu final position and aggregate lifetimes
+
+- `CommittedDashboardPublisher` published verified committed source `63df3d46`, adding source-linked Pikachu `fn_98_1525C` (1,400 bytes; Sol correction five), Luigi `fn_99_65C4` (412 bytes; Sol correction eight), and Pikachu `fn_98_5034` (848 bytes; Sol correction four), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.398728%** — **379,804 / 15,833,556 code bytes**, with **15,453,752 bytes remaining** and **1,115 accepted source units**. This checkpoint adds **2,660 code bytes / 3 units**, retaining all 1,112 previously accepted units.
+- Published report SHA-256: `2e6a5790f91ae56e768717ec651a691bdf83ab361716f8e93549a580cefe89b5`. Accepted source and changed shared-header Git blobs were checked against the frozen commit. Live counters/delta, 127 module totals, all 5,245 served unit classifications, and persisted/served history agree; no browser was opened. Uncommitted working-tree units are excluded.
+- Pikachu 1525C's 1,400 owned code bytes, eight rodata bytes, and 26 relocations match exactly. Raw whole-object equality is false: an additional 64-byte weak compiler-generated destructor is discarded from the final PLF. Neither that helper nor the rodata receives code credit. The extended AttributeFlag retains its two-byte layout; seven affected consumer comparisons preserve allocated bytes and resolved relocations. The 5034 owner restored its missing committed source into the main working tree before dashboard ingestion resumed.
+
+## Preserved set-asides — Pikachu `fn_98_13B80`, `fn_98_868C`, and `fn_98_11DF8`
+
+- 13B80 completed Sol initial-plus-ten and Astra initial-plus-ten. Best Astra correction eight reached **99.96751%** with 1,108 code bytes and 16 extra rodata bytes; its no-added-data correction nine reached **99.94585%**, retaining three differing instructions. Neither is exact.
+- 868C completed both stages' initial-plus-ten. Best Astra correction eight reached **93.20082%**, with 936 candidate versus 976 target code bytes and 66 relocations on each side. The invalid Sol correction-two false-100% result remains marked invalid alongside its authoritative replay.
+- 11DF8 completed Astra initial-plus-ten after the previously documented Sol accounting violation. Best Astra correction seven reached **98.39574%**, with 6,196 code bytes on each side but 291 candidate versus 290 target relocations. Sole and shared BSS remain original-owned; the rejected Sol initial, authorized-boundary best, and excess correction remain preserved separately.
+- Each owner preserved both stages' histories and best drafts in the original workspace, retained original fallback, and verified all 127 final binary hashes. These unmatched outcomes add **zero accepted bytes**. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu kinetic state and Ness activation
 
 - `CommittedDashboardPublisher` published verified committed source `2006c6e8`, adding exact, source-linked Pikachu `fn_98_EB60` (1,236 bytes; Sol correction six), Ness `fn_101_1E1E8` (372 bytes; initial Sol match), Pikachu `fn_98_F5D0` (1,092 bytes; Sol correction six, including its ABI repair), and Luigi `fn_99_10D24` (8 bytes; initial GLM match), with **127 DOL/REL hashes passing**.
