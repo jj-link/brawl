@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede byte accessor
+
+- `CommittedDashboardPublisher` published verified committed source `7a7bf2f2`, adding Dedede `fn_117_67D4` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.696577%** — **426,964 / 15,833,556 code bytes**, with **15,406,592 bytes remaining** and **1,199 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**, retaining all 1,198 previous units.
+- Published report SHA-256: `d8946c2db549a7febfbe813240cdb9c40b70372b875125d7e2dbb7c33c60ce07`. Accepted Git blobs, frozen configuration, actual root source presence, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,395 served unit classifications agreed. Persisted and served history both record **426,964 bytes at `2026-10-12T18:31:29.864Z`**; no browser verification was performed.
+- The eight owned code bytes match exactly; there are no relocations, owned data, or emitted helpers. The fresh cumulative proof is distinct from the owner's earlier verification baselines. Prior evidence qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_12204`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections; Sol's history includes two rejected compiles. Best is Astra correction seven at **99.06689%**: 5,976 candidate code bytes versus 5,980 target bytes. Constructor-lifetime register allocation, base-call argument setup, motion-list address timing, and normalized relocations remain unmatched.
+- The restored best, complete histories, and `12204-astra-setaside.zip` remain under `build/isolated-workers/SolNessFunction1E1E8/evidence/`. The original-fallback build at `cfd9d70c` passed all 127 hashes. The private `NonMatching` candidate was not installed in root and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Dedede capture processing
 
 - `CommittedDashboardPublisher` published verified committed source `cfd9d70c`, adding Dedede `fn_117_F938` (856 code bytes; Sol correction six, including the registered shared-constant binding). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
