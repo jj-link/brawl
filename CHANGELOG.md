@@ -2,12 +2,24 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — aggregate destruction and kinetic transitions
+
+- `CommittedDashboardPublisher` published verified committed source `07d67046`, adding Pikachu `fn_98_4C34` (300 code bytes; Sol correction six), Pikachu `fn_98_11190` (436; initial Sol match), and Captain Falcon `fn_100_49D4` (848; initial Sol match). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.545000%** — **402,964 / 15,833,556 code bytes**, with **15,430,592 bytes remaining** and **1,167 accepted source units**. This checkpoint adds **1,584 code bytes / 3 units**, retaining all 1,164 previous units.
+- Published report SHA-256: `3d9cf781bd71f6bde0b9329b41e23e5593f3d76408ea041e5f71bfd08680775e`. Accepted Git blobs, actual root source files, and all three new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,333 served unit classifications, and persisted/served history agree; no browser was opened.
+- These three units own no data and emit no additional helpers. Owned code and normalized relocations match; prior helper, data, and tool-history qualifications remain applicable. Existing custom-section and linker warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu activation and event destruction
 
 - `CommittedDashboardPublisher` published verified committed source `78b5b2b4`, adding Pikachu `fn_98_9708` (324 code bytes; Sol correction one), `fn_98_17B44` (388; Sol correction three), `fn_98_7230` (324; initial Sol match), and Luigi `fn_99_10D4C` (8; initial GLM match). All four reconstructed source objects are linked and **127 DOL/REL hashes pass**.
 - Cumulative accepted-source progress is **2.534996%** — **401,380 / 15,833,556 code bytes**, with **15,432,176 bytes remaining** and **1,164 accepted source units**. This checkpoint adds **1,044 code bytes / 4 units**, retaining all 1,160 previous units.
 - Published report SHA-256: `a09efbf3a9091763600954496b7392e7e9613510658006d59a2f06d90735cdfd`. Accepted Git blobs, actual root source files, and all four new registered units were verified against the frozen commit; the 10D4C owner completed its missing root installation before acceptance. Live counters/delta, 127 module totals, all 5,327 served unit classifications, and persisted/served history agree; no browser was opened.
 - These four units own no data and emit no additional helpers. Owned code and normalized relocations match; prior helper, data, and tool-history qualifications remain applicable. Existing custom-section and linker warnings remain unsuppressed. Gameplay was not exercised.
+
+## Preserved set-aside — Pikachu `fn_98_90E8`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Sol correction seven remains best at **96.3%**, with 396 candidate code bytes versus 400 target bytes and no owned data. Manager sign extension, register allocation, and dynamic-cast null-path control flow still differ.
+- The restored best and complete histories remain under `build/isolated-workers/SolNessFunction1A078/evidence/90E8/`, including the Astra stage in `astra/`. The final original-fallback build at accepted baseline `78b5b2b4` passed all 127 hashes. The unmatched candidate was not source-linked or installed in the root checkout and adds **zero accepted bytes**.
 
 ## Verified reconstruction checkpoint — Pikachu parameter and storage operations
 
