@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Captain item visibility
+
+- `CommittedDashboardPublisher` published verified committed source `d39a4e2f`, adding Captain Falcon `fn_100_10070` (536 code bytes; Sol correction three). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.604620%** — **412,404 / 15,833,556 code bytes**, with **15,421,152 bytes remaining** and **1,182 accepted source units**. This checkpoint adds **536 code bytes / 1 unit**, retaining all 1,181 previous units.
+- Published report SHA-256: `b31eac6a9d8135a3d8113c84f93d626900a879dac8b3ad7f76ed58aaa4823990`. Accepted Git blobs, the corrected item header, actual root source files, and the new registered unit were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,360 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code and all 18 normalized relocations match; there is no owned data. The unused, unlinked 16-byte weak array-list `size()` helper is excluded; raw whole-emitted-ELF identity is not claimed. `BaseItem::getVisibilityWhole` now returns `int` rather than `u8`; no other reconstructed caller or override was found. Prior qualifications remain applicable. The header-triggered compiler 10326 temporary-reference warning in `ft_fighter_build_data`, expanded preexisting `FORCEACTIVE` warnings, and prior custom-section warnings remain unsuppressed. Gameplay was not exercised.
+
+## Preserved set-aside — Captain Falcon `fn_100_13794`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction six at **98.67172%**, with 6,068 candidate and target code bytes but 289 candidate relocations versus 288 target relocations. Register allocation, constructor argument sequencing, constant-load addressing, and final zero-argument materialization remain unmatched.
+- The restored best and complete histories remain under `build/isolated-workers/SolPikachuFunction10114/evidence-AstraCaptain13794/` and its preserved predecessor evidence. The original-fallback build at `8d954f8a` passed all 127 hashes. The unmatched draft remains `NonMatching`, was not installed in the root checkout, and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Captain articles, control energy, and Luigi flags
 
 - `CommittedDashboardPublisher` published verified committed source `8d954f8a`, adding Captain Falcon `fn_100_A348` (632 code bytes; Sol correction five), `fn_100_CDB8` (624; Sol correction five), Luigi `fn_99_10D64` (8; initial GLM match), and Captain Falcon `fn_100_A110` (568; initial Sol match). All four reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
