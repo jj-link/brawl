@@ -2,6 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi article activation and Ness lifecycle
+
+- `CommittedDashboardPublisher` published verified committed source `ee1bcdba`, adding exact, source-linked Ness `fn_101_24250` (312 bytes; Sol correction one) and Luigi `fn_99_9568` (632 bytes; Sol correction five, including one compiler-rejected revision), with **127 DOL/REL hashes passing**. Luigi's 68 associated data bytes are excluded from code credit.
+- Cumulative accepted-source progress is **2.315639%** — **366,648 / 15,833,556 code bytes**, with **15,466,908 bytes remaining** and **1,094 accepted source units**. This checkpoint adds **944 code bytes / 2 units**, retaining all 1,092 previously accepted units.
+- Published report SHA-256: `66feb98a57d5402f23a451c9593a966433bef99e6e260e713314352df45c0d64`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,207 served unit classifications, and persisted/served history, without opening a browser. Accepted Git blobs were checked and both new registered units matched completely. The successful build retained unsuppressed custom-section splitter warnings, including `.data$luigi9568`.
+
+## Preserved set-aside — Luigi `fn_99_77E8`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Best Astra correction five compares at **97.084335%**: 328 candidate code bytes against 332 target bytes; code and relocations remain nonexact.
+- Both stages' histories, restored best source/object, target, recipes, and allocated comparisons remain under `build/isolated-workers/SolLuigiFunction77E8/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
+## Preserved set-aside — Luigi `fn_99_73B8`
+
+- Sol completed one initial candidate plus ten corrections. Astra performed one initial continuation plus **fourteen actual corrections**, exceeding the agreed ten-correction allowance by four: changed-recipe trials producing identical objects and one compiler-rejected revised source were incorrectly excluded. The owner corrected the accounting and retained the original records; no further reconstruction trials were performed.
+- Best Astra correction two, reached within the authorized allowance, compares at **94.68033%**: 940 candidate code bytes against 976 target bytes; both have 66 relocations, but the rows differ. Later excess trials did not improve this best draft.
+- Both stages' histories, all fourteen Astra trials, original and corrected accounting, restored best source/object, target, recipes, and comparisons remain under `build/isolated-workers/SolLuigiFunction73B8/evidence/astra/` and its inherited evidence directory. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Luigi article allocation and Ness controllers
 
 - `CommittedDashboardPublisher` published verified committed source `5d3c91a6`, adding exact, source-linked Luigi `fn_99_6F00` (904 bytes; Sol correction two), `fn_99_8FB0` (896 bytes; Sol correction one), Ness `fn_101_24388` (416 bytes; Sol correction one), and `fn_101_EF30` (308 bytes; initial Sol match), with **127 DOL/REL hashes passing**. Their 80 associated data bytes are excluded from code credit.

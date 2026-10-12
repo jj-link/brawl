@@ -1399,6 +1399,7 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_ness/ness_function_1c788.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1a078.cpp", cflags=cflags_fighter,
                    extra_cflags=["-opt noprop"]),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1bf44.cpp", cflags=cflags_fighter),
