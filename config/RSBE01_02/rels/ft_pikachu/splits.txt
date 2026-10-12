@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:8
 	.bss        type:bss align:8
 
+mo_fighter/ft_pikachu/ft_pikachu_event_aggregate_destructor.cpp:
+	.text       start:0x00007230 end:0x00007374
+
 mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_size.cpp:
 	.text       start:0x00018CA8 end:0x00018E2C
 	.data       start:0x0000919C end:0x000091E0 align:4 rename:.data$pikachu18CA8
