@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Pikachu activation and event destruction
+
+- `CommittedDashboardPublisher` published verified committed source `78b5b2b4`, adding Pikachu `fn_98_9708` (324 code bytes; Sol correction one), `fn_98_17B44` (388; Sol correction three), `fn_98_7230` (324; initial Sol match), and Luigi `fn_99_10D4C` (8; initial GLM match). All four reconstructed source objects are linked and **127 DOL/REL hashes pass**.
+- Cumulative accepted-source progress is **2.534996%** — **401,380 / 15,833,556 code bytes**, with **15,432,176 bytes remaining** and **1,164 accepted source units**. This checkpoint adds **1,044 code bytes / 4 units**, retaining all 1,160 previous units.
+- Published report SHA-256: `a09efbf3a9091763600954496b7392e7e9613510658006d59a2f06d90735cdfd`. Accepted Git blobs, actual root source files, and all four new registered units were verified against the frozen commit; the 10D4C owner completed its missing root installation before acceptance. Live counters/delta, 127 module totals, all 5,327 served unit classifications, and persisted/served history agree; no browser was opened.
+- These four units own no data and emit no additional helpers. Owned code and normalized relocations match; prior helper, data, and tool-history qualifications remain applicable. Existing custom-section and linker warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Pikachu parameter and storage operations
 
 - `CommittedDashboardPublisher` published verified committed source `6d0cb24a`, adding Pikachu `fn_98_18CA8` (388 code bytes; initial Sol match), `fn_98_7898` (412; Sol correction three), and `fn_98_398C` (352; Sol correction three). All three reconstructed source objects are linked and **127 DOL/REL hashes pass**.
