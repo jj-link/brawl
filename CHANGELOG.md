@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved set-aside — Dedede `fn_117_1A6E0`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction six at **98.63547%** fuzzy match: candidate and target are both 6,112 code bytes with 288 relocations, but saved-register allocation, constructor-argument ordering, and two relocation offsets remain unmatched. The generated 12-byte literal pool was not accepted or transferred from the original data.
+- The restored best and complete histories remain under `build/isolated-workers/SolNessFunction1C220/Evidence/1A6E0/Astra/` and predecessor evidence. The original-fallback build at `adc2fd1e` passed all 127 hashes after a timed-out build was resumed successfully. The candidate was not installed in root and adds **zero accepted bytes**; inferred article/storage design views remain qualified.
+
 ## Preserved set-aside — Dedede `fn_117_117D4`
 
 - Sol and Astra each exhausted one initial candidate plus ten corrections. Best remains Sol correction one at **99.646225%** fuzzy match: 15 instructions still differ through an `r27`/`r28` allocation interchange. All nine normalized relocations match; there is no owned data or unused helper code.
