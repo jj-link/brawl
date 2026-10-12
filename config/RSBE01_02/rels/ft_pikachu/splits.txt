@@ -147,6 +147,9 @@ mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp:
 	.text       start:0x0000AAC8 end:0x0000AD94
 	.data       start:0x000030D4 end:0x00003118 align:4 rename:.data$pikachuAAC8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_a2c8.cpp:
+	.text       start:0x0000A2C8 end:0x0000A3F4
+
 mo_fighter/ft_pikachu/ft_pikachu_article_allocate.cpp:
 	.text       start:0x0000A548 end:0x0000AAC8
 	.data       start:0x00003090 end:0x000030D4 align:4 rename:.data$pikachuA548

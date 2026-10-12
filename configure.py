@@ -1743,6 +1743,8 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_4c34.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_a2c8.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_size.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_11190.cpp",
