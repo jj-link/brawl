@@ -805,6 +805,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_8d30.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_83a8.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_97e0.cpp",
