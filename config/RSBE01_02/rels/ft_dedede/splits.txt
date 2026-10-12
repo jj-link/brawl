@@ -65,6 +65,10 @@ mo_fighter/ft_dedede/ft_dedede_function_b4f8.cpp:
 	.text       start:0x0000B4F8 end:0x0000B818
 	.data       start:0x00004294 end:0x000042D8 align:4 rename:.data$dededeB4F8
 
+mo_fighter/ft_dedede/ft_dedede_function_bbd8.cpp:
+	.text       start:0x0000BBD8 end:0x0000BD5C
+	.data       start:0x0000431C end:0x00004360 align:4 rename:.data$dededeBBD8
+
 mo_fighter/ft_dedede/ft_dedede_function_bd5c.cpp:
 	.text       start:0x0000BD5C end:0x0000BFD4
 	.data       start:0x00004360 end:0x000043A4 align:4 rename:.data$dededeBD5C
