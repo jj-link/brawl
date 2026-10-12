@@ -548,18 +548,19 @@
 
       // hover
       if (hoverX != null) {
-        let best = 0, bd = Infinity;
-        for (let i = 0; i < data.length; i++) {
-          const d = Math.abs(X(data[i].t) - hoverX);
-          if (d < bd) { bd = d; best = i; }
-        }
-        const p = data[best];
-        const x = X(p.t), y = Y(p.v);
+        // Follow cursor time, holding the last known total until a checkpoint.
+        const x = Math.max(padL, Math.min(w - padR, hoverX));
+        const t = t0 + ((x - padL) / iw) * (t1 - t0);
+        let best = data.length - 1;
+        while (best >= 0 && data[best].t > t) best--;
+        if (best < 0) return; // no recorded total before this time
+        const p = data[best], y = Y(p.v);
         ctx.strokeStyle = 'rgba(237, 230, 216, 0.25)';
         ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, h - padB); ctx.stroke();
         ctx.fillStyle = '#ede6d8';
         ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
-        const label = fmtBytes(p.v) + ' · ' + relShort(new Date(p.observedAt ?? p.t).toISOString()) + ' ago';
+        const age = fmtAge((Date.now() - t) / 1000);
+        const label = fmtBytes(p.v) + ' · ' + (age === 'now' ? age : age + ' ago');
         ctx.font = '10px ' + MONO;
         const tw = ctx.measureText(label).width;
         let lx = x + 8; if (lx + tw > w - padR) lx = x - tw - 8;
