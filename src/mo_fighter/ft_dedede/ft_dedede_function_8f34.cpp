@@ -3,6 +3,7 @@
 #include <so/so_module_accesser.h>
 #include <so/so_value_accesser.h>
 #include <st/stage.h>
+#include <mo_fighter/ft_dedede/ft_dedede_projectile_initialize.h>
 
 extern "C" {
 extern const char lbl_117_data_38CC[], lbl_117_data_4148[];
@@ -12,7 +13,6 @@ void* __dynamic_cast(void*, int, const void*, const void*, short);
 Vec3f* fn_117_92AC(Vec3f*, float, float, float);
 Vec3f* fn_117_8E7C(Vec3f*, const Vec3f*);
 int fn_27_111364(ftOwner*);
-void fn_117_1F2EC(Weapon*, unsigned int, unsigned int, int, const Vec3f*, float, int, bool);
 }
 float randf();
 
@@ -21,14 +21,14 @@ inline void activateArticle(Weapon* article, soResourceModule* resource,
                             Fighter* fighter, const Vec3f* position, float direction,
                             int kind, bool thrown) {
     unsigned int taskId = fighter->m_taskId;
-    fn_117_1F2EC(article, taskId, resource->getResourceIdAccesser()->getEtcResId(),
+    fn_117_1F2EC(reinterpret_cast<DededeInitializeObject*>(article), taskId, resource->getResourceIdAccesser()->getEtcResId(),
                 fn_27_111364(fighter->getOwner()), position, direction, kind, thrown);
 }
 
 inline bool activateDefaultWithTask(Weapon* article, soResourceModule* resource, unsigned int taskId,
                             Fighter* fighter, const float* constants, int kind) {
     Vec3f position;
-    fn_117_1F2EC(article, taskId, resource->getResourceIdAccesser()->getEtcResId(),
+    fn_117_1F2EC(reinterpret_cast<DededeInitializeObject*>(article), taskId, resource->getResourceIdAccesser()->getEtcResId(),
                 fn_27_111364(fighter->getOwner()),
                 fn_117_92AC(&position, constants[3], constants[3], constants[3]),
                 constants[3], kind, false);
