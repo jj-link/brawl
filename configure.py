@@ -1743,6 +1743,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_10b10.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off", "-inline on,noauto", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp",

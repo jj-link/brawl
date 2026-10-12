@@ -216,6 +216,10 @@ mo_fighter/ft_pikachu/wn_pikachu_collision_log_reference.cpp:
 mo_fighter/ft_pikachu/wn_pikachu_storage_position_dispatch.cpp:
 	.text       start:0x00018494 end:0x0001856C
 
+mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp:
+	.text       start:0x000188A8 end:0x00018A98
+	.data       start:0x00009114 end:0x00009158 align:4 rename:.data$pikachu188A8
+
 mo_fighter/ft_pikachu/wn_pikachu_storage_float_forward.cpp:
 	.text       start:0x0001856C end:0x000185A8
 
