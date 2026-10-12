@@ -30,6 +30,10 @@ mo_fighter/ft_captain/ft_captain_function_9dac.cpp:
 	.text       start:0x00009DAC end:0x0000A110
 	.data       start:0x000022B4 end:0x000022F8 align:4 rename:.data$captain9DAC
 
+mo_fighter/ft_captain/ft_captain_function_a110.cpp:
+	.text       start:0x0000A110 end:0x0000A348
+	.data       start:0x000022F8 end:0x0000233C align:4 rename:.data$captainA110
+
 mo_fighter/ft_captain/ft_captain_function_a348.cpp:
 	.text       start:0x0000A348 end:0x0000A5C0
 	.data       start:0x0000233C end:0x00002380 align:4 rename:.data$captainA348
