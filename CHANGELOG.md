@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi deleting-object adapter
+
+- `CommittedDashboardPublisher` published verified committed source `441d255f`, adding Luigi `fn_99_10D74` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.675103%** — **423,564 / 15,833,556 code bytes**, with **15,409,992 bytes remaining** and **1,194 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**, retaining all 1,193 previous units.
+- Published report SHA-256: `a95a4234201467ec17bbc8d178160373263eba8571092cb0c3ec8adffa134853`. Accepted Git blobs, frozen configuration, actual root source files, and the new registered unit were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,383 served unit classifications agreed. Persisted and served history both record **423,564 bytes at `2026-10-12T17:48:37.333Z`**; no browser verification was performed.
+- Owned code and its single `R_PPC_REL24` relocation to `fn_99_35B8` match; there is no owned data or emitted helper. The fresh cumulative proof is distinct from the owner's older reused-copy baseline. Unaccepted E768 and other mutable peer work are excluded. Prior qualifications remain applicable; custom-section and `gf_shutdown` warnings remain unsuppressed, while the earlier `lbl_117_rodata_130` warning was not observed in this increment. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede item creation and launch
 
 - `CommittedDashboardPublisher` published verified committed source `4adfd6ed`, adding Dedede `fn_117_10778` (928 code bytes; Sol correction four). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
