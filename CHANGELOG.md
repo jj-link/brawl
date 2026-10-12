@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede launch energy reset
+
+- `CommittedDashboardPublisher` published verified committed source `1548414d`, adding Dedede `16660`: **496 code bytes**, matched after the initial Sol candidate and one correction, with ten exact normalized relocations and no owned data. The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.820087%** — **446,520 / 15,833,556 code bytes**, with **15,387,036 bytes remaining** and **1,237 accepted source units**. This checkpoint adds **496 code bytes / 1 unit**, retaining all 1,236 previous units with unchanged code sizes.
+- Published report SHA-256: `9f1eeabb675793e83f9b4bfe1a6056b39148682852da5b4bcc5649cab46f727d`. Accepted Git blobs, frozen configurations, root source presence, the registered allocation, and source SHA-256 `caafc82f6371698badc5a497cfe2ae7f71d286ff104692190bc635319fc3e9f2` were verified. The endpoint seal agrees across the headline, contribution delta, 127 module sums, and 5,469 unit classifications. Persisted and served history both end at `2026-10-12T22:06:24.512Z` with 446,520 accepted bytes; the intended session is live and no discrepancies were observed. Verification used existing data endpoints and persisted history, not a fresh browser or canvas inspection.
+- The emitted 64-byte weak `AttributeFlag` destructor is unlinked and excluded. The owner's independent 127-hash proof remains tied to `0ffd77b8`; context-only packet regeneration added no correction. Initial target, comparison-context, final-build timeout, and mixed-EOL recoveries remain recorded. The shared speed contract is unchanged. Prior tool and missing-preimage qualifications remain; A450's content recovery is closed without a raw-byte rollback claim. Mutable peers are excluded; prior warnings remain unsuppressed, with no new section warning. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede rebound energy and handler predicate
 
 - `CommittedDashboardPublisher` published verified committed source `ba69948d`, adding Dedede `16014` (**492 code bytes**, initial Sol candidate plus one correction, nine normalized relocations) and `A468` (**8 code bytes**, initial GLM match, no relocations). Both reconstructed source objects are linked and a fresh joint cumulative build passes **127 DOL/REL hashes**.
