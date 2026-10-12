@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness model resource callback and work-array selection
+
+- `CommittedDashboardPublisher` published verified committed source `a265f91b`, adding exact, source-linked Ness `fn_101_CB28` (336 bytes; Sol correction eight) and `fn_101_D62C` (300 bytes; Sol correction five), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.190058%** — **346,764 / 15,833,556 code bytes**, with **15,486,792 bytes remaining** and **1,052 accepted source units**. This checkpoint adds **636 code bytes / 2 units**, retaining all 1,050 previously accepted units.
+- Published report SHA-256: `8a0d64a09deb95f57fc73675fdad4400789845ed559a84ca570be7a46e0e88de`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,135 served unit classifications, and persisted/served history, without opening a browser.
+
+## Preserved set-asides — Ness `fn_101_E8E8` and `fn_101_E4C4`
+
+- Both functions completed one initial candidate plus ten corrections at each of the Sol and Astra stages. Their assigned functions and jump tables match, but their complete allocated objects do not. Original fallback remains linked; these outcomes add **zero accepted bytes**.
+- `E8E8` retains Sol correction nine: 388 matching function bytes, 68 matching data bytes and 19 assigned relocations, with an additional 64-byte destructor and delete relocation. Its best draft and complete histories are preserved under `build/isolated-workers/AstraNessFunctionE8E8/evidence/`.
+- `E4C4` retains Astra correction ten: 1,060 matching function bytes and 68 matching data bytes with matching assigned relocations, plus 1,088 extra allocated code bytes and seventeen extra relocations. Its best draft and complete histories are preserved under `build/isolated-workers/AstraNessFunctionE4C4/evidence/`.
+
 ## Verified reconstruction checkpoint — Ness parameter tables and Luigi pointer adjustor
 
 - `CommittedDashboardPublisher` published verified committed source `7e1b78f6`, adding exact, source-linked Ness `fn_101_CC80` (408 bytes) and Luigi `fn_99_10CEC` (8 bytes), with **127 DOL/REL hashes passing**. Both matched their initial Sol candidates.
