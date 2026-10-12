@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede event storage and article availability
+
+- `CommittedDashboardPublisher` published verified committed source `73276808`, adding Dedede's event-storage constructor at `0x67DC` (852 code bytes; initial Sol match, exported as `__ct__18DededeEventStorageFv`) and `fn_117_B4F8` (800; Sol correction three). Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.661133%** — **421,352 / 15,833,556 code bytes**, with **15,412,204 bytes remaining** and **1,191 accepted source units**. This checkpoint adds **1,652 code bytes / 2 units**, retaining all 1,189 previous units.
+- Published report SHA-256: `e1fbbfcc637ab9e878100bcd6044edd8b26c116c88a71e069be740fdf6d5c317`. Accepted Git blobs, frozen configuration, actual root source files, and both new registered units were verified against the frozen commit. Live counters/delta, 127 module totals, all 5,379 served unit classifications, and persisted/served history agree; no browser was opened.
+- Owned code, applicable data, and normalized relocations match; B4F8's 68 data bytes receive no code credit and neither unit emits additional helpers. No stale `fn_117_67DC` callers were found in root source or headers. Prior qualifications remain applicable. The new `.data$dededeB4F8`, earlier custom-section, `lbl_117_rodata_130`, and `gf_shutdown` `FORCEACTIVE` warnings remain unsuppressed. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede input, events, and storage
 
 - `CommittedDashboardPublisher` published verified committed source `dd015a45`, adding Dedede `fn_117_1014C` (1,212 code bytes; Sol correction four), `fn_117_94DC` (1,276; Sol correction seven after a rejected initial candidate), Luigi `fn_99_10D6C` (8; initial GLM match), Dedede `fn_117_75F8` (904; initial Sol match), and `fn_117_22354` (1,016; Sol correction two). All five reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
