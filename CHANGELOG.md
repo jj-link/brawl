@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness physics totals and aggregate destruction
+
+- `CommittedDashboardPublisher` published verified committed source `7455a927`, adding exact, source-linked Ness `fn_101_20E54` (276 bytes; Sol correction one) and `fn_101_23320` (408 bytes; initial Sol match), with **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.236794%** — **354,164 / 15,833,556 code bytes**, with **15,479,392 bytes remaining** and **1,070 accepted source units**. This checkpoint adds **684 code bytes / 2 units**, retaining all 1,068 previously accepted units.
+- Published report SHA-256: `e69994a66e3f20b45b7fbb632d24cc80518d2cdeea1ad024f87056d7e5c819b8`. The publisher confirmed agreement across live counters/delta, all 127 module totals and 5,163 served unit classifications, and persisted/served history, without opening a browser. Existing unsuppressed `FORCEACTIVE` warnings persisted in this successful frozen build.
+
+## Preserved set-aside — Ness `fn_101_1978C`
+
+- Completed one initial candidate plus ten corrections at each of the Sol and Astra stages. The retained Sol correction-one draft matches all 496 code bytes, 68 associated data bytes, and 20 normalized relocations, but its compiled data-section alignment is eight bytes instead of the original four. Full source-linked acceptance remains unmet.
+- Complete histories, drafts, objects, recipes, and alignment evidence remain under `build/isolated-workers/AstraNessFunction1978C/evidence/`. Original fallback remains linked and passed all 127 DOL/REL hashes; this unmatched outcome adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Ness damage state and absorption initialization
 
 - `CommittedDashboardPublisher` published verified committed source `e626859a`, adding exact, source-linked Ness `fn_101_15B34` (324 code bytes; initial Sol match) and `fn_101_12EB4` (392 code bytes; Sol correction one), with **127 DOL/REL hashes passing**. Their 8 and 12 associated read-only data bytes are excluded from code credit.
