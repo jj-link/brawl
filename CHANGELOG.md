@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved set-aside — Dedede `fn_117_16850`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best is Astra correction two at **98.62745%** fuzzy match: 612 candidate and target code bytes, 42 differing instruction words, and ten matching normalized function relocations. Register allocation remains unmatched; the 64-byte unused, unlinked helper is excluded. Sol's initial and correction-eight compiler rejections remain recorded.
+- The restored best and Astra evidence remain under `build/isolated-workers/SolPikachuFunctionCA70/evidence-16850-astra`; preceding Sol and workspace histories are retained. The original-fallback build at `95ff07e8` passed all 127 hashes. The candidate remains unregistered and excluded from the link, was not installed in root, and adds **zero accepted bytes**. Invalid-target and Eval-timeout recovery evidence remains preserved.
+
 ## Verified reconstruction checkpoint — Dedede nearest eligible contact
 
 - `CommittedDashboardPublisher` published verified committed source `e43a16ba`, adding Dedede `fn_117_11BC0` (**568 code bytes**; Sol initial candidate plus one correction). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
