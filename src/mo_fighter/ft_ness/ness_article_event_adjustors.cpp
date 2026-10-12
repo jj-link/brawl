@@ -7,7 +7,7 @@ class soCollisionLog;
 
 extern "C" {
 void* fn_101_14C68(void*, short);
-void* fn_101_4DBC(void*, short);
+void* fn_101_4DBC(unsigned char*, short);
 bool fn_27_1DAF80(void*, u32 flags);
 void fn_27_1DB0E8(void*, float power, soCollisionAttackData*, u32 index, int,
                   soModuleAccesser*, soCollisionLog*);
