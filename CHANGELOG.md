@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede kinetic setup and article activation
+
+- `CommittedDashboardPublisher` published verified committed source `83239971`, adding Dedede `fn_117_E768` (872 code bytes; Astra correction four, including registration and interface corrections) and `fn_117_8F34` (888; Astra correction six). Both retain Sol's initial candidate plus ten corrections. Both reconstructed source objects are linked and a fresh cumulative build passes **127 DOL/REL hashes**.
+- Cumulative accepted-source progress is **2.686219%** — **425,324 / 15,833,556 code bytes**, with **15,408,232 bytes remaining** and **1,196 accepted source units**. This checkpoint adds **1,760 code bytes / 2 units**, retaining all 1,194 previous units.
+- Published report SHA-256: `4c181b8e989b450bc57832fe8336a7401e80fadb15c2347b1d5a1bab6ba7cb45`. Accepted Git blobs, frozen configuration, actual root source files, and both new registered units were verified against the frozen commit. After CHANGELOG alignment, endpoint totals, delta, all 127 module sums, and all 5,389 served unit classifications agreed. Persisted and served history both record **425,324 bytes at `2026-10-12T18:03:21.573Z`**; no browser verification was performed.
+- Owned code, applicable data, and normalized relocations match; E768's 12 constant-array bytes receive no code credit and neither unit emits additional helpers. E768 consolidates the original interior constant symbols and reconciles the `fn_117_92AC` return declaration in accepted 10778, whose 928 bytes remain exact with zero extra credit. 8F34's rejected broad-EOL packet was preserved and replaced with owned-only insertions; its private configuration normalization/restoration evidence is retained. Prior qualifications and unsuppressed custom-section/`FORCEACTIVE` warnings remain applicable. Gameplay was not exercised.
+
+## Preserved set-aside — Dedede `fn_117_B818`
+
+- Sol and Astra each completed one initial candidate plus ten corrections. Best is Astra correction ten at **95.208336%**: 948 candidate code bytes versus 960 target bytes. Initializer loads/registers, instruction placement, dispatch data, and relocations remain unmatched.
+- The best draft, complete histories, comparisons, and preservation evidence remain under `build/isolated-workers/SolNessFunction1BF44/evidence/b818/astra/` and its predecessor evidence. The private `NonMatching` original-fallback build at `1dea8329` passed all 127 hashes. No root source was installed and this function adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Luigi deleting-object adapter
 
 - `CommittedDashboardPublisher` published verified committed source `441d255f`, adding Luigi `fn_99_10D74` (8 code bytes; initial GLM match, zero corrections). The reconstructed source object is linked and a fresh cumulative build passes **127 DOL/REL hashes**.
