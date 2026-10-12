@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Preserved set-aside — Dedede `fn_117_117D4`
+
+- Sol and Astra each exhausted one initial candidate plus ten corrections. Best remains Sol correction one at **99.646225%** fuzzy match: 15 instructions still differ through an `r27`/`r28` allocation interchange. All nine normalized relocations match; there is no owned data or unused helper code.
+- The byte-identically restored best and complete histories remain under `build/isolated-workers/SolPikachuFunction288C/evidence/117D4/`, including the Astra set-aside packet. The original-fallback build at `7a7bf2f2` passed all 127 hashes. The candidate was not installed in root and adds **zero accepted bytes**.
+
 ## Verified reconstruction checkpoint — Dedede projectile initialization and ground-contact handling
 
 - `CommittedDashboardPublisher` published verified committed source `c157fc5c`, adding Dedede `fn_117_1F2EC` (1,124 code bytes; rejected Sol initial candidate plus nine corrections) and `fn_117_23464` (804 code bytes; Sol initial candidate plus three corrections). Both new source objects and the migrated caller are linked; a fresh cumulative build passes **127 DOL/REL hashes**.
