@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_fighter/ft_luigi/ft_luigi_function_10954.cpp:
+	.text       start:0x00010954 end:0x0001095C
+
 global_destructor_chain.c:
 	.text       start:0x00000000 end:0x00000070
 	.dtors      start:0x00000000 end:0x00000008
