@@ -622,7 +622,10 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_rel,
         "host": False,
-        "objects": [],
+        "objects": [
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_ac18.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+        ],
     },
     {
         "lib": "ft_diddy",

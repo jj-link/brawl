@@ -601,6 +601,7 @@ modules:
   hash: a6978416df878081c94afc45b487030cdbbe5371
   splits: config/RSBE01_02/rels/ft_dedede/splits.txt
   symbols: config/RSBE01_02/rels/ft_dedede/symbols.txt
+  ldscript_template: config/RSBE01_02/rels/ft_dedede/ldscript.tpl
   force_active: [HomeBtnIcon]
 - object: files/module/ft_lucario.rel
   hash: 6ccd7614c616f5ccfb3656b6fe73277d7a1893d8
