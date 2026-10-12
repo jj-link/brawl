@@ -19,6 +19,11 @@ States are derived strictly from recorded evidence:
   nothing proves the agent terminated (parked/dead cannot be distinguished
   from a journal alone).
 * ``unknown``   -- no interpretable records yet.
+
+Assignment membership is separate from these activity labels. The owning
+runner's registry snapshot is authoritative when available; otherwise only an
+accepted terminal yield or an explicit ``.jsonl.tombstone`` proves retirement.
+Neither a normal model-turn end nor quiet/waiting age proves completion.
 """
 
 from __future__ import annotations
@@ -85,13 +90,34 @@ def _parse_ts(value):
     if not isinstance(value, str) or not value:
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
     except ValueError:
         return None
 
 
 def _norm(path):
     return os.path.normcase(os.path.abspath(str(path)))
+
+
+def _session_id(value):
+    """Canonicalize UUID identity while retaining legacy opaque journal IDs."""
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        return str(uuid.UUID(value))
+    except ValueError:
+        return value
+
+
+def _session_ref(value):
+    """Session parent references may be UUIDs or legacy journal paths."""
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        return str(uuid.UUID(value))
+    except ValueError:
+        return _norm(value)
 
 
 def _yield_state(status):
@@ -163,6 +189,11 @@ class JournalTracker:
         self.last_target = None
         self.last_target_seq = None
         self.correction = None
+        self.assignment_retired = False
+        self.assignment_started_at = None
+        self.assignment_retired_at = None
+        self.tombstoned = False
+        self.tombstoned_at = None
         self._seq = 0
         self._stream_seq = 0
         self.events = deque(maxlen=EVENTS_PER_JOURNAL)
@@ -210,7 +241,8 @@ class JournalTracker:
             self.last_seen_dt = _parse_ts(ts)
         kind = record.get("type")
         if kind == "session":
-            self.session_id = record.get("id") or self.session_id
+            self.session_id = _session_id(record.get("id")) or self.session_id
+            self.assignment_started_at = _parse_ts(ts)
             if "parentSession" not in record and not self.is_parent:
                 self.is_parent = True
                 self.name = "main"
@@ -223,6 +255,11 @@ class JournalTracker:
             # for the previous one: current scope differs or is unknown.
             self.last_target = None
             self.last_target_seq = None
+            self.last_yield = None
+            self.exit_info = None
+            self.assignment_retired = False
+            self.assignment_started_at = _parse_ts(ts)
+            self.assignment_retired_at = None
             agent_type = _clean(record.get("agent"), 60)
             if agent_type:
                 self.agent_type = agent_type
@@ -267,12 +304,19 @@ class JournalTracker:
             # Message content itself is never interpreted or stored.
             self.last_target = None
             self.last_target_seq = None
+            self.last_yield = None
+            self.exit_info = None
+            self.assignment_retired = False
+            self.assignment_started_at = _parse_ts(record.get("timestamp"))
+            self.assignment_retired_at = None
+            self.tail = ("spawn", {})
             return
         if role == "assistant":
             model = message.get("model")
             if isinstance(model, str) and model:
                 self.model = model
             self.tail = ("assistant", {"stop": message.get("stopReason")})
+            self.last_yield = None
             content = message.get("content")
             if not isinstance(content, list):
                 return
@@ -308,6 +352,9 @@ class JournalTracker:
                         # type: array is an incremental section yield.
                         "yield_terminal": tool == "yield"
                         and not isinstance(args.get("type"), list),
+                        "yield_error": tool == "yield" and args.get("error") is not None,
+                        "yield_state": _yield_state(args.get("data", {}).get("status"))
+                        if tool == "yield" and isinstance(args.get("data"), dict) else None,
                     }
                     if len(self.calls) > MAX_TRACKED_CALLS:
                         self.calls.clear()
@@ -338,10 +385,23 @@ class JournalTracker:
                 data = details.get("data")
                 data = data if isinstance(data, dict) else {}
                 self.last_yield = {
-                    "state": _yield_state(details.get("status"))
-                    or _yield_state(data.get("status")),
+                    "state": "error" if (
+                        is_error or call.get("yield_error") or details.get("error") is not None
+                        or _yield_state(details.get("status")) == "error"
+                    ) else (
+                        _yield_state(data.get("status")) or call.get("yield_state")
+                        or _yield_state(details.get("status"))),
                     "terminal": bool(call.get("yield_terminal")),
                 }
+                # The runner accepts success/aborted terminal yields as the
+                # assignment result, even when data.status says "waiting".
+                # A rejected schema/tool error and an incremental section are
+                # not terminal acceptance. Keep this evidence through the
+                # trailing assistant/model-turn end.
+                if not is_error and details.get("status") in ("success", "aborted") \
+                        and (call.get("yield_terminal") or details.get("complete") is True):
+                    self.assignment_retired = True
+                    self.assignment_retired_at = _parse_ts(record.get("timestamp"))
                 target = (data.get("target") or data.get("source")
                           or data.get("source_path") or data.get("unit"))
                 target = _clean(target, MAX_TARGET_CHARS)
@@ -372,6 +432,10 @@ class JournalTracker:
             tool = _clean(data.get("toolName"), 60)
             cid = data.get("toolCallId")
             call = self.calls.get(cid) or {}
+            if self.assignment_retired:
+                self.assignment_retired = False
+                self.assignment_retired_at = None
+                self.assignment_started_at = _parse_ts(record.get("timestamp"))
             if cid:
                 self.pending[cid] = {"tool": tool}
                 if len(self.pending) > MAX_TRACKED_CALLS:
@@ -380,6 +444,7 @@ class JournalTracker:
             if tool and intent:
                 self.last_intent = intent
             self.tail = ("start", {"tool": tool})
+            self.last_yield = None
             if tool:
                 self._add_event(record, "tool", f"{tool}: {intent}" if intent else f"{tool} started")
         elif ctype == "session_exit":
@@ -479,7 +544,7 @@ class JournalWatcher:
     def __init__(self, root, session_dir=None, session_id=None):
         self.root = Path(root)
         self.explicit_dir = Path(session_dir) if session_dir else None
-        self.requested_session_id = session_id
+        self.requested_session_id = _session_id(session_id)
         self.trackers = {}
         self.offsets = {}
         self.buffers = {}
@@ -496,6 +561,7 @@ class JournalWatcher:
         self.warnings = {
             "initializing": "initial journal scan in progress; agent list fills in shortly",
         }
+        self.membership = None
 
     # ------------------------------------------------------------------
     # discovery
@@ -536,7 +602,7 @@ class JournalWatcher:
                 continue
             if isinstance(record, dict) and record.get("type") == "session":
                 info = {
-                    "id": record.get("id"),
+                    "id": _session_id(record.get("id")),
                     "cwd": record.get("cwd"),
                     "parentSession": record.get("parentSession"),
                 }
@@ -641,17 +707,23 @@ class JournalWatcher:
             if _norm(path) in included:
                 continue
             info = self._peek(path)
-            if info and info.get("parentSession"):
-                by_parent.setdefault(_norm(info["parentSession"]), []).append(path)
-        frontier = [_norm(parent)]
+            ref = _session_ref(info.get("parentSession")) if info else None
+            if ref:
+                by_parent.setdefault(ref, []).append(path)
+        # Seed every directory-discovered descendant too: an out-of-tree
+        # grandchild may point at its UUID rather than the root's file path.
+        frontier = list(family)
         while frontier:
             current = frontier.pop()
-            for child in by_parent.get(current, []):
-                key = _norm(child)
-                if key not in included:
-                    included.add(key)
-                    family.append(child)
-                    frontier.append(key)
+            info = self._peek(current) or {}
+            refs = {_norm(current), _session_ref(info.get("id"))}
+            for ref in refs - {None}:
+                for child in by_parent.get(ref, []):
+                    key = _norm(child)
+                    if key not in included:
+                        included.add(key)
+                        family.append(child)
+                        frontier.append(child)
         return family
 
     # ------------------------------------------------------------------
@@ -675,6 +747,19 @@ class JournalWatcher:
             seen.add(path)
             try:
                 self._sync(path)
+                # Explicit kills leave this sidecar for persisted roster
+                # revival to honor. Missing/unreadable evidence is not death.
+                try:
+                    marker = path.with_name(path.name + ".tombstone").stat()
+                except FileNotFoundError:
+                    self.trackers[path].tombstoned = False
+                    self.trackers[path].tombstoned_at = None
+                except OSError:
+                    pass
+                else:
+                    self.trackers[path].tombstoned = True
+                    self.trackers[path].tombstoned_at = datetime.fromtimestamp(
+                        marker.st_mtime, timezone.utc)
                 self.warnings.pop(f"journal:{path.name}", None)
             except OSError as exc:
                 self.warnings[f"journal:{path.name}"] = (
@@ -776,6 +861,58 @@ class JournalWatcher:
     # ------------------------------------------------------------------
     # snapshots
     # ------------------------------------------------------------------
+    def update_membership(self, observer):
+        """Accept only UUID-keyed, root-scoped runner registry evidence.
+
+        Failures/old observers leave the last good snapshot intact. A new
+        complete epoch replaces the previous one, never names or model-turn
+        state. Entries with unknown membership stay explicitly unknown.
+        Incomplete snapshots retain known entries but never retire absent UUIDs.
+        """
+        if not isinstance(observer, dict):
+            return
+        membership = observer.get("membership")
+        if not isinstance(membership, dict) \
+                or membership.get("source") != "runner-registry" \
+                or type(membership.get("complete")) is not bool:
+            return
+        epoch = observer.get("epoch")
+        revision = membership.get("revision")
+        entries = membership.get("agents")
+        if not isinstance(epoch, str) or not epoch \
+                or type(revision) is not int or revision < 0 \
+                or not isinstance(entries, list):
+            return
+        members = {}
+        for entry in entries:
+            if not isinstance(entry, dict) or not isinstance(entry.get("id"), str):
+                return
+            try:
+                sid = str(uuid.UUID(entry["id"]))
+            except ValueError:
+                return
+            active = entry.get("active")
+            if (active is not None and type(active) is not bool) or sid in members:
+                return
+            members[sid] = active
+        with self.lock:
+            root = _session_id(observer.get("rootSessionId"))
+            if not root or root != self.session_label():
+                return
+            previous = self.membership
+            if previous and previous["epoch"] == epoch \
+                    and revision < previous["revision"]:
+                return
+            complete = membership["complete"]
+            if not complete and previous and previous["root"] == root:
+                members = {**previous["agents"], **members}
+            self.membership = {
+                "root": root, "epoch": epoch, "revision": revision, "agents": members,
+                "complete": complete,
+                "at": (_parse_ts(membership.get("updatedAt")) or datetime.now(timezone.utc))
+                if complete or not previous else previous["at"],
+            }
+
     def snapshot(self):
         with self.lock:
             return self._snapshot()
@@ -784,6 +921,29 @@ class JournalWatcher:
         """Return (agents, events, warnings) derived from current journals."""
         now_dt = datetime.now(timezone.utc)
         agents = [t.agent_dict(now_dt) for t in self.trackers.values()]
+        membership = self.membership
+        if membership and membership["root"] != self.session_label():
+            membership = None
+        for tracker, agent in zip(self.trackers.values(), agents):
+            active = None
+            if membership:
+                # A complete owning registry proves an absent UUID is not a
+                # current assignment; a present-but-unknown ref does not.
+                active = membership["agents"].get(
+                    agent["id"], False if membership["complete"] else None)
+                if active is False and tracker.assignment_started_at \
+                        and tracker.assignment_started_at > membership["at"]:
+                    active = None  # A new recorded assignment supersedes cached retirement.
+            if tracker.assignment_retired and (active is None or (
+                    membership and tracker.assignment_retired_at
+                    and tracker.assignment_retired_at > membership["at"])):
+                active = False
+            if tracker.tombstoned and (active is None or (
+                    membership and tracker.tombstoned_at
+                    and tracker.tombstoned_at > membership["at"])):
+                active = False
+            if active is not None:
+                agent["active"] = active
         agents.sort(key=lambda a: (a["lastSeen"] is not None, a["lastSeen"] or ""), reverse=True)
         events = []
         for tracker in self.trackers.values():
@@ -858,6 +1018,5 @@ class JournalWatcher:
             }
 
     def session_label(self):
-        if self.parent_path in self.trackers:
-            return self.trackers[self.parent_path].session_id or self.parent_session_id
-        return self.parent_session_id
+        tracker = self.trackers.get(self.parent_path)
+        return (tracker.session_id if tracker else None) or self.parent_session_id

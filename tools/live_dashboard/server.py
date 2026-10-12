@@ -6,9 +6,11 @@ plus a small JSON + SSE API. Data comes from live project artifacts and
 the narrowly scoped in-process omp observer:
 
 * omp session journals supply identity/status and opt-in recorded history.
-* The owning runner's loopback observer supplies assistant text and sanitized
-  tool execution/output updates in the same stream. Journal polling is never
-  substituted for live events; loading observer changes requires runner restart.
+* The owning runner's registry supplies optional per-UUID assignment membership;
+  outages retain the last known snapshot, never imply retirement.
+* Its loopback observer supplies assistant text and sanitized tool updates.
+  Journal polling is never substituted for live events. Observer module changes
+  require a coordinated runner restart; settings toggles do not reload code.
 * ``CHANGELOG.md`` verified checkpoints for headline progress, with the
   existing report/counter retained as a separately labelled unit-map source.
 
@@ -62,6 +64,32 @@ OBSERVER_URL = "http://127.0.0.1:8766"
 
 def _utc_now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+
+def observer_status(watcher):
+    with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
+        status = json.load(response)
+    if not isinstance(status, dict):
+        raise ValueError("Observer status must be an object.")
+    expected = watcher.session_label()
+    actual = status.get("rootSessionId")
+    if not expected or not isinstance(actual, str) or actual.casefold() != expected.casefold():
+        raise ValueError(
+            f"Observer root session {status.get('rootSessionId') or '(unknown)'} "
+            f"does not match dashboard root session {expected or '(not found)'}. "
+            "Start the dashboard with --session-id set to the intended owning root session."
+        )
+    return status
+
+
+def membership_loop(stop, watcher, interval):
+    """Read owning registry metadata independently of output/state delivery."""
+    while not stop.is_set():
+        try:
+            watcher.update_membership(observer_status(watcher))
+        except (OSError, ValueError, URLError):
+            pass  # Connection loss is not assignment retirement.
+        stop.wait(interval)
 
 
 class DashboardState:
@@ -254,16 +282,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
         self._send_json(405, b'{"error":"method not allowed"}', {"Allow": "GET, HEAD"})
 
     def _observer_status(self):
-        with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
-            status = json.load(response)
-        expected = self.dashboard["watcher"].session_label()
-        if not expected or status.get("rootSessionId") != expected:
-            raise ValueError(
-                f"Observer root session {status.get('rootSessionId') or '(unknown)'} "
-                f"does not match dashboard root session {expected or '(not found)'}. "
-                "Start the dashboard with --session-id set to the intended owning root session."
-            )
-        return status
+        return observer_status(self.dashboard["watcher"])
 
     def _handle_live(self):
         """Relay actual observer frames immediately, without journal backfill."""
@@ -416,6 +435,8 @@ def main(argv=None):
                          name="dashboard-refresher", daemon=True),
         threading.Thread(target=progress_loop, args=(stop, progress, wake_progress),
                          name="dashboard-progress", daemon=True),
+        threading.Thread(target=membership_loop, args=(stop, watcher, args.interval),
+                         name="dashboard-membership", daemon=True),
     ]
     for thread in threads:
         thread.start()

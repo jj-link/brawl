@@ -2,11 +2,14 @@
  * at startup and rebinds the factory to existing/revived child sessions.
  * No tools, prompts, provider hooks, session mutation or model calls.
  * Relays assistant prose plus sanitized tool lifecycle/output over one SSE feed.
+ * Assignment membership comes from the owning AgentRegistry, not model turns.
  */
 import { createServer } from 'node:http';
 import { randomUUID } from 'node:crypto';
+import { openSync, readSync, closeSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { AgentRegistry, MAIN_AGENT_ID } from '@oh-my-pi/pi-coding-agent/registry/agent-registry';
 
 const PORT = 8766;
 const DASHBOARD_PORT = 8765;
@@ -18,7 +21,7 @@ const MAX_CLIENT_QUEUE = 8 * 1024 * 1024;
 const MAX_TOTAL_CHARS = 2 * 1024 * 1024;
 const MAX_TOTAL_ENTRIES = 2000;
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const epoch = randomUUID();
+let epoch = randomUUID();
 const agents = new Map();
 const clients = new Set();
 const retained = new Map();
@@ -28,6 +31,117 @@ let sequence = 0;
 let fallbackCalls = 0;
 let failure = null;
 let rootSessionId = null;
+let rootSessionFile = null;
+let membership = null;
+const memberActivity = new Map();
+const runMembership = new WeakMap();
+let registryUnsubscribe;
+const registry = AgentRegistry.global();
+const identities = new WeakMap();
+const headerBuffer = Buffer.alloc(65536);
+
+function scopedFile(file) {
+  if (!rootSessionFile || typeof file !== 'string') return false;
+  const root = resolve(rootSessionFile).toLowerCase();
+  const candidate = resolve(file).toLowerCase();
+  return candidate === root || candidate.startsWith(root.slice(0, -6) + '\\') ||
+    candidate.startsWith(root.slice(0, -6) + '/');
+}
+
+function sessionFile(ref) {
+  // Registration stores a snapshot. A live manager can subsequently relocate
+  // or switch its journal without updating that snapshot.
+  return ref.session?.sessionManager.getSessionFile() || ref.sessionFile;
+}
+
+function sessionId(ref, file = sessionFile(ref)) {
+  const live = ref.session?.sessionManager.getSessionId();
+  if (live) {
+    identities.set(ref, { file, id: live });
+    return live;
+  }
+  const cached = identities.get(ref);
+  if (cached && cached.file === file) return cached.id;
+  if (!file) return null;
+  let handle;
+  try {
+    handle = openSync(file, 'r');
+    const bytes = readSync(handle, headerBuffer, 0, headerBuffer.length, 0);
+    // Current journals have a fixed-width title slot before the session
+    // header; legacy journals start directly with the header. Inspect only
+    // these two prefix records, never task messages or title content.
+    const lines = headerBuffer.toString('utf8', 0, bytes).split('\n', 2);
+    let header = JSON.parse(lines[0]);
+    if (header.type === 'title') header = JSON.parse(lines[1]);
+    if (header.type !== 'session' || typeof header.id !== 'string') return null;
+    identities.set(ref, { file, id: header.id });
+    return header.id;
+  } catch {
+    return null; // Unreadable identity must not become an absent/retired UUID.
+  } finally {
+    if (handle !== undefined) closeSync(handle);
+  }
+}
+
+function assignmentActive(ref) {
+  if (ref.status === 'aborted' || ref.status === 'parked') return false;
+  // Running includes real long tools/waits and wake turns. Idle alone is not
+  // an assignment boundary: an intermediate turn can settle before its
+  // executor resumes it. Accepted results are run-scoped and cleared on wake.
+  if (ref.status === 'running') {
+    return !(ref.lifecycle?.acceptedAt !== undefined && !registry.isRunning(ref));
+  }
+  if (ref.lifecycle?.acceptedAt !== undefined) return false;
+  return runMembership.get(ref);
+}
+
+function refreshMembership() {
+  const main = registry.get(MAIN_AGENT_ID);
+  if (!rootSessionId || !rootSessionFile?.endsWith('.jsonl') || !main?.session ||
+      main.session.sessionManager.getSessionId() !== rootSessionId) return;
+  rootSessionFile = main.session.sessionManager.getSessionFile() || rootSessionFile;
+  const members = [];
+  let complete = true;
+  for (const ref of registry.list()) {
+    if (ref.kind !== 'sub') continue;
+    const file = sessionFile(ref);
+    if (!file) { complete = false; continue; }
+    if (!scopedFile(file) && !scopedFile(ref.sessionFile)) continue;
+    const id = sessionId(ref, file);
+    if (!id) { complete = false; continue; }
+    const active = assignmentActive(ref);
+    members.push({ id, ...(typeof active === 'boolean' ? { active } : {}) });
+  }
+  members.sort((a, b) => a.id.localeCompare(b.id));
+  const signature = JSON.stringify({ complete, agents: members });
+  if (membership?.signature === signature) return;
+  membership = { source: 'runner-registry', complete,
+    revision: (membership?.revision || 0) + 1, updatedAt: new Date().toISOString(),
+    agents: members, signature };
+  memberActivity.clear();
+  for (const member of members) memberActivity.set(member.id, member.active);
+  broadcast('membership', { epoch, rootSessionId, membership: publicMembership() });
+  for (const agent of agents.values()) publishAgent(agent);
+}
+
+function publicMembership() {
+  if (!membership) return undefined;
+  const { signature, ...result } = membership;
+  return result;
+}
+
+function bindRoot(ctx) {
+  const id = ctx.sessionManager.getSessionId();
+  if (rootSessionId && id !== rootSessionId) {
+    epoch = randomUUID();
+    agents.clear(); retained.clear(); retainedChars = 0; sequence = 0;
+    membership = null; memberActivity.clear();
+  }
+  rootSessionId = id;
+  rootSessionFile = ctx.sessionManager.getSessionFile() || null;
+  refreshMembership();
+  broadcast('snapshot', snapshot());
+}
 
 // Sanitize BEFORE transport. Retain the unfinished whitespace-delimited token:
 // otherwise a credential split between provider deltas could leak its prefix.
@@ -128,8 +242,23 @@ function broadcast(type, data) {
 }
 
 function publicAgent(agent) {
+  const active = memberActivity.has(agent.id) ? memberActivity.get(agent.id) :
+    membership?.complete ? false : undefined;
   return { id: agent.id, name: agent.name, definition: agent.definition,
-    model: agent.model, state: agent.state, lastSeen: agent.lastSeen, observed: true };
+    model: agent.model, state: agent.state, lastSeen: agent.lastSeen, observed: true,
+    ...(typeof active === 'boolean' ? { active } : {}) };
+}
+
+function publishAgent(agent) {
+  const data = publicAgent(agent);
+  const { lastSeen, ...metadata } = data;
+  const signature = JSON.stringify(metadata);
+  const now = Date.now();
+  // Prose/tool deltas remain immediate. Repeating identical identity/status
+  // metadata for every delta only makes clients re-render unchanged panes.
+  if (signature === agent.metadata && now - agent.metadataAt < 1000) return;
+  agent.metadata = signature; agent.metadataAt = now;
+  broadcast('agent', data);
 }
 
 function publicItem(item) {
@@ -143,7 +272,8 @@ function publicItem(item) {
 }
 
 function snapshot() {
-  return { epoch, rootSessionId, sequence, connected: true, agents: [...agents.values()].map(publicAgent),
+  return { epoch, rootSessionId, sequence, connected: true, membership: publicMembership(),
+    agents: [...agents.values()].map(publicAgent),
     items: [...agents.values()].flatMap(a => [...a.items.values()].map(publicItem)) };
 }
 
@@ -170,7 +300,7 @@ function touch(ctx, state) {
   agent.lastSeen = new Date().toISOString();
   if (state) agent.state = state;
   agent.state ||= 'waiting';
-  broadcast('agent', publicAgent(agent));
+  publishAgent(agent);
   return agent;
 }
 
@@ -220,8 +350,9 @@ function ensureServer() {
     if (request.method !== 'GET') { response.writeHead(405, { Allow: 'GET' }); response.end(); return; }
     if (request.url === '/status') {
       response.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+      refreshMembership();
       response.end(JSON.stringify({ connected: true, epoch, rootSessionId, sequence, pid: process.pid,
-        agents: agents.size, contract: 'omp-v18.8.9-extension-visible-output' }));
+        agents: agents.size, membership: publicMembership(), contract: 'omp-v18.8.9-extension-visible-output' }));
       return;
     }
     if (request.url !== '/events') { response.writeHead(404); response.end(); return; }
@@ -255,20 +386,44 @@ export default function liveOutput(pi) {
     ensureServer();
     return touch(ctx, state);
   };
+  const unsubscribeLifecycle = pi.events.on('task:subagent:lifecycle', payload => {
+    // Executor settlement, unlike agent_end, is an assignment boundary.
+    // Use only identity/status; task descriptions and progress payloads never
+    // enter transport. Warm follow-ups/wake turns emit started again.
+    if (!payload || typeof payload !== 'object' || !scopedFile(payload.sessionFile)) return;
+    const ref = registry.get(payload.id);
+    if (!ref || ref.kind !== 'sub' ||
+        (sessionFile(ref) !== payload.sessionFile && ref.sessionFile !== payload.sessionFile)) return;
+    if (!['started', 'completed', 'failed', 'aborted'].includes(payload.status)) return;
+    runMembership.set(ref, payload.status === 'started');
+    refreshMembership();
+  });
 
   // Root binding starts the one shared listener; child bindings observe their
   // own events concurrently. No assumption about task:subagent:event wrappers.
   pi.on('session_start', (_event, ctx) => {
     if (resolve(ctx.cwd).toLowerCase() !== project.toLowerCase()) return;
-    if (ctx.agent.kind === 'main') rootSessionId = ctx.sessionManager.getSessionId();
+    if (ctx.agent.kind === 'main') {
+      bindRoot(ctx);
+      if (!registryUnsubscribe) registryUnsubscribe = registry.onChange(refreshMembership);
+      // attachSession emits no registry event. A managed poll closes that
+      // startup/revival gap without observing idle time or altering sessions.
+      ctx.setInterval(refreshMembership, 1000);
+    }
     ensureServer();
     if (eligible(ctx)) touch(ctx, 'waiting');
+  });
+  pi.on('session_switch', (_event, ctx) => {
+    if (ctx.agent.kind === 'main' && resolve(ctx.cwd).toLowerCase() === project.toLowerCase()) bindRoot(ctx);
   });
   pi.on('agent_start', (_event, ctx) => observe(ctx, 'working'));
   pi.on('agent_end', (event, ctx) => observe(ctx, event.willContinue ? 'working' : 'waiting'));
   pi.on('session_shutdown', (_event, ctx) => {
+    unsubscribeLifecycle();
     if (eligible(ctx)) { observe(ctx, 'stopped'); return; }
     if (resolve(ctx.cwd).toLowerCase() !== project.toLowerCase()) return;
+    if (ctx.agent.kind !== 'main') return;
+    registryUnsubscribe?.(); registryUnsubscribe = undefined;
     for (const client of clients) client.response.end();
     clients.clear();
     server?.close();

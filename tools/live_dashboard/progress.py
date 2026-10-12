@@ -6,10 +6,15 @@ map; the two sources are never presented as the same checkpoint merely because
 a build report exists. Each input is fingerprint-cached, and refresh failures
 retain the last-good data with explicit provenance and warnings.
 
-Chart history backfills verified cumulative totals at their recorded dates or
-Git publication dates, then merges the retained dashboard observations. Historical
-checkpoints are not subject to the observation serving limit or used as headline
-progress. An undated checkpoint is omitted rather than assigned a guessed time.
+Chart history backfills verified cumulative totals only before the first valid
+dashboard observation. From that boundary onward, observations are authoritative;
+later Git publication dates must not replay older cumulative totals. Equal-time
+backfill keeps the latest checkpoint in newest-first document order, even when
+its count is lower. Checkpoints are never used to fabricate observation times.
+The observation serving limit applies only to the recent observed tail; the
+first observation is retained across cache pruning/reloads to keep the boundary
+stable. All reachable earlier backfill remains available, independent of that
+limit. Undated checkpoints are omitted rather than assigned a guessed time.
 """
 
 from __future__ import annotations
@@ -254,24 +259,14 @@ class ProgressTracker:
                 self._select_progress()
             return
         history, history_warning = read_checkpoint_history(
-            self.root, text, checkpoint["totalBytes"])
+            self.root, text, checkpoint["totalBytes"], cached_points=self._checkpoint_history)
         with self._lock:
             self._changelog_fp = fp
             self._checkpoint = checkpoint
             self._warnings.pop("changelog", None)
-            # Retain previously dated points if some dates cannot be recovered.
-            if history_warning:
-                retained = {
-                    (point["checkpointTitle"], point["acceptedBytes"]): point
-                    for point in self._checkpoint_history
-                }
-                retained.update({
-                    (point["checkpointTitle"], point["acceptedBytes"]): point
-                    for point in history
-                })
-                self._checkpoint_history = list(retained.values())
-            else:
-                self._checkpoint_history = history
+            # The reader restores cached dates in current document order so a
+            # partial Git failure cannot change equal-time checkpoint priority.
+            self._checkpoint_history = history
             if history_warning:
                 self._warnings["history"] = history_warning
             else:
@@ -325,7 +320,10 @@ class ProgressTracker:
                 "at": now.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
                 "acceptedBytes": selected["acceptedBytes"],
             })
-            del self._history[:-HISTORY_MAX_POINTS]
+            # Keep the first observation as the durable backfill boundary,
+            # plus the recent tail. The persisted format remains a point list.
+            if len(self._history) > HISTORY_MAX_POINTS:
+                del self._history[1:len(self._history) - HISTORY_MAX_POINTS + 1]
             self._persist_history(self._history)
 
     def _classify_units(self, report):
@@ -388,13 +386,22 @@ class ProgressTracker:
     # history (persisted observations plus independently dated checkpoints)
     # ------------------------------------------------------------------
     def _chart_history(self):
-        # Prefer checkpoint provenance for an identical timestamp/value pair.
-        points = {}
-        for point in self._history[-HISTORY_SERVE_POINTS:] + self._checkpoint_history:
+        observations = []
+        for point in self._history:
             at = _parse_ts(point["at"])
             if at is not None:
-                points[(at, point["acceptedBytes"])] = point
-        return sorted(points.values(), key=lambda point: _parse_ts(point["at"]))
+                observations.append((at, point))
+        boundary = min((at for at, _ in observations), default=None)
+        backfill = {}
+        for point in self._checkpoint_history:
+            at = _parse_ts(point["at"])
+            if at is not None and (boundary is None or at < boundary):
+                # The reader retains newest-first document order. An identical
+                # publication time cannot date the intermediate checkpoints;
+                # keep the document's latest total, not the numeric maximum.
+                backfill.setdefault(at, point)
+        points = list(backfill.items()) + observations[-HISTORY_SERVE_POINTS:]
+        return [point for _, point in sorted(points, key=lambda pair: pair[0])]
 
     def _load_history(self):
         try:
@@ -406,16 +413,13 @@ class ProgressTracker:
         points = []
         for item in data:
             if (isinstance(item, dict) and isinstance(item.get("acceptedBytes"), int)
-                    and isinstance(item.get("at"), str)):
+                    and isinstance(item.get("at"), str) and _parse_ts(item["at"]) is not None):
                 points.append({"at": item["at"], "acceptedBytes": item["acceptedBytes"]})
-        # Collapse consecutive duplicates so reloads do not invent flat runs.
-        deduped = []
-        for point in points:
-            if deduped and deduped[-1]["acceptedBytes"] == point["acceptedBytes"]:
-                deduped[-1] = point
-            else:
-                deduped.append(point)
-        return deduped[-HISTORY_MAX_POINTS:]
+        # Heartbeats are real observations. Do not move their first timestamp
+        # by collapsing equal counts on reload, which would shift the boundary.
+        if len(points) > HISTORY_MAX_POINTS:
+            return points[:1] + points[-(HISTORY_MAX_POINTS - 1):]
+        return points
 
     @staticmethod
     def _history_should_append(history, accepted_bytes, now):

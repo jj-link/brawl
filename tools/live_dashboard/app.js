@@ -420,6 +420,17 @@
       windowEnd = Date.now();
       windowStart = windowEnd - rangeHours * 60 * 60 * 1000;
       data = rangeHours ? history.filter(p => p.t >= windowStart && p.t <= windowEnd) : history;
+      if (rangeHours) {
+        // Carry known values to the display boundaries, never invent observations.
+        const before = history.findLast(p => p.t <= windowStart);
+        if (before && data[0]?.t !== windowStart) {
+          data.unshift({ t: windowStart, v: before.v, observedAt: before.t });
+        }
+        const last = data.at(-1);
+        if (last && last.t < windowEnd) {
+          data.push({ t: windowEnd, v: last.v, observedAt: last.observedAt ?? last.t });
+        }
+      }
       canvas.setAttribute('aria-label', 'Accepted bytes history — ' + (rangeHours ? rangeHours + 'h' : 'All'));
       rangeLabel();
       draw();
@@ -547,7 +558,7 @@
         ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, h - padB); ctx.stroke();
         ctx.fillStyle = '#ede6d8';
         ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
-        const label = fmtBytes(p.v) + ' · ' + relShort(new Date(p.t).toISOString()) + ' ago';
+        const label = fmtBytes(p.v) + ' · ' + relShort(new Date(p.observedAt ?? p.t).toISOString()) + ' ago';
         ctx.font = '10px ' + MONO;
         const tw = ctx.measureText(label).width;
         let lx = x + 8; if (lx + tw > w - padR) lx = x - tw - 8;
@@ -1155,9 +1166,9 @@
 
   function groupOf(raw) {
     const s = stateOf(raw);
-    if (s === 'working' || s === 'blocked') return 'active';
+    if (s === 'completed' || s === 'stopped') return 'historical';
     if (s === 'waiting') return 'waiting';
-    return 'historical';
+    return 'active';
   }
 
   const keyOf = (a) => String(a.id ?? a.name ?? '');
@@ -1166,19 +1177,96 @@
   // allowlisted text updates are live; journal backfill is explicitly opted
   // into and labeled. Retained DOM nodes keep selection and reading stable.
   const Streams = (() => {
+    const grid = $('streams-grid');
     const panels = new Map();
+    const recordedAgents = new Map();
     const liveAgents = new Map();
     const liveItems = new Map();
+    const itemsByAgent = new Map();
     const historyItems = new Map();
-    let connected = false, source = null, historyRevision = null;
+    const historyLoaded = new Map();
+    const dirtyAgents = new Set();
+    const dirtyPanels = new Map();
+    const agentFields = ['name', 'state', 'model', 'definition', 'target', 'correction', 'observed', 'active'];
+    let connected = false, source = null, retryTimer = null, frame = 0;
+    let flushing = false, gridReady = false;
     let connectionError = 'Connecting to the owning runner observer…';
-    let historyBusy = false, pendingSnapshot = null, showHistory = false, retryTimer = null;
+    let showHistory = false, historyBusy = false, historyAgain = false;
+    let historyGeneration = 0, historyWanted = false, wasPaused = false;
+    let historyStateRevision;
     try { showHistory = localStorage.getItem('brawldash.streamHistory') === '1'; } catch (_) {}
 
+    function writeText(node, text) {
+      if (node.textContent !== text) node.textContent = text;
+    }
+
     function status() {
-      setText('streams-status', S.paused ? 'Paused' :
+      writeText($('streams-status'), S.paused ? 'Paused' :
         connected ? 'Connected' : 'Disconnected — ' + connectionError);
       $('streams-status').classList.toggle('is-error', !connected && !S.paused);
+    }
+
+    function requestFlush() {
+      if (!frame && !flushing && !S.paused) frame = requestAnimationFrame(flush);
+    }
+
+    function dirtyPanel(key, full = false, itemId = null) {
+      let job = dirtyPanels.get(key);
+      if (!job) {
+        job = { full: false, header: false, empty: false, items: new Set() };
+        dirtyPanels.set(key, job);
+      }
+      job.full ||= full;
+      if (itemId != null) job.items.add(itemId);
+      requestFlush();
+      return job;
+    }
+
+    function dirtyAgent(key) {
+      dirtyAgents.add(key);
+      requestFlush();
+    }
+
+    function sameAgent(a, b) {
+      return !!a && !!b && agentFields.every(field => a[field] === b[field]);
+    }
+
+    function syncRecordedAgents() {
+      const keys = new Set();
+      for (const a of S.agents) {
+        if (a.name === 'main') continue;
+        const key = keyOf(a);
+        keys.add(key);
+        if (!sameAgent(recordedAgents.get(key), a)) dirtyAgent(key);
+        recordedAgents.set(key, a);
+      }
+      for (const key of recordedAgents.keys()) {
+        if (!keys.has(key)) { recordedAgents.delete(key); dirtyAgent(key); }
+      }
+    }
+
+    function mergedAgent(key) {
+      const recorded = recordedAgents.get(key), live = liveAgents.get(key);
+      if (!recorded && !live) return null;
+      // Runner turn states are not assignment outcomes. Reliable current
+      // membership from /api/state also takes precedence over retained metadata.
+      return { ...recorded, ...live, state: recorded?.state ?? live?.state,
+        active: typeof recorded?.active === 'boolean' ? recorded.active : live?.active };
+    }
+
+    function isVisible(a) {
+      return showHistory || (typeof a.active === 'boolean' ?
+        a.active : groupOf(a.state) !== 'historical');
+    }
+
+    function setConnected(on) {
+      if (connected === on) return;
+      connected = on;
+      for (const [key, panel] of panels) {
+        if (!panel.visible) continue;
+        const job = dirtyPanel(key);
+        job.header = job.empty = true;
+      }
     }
 
     async function diagnoseConnection(failedSource) {
@@ -1200,6 +1288,7 @@
       const name = el('span', { class: 'stream-heading' });
       const state = el('span', { class: 'stream-state' });
       const identity = el('div', { class: 'stream-identity' });
+      identity.title = key;
       const count = el('span', { class: 'stream-count' });
       const log = el('div', { class: 'stream-log', attrs: {
         role: 'log', 'aria-live': 'off', tabindex: '0',
@@ -1210,199 +1299,394 @@
       const node = el('section', { class: 'stream-panel', attrs: { 'data-agent': key } },
         el('div', { class: 'stream-panel-head' }, name, state), identity,
         el('div', { class: 'stream-toolbar' }, count, jump), log);
-      return { key, node, name, state, identity, count, log, rows: new Map(), agent: a };
+      return { key, node, name, state, identity, count, log, rows: new Map(),
+        agent: a, visible: true, position: null };
     }
 
     function row(item, historical) {
       const label = el('span');
-      const text = el('pre', { class: 'stream-text' });
+      const textNode = document.createTextNode('');
+      const text = el('pre', { class: 'stream-text' }, textNode);
       const node = el('article', { class: 'stream-entry' + (historical ? ' stream-history' : ''),
         attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id) } },
         el('div', { class: 'stream-entry-head' }, label), text);
-      return { node, label, text };
+      return { node, label, textNode, renderedText: '', complete: null };
     }
 
-    function renderPanel(panel) {
-      const a = panel.agent;
-      panel.name.textContent = String(a.name || a.id);
-      panel.state.textContent = stateOf(a.state) + (a.observed && !connected ? ' · last observed' : '');
-      panel.identity.textContent = [a.model, a.definition, a.target,
-        a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · ');
-      panel.identity.title = panel.key;
-      // Providers may emit newline-only text blocks between tool calls. Keep
-      // them in liveItems so later text updates can make them visible.
-      const live = Array.from(liveItems.values()).filter(x =>
-        String(x.agentId) === panel.key && /\S/.test(String(x.text || '')))
-        .sort((a, b) => tsOf(a.at) - tsOf(b.at) || Number(a.sequence) - Number(b.sequence));
-      const historical = showHistory ? (historyItems.get(panel.key) || []) : [];
-      const list = [...historical.map(item => ({ item, historical: true })),
-        ...live.map(item => ({ item, historical: false }))];
-      const log = panel.log;
-      const follow = log.scrollHeight - log.scrollTop - log.clientHeight < 35;
-      const oldTop = log.scrollTop;
-      const anchor = Array.from(log.children).find(n => n.offsetTop + n.offsetHeight > oldTop);
-      const anchorOffset = anchor ? anchor.offsetTop - oldTop : 0;
-      const keys = new Set();
-      let cursor = log.firstElementChild;
-      for (const { item, historical } of list) {
-        const key = (historical ? 'history:' : 'live:') + item.id;
-        keys.add(key);
-        let entry = panel.rows.get(key);
-        if (!entry) { entry = row(item, historical); panel.rows.set(key, entry); }
-        const label = historical ? 'Recorded history · completed message · ' + (item.at || '') :
-          (item.kind === 'tool' ?
-            'Live tool · ' + item.tool + ' · ' + (item.complete ? (item.isError ? 'failed' : 'complete') : 'running…') :
-            'Live generated text · ' + (item.complete ? 'message complete' : 'generating…')) +
-          (item.truncated ? ' · retained text limit reached' : '');
-        if (entry.label.textContent !== label) entry.label.textContent = label;
-        const text = String(item.text || '');
-        const oldText = entry.text.textContent;
-        if (oldText !== text) {
-          // Append to the existing text node whenever possible so a reader's
-          // selection is not replaced as a generating message grows.
-          if (entry.text.firstChild && text.startsWith(oldText)) entry.text.firstChild.appendData(text.slice(oldText.length));
-          else entry.text.textContent = text;
+    function renderHeader(panel) {
+      const a = panel.agent, state = stateOf(a.state);
+      writeText(panel.name, String(a.name || a.id));
+      writeText(panel.state, (state === 'completed' ? 'Completed' : state) +
+        (a.observed && !connected ? ' · last observed' : ''));
+      writeText(panel.identity, [a.model, a.definition, a.target,
+        a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · '));
+      const label = String(a.name || a.id) + ' terminal output';
+      if (panel.log.getAttribute('aria-label') !== label) panel.log.setAttribute('aria-label', label);
+    }
+
+    function renderRow(entry, item, historical) {
+      const label = historical ? 'Recorded history · completed message · ' + (item.at || '') :
+        (item.kind === 'tool' ?
+          'Live tool · ' + item.tool + ' · ' + (item.complete ? (item.isError ? 'failed' : 'complete') : 'running…') :
+          'Live generated text · ' + (item.complete ? 'message complete' : 'generating…')) +
+        (item.truncated ? ' · retained text limit reached' : '');
+      writeText(entry.label, label);
+      const text = String(item.text || ''), oldText = entry.renderedText;
+      if (oldText !== text) {
+        // Keep the same text node, including while messages grow, so browser
+        // selection is not replaced on each provider delta.
+        if (text.startsWith(oldText)) entry.textNode.appendData(text.slice(oldText.length));
+        else {
+          // Retention may trim a prefix; preserve any unchanged selected suffix.
+          let start = 0, oldEnd = oldText.length, newEnd = text.length;
+          while (start < oldEnd && start < newEnd && oldText[start] === text[start]) start++;
+          while (oldEnd > start && newEnd > start && oldText[oldEnd - 1] === text[newEnd - 1]) {
+            oldEnd--; newEnd--;
+          }
+          entry.textNode.replaceData(start, oldEnd - start, text.slice(start, newEnd));
         }
-        entry.node.dataset.complete = String(!!item.complete);
-        if (entry.node === cursor) cursor = cursor.nextElementSibling;
-        else log.insertBefore(entry.node, cursor);
+        entry.renderedText = text;
       }
-      for (const [key, entry] of panel.rows) {
-        if (!keys.has(key)) { entry.node.remove(); panel.rows.delete(key); }
+      const complete = !!item.complete;
+      if (entry.complete !== complete) {
+        entry.node.dataset.complete = String(complete);
+        entry.complete = complete;
       }
-      if (!list.length) {
-        if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
-        panel.empty.textContent = connected ? 'Waiting for visible worker output. Hidden reasoning is not shown.' :
-          'Live observer disconnected. No retained worker output; Show history loads recorded text.';
-        if (!panel.empty.isConnected) log.append(panel.empty);
-      } else panel.empty?.remove();
-      panel.count.textContent = live.length + ' live entries' +
-        (showHistory ? ' · ' + historical.length + ' recorded' : '');
-      if (follow) log.scrollTop = log.scrollHeight;
-      else log.scrollTop = anchor?.isConnected ? anchor.offsetTop - anchorOffset : oldTop;
     }
 
-    function render() {
-      const merged = new Map(S.agents.filter(a => a.name !== 'main').map(a => [keyOf(a), a]));
-      for (const [key, a] of liveAgents) merged.set(key, { ...(merged.get(key) || {}), ...a });
-      const all = Array.from(merged.values());
-      const current = all.filter(a => groupOf(a.state) !== 'historical');
-      const visible = showHistory ? all : current;
-      // Identity ordering is stable when status/lastSeen changes.
-      visible.sort((a, b) => String(a.name || a.id).localeCompare(String(b.name || b.id)));
-      const keys = new Set(visible.map(keyOf));
-      for (const [key, panel] of panels) {
-        if (!keys.has(key)) { panel.node.remove(); panels.delete(key); }
+    function renderEmpty(panel) {
+      if (panel.rows.size) { panel.empty?.remove(); return; }
+      if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
+      writeText(panel.empty, connected ? 'Waiting for visible worker output. Hidden reasoning is not shown.' :
+        'Live observer disconnected. No retained worker output; Show history loads recorded text.');
+      if (panel.empty.parentNode !== panel.log) panel.log.append(panel.empty);
+    }
+
+    function prepareRows(panel, job) {
+      if (!job.full) return;
+      const live = Array.from(itemsByAgent.get(panel.key)?.values() || [])
+        .filter(record => record.visible)
+        .sort((a, b) => a.time - b.time || a.sequence - b.sequence);
+      const historical = showHistory ? (historyItems.get(panel.key) || []) : [];
+      job.list = [
+        ...historical.map(item => ({ key: 'history:' + item.id, item, historical: true })),
+        ...live.map(record => ({ key: 'live:' + record.item.id, item: record.item, historical: false }))
+      ];
+      job.keys = new Set(job.list.map(entry => entry.key));
+      job.count = live.length + ' live entries' +
+        (showHistory ? ' · ' + historical.length + ' recorded' : '');
+    }
+
+    function renderRows(panel, job) {
+      if (job.full) {
+        for (const [key, entry] of panel.rows) {
+          if (!job.keys.has(key)) { entry.node.remove(); panel.rows.delete(key); }
+        }
+        let cursor = panel.log.firstElementChild;
+        for (const { key, item, historical } of job.list) {
+          let entry = panel.rows.get(key);
+          if (!entry) { entry = row(item, historical); panel.rows.set(key, entry); }
+          renderRow(entry, item, historical);
+          if (entry.node === cursor) cursor = cursor.nextElementSibling;
+          else panel.log.insertBefore(entry.node, cursor);
+        }
+        writeText(panel.count, job.count);
+      } else {
+        for (const id of job.items) {
+          const entry = panel.rows.get('live:' + id), record = liveItems.get(id);
+          if (entry && record) renderRow(entry, record.item, false);
+        }
       }
-      for (const a of visible) {
-        const key = keyOf(a);
+      if (job.full || job.empty) renderEmpty(panel);
+    }
+
+    function readPosition(panel, job) {
+      if (!panel.node.isConnected) return panel.position || { follow: true, top: 0 };
+      const log = panel.log, top = log.scrollTop;
+      if (log.scrollHeight - top - log.clientHeight < 35) return { follow: true, top };
+      // Rows are ordered vertically. Locate the viewport anchor without
+      // measuring every retained row on each text delta.
+      const children = log.children;
+      let lo = 0, hi = children.length;
+      while (lo < hi) {
+        const mid = (lo + hi) >>> 1, node = children[mid];
+        if (node.offsetTop + node.offsetHeight > top) hi = mid;
+        else lo = mid + 1;
+      }
+      let anchor = children[lo];
+      if (job?.keys) {
+        const survives = node => job.keys.has(node.dataset.source + ':' + node.dataset.item);
+        while (anchor && !survives(anchor)) anchor = anchor.nextElementSibling;
+        if (!anchor) {
+          anchor = children[Math.min(lo, children.length - 1)];
+          while (anchor && !survives(anchor)) anchor = anchor.previousElementSibling;
+        }
+      }
+      return { follow: false, top, anchor, offset: anchor ? anchor.offsetTop - top : 0 };
+    }
+
+    function flush() {
+      frame = 0;
+      if (!S.paused) flushPending();
+    }
+
+    function flushPending() {
+      flushing = true;
+      try { renderPending(); }
+      finally { flushing = false; }
+    }
+
+    function renderPending() {
+      let gridChanged = !gridReady;
+      gridReady = true;
+      const visibilityChanges = new Set(), removed = [];
+      for (const key of dirtyAgents) {
+        const a = mergedAgent(key);
         let panel = panels.get(key);
-        if (!panel) { panel = createPanel(a); panels.set(key, panel); $('streams-grid').append(panel.node); }
-        panel.agent = a;
-        renderPanel(panel);
+        if (!a) {
+          if (panel) {
+            visibilityChanges.add(panel);
+            panel.visible = false;
+            removed.push(panel);
+            panels.delete(key);
+            dirtyPanels.delete(key);
+            gridChanged = true;
+          }
+          continue;
+        }
+        const visible = isVisible(a);
+        if (!panel) {
+          if (!visible) continue;
+          panel = createPanel(a);
+          panels.set(key, panel);
+          dirtyPanel(key, true).header = true;
+          visibilityChanges.add(panel);
+          gridChanged = historyWanted = true;
+        } else {
+          if (panel.visible !== visible) {
+            panel.visible = visible;
+            visibilityChanges.add(panel);
+            gridChanged = true;
+            if (visible) { dirtyPanel(key, true); historyWanted = true; }
+          }
+          if (visible && String(panel.agent.name || panel.agent.id) !== String(a.name || a.id)) gridChanged = true;
+          panel.agent = a;
+          if (visible) dirtyPanel(key).header = true;
+        }
       }
-      setText('streams-count', '· ' + visible.length);
-      $('streams-history').setAttribute('aria-pressed', String(showHistory));
-      $('streams-history').textContent = showHistory ? 'Hide history' : 'Show history';
-      status();
+      dirtyAgents.clear();
+      const jobs = new Map();
+      for (const [key, job] of dirtyPanels) {
+        const panel = panels.get(key);
+        if (!panel) continue;
+        prepareRows(panel, job);
+        jobs.set(panel, job);
+      }
+      dirtyPanels.clear();
+      // All viewport reads precede DOM writes, and all post-write layout reads
+      // precede scroll writes. Only panes whose contents change need anchoring.
+      const positions = new Map();
+      for (const panel of visibilityChanges) positions.set(panel, readPosition(panel, jobs.get(panel)));
+      for (const [panel, job] of jobs) {
+        if (panel.visible && (job.full || job.items.size || job.empty) && !positions.has(panel)) {
+          positions.set(panel, readPosition(panel, job));
+        }
+      }
+      for (const [panel, position] of positions) panel.position = position;
+      if (gridChanged) {
+        for (const panel of removed) panel.node.remove();
+        const visible = [];
+        for (const panel of panels.values()) {
+          if (panel.visible) visible.push(panel);
+          else panel.node.remove();
+        }
+        visible.sort((a, b) => String(a.agent.name || a.agent.id).localeCompare(String(b.agent.name || b.agent.id)));
+        let cursor = grid.firstElementChild;
+        for (const panel of visible) {
+          if (panel.node === cursor) cursor = cursor.nextElementSibling;
+          else grid.insertBefore(panel.node, cursor);
+        }
+        writeText($('streams-count'), '· ' + visible.length);
+      }
+      for (const [panel, job] of jobs) {
+        if (job.header) renderHeader(panel);
+        renderRows(panel, job);
+      }
+      const scrolls = [];
+      for (const [panel, position] of positions) {
+        if (!panel.visible || !panel.node.isConnected) continue;
+        const top = position.follow ? panel.log.scrollHeight :
+          position.anchor?.parentNode === panel.log ? position.anchor.offsetTop - position.offset : position.top;
+        scrolls.push([panel.log, top]);
+      }
+      for (const [log, top] of scrolls) log.scrollTop = top;
+      if (historyWanted) { historyWanted = false; loadHistory(); }
+    }
+
+    function putItem(item) {
+      const id = String(item.id), key = String(item.agentId), old = liveItems.get(id);
+      const record = { item, visible: /\S/.test(String(item.text || '')),
+        time: tsOf(item.at), sequence: Number(item.sequence) || 0 };
+      if (old && String(old.item.agentId) !== key) {
+        const oldKey = String(old.item.agentId), items = itemsByAgent.get(oldKey);
+        items?.delete(id);
+        if (!items?.size) itemsByAgent.delete(oldKey);
+        dirtyPanel(oldKey, true);
+      }
+      let items = itemsByAgent.get(key);
+      if (!items) { items = new Map(); itemsByAgent.set(key, items); }
+      items.set(id, record);
+      liveItems.set(id, record);
+      const structural = !old || String(old.item.agentId) !== key ||
+        old.visible !== record.visible || old.time !== record.time || old.sequence !== record.sequence;
+      if (structural) dirtyPanel(key, true);
+      else if (record.visible && ['text', 'kind', 'tool', 'complete', 'isError', 'truncated']
+        .some(field => old.item[field] !== item[field])) dirtyPanel(key, false, id);
+    }
+
+    function removeItem(id) {
+      const record = liveItems.get(id);
+      if (!record) return;
+      const key = String(record.item.agentId), items = itemsByAgent.get(key);
+      liveItems.delete(id);
+      items?.delete(id);
+      if (!items?.size) itemsByAgent.delete(key);
+      if (record.visible) dirtyPanel(key, true);
     }
 
     function applySnapshot(data) {
-      if (S.paused) { pendingSnapshot = data; return; }
+      for (const key of liveAgents.keys()) dirtyAgent(key);
+      for (const key of itemsByAgent.keys()) dirtyPanel(key, true);
       liveAgents.clear();
       liveItems.clear();
-      for (const a of data.agents || []) liveAgents.set(String(a.id), a);
-      for (const item of data.items || []) liveItems.set(String(item.id), item);
-      render();
+      itemsByAgent.clear();
+      for (const a of data.agents || []) { liveAgents.set(keyOf(a), a); dirtyAgent(keyOf(a)); }
+      for (const item of data.items || []) putItem(item);
     }
 
     function connect() {
       if (source || retryTimer || S.paused) return;
-      source = new EventSource('/api/live');
-      source.addEventListener('snapshot', event => {
-        try { connected = true; connectionError = ''; applySnapshot(JSON.parse(event.data)); status(); }
-        catch (e) { logErr('live snapshot', e); }
-      });
-      source.addEventListener('agent', event => {
-        if (S.paused) return;
-        try {
-          const a = JSON.parse(event.data);
-          liveAgents.set(String(a.id), a);
-          render();
-        } catch (e) { logErr('live agent', e); }
-      });
-      source.addEventListener('text', event => {
-        if (S.paused) return;
-        try {
-          const item = JSON.parse(event.data);
-          liveItems.set(String(item.id), item);
-          const panel = panels.get(String(item.agentId));
-          if (panel) renderPanel(panel);
-          else render();
-        } catch (e) { logErr('live text', e); }
-      });
-      source.addEventListener('evict', event => {
+      const liveSource = new EventSource('/api/live');
+      source = liveSource;
+      const current = () => source === liveSource && !S.paused;
+      liveSource.addEventListener('snapshot', event => {
+        if (!current()) return;
         try {
           const data = JSON.parse(event.data);
-          if (data.itemId) liveItems.delete(String(data.itemId));
+          setConnected(true);
+          connectionError = '';
+          applySnapshot(data);
+          status();
+        } catch (e) { logErr('live snapshot', e); }
+      });
+      liveSource.addEventListener('agent', event => {
+        if (!current()) return;
+        try {
+          const a = JSON.parse(event.data), key = keyOf(a);
+          if (!sameAgent(liveAgents.get(key), a)) dirtyAgent(key);
+          liveAgents.set(key, a);
+        } catch (e) { logErr('live agent', e); }
+      });
+      liveSource.addEventListener('text', event => {
+        if (!current()) return;
+        try { putItem(JSON.parse(event.data)); }
+        catch (e) { logErr('live text', e); }
+      });
+      liveSource.addEventListener('evict', event => {
+        if (!current()) return;
+        try {
+          const data = JSON.parse(event.data);
+          if (data.itemId != null) removeItem(String(data.itemId));
           else {
-            liveAgents.delete(String(data.agentId));
-            for (const [id, item] of liveItems) if (String(item.agentId) === String(data.agentId)) liveItems.delete(id);
+            const key = String(data.agentId), items = itemsByAgent.get(key);
+            liveAgents.delete(key);
+            if (items) for (const id of items.keys()) liveItems.delete(id);
+            itemsByAgent.delete(key);
+            dirtyAgent(key);
+            dirtyPanel(key, true);
           }
-          render();
         } catch (e) { logErr('live retention', e); }
       });
-      source.addEventListener('error', () => {
-        connected = false;
+      liveSource.addEventListener('error', () => {
+        if (!current()) return;
+        setConnected(false);
         connectionError = 'Connection lost; checking observer status…';
-        diagnoseConnection(source);
+        diagnoseConnection(liveSource);
         status();
-        // HTTP 503 (observer unavailable or mismatched) closes EventSource permanently. Retry
-        // that case ourselves; established SSE reconnects use native retry.
-        if (source?.readyState === EventSource.CLOSED) {
-          source.close(); source = null;
+        // Closed HTTP 503 streams need an explicit retry; established SSE
+        // streams use EventSource's native reconnect and authoritative snapshot.
+        if (liveSource.readyState === EventSource.CLOSED) {
+          liveSource.close(); source = null;
           retryTimer = setTimeout(() => { retryTimer = null; connect(); }, 3000);
         }
       });
     }
 
     async function loadHistory() {
-      if (!showHistory || historyBusy || S.paused || historyRevision === S.state?.streamRevision) return;
-      historyBusy = true;
+      if (!showHistory || S.paused) return;
       const revision = S.state?.streamRevision;
+      const agents = Array.from(panels.values()).filter(panel => panel.visible &&
+        (!historyLoaded.has(panel.key) || historyLoaded.get(panel.key) !== revision)).map(panel => panel.key);
+      if (!agents.length) return;
+      if (historyBusy) { historyAgain = true; return; }
+      historyBusy = true;
+      const generation = historyGeneration;
       try {
-        // Per-agent requests avoid a global limit starving less recent workers.
-        // Bounded batches, not hundreds of concurrent browser connections.
-        const agents = Array.from(panels.keys());
-        for (let i = 0; i < agents.length && showHistory && !S.paused; i += 4) {
+        // Bounded per-agent batches avoid starving less recent workers.
+        for (let i = 0; i < agents.length && showHistory && !S.paused && generation === historyGeneration; i += 4) {
           await Promise.all(agents.slice(i, i + 4).map(async key => {
             const result = await fetchJSON('/api/streams?agent=' + encodeURIComponent(key) + '&limit=200');
-            if (!showHistory || S.paused) return;
+            if (!showHistory || S.paused || generation !== historyGeneration) return;
             historyItems.set(key, (result.items || []).sort((a, b) => tsOf(a.at) - tsOf(b.at) || a.sequence - b.sequence));
-            const panel = panels.get(key);
-            if (panel) renderPanel(panel);
+            historyLoaded.set(key, revision);
+            dirtyPanel(key, true);
           }));
         }
-        if (showHistory && !S.paused) historyRevision = revision;
-      } catch (e) { logErr('recorded history', e); setText('streams-status', 'Recorded history unavailable: ' + e.message); }
-      finally { historyBusy = false; }
+      } catch (e) {
+        if (showHistory && !S.paused && generation === historyGeneration) {
+          logErr('recorded history', e);
+          writeText($('streams-status'), 'Recorded history unavailable: ' + e.message);
+        }
+      } finally {
+        historyBusy = false;
+        if (historyAgain) { historyAgain = false; loadHistory(); }
+      }
     }
 
     function update() {
-      if (S.paused) {
-        source?.close(); source = null; connected = false;
-        clearTimeout(retryTimer); retryTimer = null;
-      } else {
-        if (pendingSnapshot) { applySnapshot(pendingSnapshot); pendingSnapshot = null; }
-        connect();
+      syncRecordedAgents();
+      const revision = S.state?.streamRevision;
+      if (revision !== historyStateRevision) {
+        historyStateRevision = revision;
+        historyGeneration++;
       }
-      render();
-      loadHistory();
+      if (S.paused) {
+        source?.close(); source = null;
+        clearTimeout(retryTimer); retryTimer = null;
+        if (frame) { cancelAnimationFrame(frame); frame = 0; }
+        if (!wasPaused) historyGeneration++;
+        setConnected(false);
+        // Finish already received output once; subsequent callbacks from the
+        // closed source are ignored. History controls still work while paused.
+        flushPending();
+      } else {
+        connect();
+        historyWanted = true;
+        requestFlush();
+      }
+      wasPaused = S.paused;
+      const historyButton = $('streams-history'), pressed = String(showHistory);
+      if (historyButton.getAttribute('aria-pressed') !== pressed) historyButton.setAttribute('aria-pressed', pressed);
+      writeText(historyButton, showHistory ? 'Hide history' : 'Show history');
+      status();
     }
 
     $('streams-history').addEventListener('click', () => {
       showHistory = !showHistory;
-      historyRevision = null;
+      historyGeneration++;
+      historyLoaded.clear();
+      for (const key of new Set([...recordedAgents.keys(), ...liveAgents.keys()])) dirtyAgent(key);
+      for (const key of panels.keys()) dirtyPanel(key, true);
       try { localStorage.setItem('brawldash.streamHistory', showHistory ? '1' : '0'); } catch (_) {}
       update();
     });

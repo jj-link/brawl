@@ -3,6 +3,9 @@
 Explicit checkpoint dates take precedence. Otherwise Git blame supplies the
 publication date of the cumulative-total line, following its move from PLAN.md.
 Per-unit, current-wave and assembly-match figures are not whole-project totals.
+Candidates retain newest-first document order, including cached dates when Git
+cannot recover them. The chart can then retain the document's latest total at
+an indistinguishable publication time without choosing the numeric maximum.
 """
 
 from __future__ import annotations
@@ -76,11 +79,14 @@ def _candidates(text, expected_total):
     return candidates
 
 
-def read_checkpoint_history(root, text, expected_total):
-    """Return dated points and an optional omission warning; never mutate Git."""
+def read_checkpoint_history(root, text, expected_total, cached_points=()):
+    """Return document-ordered dated points and a dating warning; never mutate Git."""
     candidates = _candidates(text, expected_total)
     if not candidates:
         return [], None
+    cached = {}
+    for point in cached_points:
+        cached.setdefault((point["checkpointTitle"], point["acceptedBytes"]), point)
     dates = {}
     git_error = None
     if any(not point["recorded"] for point in candidates):
@@ -112,6 +118,9 @@ def read_checkpoint_history(root, text, expected_total):
         publication = dates.get(candidate["line"])
         if not recorded and not publication:
             undated += 1
+            previous = cached.get((candidate["checkpointTitle"], candidate["acceptedBytes"]))
+            if previous is not None:
+                points.append(previous)
             continue
         point = {
             "at": recorded[0] if recorded else publication[1],
