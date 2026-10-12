@@ -6,7 +6,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 - `SolLuigiFunction108AC` published its registered, source-linked 8-byte reconstruction with exact code, no allocated data or relocations, and **127 DOL/REL hashes passing**. Its initial candidate matched without corrections; all 983 previously accepted units were retained.
 - Cumulative accepted-source progress is **2.116038%** — **335,044 / 15,833,556 code bytes**, with **15,498,512 bytes remaining** and **984 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**.
-- Published report SHA-256: `88a7589688b29565cd76de16e0eb6cdb0d139600215394047772e4182dba3516`. Rendered checkpoint agreement was confirmed before publication responsibility transferred to the dedicated dashboard-update agent.
+- Initial report SHA-256: `88a7589688b29565cd76de16e0eb6cdb0d139600215394047772e4182dba3516`. The dedicated dashboard-update agent independently reproduced the accepted totals from committed source `d6d2bcf2`, passing 127 binary hashes and rendered dashboard/history agreement. Committed-source report SHA-256: `4c03191f614b0e576db9a601d01b42bcdcf9e77a340853855e2768b8d6e422a0`; this republication adds no source credit.
 
 ## Verified reconstruction checkpoint — Luigi `fn_99_108BC`
 
