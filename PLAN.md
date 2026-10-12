@@ -70,7 +70,9 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 ### 2. Select bounded reconstruction targets
 
 - Inspect source, headers, symbols, object splits, progress reports, dependencies, and overlapping upstream work.
-- Begin with small, low-dependency objects or nearly matching implementations to establish the workflow; then prioritize shared types and helpers that unblock other work, followed by coherent subsystem groups.
+- Assign larger, independent functions within coherent subsystem groups to available Sol workers.
+- Assign 8-byte functions to available GLM and Qwen workers. Preserve unmatched local-model work after ten corrections for later pickup by a Sol worker.
+- Let current workers finish their existing assignments; apply this target selection when assigning subsequent work.
 - Define each target's boundaries, original size, compiler settings, dependencies, matching requirements, and known blockers before implementation.
 - Use Brawl headers and related reverse-engineering work as evidence. Verify layouts and implementations against Brawl's binaries rather than assuming another project's code is interchangeable.
 - Organize independent targets for parallel work in isolated working copies with separate mutable configuration, headers, and build outputs. Agents perform their own registration and final builds without requesting a shared-build slot. Keep per-function assignments and status separate from this plan.
@@ -81,9 +83,9 @@ This is the current arrangement, not a permanent restriction; the user may chang
 
 | Model | Workers | Role |
 | --- | ---: | --- |
-| GPT-6.1 Sol | 8 | Nonoverlapping reconstruction assignments: either fresh work or preserved GLM/Qwen handoffs. |
-| GLM | 2 | Nonoverlapping reconstruction assignments, handing unmatched work to an available worker in the eight-Sol pool after ten corrections. |
-| Qwen3.8-Flash-Next (Spark1) | 2 | Nonoverlapping reconstruction assignments, with the same ten-correction and shared-Sol-pool handoff rules as GLM. |
+| GPT-6.1 Sol | 8 | Larger, independent functions within coherent subsystem groups, or preserved GLM/Qwen work picked up later. |
+| GLM | 2 | 8-byte functions; preserve unmatched work after ten corrections for later Sol pickup. |
+| Qwen3.8-Flash-Next (Spark1) | 2 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
 | GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
 GLM concurrency is capped at two active subagents across all assignments, including recovery work.
@@ -105,7 +107,7 @@ Do not change global compiler settings merely to improve one candidate's score. 
 
 At each model stage, make one initial draft or continuation of the inherited draft, then continue the compile–compare–revise loop until the candidate matches or ten correction attempts have been completed. This applies to GLM, Qwen, GPT-6.1 Sol, and Astra. A correction attempt is a revised candidate responding to compiler/comparison feedback, not an individual line edit. Lack of further ideas is not an early-stop condition. Existing attempts carry forward; a workflow change does not reset them. If the candidate matches sooner, proceed to integration and verification.
 
-1. After GLM or Qwen completes ten correction attempts without a match, hand the same function to a fresh GPT-6.1 Sol agent in an available slot in the eight-worker pool. Local-model history is optional, not a prerequisite for a Sol assignment.
+1. After GLM or Qwen completes ten correction attempts without a match, preserve the same function and its handoff artifacts for later pickup by a fresh GPT-6.1 Sol agent in an available slot in the eight-worker pool. Local-model history is optional, not a prerequisite for a Sol assignment.
 2. After GPT-6.1 Sol completes ten correction attempts without a match, hand the same function to a fresh Astra reconstruction subagent, not to the parent. This applies whether or not the assignment has local-model history.
 3. After that Astra subagent completes ten correction attempts without a match, set the function aside for now.
 
