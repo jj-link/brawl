@@ -567,6 +567,8 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
+            Object(Matching, "mo_fighter/ft_captain/ft_captain_function_28ac.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_captain/captain_fighter_module_destructor.cpp", cflags=cflags_fighter,
                    extra_cflags=["-inline all"]),
             Object(Matching, "mo_fighter/ft_captain/ft_captain_function_49d4.cpp",
