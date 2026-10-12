@@ -2,6 +2,7 @@
  * Standalone frontend. No frameworks, no build step, no external assets.
  * GET /api/state and /api/units preserve project progress; /api/events carries
  * state snapshots, /api/live relays session output, /api/streams is opt-in history.
+ * The sticky banner shows the same completion percentage and precision as the hero.
  * Text is never trusted as HTML; image blocks use only session-provided raster data.
  */
 'use strict';
@@ -327,6 +328,8 @@
 
   function renderHero() {
     const p = (S.state && S.state.progress) || {};
+    setText('banner-pct', p.available ?
+      (Number(p.percent) || 0).toFixed(p.precision === 6 ? 6 : 3) + '%' : '—');
     const note = $('hero-note');
     if (!p.available) {
       for (const id of ['big-pct', 'c-accepted', 'c-total', 'c-remaining']) setText(id, '—');
