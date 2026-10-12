@@ -2,6 +2,36 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Luigi `fn_99_108D4`
+
+- `SolLuigiFunction108D4` published its registered, source-linked 92-byte reconstruction with **127 DOL/REL hashes passing**. The preceding 961-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.110076%** — **334,100 / 15,833,556 code bytes**, with **15,499,456 bytes remaining** and **962 accepted source units**. This checkpoint adds **92 code bytes / 1 unit**.
+- Published report SHA-256: `839ee7c0fa56dc8f445857d3c8b93c014517fb28a6874588b181b65c6e76092c`. Rendered checkpoint agreement was confirmed before release to 10A0C.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_10890`
+
+- `SolLuigiFunction10890` published its registered, source-linked 20-byte reconstruction with exact code, two `lbl_99_rodata_58` HA/LO relocations, no allocated data, and **127 DOL/REL hashes passing**. Its initial candidate matched without corrections; the preceding 960-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.109495%** — **334,008 / 15,833,556 code bytes**, with **15,499,548 bytes remaining** and **961 accepted source units**. This checkpoint adds **20 code bytes / 1 unit**.
+- Published report SHA-256: `ab1e17e5c6396848521ae3296574a66a392b6101762a9e76fc134e58b3f17b91`. Rendered checkpoint agreement was confirmed before release to 108D4.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_107DC`
+
+- `SolLuigiFunction107DC` published its registered, source-linked 64-byte reconstruction with exact code and one relocation, and **127 DOL/REL hashes passing**. The preceding 959-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.109368%** — **333,988 / 15,833,556 code bytes**, with **15,499,568 bytes remaining** and **960 accepted source units**. This checkpoint adds **64 code bytes / 1 unit**.
+- Published report SHA-256: `96fa864c60f5edb0574a5e8a22fd7a636b9c40785224c05852e43f1c424ba113`. Rendered checkpoint agreement was confirmed before release to 10890.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_1079C`
+
+- `SolLuigiFunction1079C` published its registered, source-linked 64-byte reconstruction with exact code and one relocation, and **127 DOL/REL hashes passing**. The preceding 958-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.108964%** — **333,924 / 15,833,556 code bytes**, with **15,499,632 bytes remaining** and **959 accepted source units**. This checkpoint adds **64 code bytes / 1 unit**.
+- Published report SHA-256: `0cd5cecb5008d890ceb33be7c82ffdd286488351fa037480f450080c46f63db1`. Rendered checkpoint agreement was confirmed before release to 107DC.
+
+## Verified reconstruction checkpoint — Luigi `fn_99_10710`
+
+- `ResumeSol10710` published its registered, source-linked 8-byte reconstruction with exact code, no allocated data or relocations, and **127 DOL/REL hashes passing**. The preceding 957-unit checkpoint was retained.
+- Cumulative accepted-source progress is **2.108560%** — **333,860 / 15,833,556 code bytes**, with **15,499,696 bytes remaining** and **958 accepted source units**. This checkpoint adds **8 code bytes / 1 unit**.
+- Published report SHA-256: `022b4b4de891b7a9bb3ea2b45ae00e58504cf447fba665bd674babc31147d874`. Rendered checkpoint agreement was confirmed before release to 1079C.
+
 ## Verified reconstruction checkpoint — Luigi `fn_99_106DC`
 
 - `ResumeSol106DC` published its registered, source-linked 16-byte reconstruction with exact code, no allocated data or relocations, and **127 DOL/REL hashes passing**. The preceding 956-unit checkpoint was retained.
