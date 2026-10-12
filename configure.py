@@ -187,10 +187,10 @@ config.custom_build_rules = [{
     "name": "pikachu_export_conversion_bias",
     "command": (
         f'cmd /c ""{pikachu_bias_objcopy}" --preserve-dates --globalize-symbol=lbl_98_rodata_70 '
-        '--redefine-sym=@9540=lbl_98_rodata_70 "$in" && type nul > "$out""'
+        '--redefine-sym=@9571=lbl_98_rodata_70 "$in" && type nul > "$out""'
         if sys.platform == "win32" else
         f'"{pikachu_bias_objcopy}" --preserve-dates --globalize-symbol=lbl_98_rodata_70 '
-        '--redefine-sym=@9540=lbl_98_rodata_70 "$in" && touch "$out"'
+        '--redefine-sym=@9571=lbl_98_rodata_70 "$in" && touch "$out"'
     ),
     "description": "EXPORT Pikachu conversion bias",
 }]
@@ -1762,7 +1762,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-inline on,noauto", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp",
-                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off", "-gen-fsel"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-inline on,noauto", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_pikachu/ft_pikachu_function_b0e0.cpp",

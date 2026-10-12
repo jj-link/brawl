@@ -1,4 +1,40 @@
 #include <so/work/so_work_manage_module_impl.h>
+
+struct PikachuChargeModules {
+    char prefix[0x64];
+    soWorkManageModule* work;
+};
+struct PikachuChargeAccesser {
+    char prefix[0xd8];
+    PikachuChargeModules* modules;
+};
+extern "C" {
+extern const float lbl_98_rodata_68, lbl_98_rodata_6C;
+float getConstantFloat__15soValueAccesserFP16soModuleAccesserUlUl(soModuleAccesser*, unsigned long, unsigned long);
+int getConstantInt__15soValueAccesserFP16soModuleAccesserUlUl(soModuleAccesser*, unsigned long, unsigned long);
+}
+
+#pragma always_inline on
+#pragma inline_depth(8)
+extern "C" void fn_98_10510(void*, soModuleAccesser* accesser) {
+    float lower, upper, difference, ratio;
+    soWorkManageModule& work = *reinterpret_cast<PikachuChargeAccesser*>(accesser)->modules->work;
+    int maximumCharge = getConstantFloat__15soValueAccesserFP16soModuleAccesserUlUl(accesser, 0xfa6, 0);
+    int charge = work.getInt(0x20000000);
+    int maximumDuration = getConstantInt__15soValueAccesserFP16soModuleAccesserUlUl(accesser, 0x5dc1, 0);
+    ratio = float(charge) / float(maximumCharge);
+    upper = lbl_98_rodata_6C;
+    lower = lbl_98_rodata_68;
+    difference = ratio - lower;
+    if (difference >= 0.0f) {
+        lower = ratio;
+    }
+    difference = lower - upper;
+    ratio = difference >= 0.0f ? upper : lower;
+    work.setFloat(ratio, 0x21000004);
+    int duration = int(float(maximumDuration) * ratio);
+    work.setInt(duration, 0x20000001);
+}
 #include <so/posture/so_posture_module_simple.h>
 
 // Only the energy-reset ABI is needed here; the attribute and speed-return
