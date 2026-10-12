@@ -79,6 +79,13 @@ mo_fighter/ft_dedede/ft_dedede_function_17aac.cpp:
 	.text       start:0x00017AAC end:0x00017D38
 	.data       start:0x00009388 end:0x000093D0 align:4 rename:.data$dedede17AAC
 
+mo_fighter/ft_dedede/ft_dedede_function_1c984.cpp:
+	.text       start:0x0001C984 end:0x0001CD04
+	.data       start:0x0000A158 end:0x0000A168 align:4 rename:.data$dedede1C984Name
+
+mo_fighter/ft_dedede/ft_dedede_function_1c984_vtable.cpp:
+	.data       start:0x0000A170 end:0x0000A3DC align:4 rename:.data$dedede1C984Vtable
+
 mo_fighter/ft_dedede/ft_dedede_function_1a290.cpp:
 	.text       start:0x0001A290 end:0x0001A52C
 	.data       start:0x00009648 end:0x0000967C align:4 rename:.data$dedede1A290
