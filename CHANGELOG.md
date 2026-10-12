@@ -2,6 +2,19 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness link-event handler and Luigi interface adjustor
+
+- `CommittedDashboardPublisher` published verified committed source `ae38778a`, adding exact, source-linked Ness `fn_101_C0B0` (540 bytes) and Luigi `fn_99_10CCC` (8 bytes), with **127 DOL/REL hashes passing**. `C0B0` matched after two measured Sol corrections with six exact relocations; `10CCC` matched its initial Sol candidate.
+- Cumulative accepted-source progress is **2.180230%** — **345,208 / 15,833,556 code bytes**, with **15,488,348 bytes remaining** and **1,044 accepted source units**. This checkpoint adds **548 code bytes / 2 units**, retaining all 1,042 previously accepted units.
+- Published report SHA-256: `bcbb6edb0d94da2a7e6fc3f343f9f97bbf5bb37622004b970efb85ace8fd223a`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
+## Preserved set-asides — Ness `fn_101_A144`, `fn_101_AA2C`, and `fn_101_9734`
+
+- All three functions completed one initial candidate plus ten corrections at each of the Sol and Astra stages without an exact match. Their original assembly remains active; these outcomes add **zero accepted bytes**.
+- `A144` retains Astra correction nine at **98.40708%**, with 904-byte size and relocations exact but register-allocation differences remaining. Its best draft, recipes, objects, and full histories are preserved under `build/isolated-workers/AstraNessFunctionA144/evidence/astra/`.
+- `AA2C` retains Astra correction ten at **92.99317%**, with a 1,156-byte candidate against 1,172 target bytes and remaining code/relocation differences. Its best draft, recipes, objects, and full histories are preserved under `build/isolated-workers/AstraNessFunctionAA2C/evidence/`.
+- `9734` retains Sol correction one at **91.05825%**, with a 392-byte candidate against 412 target bytes and remaining code/relocation differences. Its best draft, recipes, objects, and full histories are preserved under `build/isolated-workers/AstraNessFunction9734/evidence/`.
+
 ## Verified reconstruction checkpoint — Ness recovery callback and Luigi observer adjustor
 
 - `CommittedDashboardPublisher` published verified committed source `10979e6a`, adding exact, source-linked Ness `fn_101_BDA0` (452 bytes) and Luigi `fn_99_10CC4` (8 bytes), with **127 DOL/REL hashes passing**. `BDA0` matched after one Sol correction with seven exact relocations; `10CC4` matched its initial Sol candidate.
