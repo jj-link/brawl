@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Ness recovery processing and three Luigi functions
+
+- `CommittedDashboardPublisher` published verified committed source `a6238c7e`, adding exact, source-linked Ness `fn_101_B68C` (664 bytes) and Luigi `fn_99_10944`, `fn_99_10CDC`, and `fn_99_10CFC` (8 bytes each), with **127 DOL/REL hashes passing**. `B68C` matched after three Sol corrections; the Luigi functions matched their initial GLM or Sol candidates.
+- Cumulative accepted-source progress is **2.173864%** — **344,200 / 15,833,556 code bytes**, with **15,489,356 bytes remaining** and **1,040 accepted source units**. This checkpoint adds **688 code bytes / 4 units**, retaining all 1,036 previously accepted units.
+- `B68C` also owns 8 exact read-only data bytes, excluded from code-byte progress. The linker reported `FORCEACTIVE @1853 is not global`; registered code/data comparison and all final binary hashes passed.
+- Published report SHA-256: `8f43b57753a29ca25aef61fca64f562c882f5ab4a943dd7456bbbf566e381276`. The dedicated publisher confirmed agreement across dashboard data endpoints, all module/unit data, and persisted history for this committed checkpoint.
+
+## Preserved set-aside — Ness kinetic-energy constructor
+
+- `fn_101_A5FC` (`0xA5FC..0xA9CC`, 976 target bytes) remains unmatched after Sol and Astra each completed one initial candidate plus ten corrections. The best candidate comparison remains **97.659836%**; original assembly remains active, and this outcome adds **zero accepted bytes**.
+- The best draft, compiler recipes, both complete attempt histories, objects, and remaining differences are preserved under `build/isolated-workers/AstraNessFunctionA5FC/evidence/`. Its 127 passing original-fallback hashes are not reconstructed-source acceptance.
+
 ## Verified reconstruction checkpoint — Ness `fn_101_70A0`
 
 - `CommittedDashboardPublisher` published verified committed source `12715da7`, adding the exact, source-linked `fn_101_70A0` (844 bytes) with **127 DOL/REL hashes passing**. The initial Sol candidate matched all allocated code and 55 relocations without corrections.
