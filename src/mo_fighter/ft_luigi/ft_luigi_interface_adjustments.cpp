@@ -1,8 +1,8 @@
 class soModuleAccesser;
-class acAnimCmd;
+class soArticle;
 
 extern "C" void* fn_99_41E0(void*, int);
-extern "C" bool fn_99_9964(void*, soModuleAccesser*, const acAnimCmd*);
+extern "C" bool fn_99_9964(void*, soModuleAccesser*, soArticle*);
 extern "C" void* fn_99_31CC(void*, int);
 extern "C" void* fn_99_18A4(void*, int);
 
@@ -13,8 +13,8 @@ extern "C" void* fn_99_BA70(void* object, int deleting) {
 }
 
 extern "C" bool fn_99_BA78(void* object, soModuleAccesser* accesser,
-                          const acAnimCmd* command) {
-    return fn_99_9964(static_cast<unsigned char*>(object) - 4, accesser, command);
+                          soArticle* article) {
+    return fn_99_9964(static_cast<unsigned char*>(object) - 4, accesser, article);
 }
 
 extern "C" void* fn_99_BA80(void* object, int deleting) {
