@@ -1411,6 +1411,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_function_5f7c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_extended_module_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_large_aggregate_destructor.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_function_23320.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_article_aggregate_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/wn_weapon_accessors.cpp", mw_version="GC/3.0a5", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_deleting_destructor.cpp", cflags=cflags_fighter),
