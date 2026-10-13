@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede AAF8 — exact float-parameter accessor
+
+- Sol initial candidate: **88 exact code bytes**, no owned data, three exact relocations and zero compiler/comparison corrections. One review-only comment revision corrected the original RTTI template parameter from `24999` to `23999`; the executable body and compiled object remained identical.
+- The final fixed `7efa226b`-plus-only-AAF8 closure contains no unpublished root overlay. Actual compiled-source selection and all 127 expected/actual native hashes pass; its committed cohort gains exactly 88 bytes and one unit. Installed and verified source SHA-256: `a7f97d39d8f33a5686dbfe85a4df6ba96a08b78604fb806b7ee9091e79113b0a`.
+- Evidence: `build/isolated-workers/SolFreshDededeAAF8/evidence/committed-only-7efa226b/`, with prior root-input and original `1124b270` proofs retained separately. The owner's additive installation and narrow current-index packet preserve unrelated inputs; the corrected source identity was independently rechecked. Measured private cleanup removed 632,757,599 bytes initially, 632,886,022 during provenance review, and 451,630,194 in the final committed-only closure; all measured evidence, source/header/config/Git trees and shared originals remain retained.
+
 ## Committed-source checkpoint 7efa226b
 
 - Cumulative accepted-source progress from committed snapshot `7efa226b`, published by `CommittedPublisher7efa`, is **2.956051%**: **468,048 / 15,833,556 accepted code bytes**, **15,365,508 code bytes remaining**, and **1,339 accepted source units**.
