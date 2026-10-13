@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede AAC4 — exact const aggregate accessor
+
+- Sol initial candidate plus **one correction** (variants `00` and `01` retained): **52 exact code bytes**, no owned data and one exact relocation to `fn_117_A998`.
+- Preserves the original dangling reference to a temporary aggregate. This behavior is independently evidenced by the pre-existing Brawl header's explicit warning and the original function returning its stack-result address after restoring the frame; it is not presented as safe lifetime behavior or a newly invented fix.
+- The owner verified actual installed source/flags and eight dependency headers in a new isolated `38b78465`-plus-unit closure: exact allocated sections/relocations, compiled source selected without fallback and all 127 expected/actual hashes matching. Source SHA-256: `03805d33211be17ce60b601c6e86a9413d8bd7ae65ae7b3698eda908d906f8ad`. Earlier `f15614d3`/`0faaa255` closures remain separately retained.
+- Evidence: `build/isolated-workers/SolFreshDededeAAC4/evidence/materialization/` and `evidence/abi-review/`. Exact additive root preservation retains peer source identities. Initial cleanup removed 476,368,147 private bytes; materialization verification cleanup removed another measured 476,378,478 bytes, preserving source/header/config/Git, toolchains, all variants/objects and original inputs.
+
 ## Committed-source checkpoint 03a08036
 
 - Cumulative accepted-source progress from committed snapshot `03a08036`, published by `CommittedPublisher03a0`, is **2.954864%**: **467,860 / 15,833,556 accepted code bytes**, **15,365,696 code bytes remaining**, and **1,336 accepted source units**. Delta from `69c5610e`: **+360 code bytes, +3 units, +0.002274 percentage points**.
