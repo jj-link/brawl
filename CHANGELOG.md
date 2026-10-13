@@ -13,7 +13,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 - Cumulative accepted-source progress from committed snapshot `03a08036`, published by `CommittedPublisher03a0`, is **2.954864%**: **467,860 / 15,833,556 accepted code bytes**, **15,365,696 code bytes remaining**, and **1,336 accepted source units**. Delta from `69c5610e`: **+360 code bytes, +3 units, +0.002274 percentage points**.
 - Verified all 1,336 raw committed compiler-source identities, actual compilations, source-object linkage and exact code comparisons, plus all 127 expected/actual native binary hashes. Prior 1,333 units retain their sizes/object identities; the existing 194 inherited data-match qualifications remain separately recorded. Published report SHA-256: `d0167429e1d5f7149f28831775deacb792111eafc0247dc719e0acdf61b63b7d`.
-- Source tree: `1d4d22e4bfc90ada4ada3fd1d1837d0ee3ed4e3f`. Evidence: `build/isolated-workers/CommittedPublisher03a0/evidence/03a08036/`. Report publication is verified; the independent endpoint/history seal follows documentation alignment.
+- Source tree: `1d4d22e4bfc90ada4ada3fd1d1837d0ee3ed4e3f`. Evidence: `build/isolated-workers/CommittedPublisher03a0/evidence/03a08036/`.
+- Endpoint/history seal completed: headline, all 127 modules and 5,605 unit-map rows agree; unit revision `ec1f51b9f8f8a220`; persisted and served latest history point `2026-10-13T07:52:46.522Z` records 467,860 accepted bytes. Prior history and 337 protected root dashboard/tool/original identities are unchanged. No discrepancies; cleanup removed zero bytes and verified retention of 2,852 native-artifact identities.
 
 ## Dedede C150 — exact fixed-array emptiness predicate
 
