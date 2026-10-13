@@ -95,10 +95,10 @@ void gfTaskScheduler::process(bool p1) {
     u32 count;
     gfTask* r26;
     gfTask* curr;
-    gfTask* r24;
     UnkTaskRequest* r31;
     gfTask** r30;
     s32 i;
+    s32 j;
     updateStatusPre();
     unk0_1 = 1;
     // loop over ProcessTypes?
@@ -108,11 +108,11 @@ void gfTaskScheduler::process(bool p1) {
         if (!unk8 || !(1 << i)) {
             r30 = unk14;
             // loop over task priority levels?
-            for (s32 j = 0; j < unk14Size; j++, r30++) {
+            for (j = 0; j < unk14Size; j++, r30++) {
                 curr = *r30;
                 unk6 = j;
                 while (curr) {
-                    r24 = curr->m_prev;
+                    gfTask* r24 = curr->m_prev;
                     gfTask* next = curr->m_next;
                     unkC = curr;
                     unk10 = next;
