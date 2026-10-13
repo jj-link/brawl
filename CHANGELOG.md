@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 13e80b2b
+
+- Cumulative accepted-source progress from committed snapshot `13e80b2b`, published by `CommittedPublisher13e`, is **2.958906%**: **468,500 / 15,833,556 accepted code bytes**, **15,365,056 code bytes remaining**, and **1,345 accepted source units**.
+- Verification: all accepted units have literal raw Git/compiler-input equality, actual compilation, source-object linkage and exact code; all 127 native expected/actual hashes match. AB5C, ABB8, C308 and C3A8 add **356 code bytes**, four units and **0.002248 percentage points** over `a43d3d3a`.
+- All 1,341 prior unit sizes and source/target object identities are retained. Only the two intentional C308 caller migrations change prior raw source identities; their actual LF compiler inputs equal published Git bytes and reproduce the prior whole objects. They earn no additional credit. The 194 inherited data-match limitations and earlier lifetime/newline/recovery qualifications remain explicit.
+- Source tree: `3c50c2317f176d3f17b4755f694a814d2aa637b1`; report SHA-256: `71de27ea768e94bab7b677ee25f2ce0ee2446f72e9344b48def9844619965967`. Evidence: `build/isolated-workers/CommittedPublisher13e/evidence/13e80b2b/`. C408 and subsequent publications are outside this fixed snapshot.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede C408 — exact embedded-base deleting destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Destroys the embedded base at `+4` with the negative selector, preserves null receivers, and frees only for a positive signed-short outer selector.
