@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 15510 — initial-candidate exact null-mediator dispatch
+
+- Fresh Sol initial candidate: 172 exact code bytes, 23 matching relocation tuples, no owned data and zero corrections. Final forced source compilation and relinking pass all 127 native hashes on committed `ad71738f` plus this unit. An earlier fallback-only reconciliation replay is preserved separately and receives no source credit.
+- The same owner materialized the verified source and only its registration/split, preserving 29 unrelated dirty paths and parent-owned documentation/Git changes. Source SHA-256: `cc17b9c7693ecbb437a060c3744509acea5cf5a07d1704ccc09649c73509c66f`. The original singleton/vtables, destructor callback and virtual dispatch are retained; the native closure remains distinct from the later publication index.
+- Evidence: `build/isolated-workers/SolFreshDedede15510/evidence/`. Cleanup removed 442,689,780 private bytes while retaining measured artifacts and original-input identities. A text-edit newline side effect was reported and repaired to exact preimage plus owned insertion. The relink's `lbl_117_rodata_130` FORCEACTIVE warning also occurs in the independently verified committed `1e754230` baseline.
+
 ## Dedede A5B4 — initial-candidate exact velocity expansion
 
 - Fresh Sol initial candidate: 96 exact code bytes, two matching relocations to the existing zero constant, no owned data and zero corrections. The final map attributes `fn_117_A5B4` at `0xA5B4` to the compiled source object, and all 127 native hashes pass on committed `04965209` plus this unit.
