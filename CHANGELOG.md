@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 C970 reconstructed source
+
+- Accepted `fn_117_C970` (`.text 0xC970..0xC9D0`), **96 code bytes**, from `SolFreshDededeC970`: one initial candidate, zero corrections. The stop-energy pool destroys its holder at `+8` with flag `-1`, deletes the outer allocation only for a positive signed flag, and returns its original receiver. No header, caller or data changes.
+- Verification: exact registered code and two REL24 relocations, no allocated data, actual MAP/RSP compiled-source selection, and **127/127 native hashes** on fixed `0f8333c6` plus C970. That private run measures **469,388 / 15,833,556 bytes**, **15,364,168 remaining**, **1,355 accepted units**, **2.964514%**; these are not later-main cumulative totals.
+- Current-main reconciliation preserves the verified source, full executed compiler argv, tool identities and matching registration in both byte domains. Separate index/working packets preserve CBDC, CD74, CDD0, CAA4 and CE30; the owner-tested temporary raw attribute guard was restored immediately. All three actual working postimage hashes match the owner's proof, including source SHA-256 `d2b92d9e4499fb142b8a557ca3ee445b823d5c844c13fccba3c3f78650c8e4ad`.
+- Working publication preserves the inherited two LF-only configuration rows, without claiming that CA48's earlier 32 recovered terminators still exist or bundling an unrelated restoration. No newer-main native run is claimed.
+- Evidence: `build/isolated-workers/SolFreshDededeC970/evidence/` and its `publication-reconciliation-9ee42846-landed-CBDC/` directory. All 133 original acceptance evidence files and measured attempts remain unchanged; reconciliation removed one disposable **1,320,126-byte** file. Gameplay was not exercised.
+
 ## Module 117 CBDC reconstructed source
 
 - Accepted `fn_117_CBDC` (`.text 0xCBDC..0xCC3C`), **96 code bytes**, from `SolFreshDededeCBDC`: one initial candidate, zero corrections. The original nested lifetime guards, nondeleting base operation, positive signed deletion flag and original receiver return are preserved. No header, caller or data changes.
