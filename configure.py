@@ -774,6 +774,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_10b18.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_10de4.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_10f00.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_11068.cpp",
