@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A7C8 — exact integer-work count getter
+
+- GLM initial candidate: **8 exact code bytes**, no allocated data or relocations, and zero corrections. Reuses the existing `soGeneralWorkSimple::getIntWorkSize()` contract; header layout, constructor stores and the original interface-vtable reference establish the unsigned count at receiver `+0x10`.
+- Source SHA-256: `c0e49a641e987005569092b5b57e86ede4966cdc8edf25f31bea35537953b9ca`. Registered private verification on `a43d3d3a` plus this unit passes all 127 native hashes and establishes actual source-object linkage. Read-only installed-input compilation reproduces object `d91493b60bbba1b24b44bd0151604bf6bfaacc63986ce9ecfa7c22b105dbe3f2` with matching compiler arguments, tools and all 12 consumed headers.
+- Evidence: `build/isolated-workers/GlmFreshDededeA7C8/evidence/root-turn-packet-a7c8.json` and `root-turn/root-verify/`. The earlier nine-header count omitted three extensionless headers; the raw depfile always retained them. A command-tokenization detour emitted nonallocated metadata before the exact recipe was restored; both objects remain recorded, with no source correction counted.
+- Own source/configuration/split changes preserve unrelated root bytes and the executable configuration mode. Temporary edit-tool newline normalization was repaired against captured preimages. Required source/object/input and native verification evidence remains preserved; gameplay was not exercised.
+
 ## Committed-source checkpoint 8e1edb96
 
 - Cumulative accepted-source progress from committed snapshot `8e1edb96`, published by `CommittedPublisher8e1`, is **2.965727%**: **469,580 / 15,833,556 accepted code bytes**, **15,363,976 code bytes remaining**, and **1,357 accepted source units**.
