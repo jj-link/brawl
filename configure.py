@@ -820,6 +820,8 @@ config.libs = [
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_16d18.cpp",
                    extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_16e98.cpp",
+                   extra_cflags=["-O2,s", "-inline on,noauto", "-schedule off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_17aac.cpp",
                    cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_17d58.cpp",
