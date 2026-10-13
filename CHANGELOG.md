@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C58C — exact opaque base lifetime wrapper
+
+- Sol initial candidate: **92 exact code bytes**, no owned data, two exact relocations and zero corrections. Calls A614 on the same nonnull receiver with the nondeleting selector, frees only for a positive signed-short selector, and returns the original pointer without asserting a concrete hierarchy or extent.
+- Source SHA-256: `740b382b5153870adca7db95bbcdf967b7a459ad14a3760eea959e8f622336ac`. Actual installed and privately observed complete compiler commands, source-only dependencies and tool identities agree. Both the initial `13e80b2b`-plus-unit and reconciled raw `e9259bda`-plus-unit closures pass all 127 native hashes; final source selection is unique and the target fallback is absent.
+- Evidence: `build/isolated-workers/SolFreshDededeC58C/evidence/materialization-bb42bf83/`, including `native-e9259bda/` and `current-index-cf8a3a06/`. The narrow packet follows C528 and preserves unrelated raw bytes/EOL/modes. Initial cleanup removed 486,665,336 private bytes; materialization verification removed another measured 486,653,446 bytes, retaining 217 evidence identities, four tracked build drafts, source/header/config/Git and all 127 original game inputs. Private closure totals are not a current-main dashboard claim.
+
 ## Dedede C528 — exact opaque lifetime wrapper
 
 - **100 exact code bytes**, no owned data and two exact relocations. Sol used one initial candidate, zero compiler/comparison corrections and one retained review revision: an ordinary opaque helper replaces the unproven empty-class representation. The observed nondeleting embedded-pool teardown, null guards, signed-short deletion condition and original-pointer return remain explicit.
