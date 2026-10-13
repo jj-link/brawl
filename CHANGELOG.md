@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CC3C reconstructed source
+
+- Accepted `fn_117_CC3C` (`.text 0xCC3C..0xCC9C`), **96 code bytes**, from `SolFreshDededeCC3C`: one initial candidate, zero corrections. Original wind-energy holder RTTI/caller evidence establishes the embedded receiver at `+4`, negative inner deletion flag and positive signed outer deletion flag. Receiver-return ABI, callers, headers and data ownership are unchanged.
+- Verification: exact registered allocated code and both REL24 relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on fixed `8a953b19` plus CC3C. That run measures **469,996 / 15,833,556 bytes**, **15,363,560 remaining**, **1,362 accepted units**, **2.968354%**; it is not a later-main cumulative checkpoint.
+- The same owner reconciled separate index/working insertion-only packets after CBDC, retaining later C970/CD74 and other changes. Its actual real-attributes Git application proofs preserve raw postimages and unowned index entries; the temporary working-application attribute guard was immediately restored. Applied source SHA-256 matches `52183c0f6aa2d44d7688da50c01e80661d9efe6d3b22d47092baf5b49652b833`.
+- Evidence: `build/isolated-workers/SolFreshDededeCC3C/evidence/current-main-verification/` and `evidence/publication-a028ec47-1791898963493830600/` beneath that owner workspace. Prior native inputs, objects, attempts and superseded packets remain retained; earlier disposable cleanup removed **904,605,111 bytes**, and reconciliation created no native outputs. The inherited working-EOL regression remains qualified. Gameplay was not exercised.
+
 ## Committed-source checkpoint 51b45137
 
 - Cumulative accepted-source progress from committed snapshot `51b45137`, published by `CommittedPublisher51b`, is **2.971487%**: **470,492 / 15,833,556 accepted code bytes**, **15,363,064 code bytes remaining**, and **1,367 accepted source units**.
