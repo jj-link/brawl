@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 151D8 — initial-candidate exact input-null singleton
+
+- Fresh Sol initial candidate: 132 exact code bytes, 17 matching relocation tuples, no owned data and zero corrections. Both actual linker response files select the compiled source object, and all 127 native hashes pass on committed `e0508add` plus this unit. Existing singleton storage, vtables and destructor registration remain in their original owners.
+- The same owner materialized the verified source and only its own registration/split against `b7d13a9a`, preserving adjacent `1538C`/`A594`, 28 unrelated dirty files and complete configuration preimages outside the insertions. Source SHA-256: `448d3ab40cea80f69915dd8bb0270ac1eb4d4173d62ce39c1dadd16945e67db3`; the verified native closure is not relabeled as a newer cumulative build.
+- Evidence: `build/isolated-workers/SolFreshDedede151D8/evidence/`. Cleanup removed 442,780,382 private bytes; 114 retained evidence files and 127 root original inputs remained unchanged. `actual-mwcc-151d8-compiler-recipe.txt` records the native GC/3.0a5.2 invocation; earlier recipe JSON describes analysis-facing Clang commands. An insertion-tool EOL side effect was reported and repaired, with final byte-exact additivity verified.
+
 ## Verified reconstruction checkpoint — committed 1e754230
 
 - `CommittedPublisher1e754` published committed source `1e754230`: **2.948624%** — **466,872 / 15,833,556 accepted code bytes**, **15,366,684 bytes remaining**, and **1,326 accepted source units**. The delta from sealed `f6eb1b04` is **876 code bytes / 8 units**: `14C3C`, `14CC8`, `14DC4`, `20B30`, `14A98`, `14E34`, `14EBC` and `A594`. Later source commits are outside this fixed checkpoint.
