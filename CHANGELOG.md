@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C778 — exact controller-energy holder destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Keeps the receiver opaque, tears down C718 at `+4` with a negative selector, and deletes the original allocation only for a positive signed-short outer selector.
+- Source SHA-256: `303a8d2306bea5321beb46c2924203226b0c46facb4b5f3a4ef7698564b1ef46`. Captured installed-source compilation uses the reviewed complete native command/tools and sole source dependency, reproducing whole object `34ee12cc805cac1c39231de08273fe9bd0ffe2acc2ad5bf3d8526910f911332c`. Both named `e9259bda`-plus-unit and `703408c4`-plus-unit closures pass all 127 native hashes and select the source in actual final MAP/RSP; no new whole-root hash verification is claimed.
+- Evidence: `build/isolated-workers/SolFreshDededeC778/evidence/root-turn-7ab5f64b/`. The refreshed packet follows indexed C718 and preserves all other raw bytes/EOL/modes. Initial private cleanup removed 953,766,954 bytes; final cleanup removed another 332,296,546 bytes while retaining source/header/configuration and proof inputs, measured attempts and unchanged root originals.
+
 ## Dedede C718 — exact guarded base lifetime wrapper
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Keeps the receiver opaque, preserves both observed guards and the non-deleting A614 call, and releases the original allocation only for a positive signed-short outer selector.
