@@ -10,7 +10,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## Verified reconstruction checkpoint — committed 1e754230
 
-- `CommittedPublisher1e754` published committed source `1e754230`: **2.948624%** — **466,872 / 15,833,556 accepted code bytes**, **15,366,684 bytes remaining**, and **1,326 accepted source units**. The delta from sealed `f6eb1b04` is **876 code bytes / 8 units**: `14C3C`, `14CC8`, `14DC4`, `20B30`, `14A98`, `14E34`, `14EBC` and `A594`. Later source commits are outside this fixed checkpoint.
+- Cumulative accepted-source progress from committed snapshot `1e754230`, published by `CommittedPublisher1e754`, is **2.948624%** — **466,872 / 15,833,556 accepted code bytes**, **15,366,684 bytes remaining**, and **1,326 accepted source units**. The delta from sealed `f6eb1b04` is **876 code bytes / 8 units**: `14C3C`, `14CC8`, `14DC4`, `20B30`, `14A98`, `14E34`, `14EBC` and `A594`. Later source commits are outside this fixed checkpoint.
 - All 1,326 accepted units have literal raw-Git compiler-source equality, observed compilation, source-link evidence and exact code; all 127 native DOL/REL hashes match. The parent independently checked every provenance/hash row and the published report SHA-256: `ae11e4803bdbb12b68ae08be88db69bbfddcb9e1ec15b02feccb31d1b1a83bb7`.
 - Evidence: `build/isolated-workers/CommittedPublisher1e754/evidence/1e754230/`; source tree `8001f1e1c967928d1a5225694695baffc9b58b27`. Archive EOL conversions and generated split/symbol rewrites are recorded separately from raw committed inputs. Inherited data-match qualifications remain; exhausted drafts contribute zero.
 - The existing dashboard input is published. Endpoint headline/module/unit/history sealing follows this documentation alignment.
