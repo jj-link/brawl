@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede CDD0 — exact ground-movement energy holder destructor
+
+- Sol initial candidate: **96 exact code bytes**, no allocated data, two exact relocations and zero corrections. Constructor/RTTI/caller evidence establishes the embedded ground-movement energy at `+4`; CD74 receives a negative selector, and only a positive signed-short outer selector deletes the opaque original holder.
+- Verification on fixed `deb034cf` plus this unit passes all 127 native hashes. Registered comparison and actual final MAP/RSP establish exact source code and relocations without the assigned original fallback. The compiler consumes only this source; its verified committed-byte SHA-256 is `5d4e973e94d978bd9a06a4148f1cda0b9abe606a9f15b825177f61e3f22dcb12`.
+- Evidence: `build/isolated-workers/SolFreshDededeCDD0/evidence/`, including `abi-evidence/reasoning.json`, `registered-compare/`, `final-map-127-hashes.json` and separate fixed-committed/current-working packets. Private measured cleanup removed 477,021,719 bytes across 13,608 files; 144 retained evidence files and all 127 root originals remain unchanged.
+- Publication is an own-only committed patch, not a whole-current-main native verification. CB04 reconciliation has identified default Git working-tree newline conversion during patch application; preservation of pre-existing working-tree line endings is being reconciled separately. Gameplay was not exercised.
+
 ## Dedede C9D0 — exact nested stop-pool lifetime operation
 
 - Sol initial candidate: **120 exact code bytes**, no allocated data, three exact relocations and zero corrections. Constructor/RTTI/caller evidence establishes the stop pool at receiver `+0xEC`; its negative selector preserves embedded storage, followed by guarded non-deleting C838 teardown and positive-selector-only outer deletion.
