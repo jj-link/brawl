@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C7D8 — exact controller pool-sub destructor
+
+- Sol initial candidate: **96 exact code bytes**, no allocated data, two exact relocations and zero corrections. Constructor, RTTI and caller evidence establish the embedded controller holder at `+8`; its negative inner selector avoids freeing embedded storage. Only a positive signed-short outer selector deletes the opaque receiver.
+- Source SHA-256: `a0a6725e45ff8a4f1d2426b8a915eab523514934b7ef1e96779d9ed0e4d7474b`. Captured installed source/full resolved arguments/tools and source-only dependency reproduce whole object `00a4dffa76f19d052ccf120cb7b9208cc66e9a39256540011be39ebad7748fd8`. Both `703408c4`-plus-unit and fresh `68d6b600`-plus-unit native closures pass all 127 hashes and select the source exactly once without its assigned fallback.
+- Evidence: `build/isolated-workers/SolFreshDededeC7D8/evidence/installed-proof-applicability.json` and `installed-own-only-index-c5ec555e-after-c778.patch`. Other raw bytes/EOL/modes and pending peers are preserved; temporary edit normalization was repaired from true preimages before releasing the writer. Measured private cleanup removed 452,193,016 bytes initially and 452,216,763 on re-verification, retaining measured attempts, source/header/config/Git and native/object/input proofs; shared originals remain unchanged.
+
 ## Committed-source checkpoint 6b5d4974
 
 - Cumulative accepted-source progress from committed snapshot `6b5d4974`, published by `CommittedPublisher6b5`, is **2.962594%**: **469,084 / 15,833,556 accepted code bytes**, **15,364,472 code bytes remaining**, and **1,352 accepted source units**.
