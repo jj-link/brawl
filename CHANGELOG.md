@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 1525C — initial-candidate exact deleting destructor
+
+- Fresh Sol initial candidate: 64 exact code bytes, one matching `__dl__FPv` relocation, no owned data and zero corrections. Actual source-object linkage and all 127 native hashes pass on committed `ff3de198` plus this unit; all recorded expected/actual output hashes were checked.
+- The owner materialized only the source and its additive registration/split, preserving `A59C` and unrelated bytes. Canonical LF source SHA-256: `129455f08274239d803c34672864e6b7b13558931c0d66d2bea4a49b67e74a86`; native CRLF source SHA-256: `edb578cb24fc1cb6351406b3da2b9f8d17eac70a5a4918970b7593e578e69938`. The exact materialized bytes were privately recompiled and produced the same previously linked object; the older full-native closure remains explicitly separate.
+- Evidence: `build/isolated-workers/SolFreshDedede1525C/evidence/`. Initial cleanup removed 476,368,814 private bytes; integration cleanup removed another 805 disposable bytes and preserved the recompiled object. Git's unrelated newline conversion during materialization was repaired, with complete preimage recovery verified for both configuration insertions.
+
 ## Dedede A59C — exact GLM handler accessor with reviewed pointer contract
 
 - GLM initial candidate matched eight code bytes with no relocations or owned data; zero compile/compare corrections. One separately recorded review revision replaced the unexplained integer contract with a pointer contract, supported by the original accessor table, constructor slot addresses and existing declarations. Both forms produced the same compiled object; both source variants remain preserved.
