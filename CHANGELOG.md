@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CE30 reconstructed source
+
+- Accepted `fn_117_CE30` (`.text 0xCE30..0xCE90`), **96 code bytes**, from `SolFreshDededeCE30`: one initial candidate, zero corrections. The wrapper destroys the embedded object at `+8` with flag `-1`, deletes the enclosing allocation only for a positive signed flag, and returns the original pointer. No header, caller or data changes.
+- Verification: exact registered code and two REL24 relocations, no allocated data, actual MAP/RSP source selection, and **127/127 native hashes** on the owner's fixed `deb034cf` plus own-source run and separately retained raw-working closure. The fixed run measures **469,988 / 15,833,556 bytes**, **15,363,568 remaining**, **1,361 accepted units**, **2.968304%**. These are fixed owner-run measurements, not current-main cumulative progress.
+- The later raw-working closure captured at `e83c7a11` preserves a concurrent CDD0 split while retaining original CDD0 linkage; it is not a literal whole-`e83c7a11` verification. Publication-only reconciliation preserved source/compiler-recipe identity and all later/unowned bytes. The owner's independently exercised index and real-attributes working recipes were applied separately; temporary Git attribute overrides were restored.
+- Applied source SHA-256: `50a76979b99dc91675df3b0acb1becdc6f043b657884e8b4d200043de018f08e`. Evidence: `build/isolated-workers/SolFreshDededeCE30/evidence/`, `reconciled-deb034cf/evidence/`, and `evidence/publication-445b8cc4-1791896515244925500/` beneath that owner workspace. Measured attempts, native inputs, recipes and proofs remain retained; initial disposable cleanup removed **954,318,433 bytes**, and reconciliation created no new native outputs. Gameplay was not exercised.
+
 ## Module 117 CD74 reconstructed source
 
 - Accepted `fn_117_CD74` (`.text 0xCD74..0xCDD0`), **92 code bytes**, from `SolFreshDededeCD74`: one initial candidate, zero corrections. Its nondeleting base operation preserves the receiver; only a positive signed destructor flag deletes the allocation. Existing callers and ABI remain unchanged; no header or data changes.
