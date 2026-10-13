@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 51b45137
+
+- Cumulative accepted-source progress from committed snapshot `51b45137`, published by `CommittedPublisher51b`, is **2.971487%**: **470,492 / 15,833,556 accepted code bytes**, **15,363,064 code bytes remaining**, and **1,367 accepted source units**.
+- Verification: all 1,367 accepted units have literal raw Git/compiler-input equality, observed compilation, exact code and actual final MAP/RSP source linkage; all **127 native expected/actual hashes** match. C9D0, CDD0, CB04, CAA4 and CD74 add **500 code bytes** and five units over `7cb27eb5`.
+- All 1,362 prior unit sizes, raw sources and source/target object identities remain unchanged. All **98,489 consumed dependency occurrences** equal their literal Git inputs across **1,896 canonical paths**. All five new objects have exact allocated code and relocations, with no allocated data.
+- The 194 inherited data qualifications and AAC4/A654/C308/A730/A7C8 distinctions remain, including the missing historical A730/A7C8 target files and their recorded identities matching fresh targets. No aggregate all-data-exact, browser or gameplay claim is made.
+- Source tree: `2918368762f1689abe0a73ec1ffb116aad09c62a`; report SHA-256: `d2789ca441575995e1dbd157867ac909b60221483e73ee88224bdeb7a73d6023`. Evidence: `build/isolated-workers/CommittedPublisher51b/evidence/51b45137/`. Later source commits and working-tree changes are outside this fixed snapshot. All 3,160 retained native artifacts were rechecked unchanged; cleanup removed zero bytes.
+
 ## Module 117 CE90 reconstructed source
 
 - Accepted `fn_117_CE90` (`.text 0xCE90..0xCF08`), **120 code bytes**, from `SolFreshDededeCE90`: one initial candidate, zero corrections. The embedded object at `+0x1C8` is destroyed with flag `-1`, followed by the nondeleting base operation and positive-flag outer deletion. Existing receiver-return ABI, callers, headers and data ownership are unchanged.
