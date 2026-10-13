@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 8e1edb96
+
+- Cumulative accepted-source progress from committed snapshot `8e1edb96`, published by `CommittedPublisher8e1`, is **2.965727%**: **469,580 / 15,833,556 accepted code bytes**, **15,363,976 code bytes remaining**, and **1,357 accepted source units**.
+- Verification: all 1,357 accepted units have literal raw Git/compiler-input equality, observed compilation, exact code and actual final source-object MAP/RSP linkage; all 127 native expected/actual hashes match. C648, C6A8, C718, C778 and C7D8 add **496 code bytes** and five units over `6b5d4974`, each from one initial candidate and zero compiler-feedback corrections.
+- All 1,352 prior unit sizes, raw sources and source/target object identities remain unchanged. All 98,467 consumed dependency occurrences are classified and equal their literal Git bytes. The five new objects have exact allocated code and relocations with no allocated data.
+- The 194 inherited data qualifications and AAC4/A654/C308 limitations remain. A730's missing historical target object and obsolete packet remain explicitly qualified; its retained target-identity receipt agrees with the fresh target, and the truncated-recipe detour remains excluded. This is not an aggregate all-data-exact claim.
+- Source tree: `c028df2c365b3f86a4d8b04145ca2439438514fe`; report SHA-256: `64a2e2734b8bc6b48a142a11e13cdcc695d71981634a15be0fff5912c6348db7`. Evidence: `build/isolated-workers/CommittedPublisher8e1/evidence/8e1edb96/`. Later C910/C838/C8B0 commits are outside this fixed snapshot. Required inputs, native artifacts and owner evidence are retained; cleanup removed zero bytes.
+
 ## Dedede C8B0 — exact stop-energy base lifetime wrapper
 
 - Sol initial candidate: **96 exact code bytes**, no allocated data, two exact relocations and zero corrections. Preserves guarded non-deleting A614 teardown and deletes the opaque original receiver only for a positive signed-short selector.
