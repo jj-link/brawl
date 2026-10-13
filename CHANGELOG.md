@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 D840 reconstructed source
+
+- Accepted `fn_117_D840` (`.text 0xD840..0xD848`), **8 code bytes**, from `GlmFreshDededeD840`: one initial candidate, zero corrections. Original vtable/RTTI evidence identifies the mediator's fixed eight-energy count.
+- Exact allocated code, no data or relocations; the retained source-selection response file and matching link-map replay identify the compiled source. All **127 expected/actual native hashes** match on the owner's captured `445b8cc4` baseline. That report measures **470,408 / 15,833,556 bytes**, **15,363,148 remaining**, **1,367 units**, **2.970956%**, not current-main cumulative progress.
+- The owner’s three-path delivery applied with native binary working patches and a separate index patch, with line offsets only. Source and target objects are retained and their recorded hashes were independently confirmed. Evidence: `build/isolated-workers/GlmFreshDededeD840/evidence/`. Cleanup removed **452,268,998 bytes**. Gameplay was not exercised.
+
 ## Module 117 CCFC reconstructed source
 
 - Accepted `fn_117_CCFC` (`.text 0xCCFC..0xCD74`), **120 code bytes**, from `SolFreshDededeCCFC`: one initial candidate, zero corrections. Original constructor, caller and RTTI evidence establish the wind-pool member at `+0x17C`; its negative-flag destruction precedes the guarded nondeleting base operation and positive-flag outer deletion. Receiver-return behavior, headers and data ownership are unchanged.
