@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C408 — exact embedded-base deleting destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Destroys the embedded base at `+4` with the negative selector, preserves null receivers, and frees only for a positive signed-short outer selector.
+- Source SHA-256: `cf5a791b272caec6f06e78c8d54abd899e930af6b7046086c4701739d6e10388`. Installed source, complete resolved compiler arguments, all inherited settings, tools and the sole source dependency agree with the retained measured native inputs; no headers or PCH are consumed. Actual source linkage and all 127 native hashes remain scoped to `61388413` plus this unit.
+- Evidence: `build/isolated-workers/SolFreshDededeC408/evidence/materialization/complete-settings-tool-dependency-applicability.json` and adjacent preservation/current-index receipts. The packet follows indexed C3A8, preserves unrelated raw bytes/modes, and transfers the existing verified inputs without claiming a new root compile or aggregate native build.
+- Measured link-safe cleanup removed 8,987,590,462 private bytes. Retained source/header/config/Git, evidence and tools remain available; shared originals were unchanged.
+
 ## Dedede C3A8 — exact base deleting destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Preserves the null receiver, calls the base destructor with the nondeleting selector, and releases storage only for a positive signed-short outer selector.
