@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CF08 reconstructed source
+
+- Accepted `fn_117_CF08` (`.text 0xCF08..0xCF64`), **92 code bytes**, from `SolFreshDededeCF08`: one initial candidate, zero corrections. The unchanged receiver is passed to its nondeleting base lifetime operation; only a positive signed outer flag releases storage. Original null/return behavior, callers, headers and data ownership are unchanged.
+- Verification: exact allocated code/alignment and both REL24 relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on literal fixed `44d84f68` plus CF08. That run measures **470,396 / 15,833,556 bytes**, **15,363,160 remaining**, **1,366 accepted units**, **2.970880%**; it is not a later-main cumulative checkpoint.
+- The same owner reconciled separate raw index/working packets after CE90. Native Git replay under real attributes preserves keeper bytes and modes with the supplied temporary working attribute guard; that guard was immediately restored after publication. Applied source SHA-256 matches `a3e2c9488126375d32a56df894b806aae09bd873c262ab9006dfe06e52e5bbf7`.
+- Evidence: `build/isolated-workers/SolFreshDededeCF08/evidence/`, including `publication-16c395a6-1791899816110647500/`. All 231 historical evidence files remained unchanged; original disposable cleanup removed **8,987,714,447 bytes**, and reconciliation created no native/game copies. The inherited historical EOL regression is not repaired or hidden. Gameplay was not exercised.
+
 ## Module 117 CC3C reconstructed source
 
 - Accepted `fn_117_CC3C` (`.text 0xCC3C..0xCC9C`), **96 code bytes**, from `SolFreshDededeCC3C`: one initial candidate, zero corrections. Original wind-energy holder RTTI/caller evidence establishes the embedded receiver at `+4`, negative inner deletion flag and positive signed outer deletion flag. Receiver-return ABI, callers, headers and data ownership are unchanged.
