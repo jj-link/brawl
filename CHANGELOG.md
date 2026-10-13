@@ -12,7 +12,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 - Cumulative accepted-source progress from committed snapshot `1124b270`, published by `CommittedPublisher1124`, is **2.951782%**: **467,372 / 15,833,556 accepted code bytes**, **15,366,184 code bytes remaining**, and **1,331 accepted source units**. Delta from `9c8a0ebf`: **+8 code bytes, +1 unit, +0.000051 percentage points**.
 - Verified every accepted unit's raw committed source identity, actual compilation, source-object linkage and exact code comparison, plus all 127 expected native binary hashes. Prior 1,330 units retain their sizes/object identities; the existing 194 inherited data-match qualifications remain recorded separately. Published report SHA-256: `365f532ef490a7f24cc90f36cf2ba779177db8039cef0507103647e98657fcbb`.
-- Source tree: `193f5451300b53d917f0b01ecb7af295ccd50100`. Evidence: `build/isolated-workers/CommittedPublisher1124/evidence/1124b270/`. Report publication and command output are verified; the independent endpoint/history seal follows this documentation alignment.
+- Source tree: `193f5451300b53d917f0b01ecb7af295ccd50100`. Evidence: `build/isolated-workers/CommittedPublisher1124/evidence/1124b270/`.
+- Endpoint/history seal completed after count wording was aligned with the existing parser: headline, all 127 modules and 5,598 unit-map entries agree; unit revision `092f7f6336ae3a3f`; persisted and served latest history point `2026-10-13T06:58:04.815Z` records 467,372 accepted bytes. Prior history and 337 protected root dashboard/tool/original-file identities are unchanged. No discrepancies; cleanup removed zero files/bytes.
 
 ## Dedede 1525C — initial-candidate exact deleting destructor
 
