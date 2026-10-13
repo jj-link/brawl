@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A5B4 — initial-candidate exact velocity expansion
+
+- Fresh Sol initial candidate: 96 exact code bytes, two matching relocations to the existing zero constant, no owned data and zero corrections. The final map attributes `fn_117_A5B4` at `0xA5B4` to the compiled source object, and all 127 native hashes pass on committed `04965209` plus this unit.
+- The owner materialized only the verified source and its registration/split, preserving 2,757 other captured file identities and all unrelated configuration bytes. Source SHA-256: `9b3e58cf8d43ffef3cd89bed2502d4b09326cd380c4187e88594b12c8cb5a64f`. One direct header differs from the verified private input only by EOL conversion; other direct headers match raw bytes. The newer publication index is distinct from the named native closure.
+- Evidence: `build/isolated-workers/SolFreshDededeA5B4/evidence/`. Cleanup removed 808,543,568 private bytes and preserved measured evidence, source/header/configuration/Git trees, tools and original-input identities. An insertion-tool newline side effect was reported and repaired; final byte-exact additivity passed. The own-only packet uses whitespace-tolerant context matching without changing added source bytes.
+
 ## Dedede 151D8 — initial-candidate exact input-null singleton
 
 - Fresh Sol initial candidate: 132 exact code bytes, 17 matching relocation tuples, no owned data and zero corrections. Both actual linker response files select the compiled source object, and all 127 native hashes pass on committed `e0508add` plus this unit. Existing singleton storage, vtables and destructor registration remain in their original owners.
