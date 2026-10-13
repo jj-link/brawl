@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A59C — exact GLM handler accessor with reviewed pointer contract
+
+- GLM initial candidate matched eight code bytes with no relocations or owned data; zero compile/compare corrections. One separately recorded review revision replaced the unexplained integer contract with a pointer contract, supported by the original accessor table, constructor slot addresses and existing declarations. Both forms produced the same compiled object; both source variants remain preserved.
+- The final revised source is actually linked, and all 127 native hashes pass on committed `0faaa255` plus this unit. Source SHA-256: `aeaa73a45d284c152f14c6b4422ccb6a30236f355856b59645e5192308e0868e`. Root materialization changed only the new source and its two additive registrations; removing each insertion restores the complete captured preimage.
+- Evidence: `build/isolated-workers/GlmFreshDededeA59C/evidence/`. The first measured cleanup removed 417,881,043 bytes. The subsequent cleanup's removed-byte count was not measured and cannot be recovered from retained logs; it is recorded as null, not estimated. Four tracked private draft files removed with the build tree were restored from the committed snapshot; retained source/configuration/Git/evidence and shared-original integrity checks are recorded.
+
 ## Verified reconstruction checkpoint — committed 9c8a0ebf
 
 - Cumulative accepted-source progress from committed snapshot `9c8a0ebf`, published by `CommittedPublisher9c8a`, is **2.951731%** — **467,364 / 15,833,556 accepted code bytes**, **15,366,192 bytes remaining**, and **1,330 accepted source units**. The delta from sealed `4653ce8e` is **172 code bytes / 1 unit**, `15510`.
