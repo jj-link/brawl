@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C468 — exact embedded-member deleting destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Destroys the embedded member at `+8` through C408 with a negative selector, preserves null receivers, and releases the enclosing allocation only for a positive signed-short selector.
+- Source SHA-256: `55325e591117fc6084a51e8bfab428797fa555fcf19c125ca35021f482005479`. Captured installed-source private recompilation reproduces the complete retained object; full flags, compiler/tool identities and the sole source dependency agree. Actual source linkage and all 127 native hashes remain scoped to the retained `de5213cb`-plus-unit closure.
+- Evidence: `build/isolated-workers/SolFreshDededeC468/evidence/materialization-a43d3d3a/` and `reconciliation-bb42bf83/`. Exact owned-insertion reversal restores root/index preimages, including mixed line endings and Git modes. Initial cleanup removed 673,599,766 private bytes; materialization removed another measured 332,197,596 bytes while retaining evidence, source/header/config/Git and shared originals. No newer aggregate-root native build is claimed.
+
 ## Committed-source checkpoint 13e80b2b
 
 - Cumulative accepted-source progress from committed snapshot `13e80b2b`, published by `CommittedPublisher13e`, is **2.958906%**: **468,500 / 15,833,556 accepted code bytes**, **15,365,056 code bytes remaining**, and **1,345 accepted source units**.
