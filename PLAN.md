@@ -117,6 +117,8 @@ The parent must not accept an unmatched stage as complete before its ten correct
 
 Setting a function aside does not discard its reconstruction or count it as complete. Retain the draft and comparison evidence for future work; keep the original assembly in the build until a reconstructed source replacement meets the acceptance criteria.
 
+When an assignment is set aside after exhausting its correction limits, the parent must commit and push its best final source attempt to the user's `main`, one separate commit per reconstruction assignment, labeled `nonmatching—attempts exhausted`. Publish the selected best attempt even if the last attempt regressed; include any source/header dependencies needed to retain that attempt. Keep the original-code build fallback active and exclude these drafts from completed-reconstruction totals. A nonmatching result is not a reason to leave the best attempt uncommitted or unpushed.
+
 ### 4. Integrate, verify, and commit
 
 1. The same reconstruction agent registers its matching reconstruction in its isolated working copy using the existing source/split/build conventions.
