@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — committed 9c8a0ebf
+
+- Cumulative accepted-source progress from committed snapshot `9c8a0ebf`, published by `CommittedPublisher9c8a`, is **2.951731%** — **467,364 / 15,833,556 accepted code bytes**, **15,366,192 bytes remaining**, and **1,330 accepted source units**. The delta from sealed `4653ce8e` is **172 code bytes / 1 unit**, `15510`.
+- All 1,330 accepted units have literal raw-Git compiler-source equality, observed compilation, source-link evidence and exact code; all 127 native DOL/REL hashes match. The parent checked every provenance/hash row and the actual published report SHA-256: `201464830d1465b3cc8426bbf8f6e929454d906b34781f8218a19df846f26cfa`. All 1,329 prior accepted units and code sizes are retained.
+- Evidence: `build/isolated-workers/CommittedPublisher9c8a/evidence/9c8a0ebf/`; source tree `5420bed5c155b001beffe7ad4e16fcd3041a2ee4`. The 194 inherited data-match qualifications, distinct input-byte domains and generated configuration rewrites remain recorded; exhausted drafts contribute zero.
+- The existing dashboard report is published; endpoint headline/revision/module/unit/history sealing follows this documentation alignment.
+
 ## Verified reconstruction checkpoint — committed 4653ce8e
 
 - Cumulative accepted-source progress from committed snapshot `4653ce8e`, published by `CommittedPublisher4653`, is **2.950645%** — **467,192 / 15,833,556 accepted code bytes**, **15,366,364 bytes remaining**, and **1,329 accepted source units**. The delta from sealed `1e754230` is **320 code bytes / 3 units**: `1538C` (92), `151D8` (132) and `A5B4` (96). Later source commits are outside this fixed checkpoint.
