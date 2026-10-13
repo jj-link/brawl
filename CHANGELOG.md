@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 14E34 — initial-candidate exact aggregate destructor
+
+- Fresh Sol initial candidate: 136 exact code bytes, seven exact relocations, no owned data and zero corrections. The actual compiled source object is linked instead of its original fallback; all 127 DOL/REL hashes pass on committed `5c82ce0f` plus this unit.
+- Root source and own registration/split additions preserve all preexisting bytes; the final index packet preserves the accepted neighboring functions. Actual compiler-input/source SHA-256: `dfedaac7f59666dd98532e717c6c16d23cd227bf67b51bd5b7f99813461ebe25`. Archive-member identities are explicitly distinguished from raw Git blobs.
+- Evidence: `build/isolated-workers/SolFreshDedede14E34/evidence/`. Cleanup removed 442,663,652 private bytes while retaining source/header/configuration/Git trees and measured records, with 127 original SHA-1 and 135 retained SHA-256 checks passing. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — Dedede paired member destructors
 
 - `RestartCommittedPublisher` published committed source `d2be34fb`, adding `147EC` and `14BB0`: 140 code bytes each, with exact registered objects, compiled-source linkage and **127 DOL/REL hashes passing**.
@@ -14,6 +20,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Retained the initial Sol candidate with zero corrections: 140 exact code bytes, seven exact relocations and no owned data. Actual native compilation and both Dedede link stages are recorded; all 127 DOL/REL hashes pass on `7f354afe` plus this unit.
 - The owner materialized only its root source/registration/split additions with strict preimage preservation, then reconciled the final own-only index packet after the neighboring commits. Source SHA-256: `a855b91c8da3d773962507dbc913923e59e9cc95331bee0c046dff4abee6a2bf`.
 - Evidence is retained in `build/isolated-workers/SolLuigiFunction8D30/evidence/14a98-*`. Renewed cleanup removed 13,095 private generated files totaling 451,584,232 bytes after archive verification, preserving all inherited evidence, source/header/configuration/Git trees and 134 original-input identity entries. Gameplay was not exercised.
+
+- The preceding `14A98` packet application emitted 25 trailing-whitespace warnings on its preserved source lines; no reconstruction source was revised.
 
 ## Dedede 20B30 — preserved exact availability query
 
