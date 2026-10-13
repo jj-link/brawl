@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C6A8 — exact nested gravity-pool lifetime operation
+
+- Sol initial candidate: **112 exact code bytes**, no owned data, three exact relocations and zero corrections. The opaque receiver tears down C648 at `+0x60` with a negative selector, calls C528 in non-deleting form, and releases the original allocation only for a positive signed-short outer selector.
+- Source SHA-256: `984a3355863dac6c826dce796c0eea9605f6e9c16a19d3bc8a45615da44200ad`. A private replay of captured installed source/full arguments/tools and its sole source dependency reproduces whole object `81076c5d8a00746abdfc027b3a36386ac8197a8487874285c60d253589b1aae9`. Final source-object linkage and all 127 native hashes remain scoped to `13e80b2b` plus this unit; no whole-root native rebuild is claimed.
+- Evidence: `build/isolated-workers/SolFreshDededeC6A8/evidence/root-materialization/`, including `packet-refresh-7ab5f64b/`. The packet follows C648 and preserves all other raw bytes/EOL/modes. Root configure CRLF count remained 3,236, correcting an earlier chat shorthand; serialization/dependency-capture recovery added no source correction. Measured private cleanup removed 8,987,619,233 bytes of generated outputs and redundant original-input copies, preserving root originals and all measured source/object/recipe and proof artifacts.
+
 ## Dedede C648 — exact gravity-pool-sub destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. RTTI/caller evidence grounds the holder at receiver `+8`; the remaining layout stays opaque. The inner negative selector preserves embedded storage; only a positive signed-short outer selector deletes the original allocation.
