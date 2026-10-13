@@ -2,11 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede EDB0 — nonmatching—attempts exhausted
+
+- Preserved the selected best source after Sol's initial candidate plus ten corrections and Astra's continuation plus ten corrections. The restart recovered the completed ledgers without resetting attempts and reproduced the best object's exact SHA-256. Published source: `src/mo_fighter/ft_dedede/ft_dedede_function_edb0.cpp`, SHA-256 `36fda6e8d8a92c990f6dd78e880faa0129cf3caa672dd9e8aaa7fbcac455cdf7`; required include paths are already committed.
+- The best object is 204 bytes versus the original 200, with differing code and relocation addends; objdiff reports 97.9%, not an exact match. Original-code fallback remains active, no registration changes are included, and this publication contributes zero accepted bytes / units. The 127 passing native hashes belong to the preserved `5f438b55` fallback baseline, not the draft.
+- Evidence is retained in `build/isolated-workers/SolLuigiFunction9964/evidence/fn_117_EDB0/`. The owner resolved the earlier input-ownership ambiguity as Windows junctions, preserved all 135 root-original identities and inherited attempt evidence, and removed only 12,611 private generated files totaling 396,083,109 bytes.
+
 ## Dedede 14BB0 — initial-candidate exact reconstruction
 
 - Fresh Sol ownership produced an exact 140-byte member destructor on the initial candidate, with zero corrections, exact code/relocation comparison, and no owned data. The registered source object is in the native link inputs and the original target object is absent.
 - All 127 independently computed DOL/REL hashes pass on `f42d876b` plus this unit. The owner reconciled its packet against index `56383719` and materialized only its source/registration/split additions in the root; removal of its inserted bytes reproduces both configuration preimages exactly. Source SHA-256: `7dd48337638f61be6d6c525d8f535941e992d3d58095acadce8c5e032732bb44`.
 - Evidence is retained in `build/isolated-workers/SolFreshDedede14BB0/evidence/`. Cleanup removed 442,645,445 private bytes while preserving measured attempts, source/header/configuration trees, toolchain copies and verification evidence. The initial setup failure affected a private original-input path, not a missing root original; an inherited Ninja rule redownloaded the configured shared `dtk.exe` before isolation was corrected. Subsequent inputs/tools were private copies. Runtime gameplay was not exercised.
+- Parent staging of the `14BB0` packet emitted two trailing-whitespace warnings on its configuration additions; no reconstruction source was revised.
 
 ## Dedede 147EC — retained matching result verified and integrated
 
