@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 6b5d4974
+
+- Cumulative accepted-source progress from committed snapshot `6b5d4974`, published by `CommittedPublisher6b5`, is **2.962594%**: **469,084 / 15,833,556 accepted code bytes**, **15,364,472 code bytes remaining**, and **1,352 accepted source units**.
+- Verification: all accepted units have literal raw Git/compiler-input equality, actual compilation, exact code and final source-object MAP/RSP linkage; all 127 native expected/actual hashes match. A730, C528, C58C and C5E8 add **296 code bytes**, four units and **0.001869 percentage points** over `703408c4`.
+- All 1,348 prior unit sizes, raw sources and source/target object identities are retained. All 98,462 consumed dependency occurrences map to literal Git bytes; corrected evidence includes absolute Windows header paths and two uniquely resolved case aliases, preserving the superseded source-only receipt. No inputs changed or successful native verification was rerun for this metadata correction.
+- New objects agree with owner evidence. All four initial candidates matched without compiler-feedback corrections; C528's separate ABI-review revision remains recorded. The 194 inherited data limitations and AAC4/A654/C308 qualifications remain. A730's missing obsolete packet and missing historical target object are explicit: its target identity receipt agrees with the freshly extracted target, not a claim that the historical object was retained; the truncated-recipe detour is excluded.
+- Source tree: `5f4d2bae0376508762a251df73fdf6abca01ca7f`; report SHA-256: `ac1f80cee21f7ffc0896daa1f38b242d41bdc1599167871ff9b1e8eaeaf94a0d`. Evidence: `build/isolated-workers/CommittedPublisher6b5/evidence/6b5d4974/`. Later C648/C6A8/C718/C778 publications are outside this fixed snapshot.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede C778 — exact controller-energy holder destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Keeps the receiver opaque, tears down C718 at `+4` with a negative selector, and deletes the original allocation only for a positive signed-short outer selector.
