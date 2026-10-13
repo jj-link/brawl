@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C4C8 — exact nested-pool deleting destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Calls C468 on the embedded receiver at `+4` with a negative selector, preserves null receivers, and frees only the original allocation for a positive signed-short selector.
+- Source SHA-256: `1535e21ddce35f57ed41ceafe5ad81cb449fc6a89ab63cb8466a187b5c836619`. Installed source and complete compiler-setting dependencies equal the reviewed inputs; there are no consumed headers. All ten tool/compiler identity pairs and 127 original-input identity pairs agree. Actual source linkage and 127 native hashes remain tied to `7efa226b` plus this unit.
+- Evidence: `build/isolated-workers/SolFreshDededeC4C8/evidence/installed-proof-applicability.json`, `installed-recipe-dependencies.json` and `publication-e9259bda-receipt.json`. The additive root/current-index packet follows C468 and preserves unrelated raw bytes, mixed line endings and modes. The rejected broad packet remains superseded evidence. Earlier measured cleanup removed 476,421,349 private bytes; source/header/config/Git, retained evidence and shared originals remain preserved. No new aggregate-root build or verification compile is claimed.
+
 ## Dedede C468 — exact embedded-member deleting destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Destroys the embedded member at `+8` through C408 with a negative selector, preserves null receivers, and releases the enclosing allocation only for a positive signed-short selector.
