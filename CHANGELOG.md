@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 14C3C — initial-candidate exact destructor
+
+- Fresh Sol initial candidate: 140 exact code bytes, seven exact relocations, no owned data and zero corrections. The actual final linker response includes the compiled source object; all 127 independently computed DOL/REL hashes pass on reconciled `d2be34fb` plus this unit.
+- The owner integrated its root source/registration/split additions with strict preimage preservation, then reconciled the own-only index packet after committed `14B24` (`5c82ce0f`). Source SHA-256: `84b2f0f4802ffa30a73a627982dd10f0445b5607cad9dcc2ed6e1ad88bc9c285`.
+- Evidence is retained in `build/isolated-workers/SolFreshDedede14C3C/evidence/`. Cleanup removed 13,084 private generated files totaling 418,398,161 bytes, retaining source/header/configuration/Git trees and measured evidence. A private build timeout was recovered without consuming corrections. No shared originals/tools were changed; gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — restarted committed publication
 
 - `RestartCommittedPublisher` published committed source `d9157d9e`, with a fresh native build passing **127 DOL/REL hashes**. All 1,313 accepted source units have matching committed/raw source identities, observed compilation records and linked source objects.
