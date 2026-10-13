@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 1538C — initial-candidate exact deleting destructor
+
+- Fresh Sol initial candidate: 92 exact code bytes, two matching relocation symbol/addend pairs, no owned data and zero corrections. Both linker response files select the compiled source object and exclude its original replacement; all 127 native DOL/REL hashes pass on committed `04965209` plus this unit. The adjacent `153E8` fallback is unchanged.
+- Actual compiler-source SHA-256: `0bb1368a1207dbe9bc7404f6b66b9a70d7044428e0efe063bbd2eee1a098a76b`. Raw Git blobs, archive EOL conversion, actual compiler inputs and the later publication packet are identified separately. Private Git HEAD remained `260109cc`; frozen actual verification inputs establish the named newer baseline.
+- Evidence: `build/isolated-workers/SolFreshDedede1538C/evidence/`. Cleanup removed 8,954,372,614 private bytes and verified 101 retained evidence files and 129 root original-input files unchanged. GNU objcopy reserialized early ELF containers during extraction; the pre-serialization initial-target container hash was not recorded, but code/relocation evidence and pristine final source/target objects remain. Verification covers object comparison, actual source linkage and native binaries.
+
 ## Dedede A594 — retained GLM initial-candidate match
 
 - Fresh continuation ownership retained GLM's exact initial draft with zero corrections: eight code bytes, no relocations or owned data. The compared compiled object is the recorded linker input, and all 127 native hashes pass on the explicitly frozen `ff8fed0a` closure plus inherited `A450`/`A488`/`A564`/`A574`/`A584` additions and this unit, not the current root index.
