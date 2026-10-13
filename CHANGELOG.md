@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C5E8 — exact gravity-energy holder destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. RTTI/construction evidence grounds the holder's embedded receiver at `+4`; its remaining layout stays opaque. C58C receives the negative selector, and only a positive signed-short outer selector releases the original allocation.
+- Source SHA-256: `0b5be95f1badba9e983064ff94906505a558eff79d2daee9ee4c97b78b2173a8`. Captured installed-source compilation reproduces the reviewed whole object with identical full compiler arguments, tools and source-only dependency. Both named `a81bd283`-plus-unit and `975f6a45`-plus-unit native closures pass all 127 hashes; actual final MAP/RSP select the source without its original fallback.
+- Evidence: `build/isolated-workers/SolFreshDededeC5E8/evidence/root-materialization/` and `reconciled-975f6a45/`. The refreshed packet follows C58C and preserves other raw bytes/EOL/modes. Earlier measured cleanup removed 903,871,119 generated private bytes and four input junctions without removing original-input bytes; installed verification removed another 933 bytes while retaining all source/header/config/Git and proof artifacts. No whole-root native rebuild is claimed.
+
 ## Committed-source checkpoint 703408c4
 
 - Cumulative accepted-source progress from committed snapshot `703408c4`, published by `CommittedPublisher703`, is **2.960725%**: **468,788 / 15,833,556 accepted code bytes**, **15,364,768 code bytes remaining**, and **1,348 accepted source units**.
