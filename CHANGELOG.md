@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 14BB0 — initial-candidate exact reconstruction
+
+- Fresh Sol ownership produced an exact 140-byte member destructor on the initial candidate, with zero corrections, exact code/relocation comparison, and no owned data. The registered source object is in the native link inputs and the original target object is absent.
+- All 127 independently computed DOL/REL hashes pass on `f42d876b` plus this unit. The owner reconciled its packet against index `56383719` and materialized only its source/registration/split additions in the root; removal of its inserted bytes reproduces both configuration preimages exactly. Source SHA-256: `7dd48337638f61be6d6c525d8f535941e992d3d58095acadce8c5e032732bb44`.
+- Evidence is retained in `build/isolated-workers/SolFreshDedede14BB0/evidence/`. Cleanup removed 442,645,445 private bytes while preserving measured attempts, source/header/configuration trees, toolchain copies and verification evidence. The initial setup failure affected a private original-input path, not a missing root original; an inherited Ninja rule redownloaded the configured shared `dtk.exe` before isolation was corrected. Subsequent inputs/tools were private copies. Runtime gameplay was not exercised.
+
 ## Dedede 147EC — retained matching result verified and integrated
 
 - Resumed the same bounded reconstruction in a fresh Sol session: one inherited initial candidate, zero corrections, and one retained terminal-context replay. Contribution: 140 code bytes / one source unit.
