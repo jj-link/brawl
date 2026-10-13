@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A594 — retained GLM initial-candidate match
+
+- Fresh continuation ownership retained GLM's exact initial draft with zero corrections: eight code bytes, no relocations or owned data. The compared compiled object is the recorded linker input, and all 127 native hashes pass on the explicitly frozen `ff8fed0a` closure plus inherited `A450`/`A488`/`A564`/`A574`/`A584` additions and this unit, not the current root index.
+- The owner corrected an unapplied packet defect that malformed the new split path and neighboring `A998` header. The final packet adds only the exact source and its registration/split; root materialization preserves all unrelated bytes and the original `A998` path. Actual source SHA-1: `721161ee81fd167662fb9545fb0cfc1308d06515`.
+- Evidence: `build/isolated-workers/GlmLuigiFunction10D34/evidence/A594/`. Cleanup removed 560,159,884 private bytes, preserving measured attempts, source/configuration/Git trees and required private tools. An insertion-tool EOL side effect on four unrelated lines was detected, restored and reported; the final receipt verifies preservation. Gameplay was not exercised.
+
 ## Verified reconstruction checkpoint — strict-source committed snapshot
 
 - `RestartCommittedPublisher` published committed source `f6eb1b04`, adding `FC90` (172 bytes), `14B24` (140 bytes) and `20E48` (196 bytes). A strict raw-Git-source native rerun passes **127 DOL/REL hashes**; all 1,318 accepted compiler-source inputs match raw committed blobs and have observed compilation and source-link evidence.
