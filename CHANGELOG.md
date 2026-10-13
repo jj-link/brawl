@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 14A98 — retained initial-candidate destructor
+
+- Retained the initial Sol candidate with zero corrections: 140 exact code bytes, seven exact relocations and no owned data. Actual native compilation and both Dedede link stages are recorded; all 127 DOL/REL hashes pass on `7f354afe` plus this unit.
+- The owner materialized only its root source/registration/split additions with strict preimage preservation, then reconciled the final own-only index packet after the neighboring commits. Source SHA-256: `a855b91c8da3d773962507dbc913923e59e9cc95331bee0c046dff4abee6a2bf`.
+- Evidence is retained in `build/isolated-workers/SolLuigiFunction8D30/evidence/14a98-*`. Renewed cleanup removed 13,095 private generated files totaling 451,584,232 bytes after archive verification, preserving all inherited evidence, source/header/configuration/Git trees and 134 original-input identity entries. Gameplay was not exercised.
+
 ## Dedede 20B30 — preserved exact availability query
 
 - Resumed the retained Sol initial-plus-two-correction result without new source revisions. C02 contributes 140 exact code bytes, with no relocations or owned data. The final map identifies the compiled object at offset `0x20B30`, size `0x8C`; linked bytes equal the compared object and original fallback is inactive for this range.
@@ -28,10 +34,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## Verified reconstruction checkpoint — restarted committed publication
 
-- `RestartCommittedPublisher` published committed source `d9157d9e`, with a fresh native build passing **127 DOL/REL hashes**. All 1,313 accepted source units have matching committed/raw source identities, observed compilation records and linked source objects.
+- `RestartCommittedPublisher` published committed source `d9157d9e`, with a fresh native build passing **127 DOL/REL hashes**. All 1,313 accepted source units have observed compilation records and linked source objects. Source identities were checked against exported archive members, not independently against raw Git blobs.
 - Cumulative accepted-source progress is **2.938114%** — **465,208 / 15,833,556 code bytes**, with **15,368,348 bytes remaining** and **1,313 accepted source units**. This checkpoint adds **2,044 code bytes / 14 units** over sealed `9a16a90b`, retaining every previous accepted unit with unchanged code sizes. Exhausted nonmatching drafts contribute zero.
 - Published report SHA-256: `1143b8f057fdb85eefab05792cdfa9639098408e3055121bd651a4c3e14e5b41`. Evidence is retained in `build/isolated-workers/RestartCommittedPublisher/evidence/d9157d9e/`. The publisher is completing endpoint/module/unit/history alignment against this parent-recorded checkpoint.
 - Current original-input identities match all 127 configured SHA-1s and 135 retained SHA-256 records; this does not claim uninterrupted preservation across older incidents. Shared-tool download incidents, mixed-EOL recovery and generated split normalization remain qualified. The report retains 194 pre-existing accepted units with data-match percentages below 100%; this is a source-code-byte metric, not a new claim that every inherited data section matches exactly.
+- Source-identity correction: native Git archives exported checkout-converted CRLF content. Earlier literal raw-Git equality labels in the restarted publisher's records were inaccurate. Its later `f6eb1b04` audit found 1,306 of 1,318 source references differed from raw blobs only by EOL, with zero non-EOL differences. Measured object/link/hash results remain preserved; the publisher owns corrected provenance labels and strict raw-blob re-verification.
 
 ## Dedede 20E48 — exact Astra continuation
 
