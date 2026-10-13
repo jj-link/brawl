@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A654 — exact GLM flag-work size accessor
+
+- GLM initial candidate matched **eight code bytes**, with no owned data or relocations and zero compiler/comparison corrections. Two separately retained semantic-review revisions replaced the initial pointer and subsequent signed-count interpretations with the existing `u32 soGeneralWorkSimple::getFlagWorkSize()` contract, supported by the header and original vtable slot.
+- Final source SHA-1: `14dbf59df2537b78ec3f1a4b7c89097815f34a7f`. Installed-input compilation and the private `ff3de198`-plus-unit final native check reproduce candidate object `0f1955a7d243dcf5875f34cd55c4c5b31e5a6024`, source linkage and all 127 passing hashes. The candidate object is identical across the source revisions; the extracted target is a different ELF container, with exact owned code/data/relocations. The compiler dependency record retains the source and 12 consumed headers.
+- Root materialization initially normalized 14 unrelated line endings; the owner restored them against matching retained C150 and AAF8 preimages and proved exact additive preservation. The final narrow current-index packet also preserves `configure.py` mode `100755`. Evidence: `build/isolated-workers/GlmFreshDededeA654/evidence/packet/MATERIALIZATION_RECEIPT_V2.md`.
+- Preservation qualification: accidentally removed candidate/target objects and source drafts were recovered and reverified against their recorded identities. Cleanup records logged gross removals separately: 598,314,914 bytes in round 1, 115,709,533 in round 2b, 593,412,887 in round 3 and 593,411,694 in round 4, with restorations separately recorded. Round 2a was unmeasured; recurring private-input reappearance has no established cause. No combined/net space-reclamation total is claimed. Required recovered evidence, source/header/config/Git and shared originals remain retained.
+
 ## Committed-source checkpoint 55f34a32
 
 - Cumulative accepted-source progress from committed snapshot `55f34a32`, published by `CommittedPublisher55f`, is **2.956607%**: **468,136 / 15,833,556 accepted code bytes**, **15,365,420 code bytes remaining**, and **1,340 accepted source units**.
