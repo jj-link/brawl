@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C150 — exact fixed-array emptiness predicate
+
+- Fresh Sol initial candidate: **52 exact code bytes**, no owned data or relocations, zero corrections. Uses the existing fixed-array interface and tests virtual `size() == 0`, preserving false for every nonzero signed size.
+- Actual source-object selection and all 127 expected/actual native hashes pass in the isolated `85155e28`-plus-unit closure. Installed source SHA-256 `c81c4c34ed4df863464ba4d4f315d16744935d846e8ab2b74f41df03d0097b2a`, all 58 consumed input identities and the native compiler recipe remain unchanged; forced private compilation of the installed inputs again matches 52/52 bytes.
+- Evidence: `build/isolated-workers/SolFreshDededeC150/evidence/`. Root installation adds only this source and its registration/split, preserving unpublished peers and unrelated bytes. Measured cleanup removed 8,987,586,436 private bytes; all measured drafts/objects, target, recipes, source/header/config/Git and native receipts remain retained, with 87 existing evidence files and root originals verified unchanged.
+
 ## Dedede A944 — exact cached aggregate accessor
 
 - Fresh Sol initial candidate: **84 exact code bytes**, no owned data, one exact relocation to `fn_117_A998`, and zero corrections. Stores the returned three-word aggregate in the object's cache and returns that cache address.
