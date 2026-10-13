@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 69c5610e
+
+- Cumulative accepted-source progress from committed snapshot `69c5610e`, published by `CommittedPublisher69c5`, is **2.952590%**: **467,500 / 15,833,556 accepted code bytes**, **15,366,056 code bytes remaining**, and **1,333 accepted source units**. Delta from `1124b270`: **+128 code bytes, +2 units, +0.000808 percentage points**.
+- Verified all 1,333 raw committed compiler-source identities, actual compilations, source-object linkage and exact code comparisons, plus every one of the 127 native output hashes. Prior 1,331 units retain sizes and object identities; the existing 194 inherited data-match qualifications remain separate. Published report SHA-256: `9103f55942fc5761945a0b25e86fdc46645d8c761692d1db092cb7e62f2f2ec1`.
+- Source tree: `54d7d7e9736de11d61653a77b8e5bef2182f7b52`. Evidence: `build/isolated-workers/CommittedPublisher69c5/evidence/69c5610e/`. The initial missing private `sys/main.dol` dependency was resolved before the successful native run. Report publication is verified; endpoint/history sealing follows documentation alignment.
+
 ## Dedede A614 — exact empty-base deleting destructor
 
 - Fresh Sol initial candidate: **64 exact code bytes**, no owned data, one exact `__dl__FPv` relocation and zero corrections. Actual source-object linkage and all 127 native hashes pass in the isolated `425cb1ce`-plus-unit closure.
