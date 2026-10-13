@@ -14,7 +14,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Verification: all accepted units have literal raw Git/compiler-input equality, actual compilation, source-object linkage and exact code; all 127 native expected/actual hashes match. C408, C468 and C4C8 add **288 code bytes**, three units and **0.001819 percentage points** over `13e80b2b`.
 - All 1,345 prior unit sizes, raw source identities and source/target object identities are retained. New source objects agree with their owners' measured objects. The 194 inherited data-match limitations and earlier lifetime/newline/recovery/C308 caller-domain qualifications remain explicit.
 - Source tree: `7062f6087e91bad3bdb592e3deef00ecb85dcd07`; report SHA-256: `1bc7736924c9aae465c94299a43550843844f64a5a8926bc8c37c4225b76d802`. Evidence: `build/isolated-workers/CommittedPublisher703/evidence/703408c4/`. C528, C58C, A730 and later publications are outside this fixed snapshot.
-- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+- Sealed after parent alignment `eacefa99`: endpoint revision `bdb70eea72ae4522`, all 5,617 unit-map entries and 127 module totals agree. Served and persisted history share `2026-10-13T10:48:14.825Z` / 468,788 bytes; all 372 prior-publisher points remain. Current publisher activity/live membership was observed, and all 337 protected root identities remain unchanged. Required private inputs/native outputs/evidence are retained: zero cleanup bytes claimed.
 
 ## Dedede A730 — exact GLM float-work size accessor
 
