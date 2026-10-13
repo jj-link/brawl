@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 7efa226b
+
+- Cumulative accepted-source progress from committed snapshot `7efa226b`, published by `CommittedPublisher7efa`, is **2.956051%**: **468,048 / 15,833,556 accepted code bytes**, **15,365,508 code bytes remaining**, and **1,339 accepted source units**.
+- The fixed cohort adds A944, C150 and AAC4: **188 code bytes**, three units and **0.001187 percentage points** over `03a08036`. Every accepted unit's literal raw Git source matches its compiled input, with actual source-object linkage and exact code; all 127 expected/actual native hashes match. Prior 1,336 unit sizes and object identities are retained; 194 inherited data-match qualifications remain explicit.
+- Source tree: `a9c6b451677ab163ddbcc8c40698821bbab5adfb`; report SHA-256: `bac7e6c41d6facbe608b1d318f0b414ef37f5612ca5cdc938e1a441496ca24b8`. Evidence: `build/isolated-workers/CommittedPublisher7efa/evidence/7efa226b/`. AAC4's preserved lifetime behavior and distinct configuration/source newline domains remain qualified in its receipts.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede AAC4 — exact const aggregate accessor
 
 - Sol initial candidate plus **one correction** (variants `00` and `01` retained): **52 exact code bytes**, no owned data and one exact relocation to `fn_117_A998`.
