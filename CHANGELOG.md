@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 147EC — retained matching result verified and integrated
+
+- Resumed the same bounded reconstruction in a fresh Sol session: one inherited initial candidate, zero corrections, and one retained terminal-context replay. Contribution: 140 code bytes / one source unit.
+- On committed baseline `d9157d9e` plus this unit, the registered object matches exactly and all 127 independently computed DOL/REL SHA-1 comparisons pass. Final linker-map entries identify `ft_dedede_function_147ec.o` at `0x147EC`, size `0x8C`; its compiled object equals the preserved measured object, SHA-256 `3d4292915ba8ada79248be3e2c6f85957bd43e61126b2336a2f903c5eea10ead`.
+- The owner reconciled its packet against the current index after the first patch failed on mixed-EOL context and new-file metadata. Evidence is retained in `build/isolated-workers/SolPikachuFunction288C/evidence/147EC/`; inherited multi-function records and verification outputs remain intact. No shared-input cleanup or downloads occurred in this assignment. Cumulative publication remains the dedicated publisher's responsibility.
+
 ## Reconstruction restart — retained results and fresh ownership
 
 - Resumed the documented worker arrangement with fresh sessions: eight Sol reconstruction owners, two GLM owners, three Qwen owners, one dedicated Sol publisher, and two preserved Sol-to-Astra continuations. Each reconstruction session owns one bounded assignment; interrupted attempt counts carry forward. Parent plan checks occur before assignment rounds and at handoff, verification, and commit boundaries.
