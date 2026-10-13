@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C9D0 — exact nested stop-pool lifetime operation
+
+- Sol initial candidate: **120 exact code bytes**, no allocated data, three exact relocations and zero corrections. Constructor/RTTI/caller evidence establishes the stop pool at receiver `+0xEC`; its negative selector preserves embedded storage, followed by guarded non-deleting C838 teardown and positive-selector-only outer deletion.
+- Private verification on literal `0f8333c6` plus this unit passes all 127 native hashes. Registered object `ebaddb592c5843ef5a22835521ebee22d14110f3abb0cc4bc1e2c849d3983f8a` matches allocated code and relocations; actual final MAP/RSP select the source without its assigned original fallback. The existing fighter recipe consumes only this source, with no headers.
+- Evidence: `build/isolated-workers/SolFreshDededeC9D0/evidence/`, including `semantic-justification.json`, `registered-final-comparison.json`, `final-127-hash-receipt.json` and `current-index-packet/`. The own-only publication patch preserves unrelated working/index bytes, line endings and modes; its current-main reconciliation is not a new whole-main native claim.
+- Measured private cleanup removed 476,511,386 bytes across 13,339 files, retaining required source/header/configuration/Git and measured input/object/native proof. Gameplay was not exercised.
+
 ## Dedede CA48 — exact damage-energy base lifetime wrapper
 
 - Sol initial candidate: **92 exact code bytes**, no allocated data, two exact relocations and zero corrections. The opaque receiver invokes C8B0 in non-deleting form, releases storage only for a positive signed-short outer selector, and returns the original receiver; no new layout or extent is assumed.
