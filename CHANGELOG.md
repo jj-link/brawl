@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A944 — exact cached aggregate accessor
+
+- Fresh Sol initial candidate: **84 exact code bytes**, no owned data, one exact relocation to `fn_117_A998`, and zero corrections. Stores the returned three-word aggregate in the object's cache and returns that cache address.
+- Actual source linkage and all 127 native hashes pass in the isolated `4653ce8e`-plus-unit closure. Root materialization retains identical source bytes (SHA-256 `309e3b451f2af77e1b41de4f87807ac11c4fe3f2f726572ab9855db466897a75`), all 58 consumed input identities and the native compiler recipe; private recompilation again matches 84/84 bytes. The original full-native snapshot remains explicitly separate.
+- Evidence: `build/isolated-workers/SolFreshDededeA944/evidence/`. The owner preserved `A890`, `A998` and unrelated bytes, repaired incidental newline normalization, and reconciled an own-only packet after `A890` publication. Cleanup removed 774,863,801 private bytes initially and another measured 332,184,899 bytes after materialization verification; source/header/config/Git and comparison evidence remain retained.
+
 ## Dedede A890 — exact aggregate array size
 
 - Fresh Sol initial candidate: **180 exact code bytes**, no owned data or relocations and zero corrections. Preserves the original signed comparisons and repeated virtual `size()` calls when replacing the selected size.
