@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CD74 reconstructed source
+
+- Accepted `fn_117_CD74` (`.text 0xCD74..0xCDD0`), **92 code bytes**, from `SolFreshDededeCD74`: one initial candidate, zero corrections. Its nondeleting base operation preserves the receiver; only a positive signed destructor flag deletes the allocation. Existing callers and ABI remain unchanged; no header or data changes.
+- Verification: exact registered code and both REL24 relocations, no allocated data, actual final MAP/RSP selection of the compiled source object, and **127/127 native hashes** on literal committed baseline `44d84f68` plus CD74. That fixed verification snapshot measures **470,396 / 15,833,556 bytes**, **15,363,160 remaining**, **1,366 accepted units**, **2.970880%**; it is not a cumulative measurement of later main commits.
+- The same owner reconciled separate index/working packets after the earlier application conflict. Publication preserves later registrations and CA48's recovered working bytes using the owner's real-attributes-tested raw application protocol. Applied source SHA-256 matches its verified source: `3050c5ca84f45cb4e74f892cff46b048bcccafa8523d51fe61975e783f500386`.
+- Evidence: `build/isolated-workers/SolFreshDededeCD74/evidence/publication-reconcile-44d84f68/`. Source, target, attempts, actual inputs and recipes remain retained; additional disposable cleanup removed **477,059,853 bytes** while rechecking all 127 original inputs and 2,055 retained evidence files. Gameplay was not exercised.
+
 ## Committed-source checkpoint 7cb27eb5
 
 - Cumulative accepted-source progress from committed snapshot `7cb27eb5`, published by `CommittedPublisher7cb`, is **2.968329%**: **469,992 / 15,833,556 accepted code bytes**, **15,363,564 code bytes remaining**, and **1,362 accepted source units**.
