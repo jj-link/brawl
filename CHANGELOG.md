@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A614 — exact empty-base deleting destructor
+
+- Fresh Sol initial candidate: **64 exact code bytes**, no owned data, one exact `__dl__FPv` relocation and zero corrections. Actual source-object linkage and all 127 native hashes pass in the isolated `425cb1ce`-plus-unit closure.
+- The verified compiler input, root materialization and publication source are identical LF bytes, SHA-256 `f583342f2bf414e3478329c23e1dd40b7e46e9af673755f40265985623809126`. Current-main reconciliation preserves source, compiler settings, neighboring units and unrelated dirty bytes; the older native closure remains separately identified.
+- Evidence: `build/isolated-workers/SolFreshDededeA614/evidence/`. Private cleanup removed 351,724,738 bytes; reconciliation removed zero additional bytes. Earlier private Ninja tool redownloads are recorded as a workflow deviation; shared tools/originals were preserved. Exact additive root preservation was checked after repairing the edit tool's unrelated newline normalization.
+
 ## Dedede A65C — exact query-and-clear work flag
 
 - Fresh Sol initial candidate: **116 exact code bytes**, exact relocations and zero corrections. The function returns the original `isFlag` result and calls `offFlag` only when that result equals one. The linked maps mark the additional 12 bytes of header-emitted weak methods unused; those bytes are excluded from this contribution.
