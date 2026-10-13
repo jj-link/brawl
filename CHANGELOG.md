@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CBDC reconstructed source
+
+- Accepted `fn_117_CBDC` (`.text 0xCBDC..0xCC3C`), **96 code bytes**, from `SolFreshDededeCBDC`: one initial candidate, zero corrections. The original nested lifetime guards, nondeleting base operation, positive signed deletion flag and original receiver return are preserved. No header, caller or data changes.
+- Verification: exact registered code and both REL24 relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on `e83c7a11` plus CBDC. That fixed run measures **470,208 / 15,833,556 bytes**, **15,363,348 remaining**, **1,364 accepted units**, **2.969693%**; it is not a later-main cumulative measurement.
+- The same owner reconciled separate current-index and actual-working packets at `9ee42846`, preserving later CD74/CAA4/CE30 registrations. Actual native-Git replay used the repository's real attributes; working publication used the owner's command-local `--no-index` recipe. All three applied working postimage hashes match the owner's observed results; the source SHA-256 is `26a8fef42b9bb053a704c78be52a78a4d2b7e625f2a81b907fc772e649ee8eaf`.
+- The captured working preimage already had only two LF-only `configure.py` rows, rather than CA48's previously restored 32. CBDC preserves its actual preimage; it does not restore those historical terminators. Attribution and reconciliation of that subsequent regression remain separate from CBDC's accepted source.
+- Evidence: `build/isolated-workers/SolFreshDededeCBDC/evidence/verified-main-e83c7a11/` and `evidence/publication-reconciliation-51b45137/rebased-9ee42846/` beneath that owner workspace. All 3,272 prior evidence files remained unchanged; reconciliation created no native outputs or game-input copies. Gameplay was not exercised.
+
 ## Module 117 CE30 reconstructed source
 
 - Accepted `fn_117_CE30` (`.text 0xCE30..0xCE90`), **96 code bytes**, from `SolFreshDededeCE30`: one initial candidate, zero corrections. The wrapper destroys the embedded object at `+8` with flag `-1`, deletes the enclosing allocation only for a positive signed flag, and returns the original pointer. No header, caller or data changes.
