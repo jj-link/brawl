@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 20E48 — exact Astra continuation
+
+- Sol completed its initial candidate plus ten corrections; the fresh Astra continuation matched on correction four. Contribution: 196 code bytes / one source unit, with exact allocated sections and five normalized relocations. Reconciliation added no reconstruction attempts.
+- Final verification covers committed `d3c5dcf2` plus this unit: 2,710 committed input files were checked, the actual final linker inputs identify the compiled source as the sole `fn_117_20E48` definition, and all 127 native DOL/REL hashes pass. Source SHA-256: `909074b00b5c46f54aace1a9e82d92391432f05fd34b0d3b84f9606bb3cf7e8b`.
+- The owner materialized its source/registration/split additions in root and proved unrelated preimage bytes unchanged. Final records use `build/isolated-workers/SolLuigiFunction2834/evidence/20E48-Astra-d3c5dcf2-*`, superseding the older `bc6ab7f5` verification packet. Historical attempts and source/header/configuration/Git trees remain intact; only redundant private link outputs were removed after preserving identical evidence copies. Shared inputs/tools were unchanged by this owner. Gameplay was not exercised.
+
 ## Dedede 14B24 — retained initial-candidate destructor
 
 - Verified the inherited initial Sol candidate without corrections: 140 exact code bytes, seven exact relocations, no owned data, registered compiled-source linkage, and all 127 native hashes passing on `d9157d9e` plus this unit.
