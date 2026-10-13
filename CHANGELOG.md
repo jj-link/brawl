@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede AB5C — exact integer-parameter accessor
+
+- Sol initial candidate: **92 exact code bytes**, no owned data, three exact relocations and zero corrections. Uses the original parameter-table layout and row selector; the RTTI-backed ABI view agrees with the reviewed AAF8 layout.
+- Source SHA-256: `0e0fbf41c75a1116de500309567bec56c11d6a009881c56dfbc79580ea1bf1fa`. Installed source, compiler arguments, nine consumed dependencies and tool identities equal the reviewed inputs. Actual source selection and all 127 native hashes pass in the retained `38b78465`-plus-unit closure.
+- The separate captured-root module replay selects the source and matches every allocated `ft_dedede` section and relocation from that retained native closure; it is not a newer whole-project 127-hash claim. Root installation preserves A654, AAF8 and all unrelated bytes; the mode-preserving own-only packet was reconciled against `a43d3d3a`.
+- Evidence: `build/isolated-workers/SolFreshDededeAB5C/evidence/root-materialization-4030e8fc/` and its retained initial receipts. Initial cleanup removed 1,285,035,386 private bytes; installed-input replay cleanup removed another measured 333,838,001 bytes, preserving 172 evidence identities, source/header/config/Git and shared originals.
+
 ## Dedede A654 — exact GLM flag-work size accessor
 
 - GLM initial candidate matched **eight code bytes**, with no owned data or relocations and zero compiler/comparison corrections. Two separately retained semantic-review revisions replaced the initial pointer and subsequent signed-count interpretations with the existing `u32 soGeneralWorkSimple::getFlagWorkSize()` contract, supported by the header and original vtable slot.
