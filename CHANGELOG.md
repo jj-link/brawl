@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 1529C — initial-candidate exact deleting destructor
+
+- Fresh Sol initial candidate: **64 exact code bytes**, no owned data, and one exact `__dl__FPv` relocation; zero corrections. The registered source object is selected in the native link, and every one of the 127 output hashes matches in the isolated `ff3de198`-plus-unit closure.
+- Source SHA-256 `10df15b3b138d78dabe222ef913c13b271258343498a7e9e53bd8f27281553da` is identical across the actual compiler input, root materialization and canonical LF packet. Current-main reconciliation preserves `1525C` and all unrelated dirty files; source, flags and dependencies are unchanged from the verified closure.
+- Evidence: `build/isolated-workers/SolFreshDedede1529C/evidence/`. Cleanup removed 8,953,827,160 private bytes while retaining source/header/configuration/Git and measured evidence. Root reconciliation removed zero additional bytes; the edit tool's unrelated newline normalization was repaired and exact additive preservation verified.
+
 ## Committed-source checkpoint 1124b270
 
 - Cumulative accepted-source progress from committed snapshot `1124b270`, published by `CommittedPublisher1124`, is **2.951782%**: **467,372 / 15,833,556 accepted code bytes**, **15,366,184 remaining code bytes**, and **1,331 accepted source units**. Delta from `9c8a0ebf`: **+8 code bytes, +1 unit, +0.000051 percentage points**.
