@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — Dedede paired member destructors
+
+- `RestartCommittedPublisher` published committed source `d2be34fb`, adding `147EC` and `14BB0`: 140 code bytes each, with exact registered objects, compiled-source linkage and **127 DOL/REL hashes passing**.
+- Cumulative accepted-source progress is **2.939883%** — **465,488 / 15,833,556 code bytes**, with **15,368,068 bytes remaining** and **1,315 accepted source units**. This checkpoint adds **280 code bytes / 2 units** over sealed `d9157d9e`, retaining all prior accepted units and code sizes. Nonmatching drafts contribute zero.
+- Published report SHA-256: `99f5ae644e74f202b8bb66a43dda2a2fc0a6afda839f1447bb4a483e950e8941`. All 1,315 accepted units have observed compilation and linked source objects; committed-source equality is EOL-normalized for all 1,315, with literal raw-blob equality for 11. Earlier raw-identity labels were corrected. Evidence: `build/isolated-workers/RestartCommittedPublisher/evidence/d2be34fb/`.
+- The publisher is sealing headline, 127 module totals, 5,580 map entries and persisted/served history against this parent-recorded checkpoint. Existing data-match, tool, input and EOL qualifications remain in force.
+
 ## Dedede 14A98 — retained initial-candidate destructor
 
 - Retained the initial Sol candidate with zero corrections: 140 exact code bytes, seven exact relocations and no owned data. Actual native compilation and both Dedede link stages are recorded; all 127 DOL/REL hashes pass on `7f354afe` plus this unit.
@@ -36,7 +43,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 - `RestartCommittedPublisher` published committed source `d9157d9e`, with a fresh native build passing **127 DOL/REL hashes**. All 1,313 accepted source units have observed compilation records and linked source objects. Source identities were checked against exported archive members, not independently against raw Git blobs.
 - Cumulative accepted-source progress is **2.938114%** — **465,208 / 15,833,556 code bytes**, with **15,368,348 bytes remaining** and **1,313 accepted source units**. This checkpoint adds **2,044 code bytes / 14 units** over sealed `9a16a90b`, retaining every previous accepted unit with unchanged code sizes. Exhausted nonmatching drafts contribute zero.
-- Published report SHA-256: `1143b8f057fdb85eefab05792cdfa9639098408e3055121bd651a4c3e14e5b41`. Evidence is retained in `build/isolated-workers/RestartCommittedPublisher/evidence/d9157d9e/`. The publisher is completing endpoint/module/unit/history alignment against this parent-recorded checkpoint.
+- Published report SHA-256: `1143b8f057fdb85eefab05792cdfa9639098408e3055121bd651a4c3e14e5b41`. Endpoint seal verified the headline, 127 module totals and all 5,576 map entries, with no observed discrepancies. Persisted and served history both end at `2026-10-13T04:50:56.933Z` with 465,208 accepted bytes; the recorded session is live. Evidence: `build/isolated-workers/RestartCommittedPublisher/evidence/d9157d9e/endpoint-seal.json`. Verification used existing data endpoints, not a browser or gameplay.
 - Current original-input identities match all 127 configured SHA-1s and 135 retained SHA-256 records; this does not claim uninterrupted preservation across older incidents. Shared-tool download incidents, mixed-EOL recovery and generated split normalization remain qualified. The report retains 194 pre-existing accepted units with data-match percentages below 100%; this is a source-code-byte metric, not a new claim that every inherited data section matches exactly.
 - Source-identity correction: native Git archives exported checkout-converted CRLF content. Earlier literal raw-Git equality labels in the restarted publisher's records were inaccurate. Its later `f6eb1b04` audit found 1,306 of 1,318 source references differed from raw blobs only by EOL, with zero non-EOL differences. Measured object/link/hash results remain preserved; the publisher owns corrected provenance labels and strict raw-blob re-verification.
 
