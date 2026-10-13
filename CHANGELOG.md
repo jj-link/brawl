@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — committed 4653ce8e
+
+- Cumulative accepted-source progress from committed snapshot `4653ce8e`, published by `CommittedPublisher4653`, is **2.950645%** — **467,192 / 15,833,556 accepted code bytes**, **15,366,364 bytes remaining**, and **1,329 accepted source units**. The delta from sealed `1e754230` is **320 code bytes / 3 units**: `1538C` (92), `151D8` (132) and `A5B4` (96). Later source commits are outside this fixed checkpoint.
+- All 1,329 accepted units have literal raw-Git compiler-source equality, observed compilation, source-link evidence and exact code; all 127 native DOL/REL hashes match. The parent checked every provenance/hash row and the actual published report SHA-256: `792bedf09699f59c1d2b5340e63b12af36b61b0eb898e48743714f3a0e134f20`. All 1,326 previous accepted units and code sizes are retained.
+- Evidence: `build/isolated-workers/CommittedPublisher4653/evidence/4653ce8e/`; source tree `3b7818ca64e3611bc9b356b828cccf5b52298151`. The 194 inherited accepted units with data-match qualifications remain distinguished from exact code and native binary verification. Exhausted drafts contribute zero.
+- The existing dashboard report is published; endpoint headline/revision/module/unit/history sealing follows this documentation alignment.
+
 ## Dedede 15510 — initial-candidate exact null-mediator dispatch
 
 - Fresh Sol initial candidate: 172 exact code bytes, 23 matching relocation tuples, no owned data and zero corrections. Final forced source compilation and relinking pass all 127 native hashes on committed `ad71738f` plus this unit. An earlier fallback-only reconciliation replay is preserved separately and receives no source credit.
