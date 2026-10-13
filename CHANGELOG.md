@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C528 — exact opaque lifetime wrapper
+
+- **100 exact code bytes**, no owned data and two exact relocations. Sol used one initial candidate, zero compiler/comparison corrections and one retained review revision: an ordinary opaque helper replaces the unproven empty-class representation. The observed nondeleting embedded-pool teardown, null guards, signed-short deletion condition and original-pointer return remain explicit.
+- Source SHA-256: `32ecc674e7d701bdbdcc61e046dd88808c3fe1fe50ab54bf968cf012597415ef`. Forced private compilation of captured installed inputs reproduces whole object `379e4e45a006668903a61d09a0c920f1cc21ef6c6e4ab08d9cac368a86bb7b2b`; complete settings, compiler/wrapper and sole source dependency agree with the reviewed inputs. Actual source linkage and all 127 native hashes remain scoped to the reviewed `55f34a32`-plus-unit closure.
+- Evidence: `build/isolated-workers/SolFreshDededeC528/evidence/abi-review/` and `materialization/`. The refreshed packet follows indexed C4C8 and preserves all unrelated raw bytes/EOL/modes. Two earlier measured cleanup rounds each removed 476,424,386 private bytes; materialization removed another 883 bytes while preserving source/header/config/Git, historical drafts, evidence and shared originals. No current-main aggregate native build is claimed.
+
 ## Dedede C4C8 — exact nested-pool deleting destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Calls C468 on the embedded receiver at `+4` with a negative selector, preserves null receivers, and frees only the original allocation for a positive signed-short selector.
