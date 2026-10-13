@@ -10,7 +10,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## Committed-source checkpoint 1124b270
 
-- Cumulative accepted-source progress from committed snapshot `1124b270`, published by `CommittedPublisher1124`, is **2.951782%**: **467,372 / 15,833,556 accepted code bytes**, **15,366,184 remaining code bytes**, and **1,331 accepted source units**. Delta from `9c8a0ebf`: **+8 code bytes, +1 unit, +0.000051 percentage points**.
+- Cumulative accepted-source progress from committed snapshot `1124b270`, published by `CommittedPublisher1124`, is **2.951782%**: **467,372 / 15,833,556 accepted code bytes**, **15,366,184 code bytes remaining**, and **1,331 accepted source units**. Delta from `9c8a0ebf`: **+8 code bytes, +1 unit, +0.000051 percentage points**.
 - Verified every accepted unit's raw committed source identity, actual compilation, source-object linkage and exact code comparison, plus all 127 expected native binary hashes. Prior 1,330 units retain their sizes/object identities; the existing 194 inherited data-match qualifications remain recorded separately. Published report SHA-256: `365f532ef490a7f24cc90f36cf2ba779177db8039cef0507103647e98657fcbb`.
 - Source tree: `193f5451300b53d917f0b01ecb7af295ccd50100`. Evidence: `build/isolated-workers/CommittedPublisher1124/evidence/1124b270/`. Report publication and command output are verified; the independent endpoint/history seal follows this documentation alignment.
 
