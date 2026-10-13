@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CF64 reconstructed source
+
+- Accepted `fn_117_CF64` (`.text 0xCF64..0xCFC4`), **96 code bytes**, from `SolFreshDededeCF64`: one initial candidate, zero corrections. Original jostle-holder RTTI, constructor and caller evidence establish the embedded receiver at `+4`, negative inner deletion flag and positive signed outer deletion flag. Existing receiver-return ABI, headers and data ownership are unchanged.
+- Verification: exact allocated code and both relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on literal fixed `44d84f68` plus CF64. That run measures **470,400 / 15,833,556 bytes**, **15,363,156 remaining**, **1,366 accepted units**, **2.970906%**; it is not a later-main cumulative checkpoint.
+- The same owner reconciled separate raw index/working packets through CF08 publication. All three actual working postimage identities match the retained proof, including source SHA-256 `7e347b636c97c68bcd86274b1428edaf51ba3327a2512221d5c815ba7619711b`. The supplied temporary working attribute guard was immediately restored; all six inherited LF-only configure rows remain, with no repair of the separately qualified historical EOL regression.
+- Evidence: `build/isolated-workers/SolFreshDededeCF64/evidence/`, including `publication-b4ee74e7-1791900494995020200/`. All 324 prior evidence identities remain unchanged. Original disposable cleanup removed **8,987,804,858 bytes**; this reconciliation added no native/game copies. Gameplay was not exercised.
+
 ## Module 117 CF08 reconstructed source
 
 - Accepted `fn_117_CF08` (`.text 0xCF08..0xCF64`), **92 code bytes**, from `SolFreshDededeCF08`: one initial candidate, zero corrections. The unchanged receiver is passed to its nondeleting base lifetime operation; only a positive signed outer flag releases storage. Original null/return behavior, callers, headers and data ownership are unchanged.
