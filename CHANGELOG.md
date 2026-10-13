@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 20B30 — preserved exact availability query
+
+- Resumed the retained Sol initial-plus-two-correction result without new source revisions. C02 contributes 140 exact code bytes, with no relocations or owned data. The final map identifies the compiled object at offset `0x20B30`, size `0x8C`; linked bytes equal the compared object and original fallback is inactive for this range.
+- All 127 native DOL/REL hashes pass on committed `f6eb1b04` plus this unit. Root source, existing own registration and split already match the accepted candidate; all 261 compiler dependencies agree exactly or after CRLF normalization. Source SHA-256: `b02814026f2926b87bb8c7264e5f3eddd8a1cc6cd304fd0df11d6d1a3251d6ea`.
+- Evidence: `build/isolated-workers/SolNessFunction1E680/evidence/20B30/restart-f6eb1b04/`. Actual native MWCC invocation is retained separately from the IDE clang compilation-database entry. Cleanup removed 13,226 private files totaling 476,395,770 bytes, preserving 2,410 evidence files, source/header/configuration/Git trees and 135 shared-original identities. Gameplay was not exercised.
+
 ## Dedede 14DC4 — initial-candidate exact destructor
 
 - Fresh Sol initial candidate: 112 exact code bytes, three exact relocations and no owned data. Registered compiled-source linkage and all 127 native DOL/REL hashes pass on `f42d876b` plus this unit; corrections: zero.
