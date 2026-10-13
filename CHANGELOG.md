@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C3A8 — exact base deleting destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Preserves the null receiver, calls the base destructor with the nondeleting selector, and releases storage only for a positive signed-short outer selector.
+- Source SHA-256: `bc322c049b76b20922fb725744be3ec28939fdc1caaf95df1b5692f2ee97f17d`. Captured installed-source recompilation reproduces the entire reviewed object with the same settings and sole source dependency. Source linkage and 127 native hashes remain tied to the retained `03a08036`-plus-unit closure, not a newer aggregate-root build.
+- Evidence: `build/isolated-workers/SolFreshDededeC3A8/evidence/root-materialization/`. Root preimages and mixed line endings are preserved byte-for-byte outside the owned additions. The mode-preserving current-index packet now follows published C308, matching installed placement. Measured cleanup removed 783,889,705 private bytes while preserving retained source/header/config/Git, evidence and shared originals.
+
 ## Dedede C308 — exact nullable article selector and caller migration
 
 - **72 exact code bytes**, no owned data or relocations. Sol used one initial candidate, zero compiler/comparison corrections and one separately retained review revision: the observed address-or-zero ABI is represented as `Weapon*`, avoiding an unsupported null-reference return contract. Both existing B4F8/BFD4 declarations and uses were migrated; the reference-producing private wrapper is reached only by its existing bounded `0..3` loop.
