@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CC9C reconstructed source
+
+- Accepted `fn_117_CC9C` (`.text 0xCC9C..0xCCFC`), **96 code bytes**, from `SolFreshDededeCC9C`: one initial candidate, zero corrections. Original constructor/caller evidence establishes the wind-pool base at `+8`, negative inner deletion flag, positive signed outer deletion flag and unchanged receiver-return ABI. No header or data changes.
+- Verification: exact registered allocated code and both relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on literal fixed `44d84f68` plus CC9C. That run measures **470,400 / 15,833,556 bytes**, **15,363,156 remaining**, **1,366 accepted units**, **2.970906%**; it is not a later-main cumulative checkpoint.
+- The same owner reconciled complete separate raw index/working packets after CC3C and CF08. The proven native binary patch recipe applied with zero fuzz, followed by the separate cached-index packet; existing mixed EOLs and modes are preserved. Landed source SHA-256 matches `7952c1a56b34efb1b8a8e7c69181d97999dc5fb3861c0d608fad19fe3e3558e2`.
+- Evidence: `build/isolated-workers/SolFreshDededeCC9C/evidence/`, including `publication-reconciliation-bc5cc208-index-9bcc4ccf/`. All prior attempts/native proofs remain retained. Original disposable cleanup removed **1,356,346,907 bytes**; reconciliation created no native/game copies. Historical working-EOL regression remains separately qualified. Gameplay was not exercised.
+
 ## Module 117 CF64 reconstructed source
 
 - Accepted `fn_117_CF64` (`.text 0xCF64..0xCFC4`), **96 code bytes**, from `SolFreshDededeCF64`: one initial candidate, zero corrections. Original jostle-holder RTTI, constructor and caller evidence establish the embedded receiver at `+4`, negative inner deletion flag and positive signed outer deletion flag. Existing receiver-return ABI, headers and data ownership are unchanged.
