@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Verified reconstruction checkpoint — strict-source committed snapshot
+
+- `RestartCommittedPublisher` published committed source `f6eb1b04`, adding `FC90` (172 bytes), `14B24` (140 bytes) and `20E48` (196 bytes). A strict raw-Git-source native rerun passes **127 DOL/REL hashes**; all 1,318 accepted compiler-source inputs match raw committed blobs and have observed compilation and source-link evidence.
+- Cumulative accepted-source progress is **2.943091%** — **465,996 / 15,833,556 code bytes**, with **15,367,560 bytes remaining** and **1,318 accepted source units**. This checkpoint adds **508 code bytes / 3 units** over sealed `d2be34fb`, retaining every prior accepted unit and code size. Exhausted drafts contribute zero.
+- Published report SHA-256: `0806b6022d85aef9f52ba589121718fd4d9a09068c4ed3d6fa64f7a9e9ace0a1`, independently confirmed against the actual dashboard report file. Earlier EOL-converted runs remain separately recorded; the strict rerun produces the same report identity. Evidence: `build/isolated-workers/RestartCommittedPublisher/evidence/f6eb1b04/`.
+- The publisher is sealing headline, 127 module totals, 5,583 map entries and persisted/served history against this checkpoint. Existing inherited data-match, tool and original-input qualifications remain; no browser or gameplay verification is claimed.
+
 ## Dedede 14EBC — initial-candidate exact deleting destructor
 
 - Fresh Sol initial candidate: 92 exact code bytes, two matching relocations, no owned data and zero corrections. The compiled source object is an actual linker input, the linked symbol is at `0x14EBC`, and all 127 native DOL/REL hashes pass on committed `5c82ce0f` plus this unit.
@@ -19,7 +26,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - `RestartCommittedPublisher` published committed source `d2be34fb`, adding `147EC` and `14BB0`: 140 code bytes each, with exact registered objects, compiled-source linkage and **127 DOL/REL hashes passing**.
 - Cumulative accepted-source progress is **2.939883%** — **465,488 / 15,833,556 code bytes**, with **15,368,068 bytes remaining** and **1,315 accepted source units**. This checkpoint adds **280 code bytes / 2 units** over sealed `d9157d9e`, retaining all prior accepted units and code sizes. Nonmatching drafts contribute zero.
 - Published report SHA-256: `99f5ae644e74f202b8bb66a43dda2a2fc0a6afda839f1447bb4a483e950e8941`. All 1,315 accepted units have observed compilation and linked source objects; committed-source equality is EOL-normalized for all 1,315, with literal raw-blob equality for 11. Earlier raw-identity labels were corrected. Evidence: `build/isolated-workers/RestartCommittedPublisher/evidence/d2be34fb/`.
-- The publisher is sealing headline, 127 module totals, 5,580 map entries and persisted/served history against this parent-recorded checkpoint. Existing data-match, tool, input and EOL qualifications remain in force.
+- Endpoint seal verified the headline, 127 module totals and all 5,580 map entries without discrepancies. Persisted and served history both end at `2026-10-13T05:12:06.587Z` with 465,488 accepted bytes; the recorded session is live. Evidence: `build/isolated-workers/RestartCommittedPublisher/evidence/d2be34fb/endpoint-seal.json`. Existing data-match, tool, input and EOL qualifications remain; verification used data endpoints, not a browser or gameplay.
 
 ## Dedede 14A98 — retained initial-candidate destructor
 
