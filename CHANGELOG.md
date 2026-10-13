@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CE90 reconstructed source
+
+- Accepted `fn_117_CE90` (`.text 0xCE90..0xCF08`), **120 code bytes**, from `SolFreshDededeCE90`: one initial candidate, zero corrections. The embedded object at `+0x1C8` is destroyed with flag `-1`, followed by the nondeleting base operation and positive-flag outer deletion. Existing receiver-return ABI, callers, headers and data ownership are unchanged.
+- Verification: exact registered code and three REL24 relocations, no allocated data, actual final MAP/RSP source selection, and **127/127 native hashes** on fixed `c2f15641` plus CE90. That run measures **470,012 / 15,833,556 bytes**, **15,363,544 remaining**, **1,361 accepted units**, **2.968455%**; it is not a current-main cumulative checkpoint.
+- The same owner reconciled separate current-index and raw-working packets. The verified native GNU `patch --binary` working recipe applied with zero context fuzz; Git applied the index packet separately. Later C970 insertions required line offsets only. Source SHA-256 matches the retained verified source: `5b40d07512f60de85a7fc8b51514108c089d1f9e3bc16e99a93cdb08e8b699a9`. The inherited historical working-EOL regression is not silently repaired.
+- Evidence: `build/isolated-workers/SolFreshDededeCE90/evidence/`, including `publication-reconcile-41ba8faf/`. Original attempts, native inputs, target/source objects and earlier packet failures remain retained; initial disposable cleanup removed **477,038,104 bytes**, and publication reconciliation added no native build. Gameplay was not exercised.
+
 ## Module 117 C970 reconstructed source
 
 - Accepted `fn_117_C970` (`.text 0xC970..0xC9D0`), **96 code bytes**, from `SolFreshDededeC970`: one initial candidate, zero corrections. The stop-energy pool destroys its holder at `+8` with flag `-1`, deletes the outer allocation only for a positive signed flag, and returns its original receiver. No header, caller or data changes.
