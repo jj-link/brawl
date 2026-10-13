@@ -80,13 +80,14 @@ bool stEmblem::loading() {
 
 void stEmblem::createObj() {
     gmGlobalModeMelee* mode_melee = g_GameGlobal->m_modeMelee;
-    if (mode_melee->m_meleeInitData.m_gameMode == 7u) {
-        //TODO: Fix m_eventId and m_playeMode
+    // The serialized mode uses the high six bits of its first byte.
+    const u8* initBytes = reinterpret_cast<const u8*>(&mode_melee->m_meleeInitData);
+    if (((static_cast<u32>(initBytes[0]) >> 2) & 0x3f) == 7u) {
         if (mode_melee->m_meleeInitData.m_eventId == (s8)14) {
             m_eventType = 1;
         }
-        if ((mode_melee->m_meleeInitData.m_eventId == (s8)40) and (mode_melee->m_meleeInitData.m_playeMode != false))
-        {
+        const u8 eventFlags = initBytes[8];
+        if ((eventFlags & 0x7f) == 40 and (eventFlags & 0x80)) {
             m_eventType = 2;
         }
     }
@@ -103,13 +104,14 @@ void stEmblem::createObj() {
             stageElement->m_sceneModels[0]->SetPriorityDrawOpa(200);
         }
     }
+    grMadein* collisionGround;
     for (u8 i = 0; i < 7; i++) {
-        stageElement = grMadein::create(0, "", "NodeOnlyCollision", Heaps::StageInstance);
-        if (stageElement) {
-            addGround(stageElement);
-            stageElement->startup(m_fileData,false,gfSceneRoot::Layer_Ground);
-            stageElement->setStageData(m_stageData);
-            createCollision(m_secondaryFileData,i,stageElement);
+        collisionGround = grMadein::create(0, "", "NodeOnlyCollision", Heaps::StageInstance);
+        if (collisionGround) {
+            addGround(collisionGround);
+            collisionGround->startup(m_fileData,false,gfSceneRoot::Layer_Ground);
+            collisionGround->setStageData(m_stageData);
+            createCollision(m_secondaryFileData,i,collisionGround);
         }
     }
     initCameraParam();
@@ -311,14 +313,14 @@ void stEmblem::updateScene(float deltaFrame) {
             if (unk1A8 == NULL) {
                 break;
             }
-                grMadein* scene_ground;
                 m_scene_grounds[4] = 0;
                 m_scene_grounds[3] = 0;
                 m_scene_grounds[2] = 0;
                 m_scene_grounds[1] = 0;
                 m_scene_grounds[0] = 0;
-                for (s32 i = 0; i < m_scene_ground_num[m_scene_num]; i++) {
-                    createSceneGround(i);
+                for (s32 i = 0; m_scene_ground_num[m_scene_num] > i; i++) {
+                    s16 groundIndex = i;
+                    createSceneGround(groundIndex);
                 }
                 stageParamChange();
                 setSoundParameters(m_stageParam);
@@ -567,10 +569,13 @@ void stEmblem::updateScene00(float deltaFrame) {
             rand = 4;
         }
         unkSnd728 = playSeBasic((SndID)(rand + snd_se_stage_Emblem_touseki_01),unk720);
-        float fVar1 = (randf()*100.0f);
-        float fVar2 = 50.0f - fVar1;
-        unk724 = 0.0;
-        unk71C = fVar2 + 130.0f;
+        float baseInterval;
+        float midpoint;
+        float intervalVariation = 100.0f * randf();
+        baseInterval = 130.0f;
+        midpoint = 50.0f;
+        unk724 = 0.0f;
+        unk71C = baseInterval + (midpoint - intervalVariation);
     }
     unk720+=0.05f;
     if (unk720 >= 0.0f) {
@@ -604,6 +609,10 @@ const int statueGrounds[2] = {
     1,3
 };
 
+inline s32 secondaryLampIndex(s32 lampIndex) {
+    return lampIndex + 5;
+}
+
 void stEmblem::updateScene01(float deltaFrame) {
     char* effectNames[10];
     float fVar1 = unk808 - deltaFrame;
@@ -621,17 +630,7 @@ void stEmblem::updateScene01(float deltaFrame) {
             m_curr_scene_effect.setPhase(m_curr_scene_effect.getPhase() + 1);
             break;
         case 1:
-            //effectNames = &effectStrings[1];
-            effectNames[0] = effectStrings[0];
-            effectNames[1] = effectStrings[1];
-            effectNames[2] = effectStrings[2];
-            effectNames[3] = effectStrings[3];
-            effectNames[4] = effectStrings[4];
-            effectNames[5] = effectStrings[5];
-            effectNames[6] = effectStrings[6];
-            effectNames[7] = effectStrings[7];
-            effectNames[8] = effectStrings[8];
-            effectNames[9] = effectStrings[9];
+            __memcpy(effectNames, effectStrings, sizeof(effectNames));
             if (m_lampEffTimer >= 10.0f) {
                 u32 rand = randi(3);
                 if (rand >= 2) {
@@ -654,22 +653,26 @@ void stEmblem::updateScene01(float deltaFrame) {
                 if (rand >= 2) {
                     rand = 2;
                 }
-                // TODO: load from 0x68c[unk744+5] 0x6A0[unk744]
                 switch(rand) {
                     default:
-                    case 0:
-                        m_effects[unk744+5] = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_a);
+                    case 0: {
+                        u32 effect = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_a);
+                        m_effects[secondaryLampIndex(unk744)] = effect;
                         break;
-                    case 1:
-                        m_effects[unk744+5] = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_b);
+                    }
+                    case 1: {
+                        u32 effect = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_b);
+                        m_effects[secondaryLampIndex(unk744)] = effect;
                         break;
-                    case 2:
-                        m_effects[unk744+5] = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_c);
+                    }
+                    case 2: {
+                        u32 effect = g_ecMgr->setEffect(ef_ptc_stg_emblem_01_lamp_fire_c);
+                        m_effects[secondaryLampIndex(unk744)] = effect;
                         break;
+                    }
                 }
                 g_ecMgr->setParent(m_effects[unk744],m_scene_grounds[0]->m_sceneModels[0],effectNames[unk744],0);
-                //u32 temp1 = unk744 + 5;
-                g_ecMgr->setParent(m_effects[unk744],m_scene_grounds[0]->m_sceneModels[0],effectNames[unk744+5],0);
+                g_ecMgr->setParent(m_effects[secondaryLampIndex(unk744)],m_scene_grounds[0]->m_sceneModels[0],effectNames[secondaryLampIndex(unk744)],0);
                 int iVar1 = unk744 + 1;
                 unk744 = iVar1;
                 if (iVar1 >= 5) {
@@ -686,14 +689,24 @@ void stEmblem::updateScene01(float deltaFrame) {
             break;
     }
     int locald8[2];
-    locald8[0] = statueGrounds[0];
-    locald8[1] = statueGrounds[1];
-    //int iVar2 = 0
+    __memcpy(locald8, statueGrounds, sizeof(locald8));
+    Vec3f groundPos;
+    Vec3f pos;
+    float halfRange;
+    float shakeScale;
+    float zero;
+    float cooldownMinimum;
+    float cooldownRange;
+    zero = 0.0f;
+    cooldownRange = 5.0f;
+    cooldownMinimum = 10.0f;
+    shakeScale = 1.0f;
+    halfRange = 0.5f;
     for (int i = 0; i < 2; i++) {
         switch(unk704[i]) {
             case 0:
                 if (m_scene_grounds[locald8[i]]->isHit()) {
-                if (unk808 == 0.0f) {
+                if (zero == unk808) {
                     if (i == 0) {
                         m_effects[12] = g_ecMgr->setEffect(ef_ptc_stg_emblem_00_zou_damage_l);
                         g_ecMgr->setParent(m_effects[12],m_scene_grounds[0]->m_sceneModels[0],"StgEmblem01ZouANormal",0);
@@ -701,7 +714,7 @@ void stEmblem::updateScene01(float deltaFrame) {
                         m_effects[13] = g_ecMgr->setEffect(ef_ptc_stg_emblem_00_zou_damage_r);
                         g_ecMgr->setParent(m_effects[13],m_scene_grounds[0]->m_sceneModels[0],"StgEmblem01ZouBNormal",0);
                     }
-                    unk808 = 10.0f + (5.0f*randf());
+                    unk808 = cooldownMinimum + (cooldownRange*randf());
                 }
                     //m_scene_grounds[locald8[i]]
                     int damage = m_scene_grounds[locald8[i]]->getLastDamageTaken();
@@ -725,9 +738,9 @@ void stEmblem::updateScene01(float deltaFrame) {
                             g_ecMgr->setParent(m_effects[10],m_scene_grounds[0]->m_sceneModels[0],"StgEmblem01ZouBClash",0);
                         }
                         Vec3f quake;// = Vec3f(0.0,0.0,0.0);
-                        quake.m_x = 0.0f;
-                        quake.m_y = 0.0f;
-                        quake.m_z = 0.0f;
+                        quake.m_x = zero;
+                        quake.m_y = zero;
+                        quake.m_z = zero;
                         cmReqQuake(cmQuake::Amplitude_Large,&quake);
                     } else {
                         eventArray[i].start();
@@ -748,21 +761,18 @@ void stEmblem::updateScene01(float deltaFrame) {
                 }
             }
             if (eventArray[i].isEvent()) {
-                Vec3f groundPos;
-                float one = 1.0f;
-                float fVar1 = (one*randf());
-                groundPos.m_x = (0.5f-fVar1);
-                fVar1 = (one*randf());
-                groundPos.m_y = (0.5f-fVar1);
-                fVar1 = (one*randf());
-                groundPos.m_z = (0.5f-fVar1);
-                m_scene_grounds[locald8[i+1]]->setPos(&groundPos);
+                float fVar1 = (shakeScale*randf());
+                groundPos.m_x = (halfRange-fVar1);
+                fVar1 = (shakeScale*randf());
+                groundPos.m_y = (halfRange-fVar1);
+                fVar1 = (shakeScale*randf());
+                groundPos.m_z = (halfRange-fVar1);
+                m_scene_grounds[locald8[i]]->setPos(&groundPos);
                 if (eventArray[i].isReadyEnd()) {
-                    Vec3f pos;
-                    pos.m_x = 0.0f;
-                    pos.m_y = 0.0f;
-                    pos.m_z = 0.0f;
-                    m_scene_grounds[locald8[i+1]]->setPos(&pos);
+                    pos.m_x = zero;
+                    pos.m_y = zero;
+                    pos.m_z = zero;
+                    m_scene_grounds[locald8[i]]->setPos(&pos);
                     eventArray[i].end();
                 }
         }
@@ -895,6 +905,11 @@ inline float FSub(float param1, float param2) {
     return param1 - param2;
 }
 
+inline float clampRange(float value, float lower, float upper) {
+    lower = nw4r::math::FSelect(FSub(value, lower), value, lower);
+    return nw4r::math::FSelect(FSub(lower, upper), upper, lower);
+}
+
 void stEmblem::updateSE(float deltaFrame) {
     float fVar1 = unk804 -= deltaFrame;
     if (fVar1 < 0.0f) {
@@ -928,9 +943,7 @@ void stEmblem::updateSE(float deltaFrame) {
             return;
     }
     fVar1 = 1.0f - unk804/90.0f;
-    float fVar2;
-    fVar1 = nw4r::math::FSelect(FSub(fVar1,0.0f),fVar1,0.0f);
-    fVar2 = nw4r::math::FSelect(FSub(fVar1,1.0f),1.0f,fVar1);
+    float fVar2 = clampRange(fVar1, 0.0f, 1.0f);
     if (fVar2 == 1.0f) {
         unk800++;
     }
@@ -950,7 +963,12 @@ bool stEmblem::isEventEnd(int param1, int* eventState, int* eventDecision) {
 }
 
 GXColor stEmblem::getFinalTechniqColor() {
-    nw4r::ut::Color color = nw4r::ut::Color(0x14000496);
-    if (m_scene_num == 0) return color;
-    return nw4r::ut::Color(0x1400047d);
+    union {
+        u32 rgba;
+        GXColor channels;
+    } color;
+    color.rgba = 0x14000496;
+    if (m_scene_num != 0)
+        color.rgba = 0x1400047d;
+    return color.channels;
 }
