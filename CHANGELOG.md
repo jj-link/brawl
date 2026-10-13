@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A890 — exact aggregate array size
+
+- Fresh Sol initial candidate: **180 exact code bytes**, no owned data or relocations and zero corrections. Preserves the original signed comparisons and repeated virtual `size()` calls when replacing the selected size.
+- The actual materialized source and all 58 consumed source/header inputs were reverified in a new isolated `d74b616f`-plus-unit closure: unchanged compiler settings, identical compiled object, source selected once with no original fallback, and all 127 expected/actual native hashes matching. Source SHA-256: `319c056696c06d892c5ab2b2855ed45815da91b36502b62d0d00fe6895d46c82`; the preceding `f15614d3` closure remains separately retained.
+- Evidence: `build/isolated-workers/SolFreshDededeA890/evidence/materialization/`. Exact additive root preservation passed after repairing the edit tool's unrelated newline normalization. Earlier cleanup removed 441,485,625 private bytes; the new verification cleanup removed another measured 441,897,205 bytes while retaining required source/header/config/Git, tools, inputs and comparison objects.
+
 ## Committed-source checkpoint 69c5610e
 
 - Cumulative accepted-source progress from committed snapshot `69c5610e`, published by `CommittedPublisher69c5`, is **2.952590%**: **467,500 / 15,833,556 accepted code bytes**, **15,366,056 code bytes remaining**, and **1,333 accepted source units**. Delta from `1124b270`: **+128 code bytes, +2 units, +0.000808 percentage points**.
