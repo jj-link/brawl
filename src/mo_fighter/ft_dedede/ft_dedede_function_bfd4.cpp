@@ -4,7 +4,7 @@ extern "C" {
 Weapon& fn_117_C380(void*, int);
 Weapon& fn_117_C368(void*, int);
 Weapon& fn_117_C350(void*, int);
-Weapon& fn_117_C308(void*, int);
+Weapon* fn_117_C308(void*, int);
 Weapon& fn_117_C194(void*, int);
 int fn_27_8D3E4(void*);
 }
@@ -24,8 +24,8 @@ extern "C" void fn_117_BFD4(char* pool) {
         if (fn_27_8D3E4(reinterpret_cast<char*>(&article) + 0x88) == 0) return;
     }
     for (int index = 0; index < 4; ++index) {
-        Weapon& article = fn_117_C308(pool + 0x2f3e8, index);
-        if (fn_27_8D3E4(reinterpret_cast<char*>(&article) + 0x88) == 0) return;
+        Weapon* article = fn_117_C308(pool + 0x2f3e8, index);
+        if (fn_27_8D3E4(reinterpret_cast<char*>(article) + 0x88) == 0) return;
     }
     for (int index = 0; index < 19; ++index) {
         Weapon& article = fn_117_C194(pool + 0xc, index);

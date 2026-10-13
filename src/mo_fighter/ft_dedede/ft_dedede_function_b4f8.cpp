@@ -7,7 +7,7 @@ extern "C" {
 Weapon& fn_117_C380(void*, int);
 Weapon& fn_117_C368(void*, int);
 Weapon& fn_117_C350(void*, int);
-Weapon& fn_117_C308(void*, int);
+Weapon* fn_117_C308(void*, int);
 Weapon& fn_117_C194(void*, int);
 }
 
@@ -35,7 +35,7 @@ template <> struct DededeArticlePool<2> {
 };
 template <> struct DededeArticlePool<3> {
     static int count() { return 4; }
-    static Weapon& get(char* pool, int i) { return fn_117_C308(pool + 0x2f3e8, i); }
+    static Weapon& get(char* pool, int i) { return *fn_117_C308(pool + 0x2f3e8, i); }
 };
 template <> struct DededeArticlePool<4> {
     static int count() { return 19; }

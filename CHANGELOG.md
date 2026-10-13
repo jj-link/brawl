@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C308 — exact nullable article selector and caller migration
+
+- **72 exact code bytes**, no owned data or relocations. Sol used one initial candidate, zero compiler/comparison corrections and one separately retained review revision: the observed address-or-zero ABI is represented as `Weapon*`, avoiding an unsupported null-reference return contract. Both existing B4F8/BFD4 declarations and uses were migrated; the reference-producing private wrapper is reached only by its existing bounded `0..3` loop.
+- Reverified C308, B4F8 (**800 code / 68 data bytes**) and BFD4 (**304 code bytes**) with exact applicable relocations, actual source linkage and all 127 native hashes in the named `85155e28`-plus-review closure. Captured-root recompilation preserves all three whole objects, with unchanged settings and 263 consumed headers. The two caller objects also remain identical to their previously accepted compiled objects; caller migration earns no additional source credit.
+- C308 source SHA-256: `9d84f99639a2ffa353204e930589fd2f2929af4f9fac015ea3c7269f68cdfd22`. Its LF bytes are identical across domains. Older caller compiler inputs were archive-exported CRLF; installed and published caller inputs are LF and only normalized-equivalent to those older sources. Actual LF recompilation proves whole-object equality; `byte-domain-correction.json` supersedes the earlier overstatement of raw source equality.
+- Evidence: `build/isolated-workers/SolFreshDededeC308/evidence/root-materialization/` and `review-revision-01/`. Exact owned substitutions/additions preserve 2,875 other identities, mixed configuration line endings and Git modes. Earlier measured cleanup removed 1,210,637,373 private bytes; materialization removed another 91,209 bytes while retaining 413 evidence identities, source/header/config/Git and shared originals. No newer aggregate-root native build is claimed.
+
 ## Committed-source checkpoint a43d3d3a
 
 - Cumulative accepted-source progress from committed snapshot `a43d3d3a`, published by `CommittedPublisherA43`, is **2.956657%**: **468,144 / 15,833,556 accepted code bytes**, **15,365,412 code bytes remaining**, and **1,341 accepted source units**.
