@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede ABB8 — exact embedded-member deleting destructor
+
+- Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Null receivers are preserved; the embedded member is destroyed with a negative selector, and only a positive signed-short outer selector releases the enclosing allocation.
+- Source SHA-256: `60808be7c2f72fb41ab402ea340e962524f6afe279419c59c894e09c56756a64`. Private recompilation of the captured installed source reproduces the entire matched object with unchanged compiler settings and no header dependencies. Source selection and all 127 native hashes belong to the retained `85155e28`-plus-unit closure, not a newer aggregate-root build.
+- Evidence: `build/isolated-workers/SolFreshDededeABB8/evidence/root-materialization-4030e8fc/` and `context-refresh-921dc300/`. Exact additive root preservation and the narrow current-index packet retain peers, mixed line endings and Git modes. Initial cleanup removed 476,380,719 private bytes; installed-input replay removed another measured 332,148,095 bytes while preserving evidence, source/header/config/Git, tools and original inputs.
+
 ## Dedede AB5C — exact integer-parameter accessor
 
 - Sol initial candidate: **92 exact code bytes**, no owned data, three exact relocations and zero corrections. Uses the original parameter-table layout and row selector; the RTTI-backed ABI view agrees with the reviewed AAF8 layout.
