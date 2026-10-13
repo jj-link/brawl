@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Module 117 CCFC reconstructed source
+
+- Accepted `fn_117_CCFC` (`.text 0xCCFC..0xCD74`), **120 code bytes**, from `SolFreshDededeCCFC`: one initial candidate, zero corrections. Original constructor, caller and RTTI evidence establish the wind-pool member at `+0x17C`; its negative-flag destruction precedes the guarded nondeleting base operation and positive-flag outer deletion. Receiver-return behavior, headers and data ownership are unchanged.
+- Verification: exact registered allocated code and all three relocations, no allocated data, actual final MAP/RSP compiled-source selection, and **127/127 native hashes** on literal fixed `44d84f68` plus CCFC. That run measures **470,424 / 15,833,556 bytes**, **15,363,132 remaining**, **1,366 accepted units**, **2.971057%**; it is not a later-main cumulative checkpoint.
+- The same owner returned independently exercised narrow index/working packets. Native binary working application and separate cached-index application passed with zero fuzz after subsequent peer publications, without attribute overrides or whole-file replacement. Landed source SHA-256 matches `60c75ea8dcd0861d09625f509bcda95f033133e403696ab38485c70e7ab1e45f`.
+- Evidence: `build/isolated-workers/SolFreshDededeCCFC/evidence/`, including `narrow-working-application-a028ec47/`. Prior native/attempt evidence remains retained. Initial disposable cleanup removed **1,763,649,786 bytes**, and later rejected reconciliation scratch cleanup removed **1,383,531 bytes**; historical EOL qualifications remain separate. Gameplay was not exercised.
+
 ## Module 117 CC9C reconstructed source
 
 - Accepted `fn_117_CC9C` (`.text 0xCC9C..0xCCFC`), **96 code bytes**, from `SolFreshDededeCC9C`: one initial candidate, zero corrections. Original constructor/caller evidence establishes the wind-pool base at `+8`, negative inner deletion flag, positive signed outer deletion flag and unchanged receiver-return ABI. No header or data changes.
