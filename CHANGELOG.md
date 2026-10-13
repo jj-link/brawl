@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 703408c4
+
+- Cumulative accepted-source progress from committed snapshot `703408c4`, published by `CommittedPublisher703`, is **2.960725%**: **468,788 / 15,833,556 accepted code bytes**, **15,364,768 code bytes remaining**, and **1,348 accepted source units**.
+- Verification: all accepted units have literal raw Git/compiler-input equality, actual compilation, source-object linkage and exact code; all 127 native expected/actual hashes match. C408, C468 and C4C8 add **288 code bytes**, three units and **0.001819 percentage points** over `13e80b2b`.
+- All 1,345 prior unit sizes, raw source identities and source/target object identities are retained. New source objects agree with their owners' measured objects. The 194 inherited data-match limitations and earlier lifetime/newline/recovery/C308 caller-domain qualifications remain explicit.
+- Source tree: `7062f6087e91bad3bdb592e3deef00ecb85dcd07`; report SHA-256: `1bc7736924c9aae465c94299a43550843844f64a5a8926bc8c37c4225b76d802`. Evidence: `build/isolated-workers/CommittedPublisher703/evidence/703408c4/`. C528, C58C, A730 and later publications are outside this fixed snapshot.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede A730 — exact GLM float-work size accessor
 
 - GLM initial candidate: **eight exact code bytes**, no allocated data or relocations and zero corrections. Uses the existing `u32` float-work count accessor at receiver offset `+0x18`; header, vtable and constructor evidence establish the contract independently of instruction matching.
