@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 55f34a32
+
+- Cumulative accepted-source progress from committed snapshot `55f34a32`, published by `CommittedPublisher55f`, is **2.956607%**: **468,136 / 15,833,556 accepted code bytes**, **15,365,420 code bytes remaining**, and **1,340 accepted source units**.
+- Verification: every accepted unit has literal raw Git/compiler-source equality, actual compilation, source-object linkage and exact code; all 127 expected/actual native hashes match. AAF8 adds **88 code bytes**, one unit and **0.000556 percentage points** over `7efa226b`. Prior 1,339 unit sizes and source/target object identities remain unchanged; 194 inherited data-match qualifications and AAC4's lifetime/newline qualifications remain explicit.
+- Source tree: `09b0fbc227e18921fba094dcf63e8ec41243db57`; report SHA-256: `122b3f68dadbf267537a359bd2f44ab95129bffd327e090cb435664ce2523c8a`. Evidence: `build/isolated-workers/CommittedPublisher55f/evidence/55f34a32/`.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede AAF8 — exact float-parameter accessor
 
 - Sol initial candidate: **88 exact code bytes**, no owned data, three exact relocations and zero compiler/comparison corrections. One review-only comment revision corrected the original RTTI template parameter from `24999` to `23999`; the executable body and compiled object remained identical.
