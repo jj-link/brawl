@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 7cb27eb5
+
+- Cumulative accepted-source progress from committed snapshot `7cb27eb5`, published by `CommittedPublisher7cb`, is **2.968329%**: **469,992 / 15,833,556 accepted code bytes**, **15,363,564 code bytes remaining**, and **1,362 accepted source units**.
+- Verification: all 1,362 accepted units have literal raw Git/compiler-input equality, observed compilation, exact code and actual final source-object MAP/RSP linkage; all 127 native expected/actual hashes match. C910, C838, C8B0, A7C8 and CA48 add **412 code bytes** and five units over `8e1edb96`.
+- All 1,357 prior unit sizes, raw sources and source/target object identities remain unchanged. All 98,484 consumed dependency occurrences equal their canonical literal Git inputs across 1,891 canonical paths. The five new objects have exact allocated code and relocations, with no allocated data.
+- The 194 inherited data qualifications and AAC4/A654/C308/A730 distinctions remain. A7C8's historical owner target object is absent; its recorded identity agrees with the freshly extracted target and retained original bytes. This preserves the distinction rather than claiming historical target-file retention. No aggregate all-data-exact or gameplay claim is made.
+- Source tree: `fc8e11adb5a1126001297a2c77d2622cc7343b62`; report SHA-256: `7b8c9ee6cdb0718eedc0b06d106bca12c072bbe983da3c8c04c2942fe9081ac3`. Evidence: `build/isolated-workers/CommittedPublisher7cb/evidence/7cb27eb5/`. Subsequent source commits and working-byte recovery are outside this fixed snapshot. Required inputs and native/owner evidence remain retained; cleanup removed zero bytes.
+
 ## CA48 publication working-byte recovery
 
 - The original CA48 owner restored 30 provenance-established historical LF keeper rows, its two LF registration rows and its 14 source LF rows in the actual working tree. No non-EOL content or Dedede split bytes changed; later C9D0/CDD0/CB04 additions and unowned contents were preserved. Committed source and accepted-code credit did not change.
