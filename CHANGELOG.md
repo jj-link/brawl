@@ -17,6 +17,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - The 194 inherited data qualifications and AAC4/A654/C308 limitations remain. A730's missing historical target object and obsolete packet remain explicitly qualified; its retained target-identity receipt agrees with the fresh target, and the truncated-recipe detour remains excluded. This is not an aggregate all-data-exact claim.
 - Source tree: `c028df2c365b3f86a4d8b04145ca2439438514fe`; report SHA-256: `64a2e2734b8bc6b48a142a11e13cdcc695d71981634a15be0fff5912c6348db7`. Evidence: `build/isolated-workers/CommittedPublisher8e1/evidence/8e1edb96/`. Later C910/C838/C8B0 commits are outside this fixed snapshot. Required inputs, native artifacts and owner evidence are retained; cleanup removed zero bytes.
 
+- Sealed after parent headline `c2f15641`: endpoint revision `5d8b0786c308769c`, all 5,627 unit-map entries and 127 module totals agree. Served and persisted history retain all 383 prior points and share latest `2026-10-13T12:10:21.723Z` / 469,580 bytes. Publisher activity/live membership and all 337 unchanged protected root identities were observed. The 1,887 observed dependency paths resolve to 1,886 canonical Git paths; the case-alias distinction is retained without input changes or a native rerun.
+
 ## Dedede C8B0 — exact stop-energy base lifetime wrapper
 
 - Sol initial candidate: **96 exact code bytes**, no allocated data, two exact relocations and zero corrections. Preserves guarded non-deleting A614 teardown and deletes the opaque original receiver only for a positive signed-short selector.
