@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A730 — exact GLM float-work size accessor
+
+- GLM initial candidate: **eight exact code bytes**, no allocated data or relocations and zero corrections. Uses the existing `u32` float-work count accessor at receiver offset `+0x18`; header, vtable and constructor evidence establish the contract independently of instruction matching.
+- Source SHA-256: `e07766f8133e9cfbf71761f2858fe8c7265ccdaf3d15952c2c10de011b704a9b`. Reproduction with the complete actual compiler recipe yields the reviewed whole object `13326e5a931df08334894fd9deacc287f5e9802d50f892e0488ee6752c5b2945`. All 12 consumed headers and three compiler/wrapper/linker identities agree with root inputs. Actual final-map source attribution and all 127 native hashes remain scoped to `38b78465` plus this unit.
+- Verification qualifications: a truncated-recipe detour emitted a one-byte allocated `NOBITS` object; that was not the selected object, which contains only code and a nonallocated comment section. The detour object and corrected recipe evidence are retained. These verification corrections did not revise the candidate or consume reconstruction corrections.
+- The final packet's applied source is exactly 253 bytes; observed cached staging preserves all other raw bytes and the configuration/split's 110/9 CRLF endings. Cross-baseline blob hints and their corrected interpretation are recorded. The superseded `5469b8a4` packet was deleted by its owner and exact recovery failed; its missing-artifact record does not claim reconstructed equality.
+- Evidence: `build/isolated-workers/GlmFreshDededeA730/evidence/root-materialization/` and adjacent original verification receipts. Earlier measured cleanup removed 443,164,694 and 463,908,595 private bytes. No newer whole-root native build or additional cleanup saving is claimed.
+
 ## Dedede C58C — exact opaque base lifetime wrapper
 
 - Sol initial candidate: **92 exact code bytes**, no owned data, two exact relocations and zero corrections. Calls A614 on the same nonnull receiver with the nondeleting selector, frees only for a positive signed-short selector, and returns the original pointer without asserting a concrete hierarchy or extent.
