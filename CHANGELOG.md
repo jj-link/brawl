@@ -11,6 +11,8 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## Committed-source checkpoint 51b45137
 
+- Publication sealed against headline commit `16c395a6`: dashboard revision `6321a7c5f5287402`, all **5,640 unit-map entries** and **127 module totals** agree with the fixed report. Served and persisted history end at **470,492 bytes** at `2026-10-13T13:54:27.011Z`; 392 prior points remain. Publisher activity/live membership was observed and all 337 protected root identities remained unchanged. This is endpoint/data verification, not a browser or gameplay claim.
+
 - Cumulative accepted-source progress from committed snapshot `51b45137`, published by `CommittedPublisher51b`, is **2.971487%**: **470,492 / 15,833,556 accepted code bytes**, **15,363,064 code bytes remaining**, and **1,367 accepted source units**.
 - Verification: all 1,367 accepted units have literal raw Git/compiler-input equality, observed compilation, exact code and actual final MAP/RSP source linkage; all **127 native expected/actual hashes** match. C9D0, CDD0, CB04, CAA4 and CD74 add **500 code bytes** and five units over `7cb27eb5`.
 - All 1,362 prior unit sizes, raw sources and source/target object identities remain unchanged. All **98,489 consumed dependency occurrences** equal their literal Git inputs across **1,896 canonical paths**. All five new objects have exact allocated code and relocations, with no allocated data.
