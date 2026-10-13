@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede C838 — exact nested controller-pool lifetime operation
+
+- Sol initial candidate: **120 exact code bytes**, no allocated data, three exact relocations and zero corrections. Tears down C7D8 at receiver `+0x94` with a negative selector, preserves guarded non-deleting C6A8 base teardown, and deletes the opaque original receiver only for a positive signed-short outer selector.
+- Source SHA-256: `86d508332a1f20a8e4757ad281c7637300feeb44765eb83699352d8e34bba14b`. Actual installed-input compilation retains the full reviewed arguments, sole source dependency and 14 matching tool identities, reproducing whole object `9747fb64a96b11496a0c4f4e6ae0994e07164dd0aa419e5e7ed8b402abfdfb32`. Both literal `7ab5f64b`-plus-unit and separately frozen `dddd46fa` root-working-input closures pass all 127 native hashes.
+- The latter includes then-pending C7D8/C910 and is not a committed-only baseline. It retains actual executed final MAP/RSP source selection without fallback; the older literal7ab proof retains MAP/executed Ninja link-query evidence, not its transient final RSP. Superseded archive-byte assumptions remain recorded.
+- Evidence: `build/isolated-workers/SolFreshDededeC838/actual-input-proof-dddd46fa/evidence/` and `publication-dddd46fa/current-index-81c7f5c4/`. True preimages repaired 28 unrelated LF rows normalized by the edit tool before writer release; the final packet preserves other bytes/EOL/modes. Measured private cleanup removed 1,429,442,906 bytes initially and 477,158,649 on installed-input verification, retaining required inputs/attempts/native proof and unchanged root originals.
+
 ## Dedede C910 — exact stop-energy holder destructor
 
 - Sol initial candidate: **96 exact code bytes**, no allocated data, two exact relocations and zero corrections. RTTI/construction/caller evidence grounds the embedded stop-energy receiver at `+4`; C8B0 receives a negative selector, and only a positive signed-short outer selector deletes the opaque holder.
