@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 14DC4 — initial-candidate exact destructor
+
+- Fresh Sol initial candidate: 112 exact code bytes, three exact relocations and no owned data. Registered compiled-source linkage and all 127 native DOL/REL hashes pass on `f42d876b` plus this unit; corrections: zero.
+- The same owner materialized only its root source/registration/split additions with byte-exact preimage preservation and reconciled its index packet after `cbde9273`. Source SHA-256: `416737b31129a1e93f400accb0ee82ba494b1b52e776acf5b54cc0ccd4a7956e`.
+- Evidence: `build/isolated-workers/SolFreshDedede14DC4/evidence/`. Cleanup removed 442,662,208 private bytes while retaining source/header/configuration/Git trees, measured attempts and verification records. All 127 root-original identities remained unchanged. Gameplay was not exercised.
+
 ## Dedede 14CC8 — initial-candidate exact destructor
 
 - Fresh Sol initial candidate: 108 exact code bytes, five exact relocations, no owned data and zero corrections. Native linker inputs select the compiled source, the retained linked symbol has the expected `0x14CC8` address and `0x6C` size, and all 127 DOL/REL hashes pass on reconciled `d2be34fb` plus this unit.
