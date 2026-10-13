@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede CA48 — exact damage-energy base lifetime wrapper
+
+- Sol initial candidate: **92 exact code bytes**, no allocated data, two exact relocations and zero corrections. The opaque receiver invokes C8B0 in non-deleting form, releases storage only for a positive signed-short outer selector, and returns the original receiver; no new layout or extent is assumed.
+- Verification on literal `c5ec555e` plus this unit passes all 127 native hashes. The registered source object `d8cadb3c3b92c584acbf1fbc14cc5a57b5b9e94f329099217611c9c78e0d22c3` matches allocated text and both relocations; actual final MAP/RSP select it without the assigned original fallback. The compiler consumes only the source, with no headers.
+- Evidence: `build/isolated-workers/SolFreshDededeCA48/evidence/`, including `semantic-evidence.json`, `native-final/` and the own-only publication packet. Current-main patch reconciliation is distinct from the fixed native baseline; unrelated working/index bytes, line endings and modes are preserved.
+- Measured private cleanup removed 8,988,169,293 bytes across 13,597 files, retaining 2,895 checked protected files, source/header/configuration/Git trees and all required attempt/native evidence. Root originals remain unchanged. Gameplay was not exercised.
+
 ## Dedede A7C8 — exact integer-work count getter
 
 - GLM initial candidate: **8 exact code bytes**, no allocated data or relocations, and zero corrections. Reuses the existing `soGeneralWorkSimple::getIntWorkSize()` contract; header layout, constructor stores and the original interface-vtable reference establish the unsigned count at receiver `+0x10`.
