@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint a43d3d3a
+
+- Cumulative accepted-source progress from committed snapshot `a43d3d3a`, published by `CommittedPublisherA43`, is **2.956657%**: **468,144 / 15,833,556 accepted code bytes**, **15,365,412 code bytes remaining**, and **1,341 accepted source units**.
+- Verification: all accepted units have literal raw Git/compiler-source equality, actual compilation, source-object linkage and exact code; all 127 expected/actual native hashes match. A654 adds **eight code bytes**, one unit and **0.000051 percentage points** over `55f34a32`. Prior 1,340 unit sizes and source/target object identities are retained; 194 inherited data-match qualifications, AAC4's lifetime/newline qualifications and A654's separate recovery history remain explicit.
+- Source tree: `9191a9feceed5c6016b238e9525512b6836f355e`; report SHA-256: `bf046fe191e6bae4c6ded56d3fbe7a692722030667095510b202c784f5cfdbd9`. Evidence: `build/isolated-workers/CommittedPublisherA43/evidence/a43d3d3a/`. Later AB5C and ABB8 publications are outside this fixed snapshot.
+- Endpoint/history/module/unit-map sealing follows this parser-compatible checkpoint alignment.
+
 ## Dedede ABB8 — exact embedded-member deleting destructor
 
 - Sol initial candidate: **96 exact code bytes**, no owned data, two exact relocations and zero corrections. Null receivers are preserved; the embedded member is destroyed with a negative selector, and only a positive signed-short outer selector releases the enclosing allocation.
