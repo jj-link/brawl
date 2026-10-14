@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1D0 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1D0`, `.text 0xE1D0..0xE1D8`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the module-27 import relocation match. The complete `ecc1a438d75c5f2de782fe659ede50cc93da2d73` input set passed all **127 native outputs**, with reconstructed-source linkage and a byte-identical Dedede REL. Source Git blob: `6a05d576e545c8ccc90c481b800f45a0d0601241`. Gameplay was not exercised.
+- Main materialization preserved actual dirty preimages except the two owned insertions and new source. Review rejected a private index containing dirty MAIN postimages; the owner retained it as non-publication evidence and instead applied the complete own-only patch to a fresh index at `790a589b69bc6054b5562066b71d909d3571101a`, verifying the exact three paths, modes and intended blobs before publication.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1D0/evidence/own-only.patch`, `00-own-only-validation-790a589.txt`, `00-materialization-790a589.md`, `00-verification-ecc1a438.md`, `attempt-0-compare-ecc1a438.txt`, `00-native-hash-check-ecc1a438.txt` and `attempts.json`.
+
 ## Dedede E1C0 — qualified cleanup and retained verification evidence
 
 - The pre-deletion manifest records **62615 files / 2647972341 bytes** removed, including eight tracked-file copies across the standalone clone and three private verification worktrees. Two clone files totaling **16309 bytes** were restored; six verification-worktree copies totaling **48927 bytes** were not restored. The corrected net removal is therefore **62613 files / 2647956032 bytes**. The receipt's `net_permanent_deletion` value instead subtracts all eight tracked copies and is not the net total; this record corrects that arithmetic.
