@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1C8 — completed evidence-preserving cleanup
+
+- The owner removed **64908 files / 2148440651 bytes** individually from a pre-deletion manifest, then pruned **5441 empty directories**. Tracked files were excluded, including foreign files beneath `build/`; the post-cleanup tracked-deletion check is empty. Eight retained evidence identities, five materialization pre/post identities, five tool identities and all 134 parent original-input identities passed their recorded checks. Recipe-referenced tool copies and reconstruction evidence remain.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1C8/evidence/cleanup-receipt.md`, `cleanup/deletion-manifest.txt` and `cleanup/post-cleanup-checks.json`. The cancellation interface confirmed that E1C8's session was killed and its registration dropped. Fresh owner `GlmFreshDededeE1D8` received the next bounded assignment; E1C0 and E1D0 retain their existing assignments.
+
 ## Committed-source checkpoint 0f034e72
 
 - Verified committed snapshot `0f034e726b55beec9e1ee8dc7f4513180614a330`: **2.977929%**, **471512 / 15833556 accepted code bytes**, **15362044 code bytes remaining**, **1390 accepted source units**. Delta from `4f9b7be4`: **+8 code bytes / +1 source unit**.
