@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint fe7420f5
+
+- Verified committed snapshot `fe7420f5fb290753b2368740d9c857897582ed09`: **471464 / 15833556 accepted code bytes**, **15362092 code bytes remaining**, **2.977625%**, **1384 accepted source units**. Delta from `f419401d`: **+8 code bytes / +1 source unit**.
+- Retained publisher `SolPublisherDB04` generated and published report SHA-256 `a9df92ecd6571ef17c261d1ba11e37391020826bb93ef15667bd5b1ab2df41e1` from the fixed committed checkout. Fresh verification passed **127 native hashes**, checked **1384 accepted-source link recipes**, retained **1383 prior source blob/object identities**, and validated **329 original/tool identities**. All seven accepted Dedede units are complete and singly source-linked. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/fe7420f5/report-published.json`, `source-provenance-link-proof.json`, `registered-seven-dedede-units.json`, and `binary-hash-verification.json`. E190 equality covers allocated code and relocations, not whole-ELF hashes. No gameplay run.
+- E190 cleanup retained its current/historical evidence, tracked files, original-input junctions, and shared tools; original/source/object hash checks passed. Removed-byte counts were not measured before deletion and remain unavailable. Receipt: `build/isolated-workers/GlmFreshDededeE190/evidence/cleanup-receipt.md` and `cleanup-hash-check.json`. The assignment/task completed; both persistent-session cancellation requests returned daemon-broker startup errors, so termination remains unconfirmed. Fresh `GlmFreshDededeE1A8` fills the completed assignment slot.
+
 ## Dedede E190 — exact GLM source reconstruction
 
 - Accepted `fn_117_E190`, `.text 0xE190..0xE198`: **8 code bytes**, one initial candidate and zero corrections. `GlmFreshDededeE190` verified the complete `f419401da47de917eb30f571c2fab76cdf83a65c` input set with all **127 native outputs** matching; the current report retains DA1C/DB04/DCD4/DDBC/DEA4/DF8C/E190 as complete, source-linked units.
