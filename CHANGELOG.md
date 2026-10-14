@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d7524d6a
+
+- Cumulative accepted-source progress from committed snapshot `d7524d6a7ad3e2ffd5cd2f0d11430982bb836876`, published by `SolPublisherLocalResume`, is **2.977272%**: **471,408 / 15,833,556 accepted code bytes**, **15,362,148 code bytes remaining**, and **1,377 accepted source units**. This checkpoint adds **0 code bytes and 0 units** over `e2dc6ef3`.
+- Reconstruction inputs are unchanged. The publisher revalidated **1,377 source registrations and linker-response memberships**, rehashed **7,367 retained native artifacts**, reverified all **127 DOL/REL hashes**, and checked **329 original/tool input identities**. Existing compiler, code/data/relocation measurements and CRLF identity qualifications are retained; no fresh compilation or object comparison is claimed.
+- Published report SHA-256: `bad4d53b7a8b2d28748f5c166de417b72af816057e8ba4f9e39e241349a4ed3a`. Local/public headline measurements, all **5,650 unit entries**, **127 module totals**, and latest persisted history agree at **471,408 bytes**, observed at `2026-10-14T04:49:52.629Z`. The publisher's pre-documentation headline retained the prior checkpoint identity; this entry supplies the verified current identity.
+- Evidence: `build/isolated-workers/SolPublisherLocalResume/evidence/d7524d6a/final-publication-current.json`. Cleanup removed zero bytes; no redundant native outputs or original copies were created. Five fresh local reconstruction workers resumed separately; their uncommitted work contributes nothing to this checkpoint.
+
 ## Dashboard session-fork output repair
 
 - Removed the historical root UUID restriction from `.omp/extensions/live-output.js`; observer ownership follows the runtime's main session, resets retained output on root changes, and scopes child events to current journal identities.
