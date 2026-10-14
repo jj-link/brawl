@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint e562c7d2
+
+- Verified committed snapshot `e562c7d2bf60f495f53e820c37f742f1fea7a924`: **2.977727%**, **471480 / 15833556 accepted code bytes**, **15362076 code bytes remaining**, **1386 accepted source units**. Delta from `1f82962e`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `56f984564308a85e96b4c3f19ea7caea1699c7f58c100a0afeb4e42af61ed9c6`. The retained publisher generated the fixed-commit report, verified all 127 native output hashes, checked 1386 accepted source-link recipes, and validated 1385 prior source/object identities plus 329 original/tool identities. All nine accepted Dedede units match and link singly from reconstructed sources. E1A0's allocated code and relocation match; its source Git blob is `89c706cc07d3de8411d5f331b4e525ce49fcc57d`. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/e562c7d2/report-published.json`, with source/link, comparison, native-hash, input-identity, map and report artifacts in that directory. Final dashboard source-identity, headline, unit/module and served/persisted history verification follows this record's commit-and-push acknowledgment.
+
 ## Dedede E1A0 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1A0`, `.text 0xE1A0..0xE1A8`: **8 code bytes**, one initial candidate and **one correction**. The initial short-flag draft matched 4/8 target bytes; the retained best draft matches 8/8 code bytes and its relocation. Both measured source drafts and comparison artifacts are preserved in `build/isolated-workers/GlmFreshDededeE1A0/evidence/attempts.json`.
