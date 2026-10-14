@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1B0 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1B0`, `.text 0xE1B0..0xE1B8`: **8 code bytes**. Allocated code and the module-27 import relocation match. The same owner verified all **127 native outputs** against the complete `1ed4e61123f9561942fed7d6b35147905c4bc9f3` input set and confirmed reconstructed-source linkage. Source Git blob: `6f477be1278880baf5a5698c270747872a6d6fd5`. Gameplay was not exercised.
+- Corrected attempt accounting: **one initial candidate and two corrections**, matching on correction 2. The initial object had the wrong relocation target; correction 1 failed compilation; correction 2 addressed that compiler feedback and matched. Earlier 1+1 reports excluded the failed compilation and are superseded. The failed candidate was initially retained as an explicitly labeled reconstruction; recovery of its original journal evidence remains with the same owner.
+- Main materialization saved actual dirty-file pre-images before edits and proved byte-exact insertion-only changes inside both shared files; the other 21 modified tracked files were unchanged. The own-only committed-index patch was validated separately from those dirty working files. Evidence: `build/isolated-workers/GlmFreshDededeE1B0/evidence/attempts.json`, `attempt-chronology.md`, `attempt-01/exact-comparison.json`, `materialization-1ed4e611/within-file-preservation-proof.json`, and `own-reconcile-1ed4e611.patch`.
+
 ## Committed-source checkpoint 81827ba9
 
 - Verified committed snapshot `81827ba959005b16e8e18008060beec3031e5ffd`: **2.977777%**, **471488 / 15833556 accepted code bytes**, **15362068 code bytes remaining**, **1387 accepted source units**. Delta from `e562c7d2`: **+8 code bytes / +1 source unit**.
