@@ -2,11 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DCD4 — exact GLM source reconstruction
+
+- Accepted `fn_117_DCD4`, `.text 0xDCD4..0xDCDC`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDCD4` reconciled onto `cdda4dc3` and verified all **127 native hashes** in its isolated patch-reproduction build.
+- The post-merge map links DCD4, DA1C, and DB04 from their reconstructed source objects. DCD4 matches all 8 code bytes, has no relocations, and retains identical comparison-object hashes across reconciliation. Main source SHA-256 `0e8b4b4a0ab959ea924e06cba0f5e0795245d4e8e68a9cf1f0d0df62922b3009` matches the verified source; byte-exact main-file preservation evidence excludes unrelated changes.
+- Evidence: `build/isolated-workers/GlmFreshDededeDCD4/evidence/own-only-reconciled-cdda4dc3.patch`, `patch-verify-receipt.json`, `root-materialization/record.json`, and the retained attempt/comparison/hash records. Dolphin was not found in the checked locations; gameplay verification was unavailable. Cleanup follows source-publication acknowledgment; cumulative accepted-source accounting belongs to the retained publisher.
+
 ## Committed-source checkpoint cdda4dc3
 
 - Cumulative accepted-source progress from committed snapshot `cdda4dc309050d8f4a7cc9df636a170d1b2a5512`, published by the retained `SolPublisherDB04` agent, is **2.977373%**: **471,424 / 15,833,556 accepted code bytes**, **15,362,132 code bytes remaining**, and **1,379 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `283271c9`, from DA1C.
 - Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked all **1,379 accepted source-link recipes**, preserved **1,378 prior source identities/objects**, and checked **329 original/tool identities**. DA1C and DB04 are complete and singly linked from reconstructed source objects; DA1C's exact allocated code and absence of relocations match its original object.
-- Published report SHA-256: `82d4996a48f812140bf745a23537703bb39ccabb3eff3afa2516cfc98a10248e`. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/cdda4dc3/report-published.json`. This entry supplies the new headline/history checkpoint; the same publisher performs final endpoint/history agreement after its documentation acknowledgment. Source CRLF and owner LF identity domains remain explicit; gameplay was not exercised.
+- Published report SHA-256: `82d4996a48f812140bf745a23537703bb39ccabb3eff3afa2516cfc98a10248e`. Final verification after documentation commit `30aa7b79` confirms local/public headline counters, all **5,654 unit-map records**, **127 module totals**, and served/persisted latest history agree at **471,424 bytes**, observed at `2026-10-14T06:30:47.663Z`; report provenance is not stale. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/cdda4dc3/final-publication-current.json`. Cleanup removed **24,805,432 bytes** of redundant private originals while retaining measured evidence. Source CRLF and owner LF identity domains remain explicit; gameplay was not exercised. The same publisher remains assigned for subsequent checkpoints.
 
 ## Standardized agent assignment instructions
 
