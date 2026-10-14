@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DEA4 — exact GLM source reconstruction
+
+- Accepted `fn_117_DEA4`, `.text 0xDEA4..0xDEAC`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDEA4` privately reconciled the complete tracked `df4cfdf9` input set and verified all **127 native hashes**. DA1C, DB04, DCD4, DDBC, and DEA4 remain complete and source-linked in the regenerated report.
+- DEA4 matches all 8 code bytes with zero relocations. Main source SHA-256 `6d397a58e88057cde1820a139cdc1507eeb3842410199f58b430f93f7b1ccec2` matches the verified source. The same owner materialized the changes against main `48d2779c`; unchanged committed input identities preserved applicability of its private verification.
+- Evidence: `build/isolated-workers/GlmFreshDededeDEA4/evidence/own-staging-df4cfdf9.patch`, `main-materialized/receipt.json`, `final-127-native-hashes.json`, `01-report.json`, and `00-integration-rel.json`. Byte-level insertion proofs preserve unrelated dirty registration bytes. Gameplay was not exercised; the retained publisher measures cumulative accepted-source progress from the committed result.
+
 ## Canonical reconciliation-state clarification
 
 - Clarified `PLAN.md` Reconstruction owner step 6: `reconciled` requires the owner to have materialized the verified changes in the parent main working tree and supplied main source identity and unrelated-byte preservation evidence. A verified private patch with the parent checkout untouched remains `review-ready`.
