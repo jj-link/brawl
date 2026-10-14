@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1E0 — completed evidence-preserving cleanup
+
+- The owner removed **13257 files / 454425793 bytes** individually from a pre-deletion path/size/SHA-256 manifest, then removed **1006 empty directories**. All tracked files, including foreign evidence beneath `build/`, were excluded. Source/configuration trees, Git metadata, recipe-referenced tools and reconstruction evidence remain; original main DOL and Dedede REL hashes remain unchanged.
+- Preserved evidence includes the initial source, candidate/target objects, actual native command output, source-link and unit-report records, input/tool identities, dirty MAIN preimages and validated patches. The deleted full report's manifest SHA-256 matches the independently hashed retained publisher copy at `build/isolated-workers/SolPublisherDB04/evidence/82cd52d9/committed-report.json`. Owner receipts: `build/isolated-workers/GlmFreshDededeE1E0/evidence/cleanup-receipt.md` and `cleanup-deletion-manifest.txt`.
+- The cancellation interface first cancelled the background job, then explicitly confirmed that the session was killed and its registration dropped. Fresh owner `GlmFreshDededeE1F0` received the next bounded function; E1D8 and E1E8 retain their assignments, maintaining three GLM owners.
+
 ## Committed-source checkpoint 82cd52d9
 
 - Verified committed snapshot `82cd52d9a012a6a678ac39c9ce6f567d2ad13ded`: **2.978080%**, **471536 / 15833556 accepted code bytes**, **15362020 code bytes remaining**, **1393 accepted source units**. Delta from `ba7a351f`: **+8 code bytes / +1 source unit**.
