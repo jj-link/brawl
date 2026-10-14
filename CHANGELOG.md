@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1E0 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1E0`, `.text 0xE1E0..0xE1E8`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the `R_PPC_REL24` import relocation to `fn_27_133AA4` match. All **127 native outputs** pass; the map links the reconstructed source and the built Dedede REL equals the original. Source Git blob: `bd60e379b0a395945072e8d8c30a893300a4c348`. Gameplay was not exercised.
+- Verification used the complete `ba7a351f` accepted build inputs plus this assignment. The owner checked the full range through reconciliation HEAD `883d0ff9`: only dashboard code and documentation changed, so the measured native results remain applicable without another build. Authoritative data relocations substantiate the source's table-entry comment.
+- Materialization saved the actual dirty shared-file preimages, added only the two registration insertions and new source, and preserved all 21 other dirty tracked files. Raw patch application reproduced the parent postimages byte-exactly. The own-only publication patch was actually applied to a fresh private index at `883d0ff9`, with exactly the three declared paths and expected modes/blobs; the parent index was unchanged.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1E0/evidence/attempts.json`, `attempt-chronology.md`, `attempt-00/exact-comparison.json`, `linkage/build-ninja-e1e0-edges.txt`, `00-vtable-evidence.txt`, `materialization-883d0ff9/`, `raw-apply-proof-883d0ff9.txt` and `own-reconcile-ba7a351f.patch`. Actual native command output is retained in the owner's session evidence, `artifact://53707` region 75.
+
 ## Committed-source checkpoint ba7a351f
 
 - Verified committed snapshot `ba7a351f22aab6b31fdc2ff1b0c01932b37ba566`: **2.978030%**, **471528 / 15833556 accepted code bytes**, **15362028 code bytes remaining**, **1392 accepted source units**. Delta from `ecc1a438`: **+8 code bytes / +1 source unit**.
