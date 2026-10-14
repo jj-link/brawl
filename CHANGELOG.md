@@ -2,6 +2,10 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Instruction refinement — compiler-failed candidates
+
+- E1B0's initial accounting excluded a compiler-failed revision and retained only the later successful compile logs. The existing definition already counted revisions responding to compiler feedback; the owner corrected the ledger to one initial candidate plus two corrections. Canonical reconstruction step 2 now explicitly requires saving each candidate before compilation, retaining failed-compile diagnostics, and counting compiler-feedback revisions even when no object comparison ran. The ten-correction allowance and model/ownership rules are unchanged.
+
 ## Dedede E1B0 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1B0`, `.text 0xE1B0..0xE1B8`: **8 code bytes**. Allocated code and the module-27 import relocation match. The same owner verified all **127 native outputs** against the complete `1ed4e61123f9561942fed7d6b35147905c4bc9f3` input set and confirmed reconstructed-source linkage. Source Git blob: `6f477be1278880baf5a5698c270747872a6d6fd5`. Gameplay was not exercised.
