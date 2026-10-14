@@ -29,7 +29,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 
 1. Spawn a fresh agent for one bounded reconstruction assignment.
 2. Keep that agent responsible for the assignment through integration and final verification or the agreed model handoff.
-3. After verified source integration and binary verification, return the source patch and evidence, perform the evidence-preserving workspace cleanup below, and end the reconstruction agent's session. Preserved model handoffs and Astra set-aside outcomes follow the same evidence-preserving cleanup lifecycle.
+3. A privately verified patch is review-ready, not a completed assignment. The same owner retains the needed workspace and completes reconciliation with the current main working branch, including conflicts and required re-verification. After the parent commits and pushes the accepted assignment, the owner performs evidence-preserving cleanup and ends its session. The next function goes to a fresh agent. This sequence does not gate other workers’ private implementation, compilation, comparison, or verification.
 4. Fill the available worker slot with a fresh agent for the next assignment, carrying forward relevant verified knowledge and preserved handoff artifacts.
 
 ### Workspace cleanup
