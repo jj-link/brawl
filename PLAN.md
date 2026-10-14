@@ -83,14 +83,14 @@ This is the current arrangement, not a permanent restriction; the user may chang
 
 | Model | Workers | Role |
 | --- | ---: | --- |
-| GPT-6.1 Sol | 8 | Larger, independent functions within coherent subsystem groups, or preserved GLM/Qwen work picked up later. |
-| GLM | 2 | 8-byte functions; preserve unmatched work after ten corrections for later Sol pickup. |
-| Qwen3.8-Flash-Next (Spark1) | 3 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
+| GPT-6.1 Sol | 0 | Reconstruction paused during the current local-only run; preserved local-model handoffs await later authorization. |
+| GLM | 3 | 8-byte functions; preserve unmatched work after ten corrections for later Sol pickup. |
+| Qwen3.8-Flash-Next (Spark1) | 4 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
 | GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
-GLM concurrency is capped at two active subagents across all assignments, including recovery work.
+GLM concurrency is capped at three active subagents across all assignments, including recovery work, under the user's expanded local-worker trial.
 
-The pool contains eight Sol worker slots, two GLM worker slots, and three Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
+The current local-only run contains three GLM worker slots and four Qwen worker slots; Sol is used only for dedicated dashboard publication. Preserve exhausted local-model work for later authorized Sol pickup rather than starting Sol or Astra reconstruction during this run. When cloud reconstruction is authorized again, neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress, and unmatched Sol work follows the Astra handoff below. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
