@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 6546e55b
+
+- Verified committed snapshot `6546e55b4fa568bcca6f801fa6399f1fc6f3312a`: **2.978131%**, **471544 / 15833556 accepted code bytes**, **15362012 code bytes remaining**, **1394 accepted source units**. Delta from `82cd52d9`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `aa353739a57a628cbf0e5e6dfc17d55e05e062544b52b87902995ea3b09106d1`. The retained publisher generated the fixed-commit report and current objects, verified all 127 native outputs and direct SHA-1 comparisons, checked 1394 accepted source-link recipes, and validated 1393 prior source/object identities plus 329 original/tool identities. All seventeen accepted Dedede units are complete and singly source-linked. E1E8's allocated code and module-local relocation match; source Git blob `6e5ec77bda2a87e5cd37e6bf54a45e9412af33a8` matches the preserved 472-byte best candidate. Uncommitted E1D8 is excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/6546e55b/report-published.json`, native/source-link verification, committed report, original/tool identities, module totals, expected unit map and retained owner attempts/materialization records. Only required extracted inputs were copied; the original ISO was hashed without copying it. Final headline/history verification follows this documentation commit.
+
 ## Dedede E1E8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1E8`, `.text 0xE1E8..0xE1F0`: **8 code bytes**, one initial candidate and **one correction**. The initial candidate emitted an extra argument conversion; the preserved corrected candidate matches allocated code and the module-local `R_PPC_REL24` relocation to `fn_117_A1FC`. Source Git blob: `6e5ec77bda2a87e5cd37e6bf54a45e9412af33a8`, 472 bytes. Target and candidate whole-object hashes differ; equality is for allocated code and relocations.
