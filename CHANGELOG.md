@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint cdda4dc3
+
+- Cumulative accepted-source progress from committed snapshot `cdda4dc309050d8f4a7cc9df636a170d1b2a5512`, published by the retained `SolPublisherDB04` agent, is **2.977373%**: **471,424 / 15,833,556 accepted code bytes**, **15,362,132 code bytes remaining**, and **1,379 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `283271c9`, from DA1C.
+- Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked all **1,379 accepted source-link recipes**, preserved **1,378 prior source identities/objects**, and checked **329 original/tool identities**. DA1C and DB04 are complete and singly linked from reconstructed source objects; DA1C's exact allocated code and absence of relocations match its original object.
+- Published report SHA-256: `82d4996a48f812140bf745a23537703bb39ccabb3eff3afa2516cfc98a10248e`. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/cdda4dc3/report-published.json`. This entry supplies the new headline/history checkpoint; the same publisher performs final endpoint/history agreement after its documentation acknowledgment. Source CRLF and owner LF identity domains remain explicit; gameplay was not exercised.
+
 ## Standardized agent assignment instructions
 
 - Added one canonical instruction section to `PLAN.md` for shared reporting, reconstruction owners, the retained dashboard publisher, read-only auditors, and parent result handling. Launches reference that section and supply explicit assignment fields instead of rewritten lifecycle rules.
