@@ -89,7 +89,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 1. Remain the single publisher across committed checkpoints. A completed checkpoint is not closure of the publisher role. The parent sends subsequent checkpoint fields to this same agent with `write`; replace it only when the user requests replacement or the session is unavailable.
 2. Use an isolated checkout of the explicit committed source checkpoint. Exclude uncommitted work. Generate the report and accepted-source accounting with the existing commands and verification criteria in this plan. Reuse evidence only where recorded input identities remain applicable, and distinguish reused measurements from newly executed checks.
 3. Publish the verified report to the supplied dashboard input path. Send `report-published` with source commit, report hash, accepted/total/remaining bytes, six-decimal percentage, accepted-unit count, checkpoint delta, exact evidence paths, and qualifications.
-4. The parent records those measurements in `CHANGELOG.md`, commits and pushes that entry, and sends its commit to this same publisher. Until then, distinguish updated report-derived data from the previous changelog-backed headline/history; do not declare all surfaces updated.
+4. The parent records those verified measurements in a new `CHANGELOG.md` section headed `## Committed-source checkpoint <short source SHA>`. Include the full committed source SHA, report SHA-256, verification outcome and evidence paths, six-decimal percentage, `<accepted> / <total> accepted code bytes`, `<remaining> code bytes remaining`, and `<units> accepted source units`. All counters must come from this publisher's report for that source commit. Commit and push the complete record, then send its documentation commit to this same publisher. Until then, distinguish updated report-derived data from the previous changelog-backed headline/history; do not declare all surfaces updated. Ordinary function entries are separate records, not cumulative checkpoints.
 5. After that message, verify local/public headline counters, report-derived unit/module data, and served/persisted latest history against the committed checkpoint. Send `checkpoint-verified` with the observed values, timestamps, evidence paths, and any discrepancies. No service restart or dashboard code change belongs to this role.
 6. Preserve checkpoint evidence and complete safe cleanup. Return checkpoint results without declaring the publisher role closed. With no next checkpoint supplied, use the common `awaiting-parent` result; do not poll for commits or perform unrelated work.
 
@@ -106,6 +106,13 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Send each newly accepted committed checkpoint to the retained publisher. Complete the changelog acknowledgment and final checkpoint verification without replacing that publisher or delaying reconstruction refills.
 - Treat `awaiting-parent` as an outstanding parent action, not a failed worker or completed assignment. Resume the same registered agent with `write` when that action is complete. Do not report publication or closure before its required evidence arrives.
 - Administrative fields may be corrected with explicit follow-up messages. Changes to role ownership, acceptance criteria, lifecycle, or allowed scope require the user's authorization and an update to this canonical text, rather than a contradictory one-off prompt.
+
+### Instruction revisions
+
+- When an instruction problem is observed, identify the affected role, exact instruction, session/evidence path, and observed consequence. Distinguish ambiguous wording from a clear instruction that was not followed before proposing a wording change.
+- Refine the applicable instruction in this canonical section instead of creating a second template or introducing a conflicting follow-up prompt. Preserve the user's current overrides and the parent result-handling authorization requirements.
+- The parent commits and pushes the approved revision, then sends each affected active owner a `write` notification containing the absolute parent `PLAN.md` path, committed instruction revision, changed section, and any action required for that owner's current assignment. The owner reads that revision and acknowledges its role, revision, and next required action with `write` to the supplied parent recipient. Keep the same assignment, workspace, and attempt ledger; an instruction revision does not restart or replace its owner or resume a user-paused role.
+
 
 ## Work sequence
 

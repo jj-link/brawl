@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Canonical agent instruction refinement
+
+- Refined the existing `PLAN.md` canonical instructions with the exact committed-source checkpoint heading and required verified counters, source/report identities, and evidence. Ordinary reconstruction records remain separate from cumulative checkpoints.
+- Added one instruction-revision procedure: cite the observed failure and exact instruction, edit that canonical instruction, commit and push the approved revision, then notify affected owners of the file, revision, section, and required action. Owners acknowledge the revision using `write`; their assignment, workspace, attempt ledger, and user-authorized role remain unchanged.
+
 ## Dashboard checkpoint classification repair
 
 - Replaced incidental cumulative accepted-source wording matching with shared checkpoint-record recognition in `progress.py` and `checkpoint_history.py`. Ordinary function entries no longer become checkpoints. A genuine newest checkpoint with missing or inconsistent measurements still reports an error and retains last-good state.
