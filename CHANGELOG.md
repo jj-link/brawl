@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint e2dc6ef3
+
+- Cumulative accepted-source progress from committed snapshot `e2dc6ef3114342b3decb797ada88e611d6bb71b0`, published by `SolPublisherE2dcLocalRun`, is **2.977272%**: **471,408 / 15,833,556 accepted code bytes**, **15,362,148 code bytes remaining**, and **1,377 accepted source units**.
+- Verification: the publisher reports all **127 native DOL/REL hashes passed** for this fixed committed snapshot. The increase over its retained `16c395a6` checkpoint is **508 code bytes and 6 accepted units**. Assembly, inline-assembly units and nonmatching drafts are excluded from accepted-source accounting; inherited verification qualifications remain unchanged.
+- Source tree: `6f2696b3141731fae7d86f26e25d753f8e8f4d79`; published report SHA-256: `bad4d53b7a8b2d28748f5c166de417b72af816057e8ba4f9e39e241349a4ed3a`. Evidence: `build/isolated-workers/SolPublisherE2dcLocalRun/evidence/e2dc6ef3/`. Later working-tree changes are outside this snapshot. Binary identity is not gameplay verification; final dashboard endpoint/history agreement is pending the publisher's observation of this checkpoint.
+
 ## Module 117 D840 reconstructed source
 
 - Accepted `fn_117_D840` (`.text 0xD840..0xD848`), **8 code bytes**, from `GlmFreshDededeD840`: one initial candidate, zero corrections. Original vtable/RTTI evidence identifies the mediator's fixed eight-energy count.
