@@ -2,6 +2,18 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint ba7a351f
+
+- Verified committed snapshot `ba7a351f22aab6b31fdc2ff1b0c01932b37ba566`: **2.978030%**, **471528 / 15833556 accepted code bytes**, **15362028 code bytes remaining**, **1392 accepted source units**. Delta from `ecc1a438`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `56b342ed4d25c672af159357feed7499a55933e695e1a8b7e49cbadf563de470`. The retained publisher generated the fixed-commit report, verified all 127 native outputs and direct SHA-1 comparisons, checked 1392 accepted source-link recipes, and validated 1391 prior source/object identities plus 329 original/tool identities. All fifteen accepted Dedede units are complete and singly source-linked. E1D0's allocated code and import relocation match; source Git blob `6a05d576e545c8ccc90c481b800f45a0d0601241` was independently confirmed. Uncommitted E1D8 and other parent changes are excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/ba7a351f/report-published.json`, source/link and native-hash verification, committed report, input identities, expected unit map and module totals. Both report-derived endpoint maps agree on 5672 records across 127 modules. Setup recovered from a timed-out redundant ISO copy; manifest-scoped cleanup removed that 8511160320-byte copy and 24805432 bytes of extracted copies, retaining original-input identities and verification evidence. Final headline/history verification follows this documentation commit.
+
+## Dedede E1D0 — completed evidence-preserving cleanup
+
+- The owner removed **13362 files / 465013065 bytes** individually from a pre-deletion manifest, then removed **953 empty directories**. All tracked files, including four foreign evidence files beneath `build/`, were retained. Evidence, source/configuration trees, Git metadata and original-input junctions remain; no automatic worktree pruning occurred.
+- Post-cleanup checks found zero tracked deletions and no changes in 17 retained evidence identities. Original main DOL and Dedede REL hashes remain unchanged. Evidence: `build/isolated-workers/GlmFreshDededeE1D0/evidence/cleanup/deletion-manifest.txt`, `cleanup_delete.py.record`, `retained-hashes-pre.txt`, `original-inputs-post.txt` and `attempts.json`.
+- The cancellation interface confirmed that E1D0's session was killed and its registration dropped. Fresh owner `GlmFreshDededeE1E8` received the next bounded function; E1D8 and E1E0 retain their existing assignments, maintaining three GLM owners.
+
 ## Dashboard — checkpoint publication timestamps
 
 - The accepted-checkpoint timestamp now comes from the selected checkpoint's publication or explicit recorded date, not the modification time of the entire changelog. Matching includes source snapshot, title and cumulative counters; unrelated documentation edits retain the selected checkpoint's publication time. Unknown publication dates remain unknown, and day-only records retain day precision.
