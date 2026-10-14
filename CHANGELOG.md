@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 7b6652cc
+
+- Cumulative accepted-source progress from committed snapshot `7b6652cc23bf15b7eec550cea2b2c5b9e860d097`, published by the retained `SolPublisherDB04` agent, is **2.977423%**: **471,432 / 15,833,556 accepted code bytes**, **15,362,124 code bytes remaining**, and **1,380 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `cdda4dc3`, from DCD4.
+- Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked **1,380 accepted source-link recipes**, **1,379 retained source identities/objects**, and **329 original/tool identities**. DCD4, DA1C, and DB04 are singly source-linked and complete; DCD4's exact allocated code and absence of relocations match its original object.
+- Published report SHA-256: `ea7a295766a5c5b5b90a4d012701f3c7785e5481ab75ca8ff19447931b4a166a`. Local/public report maps agree with all **5,656 records** across **127 modules**. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/7b6652cc/report-published.json`. The same publisher verifies headline/history after this documentation acknowledgment. Committed LF and checkout CRLF identities are recorded separately; gameplay was not exercised.
+
 ## Dedede DCD4 — exact GLM source reconstruction
 
 - Accepted `fn_117_DCD4`, `.text 0xDCD4..0xDCDC`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDCD4` reconciled onto `cdda4dc3` and verified all **127 native hashes** in its isolated patch-reproduction build.
