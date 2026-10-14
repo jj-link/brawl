@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1A8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1A8`, `.text 0xE1A8..0xE1B0`: **8 code bytes**, one initial candidate, **zero corrections**. Allocated code and relocation match; registered objdiff is complete at 8/8. Verification against the full `e562c7d2bf60f495f53e820c37f742f1fea7a924` source input set passed all **127 native outputs**; the current report includes all ten accepted Dedede units and the map links E1A8 from its reconstructed source object. Gameplay was not exercised.
+- Source Git blob: `2c4047ef26bf40a37f6e527b87bb8edbf0d77a96`. Evidence: `build/isolated-workers/GlmFreshDededeE1A8/evidence/assignment-ledger.json`, `attempt-00/`, `final-baseline/verification.json`, `final-baseline/registered-report.json`, and the retained maps. The three-path `own-only.patch` passed committed-index validation with 14 insertions and no deletions.
+- Before publication, review found that whole-file materialization had overwritten unrelated pending changes inside both shared configuration files. The same owner recovered their exact pre-write contents from retained E1A0 pre-images and recorded insertions, verified both against the original pre-write hashes, and restored those bytes plus only E1A8's additions. Insertion-reversal checks passed; 21 other modified tracked files remained byte-unchanged. Recovery proof and retained pre-images: `build/isolated-workers/GlmFreshDededeE1A8/evidence/preservation-recovery.md`. Index-only publication excludes the preserved unrelated work.
+
 ## Committed-source checkpoint e562c7d2
 
 - Verified committed snapshot `e562c7d2bf60f495f53e820c37f742f1fea7a924`: **2.977727%**, **471480 / 15833556 accepted code bytes**, **15362076 code bytes remaining**, **1386 accepted source units**. Delta from `1f82962e`: **+8 code bytes / +1 source unit**.
