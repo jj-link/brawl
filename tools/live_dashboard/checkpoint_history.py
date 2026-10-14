@@ -6,6 +6,10 @@ Per-unit, current-wave and assembly-match figures are not whole-project totals.
 Candidates retain newest-first document order, including cached dates when Git
 cannot recover them. The chart can then retain the document's latest total at
 an indistinguishable publication time without choosing the numeric maximum.
+
+Checkpoint headings identify dedicated records even when measurements are missing.
+Legacy accepted-reconstruction sections need an explicit cumulative/report
+declaration; references to publisher accounting do not declare a checkpoint.
 """
 
 from __future__ import annotations
@@ -16,12 +20,27 @@ from datetime import datetime, timezone
 
 
 SECTION = re.compile(r"^## (.+)$", re.M)
+CHECKPOINT_SECTION = re.compile(
+    r"^(?:Committed-source checkpoint|Verified reconstruction checkpoint|"
+    r"Source reconstruction checkpoint)\b", re.I)
 ACCEPTED_SECTION = re.compile(
-    r"^(?:Accepted(?: isolated| source)? reconstructions?|"
-    r"Verified reconstruction checkpoint|Source reconstruction checkpoint)", re.I)
+    r"^Accepted(?: isolated| source)? reconstructions?\b", re.I)
+LEGACY_RECORD = re.compile(
+    r"\bcumulative accepted-source (?:progress|accounting)"
+    r"(?: from [^\n]*?)? is\b|"
+    r"\bsource reconstruction is now\b|"
+    r"\bregenerated (?:source-reconstruction )?report records\b|"
+    r"\bregenerated the report and calculated\b", re.I)
 COUNTS = re.compile(
     r"([\d,]+)\s*/\s*([\d,]+)\s+(?:accepted\s+)?(?:source\s+)?code bytes", re.I)
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))?\b")
+
+
+def is_checkpoint_section(title, section):
+    """Recognize record intent without requiring valid measurements."""
+    return bool(CHECKPOINT_SECTION.search(title) or (
+        ACCEPTED_SECTION.search(title)
+        and LEGACY_RECORD.search(section.replace("**", ""))))
 
 
 def _recorded_date(text):
@@ -44,10 +63,10 @@ def _candidates(text, expected_total):
     candidates = []
     for index, heading in enumerate(headings):
         title = heading.group(1).strip()
-        if not ACCEPTED_SECTION.search(title):
-            continue
         end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
         section = text[heading.end():end]
+        if not is_checkpoint_section(title, section):
+            continue
         if not re.search(r"\bverified\b|\bverification\b|\bpass(?:ed|ing)?\b", section, re.I):
             continue
         first_line = text.count("\n", 0, heading.end()) + 1

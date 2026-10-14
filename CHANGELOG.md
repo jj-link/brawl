@@ -2,11 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard checkpoint classification repair
+
+- Replaced incidental cumulative accepted-source wording matching with shared checkpoint-record recognition in `progress.py` and `checkpoint_history.py`. Ordinary function entries no longer become checkpoints. A genuine newest checkpoint with missing or inconsistent measurements still reports an error and retains last-good state.
+- Verification: **17 focused regressions passed**. The repaired parser selects `cdda4dc3` from the actual `7b6652cc` changelog despite the ordinary DCD4 entry above it. Actual-history comparison preserved all **257** previous candidates and recognized **17** additional committed-source records. Evidence: `build/isolated-workers/SolCheckpointParserRepair/evidence/real-changelog-smoke.json` and `focused-tests.log`.
+- Activated the repair with a dashboard HTTP-only restart, preserving port `8765`, public proxy `8444`, and root session `01a13870-ca65-73cc-b1c4-26ebedff16e1`. The local API reports `7b6652cc`, **471,432 accepted bytes**, **1,380 units**, `lastGood=false`, and no warnings; the public browser visibly shows **2.977423%**, the same checkpoint, and no checkpoint warning. HTTP is running as native PID `66692`; the supervised launcher reported its daemon broker unavailable.
+
 ## Committed-source checkpoint 7b6652cc
 
 - Cumulative accepted-source progress from committed snapshot `7b6652cc23bf15b7eec550cea2b2c5b9e860d097`, published by the retained `SolPublisherDB04` agent, is **2.977423%**: **471,432 / 15,833,556 accepted code bytes**, **15,362,124 code bytes remaining**, and **1,380 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `cdda4dc3`, from DCD4.
 - Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked **1,380 accepted source-link recipes**, **1,379 retained source identities/objects**, and **329 original/tool identities**. DCD4, DA1C, and DB04 are singly source-linked and complete; DCD4's exact allocated code and absence of relocations match its original object.
-- Published report SHA-256: `ea7a295766a5c5b5b90a4d012701f3c7785e5481ab75ca8ff19447931b4a166a`. Local/public report maps agree with all **5,656 records** across **127 modules**. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/7b6652cc/report-published.json`. The same publisher verifies headline/history after this documentation acknowledgment. Committed LF and checkout CRLF identities are recorded separately; gameplay was not exercised.
+- Published report SHA-256: `ea7a295766a5c5b5b90a4d012701f3c7785e5481ab75ca8ff19447931b4a166a`. After documentation commit `162298f5`, the same publisher verified local/public headline counters, all **5,656 map records**, **127 module totals**, and served/persisted latest history at `2026-10-14T06:43:27.357Z` with **471,432 accepted bytes**. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/7b6652cc/final-publication-current.json`. Committed LF and checkout CRLF identities are recorded separately; gameplay was not exercised.
 
 ## Dedede DCD4 — exact GLM source reconstruction
 

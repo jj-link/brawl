@@ -28,7 +28,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from checkpoint_history import read_checkpoint_history
+from checkpoint_history import is_checkpoint_section, read_checkpoint_history
 
 HISTORY_MAX_POINTS = 5000
 HISTORY_SERVE_POINTS = 1000
@@ -275,15 +275,19 @@ class ProgressTracker:
 
     @staticmethod
     def _parse_checkpoint(text):
-        # CHANGELOG is newest-first. Only a section recording verification and
-        # cumulative accepted-source accounting can supply a checkpoint.
+        # CHANGELOG is newest-first. Recognize record intent separately from
+        # measurement validity so a malformed newest checkpoint still fails.
+        seen_record = False
         for section in re.split(r"(?m)^## ", text)[1:]:
+            title, _, body = section.partition("\n")
+            if not is_checkpoint_section(title.strip(), body):
+                continue
             plain = section.replace("**", "")
             if not re.search(r"verified|verification|passing.*hashes", plain, re.I):
+                if not seen_record:
+                    raise ValueError("latest checkpoint lacks verification")
                 continue
-            if not re.search(r"cumulative accepted-source|source reconstruction is now",
-                             plain, re.I):
-                continue
+            seen_record = True
             counts = re.search(
                 r"([\d,]+)\s*/\s*([\d,]+)\s+(?:accepted\s+)?code bytes", plain)
             remaining = re.search(r"([\d,]+)\s+(?:code\s+)?bytes remaining", plain)
