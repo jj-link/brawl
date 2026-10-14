@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DF8C — exact GLM source reconstruction
+
+- Accepted `fn_117_DF8C`, `.text 0xDF8C..0xDF94`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDF8C` privately reconciled the complete tracked `ee4918e1` input set and independently verified all **127 native hashes**. The regenerated report retains DA1C, DB04, DCD4, DDBC, DEA4, and DF8C as complete, source-linked units.
+- DF8C matches all 8 code bytes with zero relocations. Main and verified source identity: Git blob `af76942756c5269f302cd9fdca400bcd7549307d`. The owner materialized only its source and additive registrations; its preservation record confirms the other **21 previously dirty files** remained byte-identical and unrelated bytes in its two shared registration files were preserved.
+- The own-only patch passed exact committed-index validation before delivery. Evidence: `build/isolated-workers/GlmFreshDededeDF8C/evidence/staging-df8c-ee4918e1.patch`, `00-reconciliation.md`, `00-report-full-project.json`, and `final-127-native-hashes.json`. Gameplay was not exercised; cumulative accepted-source accounting remains the retained publisher's responsibility.
+
 ## Committed-source checkpoint c83288d7
 
 - Cumulative accepted-source progress from committed snapshot `c83288d7075556b2baa99f27bbddb84ded8fa659`, published by the retained `SolPublisherDB04` agent, is **2.977524%**: **471,448 / 15,833,556 accepted code bytes**, **15,362,108 code bytes remaining**, and **1,382 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `eaaa2420`, from DEA4.
