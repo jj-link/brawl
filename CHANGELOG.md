@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DB04 — exact GLM source reconstruction
+
+- Accepted `fn_117_DB04`, `.text 0xDB04..0xDB0C`: **8 code bytes**, one initial measured candidate and zero corrections. The prior stopped assignment contained analysis only, with zero measured candidates/corrections.
+- Owner `GlmResumeDededeDB04` verified exact allocated code, no relocations, registered source-object linkage in the final map, and **127/127 native DOL/REL hashes** on baseline `778145fd` plus this unit. Gameplay was not exercised.
+- The same owner materialized only its source and additive registration/split changes into main, preserving unrelated working-tree bytes. Root source SHA-256 `2f062d48d2e6e62c31166f06010b8b61c7d3f83d8f70e70a569a4dbb5e16ac13` matches the measured draft; compiler inputs are unchanged. Evidence and cleanup records remain under `build/isolated-workers/GlmResumeDededeDB04/evidence/`. Cumulative progress will be measured from committed results by the dedicated publisher.
+
 ## Committed-source checkpoint d7524d6a
 
 - Cumulative accepted-source progress from committed snapshot `d7524d6a7ad3e2ffd5cd2f0d11430982bb836876`, published by `SolPublisherLocalResume`, is **2.977272%**: **471,408 / 15,833,556 accepted code bytes**, **15,362,148 code bytes remaining**, and **1,377 accepted source units**. This checkpoint adds **0 code bytes and 0 units** over `e2dc6ef3`.
