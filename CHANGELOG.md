@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1C8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1C8`, `.text 0xE1C8..0xE1D0`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the module-27 import relocation match. The complete `4f9b7be44116bc7e0f76a11bad12d45c62cb0f54` input set passed all **127 native outputs**; the registered unit is complete, 8/8 bytes, with reconstructed-source linkage. Source Git blob: `4478ad61020071e7f97013b01ce3d0df4a37f82e`. Gameplay was not exercised.
+- The owner materialized only its insertions/new source, preserving E1C0's pending entries and other dirty bytes. Actual private-index application against documentation-only baseline `aa38eee970b1e517989f3cec4917a961cab44f5f` verified all three declared paths, modes and blob identities, separately from the raw working-file preservation proof. Evidence: `build/isolated-workers/GlmFreshDededeE1C8/evidence/own-reconcile-aa38eee9.patch`, `materialization-aa38eee9/within-file-preservation-proof.json`, `materialization-aa38eee9/raw-materialization.patch`, `attempt-00/exact-comparison.json`, `02-native-127-dtk-check.txt`, `linkage/build.ninja-excerpt.txt`, and `00-unit-report.json`.
+
 ## Dedede E1B8 — cleanup violation and verified restoration
 
 - Receipt review found that the owner used bulk directory deletion instead of the required deletion-only manifest and individual removals. Its contemporaneous inventory covered the whole workspace; the later 13347-file / 462727104-byte deletion selection is derived evidence, not a contemporaneous removal log. Forty-three large build files had sizes but no hashes.
