@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Canonical staging-artifact validation clarification
+
+- Clarified `PLAN.md` Reconstruction owner step 6: validate an own-only staging patch against the committed Git index representation, report its successful staging invocation and intended staged blob identities, and leave the parent's index untouched. Working-tree applicability alone is insufficient.
+- DEA4's first patch passed normalized working-tree checks but failed parent `git apply --cached` because one committed context line's carriage return had been filtered from the patch. Its owner corrected the artifact, verified the resulting staged blobs using an isolated index copy, and the parent successfully published it in `c83288d7`. The verified source and native-build inputs were unchanged.
+
 ## Dedede DEA4 — exact GLM source reconstruction
 
 - Accepted `fn_117_DEA4`, `.text 0xDEA4..0xDEAC`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDEA4` privately reconciled the complete tracked `df4cfdf9` input set and verified all **127 native hashes**. DA1C, DB04, DCD4, DDBC, and DEA4 remain complete and source-linked in the regenerated report.
