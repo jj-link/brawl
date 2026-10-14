@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DDBC — exact GLM source reconstruction
+
+- Accepted `fn_117_DDBC`, `.text 0xDDBC..0xDDC4`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDDBC` verified all **127 native hashes** after reconciling its private inputs to `e41880f0`.
+- The regenerated report marks DA1C, DB04, DCD4, and DDBC complete and source-linked, each matching all 8 code bytes. DDBC's candidate and target allocated code match exactly with zero relocations. Main and verified DDBC source SHA-256: `f556c10d705e5a794b576919a691fd609e6a4900feec4969a15c8e4735b453bb`.
+- Review rejected the first reconciliation packet because its private inputs omitted DCD4's committed source and its report lacked that unit's accepted-source metadata. The same owner corrected the full committed input set, rebuilt, regenerated the report, and supplied complete materialization identities before acceptance. Main-file preservation evidence records only DDBC's additions to the already-dirty registration files.
+- Evidence: `build/isolated-workers/GlmFreshDededeDDBC/evidence/native-final/verification-reconciled.json`, `registered-report-reconciled.json`, `delivery/materialization.json`, and `delivery.patch`. Gameplay was not exercised; cumulative accepted-source accounting remains the retained publisher's responsibility.
+
 ## Canonical agent instruction refinement
 
 - Refined the existing `PLAN.md` canonical instructions with the exact committed-source checkpoint heading and required verified counters, source/report identities, and evidence. Ordinary reconstruction records remain separate from cumulative checkpoints.
