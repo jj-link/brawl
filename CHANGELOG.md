@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E190 — exact GLM source reconstruction
+
+- Accepted `fn_117_E190`, `.text 0xE190..0xE198`: **8 code bytes**, one initial candidate and zero corrections. `GlmFreshDededeE190` verified the complete `f419401da47de917eb30f571c2fab76cdf83a65c` input set with all **127 native outputs** matching; the current report retains DA1C/DB04/DCD4/DDBC/DEA4/DF8C/E190 as complete, source-linked units.
+- Allocated `.text` and its branch relocation match exactly; the target and candidate whole-object hashes differ in `.comment` metadata. The final map links E190 from `ft_dedede_function_e190.o`. Verified main-source Git blob: `81ff52ac88c394f1370bc7c65254f7d17bfcf53b`. The owner materialized only its source and additive registrations, preserved unrelated dirty bytes, and validated the own-only patch against the committed index.
+- Current evidence: `build/isolated-workers/GlmFreshDededeE190/evidence/final-baseline-evidence-index.json`, `final-baseline/verification.json`, `final-baseline/registered-report.json`, the final maps, `parent-manifest-pre.json`, `parent-manifest-post.json`, and `own-only.patch`. Older mixed-baseline receipts were explicitly superseded before acceptance. Gameplay was not exercised; the dedicated publisher measures cumulative progress separately.
+
 ## Committed-source checkpoint f419401d
 
 - Verified committed snapshot `f419401da47de917eb30f571c2fab76cdf83a65c`: **471456 / 15833556 accepted code bytes**, **15362100 code bytes remaining**, **2.977575%**, **1383 accepted source units**. Delta from `c83288d7`: **+8 code bytes / +1 source unit**.
