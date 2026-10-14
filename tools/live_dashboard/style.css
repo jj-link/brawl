@@ -434,8 +434,19 @@ body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
 .stream-status.is-error { color: var(--amber2); }
 /* Inset borders separate providers without changing the shared column widths. */
 .stream-group { min-width: 0; margin: 16px 14px 24px; border-radius: var(--radius-sm); box-shadow: inset 0 0 0 1px var(--line); }
-.stream-group-title { margin: 0 0 12px; padding: 10px 12px; border-bottom: 1px solid var(--line); border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--bg2); color: var(--tx); font-size: 13px; font-weight: 600; }
+.stream-group-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin: 0 0 12px; padding: 10px 12px; border-bottom: 1px solid var(--line); border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--bg2); color: var(--tx); font-size: 13px; font-weight: 600; }
 .stream-group-title .count { color: var(--tx2); font: 11.5px var(--mono); }
+.stream-group-name { flex: 0 0 auto; max-width: 100%; }
+.provider-throughput { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; max-width: 100%; margin-left: auto; color: var(--tx2); font: 10.5px/1.5 var(--mono); font-variant-numeric: tabular-nums; }
+.throughput-total { width: 21ch; white-space: nowrap; }
+.throughput-average { width: 26ch; white-space: nowrap; }
+.throughput-status { width: 11ch; color: var(--amber2); }
+.provider-throughput[data-status="ok"] .throughput-status { color: var(--mint); }
+.throughput-scope { position: relative; cursor: help; color: var(--tx2); border-bottom: 1px dotted var(--tx3); }
+.throughput-scope:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.throughput-tooltip { display: none; position: absolute; z-index: 30; top: calc(100% + 6px); right: 0; width: min(320px, calc(100vw - 48px)); padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg2); color: var(--tx); font: 11px/1.5 var(--mono); font-weight: 400; overflow-wrap: anywhere; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+.throughput-scope:hover .throughput-tooltip,
+.throughput-scope:focus .throughput-tooltip { display: block; }
 /* Reserve empty columns so every provider uses the same terminal widths. */
 .streams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px; padding: 0 14px 14px; align-items: start; }
 .stream-group > .streams-grid { padding: 0 0 14px; }

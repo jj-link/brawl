@@ -17,6 +17,12 @@ the narrowly scoped in-process omp observer:
   against that pin before any frame is relayed.
 * ``CHANGELOG.md`` verified checkpoints for headline progress, with the
   existing report/counter retained as a separately labelled unit-map source.
+* Provider throughput comes from configured read-only backend telemetry, sampled
+  independently of dashboard clients. Rates are backend-wide, including other
+  clients; averages use sampled active concurrency, not visible terminal counts.
+  ``throughput.json`` selects endpoints and auto-detects vLLM, SGLang, llama.cpp,
+  or TensorFold. See throughput.py for backend/version requirements and counting
+  semantics. Missing telemetry is unavailable, never inferred from text length.
 
 The server binds the loopback interface only, performs no filesystem
 browsing, never mutates reconstruction files, and persists nothing outside
@@ -28,6 +34,7 @@ Usage:
     python tools/live_dashboard/server.py [--port 8765] [--session-dir DIR]
         [--session-id ROOT_UUID] [--root DIR] [--report PATH] [--interval SECONDS] [--verbose]
         [--proxy-origin https://HOST.tailnet.ts.net]
+        [--throughput-config PATH]
 
 Private Tailscale access (the observer remains local):
     python tools/live_dashboard/server.py --proxy-origin https://HOST.tailnet.ts.net
@@ -41,6 +48,7 @@ API:
     GET /api/streams opt-in, labeled recorded message/reasoning/tool/peer history
     GET /api/live   immediate SSE relay from the owning runner observer
     GET /api/live-status observer connectivity (503 when not loaded)
+    GET /api/throughput cached provider output-token rates and measurement status
 """
 
 from __future__ import annotations
@@ -61,6 +69,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from journals import JournalWatcher  # noqa: E402
 from progress import ProgressTracker  # noqa: E402
+from throughput import ThroughputTracker, load_config  # noqa: E402
 
 STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
@@ -276,6 +285,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
         elif path == "/api/units":
             _, _, payload = self.dashboard["state"].snapshot()
             self._send_json(200, payload)
+        elif path == "/api/throughput":
+            payload = self.dashboard["throughput"].snapshot()
+            self._send_json(200, json.dumps(payload, separators=(",", ":")).encode("utf-8"))
         elif path == "/api/live-status":
             try:
                 observer = self._observer_status()
@@ -429,6 +441,9 @@ def parse_args(argv=None):
                         help="objdiff report.json (default: <root>/build/RSBE01_02/report.json)")
     parser.add_argument("--interval", type=float, default=2.0,
                         help="state refresh cadence in seconds (default: 2.0)")
+    parser.add_argument("--throughput-config", type=Path,
+                        default=Path(__file__).with_name("throughput.json"), metavar="PATH",
+                        help="provider telemetry endpoints (default: throughput.json beside server.py)")
     parser.add_argument("--verbose", action="store_true",
                         help="log HTTP requests to stderr")
     args = parser.parse_args(argv)
@@ -467,6 +482,7 @@ def main(argv=None):
 
     watcher = JournalWatcher(root, session_dir=args.session_dir, session_id=args.session_id)
     progress = ProgressTracker(report_path, root, history_path)
+    throughput = ThroughputTracker(load_config(args.throughput_config))
 
     stop = threading.Event()
     wake_progress = threading.Event()
@@ -475,6 +491,7 @@ def main(argv=None):
         "state": dashboard,
         "watcher": watcher,
         "static_dir": static_dir,
+        "throughput": throughput,
         "stop": stop,
         "verbose": args.verbose,
         "proxy_origin": args.proxy_origin,
@@ -512,6 +529,8 @@ def main(argv=None):
                          name="dashboard-progress", daemon=True),
         threading.Thread(target=membership_loop, args=(stop, watcher, args.interval),
                          name="dashboard-membership", daemon=True),
+        threading.Thread(target=throughput.run, args=(stop,),
+                         name="dashboard-throughput", daemon=True),
     ]
     for thread in threads:
         thread.start()

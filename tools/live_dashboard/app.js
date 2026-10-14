@@ -2,6 +2,7 @@
  * Standalone frontend. No frameworks, no build step, no external assets.
  * GET /api/state and /api/units preserve project progress; /api/events carries
  * state snapshots, /api/live relays session output, /api/streams is opt-in history.
+ * /api/throughput samples backend-wide generated-token rates independently of panes.
  * The sticky banner shows the same completion percentage and precision as the hero.
  * Updates always run live; the banner reports connection and build-report age.
  * Text is never trusted as HTML; image blocks use only session-provided raster data.
@@ -1178,6 +1179,151 @@
 
   const keyOf = (a) => String(a.id ?? a.name ?? '');
 
+  // Provider telemetry changes only retained header nodes, never terminal panes.
+  const Throughput = (() => {
+    const headers = new Map();
+    const pollMs = 2000, staleMs = 10000, timeoutMs = 6000;
+    const scopeText = 'Generated output tokens across the backend, including other clients. ' +
+      'Average is per active backend request, not dashboard terminal.';
+    let request = null, generation = 0, refreshWanted = false;
+
+    function write(node, text) {
+      if (node.textContent !== text) node.textContent = text;
+    }
+
+    function rate(value) {
+      if (value == null) return '—';
+      if (value >= 1000000) return value.toExponential(1);
+      // Keep small measured nonzero rates distinguishable from measured idle zero.
+      if (value > 0 && value < 0.1) return value.toExponential(1);
+      return value.toLocaleString('en-US', { maximumFractionDigits: 1 });
+    }
+
+    function render(header) {
+      const metric = header.metric;
+      const expired = metric?.status === 'ok' && (Date.now() - header.receivedAt > staleMs ||
+        (metric.sampledAt != null && Date.now() - metric.sampledAt > staleMs));
+      const status = header.override?.status || (expired ? 'stale' : metric?.status || 'warming');
+      const reason = header.override?.reason || (expired ? 'Last backend sample is too old.' :
+        metric?.reason || (status === 'warming' ? 'Waiting for a backend sample.' : ''));
+      const live = status === 'ok';
+      write(header.total, 'total ' + rate(live ? metric.total : null) + ' tok/s');
+      write(header.average, 'avg ' + rate(live ? metric.average : null) + ' tok/s/stream');
+      write(header.status, status);
+      header.node.dataset.status = status;
+      const details = [scopeText, reason,
+        metric?.reason && metric.reason !== reason ? metric.reason : '',
+        metric?.active != null ? 'Active backend requests (sample window): ' + metric.active + '.' : '',
+        metric?.source ? 'Source: ' + metric.source + '.' : '',
+        metric?.sampledAt != null ? 'Sample: ' + new Date(metric.sampledAt).toISOString() + '.' : ''
+      ].filter(Boolean).join(' ');
+      if (header.tooltip.textContent !== details) header.tooltip.textContent = details;
+      if (header.scope.title !== details) header.scope.title = details;
+    }
+
+    function create(provider) {
+      const total = el('span', { class: 'throughput-total', text: 'total — tok/s' });
+      const average = el('span', { class: 'throughput-average', text: 'avg — tok/s/stream' });
+      const status = el('span', { class: 'throughput-status', text: 'warming' });
+      const tooltip = el('span', { class: 'throughput-tooltip', text: scopeText, attrs: {
+        id: 'throughput-tooltip-' + provider, role: 'tooltip'
+      } });
+      const scope = el('span', { class: 'throughput-scope', text: 'backend', attrs: {
+        tabindex: '0', 'aria-describedby': tooltip.id, title: scopeText
+      } }, tooltip);
+      const node = el('span', { class: 'provider-throughput', attrs: {
+        'data-provider': provider, 'data-status': 'warming', 'aria-label': 'Backend output throughput'
+      } }, total, average, status, scope);
+      headers.set(provider, { node, total, average, status, scope, tooltip,
+        metric: null, receivedAt: 0, override: null });
+      return node;
+    }
+
+    function normalize(raw) {
+      if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
+        return { status: 'unavailable', reason: 'Provider telemetry was not returned.' };
+      }
+      const statuses = ['ok', 'warming', 'unavailable', 'stale'];
+      const number = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
+      const validRate = value => value === null || number(value);
+      if (!statuses.includes(raw.status) || raw.scope !== 'backend' ||
+          !validRate(raw.totalTokensPerSecond) || !validRate(raw.averageTokensPerSecond) ||
+          !validRate(raw.activeStreams)) {
+        return { status: 'unavailable', reason: 'Invalid backend throughput sample.' };
+      }
+      const sampledAt = typeof raw.sampledAt === 'string' ? Date.parse(raw.sampledAt) : NaN;
+      if (raw.sampledAt !== null && !Number.isFinite(sampledAt)) {
+        return { status: 'unavailable', reason: 'Invalid backend sample timestamp.' };
+      }
+      const status = raw.status === 'ok' && raw.totalTokensPerSecond === null &&
+        raw.averageTokensPerSecond === null ? 'unavailable' : raw.status;
+      return { status, total: raw.totalTokensPerSecond, average: raw.averageTokensPerSecond,
+        active: raw.activeStreams, sampledAt: Number.isFinite(sampledAt) ? sampledAt : null,
+        reason: typeof raw.reason === 'string' ? raw.reason : '',
+        source: typeof raw.source === 'string' ? raw.source : '' };
+    }
+
+    function suspend(reason) {
+      for (const header of headers.values()) {
+        header.override = { status: header.metric?.status === 'ok' || header.metric?.status === 'stale' ?
+          'stale' : 'unavailable', reason };
+        render(header);
+      }
+    }
+
+    async function poll() {
+      for (const header of headers.values()) render(header);
+      if (document.hidden || request) return;
+      refreshWanted = false;
+      const controller = new AbortController(), currentGeneration = generation;
+      request = controller;
+      const timeout = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const response = await fetch('/api/throughput', { cache: 'no-store', signal: controller.signal });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        if (document.hidden || currentGeneration !== generation) return;
+        if (!data || typeof data.providers !== 'object' || data.providers === null ||
+            Array.isArray(data.providers)) throw new Error('Invalid provider telemetry response');
+        for (const [provider, header] of headers) {
+          header.metric = normalize(data.providers[provider]);
+          header.receivedAt = Date.now();
+          header.override = null;
+          render(header);
+        }
+      } catch (error) {
+        if (!document.hidden && currentGeneration === generation) {
+          suspend('Backend telemetry fetch failed: ' +
+            (controller.signal.aborted ? 'request timed out.' : error.message));
+        }
+      } finally {
+        clearTimeout(timeout);
+        request = null;
+        if (refreshWanted && !document.hidden) poll();
+      }
+    }
+
+    function start() {
+      document.addEventListener('visibilitychange', () => {
+        generation++;
+        suspend(document.hidden ? 'Telemetry polling paused while the page is hidden.' :
+          'Refreshing telemetry after the page became visible.');
+        if (document.hidden) {
+          refreshWanted = false;
+          request?.abort();
+        } else {
+          refreshWanted = true;
+          poll();
+        }
+      });
+      if (document.hidden) suspend('Telemetry polling paused while the page is hidden.');
+      poll();
+      setInterval(poll, pollMs);
+    }
+
+    return { create, start };
+  })();
+
   // One simultaneously visible terminal per worker. Live and recorded session
   // output share text/thinking/tool/block rendering. Retained DOM and text nodes
   // keep selection and reading stable; retention removes entries, not their text.
@@ -1187,8 +1333,10 @@
     // Local model sections lead; OpenAI stays last, including when Other is visible.
     const sections = ['Spark 1 · Qwen', 'Spark 2 + 3 · GLM', 'Other', 'OpenAI'].map((title, i) => {
       const count = el('span', { class: 'count' });
+      const provider = ['qwen', 'glm', 'other', 'openai'][i];
       const heading = el('h3', { class: 'stream-group-title', attrs: { id: 'stream-group-' + i } },
-        document.createTextNode(title + ' '), count);
+        el('span', { class: 'stream-group-name' }, document.createTextNode(title + ' '), count),
+        Throughput.create(provider));
       const body = el('div', { class: 'streams-grid' });
       const node = el('section', { class: 'stream-group', attrs: { 'aria-labelledby': heading.id } }, heading, body);
       node.hidden = true;
@@ -1791,6 +1939,7 @@
     Treemap.init();
     Sparkline.init();
     Streams.update();
+    Throughput.start();
     connectSSE();
     refreshState();
     setInterval(() => { if (!S.sseOpen) refreshState(); }, 15000);

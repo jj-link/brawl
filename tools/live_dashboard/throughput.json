@@ -1,0 +1,12 @@
+{
+  "providers": {
+    "qwen": {
+      "url": "http://100.86.3.45:8000/metrics",
+      "backend": "auto"
+    },
+    "glm": {
+      "url": "http://100.92.139.82:8888/metrics",
+      "backend": "auto"
+    }
+  }
+}
