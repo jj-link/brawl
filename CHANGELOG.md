@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint c83288d7
+
+- Cumulative accepted-source progress from committed snapshot `c83288d7075556b2baa99f27bbddb84ded8fa659`, published by the retained `SolPublisherDB04` agent, is **2.977524%**: **471,448 / 15,833,556 accepted code bytes**, **15,362,108 code bytes remaining**, and **1,382 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `eaaa2420`, from DEA4.
+- Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked **1,382 accepted source-link recipes**, **1,381 prior source identities/objects**, and **329 original/tool identities**. DA1C, DB04, DCD4, DDBC, and DEA4 are complete and individually source-linked; DEA4's exact allocated code and zero relocations match its original object.
+- Published report SHA-256: `d08a11c45db529a6a85d5f30aa444d92f34974b9af1ccd2ab37dbf2f8ff559b5`. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/c83288d7/report-published.json`. Final headline/map/module/history verification follows this documentation acknowledgment. Committed LF and checkout CRLF identities are recorded separately; gameplay was not exercised.
+
 ## Canonical staging-artifact validation clarification
 
 - Clarified `PLAN.md` Reconstruction owner step 6: validate an own-only staging patch against the committed Git index representation, report its successful staging invocation and intended staged blob identities, and leave the parent's index untouched. Working-tree applicability alone is insufficient.
