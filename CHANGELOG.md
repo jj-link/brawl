@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 81827ba9
+
+- Verified committed snapshot `81827ba959005b16e8e18008060beec3031e5ffd`: **2.977777%**, **471488 / 15833556 accepted code bytes**, **15362068 code bytes remaining**, **1387 accepted source units**. Delta from `e562c7d2`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `413fe3d5ec3aa87cf3fd38e7c7a39047b1d38e58cf08b66c9deada494d4cae7a`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1387 accepted source-link recipes, and validated 1386 prior source/object identities plus 329 original/tool identities. All ten accepted Dedede units are complete and singly source-linked; E1A8's allocated code and relocation match. Source Git blob: `2c4047ef26bf40a37f6e527b87bb8edbf0d77a96`. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/81827ba9/report-published.json`, with source/link, native-hash, comparison, input, map, report and owner-preservation artifacts in that directory. Final dashboard source-identity, headline, unit/module and served/persisted history verification follows this record's commit-and-push acknowledgment.
+
 ## Instruction refinement — shared-file preservation evidence
 
 - The E1A8 materialization violated the existing requirement to preserve unrelated dirty bytes; it was not authorized by raw-index patch validation. Its initial report proved that other paths were unchanged but did not prove preservation inside the two shared files it replaced. The same owner recovered and restored the lost bytes before source publication, with exact pre-write hashes and insertion-reversal evidence.
