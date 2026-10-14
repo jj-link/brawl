@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Instruction refinement — complete staged-path evidence
+
+- E1B8's current-input readiness packet declared a three-file patch, but the supplied patch contained only the two configuration files and omitted the new source. Its stated `git diff --ignore-cr-at-eol` operation did not establish committed-index application. Review returned both defects to the same owner before publication.
+- Canonical reconstruction step 6 now explicitly requires applying the complete patch to a private index, comparing its actual staged changed-path set with all declared owned changes including new files, and reading resulting blob identities from that index. This replaces intended identities with observed staging evidence; parent-index isolation and within-file preservation remain separate requirements.
+
 ## Committed-source checkpoint 46ea8d02
 
 - Verified committed snapshot `46ea8d0216b7dcc8d3190e770e7a6ffdcfaf85c5`: **2.977828%**, **471496 / 15833556 accepted code bytes**, **15362060 code bytes remaining**, **1388 accepted source units**. Delta from `81827ba9`: **+8 code bytes / +1 source unit**.
