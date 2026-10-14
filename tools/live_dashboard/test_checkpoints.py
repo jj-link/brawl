@@ -1,9 +1,15 @@
 """Checkpoint behavior regressions; run with unittest discovery here."""
 
+import json
+import os
+import shutil
+import stat
+import subprocess
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
+from uuid import uuid4
 
 import checkpoint_history as history
 import progress
@@ -46,6 +52,12 @@ def memory_tracker(text):
     tracker._changelog_fingerprint = Mock(return_value="first-input")
     tracker._persist_history = Mock()
     return tracker
+
+
+def published_blame(text, timestamp=1791849600):
+    return SimpleNamespace(stdout="".join(
+        f"{'a' * 40} {number} {number} 1\ncommitter-time {timestamp}\n\t{line}\n"
+        for number, line in enumerate(text.splitlines(), 1)))
 
 
 class HeadlineCheckpointTests(unittest.TestCase):
@@ -126,8 +138,10 @@ class HeadlineCheckpointTests(unittest.TestCase):
 
     def test_failed_refresh_retains_last_good_headline_history_and_warning(self):
         tracker = memory_tracker(checkpoint())
-        dated = [{"at": "2026-10-13", "acceptedBytes": 471424,
-                  "checkpointTitle": "Committed-source checkpoint cdda4dc3"}]
+        dated = [{"at": "2026-10-13", "acceptedBytes": 471424, "totalBytes": 15833556,
+                  "acceptedUnits": 1379, "checkpointCommit": NEW_COMMIT,
+                  "checkpointTitle": "Committed-source checkpoint cdda4dc3",
+                  "timestampMeaning": "recorded checkpoint date (day precision)"}]
         with patch.object(progress, "read_checkpoint_history", return_value=(dated, None)) as reader:
             tracker._refresh_checkpoint()
             original_observations = list(tracker._history)
@@ -138,6 +152,8 @@ class HeadlineCheckpointTests(unittest.TestCase):
             reader.assert_called_once()
         selected, _, _, _, warnings = tracker.state_parts()
         self.assertEqual(selected["commit"], NEW_COMMIT)
+        self.assertEqual(selected["updatedAt"], "2026-10-13")
+        self.assertIsNone(selected["ageSeconds"])
         self.assertTrue(selected["lastGood"])
         self.assertEqual(tracker._checkpoint_history, dated)
         self.assertEqual(tracker._history, original_observations)
@@ -150,6 +166,169 @@ class HeadlineCheckpointTests(unittest.TestCase):
             tracker._refresh_checkpoint()
         self.assertFalse(tracker.state_parts()[0]["lastGood"])
         self.assertEqual(tracker.state_parts()[4], [])
+
+
+class CheckpointTimestampTests(unittest.TestCase):
+    def test_recorded_dates_preserve_precision_and_ignore_file_mtime(self):
+        cases = [
+            (checkpoint("Committed-source checkpoint (2026-10-13)"),
+             "2026-10-13", "recorded checkpoint date (day precision)"),
+            (checkpoint().replace("- Cumulative", "- 2026-10-13T10:20:30-07:00: Cumulative"),
+             "2026-10-13T17:20:30Z", "recorded checkpoint timestamp"),
+        ]
+        for text, expected, meaning in cases:
+            with self.subTest(expected=expected):
+                tracker = memory_tracker(text)
+                with patch.object(history.subprocess, "run") as git:
+                    tracker._refresh_checkpoint()
+                    tracker.changelog_path.stat.return_value.st_mtime = 9999999999
+                    tracker.changelog_path.read_text.return_value = ORDINARY_DCD4 + text
+                    tracker._changelog_fingerprint.return_value = "unrelated-input"
+                    tracker._refresh_checkpoint()
+                git.assert_not_called()
+                selected = tracker.state_parts()[0]
+                self.assertEqual(selected["updatedAt"], expected)
+                self.assertEqual(selected["timestampMeaning"], meaning)
+                self.assertEqual(selected["commit"], NEW_COMMIT)
+                self.assertEqual(selected["acceptedBytes"], 471424)
+                self.assertEqual(selected["ageSeconds"] is None, len(expected) == 10)
+
+    def test_undated_checkpoint_does_not_borrow_equal_byte_recorded_date(self):
+        title = "Committed-source checkpoint repeated title"
+        newest = checkpoint(title, commit="f" * 40)
+        older = checkpoint(title).replace("- Cumulative", "- 2026-10-12: Cumulative")
+        for outcome in (OSError("Git unavailable"), SimpleNamespace(stdout="")):
+            with self.subTest(outcome=outcome):
+                tracker = memory_tracker(newest + older)
+                with patch.object(history.subprocess, "run") as git:
+                    if isinstance(outcome, Exception):
+                        git.side_effect = outcome
+                    else:
+                        git.return_value = outcome
+                    tracker._refresh_checkpoint()
+                selected, _, _, chart, warnings = tracker.state_parts()
+                self.assertEqual(selected["commit"], "f" * 40)
+                self.assertEqual(selected["acceptedBytes"], 471424)
+                self.assertIsNone(selected["updatedAt"])
+                self.assertIsNone(selected["ageSeconds"])
+                self.assertEqual(selected["timestampMeaning"],
+                                 "checkpoint publication date unknown (uncommitted or Git unavailable)")
+                self.assertTrue(any(point["at"] == "2026-10-12" for point in chart))
+                self.assertEqual(bool(warnings), isinstance(outcome, Exception))
+
+    def test_cached_publication_is_checkpoint_specific_when_git_disappears(self):
+        text = checkpoint()
+        tracker = memory_tracker(text)
+        with patch.object(history.subprocess, "run", return_value=published_blame(text)):
+            tracker._refresh_checkpoint()
+        original = tracker.state_parts()[0]
+        self.assertEqual(original["timestampMeaning"], "Git publication time, not verification time")
+        with patch.object(history.subprocess, "run", side_effect=OSError("Git unavailable")):
+            tracker._changelog_fingerprint.return_value = "git-unavailable"
+            tracker.changelog_path.read_text.return_value = ORDINARY_DCD4 + text
+            tracker._refresh_checkpoint()
+            cached, _, _, _, warnings = tracker.state_parts()
+            self.assertEqual(cached["updatedAt"], original["updatedAt"])
+            self.assertEqual(cached["timestampMeaning"], original["timestampMeaning"])
+            self.assertIn("Git publication dates unavailable", warnings[0])
+            # Same title and byte count do not establish the same checkpoint:
+            # either a different snapshot or different unit count invalidates its cache.
+            for newest in (checkpoint(commit="f" * 40), checkpoint(units=1380)):
+                tracker._changelog_fingerprint.return_value = newest
+                tracker.changelog_path.read_text.return_value = newest + text
+                tracker._refresh_checkpoint()
+                self.assertIsNone(tracker.state_parts()[0]["updatedAt"])
+
+
+class RealGitCheckpointTimestampTests(unittest.TestCase):
+    def test_publication_survives_unrelated_edits_and_dates_equal_byte_successors(self):
+        root = (Path(__file__).resolve().parents[2] / "build" / "checkpoint-publication-time"
+                / ("git-fixture-" + uuid4().hex))
+        root.mkdir(parents=True)
+
+        def remove_readonly(function, path, _exc_info):
+            # Git object files may be read-only on Windows.
+            os.chmod(path, stat.S_IWRITE)
+            function(path)
+
+        # unittest runs cleanups even when setup, Git or an assertion fails.
+        self.addCleanup(shutil.rmtree, root, onerror=remove_readonly)
+        changelog = root / "CHANGELOG.md"
+        report = root / "report.json"
+        report.write_text(json.dumps({"measures": {"total_code": 15833556}, "units": []}), encoding="utf-8")
+
+        def git(*args, date=None):
+            env = dict(os.environ)
+            if date:
+                env.update(GIT_AUTHOR_DATE=date, GIT_COMMITTER_DATE=date)
+            return subprocess.run(
+                ["git", "-c", "user.name=Checkpoint regression", "-c", "user.email=checkpoint@example.invalid",
+                 "-c", "commit.gpgsign=false", "-c", f"core.hooksPath={root / 'no-hooks'}", *args],
+                cwd=root, env=env, text=True, encoding="utf-8", errors="replace",
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True, timeout=30).stdout.strip()
+
+        def publish(date):
+            git("add", "CHANGELOG.md")
+            return git("commit", "-m", "Fixture publication", date=date)
+
+        git("init", "--quiet")
+        changelog.write_text(previous_checkpoint(), encoding="utf-8")
+        publish("2026-10-10T10:00:00Z")
+        text = checkpoint() + previous_checkpoint()
+        changelog.write_text(text, encoding="utf-8")
+        publish("2026-10-11T11:00:00Z")
+        tracker = progress.ProgressTracker(report, root, root / "observations.json")
+        report_state = None
+
+        def observe(stage, expected_date, expected_commit=NEW_COMMIT):
+            nonlocal report_state
+            tracker.refresh()
+            selected, report_time, revision, chart, _warnings = tracker.state_parts()
+            self.assertEqual(selected["updatedAt"], expected_date)
+            self.assertEqual(selected["commit"], expected_commit)
+            self.assertEqual((selected["acceptedBytes"], selected["acceptedUnits"]), (471424, 1379))
+            self.assertEqual(selected["source"], "changelog")
+            self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+            current_report = (report_time, revision, tracker.units_bytes(), tracker.units_provenance())
+            if report_state is None:
+                report_state = current_report
+            self.assertEqual(current_report, report_state)
+            return selected
+
+        published = "2026-10-11T11:00:00Z"
+        observe("published checkpoint", published)
+        text = ORDINARY_DCD4 + text
+        changelog.write_text(text, encoding="utf-8")
+        observe("unrelated section insertion", published)
+        text = text.replace(previous_checkpoint(),
+                            "- Follow-up verification on 2026-10-12T12:00:00Z passed again.\n\n"
+                            + previous_checkpoint())
+        changelog.write_text(text, encoding="utf-8")
+        observe("follow-up verification prose", published)
+        st = changelog.stat()
+        os.utime(changelog, ns=(st.st_atime_ns, st.st_mtime_ns + 60000000000))
+        observe("file touch", published)
+        publish("2026-10-12T12:00:00Z")
+        observe("unrelated changelog documentation commit", published)
+        (root / "notes.txt").write_text("Unrelated documentation.\n", encoding="utf-8")
+        git("add", "notes.txt")
+        git("commit", "-m", "Unrelated fixture docs", date="2026-10-12T13:00:00Z")
+        observe("unrelated other-file documentation commit", published)
+        successor = checkpoint("Committed-source checkpoint successor", commit="f" * 40)
+        text = successor + text
+        changelog.write_text(text, encoding="utf-8")
+        unknown = observe("uncommitted equal-byte successor", None, "f" * 40)
+        self.assertIn("unknown", unknown["timestampMeaning"])
+        publish("2026-10-13T13:00:00Z")
+        observe("published equal-byte successor", "2026-10-13T13:00:00Z", "f" * 40)
+        text = text.replace("f" * 40, "e" * 40)
+        changelog.write_text(text, encoding="utf-8")
+        observe("uncommitted same-title new snapshot", None, "e" * 40)
+        publish("2026-10-14T14:00:00Z")
+        selected = observe("published same-title new snapshot", "2026-10-14T14:00:00Z", "e" * 40)
+        self.assertEqual(selected["timestampMeaning"], "Git publication time, not verification time")
+        with patch.object(history.subprocess, "run", side_effect=OSError("Git unavailable")):
+            observe("cached publication while Git unavailable", "2026-10-14T14:00:00Z", "e" * 40)
 
 
 class CheckpointHistoryTests(unittest.TestCase):
@@ -200,7 +379,8 @@ class CheckpointHistoryTests(unittest.TestCase):
                 "### Accepted entries\n- Verification passed all native hashes.\n"
                 "- 2026-10-01: 10 / 100 accepted code bytes, 90 bytes remaining.\n"
                 "- 20 / 100 accepted code bytes, 80 bytes remaining.\n")
-        cached = {"at": "2026-10-02T12:00:00Z", "acceptedBytes": 20,
+        cached = {"at": "2026-10-02T12:00:00Z", "acceptedBytes": 20, "totalBytes": 100,
+                  "acceptedUnits": None, "checkpointCommit": None,
                   "checkpointTitle": "Source reconstruction checkpoint (2026-09-30)",
                   "source": "changelog", "timestampMeaning": "Git publication time, not verification time"}
         with patch.object(history.subprocess, "run", side_effect=OSError("Git unavailable")):
@@ -211,9 +391,7 @@ class CheckpointHistoryTests(unittest.TestCase):
 
     def test_git_publication_provenance_still_uses_actual_accounting_line(self):
         text = checkpoint()
-        number = next(index for index, line in enumerate(text.splitlines(), 1) if "471,424 /" in line)
-        blame = f"{'a' * 40} 1 {number} 1\ncommitter-time 1791849600\n\taccounting line\n"
-        with patch.object(history.subprocess, "run", return_value=SimpleNamespace(stdout=blame)) as git:
+        with patch.object(history.subprocess, "run", return_value=published_blame(text)) as git:
             points, warning = history.read_checkpoint_history("unused", text, 15833556)
         self.assertIsNone(warning)
         self.assertEqual(len(points), 1)

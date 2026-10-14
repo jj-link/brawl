@@ -28,7 +28,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from checkpoint_history import is_checkpoint_section, read_checkpoint_history
+from checkpoint_history import checkpoint_commit, is_checkpoint_section, read_checkpoint_history
 
 HISTORY_MAX_POINTS = 5000
 HISTORY_SERVE_POINTS = 1000
@@ -142,7 +142,9 @@ class ProgressTracker:
     def state_parts(self):
         with self._lock:
             progress = dict(self._progress)
-            updated = _parse_ts(progress.get("updatedAt") or "")
+            timestamp = progress.get("updatedAt") or ""
+            # A recorded calendar day does not establish an instant or age.
+            updated = _parse_ts(timestamp) if "T" in timestamp else None
             progress["ageSeconds"] = (
                 max(0, int((datetime.now(timezone.utc) - updated).total_seconds()))
                 if updated else None
@@ -244,10 +246,8 @@ class ProgressTracker:
             checkpoint = self._parse_checkpoint(text)
             checkpoint.update({
                 "available": True, "source": "changelog", "precision": 6,
-                "updatedAt": datetime.fromtimestamp(
-                    self.changelog_path.stat().st_mtime, timezone.utc
-                ).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
-                "timestampMeaning": "CHANGELOG.md modification time, not verification time",
+                "updatedAt": None,
+                "timestampMeaning": "checkpoint publication date unknown (uncommitted or Git unavailable)",
                 "error": None, "lastGood": False,
             })
         except (OSError, ValueError) as exc:
@@ -260,6 +260,14 @@ class ProgressTracker:
             return
         history, history_warning = read_checkpoint_history(
             self.root, text, checkpoint["totalBytes"], cached_points=self._checkpoint_history)
+        dated = next((point for point in history
+                      if point["checkpointTitle"] == checkpoint["checkpointTitle"]
+                      and point["acceptedBytes"] == checkpoint["acceptedBytes"]
+                      and point.get("totalBytes") == checkpoint["totalBytes"]
+                      and point.get("acceptedUnits") == checkpoint["acceptedUnits"]
+                      and point.get("checkpointCommit") == checkpoint["commit"]), None)
+        if dated is not None:
+            checkpoint.update(updatedAt=dated["at"], timestampMeaning=dated["timestampMeaning"])
         with self._lock:
             self._changelog_fp = fp
             self._checkpoint = checkpoint
@@ -301,13 +309,12 @@ class ProgressTracker:
             if total <= 0 or accepted < 0 or left != total - accepted \
                     or abs(pct - 100 * accepted / total) > 0.00000051:
                 raise ValueError("latest verified checkpoint has inconsistent accounting")
-            commit = re.search(
-                r"(?:committed snapshot|snapshot)\s+`([0-9a-f]{7,40})`", section)
+            commit = checkpoint_commit(section)
             return {
                 "acceptedBytes": accepted, "totalBytes": total,
                 "remainingBytes": left, "percent": round(pct, 6),
                 "acceptedUnits": int(units[-1].replace(",", "")),
-                "commit": commit.group(1) if commit else None,
+                "commit": commit,
                 "checkpointTitle": section.splitlines()[0].strip(),
             }
         raise ValueError("no verified cumulative accepted-source checkpoint found")

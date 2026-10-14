@@ -1,8 +1,8 @@
 """Recover accepted-byte checkpoints without guessing verification timestamps.
 
 Explicit checkpoint dates take precedence. Otherwise Git blame supplies the
-publication date of the cumulative-total line, following its move from PLAN.md.
-Per-unit, current-wave and assembly-match figures are not whole-project totals.
+publication date of the accounting record and its identity lines, following
+their move from PLAN.md. Per-unit/current-wave figures are not project totals.
 Candidates retain newest-first document order, including cached dates when Git
 cannot recover them. The chart can then retain the document's latest total at
 an indistinguishable publication time without choosing the numeric maximum.
@@ -34,6 +34,17 @@ LEGACY_RECORD = re.compile(
 COUNTS = re.compile(
     r"([\d,]+)\s*/\s*([\d,]+)\s+(?:accepted\s+)?(?:source\s+)?code bytes", re.I)
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))?\b")
+SNAPSHOT = re.compile(r"(?:committed snapshot|snapshot)\s+`([0-9a-f]{7,40})`")
+
+
+def checkpoint_commit(section):
+    match = SNAPSHOT.search(section)
+    return match.group(1) if match else None
+
+
+def _identity(point):
+    return tuple(point.get(key) for key in (
+        "checkpointTitle", "acceptedBytes", "totalBytes", "acceptedUnits", "checkpointCommit"))
 
 
 def is_checkpoint_section(title, section):
@@ -70,6 +81,8 @@ def _candidates(text, expected_total):
         if not re.search(r"\bverified\b|\bverification\b|\bpass(?:ed|ing)?\b", section, re.I):
             continue
         first_line = text.count("\n", 0, heading.end()) + 1
+        units = re.findall(r"([\d,]+)\s+accepted source units", section.replace("**", ""))
+        snapshot = SNAPSHOT.search(section)
         section_points = []
         for offset, line in enumerate(section.splitlines()):
             plain = line.replace("**", "")
@@ -87,13 +100,23 @@ def _candidates(text, expected_total):
             section_points.append({
                 "line": first_line + offset,
                 "acceptedBytes": accepted,
+                "totalBytes": total,
+                "acceptedUnits": int(units[-1].replace(",", "")) if units else None,
+                "checkpointCommit": checkpoint_commit(section),
                 "checkpointTitle": title,
                 "recorded": _recorded_date(plain),
+                "identityLines": [],
             })
         # A dated running log can contain entries added days later. Its heading
         # is not a date for those later checkpoints.
         if len(section_points) == 1 and not re.search(r"^### ", section, re.M):
             section_points[0]["recorded"] = section_points[0]["recorded"] or _recorded_date(title)
+            # A copied accounting line alone cannot date a new checkpoint with
+            # equal counters. Its heading/snapshot must also have been published.
+            section_points[0]["identityLines"].append(text.count("\n", 0, heading.start()) + 1)
+            if snapshot:
+                section_points[0]["identityLines"].append(
+                    first_line + section.count("\n", 0, snapshot.start()))
         candidates.extend(section_points)
     return candidates
 
@@ -105,7 +128,7 @@ def read_checkpoint_history(root, text, expected_total, cached_points=()):
         return [], None
     cached = {}
     for point in cached_points:
-        cached.setdefault((point["checkpointTitle"], point["acceptedBytes"]), point)
+        cached.setdefault(_identity(point), point)
     dates = {}
     git_error = None
     if any(not point["recorded"] for point in candidates):
@@ -134,16 +157,21 @@ def read_checkpoint_history(root, text, expected_total, cached_points=()):
     undated = 0
     for candidate in candidates:
         recorded = candidate["recorded"]
-        publication = dates.get(candidate["line"])
+        publications = [dates.get(line) for line in [candidate["line"], *candidate["identityLines"]]]
+        publication = (max(publications, key=lambda item: item[1])
+                       if all(publications) else None)
         if not recorded and not publication:
             undated += 1
-            previous = cached.get((candidate["checkpointTitle"], candidate["acceptedBytes"]))
+            previous = cached.get(_identity(candidate))
             if previous is not None:
                 points.append(previous)
             continue
         point = {
             "at": recorded[0] if recorded else publication[1],
             "acceptedBytes": candidate["acceptedBytes"],
+            "totalBytes": candidate["totalBytes"],
+            "acceptedUnits": candidate["acceptedUnits"],
+            "checkpointCommit": candidate["checkpointCommit"],
             "source": "changelog",
             "checkpointTitle": candidate["checkpointTitle"],
             "timestampMeaning": recorded[1] if recorded else "Git publication time, not verification time",

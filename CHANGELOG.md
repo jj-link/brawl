@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard — checkpoint publication timestamps
+
+- The accepted-checkpoint timestamp now comes from the selected checkpoint's publication or explicit recorded date, not the modification time of the entire changelog. Matching includes source snapshot, title and cumulative counters; unrelated documentation edits retain the selected checkpoint's publication time. Unknown publication dates remain unknown, and day-only records retain day precision.
+- The existing provenance row labels publication time as `Published`, explicitly recorded time as `Recorded`, and unavailable provenance as `Publication date unknown`. Counters, contribution text, history, streams and panel layout retain their existing behavior.
+- All **51 dashboard tests** passed against the exact publication postimages, excluding pre-existing unrelated working-tree changes. A real-Git regression covers unrelated edits, touches and commits, uncommitted successors, equal-byte checkpoints, changed source identity and cached publication dates when Git is unavailable. Test fixtures are removed on success and failure.
+- Local and public browser/API verification displayed `ecc1a438` with publication time `2026-10-14T17:52:18Z`, independently confirmed from documentation commit `ad7ba7e167af85b3938995eefde9508495f12085`. Activation replaced only dashboard HTTP processes; the pinned root, observer and proxy were retained. Evidence: `build/checkpoint-publication-time/backend-patch-validation.json`, `publication-tests.txt`, `publication-progress-smoke.json` and `build/checkpoint-time-surface/browser-fixed-before-doc.json`.
+- After this ordinary changelog entry changed the file's contents and modification time, both live browser/API endpoints retained the same checkpoint, counters, contribution and `17:52:18Z` publication time. Evidence: `build/checkpoint-time-surface/browser-fixed-after-doc.json` and `fixed-after-doc-{local,public}.png`.
+
 ## Dedede E1D0 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1D0`, `.text 0xE1D0..0xE1D8`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the module-27 import relocation match. The complete `ecc1a438d75c5f2de782fe659ede50cc93da2d73` input set passed all **127 native outputs**, with reconstructed-source linkage and a byte-identical Dedede REL. Source Git blob: `6a05d576e545c8ccc90c481b800f45a0d0601241`. Gameplay was not exercised.

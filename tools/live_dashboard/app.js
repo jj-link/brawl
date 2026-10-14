@@ -356,7 +356,13 @@
     const host = $('progress-provenance');
     if (!p.available) { host.replaceChildren(); return; }
     const source = p.source === 'changelog' ? 'Accepted checkpoint · CHANGELOG.md' : 'Build report progress';
-    const at = p.updatedAt ? new Date(p.updatedAt).toLocaleString() : 'timestamp unknown';
+    const checkpoint = p.source === 'changelog';
+    const dayOnly = /^\d{4}-\d{2}-\d{2}$/.test(p.updatedAt || '');
+    const at = checkpoint ?
+      (p.updatedAt ? (dayOnly ? 'Recorded date ' + p.updatedAt + ' (day precision)' :
+        (/^recorded checkpoint/i.test(p.timestampMeaning || '') ? 'Recorded ' : 'Published ') +
+          new Date(p.updatedAt).toLocaleString()) : 'Publication date unknown') :
+      (p.updatedAt ? new Date(p.updatedAt).toLocaleString() : 'timestamp unknown');
     const exact = Number(p.acceptedBytes).toLocaleString() + ' / ' + Number(p.totalBytes).toLocaleString() +
       ' bytes · ' + Number(p.percent).toFixed(p.precision === 6 ? 6 : 3) + '% · ' +
       Number(p.remainingBytes).toLocaleString() + ' bytes remaining';
