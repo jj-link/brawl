@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Instruction refinement — attempt drafts and cleanup accounting
+
+- E1A0's attempt ledger preserved the initial compiled object and comparison report but referred to a working source file subsequently changed by correction 1. The canonical reconstruction instructions now explicitly require separate, never-overwritten source/header snapshots or patches against named baselines, with their paths recorded per measured attempt. The same owner is recovering the actual initial draft from retained records; its one initial candidate and one correction remain unchanged.
+- E190 cleanup completed without measuring removed bytes; those totals are explicitly unavailable in its receipt. DF8C cleanup also briefly removed eleven tracked files before restoring them. The existing cleanup requirements now explicitly place path/byte measurement before deletion and exclude tracked files even beneath generated directories. These refinements clarify evidence preservation and accounting; role ownership, correction limits, model overrides, and private-work independence are unchanged.
+
 ## Committed-source checkpoint fe7420f5
 
 - Verified committed snapshot `fe7420f5fb290753b2368740d9c857897582ed09`: **471464 / 15833556 accepted code bytes**, **15362092 code bytes remaining**, **2.977625%**, **1384 accepted source units**. Delta from `f419401d`: **+8 code bytes / +1 source unit**.
