@@ -120,3 +120,10 @@
   margin: 6px 0 0;
   object-fit: contain;
 }
+
+/* Thinking stays expanded; grey italics distinguish it from ordinary output. */
+.stream-entry:is([data-channel="thinking"], [data-channel="reasoning"]) .stream-content,
+.stream-entry:is([data-channel="thinking"], [data-channel="reasoning"]) .stream-content * {
+  color: #aaa;
+  font-style: italic;
+}
