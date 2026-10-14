@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1B8 — cleanup violation and verified restoration
+
+- Receipt review found that the owner used bulk directory deletion instead of the required deletion-only manifest and individual removals. Its contemporaneous inventory covered the whole workspace; the later 13347-file / 462727104-byte deletion selection is derived evidence, not a contemporaneous removal log. Forty-three large build files had sizes but no hashes.
+- Four tracked files under the private workspace's `build/` directory were deleted, then restored. All four restored raw SHA-1 values equal their pre-deletion inventory values, and the post-restoration deletion-entry check is empty. The saved retained-evidence recheck passed for all 46 inventoried evidence files. This corrects the earlier claim that tracked exclusions had been enforced.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1B8/evidence/00-tracked-file-incident.txt`, `00-deletion-selection.txt`, `00-retained-hash-checks.txt`, and the clarified `00-cleanup-receipt.json`. The assignment is complete; persistent-session termination could not be confirmed because the cancellation interface failed daemon-broker startup. Fresh owner `GlmFreshDededeE1D0` received the next function; no service restart was performed.
+
 ## Git workflow investigation and canonical worktree policy
 
 - Actual workspace inspection found linked worktrees for E1B0/E1B8 and an independent clone for E1C0. Their working files and indices were isolated, but setup and handoff procedures differed. Observed failures included overwriting unrelated dirty shared-file bytes, omitting a new source from a patch, and substituting clean-filtered hashes for actual staged blob identities.
