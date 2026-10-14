@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 82cd52d9
+
+- Verified committed snapshot `82cd52d9a012a6a678ac39c9ce6f567d2ad13ded`: **2.978080%**, **471536 / 15833556 accepted code bytes**, **15362020 code bytes remaining**, **1393 accepted source units**. Delta from `ba7a351f`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `d855b6b4bad2fddde9303944650a02162ae7ae814f137f47279b7ee24c9fac19`. The retained publisher generated the fixed-commit report, verified all 127 native outputs and direct SHA-1 comparisons, checked 1393 accepted source-link recipes, and validated 1392 prior source/object identities plus 329 original/tool identities. All sixteen accepted Dedede units are complete and singly source-linked. E1E0's allocated code and import relocation match; its 627-byte source Git blob `bd60e379b0a395945072e8d8c30a893300a4c348` matches the owner's preserved initial source. Uncommitted E1D8/E1E8 and other parent changes are excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/82cd52d9/report-published.json`, source/link and native-hash verification, committed report, input identities, expected unit map, module totals and retained owner materialization/attempt records. Only required extracted original inputs were copied; the original ISO's streaming hash was verified without copying it. Final headline/history verification follows this documentation commit.
+
 ## Dedede E1E0 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1E0`, `.text 0xE1E0..0xE1E8`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the `R_PPC_REL24` import relocation to `fn_27_133AA4` match. All **127 native outputs** pass; the map links the reconstructed source and the built Dedede REL equals the original. Source Git blob: `bd60e379b0a395945072e8d8c30a893300a4c348`. Gameplay was not exercised.
