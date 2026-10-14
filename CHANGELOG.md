@@ -2,11 +2,23 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Git workflow investigation and canonical worktree policy
+
+- Actual workspace inspection found linked worktrees for E1B0/E1B8 and an independent clone for E1C0. Their working files and indices were isolated, but setup and handoff procedures differed. Observed failures included overwriting unrelated dirty shared-file bytes, omitting a new source from a patch, and substituting clean-filtered hashes for actual staged blob identities.
+- A native Windows Git 2.47.0 experiment recorded **28 cases and 232 Git invocations**. It verified distinct worktree indices, private-index validation without another worktree, and separate raw working-file application preserving dirty contents and mixed line endings. Missing/extra paths, wrong staged blobs, stale baseline/full inputs/preimages/index, occupied new files and conflicts were refused without changing live fixture state. Disposable candidate indices could change before rejection; `--3way` and `--reject` supplied non-atomic failure counterexamples. No crash-safe or concurrent-writer guarantee was established.
+- `PLAN.md` now specifies detached linked worktrees for new reconstruction assignments, unchanged ownership/evidence for active clones/worktrees, separate index and raw working-file checks, and the proposed `checked-handoff` interface with explicit implementation/activation criteria. No production helper was implemented. The same reconstruction owner materializes; the parent reviews/stages/commits/pushes. Worker counts, model pauses and publisher identity are unchanged.
+- Evidence: `build/git-handoff-investigation/REPORT.md`, `evidence/results.json`, `evidence/native-commands.jsonl`, retained patches/preimages/private indices and cleanup receipt. The experiment removed 95 disposable fixture/scaffold files totaling 122916 bytes after preserving evidence; a Windows read-only-object cleanup failure and manifest-scoped recovery are recorded.
+
+## Dedede E1B0 — qualified workspace cleanup
+
+- Corrected cleanup removed **13209 listed files / 452502775 bytes** and 955 empty directories after saving a deletion manifest; nine tracked files were excluded. Retained evidence and referenced compiler/tool copies remain. The first cleanup round lacked the required pre-deletion per-file manifest: only 221464 bytes could subsequently be reconstructed from surviving identical copies, and the remaining first-round byte count is unknown. These figures are not a complete cleanup total.
+- Receipt: `build/isolated-workers/GlmFreshDededeE1B0/evidence/cleanup-receipt.md` and `cleanup/post-cleanup-checks.json`. The completed owner's background job was cancelled and E1C8 received a fresh assignment.
+
 ## Committed-source checkpoint 4f9b7be4
 
 - Verified committed snapshot `4f9b7be44116bc7e0f76a11bad12d45c62cb0f54`: **2.977878%**, **471504 / 15833556 accepted code bytes**, **15362052 code bytes remaining**, **1389 accepted source units**. Delta from `46ea8d02`: **+8 code bytes / +1 source unit**.
 - Published report SHA-256: `28fc9102b47512688de16d3015c51f5e827a3ce8953325d1b183bc481150316b`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1389 accepted source-link recipes, and validated 1388 prior source/object identities plus 329 original/tool identities. All twelve accepted Dedede units are complete and singly source-linked. E1B8's allocated code and import relocation match; source Git blob `117555971423d207bd00dce9e5774bbc47289743` equals the immutable successful owner candidate. Gameplay was not exercised.
-- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/4f9b7be4/report-published.json`, with fixed-commit report, native hashes, source/link proofs, original/tool identities, comparisons, maps and owner evidence. Final local/public source-identity, counter and history verification follows acknowledgment of this committed record.
+- Final verification after documentation commit `7bc8de7f`: local/public source identity and counters agree; all 5669 map records and 127 module totals match the report. Latest history bytes agree at 471504; served timestamp `2026-10-14T15:18:31.922Z` differs from persisted `2026-10-14T15:18:32.060Z` by 138 ms. Exact timestamp equality remains qualified; no cause was inferred. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/4f9b7be4/final-publication-current.json` and `report-published.json`, with comparison, source/link, native hashes, input identities, maps and owner evidence. Publisher manifest-scoped cleanup removed 24805432 bytes.
 
 ## Dedede E1B8 — exact GLM source reconstruction
 
