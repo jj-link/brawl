@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Standardized agent assignment instructions
+
+- Added one canonical instruction section to `PLAN.md` for shared reporting, reconstruction owners, the retained dashboard publisher, read-only auditors, and parent result handling. Launches reference that section and supply explicit assignment fields instead of rewritten lifecycle rules.
+- Standardized the verified parent recipient `agent://Main`, evidence-bearing status messages, exact inherited-record fields, source-publication acknowledgment, cleanup receipts, and the distinction between a returned task result and session closure. Model counts and pauses remain explicit user overrides.
+- The instruction audit corrected a parent diagnosis: DCD4's abbreviated incremental-yield display omitted its substantial submitted evidence payload. It was not a data-less terminal submission. Subsequent review must inspect complete arguments/results.
+
 ## Dedede DA1C — exact GLM source reconstruction
 
 - Accepted `fn_117_DA1C`, `.text 0xDA1C..0xDA24`: **8 code bytes**, one initial exact candidate and zero corrections. The recovered nested predecessor journal proves zero prior drafts/corrections; earlier unknown accounting is superseded by `evidence/00-journal-count-recovery.md`.

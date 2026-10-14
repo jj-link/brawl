@@ -50,6 +50,63 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - The parent handles assignments, isolated-workspace ownership, handoffs, attempt tracking, evidence review, documentation, and commits. An unmet acceptance criterion or merge conflict goes back to its reconstruction owner without a prescribed technical fix.
 - “Helping,” speeding things up, integration, or an agent encountering difficulty are not exceptions.
 
+## Canonical agent instructions
+
+### Dispatch and assignment fields
+
+- The parent uses this section unchanged for every assignment, selecting the common instructions and the applicable role below. Only the assignment fields vary. Do not replace these instructions with an independently rewritten lifecycle.
+- Read this section from the parent checkout, not an older copy in an isolated workspace, at assignment start and whenever the parent sends a new instruction revision. The parent supplies its absolute path and committed revision.
+- Every assignment supplies: role; agent name; parent recipient; parent checkout; instruction revision; exclusive workspace; full baseline commit; exact owned paths or target boundaries; current user overrides; preserved evidence paths; and the next required result.
+- Reconstruction fields additionally name the module, symbol, section start/end, original code size, model stage, compiler/build/comparison recipe, best draft, attempt ledger and its covered-through checkpoint, target/best objects, input manifest, and exact predecessor journal paths. Record initial candidates and measured corrections separately by model. Use `NONE` only for a confirmed absence; use `UNKNOWN` with the responsible owner and records to inspect when recovery is incomplete. Do not invent paths or counts.
+- Publisher fields additionally name the fixed committed source checkpoint, previous published checkpoint and evidence, report destination, local/public endpoints, and expected root session. A new checkpoint changes these fields, not the publisher's identity or instructions.
+- Audit fields name the exact instruction files/session records, questions, read-only boundaries, and requested findings. Audit results are proposed changes, not authorization to edit instructions.
+- Current user overrides are copied literally into the assignment fields. Worker counts, pauses, model selection, and unrelated file ownership are not silently inferred from an older plan copy or changed by standardizing wording.
+
+### Common execution and reporting
+
+- Work only within the assigned role and owned paths. Preserve other owners' changes. Use native Windows and existing project tooling; do not restart services or change model configuration. Do not create files in temporary directories.
+- Report observed evidence, its source commit/input identities, and remaining qualifications. A private match, an applied patch, a main working-tree change, a commit, a successful push, and a verified dashboard checkpoint are different states; name the actual state.
+- Send parent notifications with the `write` tool: `path` is the supplied parent recipient and `content` contains the complete report or exact evidence-file paths. In the current root session the verified recipient is `agent://Main`. A label such as `review-ready` without its evidence is not a report.
+- Use `write` for `review-ready`, `reconciled`, `report-published`, `checkpoint-verified`, and concrete blocker notifications. Include assignment/checkpoint identity, completed checks, evidence paths, and the exact next parent action.
+- If no work is actionable until a parent message arrives, submit the available `yield` tool with `data` containing the assignment identity, `status: awaiting-parent`, the pending action, and evidence paths; omit `type`. This is a terminal task result, not a process-kill or assignment-closure command. The registered agent remains available for the parent's next `write` message, as observed with the existing publisher. The parent retains that owner; this result does not authorize cleanup or a replacement agent.
+- Do not use incremental `yield` sections as a substitute for a parent notification. Do not poll Git, files, or status endpoints, repeat unchanged verification, or invent additional work while awaiting a parent action. Use `wait` only for a background job started by that agent.
+- A tool/setup failure is a concrete blocker, not an exhausted correction allowance. State the failed operation, observed error, preserved artifacts, and required prerequisite.
+- Inspect full tool arguments and results before diagnosing reporting failures. Rendered history may abbreviate a `yield` call to its type while omitting a submitted evidence payload. An incremental section uses `yield` with an actual array in `type` and the evidence in `data`; it is not terminal assignment closure.
+
+### Reconstruction owner
+
+1. Independently investigate the assigned function and preserve inherited evidence. Inspect supplied draft, ledger, recipe, and journal paths before broader searches. Missing history remains unknown until recovered; setup recovery and unchanged-input verification do not consume correction attempts.
+2. Reconstruct genuine C/C++ using the existing project conventions. Make the initial candidate and perform the compile–compare–revise loop until matched or the model stage has used ten corrections, carrying prior counts forward. Preserve every measured attempt and the best draft. The parent supplies no implementation or compiler-tuning advice.
+3. Independently integrate in the exclusive workspace. Verify registered code, applicable data/relocations, actual reconstructed-source linkage, and all expected DOL/REL hashes. Record the compiler recipe, input identities, measured source bytes, and runtime verification performed or unavailable. No parent-issued private-build permission is required.
+4. Send `review-ready` using `write`. Include target, baseline, initial/correction counts, best-source and own-only patch paths, exact changed paths, comparison evidence, source-link proof, native hash outcomes, compiler/input identities, source contribution, and whether the main working tree has been modified. Retain all files needed for reconciliation and re-verification.
+5. The same owner reconciles with the current main working tree, preserving other units and unrelated dirty bytes. The parent identifies which owner may modify overlapping main files next; this sequences only shared-file reconciliation and publication, not private work. Resolve conflicts and perform input-required re-verification yourself. Materialize only your verified changes; do not stage, commit, or push.
+6. Send `reconciled` using `write`: current baseline, exact own-only staging patch, main source identity, proof that unrelated bytes were preserved, and applicable final comparison/link/hash evidence. Await the parent's commit-and-push acknowledgment while retaining needed inputs.
+7. Source-publication acknowledgment names the assignment, accepted patch/input identity, full source commit, destination branch, and successful push. It does not wait for dashboard publication. After that acknowledgment, perform the existing evidence-preserving cleanup. Send the cleanup receipt with removed paths/byte counts, retained evidence paths/hashes, shared-link checks, and original-input checks. Return terminal `data` with `status: assignment-closed`. The parent closes this session and assigns the next function to a fresh agent.
+8. For an exhausted stage, preserve the best draft and all measured corrections, keep the original-code fallback, and send the existing handoff/set-aside evidence. Apply the plan's escalation and nonmatching-publication rules only within current user-authorized models. A pause or tool failure does not exhaust a stage.
+
+### Dedicated dashboard publisher
+
+1. Remain the single publisher across committed checkpoints. A completed checkpoint is not closure of the publisher role. The parent sends subsequent checkpoint fields to this same agent with `write`; replace it only when the user requests replacement or the session is unavailable.
+2. Use an isolated checkout of the explicit committed source checkpoint. Exclude uncommitted work. Generate the report and accepted-source accounting with the existing commands and verification criteria in this plan. Reuse evidence only where recorded input identities remain applicable, and distinguish reused measurements from newly executed checks.
+3. Publish the verified report to the supplied dashboard input path. Send `report-published` with source commit, report hash, accepted/total/remaining bytes, six-decimal percentage, accepted-unit count, checkpoint delta, exact evidence paths, and qualifications.
+4. The parent records those measurements in `CHANGELOG.md`, commits and pushes that entry, and sends its commit to this same publisher. Until then, distinguish updated report-derived data from the previous changelog-backed headline/history; do not declare all surfaces updated.
+5. After that message, verify local/public headline counters, report-derived unit/module data, and served/persisted latest history against the committed checkpoint. Send `checkpoint-verified` with the observed values, timestamps, evidence paths, and any discrepancies. No service restart or dashboard code change belongs to this role.
+6. Preserve checkpoint evidence and complete safe cleanup. Return checkpoint results without declaring the publisher role closed. With no next checkpoint supplied, use the common `awaiting-parent` result; do not poll for commits or perform unrelated work.
+
+### Read-only instruction auditor
+
+- Read the supplied plan, assignment prompts, follow-up instructions, and session records. Distinguish instruction defects from failures to follow clear instructions. Cite exact text and record locations.
+- Return concrete ambiguities/conflicts, observed consequences, exact proposed replacement wording, and where each replacement belongs. Verify tool names and recipient syntax from available schemas or successful calls; mark unresolved prerequisites explicitly.
+- Do not edit files, run builds, contact workers, change services, or turn the investigation into a prerequisite for reconstruction or publication.
+
+### Parent result handling
+
+- On a reconstruction result, inspect its stated state and evidence. Advance the same owner through any remaining reconciliation; then stage only its reviewed patch, record the observed result, and commit and push that assignment separately.
+- Send the source-publication acknowledgment to that owner for cleanup. After its cleanup receipt, close its session using `write` to `proc://<exact-agent-name>/kill`, inspect the result, and refill the authorized slot with a fresh agent using these same instructions. A closure error is not proof of closure. User-paused slots remain paused.
+- Send each newly accepted committed checkpoint to the retained publisher. Complete the changelog acknowledgment and final checkpoint verification without replacing that publisher or delaying reconstruction refills.
+- Treat `awaiting-parent` as an outstanding parent action, not a failed worker or completed assignment. Resume the same registered agent with `write` when that action is complete. Do not report publication or closure before its required evidence arrives.
+- Administrative fields may be corrected with explicit follow-up messages. Changes to role ownership, acceptance criteria, lifecycle, or allowed scope require the user's authorization and an update to this canonical text, rather than a contradictory one-off prompt.
+
 ## Work sequence
 
 ### 1. Establish or reuse a verified baseline
