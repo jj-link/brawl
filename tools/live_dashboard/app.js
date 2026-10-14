@@ -5,6 +5,9 @@
  * The sticky banner shows the same completion percentage and precision as the hero.
  * Updates always run live; the banner reports connection and build-report age.
  * Text is never trusted as HTML; image blocks use only session-provided raster data.
+ * StreamFormat normalizes presentation; StreamContent retains keyed DOM nodes.
+ * Prose, code, diffs, and expanded JSON update live; each entry's Raw view retains
+ * its complete transport payload. View switches preserve the reader's position.
  */
 'use strict';
 
@@ -1328,13 +1331,30 @@
         agent: a, visible: true, position: null };
     }
 
-    function row(item, historical) {
-      const label = el('span');
-      const body = el('div', { class: 'stream-body' });
+    function row(item, historical, panel) {
+      const label = el('span', { class: 'stream-entry-title' });
+      const toggle = el('button', { class: 'stream-raw-toggle', type: 'button', text: 'Raw', attrs: {
+        'aria-pressed': 'false', 'aria-label': 'Show raw entry data'
+      } });
+      const view = StreamContent.create();
+      const rawText = document.createTextNode('');
+      const rawNode = el('pre', { class: 'stream-text stream-raw', hidden: true }, rawText);
+      const status = el('div', { class: 'stream-entry-status' });
       const node = el('article', { class: 'stream-entry' + (historical ? ' stream-history' : ''),
         attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id) } },
-        el('div', { class: 'stream-entry-head' }, label), body);
-      return { node, label, body, parts: new Map(), complete: null };
+        el('div', { class: 'stream-entry-head' }, label, toggle), view.node, rawNode, status);
+      const entry = { node, label, status, view, rawNode, raw: false,
+        rawPart: { textNode: rawText, renderedText: '' }, complete: null };
+      toggle.addEventListener('click', () => {
+        const position = readPosition(panel);
+        entry.raw = !entry.raw;
+        toggle.setAttribute('aria-pressed', String(entry.raw));
+        toggle.setAttribute('aria-label', entry.raw ? 'Show formatted entry' : 'Show raw entry data');
+        renderContent(entry, entry.item);
+        panel.log.scrollTop = position.anchor?.parentNode === panel.log ?
+          position.anchor.offsetTop - position.offset : position.top;
+      });
+      return entry;
     }
 
     function updateText(part, text) {
@@ -1353,88 +1373,12 @@
       part.renderedText = text;
     }
 
-    function structuredText(value) {
-      return typeof value === 'string' ? value : JSON.stringify(value, null, 2) ?? '';
-    }
-
-    function contentParts(item) {
-      const parts = [], texts = [];
-      if (item.args !== undefined) {
-        parts.push({ key: 'args', title: 'Arguments', text: structuredText(item.args) });
-      }
-      if (Array.isArray(item.blocks) && item.blocks.length) {
-        item.blocks.forEach((block, index) => {
-          const part = { key: 'block:' + index, title: '' };
-          if (block?.type === 'text') part.text = String(block.text ?? '');
-          else if (block?.type === 'thinking' || block?.type === 'reasoning') {
-            part.title = item.channel === 'thinking' ? '' : 'Thinking';
-            part.text = String(block.thinking ?? block.reasoning ?? block.text ?? '');
-          } else if (block?.type === 'image' && typeof block.data === 'string' &&
-            /^image\/(?:png|jpeg|gif|webp|bmp|avif)$/i.test(block.mimeType || '')) {
-            part.title = 'Image · ' + block.mimeType;
-            part.image = 'data:' + block.mimeType + ';base64,' + block.data;
-          } else {
-            // Keep unsupported visible content readable, rather than drop it.
-            part.title = String(block?.type || 'Content');
-            part.text = structuredText(block);
-          }
-          if (part.text !== undefined) texts.push(part.text);
-          parts.push(part);
-        });
-      } else {
-        const text = String(item.text ?? '');
-        texts.push(text);
-        if (text) parts.push({ key: 'block:0', title: '', text });
-      }
-      if (item.details !== undefined) {
-        const details = structuredText(item.details);
-        const duplicate = texts.some(text => {
-          if (text === details) return true;
-          try { return JSON.stringify(JSON.parse(text)) === JSON.stringify(item.details); }
-          catch (_) { return false; }
-        });
-        if (!duplicate) parts.push({ key: 'details', title: 'Details', text: details });
-      }
-      if (item.errorMessage && !texts.includes(String(item.errorMessage))) {
-        parts.push({ key: 'error', title: 'Error', text: String(item.errorMessage) });
-      }
-      return parts;
-    }
-
     function renderContent(entry, item) {
-      const parts = contentParts(item), keys = new Set(parts.map(part => part.key));
-      for (const [key, part] of entry.parts) {
-        if (!keys.has(key)) { part.node.remove(); entry.parts.delete(key); }
-      }
-      let cursor = entry.body.firstElementChild;
-      for (const spec of parts) {
-        const kind = spec.image ? 'image' : 'text';
-        let part = entry.parts.get(spec.key);
-        if (part && part.kind !== kind) {
-          if (part.node === cursor) cursor = cursor.nextElementSibling;
-          part.node.remove(); entry.parts.delete(spec.key); part = null;
-        }
-        if (!part) {
-          const title = el('div', { class: 'stream-part-label' });
-          const node = el('div', { class: 'stream-part' }, title);
-          part = { node, title, kind, renderedText: '' };
-          if (kind === 'image') {
-            part.image = el('img', { class: 'stream-image', attrs: { alt: 'Session output image' } });
-            node.append(part.image);
-          } else {
-            part.textNode = document.createTextNode('');
-            node.append(el('pre', { class: 'stream-text' }, part.textNode));
-          }
-          entry.parts.set(spec.key, part);
-        }
-        writeText(part.title, spec.title);
-        part.title.hidden = !spec.title;
-        if (kind === 'image') {
-          if (part.source !== spec.image) { part.image.src = spec.image; part.source = spec.image; }
-        } else updateText(part, spec.text);
-        if (part.node === cursor) cursor = cursor.nextElementSibling;
-        else entry.body.insertBefore(part.node, cursor);
-      }
+      entry.view.node.hidden = entry.raw;
+      entry.rawNode.hidden = !entry.raw;
+      // Raw retains the complete transport item, including exact execution metadata.
+      if (entry.raw) updateText(entry.rawPart, JSON.stringify(item, null, 2));
+      else entry.view.update(entry.presentation.parts);
     }
 
     function renderHeader(panel) {
@@ -1449,22 +1393,16 @@
     }
 
     function renderRow(entry, item, historical) {
-      const source = historical ? 'Recorded history' : 'Live';
+      if (entry.item === item && entry.historical === historical) return;
+      entry.item = item;
+      entry.historical = historical;
+      entry.presentation = StreamFormat.describe(item);
+      writeText(entry.label, (historical ? 'Recorded · ' : '') + entry.presentation.title);
+      writeText(entry.status, [entry.presentation.status, historical ? item.at : null].filter(Boolean).join(' · '));
+      entry.status.hidden = !entry.status.textContent;
       const tool = item.kind === 'tool' || item.kind === 'tool_call' || item.kind === 'tool_result';
-      const category = tool ? 'tool · ' + (item.tool || 'output') :
-        item.channel === 'thinking' ?
-          (item.blocks?.some(block => block?.summary === true) ? 'thinking (summary)' : 'thinking') :
-        (item.role === 'peer' || item.customType === 'irc:incoming') ?
-          'peer text' + (item.sender ? ' · ' + item.sender : '') :
-        item.role === 'user' ? 'user text' :
-        item.kind === 'lifecycle' ? 'lifecycle' : 'text';
-      const outcome = tool ? (historical && !item.complete ? 'arguments' :
-        item.status || (item.complete ? (item.isError ? 'failed' : 'complete') : 'running')) :
-        (item.isError ? 'failed' : item.complete ? 'complete' : 'generating');
-      writeText(entry.label, source + ' · ' + category + ' · ' + outcome +
-        (item.stopReason ? ' · ' + item.stopReason : '') +
-        (historical && item.at ? ' · ' + item.at : ''));
       entry.node.dataset.channel = item.channel || (tool ? 'tool' : 'text');
+      entry.node.dataset.error = String(!!item.isError || item.status === 'failed' || item.status === 'error');
       renderContent(entry, item);
       const complete = !!item.complete;
       if (entry.complete !== complete) {
@@ -1504,7 +1442,7 @@
         let cursor = panel.log.firstElementChild;
         for (const { key, item, historical } of job.list) {
           let entry = panel.rows.get(key);
-          if (!entry) { entry = row(item, historical); panel.rows.set(key, entry); }
+          if (!entry) { entry = row(item, historical, panel); panel.rows.set(key, entry); }
           renderRow(entry, item, historical);
           if (entry.node === cursor) cursor = cursor.nextElementSibling;
           else panel.log.insertBefore(entry.node, cursor);
