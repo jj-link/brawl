@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Canonical reconciliation input clarification
+
+- Clarified `PLAN.md` Reconstruction owner step 5: a stated reconciliation baseline covers the full tracked input set, including previously accepted source files, rather than only changed configuration files. Verification must correspond to that complete input set.
+- This makes the existing preservation and baseline requirements explicit after DDBC's first private reconciliation omitted DCD4's committed source. Review caught the failed acceptance gate, and the same owner corrected and reverified its inputs before source publication in `eaaa2420`. Roles, correction counts, and publication gates are unchanged.
+
 ## Dedede DDBC — exact GLM source reconstruction
 
 - Accepted `fn_117_DDBC`, `.text 0xDDBC..0xDDC4`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDDBC` verified all **127 native hashes** after reconciling its private inputs to `e41880f0`.
