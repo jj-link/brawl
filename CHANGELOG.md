@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 4f9b7be4
+
+- Verified committed snapshot `4f9b7be44116bc7e0f76a11bad12d45c62cb0f54`: **2.977878%**, **471504 / 15833556 accepted code bytes**, **15362052 code bytes remaining**, **1389 accepted source units**. Delta from `46ea8d02`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `28fc9102b47512688de16d3015c51f5e827a3ce8953325d1b183bc481150316b`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1389 accepted source-link recipes, and validated 1388 prior source/object identities plus 329 original/tool identities. All twelve accepted Dedede units are complete and singly source-linked. E1B8's allocated code and import relocation match; source Git blob `117555971423d207bd00dce9e5774bbc47289743` equals the immutable successful owner candidate. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/4f9b7be4/report-published.json`, with fixed-commit report, native hashes, source/link proofs, original/tool identities, comparisons, maps and owner evidence. Final local/public source-identity, counter and history verification follows acknowledgment of this committed record.
+
 ## Dedede E1B8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1B8`, `.text 0xE1B8..0xE1C0`: **8 code bytes**, one initial candidate and **one correction**. Allocated code and the module-27 import relocation match; the complete `46ea8d0216b7dcc8d3190e770e7a6ffdcfaf85c5` input set passed all **127 native outputs**, and the current report/map confirm reconstructed-source linkage. Source Git blob: `117555971423d207bd00dce9e5774bbc47289743`. Gameplay was not exercised.
