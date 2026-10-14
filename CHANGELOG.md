@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede DA1C — exact GLM source reconstruction
+
+- Accepted `fn_117_DA1C`, `.text 0xDA1C..0xDA24`: **8 code bytes**, one initial exact candidate and zero corrections. The recovered nested predecessor journal proves zero prior drafts/corrections; earlier unknown accounting is superseded by `evidence/00-journal-count-recovery.md`.
+- Owner `GlmResumeDededeDA1C` reconciled onto committed DB04 baseline `283271c9`, reverified exact registered code and **127/127 native hashes**, and retained the post-merge map linking both DA1C and DB04 from their reconstructed source objects. The pre-merge map is retained separately with its original baseline.
+- The same owner materialized only its source and additive registration/split changes into main, preserving unrelated dirty bytes. Root source SHA-256 `b5c039f6af5e87f9414257e3b03581f1cc4a9bc5242fdaeb5a307618789f8225` matches the measured source. Evidence: `build/isolated-workers/GlmResumeDededeDA1C/evidence/`, including `own-staging-283271c9.patch` and `final-map-merged-lines.txt`. Final cleanup follows publication acknowledgment; cumulative progress is measured separately from committed results. Gameplay was not exercised.
+
 ## Committed-source checkpoint 283271c9
 
 - Cumulative accepted-source progress from committed snapshot `283271c9885e89ce3822183b0312657ac3983754`, published by `SolPublisherDB04`, is **2.977322%**: **471,416 / 15,833,556 accepted code bytes**, **15,362,140 code bytes remaining**, and **1,378 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `d7524d6a`, from DB04 only; uncommitted DA1C is excluded.
