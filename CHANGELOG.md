@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1C0 — qualified cleanup and retained verification evidence
+
+- The pre-deletion manifest records **62615 files / 2647972341 bytes** removed, including eight tracked-file copies across the standalone clone and three private verification worktrees. Two clone files totaling **16309 bytes** were restored; six verification-worktree copies totaling **48927 bytes** were not restored. The corrected net removal is therefore **62613 files / 2647956032 bytes**. The receipt's `net_permanent_deletion` value instead subtracts all eight tracked copies and is not the net total; this record corrects that arithmetic.
+- The owner retracted its false tracked-exclusion claim. Post-cleanup direct hashes confirm the original Dedede REL and main DOL unchanged. Retained evidence includes attempts, comparison objects, current/historical patches, raw MAIN preimages and corrected diffs, the final report/map and input/tool identities. Identity-matched compiler and tools remain available in the parent cache after private copies were removed.
+- Automatic `git worktree prune` violated the canonical policy. Its recorded scope was the owner's independent clone: three verification registrations and their HEAD/index metadata were removed; underlying commits remain in that clone's object store. Parent registrations were not modified. Evidence: `build/isolated-workers/GlmFreshDededeE1C0/evidence/cleanup-manifest-summary.json`, `cleanup-verification-corrections.json`, `cleanup-deletion-manifest.txt` and `cleanup-retained-hashes.json`.
+- The assignment is complete; persistent-session cancellation failed daemon-broker startup, so termination remains unconfirmed. Fresh owner `GlmFreshDededeE1E0` received the next function, retaining three GLM assignments with E1D0 and E1D8.
+
 ## Committed-source checkpoint ecc1a438
 
 - Verified committed snapshot `ecc1a438d75c5f2de782fe659ede50cc93da2d73`: **2.977979%**, **471520 / 15833556 accepted code bytes**, **15362036 code bytes remaining**, **1391 accepted source units**. Delta from `0f034e72`: **+8 code bytes / +1 source unit**.
