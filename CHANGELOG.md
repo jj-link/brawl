@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint eaaa2420
+
+- Cumulative accepted-source progress from committed snapshot `eaaa24208428e2b65bad110fa01ada050028ffa2`, published by the retained `SolPublisherDB04` agent, is **2.977474%**: **471,440 / 15,833,556 accepted code bytes**, **15,362,116 code bytes remaining**, and **1,381 accepted source units**. This checkpoint adds **8 code bytes and 1 unit** over `7b6652cc`, from DDBC.
+- Fresh report/native-check generation and independent verification passed all **127 DOL/REL hashes**. The publisher checked **1,381 accepted source-link recipes**, **1,380 prior committed source identities/objects**, and **329 original/tool identities**. DA1C, DB04, DCD4, and DDBC are complete and individually source-linked; DDBC's exact allocated code and zero relocations match its original object.
+- Published report SHA-256: `1ea515ac6afe554d897351f9c026e42a114fcd0f554471a3cf7112f8cd781fb1`. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/eaaa2420/report-published.json`. Final headline/map/module/history verification follows this documentation acknowledgment. Committed LF and checkout CRLF identities are recorded separately; gameplay was not exercised.
+- DDBC's owner completed cleanup and its session was closed: removed **476,060 KiB** of disposable generated outputs and removed its original-input junctions as links only. Parent originals remained unchanged; measured attempts, source/configuration/Git trees, toolchains, corrected report/maps, and identity evidence were retained. Two tracked files caught under the generated-output directory were restored before closure. A fresh `GlmFreshDededeE190` owner fills that worker slot.
+
 ## Canonical reconciliation input clarification
 
 - Clarified `PLAN.md` Reconstruction owner step 5: a stated reconciliation baseline covers the full tracked input set, including previously accepted source files, rather than only changed configuration files. Verification must correspond to that complete input set.
