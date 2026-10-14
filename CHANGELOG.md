@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 46ea8d02
+
+- Verified committed snapshot `46ea8d0216b7dcc8d3190e770e7a6ffdcfaf85c5`: **2.977828%**, **471496 / 15833556 accepted code bytes**, **15362060 code bytes remaining**, **1388 accepted source units**. Delta from `81827ba9`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `f7ad8d7b0fe76a9d668fa7924da35768863dc8fb9c32b6299a81d326a4ba491f`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1388 accepted source-link recipes, and validated 1387 prior source/object identities plus 329 original/tool identities. All eleven accepted Dedede units are complete and singly source-linked. E1B0's allocated code and import relocation match; source Git blob `6f477be1278880baf5a5698c270747872a6d6fd5` was independently confirmed. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/46ea8d02/report-published.json`, with comparison, source/link, native-hash, input, map, report and owner-materialization artifacts in that directory. Final source-identity, headline, unit/module and served/persisted history verification follows this record's commit-and-push acknowledgment.
+
 ## Instruction refinement — compiler-failed candidates
 
 - E1B0's initial accounting excluded a compiler-failed revision and retained only the later successful compile logs. The existing definition already counted revisions responding to compiler feedback; the owner corrected the ledger to one initial candidate plus two corrections. Canonical reconstruction step 2 now explicitly requires saving each candidate before compilation, retaining failed-compile diagnostics, and counting compiler-feedback revisions even when no object comparison ran. The ten-correction allowance and model/ownership rules are unchanged.
