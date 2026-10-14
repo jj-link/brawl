@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1E8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1E8`, `.text 0xE1E8..0xE1F0`: **8 code bytes**, one initial candidate and **one correction**. The initial candidate emitted an extra argument conversion; the preserved corrected candidate matches allocated code and the module-local `R_PPC_REL24` relocation to `fn_117_A1FC`. Source Git blob: `6e5ec77bda2a87e5cd37e6bf54a45e9412af33a8`, 472 bytes. Target and candidate whole-object hashes differ; equality is for allocated code and relocations.
+- Complete accepted input checkpoint `82cd52d9` was re-verified with all **127 native outputs** passing, a byte-identical Dedede REL, and reconstructed E1E0/E1E8 source linkage. The unchanged candidate object was reused, not recompiled, during that input update. Subsequent documentation-only commits did not require another build. Gameplay was not exercised.
+- Main materialization preserved actual dirty preimages, including E1D8's unpublished insertions, with only the two owned registration insertions and new source added. The parent index remained unchanged. The complete own-only patch applied to a fresh private index at `3b730a48`, proving exactly the three intended paths/modes/blobs and excluding unpublished E1D8.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1E8/evidence/attempts.json`, immutable attempt sources/objects/comparisons, `00-target-analysis.md`, `00-verification-82cd52d9.md`, `00-native-hash-check.txt`, `00-reconciled-3b730a48.md`, MAIN pre/postimage directories and `own-only.patch`.
+
 ## Dedede E1E0 — completed evidence-preserving cleanup
 
 - The owner removed **13257 files / 454425793 bytes** individually from a pre-deletion path/size/SHA-256 manifest, then removed **1006 empty directories**. All tracked files, including foreign evidence beneath `build/`, were excluded. Source/configuration trees, Git metadata, recipe-referenced tools and reconstruction evidence remain; original main DOL and Dedede REL hashes remain unchanged.
