@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1B8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1B8`, `.text 0xE1B8..0xE1C0`: **8 code bytes**, one initial candidate and **one correction**. Allocated code and the module-27 import relocation match; the complete `46ea8d0216b7dcc8d3190e770e7a6ffdcfaf85c5` input set passed all **127 native outputs**, and the current report/map confirm reconstructed-source linkage. Source Git blob: `117555971423d207bd00dce9e5774bbc47289743`. Gameplay was not exercised.
+- Before publication, the owner corrected a missing new-source patch hunk and clean-filtered blob identities. The complete three-file patch was actually applied to a private index at `3e85a9ae`; its observed staged paths and blobs were verified. Main edits preserved saved dirty pre-images byte-for-byte except the owned insertions. Evidence: `build/isolated-workers/GlmFreshDededeE1B8/evidence/own-only.patch`, `00-materialization-record.txt`, `00-within-file-diffs.txt`, `attempts.json`, and `final-127-native-hashes-46ea8d02.json`.
+
 ## Instruction refinement — complete staged-path evidence
 
 - E1B8's current-input readiness packet declared a three-file patch, but the supplied patch contained only the two configuration files and omitted the new source. Its stated `git diff --ignore-cr-at-eol` operation did not establish committed-index application. Review returned both defects to the same owner before publication.
