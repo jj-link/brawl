@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 0f034e72
+
+- Verified committed snapshot `0f034e726b55beec9e1ee8dc7f4513180614a330`: **2.977929%**, **471512 / 15833556 accepted code bytes**, **15362044 code bytes remaining**, **1390 accepted source units**. Delta from `4f9b7be4`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `c2f1f69c3731fd26805fdcc06c7a6fd95c8f8053e3073117f9485ba4ef055189`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1390 accepted source-link recipes, and validated 1389 prior source/object identities plus 329 original/tool identities. All thirteen accepted Dedede units are complete and singly source-linked. E1C8's allocated code and import relocation match; source Git blob `4478ad61020071e7f97013b01ce3d0df4a37f82e` agrees with the initial candidate after LF normalization. Uncommitted E1C0 and other parent changes are excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/0f034e72/report-published.json`, with fixed-commit report, comparison, native hashes, source/link, input identities, maps and retained owner evidence. Final local/public source-identity, counter and history verification follows acknowledgment of this committed record.
+
 ## Dedede E1C8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1C8`, `.text 0xE1C8..0xE1D0`: **8 code bytes**, one initial candidate and **zero corrections**. Allocated code and the module-27 import relocation match. The complete `4f9b7be44116bc7e0f76a11bad12d45c62cb0f54` input set passed all **127 native outputs**; the registered unit is complete, 8/8 bytes, with reconstructed-source linkage. Source Git blob: `4478ad61020071e7f97013b01ce3d0df4a37f82e`. Gameplay was not exercised.
