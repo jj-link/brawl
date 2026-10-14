@@ -1281,8 +1281,7 @@
     }
 
     function isVisible(a) {
-      return showHistory || (typeof a.active === 'boolean' ?
-        a.active : groupOf(a.state) !== 'historical');
+      return showHistory || a.active === true;
     }
 
     function setConnected(on) {

@@ -646,7 +646,13 @@ class JournalWatcher:
         best = None
         for path in top_level:
             info = self._peek(path)
-            if not info or info.get("parentSession"):
+            if not info:
+                continue
+            # A main session may be an in-place fork with parentSession set.
+            # Only an explicit UUID selects such a root; ancestry alone must
+            # not retarget the dashboard to some other session.
+            if info.get("parentSession") and not (
+                    self.requested_session_id or self.parent_session_id):
                 continue
             cwd = info.get("cwd")
             if not cwd or _norm(cwd) != _norm(self.root):
@@ -792,10 +798,10 @@ class JournalWatcher:
             self.warnings.pop("initializing", None)
 
     def _tracker_name(self, path, info):
-        if info is not None:
-            is_parent = not info.get("parentSession")
-        else:
-            is_parent = path == self.parent_path
+        # The selected owning root is main even when its journal was forked.
+        # parentSession describes ancestry, not its current runner role.
+        is_parent = path == self.parent_path or (
+            info is not None and not info.get("parentSession"))
         if is_parent:
             return "main", True
         # Nested journals are named "<parent>.<agent>.jsonl"; show the agent

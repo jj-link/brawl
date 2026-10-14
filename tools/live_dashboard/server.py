@@ -12,6 +12,9 @@ the narrowly scoped in-process omp observer:
   tool arguments/results, including supported content blocks and UI details.
   Journal polling is never substituted for live events. Observer module changes
   require explicit runner extension loading; settings toggles do not reload code.
+  The runtime's current main session owns the observer; --session-id may pin a
+  resumed/forked main journal. Live snapshots and root switches are checked
+  against that pin before any frame is relayed.
 * ``CHANGELOG.md`` verified checkpoints for headline progress, with the
   existing report/counter retained as a separately labelled unit-map source.
 
@@ -74,20 +77,44 @@ def _utc_now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
 
 
-def observer_status(watcher):
-    with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
-        status = json.load(response)
-    if not isinstance(status, dict):
-        raise ValueError("Observer status must be an object.")
+def _validate_observer_root(payload, watcher):
+    if not isinstance(payload, dict):
+        raise ValueError("Observer payload must be an object.")
     expected = watcher.session_label()
-    actual = status.get("rootSessionId")
+    actual = payload.get("rootSessionId")
     if not expected or not isinstance(actual, str) or actual.casefold() != expected.casefold():
         raise ValueError(
-            f"Observer root session {status.get('rootSessionId') or '(unknown)'} "
+            f"Observer root session {actual or '(unknown)'} "
             f"does not match dashboard root session {expected or '(not found)'}. "
             "Start the dashboard with --session-id set to the intended owning root session."
         )
+
+
+def observer_status(watcher):
+    with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
+        status = json.load(response)
+    _validate_observer_root(status, watcher)
     return status
+
+
+def _observer_frame(upstream, watcher):
+    """Read one intact SSE frame, rejecting a root change before relaying it."""
+    lines, data, event = [], [], None
+    while True:
+        line = upstream.readline()
+        if not line:
+            raise ValueError("Observer stream ended before a complete frame.")
+        lines.append(line)
+        field = line.rstrip(b"\r\n")
+        if field.startswith(b"event:"):
+            event = field[6:].strip()
+        elif field.startswith(b"data:"):
+            data.append(field[5:].lstrip(b" "))
+        if field:
+            continue
+        if event in (b"snapshot", b"membership"):
+            _validate_observer_root(json.loads(b"\n".join(data)), watcher)
+        return event, b"".join(lines)
 
 
 def membership_loop(stop, watcher, interval):
@@ -298,6 +325,18 @@ class DashboardHandler(BaseHTTPRequestHandler):
         try:
             self._observer_status()
             upstream = urlopen(OBSERVER_URL + "/events", timeout=15)
+            try:
+                initial = []
+                while True:
+                    event, frame = _observer_frame(upstream, self.dashboard["watcher"])
+                    initial.append(frame)
+                    if event == b"snapshot":
+                        break
+                    if event is not None:
+                        raise ValueError("Observer feed must start with a scoped snapshot.")
+            except (OSError, ValueError):
+                upstream.close()
+                raise
         except (OSError, ValueError, URLError) as exc:
             self._send_json(503, json.dumps({"connected": False, "error": str(exc)}).encode("utf-8"))
             return
@@ -307,14 +346,15 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.close_connection = True
+            self.wfile.write(b"".join(initial))
+            self.wfile.flush()
             try:
                 while not self.dashboard["stop"].is_set():
-                    # Observer heartbeats arrive every 10 seconds, inside the
-                    # socket deadline. Flush lines, not two-second state ticks.
-                    line = upstream.readline(2 * 1024 * 1024)
-                    if not line:
-                        break
-                    self.wfile.write(line)
+                    # Heartbeats arrive inside the socket deadline. Rooted
+                    # frames are checked before any of their bytes reach the
+                    # browser, including switches after the status request.
+                    _, frame = _observer_frame(upstream, self.dashboard["watcher"])
+                    self.wfile.write(frame)
                     self.wfile.flush()
             except (OSError, ValueError):
                 pass  # downstream close or upstream restart; EventSource reconnects
@@ -376,8 +416,9 @@ def parse_args(argv=None):
                              " the session matching the repo cwd under"
                              " ~/.omp/agent/sessions)")
     parser.add_argument("--session-id", default=None, metavar="ROOT_UUID",
-                        help="pin to this root session UUID; default selects the newest"
-                             " matching root once and retains it until restart")
+                        help="pin to this root session UUID (including a forked main);"
+                             " default selects the newest matching non-fork root once"
+                             " and retains it until restart")
     parser.add_argument("--root", type=Path, default=None, metavar="DIR",
                         help="project root (default: the repository containing"
                              " tools/live_dashboard)")

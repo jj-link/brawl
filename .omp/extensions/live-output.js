@@ -17,8 +17,7 @@ const MAX_ENTRIES = 200;
 const MAX_AGENTS = 512;
 const MAX_CLIENT_QUEUE = 8 * 1024 * 1024;
 const MAX_TOTAL_ENTRIES = 2000;
-const PINNED_ROOT_SESSION_ID = '01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a';
-const epoch = randomUUID();
+let epoch = randomUUID();
 const agents = new Map();
 const clients = new Set();
 const retained = new Map();
@@ -101,7 +100,7 @@ function refreshMembership() {
     if (ref.kind !== 'sub') continue;
     const file = sessionFile(ref);
     if (!file) { complete = false; continue; }
-    if (!scopedFile(file) && !scopedFile(ref.sessionFile)) continue;
+    if (!scopedFile(file)) continue;
     const id = sessionId(ref, file);
     if (!id) { complete = false; continue; }
     const active = assignmentActive(ref);
@@ -126,8 +125,17 @@ function publicMembership() {
 }
 
 function bindRoot(ctx) {
+  // The runtime's main binding owns the feed, including resumed/forked
+  // journals. Never select a root from a child, cwd or an old UUID.
   const id = ctx.sessionManager.getSessionId();
-  if (id !== PINNED_ROOT_SESSION_ID) return;
+  if (rootSessionId !== id) {
+    epoch = randomUUID();
+    sequence = 0;
+    agents.clear();
+    retained.clear();
+    membership = null;
+    memberActivity.clear();
+  }
   rootSessionId = id;
   rootSessionFile = ctx.sessionManager.getSessionFile() || null;
   refreshMembership();
@@ -350,10 +358,9 @@ export default function liveOutput(pi) {
   const completedMessages = new Set();
   const completedCalls = new Set();
   // Journal ancestry, not cwd: isolated worktrees still belong to this root.
-  const eligible = ctx => ctx.agent.kind === 'sub' && (scopedFile(ctx.sessionManager.getSessionFile()) ||
-    scopedFile(registry.get(ctx.agent.id)?.sessionFile));
-  const owningRoot = ctx => ctx.agent.kind === 'main' &&
-    ctx.sessionManager.getSessionId() === PINNED_ROOT_SESSION_ID;
+  const eligible = ctx => ctx.agent.kind === 'sub' &&
+    scopedFile(ctx.sessionManager.getSessionFile() || registry.get(ctx.agent.id)?.sessionFile);
+  const owningRoot = ctx => ctx.agent.kind === 'main' && ctx.agent.id === MAIN_AGENT_ID;
   const messageKey = (ctx, message) => `${ctx.sessionManager.getSessionId()}:${message.timestamp}` +
     (message.role === 'assistant' ? '' : `:${message.role}${message.details?.id ? `:${message.details.id}` : ''}`);
   const observe = (ctx, state) => {
@@ -477,14 +484,14 @@ export default function liveOutput(pi) {
     if (!payload || typeof payload !== 'object' || !scopedFile(payload.sessionFile)) return;
     const ref = registry.get(payload.id);
     if (!ref || ref.kind !== 'sub' ||
-        (sessionFile(ref) !== payload.sessionFile && ref.sessionFile !== payload.sessionFile)) return;
+        sessionFile(ref) !== payload.sessionFile) return;
     if (!['started', 'completed', 'failed', 'aborted'].includes(payload.status)) return;
     runMembership.set(ref, payload.status === 'started');
     refreshMembership();
   });
 
-  // The pinned root owns one listener; child bindings observe their own events
-  // concurrently, including children executing outside the root project's cwd.
+  // The current main binding owns one listener; child bindings observe their
+  // own events, including children executing outside the root project's cwd.
   pi.on('session_start', (_event, ctx) => {
     if (owningRoot(ctx)) {
       bindRoot(ctx);

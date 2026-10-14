@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard session-fork output repair
+
+- Removed the historical root UUID restriction from `.omp/extensions/live-output.js`; observer ownership follows the runtime's main session, resets retained output on root changes, and scopes child events to current journal identities.
+- Explicitly selected forked main journals are recognized by `tools/live_dashboard/journals.py`. `tools/live_dashboard/server.py` validates observer snapshots and root changes before forwarding live frames, rejecting unrelated sessions.
+- Active-only view now requires authoritative `active: true`; journal turn state no longer temporarily displays historical agents while membership is unknown. Explicit Show history continues to expose recorded output.
+- Activated observer PID 94768 and dashboard PID 93768 for current root `01a13870-ca65-73cc-b1c4-26ebedff16e1`. On the public dashboard, bounded verification agent `SolDashboardOutputProof` produced 67 text events; browser DOM capture recorded its real assistant message, completed file-read result, and final result in the live card. The card disappeared on completion and remained accessible with Show history.
+- Browser regression scenario using a working journal entry without authoritative membership showed one card with history enabled and zero with history disabled. Observer and frontend JavaScript syntax checks passed. Reconstruction agents remain stopped.
+- Retained evidence: `build/isolated-workers/SolFreshDashboardStreamFix/evidence/live-output-fix-evidence.json` and `live-output-activated.json`. Existing unrelated frontend and progress-accounting changes are preserved.
+
 ## Committed-source checkpoint e2dc6ef3
 
 - Cumulative accepted-source progress from committed snapshot `e2dc6ef3114342b3decb797ada88e611d6bb71b0`, published by `SolPublisherE2dcLocalRun`, is **2.977272%**: **471,408 / 15,833,556 accepted code bytes**, **15,362,148 code bytes remaining**, and **1,377 accepted source units**.
