@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint ecc1a438
+
+- Verified committed snapshot `ecc1a438d75c5f2de782fe659ede50cc93da2d73`: **2.977979%**, **471520 / 15833556 accepted code bytes**, **15362036 code bytes remaining**, **1391 accepted source units**. Delta from `0f034e72`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `b367855cd1c0474cb9cf4fa6f356fb4a29873e27bfea1518518d32159c5454ff`. The retained publisher generated the fixed-commit report, verified all 127 native outputs, checked 1391 accepted source-link recipes, and validated 1390 prior source/object identities plus 329 original/tool identities. All fourteen accepted Dedede units are complete and singly source-linked. E1C0's allocated code and import relocation match; source Git blob `d74185b96a016a79bffb751ab34d10995adb8996` and raw SHA-1 `63299d49237b84b6ce663961fb0452198f5ed4bb` were independently confirmed. Uncommitted E1D0/E1D8 and other parent changes are excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/ecc1a438/report-published.json`, with fixed-commit report, comparison, native hashes, source/link, input identities, maps and retained owner evidence. Final local/public source-identity, counter and history verification follows acknowledgment of this committed record.
+
 ## Dedede E1C0 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1C0`, `.text 0xE1C0..0xE1C8`: **8 code bytes**, one initial candidate and **one correction**, matching on attempt 01. The owner re-verified the complete `0f034e726b55beec9e1ee8dc7f4513180614a330` input set including E1C8: all **127 native outputs** pass, allocated code/relocations match, the map identifies the reconstructed source, and the registered unit is complete at 8/8 bytes. Source Git blob: `d74185b96a016a79bffb751ab34d10995adb8996`. Gameplay was not exercised.
