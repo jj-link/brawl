@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1A0 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1A0`, `.text 0xE1A0..0xE1A8`: **8 code bytes**, one initial candidate and **one correction**. The initial short-flag draft matched 4/8 target bytes; the retained best draft matches 8/8 code bytes and its relocation. Both measured source drafts and comparison artifacts are preserved in `build/isolated-workers/GlmFreshDededeE1A0/evidence/attempts.json`.
+- The same owner reconciled the complete `1f82962e8f2d463dc0e4b033a86604c4beb8c3fd` input set, verified all **127 native outputs**, and materialized only its source/additive registrations. Main and verified-source Git blob: `89c706cc07d3de8411d5f331b4e525ce49fcc57d`. The current map links all nine accepted Dedede functions from their reconstructed source objects; current own-unit objdiff is complete at 100%. Historical full-project reports are not substituted for current comparison/linkage evidence.
+- The own-only patch passed committed-index validation; insertion reversal and retained pre-images prove preservation of shared-file bytes, and the other 21 previously dirty tracked files were unchanged. Evidence: `build/isolated-workers/GlmFreshDededeE1A0/evidence/00-reconciliation.md`, `staging-e1a0-1f82962e.patch`, `00-report.json`, and `final-127-native-hashes.json`. Gameplay was not exercised; cumulative accepted-source accounting remains with the retained publisher.
+
 ## Committed-source checkpoint 1f82962e
 
 - Verified committed snapshot `1f82962e8f2d463dc0e4b033a86604c4beb8c3fd`: **471472 / 15833556 accepted code bytes**, **15362084 code bytes remaining**, **2.977676%**, **1385 accepted source units**. Delta from `fe7420f5`: **+8 code bytes / +1 source unit**.
