@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Instruction refinement — shared-file preservation evidence
+
+- The E1A8 materialization violated the existing requirement to preserve unrelated dirty bytes; it was not authorized by raw-index patch validation. Its initial report proved that other paths were unchanged but did not prove preservation inside the two shared files it replaced. The same owner recovered and restored the lost bytes before source publication, with exact pre-write hashes and insertion-reversal evidence.
+- Canonical reconstruction steps 5–6 now require saved current-file contents and hashes before shared-main edits, plus before/after evidence covering unrelated contents and line endings within each changed file. They explicitly distinguish the index-only publication patch from dirty working files. Acceptance, ownership, attempt counts and independent private verification remain unchanged.
+
 ## Dedede E1A8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1A8`, `.text 0xE1A8..0xE1B0`: **8 code bytes**, one initial candidate, **zero corrections**. Allocated code and relocation match; registered objdiff is complete at 8/8. Verification against the full `e562c7d2bf60f495f53e820c37f742f1fea7a924` source input set passed all **127 native outputs**; the current report includes all ten accepted Dedede units and the map links E1A8 from its reconstructed source object. Gameplay was not exercised.
