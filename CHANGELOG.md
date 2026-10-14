@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 1f82962e
+
+- Verified committed snapshot `1f82962e8f2d463dc0e4b033a86604c4beb8c3fd`: **471472 / 15833556 accepted code bytes**, **15362084 code bytes remaining**, **2.977676%**, **1385 accepted source units**. Delta from `fe7420f5`: **+8 code bytes / +1 source unit**.
+- Retained publisher `SolPublisherDB04` generated and published report SHA-256 `9bb0c0294f8d2045ce0b8a65eafe89ed457580932a55007199445efc8421199f` from the fixed committed checkout. Canonical DTK checking and independent direct hashing passed **127 native outputs**; **1385 accepted-source link recipes**, **1384 prior source blob/object identities**, and **329 original/tool identities** were checked. All eight accepted Dedede units are complete and singly source-linked. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/1f82962e/report-published.json`, `source-provenance-link-proof.json`, `registered-eight-dedede-units.json`, and `binary-hash-verification.json`. The publisher independently confirmed E198's Git-blob/file-content hash domains; gameplay was not exercised.
+
 ## Dedede E198 — exact GLM source reconstruction
 
 - Accepted `fn_117_E198`, `.text 0xE198..0xE1A0`: **8 code bytes**, one initial candidate and zero corrections. `GlmFreshDededeE198` reconciled the full `fe7420f5fb290753b2368740d9c857897582ed09` input set; canonical DTK verification reported **127 files OK**, and the regenerated report retains all eight accepted Dedede units as complete and source-linked.
