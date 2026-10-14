@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint f419401d
+
+- Verified committed source `f419401da47de917eb30f571c2fab76cdf83a65c`: **471456 / 15833556 accepted code bytes**, **15362100 code bytes remaining**, **2.977575%**, **1383 accepted source units**. Delta from `c83288d7`: **+8 code bytes / +1 source unit**.
+- Retained publisher `SolPublisherDB04` generated and published report SHA-256 `14c7073dd10b5cf5bfe601d3a66c2f0413069e37e5092fa9f7a49f0917ec2ac7` from the fixed committed checkout. Fresh native verification passed all **127 hashes**; checked **1383 accepted-source link recipes**, retained identities for **1382 prior source blobs/objects**, and **329 original/tool identities**. All six DA1C/DB04/DCD4/DDBC/DEA4/DF8C units remain complete and singly source-linked. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/f419401d/report-published.json`, `source-provenance-link-proof.json`, `registered-six-dedede-units.json`, and `binary-hash-verification.json`. No gameplay run.
+- DF8C owner cleanup removed **476586545 bytes** of private generated outputs/input copies after retaining evidence; eleven tracked files beneath those trees were restored byte-exact after removal, with zero deletions remaining. Parent originals were unchanged. The completed session was explicitly killed and its registration dropped; fresh `GlmFreshDededeE1A0` fills that GLM slot.
+
 ## Dedede DF8C — exact GLM source reconstruction
 
 - Accepted `fn_117_DF8C`, `.text 0xDF8C..0xDF94`: **8 code bytes**, one initial exact candidate and zero corrections. Owner `GlmFreshDededeDF8C` privately reconciled the complete tracked `ee4918e1` input set and independently verified all **127 native hashes**. The regenerated report retains DA1C, DB04, DCD4, DDBC, DEA4, and DF8C as complete, source-linked units.
