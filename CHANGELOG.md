@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1D8 — retained evidence and owner closure
+
+- Cleanup was limited to **14 scratch files / 49946 bytes**: each was first preserved under `evidence/scratch-preserved/`, then individually removed after its pre-deletion manifest size/SHA-256 check. All 14 removals succeeded; the emptied scratch directory was removed. No tracked files, shared links, MAIN files or worktree registrations were removed.
+- The full measured report remains in the owner workspace with SHA-256 `6a54f1e2e09f297e4f8e0890af5d0f92cb88015ed351b690c74330bb492413a7`, alongside generated build outputs, original inputs, source/configuration trees, Git metadata and immutable reconstruction evidence. This receipt does not claim removal of those retained build/input trees. Actual compiler/comparison recipes and private-index validation output are preserved; retained evidence and original hashes were verified. Checksum-file verification failed in the owner's environment; independent per-file hashing matched all five recorded tool identities.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1D8/evidence/cleanup/accounting.json`, `deletion-outcome.json`, `../pre-deletion-manifest.json`, `../scratch-preserved/preserved-manifest.json` and `../cleanup-retained-in-place.json`. The cancellation interface explicitly confirmed that the completed session was killed and its registration dropped. Fresh owner `GlmFreshDededeE1F8` received the next function; E1F0 and E1E8 retain their existing assignments.
+
 ## Committed-source checkpoint a51acc69
 
 - Verified committed snapshot `a51acc69166e27786b65f0af6000a5b265fc9706`: **2.978181%**, **471552 / 15833556 accepted code bytes**, **15362004 code bytes remaining**, **1395 accepted source units**. Delta from `6546e55b`: **+8 code bytes / +1 source unit**.
