@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 1ce74085
+
+- Verified committed snapshot `1ce7408552ba023a41b0c6f34cbfbd2e16ceac5d`: **2.978788% complete**, **471648 / 15833556 accepted code bytes**, **15361908 code bytes remaining**, **1407 accepted source units**. Delta from `529500a2`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `cf216ac71eebc4dd4aafb46bd5cfd9fbb6f1821300e5041dc84fc0f0b261de25` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1407 accepted-source link recipes, 1406 prior source/object identities and 329 original/tool identities were validated; all 30 complete Dedede source units retain single map definitions.
+- E288's immutable source blob `4b35cbb46d6b10ba6e0cd9e600cad057273e9439`, allocated text/relocation and candidate/target object identities reproduce the owner's comparison. The 1830-byte LF draft and checkout representation are recorded separately. Counts remain 1 initial / 1 encoding-feedback correction / inherited UNKNOWN. Prior accepted units remain linked; the AI draft retains its original fallback and zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/1ce74085/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E290/E298 are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment. The pre-documentation endpoints expose the correct report-derived maps but retain the prior headline; their primary-registration warning is recorded and assigned to the dashboard startup owner.
+
 ## Dedede E288 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E288`, `.text [0xE288,0xE290)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and tail-calls imported `fn_27_13BB54`; allocated text `3863ff3048000000` and the offset-4 `R_PPC_REL24` match the sliced target.
