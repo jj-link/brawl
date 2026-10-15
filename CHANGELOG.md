@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint a51acc69
+
+- Verified committed snapshot `a51acc69166e27786b65f0af6000a5b265fc9706`: **2.978181%**, **471552 / 15833556 accepted code bytes**, **15362004 code bytes remaining**, **1395 accepted source units**. Delta from `6546e55b`: **+8 code bytes / +1 source unit**.
+- Published report SHA-256: `6a54f1e2e09f297e4f8e0890af5d0f92cb88015ed351b690c74330bb492413a7`. The retained publisher generated the fixed-commit report and current objects, verified all 127 native outputs and direct SHA-1 comparisons, checked 1395 accepted source-link recipes, and validated 1394 prior source/object identities plus 329 original/tool identities. All eighteen accepted Dedede units are complete and singly source-linked. E1D8's allocated code and module-local relocation match; its freshly built object reproduces the owner's verified object, and source Git blob `3f7ac92d82146dbc901c4ee934ac547c6b60f99a` matches the preserved 707-byte final source. Unpublished E1F0 is excluded. Gameplay was not exercised.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/a51acc69/report-published.json`, native/source-link verification, committed report, original/tool identities, module totals, expected unit map and retained owner attempts/materialization records. Only required extracted inputs were copied; the original ISO was hashed without copying it.
+
 ## Dedede E1D8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1D8`, `.text 0xE1D8..0xE1E0`: **8 code bytes**, one initial candidate and **two measured revisions**. The initial machine-exact candidate omitted the callee's flag and pointer return from its C++ interface; disassembly-backed semantic review required both. The first revision emitted an extra conversion; the second preserves both arguments and the returned pointer while matching allocated code and the module-local `R_PPC_REL24` relocation to `fn_117_A218`. Whole target/candidate object hashes differ.
