@@ -24,6 +24,15 @@ Assignment membership is separate from these activity labels. The owning
 runner's registry snapshot is authoritative when available; otherwise only an
 accepted terminal yield or an explicit ``.jsonl.tombstone`` proves retirement.
 Neither a normal model-turn end nor quiet/waiting age proves completion.
+
+Run clocks are independent of membership/target steering timestamps. The first
+session/assignment starts a run; steering during a live run does not restart it.
+Accepted terminal yields, aborted/error assistant turns, exits and explicit
+retirement evidence freeze it. A subsequent assignment or tool execution resumes
+with a new clock. Waiting, quiet time, model changes and normal turn ends count
+toward the same run. Missing timestamps stay unknown; lastSeen is never an end.
+Registry retirement without an agent-specific timestamp leaves the end unknown.
+Clock evidence is ingested on journal/registry updates, never snapshot reads.
 """
 
 from __future__ import annotations
@@ -203,12 +212,32 @@ class JournalTracker:
         self.assignment_retired_at = None
         self.tombstoned = False
         self.tombstoned_at = None
+        self.run_started_at = None
+        self.run_ended_at = None
+        # Separate evidence flags preserve unknown timestamps across steering.
+        self._run_started = False
+        self._run_ended = False
         self._seq = 0
         self._stream_seq = 0
         self.events = deque(maxlen=EVENTS_PER_JOURNAL)
         self.stream = deque()
         self.evicted_order = 0
         self._stream_sink = stream_sink
+
+    def _start_run(self, at):
+        if not self._run_started or self._run_ended:
+            self.run_started_at = at
+            self.run_ended_at = None
+            self._run_started = True
+            self._run_ended = False
+
+    def _finish_run(self, at):
+        if at is not None and self.run_started_at is not None \
+                and at < self.run_started_at:
+            return  # Stale retirement belongs to a previous run.
+        self._run_ended = True
+        if at is not None and (self.run_ended_at is None or at < self.run_ended_at):
+            self.run_ended_at = at
 
     def _add_stream(self, record, kind, text, suffix="", **fields):
         text = _visible_text(text)
@@ -250,6 +279,7 @@ class JournalTracker:
         if kind == "session":
             self.session_id = _session_id(record.get("id")) or self.session_id
             self.assignment_started_at = _parse_ts(ts)
+            self._start_run(_parse_ts(ts))
             if "parentSession" not in record and not self.is_parent:
                 self.is_parent = True
                 self.name = "main"
@@ -258,6 +288,7 @@ class JournalTracker:
             if model:
                 self.model = model
         elif kind == "session_init":
+            self._start_run(_parse_ts(ts))
             # A reused agent's new assignment supersedes any target reported
             # for the previous one: current scope differs or is unknown.
             self.last_target = None
@@ -310,6 +341,7 @@ class JournalTracker:
             return
         role = message.get("role")
         if role == "user":
+            self._start_run(_parse_ts(record.get("timestamp")))
             # A steering assignment supersedes any previously reported target;
             # reused agents resume without emitting a new session_init.
             # Preserve only recorded content, not provider request metadata.
@@ -336,6 +368,8 @@ class JournalTracker:
                 if message.get(key) is not None
             }
             outcome["isError"] = message.get("stopReason") in ("error", "aborted")
+            if outcome["isError"]:
+                self._finish_run(_parse_ts(record.get("timestamp")))
             stream_before = self._stream_seq
             content = message.get("content")
             if isinstance(content, str):
@@ -418,6 +452,7 @@ class JournalTracker:
                         and (call.get("yield_terminal") or details.get("complete") is True):
                     self.assignment_retired = True
                     self.assignment_retired_at = _parse_ts(record.get("timestamp"))
+                    self._finish_run(self.assignment_retired_at)
                 target = (data.get("target") or data.get("source")
                           or data.get("source_path") or data.get("unit"))
                 target = _clean(target, MAX_TARGET_CHARS)
@@ -448,6 +483,8 @@ class JournalTracker:
             tool = _clean(data.get("toolName"), 60)
             cid = data.get("toolCallId")
             call = self.calls.get(cid) or {}
+            if self._run_ended:
+                self._start_run(_parse_ts(record.get("timestamp")))
             if self.assignment_retired:
                 self.assignment_retired = False
                 self.assignment_retired_at = None
@@ -466,6 +503,8 @@ class JournalTracker:
         elif ctype == "session_exit":
             reason = _clean(data.get("reason"), 40) or "unknown"
             kind_ = _clean(data.get("kind"), 40) or "unknown"
+            self._finish_run(_parse_ts(record.get("timestamp"))
+                             or _parse_ts(data.get("recordedAt")))
             self.exit_info = {"reason": reason, "kind": kind_}
             self.tail = ("exit", {"reason": reason})
             self._add_event(record, "exit", f"session exit ({reason})")
@@ -547,6 +586,8 @@ class JournalTracker:
             "activity": self.last_intent,
             "target": self._target(),
             "lastSeen": self.last_seen,
+            "runStartedAt": self.run_started_at.isoformat() if self.run_started_at else None,
+            "runEndedAt": self.run_ended_at.isoformat() if self.run_ended_at else None,
             # Structured correction-attempt count from the latest yield's
             # data (if unambiguous); null rather than a guess otherwise.
             "correction": self.correction,
@@ -794,6 +835,7 @@ class JournalWatcher:
             self.identities.pop(gone, None)
             self.parser_issues.pop(gone, None)
             self.rewrites.pop(gone, None)
+        self._record_run_retirements()
         if family:
             self.warnings.pop("initializing", None)
 
@@ -933,6 +975,31 @@ class JournalWatcher:
                 "at": (_parse_ts(membership.get("updatedAt")) or datetime.now(timezone.utc))
                 if complete or not previous else previous["at"],
             }
+            self._record_run_retirements()
+
+    def _record_run_retirements(self):
+        """Ingest external terminal evidence without changing activity/membership.
+
+        Registry membership can prove retirement, but its global updatedAt is
+        not this agent's finish time: leave an unrecorded end unknown. Tombstone
+        mtime is the persisted explicit-kill timestamp. Neither source uses
+        lastSeen/now, and repeated snapshots never mutate clock evidence.
+        """
+        membership = self.membership
+        if membership and membership["root"] != self.session_label():
+            membership = None
+        for tracker in self.trackers.values():
+            if tracker.tombstoned:
+                tracker._finish_run(tracker.tombstoned_at)
+            if not membership:
+                continue
+            sid = tracker.session_id
+            active = membership["agents"].get(
+                sid, False if membership["complete"] else None)
+            if active is False and not (
+                    tracker.assignment_started_at
+                    and tracker.assignment_started_at > membership["at"]):
+                tracker._finish_run(None)
 
     def snapshot(self):
         with self.lock:

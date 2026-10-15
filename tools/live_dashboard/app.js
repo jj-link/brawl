@@ -9,6 +9,8 @@
  * StreamFormat normalizes presentation; StreamContent retains keyed DOM nodes.
  * Prose, code, diffs, and expanded JSON update live; each entry's Raw view retains
  * its complete transport payload. View switches preserve the reader's position.
+ * Card timers use recorded run start/end timestamps, not page-load or last-output
+ * time. Waiting counts toward elapsed time; known run endings freeze the timer.
  */
 'use strict';
 
@@ -256,6 +258,7 @@
 
   function tickStatus() {
     const now = Date.now();
+    Streams.tick(now);
     const ageS = S.lastStateAt ? Math.floor((now - S.lastStateAt) / 1000) : null;
 
     const conn = $('pill-conn');
@@ -1371,7 +1374,8 @@
     const historyLoaded = new Map();
     const dirtyAgents = new Set();
     const dirtyPanels = new Map();
-    const agentFields = ['name', 'state', 'model', 'definition', 'target', 'correction', 'observed', 'active'];
+    const agentFields = ['name', 'state', 'model', 'definition', 'target', 'correction', 'observed', 'active',
+      'runStartedAt', 'runEndedAt'];
     let connected = false, source = null, retryTimer = null, frame = 0;
     let flushing = false, gridReady = false;
     let connectionError = 'Connecting to the owning runner observer…';
@@ -1434,7 +1438,9 @@
       // Runner turn states are not assignment outcomes. Reliable current
       // membership from /api/state also takes precedence over retained metadata.
       return { ...recorded, ...live, state: recorded?.state ?? live?.state,
-        active: typeof recorded?.active === 'boolean' ? recorded.active : live?.active };
+        active: typeof recorded?.active === 'boolean' ? recorded.active : live?.active,
+        runStartedAt: recorded ? recorded.runStartedAt : live?.runStartedAt,
+        runEndedAt: recorded ? recorded.runEndedAt : live?.runEndedAt };
     }
 
     function isVisible(a) {
@@ -1472,6 +1478,7 @@
       const identity = el('div', { class: 'stream-identity' });
       identity.title = key;
       const count = el('span', { class: 'stream-count' });
+      const elapsed = el('span', { class: 'stream-elapsed' });
       const log = el('div', { class: 'stream-log', attrs: {
         role: 'log', 'aria-live': 'off', tabindex: '0',
         'aria-label': String(a.name || a.id) + ' terminal output'
@@ -1480,8 +1487,8 @@
       jump.addEventListener('click', () => { log.scrollTop = log.scrollHeight; });
       const node = el('section', { class: 'stream-panel', attrs: { 'data-agent': key } },
         el('div', { class: 'stream-panel-head' }, name, state), identity,
-        el('div', { class: 'stream-toolbar' }, count, jump), log);
-      return { key, node, name, state, identity, count, log, rows: new Map(),
+        el('div', { class: 'stream-toolbar' }, count, elapsed, jump), log);
+      return { key, node, name, state, identity, count, elapsed, log, rows: new Map(),
         agent: a, visible: true, position: null };
     }
 
@@ -1544,6 +1551,44 @@
         a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · '));
       const label = String(a.name || a.id) + ' terminal output';
       if (panel.log.getAttribute('aria-label') !== label) panel.log.setAttribute('aria-label', label);
+      renderElapsed(panel, Date.now());
+    }
+
+    function renderElapsed(panel, now) {
+      const a = panel.agent;
+      const start = typeof a.runStartedAt === 'string' ? Date.parse(a.runStartedAt) : NaN;
+      const hasEnd = a.runEndedAt != null;
+      const end = typeof a.runEndedAt === 'string' ? Date.parse(a.runEndedAt) : NaN;
+      let duration = null;
+      let detail = 'Current-run elapsed time unavailable: start time is unknown.';
+      if (Number.isFinite(start)) {
+        if (hasEnd && Number.isFinite(end)) {
+          duration = end - start;
+          detail = 'Current-run elapsed time, frozen at run end.';
+        } else if (!hasEnd && a.active === true) {
+          duration = now - start;
+          detail = 'Current-run elapsed wall time, including waiting and quiet time.';
+        } else {
+          detail = 'Current-run elapsed time unavailable: end time is unknown.';
+        }
+      }
+      let text = 'Elapsed —';
+      if (duration !== null) {
+        const seconds = Math.max(0, Math.floor(duration / 1000));
+        text = 'Elapsed ' + Math.floor(seconds / 3600) + ':' +
+          String(Math.floor(seconds / 60) % 60).padStart(2, '0') + ':' +
+          String(seconds % 60).padStart(2, '0');
+      }
+      writeText(panel.elapsed, text);
+      if (panel.elapsed.title !== detail) panel.elapsed.title = detail;
+      const label = String(a.name || a.id) + ': ' + text + '. ' + detail;
+      if (panel.elapsed.getAttribute('aria-label') !== label) panel.elapsed.setAttribute('aria-label', label);
+    }
+
+    function tick(now) {
+      for (const panel of panels.values()) {
+        if (panel.visible) renderElapsed(panel, now);
+      }
     }
 
     function renderRow(entry, item, historical) {
@@ -1903,7 +1948,7 @@
       try { localStorage.setItem('brawldash.streamHistory', showHistory ? '1' : '0'); } catch (_) {}
       update();
     });
-    return { update };
+    return { update, tick };
   })();
 
   // ------------------------------------------------------------------ warnings
