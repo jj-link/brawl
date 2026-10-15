@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E278 — reconstructed item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E278`, `.text [0xE278,0xE280)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xD0` and tail-calls `fn_27_13C428`; allocated text `3863ff3048000000` and the single `R_PPC_REL24` at offset 4 match the target exactly.
+- GLM owner GlmFreshDededeE278 measured **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `be798c0d0c69d8bef936f006f0894a3b13eaf456`, target SHA-1 `2858f4e3b9e1d1952994f19daa108207baeb0340`; whole-object metadata differs. The source follows the existing Metaknight five-argument declaration and retains the original entry's register forwarding.
+- Full-input reconciliation includes accepted E270 source checkpoint `059ed2d9`. Recorded configure/full Ninja/comparison commands exited zero; both native build verification and the independent direct check passed **127 DOL/REL hashes**. Actual link inputs select the reconstructed E278 object. Later dashboard/documentation changes introduce no game inputs; no gameplay execution was performed.
+- Released grant `E278Main0f77` materialized only the source and its two registration insertions. Explicit-LF application and source copy exited zero; all three raw postimages matched, both shared-file differences preserved unrelated bytes, and the full parent index remained unchanged. Private-index validation produced exactly the three declared stage-0 paths and no conflicts.
+- Evidence: `build/isolated-workers/GlmFreshDededeE278/evidence/reconciliation-059ed2d9/{commands.log,native-verification.log,comparison.json}`, `own-change-059ed2d9.patch`, and `grant-E278Main0f77/RECEIPT.md`. Earlier d04 console-only claims were qualified rather than relabeled as raw logs; the original attempt artifact remains unchanged. Cumulative progress is reported separately by the dedicated publisher.
+
 ## Committed-source checkpoint 059ed2d9
 
 - Verified committed snapshot `059ed2d909a68ee7eea96164f5029b124be24e4f`: **2.978585% complete**, **471616 / 15833556 accepted code bytes**, **15361940 code bytes remaining**, **1403 accepted source units**. Delta from `d04a5160`: **+8 code bytes, +1 source unit**.
