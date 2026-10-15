@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2A8 — reconstructed imported item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E2A8`, `.text [0xE2A8,0xE2B0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards its arguments to imported `fn_27_13ACC4`.
+- GLM owner GlmFreshDededeE2A8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `3e3e84839ae3e6f3c0ceaabdc99723bf25b20d3b`, target SHA-1 `cd3898c52c07467b3ea561d670782dba7c77b6d8`. Allocated text `3863ff3048000000` and offset-4 REL24 to `fn_27_13ACC4`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation at accepted `d962e20e` passed **127 native DOL/REL hashes**. Actual link inputs select E290/E298/E2A0/E2A8 source objects and retain the unaccepted E2B0 fallback. No gameplay execution was performed.
+- Released grant `E2A8Main2606` applied the reviewed three-path patch once, native exit 0. Shared-file postimages equal their saved preimages plus only the owned two/three lines. HEAD/index remained unchanged. Other paths have pre/post status evidence, not a before/after byte-hash proof. The new source is the proven 1795-byte CRLF representation of canonical blob `e146b4cc1d537522d765829b2de87582cbb4c578`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2A8/evidence/corrected-packet.md`, `own-change-d962e20e-e2a8.patch`, `attempt-00/comparison-v2.json`, `00-ninja-full-v2.log`, `linkage/`, EOL preview and `materialization-receipt.md`. Cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint d962e20e
 
 - Verified committed snapshot `d962e20ec11a69f9322d9c8794969cc70f6e2ccc`: **2.978939% complete**, **471672 / 15833556 accepted code bytes**, **15361884 code bytes remaining**, **1410 accepted source units**. Delta from `8af35370`: **+8 code bytes, +1 source unit**.
