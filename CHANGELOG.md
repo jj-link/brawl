@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E218 — reconstructed situation-handler adjustment
+
+- Reconstructed module 117 `fn_117_E218`, `.text [0xE218,0xE220)`, **8 code bytes**, as C++ adjusting the interface pointer by `-0x88` and forwarding the integer/accesser arguments to `fn_27_135EE8`. GLM measured **1 initial candidate and 0 corrections**. Accepted source Git blob: `1cf95094fafa4eb6666914db8d5464465e559083`.
+- Candidate SHA-1 `6b0bb69fd678550841d8181849bfb544428dd110` and target `c9d5e629b9866b57f735c4fd630bb855bb1ba5ea` match in allocated code and relocations: `.text` `3863ff7848000000`, `R_PPC_REL24` at `+4` to `fn_27_135EE8`. The declaration follows the existing Luigi/Metaknight interface.
+- Full native verification includes accepted source checkpoint `c5849640528dc96dc8828b39555d0327e349b0d9` plus E218, with E208/E210/E218 reconstructed objects source-linked. **127 original DOL/REL hashes passed**; Dedede REL remains `a6978416df878081c94afc45b487030cdbbe5371`. Gameplay was not exercised; cumulative accepted-source accounting remains with the dedicated publisher.
+- Under grant `E218Main06c3bf58`, the same owner materialized only the three owned paths. Both registration files exactly match their saved dirty preimages plus the owned insertions; protected neighboring source bytes and parent-index SHA-256 `87abfd06b3ec8b9a420cfe3f6b3ca9ab8b43373864e9395fd3c3b77cd15d96df` were preserved. Parent staging uses the independently validated own-only patch, not whole dirty files.
+- Native Git applied the new source as **922-byte CRLF** text, raw SHA-1 `8ad7a36e5674e15ff18392747367b31649e151d5`; its LF-normalized bytes exactly equal the accepted **904-byte** source, SHA-1 `f9fdb2f28549210a71d92c8790be2a981e82ec09`. The owner stopped on the unexpected raw representation; review accepted it without rewriting or recompiling unchanged source. The non-repository preview did not model repository attributes for new-file checkout; this limitation is retained rather than claiming an identical raw preview.
+- Evidence: `build/isolated-workers/GlmFreshDededeE218/evidence/attempts.json`, `reconciled-record.md`, `materialization-receipt-c5849640.md`, `main-grant-E218Main06c3bf58-outcome.md`, its actual native apply output, and `own-only-patch-c5849640.diff`.
+
 ## Committed-source checkpoint c5849640
 
 - Verified committed snapshot `c5849640528dc96dc8828b39555d0327e349b0d9`: **2.978434% complete**, **471592 / 15833556 accepted code bytes**, **15361964 code bytes remaining**, **1400 accepted source units**. Delta from `07f79f8d`: **+8 code bytes, +1 source unit**.
