@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E268 — reconstructed local-handler adjustment
+
+- Registered genuine C++ for `fn_117_E268`, `.text [0xE268,0xE270)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xB8` and tail-calls the local `fn_117_9E84`. Sliced and compiled objects have identical allocated text `3863ff4848000000` and the same offset-4 `R_PPC_REL24`; the linked intra-module branch resolves to the original bytes.
+- GLM owner GlmFreshDededeE268 measured **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `2342ce37bc658a7a71ceb859f1bd1f309b1df805`, target SHA-1 `505123db5b2077af0c1bc0094a2e85cd9de0794c`. Comment qualifications preserve the measured body and withdraw unsupported typeinfo/table classification and caller-saved-register assumptions.
+- Final verification exercised the combined `d3f59b9c` input set plus E268, including accepted E270 and E278. Configure, full Ninja and direct DTK checks exited zero; **127 DOL/REL hashes passed**. Actual generated prelink/final-link inputs contain all three reconstructed objects. These combined results supersede earlier separate-lane reuse and grep-only evidence for this final state. No gameplay execution was performed.
+- Released grant `E268Main32b9` applied the reviewed three-path patch from the parent root with exit zero. Both registrations preserved unrelated bytes and LF endings; the new source's measured native CRLF representation normalizes to immutable blob `6abf5273359490913c691e315d8cf056651a2820`. Exact raw postimages, private-index path/mode/blob validation and unchanged parent index were recorded.
+- Evidence: `build/isolated-workers/GlmFreshDededeE268/evidence/attempt-00/comparison.json`, `combined-d3f59b9c-e268-verification.txt`, `combined-ninja.log`, `combined-shasum.log`, `own-change-d3f59b9c.patch` and `materialization-E268Main32b9/RECEIPT.txt`. Cumulative accepted-source progress is reported separately by the dedicated publisher.
+
 ## Committed-source checkpoint d3f59b9c
 
 - Verified committed snapshot `d3f59b9c2bb7110c19738b901d9e059dcefe2864`: **2.978636% complete**, **471624 / 15833556 accepted code bytes**, **15361932 code bytes remaining**, **1404 accepted source units**. Delta from `059ed2d9`: **+8 code bytes, +1 source unit**.
