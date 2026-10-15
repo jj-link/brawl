@@ -18,11 +18,11 @@ from .state import Ledger
 
 
 class EvaluationRuntime:
-    def __init__(self, root: Path, ledger: Ledger):
+    def __init__(self, root: Path, ledger: Ledger, *, recovery_only: bool = False):
         self.root, self.ledger = confined(root), ledger
-        self.environment = isolated_environment(self.root)
+        self.environment = {} if recovery_only else isolated_environment(self.root)
         self.manager = ProcessManager(
-            self.root, self.environment,
+            self.root, self.environment, create=not recovery_only,
             authorize=lambda operation, revision: self.ledger.require_operation(operation, authorization_revision=revision),
         )
         self.controls: dict[str, OmpControl] = {}
@@ -119,25 +119,21 @@ class EvaluationRuntime:
                 raise
 
     def stop(self, *, event_id: str, reason: str, include_server: bool = True) -> dict:
-        # STOP durability must not depend on the server/RPC startup lock. A
-        # distinct short admission fence below covers any in-flight creation.
+        # Durable STOP and ownership/admission discovery are essential. The
+        # shared five-second budget bounds native waits/locks, not arbitrary
+        # broken-disk I/O. Optional RPC, setup, snapshots and receipt reporting
+        # must never precede signalling the aggregate verified owned job set.
         self.ledger.request_stop(event_id=event_id, reason=reason)
         deadline = time.monotonic() + 5
+        cancelling = [control for control in self.controls.values() if not control.owned.record.get("exit_proof")]
+        for control in cancelling:
+            control._closing = True
+        receipts = self.manager.stop_all(exclude_kinds=() if include_server else ("prefect-server",),
+                                         deadline=deadline)
         with runtime_lock(self.root / "cancellation", timeout=max(0, deadline - time.monotonic())):
+            # This is still the STOPPING ledger checkpoint: exit proofs have
+            # not yet been applied to leases, but native jobs are already gone.
             self.snapshot(event_id + "-stop-persisted")
-            errors, cancelling = [], []
-            for assignment_id, control in list(self.controls.items()):
-                if control.owned.record.get("exit_proof"):
-                    continue
-                cancelling.append(control)
-                try:
-                    control.abort_without_wait()
-                except Exception as exc:
-                    errors.append({"assignment_id": assignment_id, "control_error": repr(exc)})
-            # All control replies are optional for STOP. One shared deadline
-            # bounds native waits and locks across the entire owned process set.
-            receipts = self.manager.stop_all(exclude_kinds=() if include_server else ("prefect-server",),
-                                             deadline=deadline)
             proofs = {proof["process_id"]: proof for proof in receipts}
             for control in cancelling:
                 control.reader.join(timeout=max(0, deadline - time.monotonic()))
@@ -151,7 +147,10 @@ class EvaluationRuntime:
             result = (self.ledger.finish_stop(event_id=event_id + "-verified", exit_proofs=ledger_receipts)
                       if include_server else self.ledger.authorization())
             shutdown = {"authorization": result, "receipts": receipts,
-                        "control_errors": errors, "verified_at": now()}
+                        "control_errors": [], "control_abort_policy": "native-job-cancellation-without-RPC",
+                        "native_wait_budget_seconds": 5,
+                        "budget_excludes": "essential ownership/durable-state IO and post-cancellation evidence IO",
+                        "verified_at": now()}
             save_json(self.root / "shutdown-events" / (event_id + ".json"), shutdown)
             save_json(self.root / ("shutdown.json" if include_server else "work-shutdown.json"), shutdown)
             self.snapshot(event_id + ("-stopped" if include_server else "-stopping-work-exited"))

@@ -120,9 +120,9 @@ def owned_listener(owned: "OwnedProcess", port: int) -> bool:
 
 
 @contextmanager
-def runtime_lock(root: Path, *, timeout: float = 120):
+def runtime_lock(root: Path, *, timeout: float = 120, scope: Path | None = None):
     import msvcrt
-    path = confined(root / "runtime.lock")
+    path = confined(root / "runtime.lock") if scope is None else confined(root / "runtime.lock", scope)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+b") as stream:
         if stream.tell() == 0:
@@ -196,10 +196,11 @@ class OwnedProcess:
 
 
 class ProcessManager:
-    def __init__(self, root: Path, environment: dict[str, str], *, authorize=None):
+    def __init__(self, root: Path, environment: dict[str, str], *, authorize=None, create: bool = True):
         self.root, self.environment = confined(root), environment
         self.directory = confined(root / "processes")
-        self.directory.mkdir(parents=True, exist_ok=True)
+        if create:
+            self.directory.mkdir(parents=True, exist_ok=True)
         self.api = kernel()
         self.owned: dict[str, OwnedProcess] = {}
         self.authorize = authorize
@@ -360,19 +361,60 @@ class ProcessManager:
             if job:
                 self.api.CloseHandle(job)
 
+    def _signal_record(self, record: dict) -> None:
+        """Signal one proven named job without waiting or persisting receipts."""
+        if record.get("exit_proof"):
+            return
+        process = self.api.OpenProcess(0x100000 | 0x1000, False, record["pid"])
+        process_error = ctypes.get_last_error() if not process else 0
+        job = self.api.OpenJobObjectW(0x0004 | 0x0008, False, record["job_name"])
+        job_error = ctypes.get_last_error() if not job else 0
+        try:
+            if not job and job_error != 2:
+                raise SafetyError(f"Cannot prove owned Windows job identity: error {job_error}")
+            if process:
+                if creation_time(self.api, process) != record["creation_time"]:
+                    raise SafetyError("PID reused; refusing cancellation or lease release")
+            elif process_error not in (0, 87, 1168):
+                raise SafetyError(f"Cannot prove owned process identity: Windows error {process_error}")
+            if job:
+                checked(self.api.TerminateJobObject(job, 137))
+        finally:
+            if process:
+                self.api.CloseHandle(process)
+            if job:
+                self.api.CloseHandle(job)
+
     def stop_all(self, *, exclude_kinds: tuple[str, ...] = (), deadline: float | None = None) -> list[dict]:
-        # Fence only native creation + durable ownership + go-gate release.
-        # Never wait for a server/RPC startup lock before cancelling its child.
+        # Signal known live ownership without filesystem discovery first.
+        # Recovery must discover/validate durable ownership; unavailable records
+        # are an essential failure, never permission for a PID-only fallback.
         deadline = deadline if deadline is not None else time.monotonic() + 5
+        failures = {}
+        for owned in list(self.owned.values()):
+            if owned.record["kind"] not in exclude_kinds:
+                try:
+                    self._signal_record(owned.record)
+                except Exception as exc:
+                    failures[owned.process_id] = str(exc)
         with runtime_lock(self.root / "process-admission", timeout=max(0, deadline - time.monotonic())):
-            receipts, failures = [], []
-            for record in reversed(self.records()):
-                if record["kind"] in exclude_kinds:
+            records = [record for record in reversed(self.records()) if record["kind"] not in exclude_kinds]
+            # Complete aggregate signalling before the first optional receipt
+            # write or per-process wait can block cancellation of another job.
+            for record in records:
+                try:
+                    self._signal_record(record)
+                    failures.pop(record["process_id"], None)
+                except Exception as exc:
+                    failures[record["process_id"]] = str(exc)
+            receipts = []
+            for record in records:
+                if record["process_id"] in failures:
                     continue
                 try:
                     receipts.append(self._terminate_record(record, deadline))
                 except Exception as exc:
-                    failures.append(f"{record['process_id']}: {exc}")
+                    failures[record["process_id"]] = str(exc)
             if failures:
-                raise SafetyError("; ".join(failures))
+                raise SafetyError("; ".join(f"{key}: {error}" for key, error in failures.items()))
             return receipts

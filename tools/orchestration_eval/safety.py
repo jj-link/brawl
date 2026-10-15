@@ -45,10 +45,13 @@ def confined(path: Path | str, root: Path = BUILD) -> Path:
     return path
 
 
-def check_worktree() -> None:
-    expected = ACTIVE / "build" / "isolated-workers" / "PrefectOmpEvaluation"
-    if os.name != "nt" or WORKTREE != expected or not (WORKTREE / ".git").is_file():
-        raise SafetyError("Pilot requires the authorized native-Windows detached evaluation worktree")
+def check_worktree(*, real_trial: bool = False, control_plane: bool = False) -> None:
+    names = {"PrefectOmpRealFunctionTrial"} if real_trial else {"PrefectOmpEvaluation"}
+    if control_plane:
+        names.add("PrefectOmpRealFunctionTrial")
+    expected = ACTIVE / "build" / "isolated-workers" / WORKTREE.name
+    if os.name != "nt" or WORKTREE.name not in names or WORKTREE != expected or not (WORKTREE / ".git").is_file():
+        raise SafetyError(f"Requires an authorized native-Windows detached worktree: {sorted(names)}")
     common = subprocess.run(
         ["git", "-C", str(WORKTREE), "rev-parse", "--path-format=absolute", "--git-common-dir"],
         capture_output=True, text=True, check=True, creationflags=NO_WINDOW,
