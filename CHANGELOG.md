@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint adf2de71
+
+- Verified committed snapshot `adf2de71b6deb87b772987eeb9280bdea27fcd53`: **2.978990% complete**, **471680 / 15833556 accepted code bytes**, **15361876 code bytes remaining**, **1411 accepted source units**. Delta from `d962e20e`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `35168a19e1ae06b35a414eab86610b6bc5a9cd048a24c929b41592b7b7082fa8` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1411 accepted-source link recipes, 1410 prior source/object identities and 329 original/tool identities were validated; all 34 complete Dedede source units retain single map definitions.
+- E2A8 source blob `e146b4cc1d537522d765829b2de87582cbb4c578`, allocated text/relocation and candidate/target identities reproduce the owner's comparison. Its 1764-byte LF draft and 1795-byte native CRLF representation remain separately recorded; counts remain 1 initial / 0 corrections / inherited UNKNOWN. Prior accepted units remain source-linked, E2B0 remains unaccepted, and the AI draft retains original fallback and zero completion credit. The owner's unrelated-path materialization evidence remains status-only.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/adf2de71/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished trial work are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment.
+
 ## Dedede E2A8 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E2A8`, `.text [0xE2A8,0xE2B0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards its arguments to imported `fn_27_13ACC4`.
