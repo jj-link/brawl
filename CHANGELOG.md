@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint c5849640
+
+- Verified committed snapshot `c5849640528dc96dc8828b39555d0327e349b0d9`: **2.978434% complete**, **471592 / 15833556 accepted code bytes**, **15361964 code bytes remaining**, **1400 accepted source units**. Delta from `07f79f8d`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `27289d10adbf6411050ff867a5c313fbb03cecd66efa0055f8976bfc9fd5b9b7` from that fixed committed checkout. Native build/report/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct SHA-1 checks. All 1400 accepted-source link recipes, 1399 prior source/object identities, 329 original/tool identities and 23 complete single-definition Dedede source units were checked.
+- E210's immutable best source blob `d7b99bb94690916799f124399e351055b020deeb`, candidate/target identities and allocated code/relocations reproduce the owner's evidence; E208 remains source-linked. Unpublished E218/E220 and unrelated dirty MAIN files are excluded. Local/public report-derived maps agree for all 5680 units and 127 module contributions; final headline/publication timestamp/history agreement follows this documentation publication.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/c5849640/report-published.json` and adjacent native/hash/linkage/input receipts. No gameplay execution was performed. The prior `07f79f8d` checkpoint's final local/public headline, timestamp, maps and served/persisted history agreement is retained in `evidence/07f79f8d/final-publication-current.json`.
+
 ## Authorized bounded four-Qwen real-function trial
 
 - Reserved initial module-117 functions `E228/E230/E238/E240` and queued `E248/E250/E258/E260`, eight 8-byte units, for four concurrent Spark1 Qwen owners with independent refill. The fresh engineering workspace is `build/isolated-workers/PrefectOmpRealFunctionTrial` at full baseline `d0d182fcfc11d69fcf72c2e8fcc6dd709a93658f`; two fresh engineering owners retain disjoint implementation/ledger scope. The unused `PrefectQwenTrial` preflight Git tree and the original completed evaluation workspace/evidence remain retained, not active reconstruction owners.
