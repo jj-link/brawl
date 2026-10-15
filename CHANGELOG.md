@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2B8 — reconstructed imported item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E2B8`, `.text [0xE2B8,0xE2C0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards the remaining item parameters to imported `fn_27_13A4A0`.
+- GLM owner GlmFreshDededeE2B8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `593ea52c3de4b5c9b22cb9e3284e04f426b42eb9`, target SHA-1 `5ea5793063b7e049614f9e75f6551561540c9711`. Allocated text `3863ff3048000000` and offset-4 REL24 to `fn_27_13A4A0`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete verified game inputs match accepted `28c65c46`; native verification passed **127 DOL/REL hashes** and actual prelink/final-link edges retain E2B0/E2C0 source alongside E2B8. Matching provisional measurements were bound to those accepted input identities without an unchanged rebuild. No gameplay execution was performed.
+- Review rejected the first staging patch because it deleted accepted E2C0 registrations and its validation compared against stale constants. The defective artifacts and explicit qualification remain preserved. Reviewed `own-change-28c65c46-v2.patch` derives actual working-file blobs, retains E2C0 and passed exact three-path private-index validation on both source and documentation baselines.
+- Released grant `E2B8MainC9` applied the separate reviewed raw patch once, native exit 0. Shared files equal saved preimages plus only the owned two/three lines; 32 captured unrelated regular files remain byte-identical, with HEAD/index/config unchanged. Source native CRLF bytes normalize to canonical blob `6d9cc3cae88b99edeeec3c375ddffb97406833c4`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2B8/evidence/`, including the v2 staging patch/proof, `attempt-00-comparison.json`, `02-native-127-dtk-check-28c65c46.txt`, source-link/input records, `defective-staging-28c65c46/` and `grant-E2B8MainC9/`. Cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint 28c65c46
 
 - Verified committed snapshot `28c65c463832b4a1adcfe59a800daeba5acb1fc9`; report SHA-256 `0e5b09fa6ab8ac1a0c85448a0d3b2246f0594808a4af0f3234a8e0863a821ce2`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
