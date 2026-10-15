@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E290 — reconstructed imported item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E290`, `.text [0xE290,0xE298)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and tail-calls `fn_27_13B998`, preserving its item pointer argument.
+- GLM owner GlmFreshDededeE290 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `f6842933d1ccd62577b25d804e8acb012db75e8e`, target SHA-1 `0493a2245b417bdf6df39a2f61adfeaa101d72fc`. Allocated text and relocations match; differing whole-object metadata is not byte identity. The object's relocation uses symbol-relative addend 0; the original module import carries addend `0x13B998`.
+- Complete-input verification includes accepted E280 and E288. The native v4 build passed **127 DOL/REL hashes**; current generated link inputs select the E280/E288/E290 source objects, and no original-code input covers E290. The earlier v3 linkage statement excluding E288 is superseded. No gameplay execution was performed.
+- Released grant `E290MainE72` applied the reviewed raw patch with actual successful native output. Saved preimage plus only the two/three owned registration lines equals each actual postimage; the new source is the proven 2319-byte CRLF representation of canonical blob `dfb8433743e5bdd51547dc50e467e118a70391c8`. HEAD, index and Git configuration remained unchanged. A filtered status listing alone is not a complete other-path byte-preservation proof.
+- Evidence: `build/isolated-workers/GlmFreshDededeE290/evidence/corrected-packet.md`, `raw-preimages-e72ca57b/`, `own-change-1ce74085-e290.patch`, `raw-mirror-e290.patch`, `newsource-eol.md`, `linkage/linkage-proof.md`, `linkage/preplf-plf-v4.txt` and `00-ninja-full-v4.log`. Rejected and earlier packets remain retained; cumulative progress is published separately by the dedicated publisher.
+
 ## Dashboard startup — explicit root ownership and recoverable binding
 
 - Removed first-started-session ownership of the implicit observer port. Every root now requires explicit canonical registration; primary HTTP routing uses its pinned root's registered port and preserves upstream identity and registration-revocation checks.
