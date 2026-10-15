@@ -104,6 +104,8 @@ class ProgressTracker:
                 ["git", "log", "-1", "--format=%H", "--", "CHANGELOG.md"],
                 cwd=self.root, text=True, encoding="utf-8", errors="replace",
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=3, check=True,
+                # Background Git must not allocate a Windows Terminal window.
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
             ).stdout.strip()
         except (OSError, subprocess.SubprocessError):
             revision = ""

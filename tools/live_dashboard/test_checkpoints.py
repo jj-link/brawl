@@ -336,6 +336,7 @@ class RealGitCheckpointTimestampTests(unittest.TestCase):
                 ["git", "-c", "user.name=Checkpoint regression", "-c", "user.email=checkpoint@example.invalid",
                  "-c", "commit.gpgsign=false", "-c", f"core.hooksPath={root / 'no-hooks'}", *args],
                 cwd=root, env=env, text=True, encoding="utf-8", errors="replace",
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True, timeout=30).stdout.strip()
 
         def publish(date):

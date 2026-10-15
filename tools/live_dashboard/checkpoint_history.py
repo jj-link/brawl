@@ -161,6 +161,8 @@ def _date_candidates(root, text, candidates, cached_points, timeout=30):
                  "--contents", "-", "--", "CHANGELOG.md"],
                 cwd=root, input=text, text=True, encoding="utf-8", errors="replace",
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout, check=True,
+                # Background Git must not allocate a Windows Terminal window.
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
             )
             commit = None
             line_number = None
