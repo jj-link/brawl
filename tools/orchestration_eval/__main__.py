@@ -189,24 +189,57 @@ def exercise(root: Path, executable: Path, astra_capacity: int) -> dict:
     return result
 
 
-def run_tests(root: Path) -> dict:
+def run_tests(root: Path, *, targets: list[str] | None = None, native_api_probe: bool = False,
+              timeout_seconds: int = 300) -> dict:
     from .runtime import EvaluationRuntime
     from .state import Ledger
+    if type(timeout_seconds) is not int or not 0 < timeout_seconds <= 600:
+        raise SafetyError("Owned verification requires a finite deadline no greater than 600 seconds")
+    scope = WORKTREE / "tools" / "orchestration_eval"
+    selected = []
+    for target in targets or []:
+        if not re.fullmatch(r"test_[a-z0-9_]+\.py(?:::[A-Za-z0-9_]+)*", target):
+            raise SafetyError("Focused tests must name package-local test files and optional node IDs")
+        name, *nodes = target.split("::")
+        path = confined(scope / name, scope)
+        if not path.is_file():
+            raise SafetyError("Focused test file does not exist")
+        selected.append(str(path) + ("::" + "::".join(nodes) if nodes else ""))
     ledger = Ledger(root / "ledger.sqlite3")
     revision = ledger.authorize("RUN", event_id="explicit-test-authorization",
                                 reason="Explicit owned native behavioral test run", expected_revision=0)["revision"]
     runtime = EvaluationRuntime(root, ledger)
     runtime.environment.update(OMP_EVAL_TEST_AUTHORIZATION="isolated-fixtures",
                                PYTEST_DISABLE_PLUGIN_AUTOLOAD="1")
-    argv = [sys.executable, "-B", "-m", "pytest", str(WORKTREE / "tools" / "orchestration_eval"),
+    if native_api_probe:
+        allowed_native_targets = (
+            ["test_trial_native_api.py"],
+            ["test_trial_native_api.py::NativeApiTests::test_native_title_prefix_and_late_payload_abort"],
+            ["test_trial_native_api.py::NativeApiTests::test_production_workflow_adapter_startup_without_dispatch"],
+        )
+        if targets not in allowed_native_targets:
+            raise SafetyError("Native API authorization is restricted to the permanent infrastructure probe selectors")
+        from .trial_rpc import runtime_identity_candidate, validate_runtime_identity, NATIVE_OMP
+        identity = runtime_identity_candidate()
+        validate_runtime_identity(NATIVE_OMP, identity, require_version_receipt=False)
+        identity_path = root / "native-api-expected-runtime.json"
+        save_json(identity_path, identity)
+        runtime.environment.update(OMP_EVAL_NATIVE_API_PROBE="infrastructure-only",
+                                   OMP_EVAL_NATIVE_API_PROBE_ROOT=str(root),
+                                   OMP_EVAL_NATIVE_API_PROBE_IDENTITY=str(identity_path),
+                                   OMP_EVAL_NATIVE_API_PROBE_MODE=(
+                                       "late-boundaries" if targets == allowed_native_targets[1] else
+                                       "workflow-startup" if targets == allowed_native_targets[2] else "original"))
+    argv = [sys.executable, "-B", "-m", "pytest", *(selected or [str(scope)]),
             "-q", "-p", "no:cacheprovider", "--basetemp", str(root / "pytest-work")]
-    report = {"argv": argv, "returncode": None, "stdout": "", "stderr": "", "started_at": now()}
+    report = {"argv": argv, "returncode": None, "stdout": "", "stderr": "", "started_at": now(),
+              "timeout_seconds": timeout_seconds}
     owned, failure = None, None
     try:
         owned = runtime.manager.launch(argv, kind="behavioral-tests", cwd=root, authorization_revision=revision)
         runtime.register_process(owned, revision)
         runtime.snapshot("behavioral-tests-active")
-        report["returncode"] = owned.process.wait(timeout=300)
+        report["returncode"] = owned.process.wait(timeout=timeout_seconds)
     except BaseException as exc:
         failure = exc
         report.update(error=repr(exc), traceback=traceback.format_exc())
@@ -242,7 +275,7 @@ def main() -> int:
     parser.add_argument("--astra-capacity", type=int)
     parser.add_argument("--omp", type=Path)
     args = parser.parse_args()
-    check_worktree()
+    check_worktree(control_plane=args.command in {"status", "stop"})
     if args.command == "status":
         print(json.dumps(status(select_root(args.run_id)), indent=2))
         return 0
