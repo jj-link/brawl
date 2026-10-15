@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E280 — reconstructed imported-handler adjustment
+
+- Registered genuine C++ for `fn_117_E280`, `.text [0xE280,0xE288)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xD0` and tail-calls imported `fn_27_13BDCC`; allocated text `3863ff3048000000` and the offset-4 `R_PPC_REL24` match the original target.
+- GLM owner GlmFreshDededeE280 measured **1 initial candidate / 1 correction**: the initial compilation failed on an undefined type spelling; correction 1 matched. Inherited counts remain **UNKNOWN**. Candidate SHA-1 `ae0fb7b7a5226d69ab30d903749dc6b492cbcff5`, target SHA-1 `7baa15a37d616bbccf20394fec9ac71a43e4d7f7`. Later comment qualification distinguishes existing callers' register-word agreement from their differing C++ parameter types; the object is unchanged.
+- Reconciliation includes accepted E268/E270/E278 in the complete `9bf8c4a9` input set. The native build and direct DTK check passed **127 DOL/REL hashes**; actual prelink/final-link inputs select the reconstructed E280 object. No gameplay execution was performed. Corrected staging preserves the committed registration bytes except for E280's two/three added lines; an earlier patch containing unrelated DTK reorderings was rejected and retained.
+- Released grant `E280Main7a92` applied the separately reviewed raw patch with successful native check/application. Both shared files retain their unrelated bytes and LF endings; the new source is the observed native CRLF representation of canonical blob `920128947da224128b0da717d67d47539d8df1ac`. Index, HEAD, Git configuration and attributes remained unchanged. Other-path status comparison is not a full byte-identity proof.
+- Evidence: `build/isolated-workers/GlmFreshDededeE280/evidence/attempt-01-comparison.json`, `02-native-127-dtk-check.txt`, `own-change-9bf8c4a9-corrected.patch`, `REJECTED-PATCH-NOTE.md` and `raw-materialization-7a92c9e7-d12e5c7b.RECORD.md`. The pre-comment source was recovered from its retained index blob; the overwritten earlier native-check file has no surviving byte copy. An unauthorized temporary preview was superseded by retained project-owned repository-aware proof. Cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint 9bf8c4a9
 
 - Verified committed snapshot `9bf8c4a9e577b6cc3016e3602daefb188cf4f096`: **2.978687% complete**, **471632 / 15833556 accepted code bytes**, **15361924 code bytes remaining**, **1405 accepted source units**. Delta from `d3f59b9c`: **+8 code bytes, +1 source unit**.
