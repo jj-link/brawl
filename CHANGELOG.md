@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2A0 — reconstructed imported item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E2A0`, `.text [0xE2A0,0xE2A8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards the item, index and result pointer to imported `fn_27_13B5AC`.
+- GLM owner GlmFreshDededeE2A0 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `a7effe4c2480bb4e9ad7d86fc3d0ad627f649181`, target SHA-1 `f249d7a72a3a19165991c60141f1288e84e12321`. Allocated text `3863ff3048000000` and the offset-4 REL24 to `fn_27_13B5AC` with symbol-relative addend 0 match; the original module import's addend is `0x13B5AC`. Whole-object metadata differs.
+- Complete-input reconciliation includes accepted E290 at `4b9ae620`. Native verification passed **127 DOL/REL hashes**; actual prelink/final-link inputs select E288/E290/E2A0 source objects, with the unaccepted E298 and E2A8 ranges still using original fallbacks. Earlier neighbor wording was corrected against those actual inputs. No gameplay execution was performed.
+- Released grant `E2A0Main208` applied exactly the reviewed three paths. Both shared files preserve unrelated bytes with only the two/three owned lines added; 21 captured unrelated dirty tracked files remain byte-identical. The source is the observed 1534-byte CRLF representation of canonical blob `3eed4a4cf3ed5df613edf4f914fc832774c37232`. HEAD and staged content stayed unchanged, but index-file bytes changed during the window; stat-cache refresh is a qualified explanation, not proven causation. An accidental second application refused with no further writes.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2A0/evidence/attempt-00-comparison-reconciled.json`, `02-native-127-dtk-check-reconciled.txt`, `own-change-4b9ae620.patch`, `raw-materialization-4b9ae620-73c0e760.RECORD.md`, `repo-aware-apply/` and `main-grant-e2a0main208/RECEIPT.md`. First-application native output, refusal evidence and preserved attempts remain retained; cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint 4b9ae620
 
 - Verified committed snapshot `4b9ae620fde45ed40dbc5ea21735ec19b5febd11`: **2.978838% complete**, **471656 / 15833556 accepted code bytes**, **15361900 code bytes remaining**, **1408 accepted source units**. Delta from `1ce74085`: **+8 code bytes, +1 source unit**.
