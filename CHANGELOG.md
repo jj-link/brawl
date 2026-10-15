@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E298 — reconstructed imported object adjustment
+
+- Registered genuine C++ for `fn_117_E298`, `.text [0xE298,0xE2A0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and calls imported `fn_27_13B96C`.
+- GLM owner GlmFreshDededeE298 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `d28833765a66a3cab584d080867d3b53f4c68a6c`, target SHA-1 `3bbae093f091416de34a1ac09dabce2ef6895b7c`. Allocated text `3863ff3048000000` and offset-4 REL24 to `fn_27_13B96C`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation at accepted `8af35370` passed **127 native DOL/REL hashes**. Actual prelink/final-link inputs select E290/E298/E2A0 source objects and retain the unaccepted E2A8 fallback. Candidate and target object identities remain unchanged. No gameplay execution was performed.
+- Released grant `E298Main0214` passed its guards and applied the reviewed three-path patch once, with native exit 0. Both shared files preserve all unrelated bytes; 31 captured unrelated dirty files remain byte-identical. HEAD/index/config remain unchanged. The new source is the proven 1034-byte CRLF representation of canonical blob `c2510242c8ccb15f3ca672ad97f52e4a60bd1c69`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE298/evidence/own-change-8af35370.patch`, `02-native-127-dtk-check-e2a0-integrated.txt`, retained comparison/input records, repository-aware EOL proofs and `grant-e298main0214/RECEIPT.md`. Cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint 8af35370
 
 - Verified committed snapshot `8af353705e822bc93459d1168855c27b3d7e7ef9`: **2.978889% complete**, **471664 / 15833556 accepted code bytes**, **15361892 code bytes remaining**, **1409 accepted source units**. Delta from `4b9ae620`: **+8 code bytes, +1 source unit**.
