@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint bb55cdc8
+
+- Verified committed snapshot `bb55cdc873da5d5d57aa335247345d32f479f175`: **2.978484% complete**, **471600 / 15833556 accepted code bytes**, **15361956 code bytes remaining**, **1401 accepted source units**. Delta from `c5849640`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `c7eb7f2e61eccffd7c92bd647a08045f485b0d94c19b677c3cc3eb40e87ce39b` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1401 accepted-source link recipes, 1400 prior source/object identities, 329 original/tool identities and 24 complete single-definition Dedede source units were checked.
+- E218's immutable LF source blob `1cf95094fafa4eb6666914db8d5464465e559083`, candidate/target identities and allocated code/relocations reproduce the owner's evidence; E208/E210 remain source-linked. Unpublished E220/E268 and dirty MAIN files are excluded. Local/public maps agree for all 5681 units and 127 module contributions; final headline/publication timestamp/history agreement follows this documentation publication.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/bb55cdc8/report-published.json` and adjacent native/hash/linkage/input receipts. No gameplay execution was performed. The prior `c5849640` checkpoint's final local/public headline, timestamp, maps and served/persisted history agreement is retained in `evidence/c5849640/final-publication-current.json`.
+
 ## Dedede E218 — reconstructed situation-handler adjustment
 
 - Reconstructed module 117 `fn_117_E218`, `.text [0xE218,0xE220)`, **8 code bytes**, as C++ adjusting the interface pointer by `-0x88` and forwarding the integer/accesser arguments to `fn_27_135EE8`. GLM measured **1 initial candidate and 0 corrections**. Accepted source Git blob: `1cf95094fafa4eb6666914db8d5464465e559083`.
