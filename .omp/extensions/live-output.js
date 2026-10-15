@@ -9,6 +9,12 @@
  * replacement releases listeners, registry subscriptions and managed timers.
  * Independent-process classification survives module replacement and shutdown:
  * removing its registration never authorizes borrowing the default 8766 port.
+ * Native adapters must call liveOutput(pi, { independent: true }) before
+ * forwarding session_start for an explicitly independent root. This permanently
+ * disables default-port fallback in that process even if registration vanishes
+ * between adapter precheck and observer reread. Missing/invalid registrations
+ * bind nothing; factory return is not listener readiness. Require /status with
+ * the expected root UUID and owning PID on the expected registered port.
  * Source edits require actual extension reload/rebinding, not settings toggles;
  * Windows Bun's same-path module cache may prevent reload from rereading code.
  */
@@ -452,8 +458,13 @@ function ensureServer() {
   listener.listen(listeningPort, '127.0.0.1');
 }
 
-/** @param {import('@oh-my-pi/pi-coding-agent').ExtensionAPI} pi */
-export default function liveOutput(pi) {
+/**
+ * @param {import('@oh-my-pi/pi-coding-agent').ExtensionAPI} pi
+ * @param {{ independent?: boolean }} [options]
+ */
+export default function liveOutput(pi, { independent: independentOnly = false } = {}) {
+  if (typeof independentOnly !== 'boolean') throw new TypeError('independent must be a boolean');
+  if (independentOnly) processScope.independent = true;
   const completedMessages = new Set();
   const completedCalls = new Set();
   let stopped = false;

@@ -281,3 +281,30 @@ test('deregistered independent process never attempts default port after fresh m
     assert.equal(h.timers.size, 0);
   }
 });
+
+test('explicit independent factories never borrow the default port across registration races', () => {
+  for (const entries of [[], [entry(OTHER)], [entry(), { id: 'invalid' }],
+    [entry(ROOT, 8766)]]) {
+    const h = harness(entries), factory = h.load();
+    const main = h.binding(pi => factory(pi, { independent: true }));
+    main.emit('session_start');
+    assert.equal(h.servers.length, 0, 'missing or invalid registration must not bind');
+    h.configure([]);
+    h.tick();
+    main.emit('session_shutdown');
+    const replacement = h.binding(h.load());
+    replacement.emit('session_start');
+    assert.equal(h.servers.length, 0, 'independent classification must survive replacement');
+    h.configure([entry()]);
+    h.tick();
+    assert.deepEqual(h.servers.map(server => server.port), [18766]);
+    const response = h.connect();
+    replacement.emit('message_update', update('native independent output'));
+    assert.equal(h.decoded(response, 'text').at(-1).text, 'native independent output');
+    h.configure([entry(OTHER)]);
+    h.tick();
+    assert.equal(response.ended, true, 'changed root registration must close its old feed');
+    assert.equal(h.servers.some(server => server.port === 8766), false);
+    replacement.emit('session_shutdown');
+  }
+});
