@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E200 — exact GLM source reconstruction
+
+- Accepted `fn_117_E200`, `.text 0xE200..0xE208`: **8 code bytes**, **one initial candidate / one correction**. The initial machine-exact candidate used an incompatible callee declaration; the preserved correction agrees with the accepted `fn_117_9CEC` / `soModuleAccesser*` contract. Allocated code and the module-local `R_PPC_REL24` relocation match; the data-reference holder points to this function at `.data+0x210`.
+- Final source is **991 bytes**, Git blob `4f443ce764cdbc812fa4bd1c8e4f779dabd429a7`. Candidate object SHA-1 `fe3b71042e5577fe8a78b3c3e5c46900a656edfe` and target `878c9194dfdc2bd4ace08d265e772c7f48c06300` differ as whole objects. The complete accepted input set at `dc9bd278`, including E1F8, plus this unit passed **127 native checks**; Dedede REL and main DOL equal the originals. Both E1F8 and E200 are complete and source-linked. Gameplay was not exercised.
+- The final three-path staging patch actually applied to a private index at `2f344c781222508ea99b10e66d4a2f841386717a`, with exact stage-0 blobs and modes, including executable `configure.py`. Separate byte-level insertion assertions, saved dirty preimages, preview copies and live postimage checks prove preservation within both shared files. Actual MAIN materialization used guarded byte writes, not native working-file patch application; these checks are not a crash-safe transaction. The parent index hash stayed unchanged.
+- Evidence: `build/isolated-workers/GlmFreshDededeE200/evidence/`, including immutable `attempt-00/` and `attempt-01/`, `reconciled-record.md`, `own-only-patch-dc9bd278-reconciled.diff`, `final-private-index-application-dc9bd278.txt`, `02-native-127-dtk-check-dc9bd278.txt`, unit/link evidence, and `main-preimages-2f344c78/` plus `main-materialization/`. The pre-existing E1F8/E1F0 registration ordering was left unchanged; generated link order is address-sorted and verified.
+
 ## Committed-source checkpoint dc9bd278
 
 - Publisher verified committed snapshot `dc9bd2782bd32575afb614650880e6207dc5b4fc`: **2.978282%**, **471568 / 15833556 accepted code bytes**, **15361988 code bytes remaining**, **1397 accepted source units**. Delta versus `3a16364d`: **+8 code bytes / +1 accepted source unit**. Report SHA-256: `6acbe4c19db03485463da0779b4cdd9fd6cf06fec6d7ff57be45a5ca15a72b79`.
