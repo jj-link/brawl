@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E288 — reconstructed imported item-handler adjustment
+
+- Registered genuine C++ for `fn_117_E288`, `.text [0xE288,0xE290)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and tail-calls imported `fn_27_13BB54`; allocated text `3863ff3048000000` and the offset-4 `R_PPC_REL24` match the sliced target.
+- GLM owner GlmFreshDededeE288 recorded **1 initial candidate / 1 correction**; the correction replaced comment punctuation after a source-encoding diagnostic, with unchanged object bytes. Inherited counts remain **UNKNOWN**. Candidate SHA-1 `b9bebca7b91b98f6302a27aa85c683e4bf8d7271`, target SHA-1 `d836e0f9ce1627b9fe47780fb6b8de394005f553`.
+- Complete-input reconciliation includes accepted E268 and E280 at `529500a2`. Native configure/build and direct hash verification succeeded with **127 DOL/REL hashes passing**. Current link inputs and prelink/final maps select the E268, E280 and E288 reconstructed source objects. No gameplay execution was performed.
+- Grant `E288MainEd73` completed its two registration insertions and new LF source write before the PC restart. Recovery read the actual successful native command results and independently confirmed all three postimage hashes, unchanged HEAD and unchanged parent index. No patch was reapplied. Both registration files preserve unrelated contents; the source is 1830 LF bytes, canonical blob `4b35cbb46d6b10ba6e0cd9e600cad057273e9439`. Other-path status agreement alone is not a complete byte-preservation proof.
+- Evidence: `build/isolated-workers/GlmFreshDededeE288/evidence/materialization-ed73.md`, `own-change-529500a2.patch`, `recon-9bf-comparison.json`, `recon-9bf-shasum.log`, `linkage-529500a2.txt` and `raw-mirror/application-record.md`. Attempt drafts and prior verification remain retained; cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint 529500a2
 
 - Verified committed snapshot `529500a20fb3d1febf274c798fd38a6c4aec4567`: **2.978737% complete**, **471640 / 15833556 accepted code bytes**, **15361916 code bytes remaining**, **1406 accepted source units**. Delta from `9bf8c4a9`: **+8 code bytes, +1 source unit**.
