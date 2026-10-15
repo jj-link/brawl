@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1D8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1D8`, `.text 0xE1D8..0xE1E0`: **8 code bytes**, one initial candidate and **two measured revisions**. The initial machine-exact candidate omitted the callee's flag and pointer return from its C++ interface; disassembly-backed semantic review required both. The first revision emitted an extra conversion; the second preserves both arguments and the returned pointer while matching allocated code and the module-local `R_PPC_REL24` relocation to `fn_117_A218`. Whole target/candidate object hashes differ.
+- Final source Git blob: `3f7ac92d82146dbc901c4ee934ac547c6b60f99a`, 707 bytes. Removing an unused header after the measured revisions preserved candidate object SHA-1 `42d8806dd462e537881acf4a9b9fab70686968f1`; the cleaned source was compiled and compared again. Complete accepted input checkpoint `820e1c06` was rebuilt, with all **127 native outputs** passing, matching original Dedede REL/main DOL hashes, and E1D0/E1D8/E1E0/E1E8 source linkage retained. Gameplay was not exercised.
+- The corrected own-only publication patch actually applied to a fresh private index, proving exactly the three owned paths, expected blobs and baseline-preserving modes. An earlier artifact's unintended `configure.py` mode change was rejected and corrected before publication. The final MAIN grant changed only the owned source; actual shared-file bytes and the complete parent index remained unchanged.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1D8/evidence/attempts.json`, `attempt-chronology.md`, immutable measured drafts, `attempt-02/a218-interface-disasm.txt`, `final-source/`, `grant-820e1c06/`, and `materialization-820e1c06/own-reconcile-820e1c06.patch`.
+
 ## Committed-source checkpoint 6546e55b
 
 - Verified committed snapshot `6546e55b4fa568bcca6f801fa6399f1fc6f3312a`: **2.978131%**, **471544 / 15833556 accepted code bytes**, **15362012 code bytes remaining**, **1394 accepted source units**. Delta from `82cd52d9`: **+8 code bytes / +1 source unit**.
