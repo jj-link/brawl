@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 9195fdd6
+
+- Publisher verified committed snapshot `9195fdd66762286d1ce29dad8bdb4584dbf1c9d6`: **2.978333%**, **471576 / 15833556 accepted code bytes**, **15361980 code bytes remaining**, **1398 accepted source units**. Delta versus `dc9bd278`: **+8 code bytes / +1 accepted source unit**. Report SHA-256: `b96a76fd90d2510a5e0d0854662b574bc928aa746cc6f84a80b7f386b71380c4`.
+- Fresh fixed-commit report generation and the existing calculator passed, with **127 native hash checks** plus direct output SHA-1 comparisons, **1398 accepted source-link recipes**, **1397 prior source/object identities**, and **329 original/tool identities** verified. All **21 accepted Dedede units** are complete and singly source-linked, including E1F8. E200 reproduces the owner's allocated code, relocation and object identities; its source equals the immutable typed-contract correction. Unpublished E208/E210 and dirty MAIN changes are excluded.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/9195fdd6/`, including `report-published.json`, `committed-report.json`, native/calculator logs, binary/input/source-link checks, normalized registration identities, compiler recipes, the Dedede map and module/unit accounting. Registration blobs and checkout bytes are identical LF. Native children used hidden creation with captured output; gameplay was not exercised. Final local/public headline/history verification follows publication of this record.
+
 ## Dedede E1F8 — cleanup and checkpoint verification
 
 - Checkpoint `dc9bd278` was verified locally and publicly: source identity, counters, **5677 unit-map records**, **127 module totals/contributions**, and served/persisted history agree. Headline publication time `2026-10-15T02:30:57Z` matches documentation commit `2f344c781222508ea99b10e66d4a2f841386717a`; history records the separate observation at `2026-10-15T02:30:37.471Z` with 471568 accepted bytes. No stale/error/warning state was observed. Evidence: publisher `evidence/dc9bd278/final-publication-current.json` and endpoint/history snapshots.
