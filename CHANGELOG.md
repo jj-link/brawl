@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 529500a2
+
+- Verified committed snapshot `529500a20fb3d1febf274c798fd38a6c4aec4567`: **2.978737% complete**, **471640 / 15833556 accepted code bytes**, **15361916 code bytes remaining**, **1406 accepted source units**. Delta from `9bf8c4a9`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `31ec1ab4f106140cb49da8eb0465556e9bd46c961d7b0904dc3a13117dfdf579` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1406 accepted-source link recipes, 1405 prior source/object identities and 329 original/tool identities were validated; all 29 complete Dedede source units retain single map definitions.
+- E280's immutable source blob `920128947da224128b0da717d67d47539d8df1ac`, allocated text/relocation and candidate/target object identities reproduce the owner's comparison. The 1287-byte LF source and 1309-byte native CRLF representation are identified separately. Counts remain 1 failed initial compilation / 1 matched correction / inherited UNKNOWN. Rejected unrelated registration reorderings and non-repository EOL inference are excluded from the accepted result. Prior accepted units remain linked; the AI draft retains its original fallback and zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/529500a2/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E288/E290 are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment; the prior 9bf checkpoint's completed agreement remains in `evidence/9bf8c4a9/final-publication-current.json`.
+
 ## Dedede E280 — reconstructed imported-handler adjustment
 
 - Registered genuine C++ for `fn_117_E280`, `.text [0xE280,0xE288)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xD0` and tail-calls imported `fn_27_13BDCC`; allocated text `3863ff3048000000` and the offset-4 `R_PPC_REL24` match the original target.
