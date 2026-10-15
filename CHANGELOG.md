@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard startup — explicit root ownership and recoverable binding
+
+- Removed first-started-session ownership of the implicit observer port. Every root now requires explicit canonical registration; primary HTTP routing uses its pinned root's registered port and preserves upstream identity and registration-revocation checks.
+- A failed observer bind releases the failed listener and retries through the existing owner poll. The primary registration is excluded only from independent-panel enumeration, retaining validation of unrelated roots and avoiding a false warning.
+- The original wrong-root/default-port and sticky-bind cases failed before correction. Final verification passed **13 JavaScript observer tests** and **18 Python routing/consumer tests**. Fresh production source was exercised over real loopback HTTP in both root start orders and through actual `EADDRINUSE` recovery with the same factory.
+- Recovered root `01a13870-ca65-73cc-b1c4-26ebedff16e1` on registered port **18768**, preserving the other session on 8766 and trial root on 18767. Actual local 8765/public 8444 browser and SSE evidence shows all three retained GLM streams and no registration warning. Only the owned dashboard HTTP process was replaced; no OMP, worker or model restart occurred. Current observer recovery used its already-loaded registration support; the new module's cold-start behavior was verified separately, not falsely claimed hot-reloaded.
+- Evidence: `build/checkpoint-time-surface/reboot-recovery/` contains before/after checks, `fresh-source-http-startup-receipt.json`, `startup-reviewed-js-tests.txt`, `primary-consumer-tests.txt`, exact publication identities, actual relayed output, process ownership and local/public browser captures. Runtime registrations remain project-local configuration, not committed machine-specific settings.
+
 ## Committed-source checkpoint 1ce74085
 
 - Verified committed snapshot `1ce7408552ba023a41b0c6f34cbfbd2e16ceac5d`: **2.978788% complete**, **471648 / 15833556 accepted code bytes**, **15361908 code bytes remaining**, **1407 accepted source units**. Delta from `529500a2`: **+8 code bytes, +1 source unit**.

@@ -1,4 +1,4 @@
-"""Independent observer registration/routing without sockets or journal polling."""
+"""Explicit primary/independent observer routing without sockets or journal polling."""
 
 import io
 import json
@@ -31,7 +31,8 @@ class IndependentObserverTests(unittest.TestCase):
         watcher.parent_session_id = ROOT
         peer = Path("sessions/peer.jsonl")
         entry = registration() if entry is None else entry
-        config = json.dumps({"sessions": [entry]})
+        config = json.dumps({"sessions": [entry, registration(
+            id=ROOT, label="Reconstruction owner", observerPort=18768)]})
         info = {"id": PEER, "cwd": "."}
         config_patch = patch.object(j.Path, "read_text", return_value=config)
         header_patch = patch.object(watcher, "_peek", return_value=info)
@@ -71,9 +72,9 @@ class IndependentObserverTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 j.load_independent_roots(Path("config.json"))
 
-    def test_routing_uses_only_registered_loopback_and_preserves_default(self):
+    def test_routing_uses_registered_primary_and_independent_loopback_ports(self):
         watcher = self.watcher()
-        self.assertEqual(s._observer_route(watcher)["url"], s.OBSERVER_URL)
+        self.assertEqual(s._observer_route(watcher)["url"], "http://127.0.0.1:18768")
         self.assertEqual(s._observer_route(watcher, PEER)["url"], f"http://127.0.0.1:{PORT}")
         for root in (ROOT, OTHER, "", "http://example.invalid", "../sessions"):
             with self.subTest(root=root), self.assertRaises(s.ObserverRouteError):
@@ -215,6 +216,53 @@ class IndependentObserverTests(unittest.TestCase):
             self.assertEqual(watcher.independent_observers, {})
             with self.assertRaises(s.ObserverRouteError):
                 s._observer_route(watcher, PEER)
+
+    def test_primary_never_connects_to_unregistered_or_default_observer(self):
+        watcher = self.watcher()
+        for entries in ([], [registration()], [registration(id=ROOT, observerPort=8766)]):
+            with self.subTest(entries=entries), \
+                    patch.object(j.Path, "read_text", return_value=json.dumps({"sessions": entries})), \
+                    patch.object(s, "urlopen") as upstream:
+                with self.assertRaises(ValueError):
+                    s.observer_status(watcher)
+                upstream.assert_not_called()
+
+    def test_primary_status_validates_root_and_registered_port(self):
+        watcher = self.watcher()
+        for root in (ROOT, OTHER):
+            with self.subTest(root=root), patch.object(s, "urlopen", return_value=io.BytesIO(
+                    json.dumps({"rootSessionId": root, "connected": True}).encode())) as upstream:
+                if root == ROOT:
+                    self.assertTrue(s.observer_status(watcher)["connected"])
+                else:
+                    with self.assertRaises(ValueError):
+                        s.observer_status(watcher)
+                upstream.assert_called_once_with("http://127.0.0.1:18768/status", timeout=2)
+
+    def test_primary_registration_revocation_or_reassignment_stops_live_delta(self):
+        watcher = self.watcher()
+        route = s._observer_route(watcher)
+        for entries in ([], [registration(id=ROOT, observerPort=18769)]):
+            with self.subTest(entries=entries), patch.object(j.Path, "read_text",
+                    return_value=json.dumps({"sessions": entries})):
+                with self.assertRaises(ValueError):
+                    s._observer_frame(io.BytesIO(frame("text", {"agentId": ROOT, "text": "delta"})),
+                                      watcher, route=route)
+
+    def test_primary_registration_routes_without_an_independent_panel_or_warning(self):
+        watcher = self.watcher()
+        self.assertEqual(s._observer_route(watcher)["url"], "http://127.0.0.1:18768")
+        self.assertNotIn(ROOT, watcher.independent_observers)
+        self.assertEqual(list(watcher.independent_roots.values()), ["Independent Sol"])
+        self.assertNotIn("independent-roots", watcher.warnings)
+        # A registered child in the owning family remains an invalid peer.
+        child = Path("sessions/root/child.jsonl")
+        with patch.object(j.Path, "read_text", return_value=json.dumps({"sessions": [
+                registration(id=ROOT, observerPort=18768), registration(id=OTHER)]})), \
+                patch.object(watcher, "_peek", return_value={"id": OTHER, "cwd": "."}):
+            self.assertEqual(watcher._registered_roots([child], [child]), [])
+            self.assertIn(OTHER, watcher.warnings["independent-roots"])
+            self.assertNotIn(ROOT, watcher.warnings["independent-roots"])
 
 
 if __name__ == "__main__":

@@ -751,6 +751,10 @@ class JournalWatcher:
                 found.setdefault(sid, []).append(path)
         rejected = []
         for sid, registration in requested.items():
+            # The selected primary uses this registration for its own observer,
+            # not an additional independent panel.
+            if sid == self.parent_session_id:
+                continue
             matches = found.get(sid, [])
             if len(matches) != 1 or matches[0] in family:
                 rejected.append(sid)

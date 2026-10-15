@@ -67,7 +67,7 @@ from urllib.request import urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from journals import JournalWatcher  # noqa: E402
+from journals import JournalWatcher, load_independent_roots  # noqa: E402
 from progress import ProgressTracker  # noqa: E402
 from throughput import ThroughputTracker, load_config  # noqa: E402
 
@@ -82,10 +82,10 @@ STATIC_FILES = {
 }
 SSE_KEEPALIVE_SECONDS = 15.0
 MAX_WARNINGS = 12
-OBSERVER_URL = "http://127.0.0.1:8766"
 
-# build/live-dashboard/independent-roots.json opts in exact same-project journals:
-# {"sessions":[{"id":"<UUID>","label":"Independent Sol","observerPort":18766}]}
+# build/live-dashboard/independent-roots.json explicitly routes every root,
+# including --session-id's primary observer; unregistered roots bind nothing:
+# {"sessions":[{"id":"<UUID>","label":"Reconstruction owner","observerPort":18768}]}
 # observerPort is a unique integer 1..65535, excluding dashboard/default observer
 # ports 8765/8766; omitted ports retain explicitly recorded-history behavior.
 # Custom --independent-roots paths support recorded-only entries; observerPort
@@ -105,7 +105,16 @@ class ObserverRouteError(ValueError):
 
 def _observer_route(watcher, root=None):
     if root is None:
-        return {"url": OBSERVER_URL, "rootSessionId": watcher.session_label()}
+        expected = watcher.session_label()
+        try:
+            registration = load_independent_roots(watcher.default_independent_config).get(expected)
+        except (OSError, UnicodeError, ValueError) as exc:
+            raise ValueError(f"Primary observer registration unavailable: {exc}") from exc
+        if not registration or "observerPort" not in registration:
+            raise ValueError("Primary root requires an explicit observerPort in "
+                             "build/live-dashboard/independent-roots.json.")
+        return {"url": f"http://127.0.0.1:{registration['observerPort']}",
+                "rootSessionId": expected}
     try:
         registration = watcher.independent_observer(root)
     except ValueError as exc:

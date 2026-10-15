@@ -6,7 +6,8 @@ const { readFileSync } = require('node:fs');
 const { resolve } = require('node:path');
 const { fileURLToPath, pathToFileURL } = require('node:url');
 const { randomUUID } = require('node:crypto');
-const { EventEmitter } = require('node:events');
+const { EventEmitter, once } = require('node:events');
+const { createServer: createHttpServer } = require('node:http');
 const { createContext, runInContext } = require('node:vm');
 
 const ROOT = '00000000-0000-4000-8000-000000000001';
@@ -21,7 +22,7 @@ const source = readFileSync(filename, 'utf8')
   .replaceAll('import.meta.url', JSON.stringify(pathToFileURL(filename).href))
   .replace('export default function liveOutput', 'function liveOutput');
 
-function harness(entries = []) {
+function harness(entries = [], realPort = null) {
   const servers = [], timers = new Map(), changes = new Set(), lifecycle = new Set();
   let config = { sessions: entries };
   const headers = new Map();
@@ -33,7 +34,7 @@ function harness(entries = []) {
     onChange(callback) { changes.add(callback); return () => changes.delete(callback); } };
   const errors = [];
   const context = createContext({ Buffer, URL, resolve, fileURLToPath, randomUUID, MAIN_AGENT_ID: 'main',
-    AgentRegistry: { global: () => registry }, process: { pid: 123 },
+    AgentRegistry: { global: () => registry }, process: { pid: realPort ? process.pid : 123 },
     console: { error: value => errors.push(value) },
     openSync: file => { if (!headers.has(file)) throw new Error('unknown journal'); return file; },
     readSync: (file, buffer) => buffer.write(JSON.stringify(headers.get(file)) + '\n'),
@@ -42,10 +43,18 @@ function harness(entries = []) {
     setInterval(callback) { const timer = {}; timers.set(timer, callback); return timer; },
     clearInterval(timer) { timers.delete(timer); },
     createServer(handler) {
-      const server = new EventEmitter();
+      const server = realPort ? createHttpServer(handler) : new EventEmitter();
+      const listen = realPort ? server.listen.bind(server) : null;
+      const close = realPort ? server.close.bind(server) : null;
       server.handler = handler;
-      server.listen = (port, host) => { server.port = port; server.host = host; };
-      server.close = () => { server.closed = true; };
+      server.listen = (port, host) => {
+        server.port = port; server.host = host;
+        if (listen) {
+          assert.equal(port, realPort, 'HTTP fixture must never bind a production port');
+          return listen(port, host);
+        }
+      };
+      server.close = () => { server.closed = true; return close?.(); };
       servers.push(server);
       return server;
     },
@@ -91,14 +100,12 @@ const update = (text = 'immediate', type = 'text_delta') => ({
   assistantMessageEvent: { type, contentIndex: 0, delta: text },
 });
 
-test('default listener preserves child-only eligibility and immediate native updates', () => {
-  const h = harness();
+test('registered listener preserves native child eligibility and immediate updates', () => {
+  const h = harness([entry()]);
   const factory = h.load(), main = h.binding(factory);
   main.emit('session_start');
-  assert.equal(h.servers[0].port, 8766);
+  assert.equal(h.servers[0].port, 18766);
   const response = h.connect();
-  main.emit('message_update', update('not opted in'));
-  assert.equal(h.decoded(response, 'text').length, 0);
   const manager = { getSessionId: () => CHILD,
     getSessionFile: () => resolve(project, 'sessions/root/child.jsonl') };
   h.refs.set('child', { id: 'child', kind: 'sub', status: 'running', session: { sessionManager: manager } });
@@ -294,7 +301,7 @@ test('explicit independent factories never borrow the default port across regist
     main.emit('session_shutdown');
     const replacement = h.binding(h.load());
     replacement.emit('session_start');
-    assert.equal(h.servers.length, 0, 'independent classification must survive replacement');
+    assert.equal(h.servers.length, 0, 'missing registration must remain fail-closed after replacement');
     h.configure([entry()]);
     h.tick();
     assert.deepEqual(h.servers.map(server => server.port), [18766]);
@@ -306,5 +313,115 @@ test('explicit independent factories never borrow the default port across regist
     assert.equal(response.ended, true, 'changed root registration must close its old feed');
     assert.equal(h.servers.some(server => server.port === 8766), false);
     replacement.emit('session_shutdown');
+  }
+});
+
+test('only explicitly registered root identities select a listener', () => {
+  for (const id of [OTHER, ROOT]) {
+    const h = harness([entry(ROOT, 18768)]);
+    h.rootManager.id = id;
+    h.headers.set(h.rootManager.file, { type: 'session', id, cwd: project });
+    const main = h.binding(h.load());
+    main.emit('session_start');
+    assert.deepEqual(h.servers.map(server => server.port), id === ROOT ? [18768] : []);
+    main.emit('session_shutdown');
+  }
+});
+
+test('failed bind retries on the existing owner poll without restart or registration change', () => {
+  const h = harness([entry()]), main = h.binding(h.load());
+  main.emit('session_start');
+  const failed = h.servers[0];
+  failed.emit('error', Object.assign(new Error('occupied'), { code: 'EADDRINUSE' }));
+  h.tick();
+  assert.equal(failed.closed, true);
+  assert.equal(h.servers.length, 2);
+  assert.equal(h.servers[1].port, 18766);
+  const response = h.connect();
+  main.emit('message_update', update('recovered native output'));
+  assert.equal(h.decoded(response, 'text').at(-1).text, 'recovered native output');
+  failed.emit('error', new Error('late failure from retired listener'));
+  h.tick();
+  assert.equal(h.servers.length, 2);
+  main.emit('session_shutdown');
+});
+
+async function reservedHttpPort() {
+  const server = createHttpServer();
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  return server;
+}
+
+async function closeHttp(server) {
+  if (!server.listening) return;
+  await new Promise(resolve => server.close(resolve));
+}
+
+async function httpStatus(port) {
+  const response = await fetch(`http://127.0.0.1:${port}/status`, {
+    headers: { Connection: 'close' }, signal: AbortSignal.timeout(2000),
+  });
+  assert.equal(response.status, 200);
+  return response.json();
+}
+
+test('real HTTP cold startup preserves root ownership in both start orders', { timeout: 10000 }, async t => {
+  for (const order of [[OTHER, ROOT], [ROOT, OTHER]]) {
+    const reservation = await reservedHttpPort();
+    const port = reservation.address().port;
+    await closeHttp(reservation);
+    const roots = new Map();
+    for (const id of [ROOT, OTHER]) {
+      const h = harness([entry(ROOT, port)], port);
+      h.rootManager.id = id;
+      h.headers.set(h.rootManager.file, { type: 'session', id, cwd: project });
+      roots.set(id, { h, main: h.binding(h.load()) });
+    }
+    try {
+      for (const id of order) {
+        const { h, main } = roots.get(id);
+        main.emit('session_start');
+        if (id === ROOT) await once(h.servers[0], 'listening');
+        else assert.equal(h.servers.length, 0);
+      }
+      const status = await httpStatus(port);
+      assert.equal(status.rootSessionId, ROOT);
+      assert.equal(status.pid, process.pid);
+      assert.equal(status.connected, true);
+      assert.equal(roots.get(ROOT).h.servers.length, 1);
+      t.diagnostic(JSON.stringify({ fixture: 'cold-start', order, port, status }));
+    } finally {
+      for (const { h, main } of roots.values()) {
+        main.emit('session_shutdown');
+        for (const server of h.servers) server.closeAllConnections();
+      }
+    }
+  }
+});
+
+test('real HTTP occupied registered port recovers with the same factory and owner poll', { timeout: 10000 }, async t => {
+  const blocker = await reservedHttpPort();
+  const port = blocker.address().port;
+  const h = harness([entry(ROOT, port)], port), main = h.binding(h.load());
+  try {
+    main.emit('session_start');
+    const [error] = await once(h.servers[0], 'error');
+    assert.equal(error.code, 'EADDRINUSE');
+    assert.equal(h.servers[0].closed, true);
+    await closeHttp(blocker);
+    h.tick(); // The existing managed owner poll; no factory reload or root change.
+    await once(h.servers[1], 'listening');
+    const status = await httpStatus(port);
+    assert.equal(status.rootSessionId, ROOT);
+    assert.equal(status.pid, process.pid);
+    assert.equal(h.servers.length, 2);
+    assert.equal(h.changes.size, 1);
+    t.diagnostic(JSON.stringify({ fixture: 'occupied-port-recovery', port,
+      initialError: error.code, factories: 1, ownerPolls: 1, status }));
+  } finally {
+    main.emit('session_shutdown');
+    for (const server of h.servers) server.closeAllConnections();
+    await closeHttp(blocker);
   }
 });

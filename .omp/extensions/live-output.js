@@ -1,19 +1,17 @@
 /* Read-only omp session-output observer.
  * Native discovery/rebinding loads factories for main and child sessions.
- * Default: loopback 8766, observing children only. Explicit same-project roots
+ * Every root must explicitly register a unique loopback port; no first-started
+ * session may claim a shared default. Same-project roots
  * opt in via build/live-dashboard/independent-roots.json:
  * {"sessions":[{"id":"<root UUID>","label":"Independent Sol","observerPort":18766}]}
  * A dedicated observerPort (1..65535, excluding 8765/8766) includes that main's
  * native message/tool updates; no provider hooks, credentials or journal replay.
  * Config/root changes close old SSE clients before rebinding. Module/factory
  * replacement releases listeners, registry subscriptions and managed timers.
- * Independent-process classification survives module replacement and shutdown:
- * removing its registration never authorizes borrowing the default 8766 port.
- * Native adapters must call liveOutput(pi, { independent: true }) before
- * forwarding session_start for an explicitly independent root. This permanently
- * disables default-port fallback in that process even if registration vanishes
- * between adapter precheck and observer reread. Missing/invalid registrations
- * bind nothing; factory return is not listener readiness. Require /status with
+ * Native adapters may pass { independent: true }; every factory now requires
+ * registration, regardless of that option or earlier module ownership.
+ * Removing or invalidating registration binds nothing, including after module
+ * replacement. Factory return is not listener readiness. Require /status with
  * the expected root UUID and owning PID on the expected registered port.
  * Source edits require actual extension reload/rebinding, not settings toggles;
  * Windows Bun's same-path module cache may prevent reload from rereading code.
@@ -29,9 +27,6 @@ const DEFAULT_PORT = 8766;
 const PROJECT_ROOT = resolve(fileURLToPath(new URL('../../', import.meta.url)));
 const REGISTRATION_FILE = resolve(PROJECT_ROOT, 'build/live-dashboard/independent-roots.json');
 const OWNER_KEY = Symbol.for(`brawl.live-output:${PROJECT_ROOT.toLowerCase()}`);
-const PROCESS_SCOPE_KEY = Symbol.for(`brawl.live-output:process:${PROJECT_ROOT.toLowerCase()}`);
-// This process-wide classification deliberately outlives listener ownership.
-const processScope = globalThis[PROCESS_SCOPE_KEY] ||= { independent: false };
 const moduleToken = {};
 const bindingCleanups = new Set();
 let moduleActive = true;
@@ -204,9 +199,7 @@ function bindRoot(ctx) {
   let registration, nextPort;
   try {
     registration = rootRegistration(ctx);
-    if (registration) processScope.independent = true;
-    nextPort = registration?.observerPort ??
-      (processScope.independent ? null : DEFAULT_PORT);
+    nextPort = registration?.observerPort ?? null;
   } catch (error) {
     nextPort = null; // Invalid opt-in must never bind the default runner's port.
     console.error(`[live-output] independent registration unavailable: ${error.message}`);
@@ -217,6 +210,7 @@ function bindRoot(ctx) {
   if (!changed) {
     rootSessionFile = ctx.sessionManager.getSessionFile() || null;
     refreshMembership();
+    ensureServer();
     return;
   }
   // End old sockets before selecting a new root/port; no delta can cross roots.
@@ -416,7 +410,7 @@ function publish(agent, item) {
 }
 
 function ensureServer() {
-  if (server || failure || !port || !moduleActive) return;
+  if (server || !port || !moduleActive) return;
   const listeningPort = port;
   const listener = createServer((request, response) => {
     // A switch may precede its extension event. Never serve stale-root data.
@@ -450,7 +444,9 @@ function ensureServer() {
   listener.on('error', error => {
     if (server !== listener) return; // A retired listener cannot poison its replacement.
     failure = error.code || error.message;
-    // Fail visibly rather than attach to another process or fabricate a feed.
+    server = undefined;
+    listener.close();
+    // Keep the error visible, but let the existing owner poll retry this port.
     console.error(`[live-output] observer listener failed: ${failure}`);
     for (const client of clients) client.response.destroy();
     clients.clear();
@@ -464,7 +460,6 @@ function ensureServer() {
  */
 export default function liveOutput(pi, { independent: independentOnly = false } = {}) {
   if (typeof independentOnly !== 'boolean') throw new TypeError('independent must be a boolean');
-  if (independentOnly) processScope.independent = true;
   const completedMessages = new Set();
   const completedCalls = new Set();
   let stopped = false;
