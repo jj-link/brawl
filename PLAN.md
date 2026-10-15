@@ -20,7 +20,7 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 
 ### Authorized Prefect–OMP evaluation
 
-Run `tools/orchestration_eval` only from the detached evaluation worktree at `build/isolated-workers/PrefectOmpEvaluation`. Its native-Windows commands use project-owned storage under that worktree's `build/orchestration-eval/`; the parent checkout, reconstruction processes, dashboard, and shared Git configuration remain outside its mutation boundary. The tested interfaces are Python 3.13, Prefect 3.8.8, and OMP 18.10.1.
+The published control-session and Git-fixture commands below run from the detached evaluation worktree at `build/isolated-workers/PrefectOmpEvaluation`. Its native-Windows commands use project-owned storage under that worktree's `build/orchestration-eval/`; the parent checkout, reconstruction processes, dashboard, and shared Git configuration remain outside that evaluation's mutation boundary. The tested interfaces are Python 3.13, Prefect 3.8.8, and OMP 18.10.1. The separately authorized real-function trial below has its own fresh implementation workspace and explicit production boundaries; the existing control-only commands are not already a real-function trial interface.
 
 The user requires maximizing both productive throughput and consistent behavior of the agents and the orchestration process. Evaluate both goals together:
 
@@ -61,6 +61,39 @@ Initial fixture Git setup and initial source/probe/expected-file materialization
 Publication review and materialization bind the exact repository, remote, branch, and complete request identity. Each branch update or push requires its own durable admission, ordered with STOP. An already-admitted effect may finish after STOP; its actual outcome remains recordable and recoverable, but a later mutation needs a fresh authorization check. Observation-only recovery does not restore invalidated verification or authorize new work. This ref/push boundary is not a crash-atomic transaction covering private index and unreferenced-object preparation.
 
 The exercise deliberately submits a launch after STOP; that individual Prefect task reports `PolicyError`. Overall success requires the real flow to reach `COMPLETED`, `acceptance.json` to record `success: true` and `all_owned_processes_exited: true`, and final authorization to remain `STOPPED`.
+
+### Authorized four-Qwen real-function trial
+
+The user authorized preparation now, followed by **four concurrent Qwen3.8-Flash-Next Spark1 reconstruction owners** once execution and dashboard prerequisites are verified. This is a bounded eight-assignment trial, not a replacement for the existing orchestrator and not a single-agent stage.
+
+- Reserve the fresh detached engineering worktree `build/isolated-workers/PrefectOmpRealFunctionTrial` at `d0d182fcfc11d69fcf72c2e8fcc6dd709a93658f` for the trial coordinator's fresh engineering owners. Extend `tools/orchestration_eval/` privately and retain project-local execution/timing evidence. The previous `PrefectOmpEvaluation` workspace, immutable packets and failed/successful receipts remain retained and unchanged.
+- Each reconstruction assignment gets a fresh owner and its own detached linked worktree/private index. The same owner retains that one function through reconciliation, publication acknowledgment and evidence-preserving cleanup. Refill each completed slot independently from the four queued assignments; do not wait for a four-owner publication or cleanup batch.
+- Execution uses **four owned native RPC root processes**, each with **zero root-provider prompts and one genuine native Qwen task child**. Retain each root and its owned job through that same child's review, reconciliation, push acknowledgment, cleanup and verified close; replace that slot independently for its queued function. Use the native `getToolForEvalBridge` task/write APIs so native agent ownership is preserved, not a custom provider client.
+- The narrow journal exception permits only these exact trial-owned native roots and children to create fresh journals in the standard OMP session store, with each root journal header's `cwd` equal to the original MAIN project path. Record actual native UUIDs and journal paths in the ownership ledger. Do not adopt foreign journals or edit global configuration. All other generated data and environment remain private/project-owned; reconstruction file operations still target the assigned absolute worktree, not MAIN.
+- Load the original-project observer only after registering each actual root UUID with its unique port. Each genuine child must inherit the observer factory, native AgentRegistry ownership and actual journal ancestry. A job-local journal store is not dashboard-discoverable; separately launched roots require separate registrations/ports and must not be represented as children.
+- The original production Qwen roles remain paused; these four explicitly authorized trial slots are separate. Existing three-GLM production ownership and the retained SolPublisherDB04 role continue. Recheck competing Spark1 usage before launch. No service/model reconfiguration or automatic model escalation is authorized.
+- The original orchestrator retains MAIN grants, the parent index, docs, commit/push and source/dashboard publication. Trial owners request exact scoped materialization grants and return canonical evidence; the trial does not gain shared Git ref or parent-index authority. Independent private implementation and verification do not wait for a shared-file publication window.
+
+All eight reserved targets are module 117 `ft_dedede`, each **8 original code bytes**. Each owns its named source under `src/mo_fighter/ft_dedede/` plus only its registration insertions in `configure.py` and `config/RSBE01_02/rels/ft_dedede/splits.txt`:
+
+| Queue | Symbol | `.text` interval | Source file | Worktree under `build/isolated-workers/` |
+|---|---|---|---|---|
+| Initial 1 | `fn_117_E228` | `[0xE228,0xE230)` | `ft_dedede_function_e228.cpp` | `QwenTrialE228` |
+| Initial 2 | `fn_117_E230` | `[0xE230,0xE238)` | `ft_dedede_function_e230.cpp` | `QwenTrialE230` |
+| Initial 3 | `fn_117_E238` | `[0xE238,0xE240)` | `ft_dedede_function_e238.cpp` | `QwenTrialE238` |
+| Initial 4 | `fn_117_E240` | `[0xE240,0xE248)` | `ft_dedede_function_e240.cpp` | `QwenTrialE240` |
+| Refill 1 | `fn_117_E248` | `[0xE248,0xE250)` | `ft_dedede_function_e248.cpp` | `QwenTrialE248` |
+| Refill 2 | `fn_117_E250` | `[0xE250,0xE258)` | `ft_dedede_function_e250.cpp` | `QwenTrialE250` |
+| Refill 3 | `fn_117_E258` | `[0xE258,0xE260)` | `ft_dedede_function_e258.cpp` | `QwenTrialE258` |
+| Refill 4 | `fn_117_E260` | `[0xE260,0xE268)` | `ft_dedede_function_e260.cpp` | `QwenTrialE260` |
+
+These reservations exclude production E210/E218/E220 and the independent Astra owner's module-27 `fn_27_1F38E4` with its declared target-local jump tables. Each dispatch carries the full baseline, current canonical instruction revision, recipe/input/evidence/history pointers and recovered per-model initial/correction counts. Missing history remains explicitly unknown; related E208 evidence is not an E228–E260 attempt or a substitute for recovering those targets' own history.
+
+Before launching the four real assignments, verify the actual native trial execution/ownership/STOP path and **live root plus genuine child-agent streams for the trial's independent roots in the existing dashboard**. Recorded root history, mocked events or merely implemented relay code do not satisfy the live-stream gate. Preserve the original dashboard root and observer on port 8766. Unsupported plugin reloads, session switching and unapproved process restarts are not activation methods. Start all four initial owners concurrently after these prerequisites pass; do not insert a single-owner real-assignment stage.
+
+Instrument the whole lifecycle: admission, eligible slot/start, candidate measurements, review-ready, parent waits, MAIN grant/materialization, source commit/push, publication acknowledgment, cleanup/closure and independent refill. Report eligible idle-slot time, parent-blocked time, manual interventions, accepted work/hour, actual instruction/ownership violations and recovery. Keep setup/packaging work and unaccepted attempts separate from accepted output; use equivalent workload and verification criteria when comparing throughput.
+
+Stop dispatch after this eight-assignment queue, or earlier on the user's STOP. Preserve every measured attempt and best work. A nonmatching Qwen stage that reaches the canonical ten-correction limit follows the existing nonmatching publication/handoff rules with its original-code fallback and retained evidence; this trial does not activate another model stage.
 
 ## Work ownership
 
