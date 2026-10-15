@@ -142,7 +142,8 @@ class HeadlineCheckpointTests(unittest.TestCase):
                   "acceptedUnits": 1379, "checkpointCommit": NEW_COMMIT,
                   "checkpointTitle": "Committed-source checkpoint cdda4dc3",
                   "timestampMeaning": "recorded checkpoint date (day precision)"}]
-        with patch.object(progress, "read_checkpoint_history", return_value=(dated, None)) as reader:
+        with patch.object(progress, "read_checkpoint_history", return_value=(dated, None)) as reader, \
+                patch.object(progress, "read_checkpoint_publication", return_value=(dated[0], None)):
             tracker._refresh_checkpoint()
             original_observations = list(tracker._history)
             tracker._changelog_fingerprint.return_value = "malformed-input"
@@ -162,7 +163,8 @@ class HeadlineCheckpointTests(unittest.TestCase):
         self.assertIn("lacks complete counts", warnings[0])
         tracker._changelog_fingerprint.return_value = "corrected-input"
         tracker.changelog_path.read_text.return_value = ORDINARY_DCD4 + checkpoint()
-        with patch.object(progress, "read_checkpoint_history", return_value=(dated, None)):
+        with patch.object(progress, "read_checkpoint_history", return_value=(dated, None)), \
+                patch.object(progress, "read_checkpoint_publication", return_value=(dated[0], None)):
             tracker._refresh_checkpoint()
         self.assertFalse(tracker.state_parts()[0]["lastGood"])
         self.assertEqual(tracker.state_parts()[4], [])
@@ -230,7 +232,7 @@ class CheckpointTimestampTests(unittest.TestCase):
             cached, _, _, _, warnings = tracker.state_parts()
             self.assertEqual(cached["updatedAt"], original["updatedAt"])
             self.assertEqual(cached["timestampMeaning"], original["timestampMeaning"])
-            self.assertIn("Git publication dates unavailable", warnings[0])
+            self.assertEqual(warnings, [])  # Cached published identities require no Git lookup.
             # Same title and byte count do not establish the same checkpoint:
             # either a different snapshot or different unit count invalidates its cache.
             for newest in (checkpoint(commit="f" * 40), checkpoint(units=1380)):
@@ -238,6 +240,75 @@ class CheckpointTimestampTests(unittest.TestCase):
                 tracker.changelog_path.read_text.return_value = newest + text
                 tracker._refresh_checkpoint()
                 self.assertIsNone(tracker.state_parts()[0]["updatedAt"])
+
+
+class CheckpointPublicationTimeoutTests(unittest.TestCase):
+    def test_new_headline_and_observation_publish_before_history_timeout(self):
+        tracker = memory_tracker(previous_checkpoint())
+        with patch.object(history.subprocess, "run", return_value=published_blame(previous_checkpoint())):
+            tracker._refresh_checkpoint()
+        text = checkpoint() + previous_checkpoint() + checkpoint(
+            "Committed-source checkpoint ancient", 471408, 1377, "1" * 40)
+        tracker.changelog_path.read_text.return_value = text
+        tracker._changelog_fingerprint.return_value = "new-publication"
+        calls = []
+
+        def slow_history(command, **kwargs):
+            selected, _, _, chart, _ = tracker.state_parts()
+            self.assertEqual((selected["commit"], selected["acceptedBytes"]), (NEW_COMMIT, 471424))
+            self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+            calls.append(command)
+            if len(calls) == 1:
+                # Even a slow selected-record lookup cannot retain old counters
+                # or borrow the predecessor's publication date.
+                self.assertIsNone(selected["updatedAt"])
+                return published_blame(text, timestamp=1792023178)
+            self.assertEqual(selected["updatedAt"], "2026-10-15T00:12:58Z")
+            raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+        with patch.object(history.subprocess, "run", side_effect=slow_history):
+            tracker._refresh_checkpoint()
+        self.assertEqual(len(calls), 2)
+        selected, _, _, chart, warnings = tracker.state_parts()
+        self.assertEqual(selected["commit"], NEW_COMMIT)
+        self.assertEqual(selected["updatedAt"], "2026-10-15T00:12:58Z")
+        self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+        self.assertIn("TimeoutExpired", warnings[0])
+
+    def test_selected_timeout_keeps_new_counters_and_recovers_without_file_change(self):
+        tracker = memory_tracker(previous_checkpoint())
+        with patch.object(history.subprocess, "run", return_value=published_blame(previous_checkpoint())):
+            tracker._refresh_checkpoint()
+        text = checkpoint() + previous_checkpoint()
+        tracker.changelog_path.read_text.return_value = text
+        tracker._changelog_fingerprint.return_value = "new-publication"
+        with patch.object(history.subprocess, "run",
+                          side_effect=subprocess.TimeoutExpired("git blame", 3)):
+            tracker._refresh_checkpoint()
+        selected, _, _, chart, warnings = tracker.state_parts()
+        self.assertEqual((selected["commit"], selected["acceptedBytes"]), (NEW_COMMIT, 471424))
+        self.assertIsNone(selected["updatedAt"])
+        self.assertIsNone(selected["ageSeconds"])
+        self.assertIn("unknown", selected["timestampMeaning"])
+        self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+        self.assertIn("TimeoutExpired", warnings[0])
+        with patch.object(history.subprocess, "run", return_value=published_blame(text, timestamp=1792023178)):
+            tracker._refresh_checkpoint()
+        selected, _, _, _, warnings = tracker.state_parts()
+        self.assertEqual(selected["updatedAt"], "2026-10-15T00:12:58Z")
+        self.assertEqual(warnings, [])
+
+    def test_history_can_recover_selected_date_in_same_refresh(self):
+        text = checkpoint()
+        tracker = memory_tracker(text)
+        with patch.object(history.subprocess, "run", side_effect=[
+                subprocess.TimeoutExpired("git blame", 3),
+                published_blame(text, timestamp=1792023178)]):
+            tracker._refresh_checkpoint()
+        selected, _, _, _, warnings = tracker.state_parts()
+        self.assertEqual(selected["commit"], NEW_COMMIT)
+        self.assertEqual(selected["updatedAt"], "2026-10-15T00:12:58Z")
+        self.assertEqual(warnings, [])
 
 
 class RealGitCheckpointTimestampTests(unittest.TestCase):
@@ -329,6 +400,29 @@ class RealGitCheckpointTimestampTests(unittest.TestCase):
         self.assertEqual(selected["timestampMeaning"], "Git publication time, not verification time")
         with patch.object(history.subprocess, "run", side_effect=OSError("Git unavailable")):
             observe("cached publication while Git unavailable", "2026-10-14T14:00:00Z", "e" * 40)
+        # Exercise real selected-record Git dating while historical dating hits
+        # the observed timeout. The current headline must already be available.
+        cold = progress.ProgressTracker(report, root, root / "cold-observations.json")
+        run_git = subprocess.run
+        timed_out = []
+
+        def interrupted_backfill(command, **kwargs):
+            if "blame" in command and kwargs.get("timeout") == 30:
+                headline = cold.state_parts()[0]
+                self.assertEqual(headline["commit"], "e" * 40)
+                self.assertEqual(headline["updatedAt"], "2026-10-14T14:00:00Z")
+                timed_out.append(True)
+                raise subprocess.TimeoutExpired(command, 30)
+            return run_git(command, **kwargs)
+
+        with patch.object(history.subprocess, "run", side_effect=interrupted_backfill):
+            cold.refresh()
+        headline, _, _, chart, warnings = cold.state_parts()
+        self.assertTrue(timed_out)
+        self.assertEqual(headline["commit"], "e" * 40)
+        self.assertEqual(headline["updatedAt"], "2026-10-14T14:00:00Z")
+        self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+        self.assertIn("TimeoutExpired", warnings[0])
 
 
 class CheckpointHistoryTests(unittest.TestCase):
@@ -387,7 +481,7 @@ class CheckpointHistoryTests(unittest.TestCase):
             points, warning = history.read_checkpoint_history("unused", text, 100, [cached])
         self.assertEqual([point["at"] for point in points], ["2026-10-01", cached["at"]])
         self.assertEqual(points[1], cached)
-        self.assertIn("Git publication dates unavailable", warning)
+        self.assertIsNone(warning)
 
     def test_git_publication_provenance_still_uses_actual_accounting_line(self):
         text = checkpoint()

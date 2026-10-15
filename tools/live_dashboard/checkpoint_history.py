@@ -123,20 +123,44 @@ def _candidates(text, expected_total):
 
 def read_checkpoint_history(root, text, expected_total, cached_points=()):
     """Return document-ordered dated points and a dating warning; never mutate Git."""
-    candidates = _candidates(text, expected_total)
-    if not candidates:
-        return [], None
+    return _date_candidates(root, text, _candidates(text, expected_total), cached_points)
+
+
+def checkpoint_point(points, checkpoint):
+    """Match a headline to its own record, never merely to equal byte counts."""
+    identity = _identity(dict(checkpoint, checkpointCommit=checkpoint["commit"]))
+    return next((point for point in points if _identity(point) == identity), None)
+
+
+def read_checkpoint_publication(root, text, checkpoint, cached_points=()):
+    """Date the selected record without waiting for unrelated historical records."""
+    candidate = checkpoint_point(_candidates(text, checkpoint["totalBytes"]), checkpoint)
+    if candidate is None:
+        return None, None
+    points, warning = _date_candidates(root, text, [candidate], cached_points, timeout=3)
+    return (points[0] if points else None), warning
+
+
+def _date_candidates(root, text, candidates, cached_points, timeout=30):
     cached = {}
     for point in cached_points:
         cached.setdefault(_identity(point), point)
+    # Published identities are immutable. Only undated identities need Git;
+    # unrelated prose/file touches must not re-blame the entire document.
+    pending = [point for point in candidates
+               if not point["recorded"] and _identity(point) not in cached]
     dates = {}
     git_error = None
-    if any(not point["recorded"] for point in candidates):
+    if pending:
+        lines = sorted({line for point in pending
+                        for line in [point["line"], *point["identityLines"]]})
+        ranges = [argument for line in lines for argument in ("-L", f"{line},{line}")]
         try:
             result = subprocess.run(
-                ["git", "blame", "-w", "-C", "--line-porcelain", "--contents", "-", "--", "CHANGELOG.md"],
+                ["git", "blame", "-w", "-C", "--line-porcelain", *ranges,
+                 "--contents", "-", "--", "CHANGELOG.md"],
                 cwd=root, input=text, text=True, encoding="utf-8", errors="replace",
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30, check=True,
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout, check=True,
             )
             commit = None
             line_number = None
@@ -157,14 +181,15 @@ def read_checkpoint_history(root, text, expected_total, cached_points=()):
     undated = 0
     for candidate in candidates:
         recorded = candidate["recorded"]
+        previous = cached.get(_identity(candidate))
+        if not recorded and previous is not None:
+            points.append(previous)
+            continue
         publications = [dates.get(line) for line in [candidate["line"], *candidate["identityLines"]]]
         publication = (max(publications, key=lambda item: item[1])
                        if all(publications) else None)
         if not recorded and not publication:
             undated += 1
-            previous = cached.get(_identity(candidate))
-            if previous is not None:
-                points.append(previous)
             continue
         point = {
             "at": recorded[0] if recorded else publication[1],

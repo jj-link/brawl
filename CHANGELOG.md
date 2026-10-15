@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard checkpoint publication — bounded Git dating
+
+- Corrected a live regression where full-history Git dating timed out before publishing already-parsed checkpoint `a51acc69`, leaving the previous headline/history visible despite the new report. Valid checkpoint counters now publish independently of Git dating and historical backfill. Selected-record dating queries only its accounting/identity lines, reuses identity-bound cached dates and can recover after a failed lookup without another file edit; an undated new checkpoint never borrows its predecessor's date.
+- The exact own-only publication postimages passed **54 tests**. Real repository smoke advanced `6546e55b` to `a51acc69` while injecting historical `TimeoutExpired`: current counters and publication time `2026-10-15T00:12:58Z` were visible before backfill returned, latest history was 471552 bytes, and the unit map was not stale. An unrelated edit preserved that time. An unmodified-repository cold refresh completed in 1.998 seconds with the correct checkpoint, 1395 accepted units and no warnings.
+- Evidence: `build/checkpoint-publication-time/timeout-patch-validation.json`, `timeout-publication-tests.txt` and `timeout-live-smoke.json`. Existing unrelated progress/contribution edits were excluded from the validated patch and preserved; layout, source selection and accounting contracts were unchanged.
+
 ## Dedede E1D8 — retained evidence and owner closure
 
 - Cleanup was limited to **14 scratch files / 49946 bytes**: each was first preserved under `evidence/scratch-preserved/`, then individually removed after its pre-deletion manifest size/SHA-256 check. All 14 removals succeeded; the emptied scratch directory was removed. No tracked files, shared links, MAIN files or worktree registrations were removed.

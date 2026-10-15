@@ -28,7 +28,10 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from checkpoint_history import checkpoint_commit, is_checkpoint_section, read_checkpoint_history
+from checkpoint_history import (
+    checkpoint_commit, checkpoint_point, is_checkpoint_section,
+    read_checkpoint_history, read_checkpoint_publication,
+)
 
 HISTORY_MAX_POINTS = 5000
 HISTORY_SERVE_POINTS = 1000
@@ -258,25 +261,43 @@ class ProgressTracker:
                     self._checkpoint = dict(self._checkpoint, lastGood=True)
                 self._select_progress()
             return
-        history, history_warning = read_checkpoint_history(
-            self.root, text, checkpoint["totalBytes"], cached_points=self._checkpoint_history)
-        dated = next((point for point in history
-                      if point["checkpointTitle"] == checkpoint["checkpointTitle"]
-                      and point["acceptedBytes"] == checkpoint["acceptedBytes"]
-                      and point.get("totalBytes") == checkpoint["totalBytes"]
-                      and point.get("acceptedUnits") == checkpoint["acceptedUnits"]
-                      and point.get("checkpointCommit") == checkpoint["commit"]), None)
-        if dated is not None:
-            checkpoint.update(updatedAt=dated["at"], timestampMeaning=dated["timestampMeaning"])
         with self._lock:
-            self._changelog_fp = fp
+            previous = self._checkpoint
+            if previous and all(previous.get(key) == checkpoint.get(key) for key in (
+                    "checkpointTitle", "commit", "acceptedBytes", "totalBytes", "acceptedUnits")):
+                checkpoint.update(updatedAt=previous["updatedAt"],
+                                  timestampMeaning=previous["timestampMeaning"])
+            # Publish parsed counters now, even if Git dating/backfill is slow.
+            # A new identity remains explicitly undated, never dated by its predecessor.
+            self._checkpoint = checkpoint
+            self._warnings.pop("changelog", None)
+            self._select_progress()
+        dated, publication_warning = read_checkpoint_publication(
+            self.root, text, checkpoint, cached_points=self._checkpoint_history)
+        if dated is not None:
+            checkpoint = dict(checkpoint, updatedAt=dated["at"], timestampMeaning=dated["timestampMeaning"])
+        with self._lock:
+            self._checkpoint = checkpoint
+            self._select_progress()
+        cached = ([dated] if dated is not None else []) + self._checkpoint_history
+        history, history_warning = read_checkpoint_history(
+            self.root, text, checkpoint["totalBytes"], cached_points=cached)
+        if dated is None:
+            dated = checkpoint_point(history, checkpoint)
+            if dated is not None:
+                checkpoint = dict(checkpoint, updatedAt=dated["at"], timestampMeaning=dated["timestampMeaning"])
+                publication_warning = None
+        with self._lock:
+            # A failed selected-record lookup is not a completed fingerprint:
+            # recover its date on the next refresh even if the file is unchanged.
+            self._changelog_fp = None if publication_warning and dated is None else fp
             self._checkpoint = checkpoint
             self._warnings.pop("changelog", None)
             # The reader restores cached dates in current document order so a
             # partial Git failure cannot change equal-time checkpoint priority.
             self._checkpoint_history = history
-            if history_warning:
-                self._warnings["history"] = history_warning
+            if history_warning or publication_warning:
+                self._warnings["history"] = history_warning or publication_warning
             else:
                 self._warnings.pop("history", None)
             self._select_progress()
