@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 8af35370
+
+- Verified committed snapshot `8af353705e822bc93459d1168855c27b3d7e7ef9`: **2.978889% complete**, **471664 / 15833556 accepted code bytes**, **15361892 code bytes remaining**, **1409 accepted source units**. Delta from `4b9ae620`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `83e515e522ff894e751f8b17748d68fa76247bffd7d6a24125f5bace08dfd11b` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1409 accepted-source link recipes, 1408 prior source/object identities and 329 original/tool identities were validated; all 32 complete Dedede source units retain single map definitions.
+- E2A0's immutable source blob `3eed4a4cf3ed5df613edf4f914fc832774c37232`, allocated text/relocation and candidate/target object identities reproduce the owner's comparison. The 1506-byte LF draft and 1534-byte native CRLF representation are recorded separately. Counts remain 1 initial / 0 corrections / inherited UNKNOWN. E288/E290 and prior accepted units remain source-linked; E298/E2A8 retain original fallbacks, and the AI draft retains zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/8af35370/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E298/E2A8/trial work are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment.
+
 ## Dedede E2A0 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E2A0`, `.text [0xE2A0,0xE2A8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards the item, index and result pointer to imported `fn_27_13B5AC`.
