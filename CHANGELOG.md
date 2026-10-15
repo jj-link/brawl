@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d962e20e
+
+- Verified committed snapshot `d962e20ec11a69f9322d9c8794969cc70f6e2ccc`: **2.978939% complete**, **471672 / 15833556 accepted code bytes**, **15361884 code bytes remaining**, **1410 accepted source units**. Delta from `8af35370`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `7cd142ecf59499de0883a3c638e5217f4f9473475c50b701fff5efe77b0fda81` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1410 accepted-source link recipes, 1409 prior source/object identities and 329 original/tool identities were validated; all 33 complete Dedede source units retain single map definitions.
+- E298 source blob `c2510242c8ccb15f3ca672ad97f52e4a60bd1c69`, allocated text/relocation and candidate/target identities reproduce the owner's comparison. Its 1016-byte LF draft and 1034-byte native CRLF representation remain separately recorded; counts remain 1 initial / 0 corrections / inherited UNKNOWN. Prior accepted units remain source-linked, E2A8/E2B0 remain unaccepted, and the AI draft retains original fallback and zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/d962e20e/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished trial work are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment.
+
 ## Dedede E298 — reconstructed imported object adjustment
 
 - Registered genuine C++ for `fn_117_E298`, `.text [0xE298,0xE2A0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and calls imported `fn_27_13B96C`.
