@@ -79,6 +79,11 @@ class SlotPolicy:
             return self.astra_capacity
         return {Stage.SOL: 8, Stage.GLM: 2, Stage.QWEN: 3}[stage]
 
+    @classmethod
+    def real_trial(cls) -> "SlotPolicy":
+        """Explicit, isolated four-Qwen policy; never a change to production slots."""
+        return cls(overrides={"qwen": 4, "glm": 0, "sol": 0, "astra": 0})
+
     def as_dict(self) -> dict:
         return {"sol": 8, "glm": 2, "qwen": 3, "publisher": 1,
                 "astra": self.astra_capacity, "correction_limit": 10,
@@ -88,6 +93,57 @@ class SlotPolicy:
 def next_stage(stage: str) -> str | None:
     return {Stage.GLM: Stage.SOL.value, Stage.QWEN: Stage.SOL.value,
             Stage.SOL: Stage.ASTRA.value, Stage.ASTRA: None}[Stage(stage)]
+
+
+TRIAL_STARTS = (0xE228, 0xE230, 0xE238, 0xE240, 0xE248, 0xE250, 0xE258, 0xE260)
+TRIAL_PHASES = frozenset({
+    "reconstruction", "verification", "parent_review_wait", "owner_reconciliation",
+    "publication_wait", "commit", "push", "ack_wait", "cleanup", "closure_wait",
+    "input_wait", "tool_wait", "explicit_pause", "unobserved",
+    "model_execution", "model_queue", "tool_execution", "tool_queue",
+    "review_execution", "controller_wait", "instrumentation",
+})
+
+
+WORKFLOW_ACTION_OPERATIONS = MappingProxyType({
+    "prepare_target": "launch", "validate_delivery": "verify", "prepare_review": "launch", "review": "reconstruct",
+    "reconcile": "reconstruct", "materialize": "materialize", "commit": "publish",
+    "push": "publish", "acknowledge": "status", "cleanup": "cleanup", "close": "stop",
+    "restore_materialization": "materialize",
+})
+
+
+def validate_workflow_profile(profile: dict) -> None:
+    """Keep retained assignment slots separate from explicitly bounded inference."""
+    if not isinstance(profile, dict):
+        raise PolicyError("The controller needs an explicit immutable model profile")
+    capacities = profile.get("total_model_capacities")
+    if not isinstance(capacities, list) or not capacities:
+        raise PolicyError("Total provider/model inference capacities must be explicit")
+    totals = {}
+    for row in capacities:
+        if (not isinstance(row, dict) or any(not isinstance(row.get(key), str) or not row[key].strip()
+                                            for key in ("provider", "model"))
+            or type(row.get("capacity")) is not int or row["capacity"] < 1):
+            raise PolicyError("Each approved provider/model needs a positive total capacity")
+        key = (row["provider"], row["model"])
+        if key in totals:
+            raise PolicyError("A model cannot acquire capacity through duplicate profile entries")
+        totals[key] = row["capacity"]
+    for role in ("reconstruction", "review"):
+        row = profile.get(role)
+        if (not isinstance(row, dict) or any(not isinstance(row.get(key), str) or not row[key].strip()
+                                            for key in ("stage", "provider", "model"))
+            or type(row.get("capacity")) is not int or row["capacity"] < 1):
+            raise PolicyError("Reconstruction and substantive review require explicit model capacities")
+        Stage(row["stage"])
+        if row["capacity"] > totals.get((row["provider"], row["model"]), 0):
+            raise PolicyError("Role capacity cannot exceed its approved total inference capacity")
+
+
+def workflow_model_capacity(profile: dict, provider: str, model: str) -> int:
+    return next((row["capacity"] for row in profile["total_model_capacities"]
+                 if row["provider"] == provider and row["model"] == model), 0)
 
 
 def evaluation_data_path(path: str | Path) -> Path:
