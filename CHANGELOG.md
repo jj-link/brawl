@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 902fdfe3
+
+- Verified committed snapshot `902fdfe321a6fdb567e33eced36f288372fddd6c`: **2.978535% complete**, **471608 / 15833556 accepted code bytes**, **15361948 code bytes remaining**, **1402 accepted source units**. Delta from `bb55cdc8`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `4adabeeb68a9b21a24a7df7fef5acfa40baa5d8c5342b29d2532445c5289d47a` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1402 accepted-source link recipes, 1401 prior source/object identities, 329 original/tool identities and 25 complete single-definition Dedede source units were checked.
+- E220's immutable LF source blob `8e330fce057406c998670213822f52d63d4a76e6`, candidate/target identities and allocated code/relocations reproduce the owner's evidence; its CRLF checkout representation is recorded separately. E208/E210/E218 remain source-linked. Unpublished E268/E270 and dirty MAIN files are excluded. Final local/public headline, source identity, timestamp, maps and history agreement follows this documentation publication.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/902fdfe3/report-published.json` and adjacent native/hash/linkage/input receipts. No gameplay execution was performed. The prior `bb55cdc8` checkpoint's final local/public headline, timestamp, maps and served/persisted history agreement is retained in `evidence/bb55cdc8/final-publication-current.json`.
+
 ## Dedede E220 — reconstructed boolean-handler adjustment
 
 - Reconstructed module 117 `fn_117_E220`, `.text [0xE220,0xE228)`, **8 code bytes**, as C++ adjusting the interface pointer by `-0x94` and returning the boolean result of imported `fn_27_135A70`. This GLM session measured **1 initial candidate and 0 corrections**; inherited counts outside the retained recovery coverage remain **UNKNOWN**. Accepted source Git blob: `8e330fce057406c998670213822f52d63d4a76e6`.
