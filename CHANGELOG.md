@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 07f79f8d
+
+- Verified committed snapshot `07f79f8d8c30cc92b0ca197dbd1ca24ff928ba23`: **2.978383% complete**, **471584 / 15833556 accepted code bytes**, **15361972 code bytes remaining**, **1399 accepted source units**. Delta from `9195fdd6`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `12be7f297c729afce678fafe34b6caff51b9f3069c16d1104e6680a3faca7b12` from the fixed committed checkout. Native build/report/calculator commands succeeded; **127 DOL/REL hashes passed**, with independent direct SHA-1 checks. All 1399 accepted-source link recipes, 1398 prior source/object identities, 329 original/tool identities and 22 complete Dedede source definitions were checked.
+- E208's immutable corrected 478-byte source and exact code/relocation match reproduce the owner's evidence. Unpublished E210/E218 and unrelated dirty working files are excluded. The public unit map matched all 5679 units and 127 module contributions; the first local snapshot was still initializing, so final local/public headline and history verification follows this documentation publication.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/07f79f8d/report-published.json`, adjacent native/hash/linkage/input receipts and endpoint qualification. No gameplay execution was performed.
+- E208 owner cleanup removed **13363 untracked generated files / 451809503 bytes** and **952 empty directories**, retaining four tracked build-tree files, source/Git metadata, all attempts, comparison objects and full reports. Original-input junctions remained intact; post-cleanup Dedede REL and callee-slice checks matched retained evidence. Manifest and receipt: `build/isolated-workers/GlmFreshDededeE208/evidence/cleanup-manifest.json` and `cleanup-receipt.json`.
+
 ## Dedede E208 — reconstructed flag dispatcher
 
 - Reconstructed module 117 `fn_117_E208`, `.text [0xE208,0xE210)`, **8 code bytes**, as genuine C++ with the `-0x7C` interface adjustment and an imported flag-word dispatcher returning a boolean. GLM retained **1 initial candidate and 1 measured correction**; the corrected source is 478 bytes, Git blob `2d93dee45f206a0ba4793ceeaf95a0d45bce5189`.
