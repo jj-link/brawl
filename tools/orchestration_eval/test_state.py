@@ -20,6 +20,7 @@ from threading import Barrier
 import unittest
 import uuid
 
+from .evidence import content_identity
 from .policy import Mode, PolicyError, SlotPolicy
 from .state import Ledger, StateError, read_snapshot
 
@@ -821,6 +822,1762 @@ class LedgerTests(unittest.TestCase):
         self.assertTrue(self.ledger.session("session-a")["active"])
         with self.assertRaises(PolicyError):
             self.ledger.require_operation("resume", self.auth["revision"])
+
+
+def trial_manifest(root):
+    """Synthetic deterministic boundary records, never real trial evidence."""
+    starts = (0xE228, 0xE230, 0xE238, 0xE240, 0xE248, 0xE250, 0xE258, 0xE260)
+    reservations = []
+    for index, start in enumerate(starts):
+        reservations.append({
+            "assignment_id": f"trial-{index}",
+            "function": dict(module=117, symbol=f"fn_117_{start:X}", start=start, end=start + 8, size=8),
+            "workspace": str(root / f"owner-{index}"),
+            "owned_paths": [f"src/mo_fighter/ft_dedede/ft_dedede_function_{start:x}.cpp",
+                            "configure.py", "config/RSBE01_02/rels/ft_dedede/splits.txt"],
+            "baseline_commit": "a" * 40, "instruction_revision": "b" * 40,
+            "recipe_ref": "synthetic-recipe", "input_identity": "c" * 64,
+            "history": {"status": "known", "evidence_refs": ["synthetic-history"],
+                        "stages": {name: {"initial_count": 0, "corrections": 0,
+                                          "best_candidate": None, "evidence_refs": ["synthetic-none"]}
+                                   for name in ("glm", "qwen", "sol", "astra")}}})
+    return {"trial_id": "deterministic-boundary-test", "coordinator_id": "coordinator",
+            "confirmed_by": "coordinator", "confirmation_refs": ["synthetic-reservation"],
+            "slots": 4, "execution": {"provider": "synthetic-provider", "model": "synthetic-qwen",
+                                      "endpoint": "synthetic-no-network", "configuration_ref": "synthetic-config"},
+            "publication_target": {"repository": str(root / "external"), "remote": "https://example.invalid/no-effects",
+                                   "branch": "main"}, "reservations": reservations}
+
+
+def recorded_trial_history(root):
+    """Synthetic bounded inventories; these are not recovered lifetime totals."""
+    history = trial_manifest(root)["reservations"][0]["history"]
+    history.update(status="recorded", count_scope="attributable_recorded_within_inventory",
+                   lifetime_totals="unknown",
+                   inventories={name: {"path": str(root / f"synthetic-{name}-inventory.json"),
+                                       "sha256": ("a" if name == "journal" else "b") * 64,
+                                       "coverage": f"Synthetic completed bounded {name} inventory; outside scope unknown",
+                                       "complete": True}
+                                for name in ("journal", "workspace")})
+    return history
+
+
+class TrialLedgerTests(unittest.TestCase):
+    """No native/provider/Git effects: exercise the durable consumer boundaries."""
+
+    def setUp(self):
+        self.root = ROOT / "build" / "orchestration-eval" / "tests" / "trial-state" / uuid.uuid4().hex
+        self.ledger = Ledger(self.root / "ledger.sqlite3", policy=SlotPolicy.real_trial())
+        self.manifest = trial_manifest(self.root)
+        self.serial = 0
+        self.binding = None
+        self.auth = self.ledger.authorize("RUN", event_id=self.event(), reason="Synthetic deterministic test",
+                                          expected_revision=0)
+
+    def event(self):
+        self.serial += 1
+        return f"trial-test-{self.serial}"
+
+    def observation(self, **extra):
+        return {"observed_at": datetime.now(timezone.utc).isoformat(),
+                "timestamp_provenance": {"source": "deterministic unit test", "clock_id": "ledger_utc"},
+                "evidence_refs": ["synthetic-boundary-evidence"], **extra}
+
+    def prepare(self):
+        trial = self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        self.digest = trial["manifest_digest"]
+        self.gates = dict(manifest_digest=self.digest, confirmed_by="coordinator",
+                          coordinator_ref="synthetic-coordinator", execution_ref="synthetic-execution",
+                          dashboard_ref="synthetic-dashboard", evidence_refs=["synthetic-gates"])
+        self.ledger.prepare_trial(gates=self.gates, event_id=self.event(), authorization_revision=self.auth["revision"])
+
+    def claim(self, index, slot=None):
+        return dict(assignment_id=f"trial-{index}", owner_id=f"owner-{index}",
+                    root_session_id=f"root-{index}", slot=index if slot is None else slot)
+
+    def initial(self, *, activate=True, prompts=True):
+        self.prepare()
+        result = self.ledger.claim_trial_initial(claims=[self.claim(i) for i in range(4)],
+                                                 event_id=self.event(), authorization_revision=self.auth["revision"])
+        if activate:
+            for index in range(4):
+                self.attach(index)
+            self.ledger.activate_trial(gates=self.gates, event_id=self.event(), authorization_revision=self.auth["revision"])
+            if prompts:
+                self.ledger.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+                                                event_id=self.event(), authorization_revision=self.auth["revision"])
+        return result
+
+    def attach(self, index=0):
+        key = f"trial-{index}"
+        if self.ledger.assignment(key)["session_id"] is not None:
+            return
+        self.ledger.admit_trial_effect(key, effect_id=f"launch-{index}", kind="launch",
+                                       event_id=self.event(), authorization_revision=self.auth["revision"])
+        identity = dict(pid=10000 + index, creation_time=f"synthetic-{index}", token=f"token-{index}", job_name=f"job-{index}")
+        self.ledger.register_process(process_id=f"process-{index}", session_id=None, identity=identity,
+                                     event_id=self.event(), authorization_revision=self.auth["revision"])
+        self.ledger.attach_trial_session(key, session_id=f"child-{index}", root_session_id=f"root-{index}",
+                                         process_id=f"process-{index}", journal_ref="synthetic-journal",
+                                         registry_ref="synthetic-native-registry", event_id=self.event())
+
+    def measure(self, candidate="candidate", outcome="matching"):
+        return self.ledger.record_attempt("trial-0", candidate_id=candidate,
+                                         source_ref={"path": str(self.root / f"{candidate}.cpp"),
+                                                     "sha256": hashlib.sha256(candidate.encode()).hexdigest()},
+                                         input_identity="c" * 64, recipe_ref="synthetic-recipe",
+                                         outcome=outcome, evidence_refs=["synthetic-measurement"], quality=1,
+                                         event_id=self.event(), authorization_revision=self.auth["revision"])
+
+    def verify(self, candidate="candidate", **overrides):
+        evidence = dict(scope="reconstruction", checks={name: "synthetic-check" for name in (
+            "compile", "object_compare", "data_relocations", "source_link", "binary_hashes")},
+                        binary_hash_count=127, runtime_status="unavailable", runtime_reason="Synthetic ledger unit test")
+        evidence.update(overrides)
+        return self.ledger.record_verification("trial-0", candidate_id=candidate, input_identity="c" * 64,
+                                              evidence=evidence, event_id=self.event(),
+                                              authorization_revision=self.auth["revision"])
+
+    def receipt(self, kind, **extra):
+        if self.binding is None:
+            request = dict(assignment_id="trial-0", owner_id="owner-0", session_id="child-0",
+                           manifest_digest=self.digest, patch_identity="d" * 64, input_identity="c" * 64,
+                           publication_target=self.manifest["publication_target"])
+            self.binding = dict(request, request_digest=hashlib.sha256(
+                json.dumps(request, sort_keys=True, separators=(",", ":")).encode()).hexdigest())
+            self.request = request
+        observed = self.observation()
+        receipt = dict(self.binding, **observed, started_at=observed["observed_at"],
+                       authorization_revision=self.auth["revision"],
+                       observed_by="owner-0" if kind in {"materialization", "cleanup"} else "coordinator")
+        defaults = {
+            "review": {"request": self.request},
+            "materialization": {"grant_ref": "synthetic-grant", "preservation_ref": "synthetic-preservation",
+                                "private_index_ref": "synthetic-private-index"},
+            "commit": {"commit": "e" * 40, "local_head": "e" * 40},
+            "push": {"commit": "e" * 40, "push_exit_code": 0, "pushed": True,
+                     "remote_contains_commit": True, "remote_head": "e" * 40},
+            "ack": {"commit": "e" * 40, "accepted_matching": True},
+            "cleanup": {"commit": "e" * 40, "retained_evidence_refs": ["synthetic-retained"],
+                        "deletion_manifest_ref": "synthetic-empty-deletion-manifest",
+                        "shared_link_checks_ref": "synthetic-links", "original_input_checks_ref": "synthetic-originals",
+                        "retained_evidence_checks_ref": "synthetic-retained-hashes",
+                        "tracked_files_preserved": True, "removed_paths": [], "removed_bytes": 0},
+            "closed": {"commit": "e" * 40, "process_id": "process-0", "exit_evidence_ref": "synthetic-exit"}}
+        return dict(receipt, **(defaults[kind] | extra))
+
+    def observe(self, kind, receipt=None):
+        return self.ledger.observe_trial_receipt("trial-0", kind=kind, receipt=receipt or self.receipt(kind),
+                                                 event_id=self.event())
+
+    def ready(self):
+        self.initial()
+        self.attach()
+        self.measure()
+        self.verify()
+        self.ledger.transition("trial-0", "review_wait", details={}, event_id=self.event(),
+                               authorization_revision=self.auth["revision"])
+        self.observe("review")
+        self.observe("materialization")
+
+    def pushed(self):
+        self.ready()
+        self.observe("commit")
+        self.observe("push")
+
+    def exit(self):
+        process = self.ledger.process("process-0")
+        self.ledger.record_process_exit("process-0", event_id=self.event(), proof={
+            **process["identity"], "observed_exit": True, "exit_code": 0,
+            "verified_at": datetime.now(timezone.utc).isoformat(), "evidence_ref": "synthetic-exit"})
+
+    def test_default_policy_is_unchanged_and_real_trial_is_explicit(self):
+        self.assertEqual(SlotPolicy().capacity("qwen"), 3)
+        self.assertEqual(SlotPolicy.real_trial().capacity("qwen"), 4)
+        default = Ledger(self.root / "default.sqlite3")
+        with self.assertRaises(PolicyError):
+            default.register_trial(manifest=self.manifest, event_id="not-opted-in")
+        self.assertNotIn("trial", default.snapshot())
+
+    def test_unknown_history_is_not_zero_and_manifest_cannot_mutate(self):
+        self.manifest["reservations"][0]["history"] = {"status": "unknown", "evidence_refs": ["pending-scout"]}
+        self.prepare()
+        with self.assertRaises(StateError):
+            self.ledger.activate_trial(gates=self.gates, event_id=self.event(),
+                                        authorization_revision=self.auth["revision"])
+        self.manifest["reservations"][0]["history"] = trial_manifest(self.root)["reservations"][0]["history"]
+        with self.assertRaises(StateError):
+            self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        self.assertEqual(self.ledger.assignments(), [])
+
+    def test_fixed_queue_and_all_four_initial_claims_are_atomic(self):
+        self.prepare()
+        claims = [self.claim(i) for i in range(4)]
+        claims[3]["owner_id"] = claims[0]["owner_id"]
+        with self.assertRaises(StateError):
+            self.ledger.claim_trial_initial(claims=claims, event_id=self.event(),
+                                            authorization_revision=self.auth["revision"])
+        self.assertEqual(self.ledger.assignments(), [])
+        with self.assertRaises(StateError):
+            self.ledger.claim_trial_initial(claims=[self.claim(0)], event_id=self.event(),
+                                            authorization_revision=self.auth["revision"])
+        self.manifest["reservations"][7]["function"]["size"] = 16
+        with self.assertRaises(StateError):
+            self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+
+    def test_initial_claim_concurrency_has_one_winner(self):
+        self.prepare()
+        barrier = Barrier(2)
+        def claim(index):
+            barrier.wait()
+            try:
+                return self.ledger.claim_trial_initial(claims=[self.claim(i) for i in range(4)],
+                                                       event_id=f"concurrent-{index}", authorization_revision=self.auth["revision"])
+            except StateError:
+                return None
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(claim, (0, 1)))
+        self.assertEqual(sum(result is not None for result in results), 1)
+        self.assertEqual(len(Ledger(self.ledger.path).assignments()), 4)
+
+    def test_effect_stop_race_and_duplicate_never_replays(self):
+        self.initial(activate=False)
+        barrier = Barrier(2)
+        args = dict(effect_id="provider-boundary", kind="launch", event_id="admit-provider",
+                    authorization_revision=self.auth["revision"])
+        def admit():
+            barrier.wait()
+            try:
+                return self.ledger.admit_trial_effect("trial-0", **args)
+            except PolicyError:
+                return None
+        def stop():
+            barrier.wait()
+            return self.ledger.request_stop(event_id="stop-race", reason="Synthetic STOP race")
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            admission, stopped = pool.submit(admit), pool.submit(stop)
+            result, stop_receipt = admission.result(), stopped.result()
+        if result:
+            self.assertFalse(self.ledger.admit_trial_effect("trial-0", **args)["execute"])
+            self.ledger.observe_trial_effect(effect_id="provider-boundary",
+                                              record=self.observation(effect_observed=True), event_id=self.event())
+        self.assertEqual(self.ledger.authorization(), stop_receipt)
+        with self.assertRaises(PolicyError):
+            self.ledger.admit_trial_effect("trial-1", effect_id="new-after-stop", kind="launch",
+                                           event_id=self.event(), authorization_revision=self.auth["revision"])
+
+    def test_native_attachment_and_same_owner_are_required(self):
+        self.initial(activate=False)
+        with self.assertRaises(StateError):
+            self.measure()
+        self.attach()
+        self.assertEqual(self.ledger.session("child-0")["owner_id"], "owner-0")
+        with self.assertRaises(PolicyError):
+            self.ledger.escalate("trial-0", stage="sol", provider="other", model="other",
+                                 owner_id="replacement", session_id="replacement", event_id=self.event(),
+                                 authorization_revision=self.auth["revision"])
+
+    def test_preserved_qwen_counts_do_not_reset_on_fresh_owner(self):
+        stage = self.manifest["reservations"][0]["history"]["stages"]["qwen"]
+        stage.update(initial_count=1, corrections=9, best_candidate={
+            "candidate_id": "inherited", "source_ref": {"path": "preserved-best.cpp", "sha256": "f" * 64},
+            "input_identity": "c" * 64, "recipe_ref": "preserved-recipe", "outcome": "nonmatching",
+            "evidence_refs": ["preserved-comparison"], "quality": 0})
+        self.initial()
+        self.attach()
+        measured = self.measure("last-correction", outcome="nonmatching")
+        self.assertEqual(measured["stages"][-1]["corrections"], 10)
+        with self.assertRaises(StateError):
+            self.measure("eleventh-correction", outcome="nonmatching")
+        self.assertEqual(len(self.ledger.assignment("trial-0")["stages"][-1]["attempts"]), 2)
+
+    def test_tool_failures_do_not_consume_or_exhaust(self):
+        self.initial()
+        self.attach()
+        result = self.measure("tool-failure", outcome="tool_failed")
+        self.assertEqual(result["stages"][-1]["initial_count"], 0)
+        self.assertEqual(result["status"], "blocked")
+        with self.assertRaises(StateError):
+            self.ledger.exhaust_stage("trial-0", event_id=self.event(), evidence_refs=["synthetic"],
+                                      authorization_revision=self.auth["revision"])
+
+    def test_fixture_verification_and_model_success_never_accept(self):
+        self.initial()
+        self.attach()
+        self.measure()
+        with self.assertRaises(StateError):
+            self.verify(scope="evaluation_fixture")
+        with self.assertRaises(StateError):
+            self.verify(binary_hash_count=126)
+        with self.assertRaises(StateError):
+            self.ledger.transition("trial-0", "review_wait", details={"success": True}, event_id=self.event(),
+                                   authorization_revision=self.auth["revision"])
+        self.assertEqual(self.ledger.assignment("trial-0")["accepted_credit"], 0)
+
+    def test_external_receipts_bind_exact_identity_and_never_grant_git(self):
+        self.ready()
+        for changed in ({"owner_id": "other"}, {"patch_identity": "f" * 64}, {"input_identity": "f" * 64},
+                        {"publication_target": dict(self.manifest["publication_target"], branch="other")}):
+            with self.assertRaises(StateError):
+                self.observe("commit", self.receipt("commit", **changed))
+        with self.assertRaises(PolicyError):
+            self.ledger.admit_publication_effect("trial-0", effect_id="forged-evaluator-admission", kind="commit",
+                                                 request_digest=self.binding["request_digest"],
+                                                 target={"repository": str(self.root), "remote": str(self.root / "local"), "branch": "main"},
+                                                 planned_commit="e" * 40, event_id=self.event(),
+                                                 authorization_revision=self.auth["revision"])
+        self.assertEqual(self.ledger.publication_effects("trial-0"), [])
+
+    def test_inflight_push_after_stop_is_observation_not_new_authority(self):
+        self.ready()
+        self.observe("commit")
+        receipt = self.receipt("push")
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic in-flight push")
+        receipt["observed_at"] = datetime.now(timezone.utc).isoformat()
+        self.observe("push", receipt)
+        self.observe("push", receipt)
+        assignment = self.ledger.assignment("trial-0")
+        self.assertTrue(assignment["publication"]["pushed"])
+        self.assertEqual(len(assignment["external_receipts"]["push"]), 1)
+        self.assertEqual(self.ledger.authorization(), stopped)
+        self.observe("ack")
+        self.assertEqual(self.ledger.authorization(), stopped)
+        with self.assertRaises(PolicyError):
+            self.observe("push")
+
+    def test_failed_push_and_stale_verification_cannot_be_accepted(self):
+        self.ready()
+        self.observe("commit")
+        self.observe("push", self.receipt("push", push_exit_code=1, pushed=False, remote_contains_commit=False))
+        with self.assertRaises(StateError):
+            self.observe("ack")
+        self.observe("push")
+        self.ledger.check_input_identity("trial-0", input_identity="f" * 64, evidence_ref="synthetic-changed",
+                                         event_id=self.event())
+        with self.assertRaises(StateError):
+            self.observe("ack")
+
+    def test_actual_exit_cleanup_ack_release_one_slot_independently(self):
+        self.pushed()
+        self.observe("ack")
+        with self.assertRaises(StateError):
+            self.observe("closed")
+        self.observe("cleanup")
+        with self.assertRaises(StateError):
+            self.observe("closed")
+        with self.assertRaises(StateError):
+            self.ledger.claim_trial_refill(claim=self.claim(4, 0), event_id=self.event(),
+                                           authorization_revision=self.auth["revision"])
+        self.exit()
+        self.observe("closed")
+        self.ledger.claim_trial_refill(claim=self.claim(4, 0), event_id=self.event(),
+                                       authorization_revision=self.auth["revision"])
+        snapshot = self.ledger.snapshot()
+        self.assertEqual(snapshot["assignments"]["trial-0"]["status"], "closed")
+        self.assertEqual(snapshot["assignments"]["trial-1"]["status"], "assigned")
+        self.assertEqual(snapshot["trial"]["claims"]["trial-4"]["slot"], 0)
+        self.assertEqual(snapshot["assignments"]["trial-0"]["accepted_credit"], 0)
+
+    def test_retained_owner_messages_are_exact_once_and_stop_ordered(self):
+        self.pushed()
+        self.observe("ack")
+        request = dict(message="Perform canonical cleanup", owner_id="owner-0", session_id="child-0",
+                       manifest_digest=self.digest, coordinator_id="coordinator", purpose="cleanup", receipt_ref="synthetic-ACK")
+        args = dict(message_id="cleanup-message", request=request, event_id=self.event(),
+                    authorization_revision=self.auth["revision"])
+        self.assertTrue(self.ledger.admit_trial_message("trial-0", **args)["execute"])
+        self.ledger.request_stop(event_id=self.event(), reason="Synthetic message STOP")
+        self.assertFalse(self.ledger.admit_trial_message("trial-0", **args)["execute"])
+        with self.assertRaises(PolicyError):
+            self.ledger.admit_trial_message("trial-0", **(args | {"message_id": "new-id", "event_id": self.event()}))
+
+
+    def test_provider_forwarding_requires_four_actual_children_and_atomic_admission(self):
+        self.initial(activate=False)
+        self.attach(0)
+        with self.assertRaises(StateError):
+            self.ledger.activate_trial(gates=self.gates, event_id=self.event(), authorization_revision=self.auth["revision"])
+        for index in range(1, 4):
+            self.attach(index)
+        with self.assertRaises(PolicyError):
+            self.ledger.admit_trial_effect("trial-0", effect_id="single-prompt", kind="prompt",
+                                           event_id=self.event(), authorization_revision=self.auth["revision"])
+        self.ledger.activate_trial(gates=self.gates, event_id=self.event(), authorization_revision=self.auth["revision"])
+        args = dict(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+                    event_id=self.event(), authorization_revision=self.auth["revision"])
+        first = self.ledger.admit_trial_prompts(**args)
+        self.assertTrue(first["execute"])
+        self.assertEqual(len(first["effects"]), 4)
+        self.ledger.request_stop(event_id=self.event(), reason="Synthetic batch STOP")
+        duplicate = self.ledger.admit_trial_prompts(**args)
+        self.assertFalse(duplicate["execute"])
+        self.assertTrue(all(not effect["execute"] for effect in duplicate["effects"]))
+
+    def test_exhausted_qwen_keeps_fallback_and_never_receives_matching_credit(self):
+        self.initial()
+        for index in range(11):
+            self.measure(f"candidate-{index}", outcome="nonmatching")
+        self.ledger.exhaust_stage("trial-0", event_id=self.event(), evidence_refs=["synthetic-exhaustion"],
+                                  authorization_revision=self.auth["revision"])
+        selection = {"candidate_id": "candidate-0", "accepted_credit": 0, "fallback_ref": "synthetic-original",
+                     "input_identity": "c" * 64, "evidence_refs": ["synthetic-best"],
+                     "label": "nonmatching—attempts exhausted"}
+        self.ledger.transition("trial-0", "review_wait", details={"selection": selection}, event_id=self.event(),
+                               authorization_revision=self.auth["revision"])
+        self.observe("review")
+        self.verify(candidate="candidate-0")
+        self.observe("materialization")
+        self.observe("commit")
+        self.observe("push")
+        with self.assertRaises(StateError):
+            self.observe("ack")
+        self.observe("ack", self.receipt("ack", accepted_matching=False))
+        self.assertEqual(self.ledger.assignment("trial-0")["accepted_credit"], 0)
+
+    def test_inflight_measurement_receipt_survives_stop_without_resetting_counts(self):
+        self.initial()
+        observation = self.observation(assignment_id="trial-0", owner_id="owner-0", session_id="child-0",
+                                       manifest_digest=self.digest, authorization_revision=self.auth["revision"])
+        observation["started_at"] = observation["observed_at"]
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic measured work in flight")
+        observation["observed_at"] = datetime.now(timezone.utc).isoformat()
+        args = dict(candidate_id="inflight", source_ref={"path": "synthetic.cpp", "sha256": "f" * 64},
+                    input_identity="c" * 64, recipe_ref="synthetic-recipe", outcome="matching",
+                    evidence_refs=["synthetic-comparison"], authorization_revision=self.auth["revision"],
+                    observation=observation, event_id=self.event())
+        self.ledger.record_attempt("trial-0", **args)
+        self.ledger.record_attempt("trial-0", **args)
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 1)
+        self.assertEqual(self.ledger.authorization(), stopped)
+        observation["started_at"] = datetime.now(timezone.utc).isoformat()
+        observation["observed_at"] = observation["started_at"]
+        with self.assertRaises(PolicyError):
+            self.ledger.record_attempt("trial-0", **(args | {"event_id": self.event(), "candidate_id": "after-stop"}))
+
+
+    def test_exhaustion_observation_after_stop_keeps_counts_and_authorization(self):
+        self.initial()
+        for index in range(11):
+            self.measure(f"nonmatching-{index}", outcome="nonmatching")
+        observation = self.observation(assignment_id="trial-0", owner_id="owner-0", session_id="child-0",
+                                       manifest_digest=self.digest, authorization_revision=self.auth["revision"])
+        observation["started_at"] = observation["observed_at"]
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic exhaustion observation")
+        observation["observed_at"] = datetime.now(timezone.utc).isoformat()
+        self.ledger.exhaust_stage("trial-0", event_id=self.event(), evidence_refs=["synthetic-ten-corrections"],
+                                  authorization_revision=self.auth["revision"], observation=observation)
+        assignment = self.ledger.assignment("trial-0")
+        self.assertEqual(assignment["status"], "exhausted")
+        self.assertEqual(assignment["stages"][-1]["corrections"], 10)
+        self.assertEqual(assignment["accepted_credit"], 0)
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+
+    def test_known_initial_four_do_not_wait_for_unknown_queued_history(self):
+        for reservation in self.manifest["reservations"][4:]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.initial()
+        snapshot = self.ledger.snapshot()
+        self.assertIsNotNone(snapshot["trial"]["activation"])
+        self.assertEqual(len(snapshot["assignments"]), 4)
+        self.assertEqual(snapshot["trial"]["manifest"], self.manifest)
+        self.assertEqual(snapshot["trial"]["manifest"]["reservations"][4]["history"]["status"], "unknown")
+
+    def test_history_resolution_is_append_only_bound_and_never_resets_known_counts(self):
+        known = self.manifest["reservations"][4]["history"]
+        known["stages"]["qwen"].update(
+            initial_count=1, corrections=3,
+            best_candidate={"candidate_id": "preserved-best", "source_ref": {"path": "preserved.cpp", "sha256": "f" * 64},
+                            "input_identity": "c" * 64, "recipe_ref": "preserved-recipe", "outcome": "nonmatching",
+                            "evidence_refs": ["preserved-attempt-ledger"], "quality": 1})
+        self.manifest["reservations"][4]["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        trial = self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        record = self.observation(assignment_id="trial-4", manifest_digest=trial["manifest_digest"], observed_by="coordinator")
+        args = dict(history=known, record=record, event_id=self.event())
+        self.ledger.resolve_trial_history("trial-4", **args)
+        self.ledger.resolve_trial_history("trial-4", **args)
+        self.assertEqual(self.ledger.trial_history("trial-4"), known)
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+        replacement = json.loads(json.dumps(known))
+        replacement["stages"]["qwen"].update(initial_count=0, corrections=0, best_candidate=None)
+        with self.assertRaises(StateError):
+            self.ledger.resolve_trial_history("trial-4", history=replacement, record=record, event_id=self.event())
+        self.assertEqual(self.ledger.trial_history("trial-4")["stages"]["qwen"]["corrections"], 3)
+
+    def test_history_resolution_rejects_owner_assertion_and_wrong_manifest(self):
+        known = self.manifest["reservations"][4]["history"]
+        self.manifest["reservations"][4]["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        trial = self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        record = self.observation(assignment_id="trial-4", manifest_digest=trial["manifest_digest"], observed_by="owner-4")
+        with self.assertRaises(StateError):
+            self.ledger.resolve_trial_history("trial-4", history=known, record=record, event_id=self.event())
+        record.update(observed_by="coordinator", manifest_digest="f" * 64)
+        with self.assertRaises(StateError):
+            self.ledger.resolve_trial_history("trial-4", history=known, record=record, event_id=self.event())
+        self.assertEqual(self.ledger.trial_history("trial-4")["status"], "unknown")
+
+
+    def test_resolved_refill_preserves_counts_and_bypasses_unknown_queued_predecessor(self):
+        known = self.manifest["reservations"][5]["history"]
+        known["stages"]["qwen"].update(
+            initial_count=1, corrections=3,
+            best_candidate={"candidate_id": "prior-best", "source_ref": {"path": "prior.cpp", "sha256": "f" * 64},
+                            "input_identity": "c" * 64, "recipe_ref": "prior-recipe", "outcome": "nonmatching",
+                            "evidence_refs": ["prior-attempt-ledger"], "quality": 1})
+        for reservation in self.manifest["reservations"][4:]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["pending-history"]}
+        self.pushed()
+        self.observe("ack")
+        self.observe("cleanup")
+        self.exit()
+        self.observe("closed")
+        self.assertEqual(self.ledger.snapshot()["trial"]["capacity_history"][-1]["queued_reasons"]["trial-4"], "input_wait")
+        record = self.observation(assignment_id="trial-5", manifest_digest=self.digest, observed_by="coordinator")
+        self.ledger.resolve_trial_history("trial-5", history=known, record=record, event_id=self.event())
+        assignment = self.ledger.claim_trial_refill(claim=self.claim(5, 0), event_id=self.event(),
+                                                     authorization_revision=self.auth["revision"])
+        self.assertEqual(assignment["stages"][-1]["corrections"], 3)
+        self.assertEqual(assignment["identity"]["history"], known)
+        self.assertEqual(assignment["identity"]["reservation"]["history"]["status"], "unknown")
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+        self.assertEqual(self.ledger.snapshot()["trial"]["capacity_history"][-1]["queued_reasons"]["trial-4"], "input_wait")
+        self.assertEqual(self.ledger.assignment("trial-1")["status"], "assigned")
+
+    def test_concurrent_history_resolution_retains_one_immutable_recovery(self):
+        known = self.manifest["reservations"][4]["history"]
+        self.manifest["reservations"][4]["history"] = {"status": "unknown", "evidence_refs": ["pending-history"]}
+        trial = self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        record = self.observation(assignment_id="trial-4", manifest_digest=trial["manifest_digest"], observed_by="coordinator")
+        barrier = Barrier(2)
+        def resolve(index):
+            history = json.loads(json.dumps(known))
+            history["evidence_refs"] = [f"independent-recovery-{index}"]
+            barrier.wait()
+            try:
+                return self.ledger.resolve_trial_history("trial-4", history=history, record=record,
+                                                         event_id=f"concurrent-history-{index}")
+            except StateError:
+                return None
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(resolve, (0, 1)))
+        winners = [result for result in results if result is not None]
+        self.assertEqual(len(winners), 1)
+        self.assertEqual(self.ledger.trial_history("trial-4"), winners[0]["history"])
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+
+
+    def history_resolution_record(self, index):
+        return self.observation(assignment_id=f"trial-{index}", manifest_digest=self.digest,
+                                observed_by="coordinator", interpretation_ack_ref="TrialAdmissionExistingPlan4b9")
+
+    def held_unknown_refill(self):
+        for reservation in self.manifest["reservations"][4:]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.pushed()
+        self.observe("ack")
+        self.observe("cleanup")
+        self.exit()
+        self.observe("closed")
+        self.ledger.claim_trial_refill(claim=self.claim(5, 0), event_id=self.event(),
+                                       authorization_revision=self.auth["revision"])
+        self.attach(5)
+
+    def test_history_admission_unknown_initials_prepare_only_held_children(self):
+        for reservation in self.manifest["reservations"]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.initial(activate=False)
+        for index in range(4):
+            self.attach(index)
+            assignment = self.ledger.assignment(f"trial-{index}")
+            self.assertEqual(assignment["session_id"], f"child-{index}")
+            for stage in assignment["stages"]:
+                self.assertIsNone(stage["initial_count"])
+                self.assertIsNone(stage["corrections"])
+                self.assertIsNone(stage["inherited_initial_count"])
+                self.assertIsNone(stage["inherited_corrections"])
+        with self.assertRaises(StateError):
+            self.ledger.activate_trial(gates=self.gates, event_id=self.event(),
+                                        authorization_revision=self.auth["revision"])
+        with self.assertRaises(StateError):
+            self.ledger.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+                                            event_id=self.event(), authorization_revision=self.auth["revision"])
+        self.assertEqual({e["kind"] for e in self.ledger.snapshot()["trial"]["effects"].values()}, {"launch"})
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+
+    def test_history_admission_recorded_scope_is_append_only_not_lifetime_zero(self):
+        self.manifest["reservations"][4]["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.prepare()
+        history = recorded_trial_history(self.root)
+        args = dict(history=history, record=self.history_resolution_record(4), event_id=self.event())
+        first = self.ledger.resolve_trial_history("trial-4", **args)
+        self.assertEqual(self.ledger.resolve_trial_history("trial-4", **args), first)
+        self.assertEqual(self.ledger.trial_history("trial-4"), history)
+        self.assertEqual(first["history"]["lifetime_totals"], "unknown")
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+        replacement = dict(history, evidence_refs=["different-inventory"])
+        with self.assertRaises(StateError):
+            self.ledger.resolve_trial_history("trial-4", history=replacement,
+                                               record=args["record"], event_id=self.event())
+
+    def test_history_admission_requires_both_complete_bound_inventories_and_ack(self):
+        self.manifest["reservations"][4]["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.prepare()
+        valid = recorded_trial_history(self.root)
+        invalid = [dict(valid, lifetime_totals=0), dict(valid, count_scope="lifetime"),
+                   dict(valid, status="known"),
+                   dict(valid, inventories={"journal": valid["inventories"]["journal"]})]
+        for field, value in (("complete", False), ("sha256", "unknown"), ("coverage", ""), ("path", "relative.json")):
+            changed = json.loads(json.dumps(valid))
+            changed["inventories"]["workspace"][field] = value
+            invalid.append(changed)
+        for history in invalid:
+            with self.subTest(history=history), self.assertRaises(StateError):
+                self.ledger.resolve_trial_history("trial-4", history=history,
+                                                   record=self.history_resolution_record(4), event_id=self.event())
+        for changed in ({"observed_by": "owner-4"}, {"manifest_digest": "f" * 64},
+                        {"assignment_id": "trial-5"}, {"interpretation_ack_ref": ""}):
+            with self.subTest(changed=changed), self.assertRaises(StateError):
+                self.ledger.resolve_trial_history("trial-4", history=valid,
+                    record=self.history_resolution_record(4) | changed, event_id=self.event())
+        self.assertEqual(self.ledger.trial_history("trial-4")["status"], "unknown")
+        self.ledger.resolve_trial_history("trial-4", history=valid,
+                                           record=self.history_resolution_record(4), event_id=self.event())
+
+    def test_history_admission_rejects_aliased_inventory_identities(self):
+        for reservation in self.manifest["reservations"][4:]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.prepare()
+        for index, case in enumerate(("same-artifact", "same-path", "normalized-path", "copied-content"), start=4):
+            history = recorded_trial_history(self.root)
+            journal, workspace = history["inventories"]["journal"], history["inventories"]["workspace"]
+            if case == "same-artifact":
+                history["inventories"]["workspace"] = dict(journal)
+            elif case == "same-path":
+                workspace["path"] = journal["path"]
+            elif case == "normalized-path":
+                path = Path(journal["path"])
+                workspace["path"] = str(path.parent / "synthetic-child" / ".." / path.name).swapcase()
+            else:
+                workspace["sha256"] = journal["sha256"]
+            with self.subTest(case=case):
+                with self.assertRaises(StateError):
+                    self.ledger.resolve_trial_history(f"trial-{index}", history=history,
+                        record=self.history_resolution_record(index), event_id=self.event())
+                self.assertEqual(self.ledger.trial_history(f"trial-{index}")["status"], "unknown")
+
+    def test_history_admission_held_owner_preserves_recovered_counts_and_limit(self):
+        for reservation in self.manifest["reservations"]:
+            reservation["history"] = {"status": "unknown", "evidence_refs": ["synthetic-pending-history"]}
+        self.initial(activate=False)
+        for index in range(4):
+            self.attach(index)
+        identity = self.ledger.assignment("trial-0")["identity"]
+        for index in range(4):
+            history = recorded_trial_history(self.root)
+            if index == 0:
+                history["stages"]["qwen"].update(initial_count=1, corrections=9, best_candidate={
+                    "candidate_id": "recovered-best", "source_ref": {"path": "recovered.cpp", "sha256": "f" * 64},
+                    "input_identity": "c" * 64, "recipe_ref": "recovered-recipe", "outcome": "nonmatching",
+                    "evidence_refs": ["synthetic-recovered-attempt-ledger"], "quality": 0.9})
+            self.ledger.resolve_trial_history(f"trial-{index}", history=history,
+                                               record=self.history_resolution_record(index), event_id=self.event())
+        assignment = self.ledger.assignment("trial-0")
+        self.assertEqual(assignment["identity"], identity)
+        self.assertEqual(assignment["session_id"], "child-0")
+        self.assertEqual(assignment["admitted_history"]["lifetime_totals"], "unknown")
+        self.assertEqual(assignment["stages"][-1]["corrections"], 9)
+        self.assertEqual(assignment["best_candidate"]["candidate_id"], "recovered-best")
+        self.ledger.activate_trial(gates=self.gates, event_id=self.event(), authorization_revision=self.auth["revision"])
+        self.ledger.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+                                        event_id=self.event(), authorization_revision=self.auth["revision"])
+        self.measure("last-allowed", "nonmatching")
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["corrections"], 10)
+        with self.assertRaises(StateError):
+            self.measure("eleventh-correction", "nonmatching")
+        with self.assertRaises(StateError):
+            self.ledger.resolve_trial_history("trial-0", history=recorded_trial_history(self.root),
+                                               record=self.history_resolution_record(0), event_id=self.event())
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["corrections"], 10)
+        self.assertEqual(self.ledger.snapshot()["trial"]["manifest"], self.manifest)
+
+    def test_history_admission_unknown_refill_is_held_until_own_resolution(self):
+        self.held_unknown_refill()
+        args = dict(effect_id="prompt-5", kind="prompt", authorization_revision=self.auth["revision"])
+        with self.assertRaises(StateError):
+            self.ledger.admit_trial_effect("trial-5", event_id=self.event(), **args)
+        history = recorded_trial_history(self.root)
+        self.ledger.resolve_trial_history("trial-5", history=history,
+                                           record=self.history_resolution_record(5), event_id=self.event())
+        result = self.ledger.admit_trial_effect("trial-5", event_id=self.event(), **args)
+        self.assertTrue(result["execute"])
+        self.assertEqual(result["history_digest"], hashlib.sha256(
+            json.dumps(history, sort_keys=True, separators=(",", ":")).encode()).hexdigest())
+        self.assertEqual(self.ledger.trial_history("trial-4")["status"], "unknown")
+        self.assertEqual(self.ledger.assignment("trial-5")["session_id"], "child-5")
+        self.assertEqual(self.ledger.snapshot()["trial"]["capacity_history"][-1]["queued_reasons"]["trial-4"], "input_wait")
+
+    def test_history_admission_race_orders_resolution_before_any_refill_prompt(self):
+        self.held_unknown_refill()
+        history, record = recorded_trial_history(self.root), self.history_resolution_record(5)
+        barrier = Barrier(2)
+        def resolve():
+            ledger = Ledger(self.root / "ledger.sqlite3", policy=SlotPolicy.real_trial())
+            barrier.wait(timeout=30)
+            return ledger.resolve_trial_history("trial-5", history=history, record=record, event_id="racing-history")
+        def prompt():
+            ledger = Ledger(self.root / "ledger.sqlite3", policy=SlotPolicy.real_trial())
+            barrier.wait(timeout=30)
+            try:
+                return ledger.admit_trial_effect("trial-5", effect_id="racing-prompt", kind="prompt",
+                    event_id="racing-prompt-admission", authorization_revision=self.auth["revision"])
+            except StateError:
+                return None
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            resolved, admitted = pool.submit(resolve), pool.submit(prompt)
+            resolution, effect = resolved.result(timeout=30), admitted.result(timeout=30)
+        self.assertEqual(self.ledger.trial_history("trial-5"), history)
+        if effect is not None:
+            self.assertTrue(effect["execute"])
+            self.assertEqual(effect["history_resolution_event_id"], resolution["event_id"])
+        else:
+            self.assertNotIn("racing-prompt", self.ledger.snapshot()["trial"]["effects"])
+        self.assertEqual(self.ledger.assignment("trial-5")["stages"][-1]["initial_count"], 0)
+
+    def test_assignment_ids_are_portable_single_components_before_registration(self):
+        unsafe = ("../other", "x/../../../victim/status", "x\\..\\victim", "C:other",
+                  "bad name", "bad.", "CON", "nul", "a" * 101, "\u00e9")
+        for index, identifier in enumerate(unsafe):
+            with self.subTest(identifier=identifier):
+                ledger = Ledger(self.root / f"unsafe-id-{index}.sqlite3", policy=SlotPolicy.real_trial())
+                manifest = trial_manifest(self.root)
+                manifest["reservations"][4]["assignment_id"] = identifier
+                with self.assertRaises(StateError):
+                    ledger.register_trial(manifest=manifest, event_id="unsafe-reservation")
+                self.assertNotIn("trial", ledger.snapshot())
+
+    def test_materialization_cannot_start_before_coordinator_review(self):
+        self.initial()
+        self.measure()
+        self.verify()
+        self.ledger.transition("trial-0", "review_wait", details={}, event_id=self.event(),
+                               authorization_revision=self.auth["revision"])
+        self.observe("review")
+        with self.assertRaises(StateError):
+            self.observe("materialization", self.receipt("materialization", started_at=self.auth["updated_at"]))
+        self.assertEqual(self.ledger.assignment("trial-0")["status"], "reconciling")
+
+    def test_commit_cannot_predate_reviewed_materialization(self):
+        self.ready()
+        with self.assertRaises(StateError):
+            self.observe("commit", self.receipt("commit", started_at=self.auth["updated_at"]))
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication"])
+
+    def test_push_cannot_predate_its_actual_commit(self):
+        self.ready()
+        self.observe("commit")
+        with self.assertRaises(StateError):
+            self.observe("push", self.receipt("push", started_at=self.auth["updated_at"]))
+        self.assertFalse(self.ledger.assignment("trial-0")["publication"]["pushed"])
+
+    def test_ack_cannot_predate_successful_push(self):
+        self.pushed()
+        with self.assertRaises(StateError):
+            self.observe("ack", self.receipt("ack", started_at=self.auth["updated_at"]))
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication_acknowledgment"])
+
+    def test_cleanup_cannot_predate_canonical_ack(self):
+        self.pushed()
+        self.observe("ack")
+        with self.assertRaises(StateError):
+            self.observe("cleanup", self.receipt("cleanup", started_at=self.auth["updated_at"]))
+        self.assertIsNone(self.ledger.assignment("trial-0")["cleanup"])
+
+    def test_causal_receipts_require_comparable_timestamp_provenance(self):
+        self.ready()
+        receipt = self.receipt("commit")
+        receipt["timestamp_provenance"]["clock_id"] = "uncorrelated-other-host"
+        with self.assertRaises(StateError):
+            self.observe("commit", receipt)
+
+    def delivery(self, *, operation="event", role="owner"):
+        identifier = self.event()
+        payload = {"kind": "phase", "record": self.observation(owner_id="owner-0", phase="verification")} if operation == "event" else {}
+        envelope = dict(event_id=identifier, manifest_digest=self.digest, assignment_id="trial-0",
+                        owner_id="owner-0", session_id="child-0", operation=operation, payload=payload)
+        raw = (json.dumps(envelope, sort_keys=True) + "\n").encode("utf-8")
+        return dict(event_id=identifier, role=role, envelope=envelope,
+                    content_sha256=hashlib.sha256(raw).hexdigest())
+
+    def test_unadmitted_delivery_cannot_be_consumed(self):
+        self.initial()
+        with self.assertRaises(StateError):
+            self.ledger.consume_trial_delivery(**self.delivery(operation="activate", role="coordinator"))
+
+    def test_delivery_role_content_and_exact_raw_bytes_are_immutable(self):
+        self.initial()
+        delivery = self.delivery()
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        with self.assertRaises(StateError):
+            self.ledger.consume_trial_delivery(**(delivery | {"role": "coordinator"}))
+        altered = json.loads(json.dumps(delivery["envelope"]))
+        altered.update(operation="activate", payload={})
+        altered_digest = hashlib.sha256((json.dumps(altered, sort_keys=True) + "\n").encode()).hexdigest()
+        with self.assertRaises(StateError):
+            self.ledger.consume_trial_delivery(**(delivery | {"envelope": altered, "content_sha256": altered_digest}))
+        same_json_different_bytes = hashlib.sha256(json.dumps(delivery["envelope"], sort_keys=True, indent=2).encode()).hexdigest()
+        with self.assertRaises(StateError):
+            self.ledger.consume_trial_delivery(**(delivery | {"content_sha256": same_json_different_bytes}))
+        self.assertTrue(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        self.assertFalse(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        self.assertEqual(self.ledger.trial_delivery(delivery["event_id"])["role"], "owner")
+
+    def test_owner_delivery_cannot_admit_coordinator_operations(self):
+        self.initial()
+        for operation in ("activate", "prepare-refill", "message", "close", "history", "eligibility"):
+            with self.subTest(operation=operation), self.assertRaises(StateError):
+                self.ledger.admit_trial_delivery(**self.delivery(operation=operation),
+                                                  authorization_revision=self.auth["revision"])
+
+    def test_delivery_stop_blocks_effects_but_not_bound_observations(self):
+        self.initial()
+        delivery = self.delivery(operation="activate", role="coordinator")
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic queued delivery STOP")
+        with self.assertRaises(PolicyError):
+            self.ledger.consume_trial_delivery(**delivery)
+        observation = self.delivery()
+        self.ledger.admit_trial_delivery(**observation)
+        self.assertTrue(self.ledger.consume_trial_delivery(**observation)["execute"])
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_concurrent_delivery_consumption_has_one_durable_winner(self):
+        self.initial()
+        delivery = self.delivery()
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        barrier = Barrier(2)
+        def consume(_):
+            barrier.wait()
+            return self.ledger.consume_trial_delivery(**delivery)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(consume, (0, 1)))
+        self.assertEqual(sum(result["execute"] for result in results), 1)
+
+
+    def test_assignment_ids_cannot_alias_case_insensitive_snapshot_paths(self):
+        self.manifest["reservations"][4]["assignment_id"] = self.manifest["reservations"][0]["assignment_id"].upper()
+        with self.assertRaises(StateError):
+            self.ledger.register_trial(manifest=self.manifest, event_id=self.event())
+        self.assertNotIn("trial", self.ledger.snapshot())
+
+    def test_delivery_consumption_does_not_collide_with_handler_event_or_replay_after_stop(self):
+        self.initial()
+        delivery = self.delivery()
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        self.assertTrue(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        envelope = delivery["envelope"]
+        self.ledger.trial_event(envelope["assignment_id"], event_id=envelope["event_id"], **envelope["payload"])
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic consumed-delivery STOP")
+        self.assertFalse(self.ledger.admit_trial_delivery(**delivery)["execute"])
+        self.assertFalse(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        self.assertEqual(len(self.ledger.snapshot()["trial"]["events"]), 1)
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_delivery_ids_cannot_alias_case_insensitive_inbox_paths(self):
+        self.initial()
+        delivery = self.delivery()
+        self.ledger.admit_trial_delivery(**delivery)
+        alias = json.loads(json.dumps(delivery))
+        alias["event_id"] = alias["event_id"].upper()
+        alias["envelope"]["event_id"] = alias["event_id"]
+        alias["content_sha256"] = hashlib.sha256((json.dumps(alias["envelope"], sort_keys=True) + "\n").encode()).hexdigest()
+        with self.assertRaises(StateError):
+            self.ledger.admit_trial_delivery(**alias)
+
+    def test_consumed_observation_then_coordinator_rebind_is_rejected(self):
+        self.initial()
+        delivery = self.delivery()
+        self.ledger.admit_trial_delivery(**delivery)
+        self.ledger.consume_trial_delivery(**delivery)
+        with self.assertRaises(StateError):
+            self.ledger.admit_trial_delivery(**(delivery | {"role": "coordinator"}),
+                                              authorization_revision=self.auth["revision"])
+
+
+    def consumed_observation_gap(self, operation, payload, *, role="owner", assignment_id="trial-0"):
+        """Persist the pre-handler crash boundary; no native process is launched."""
+        delivery = self.delivery(operation=operation, role=role)
+        delivery["envelope"]["payload"] = payload
+        delivery["envelope"]["assignment_id"] = assignment_id
+        if assignment_id != "trial-0" and role == "coordinator":
+            delivery["envelope"].pop("owner_id")
+            delivery["envelope"].pop("session_id")
+        raw = (json.dumps(delivery["envelope"], sort_keys=True) + "\n").encode()
+        delivery["content_sha256"] = hashlib.sha256(raw).hexdigest()
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        self.assertTrue(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        # Deliberately omit the operation-specific mutation, then reopen the
+        # durable ledger via the actual record_after_stop consumer below.
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Synthetic crash after durable consume")
+        return delivery["envelope"], stopped
+
+    def recovery_execution_observation(self):
+        observation = self.observation(assignment_id="trial-0", owner_id="owner-0", session_id="child-0",
+                                       manifest_digest=self.digest, authorization_revision=self.auth["revision"])
+        observation["started_at"] = observation["observed_at"]
+        return observation
+
+    def test_crashed_attempt_delivery_recovers_after_stop_without_losing_measurement(self):
+        from .trial import record_after_stop
+        self.initial()
+        payload = dict(candidate_id="preserved-inbox-candidate",
+                       source_ref={"path": "preserved-inbox.cpp", "sha256": "f" * 64},
+                       input_identity="c" * 64, recipe_ref="preserved-inbox-recipe",
+                       outcome="nonmatching", evidence_refs=["preserved-comparison"],
+                       observation=self.recovery_execution_observation())
+        envelope, stopped = self.consumed_observation_gap("attempt", payload)
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["attempts"], [])
+        record_after_stop(self.root, envelope, role="owner")
+        record_after_stop(self.root, envelope, role="owner")
+        stage = self.ledger.assignment("trial-0")["stages"][-1]
+        self.assertEqual(stage["initial_count"], 1)
+        self.assertEqual(stage["corrections"], 0)
+        self.assertEqual(len(stage["attempts"]), 1)
+        self.assertEqual(stage["attempts"][0]["candidate_id"], payload["candidate_id"])
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_legacy_verification_delivery_is_refused_after_stop_without_losing_history(self):
+        from .trial import record_after_stop
+        from .safety import SafetyError
+        self.initial()
+        self.measure()
+        evidence = dict(scope="reconstruction", checks={name: "preserved-check" for name in (
+            "compile", "object_compare", "data_relocations", "source_link", "binary_hashes")},
+                        binary_hash_count=127, runtime_status="unavailable", runtime_reason="Synthetic ledger fixture")
+        envelope, stopped = self.consumed_observation_gap("verification", {
+            "candidate_id": "candidate", "input_identity": "c" * 64, "evidence": evidence,
+            "observation": self.recovery_execution_observation()})
+        self.assertIsNone(self.ledger.assignment("trial-0")["verification"])
+        before = self.ledger.snapshot()
+        for _ in range(2):
+            with self.assertRaises(SafetyError):
+                record_after_stop(self.root, envelope, role="owner")
+            self.assertEqual(self.ledger.snapshot(), before)
+        self.assertIsNone(self.ledger.assignment("trial-0")["verification"])
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_legacy_push_delivery_cannot_create_a_push_observation_after_stop(self):
+        from .trial import record_after_stop
+        from .safety import SafetyError
+        self.ready()
+        self.observe("commit")
+        envelope, stopped = self.consumed_observation_gap(
+            "receipt", {"kind": "push", "receipt": self.receipt("push")}, role="coordinator")
+        self.assertFalse(self.ledger.assignment("trial-0")["publication"]["pushed"])
+        before = self.ledger.snapshot()
+        for _ in range(2):
+            with self.assertRaises(SafetyError):
+                record_after_stop(self.root, envelope)
+            self.assertEqual(self.ledger.snapshot(), before)
+        assignment = self.ledger.assignment("trial-0")
+        self.assertFalse(assignment["publication"]["pushed"])
+        self.assertEqual(assignment["external_receipts"].get("push", []), [])
+        self.assertEqual(assignment["external_receipts"]["commit"], before["assignments"]["trial-0"]["external_receipts"]["commit"])
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_legacy_ack_delivery_cannot_create_acceptance_after_stop(self):
+        from .trial import record_after_stop
+        from .safety import SafetyError
+        self.pushed()
+        envelope, stopped = self.consumed_observation_gap(
+            "receipt", {"kind": "ack", "receipt": self.receipt("ack")}, role="coordinator")
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication_acknowledgment"])
+        before = self.ledger.snapshot()
+        for _ in range(2):
+            with self.assertRaises(SafetyError):
+                record_after_stop(self.root, envelope)
+            self.assertEqual(self.ledger.snapshot(), before)
+        assignment = self.ledger.assignment("trial-0")
+        self.assertIsNone(assignment["publication_acknowledgment"])
+        self.assertEqual(assignment["external_receipts"].get("ack", []), [])
+        self.assertEqual(assignment["external_receipts"]["push"], before["assignments"]["trial-0"]["external_receipts"]["push"])
+        self.assertEqual(assignment["accepted_credit"], 0)
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_concurrent_crash_gap_recovery_applies_observation_once(self):
+        from .trial import record_after_stop
+        self.initial()
+        envelope, stopped = self.consumed_observation_gap(
+            "event", {"kind": "phase", "record": self.observation(owner_id="owner-0", phase="verification")})
+        barrier = Barrier(2)
+        def recover(_):
+            barrier.wait()
+            return record_after_stop(self.root, envelope, role="owner")
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(recover, (0, 1)))
+        self.assertEqual(len(self.ledger.snapshot()["trial"]["events"]), 1)
+        self.assertEqual(results[0], results[1])
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_consumed_native_effect_delivery_never_becomes_observation_replay(self):
+        self.initial()
+        delivery = self.delivery(operation="message", role="coordinator")
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        self.assertTrue(self.ledger.consume_trial_delivery(**delivery)["execute"])
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Uncertain native effect is not replayable")
+        result = self.ledger.consume_trial_delivery(**delivery)
+        self.assertFalse(result["execute"])
+        self.assertFalse(result.get("replay_observation", False))
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+
+    def test_crashed_eligibility_observation_recovers_without_resuming_work(self):
+        from .trial import record_after_stop
+        self.initial()
+        record = self.observation(observed_by="coordinator", assignment_id="trial-4", manifest_digest=self.digest)
+        envelope, stopped = self.consumed_observation_gap(
+            "eligibility", {"reason": "input_wait", "record": record}, role="coordinator", assignment_id="trial-4")
+        record_after_stop(self.root, envelope)
+        snapshot = self.ledger.snapshot()
+        record_after_stop(self.root, envelope)
+        self.assertEqual(self.ledger.snapshot(), snapshot)
+        self.assertEqual(snapshot["trial"]["eligibility"]["trial-4"]["reason"], "input_wait")
+        self.assertEqual(snapshot["trial"]["capacity_history"][-1]["eligible_work"], 0)
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_legacy_transition_delivery_is_refused_without_erasing_committed_history(self):
+        from .trial import record_after_stop
+        from .safety import SafetyError
+        self.initial()
+        delivery = self.delivery(operation="transition")
+        delivery["envelope"]["payload"] = {"status": "verifying", "details": {}}
+        delivery["content_sha256"] = hashlib.sha256((json.dumps(delivery["envelope"], sort_keys=True) + "\n").encode()).hexdigest()
+        self.ledger.admit_trial_delivery(**delivery, authorization_revision=self.auth["revision"])
+        self.ledger.consume_trial_delivery(**delivery)
+        expected = self.ledger.transition("trial-0", "verifying", details={}, event_id=delivery["event_id"],
+                                           authorization_revision=self.auth["revision"])
+        stopped = self.ledger.request_stop(event_id=self.event(), reason="Committed transition recovery")
+        before = self.ledger.snapshot()
+        for _ in range(2):
+            with self.assertRaises(SafetyError):
+                record_after_stop(self.root, delivery["envelope"], role="owner")
+            self.assertEqual(self.ledger.snapshot(), before)
+        self.assertEqual(self.ledger.assignment("trial-0"), expected)
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+    def test_legacy_uncommitted_transition_delivery_remains_nonexecuting_after_stop(self):
+        from .trial import record_after_stop
+        from .safety import SafetyError
+        self.initial()
+        envelope, stopped = self.consumed_observation_gap("transition", {"status": "verifying", "details": {}})
+        before = self.ledger.snapshot()
+        for _ in range(2):
+            with self.assertRaises(SafetyError):
+                record_after_stop(self.root, envelope, role="owner")
+            self.assertEqual(self.ledger.snapshot(), before)
+        self.assertEqual(self.ledger.assignment("trial-0")["status"], "assigned")
+        self.assertEqual(self.ledger.authorization(), stopped)
+
+
+class WorkflowFixture:
+    """Synthetic native/Git observations for the controller's SQLite boundary."""
+
+    def __init__(self, *, inherited_corrections=0, prepare=None, configure=None):
+        self.case = TrialLedgerTests("test_default_policy_is_unchanged_and_real_trial_is_explicit")
+        self.case.setUp()
+        self.ledger, self.root = self.case.ledger, self.case.root
+        if prepare is not None:
+            prepare(self)
+        if inherited_corrections:
+            self.case.manifest["reservations"][0]["history"]["stages"]["qwen"].update(
+                initial_count=1, corrections=inherited_corrections,
+                best_candidate=dict(candidate_id="preserved-best",
+                    source_ref={"path": "drafts/preserved.cpp", "sha256": "f" * 64},
+                    input_identity="c" * 64, recipe_ref="preserved-recipe", outcome="nonmatching",
+                    evidence_refs=["synthetic-inherited-comparison"], quality=0.5))
+        trial = self.ledger.register_trial(manifest=self.case.manifest, event_id=self.case.event())
+        self.case.digest = trial["manifest_digest"]
+        execution = self.case.manifest["execution"]
+        role = {key: execution[key] for key in ("provider", "model", "endpoint")}
+        target = dict(self.case.manifest["publication_target"], baseline="a" * 40,
+                      git_dir=str(Path(self.case.manifest["publication_target"]["repository"]) / ".git"),
+                      author={"name": "Synthetic test", "email": "synthetic@example.invalid"},
+                      ownership_evidence={"path": str(self.root / "target-grant.json"), "sha256": "a" * 64})
+        self.config = dict(schema=1, run_id=self.root.name, controller_id="coordinator",
+            profile=dict(reconstruction=dict(role, stage="qwen", capacity=4),
+                         review=dict(role, stage="qwen", capacity=4),
+                         total_model_capacities=[dict(provider=role["provider"], model=role["model"], capacity=4)]),
+            publication_target=target, verification={})
+        for row in self.case.manifest["reservations"]:
+            self.config["verification"][row["assignment_id"]] = dict(
+                recipe={"compiler": "synthetic-fixed-recipe", "native_compile_command": "synthetic-compiler candidate.cpp"},
+                commands=[dict(name=name, argv=[sys.executable, "-c", "pass"],
+                               accepted_exit_codes=[0], timeout_seconds=10)
+                          for name in ("compile", "object_compare", "data_relocations", "source_link", "progress")],
+                binary_hashes={f"originals/{index}.bin": "a" * 40 for index in range(127)},
+                workspace_inputs=[],
+                selection=dict(source=next(path for path in row["owned_paths"] if path.endswith(".cpp")),
+                               object="build/candidate.o", link_output="build/native.rel",
+                               ninja=str(self.root / "synthetic-ninja.exe"), fallback_object="build/original.o"))
+        if configure is not None:
+            configure(self)
+        self.ledger.configure_trial_workflow(config=self.config, event_id=self.case.event(), authorization_revision=1)
+
+    def start(self, *, target=True, prompts=True):
+        self.case.initial(prompts=False)
+        if target:
+            action = self.admit(None)
+            configured = self.config["publication_target"]
+            self.complete(action, {key: configured[key] for key in ("repository", "git_dir", "remote", "branch")} | {
+                "common_git_dir": configured["git_dir"], "head": configured["baseline"],
+                "independent": True, "alternates": []})
+        if prompts:
+            return self.ledger.admit_trial_prompts(
+                effect_ids={f"trial-{index}": f"prompt-{index}" for index in range(4)},
+                event_id=self.case.event(), authorization_revision=1)
+
+    def admit(self, index=0, *, effect_id=None):
+        key = f"trial-{index}" if index is not None else None
+        ready = self.ledger.trial_readiness(key) if key is not None else self.ledger.trial_readiness()["target"]
+        effect_id = effect_id or "action-" + self.case.event()
+        return self.ledger.admit_trial_action(key, kind=ready["kind"], effect_id=effect_id,
+            binding=ready["binding"], authorization_revision=self.ledger.authorization()["revision"],
+            event_id=self.case.event())
+
+    def record(self, action, result, *, outcome="succeeded", **extra):
+        return self.case.observation(binding=action["binding"], started_at=action["admitted_at"],
+            authorization_revision=action["authorization_revision"], outcome=outcome, result=result, **extra)
+
+    def complete(self, action, result, *, outcome="succeeded"):
+        return self.ledger.observe_trial_action(effect_id=action["effect_id"],
+            record=self.record(action, result, outcome=outcome), event_id=self.case.event())
+
+    def owner_record(self, index=0, dispatch=None):
+        dispatch = dispatch or f"prompt-{index}"
+        doc = self.ledger.snapshot()
+        effect = doc["trial"]["effects"].get(dispatch) or doc["trial"]["workflow"]["actions"][dispatch]
+        return self.case.observation(dispatch_effect_id=dispatch, started_at=effect["admitted_at"],
+            authorization_revision=effect["authorization_revision"],
+            assignment_id=f"trial-{index}", owner_id=f"owner-{index}", session_id=f"child-{index}",
+            manifest_digest=self.case.digest, native_event=dict(kind="owner_turn_end",
+                registry_id=f"owner-{index}", session_id=f"child-{index}", root_session_id=f"root-{index}",
+                request_id=dispatch, will_continue=False))
+
+    def packet(self, index=0, candidate="candidate", *, two_units=False):
+        row = self.case.manifest["reservations"][index]
+        changes = {}
+        for path in row["owned_paths"]:
+            content = f"synthetic-{index}-{candidate}-{path}".encode()
+            changes[path] = dict(before=None if path.endswith(".cpp") else {"mode": "100644", "blob": "a" * 40},
+                                 after={"mode": "100644", "blob": hashlib.sha1(content).hexdigest()},
+                                 raw={"sha256": hashlib.sha256(content).hexdigest(), "size": len(content)})
+        source = next(path for path in changes if path.endswith(".cpp"))
+        inputs = dict(schema=1, inputs=dict(source={source: changes[source]["raw"]}, header={},
+            config={path: change["raw"] for path, change in changes.items() if path != source}, tool={}),
+            recipe=self.config["verification"][row["assignment_id"]]["recipe"])
+        inputs["identity"] = content_identity(inputs)
+        paths = list(changes)
+        units = [paths[:1], paths[1:]] if two_units else [paths]
+        return dict(schema=1, assignment_id=row["assignment_id"], owner_id=f"owner-{index}",
+            session_id=f"child-{index}", manifest_digest=self.case.digest, candidate_id=candidate,
+            inputs=inputs, changes=changes,
+            artifacts={name: {"path": f"evidence/{candidate}-{name}.json",
+                              "identity": {"sha256": "b" * 64, "size": 8}}
+                       for name in ("compile", "object_compare", "data_relocations", "source_link", "binary_hashes", "progress")},
+            logical_units=[{"message": f"Synthetic logical unit {number}", "paths": paths}
+                           for number, paths in enumerate(units)],
+            cleanup=[{"path": "scratch/disposable.bin", "identity": {"sha256": "c" * 64, "size": 3}}])
+
+    def measure(self, packet, *, index=0, dispatch=None):
+        source = next(path for path in packet["changes"] if path.endswith(".cpp"))
+        return self.ledger.record_attempt(f"trial-{index}", candidate_id=packet["candidate_id"],
+            source_ref={"path": str(Path(self.case.manifest["reservations"][index]["workspace"]) /
+                                    "drafts" / (packet["candidate_id"] + ".cpp")),
+                        "sha256": packet["changes"][source]["raw"]["sha256"]},
+            input_identity=packet["inputs"]["identity"], recipe_ref="synthetic-fixed-recipe",
+            outcome="matching", evidence_refs=["synthetic-measured-comparison"], quality=1,
+            observation=self.owner_record(index, dispatch), authorization_revision=1, event_id=self.case.event())
+
+    def capture(self, index=0, *, packet=None, dispatch=None):
+        packet = packet or self.packet(index)
+        self.measure(packet, index=index, dispatch=dispatch)
+        record = self.owner_record(index, dispatch)
+        raw_hash = content_identity(packet)
+        record.update(path=str(self.root / "deliveries" / "raw" / (raw_hash + ".json")),
+                      original_path=str(Path(self.case.manifest["reservations"][index]["workspace"]) /
+                                        "evidence/controller-delivery.json"),
+                      sha256=raw_hash, size=len(json.dumps(packet).encode()))
+        entry = self.ledger.record_trial_delivery(f"trial-{index}", delivery=packet, record=record,
+                                                 event_id=self.case.event())
+        return packet, entry, record
+
+    def validation_result(self, index=0):
+        selection = self.config["verification"][f"trial-{index}"]["selection"]
+        return dict(valid=True, matching=True,
+            checks={name: "synthetic-independent-" + name for name in (
+                "compile", "object_compare", "data_relocations", "source_link", "binary_hashes", "progress")},
+            binary_hash_count=127, runtime_status="unavailable", runtime_reason="Synthetic boundary test",
+            source_selection={key: selection[key] for key in ("source", "object", "link_output")} |
+                dict(selected=True, fallback_selected=False, evidence_ref="synthetic-actual-source-selection"))
+
+    def validate(self, index=0):
+        action = self.admit(index)
+        return self.complete(action, self.validation_result(index))
+
+    def prepare_review(self, index=0):
+        action = self.admit(index)
+        reviewer = dict(action["reviewer"], session_id=f"review-child-{index}",
+                        journal_ref="synthetic-genuine-review-journal", registry_ref="synthetic-genuine-review-registry")
+        return self.complete(action, dict(reviewer=reviewer, native_event=dict(
+            kind="review_gate_wait", registry_id=reviewer["owner_id"], session_id=reviewer["session_id"],
+            root_session_id=reviewer["root_session_id"])))
+
+    def review_result(self, action, *, decision="approve"):
+        reviewer = action["reviewer"]
+        source = self.config["verification"][action["assignment_id"]]["selection"]["source"]
+        return dict(decision=decision, findings=[] if decision == "approve" else [
+            dict(criterion="abi", path=source, reason="Synthetic declared ABI mismatch")],
+            decision_file={"path": str(self.root / (action["effect_id"] + ".json")), "sha256": "d" * 64},
+            native_event=dict(kind="reviewer_turn_end", registry_id=reviewer["owner_id"],
+                session_id=reviewer["session_id"], root_session_id=reviewer["root_session_id"],
+                request_id=action["effect_id"], will_continue=False))
+
+    def reviewed(self, index=0, *, decision="approve", packet=None):
+        self.capture(index, packet=packet)
+        self.validate(index)
+        self.prepare_review(index)
+        action = self.admit(index)
+        return self.complete(action, self.review_result(action, decision=decision))
+
+    def materialize_result(self, index=0):
+        state = self.ledger.snapshot()["trial"]["workflow"]["assignments"][f"trial-{index}"]
+        packet = state["deliveries"][state["current_delivery_id"]]["delivery"]
+        images = {path: dict(change["after"], raw=change["raw"]) for path, change in packet["changes"].items()}
+        return dict(expected_postimages=images, actual_postimages=dict(images),
+            scope_verified=True, source_binding_verified=True,
+            base_head=self.ledger.snapshot()["trial"]["workflow"]["target_head"],
+            grant_ref="synthetic-grant", preservation_ref="synthetic-preservation", private_index_ref="synthetic-private-index")
+
+    def materialize(self, index=0):
+        return self.complete(self.admit(index), self.materialize_result(index))
+
+    def commit_result(self, action):
+        state = self.ledger.snapshot()["trial"]["workflow"]["assignments"][action["assignment_id"]]
+        packet = state["deliveries"][state["current_delivery_id"]]["delivery"]
+        unit_id = action["binding"]["logical_unit_id"]
+        index = int(unit_id.removeprefix("unit-"))
+        commit = hashlib.sha1(action["effect_id"].encode()).hexdigest()
+        paths = packet["logical_units"][index]["paths"]
+        return dict(logical_unit_id=unit_id, commit=commit, local_head=commit, tree="e" * 40,
+            parent=state["units"][f"unit-{index - 1}"]["commit"] if index else state["materialization"]["base_head"],
+            postimages={path: state["materialization"]["postimages"][path] for path in paths},
+            changed_paths=paths, command_refs=["synthetic-owned-commit-command"])
+
+    def push_result(self, action):
+        return dict(logical_unit_id=action["binding"]["logical_unit_id"], commit=action["binding"]["commit"],
+            push_exit_code=0, pushed=True, remote_contains_commit=True, remote_head=action["binding"]["commit"],
+            command_refs=["synthetic-owned-push-and-remote-query"])
+
+    def publish(self, index=0):
+        while self.ledger.trial_readiness(f"trial-{index}")["kind"] in {"commit", "push"}:
+            action = self.admit(index)
+            self.complete(action, self.commit_result(action) if action["kind"] == "commit" else self.push_result(action))
+        return self.complete(self.admit(index), {})
+
+    def cleanup(self, index=0):
+        action = self.admit(index)
+        native = self.owner_record(index, action["effect_id"])["native_event"]
+        workspace = Path(self.case.manifest["reservations"][index]["workspace"])
+        return self.complete(action, dict(native_event=native,
+            retained_evidence_refs=["synthetic-all-drafts-and-comparisons"], deletion_manifest_ref="synthetic-deletion-manifest",
+            shared_link_checks_ref="synthetic-shared-link-checks", original_input_checks_ref="synthetic-original-checks",
+            retained_evidence_checks_ref="synthetic-retained-checks", tracked_files_preserved=True,
+            ancestor_links_checked=True, directory_pruning_checked=True,
+            removed_paths=[{"path": str(workspace / "scratch/disposable.bin"), "bytes": 3, "sha256": "c" * 64}],
+            removed_bytes=3))
+
+    def close(self, index=0):
+        action = self.admit(index)
+        process = self.ledger.process(f"process-{index}")
+        self.ledger.record_process_exit(f"process-{index}", event_id=self.case.event(), proof={
+            **process["identity"], "observed_exit": True, "exit_code": 0,
+            "verified_at": datetime.now(timezone.utc).isoformat(), "evidence_ref": f"synthetic-exit-{index}"})
+        return self.complete(action, dict(process_id=f"process-{index}", exit_evidence_ref=f"synthetic-exit-{index}"))
+
+
+class WorkflowLedgerTests(unittest.TestCase):
+    def setUp(self):
+        self.f = WorkflowFixture()
+        self.ledger = self.f.ledger
+
+    def test_target_setup_and_aggregate_native_request_capacity_are_durable(self):
+        self.f.start(target=False, prompts=False)
+        self.assertEqual(self.ledger.trial_prompt_readiness("trial-0")["reason"], "target_setup")
+        with self.assertRaises(PolicyError):
+            self.ledger.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+                event_id="before-target", authorization_revision=1)
+        self.assertFalse(any(effect["kind"] == "prompt" for effect in self.ledger.snapshot()["trial"]["effects"].values()))
+        target = self.f.admit(None)
+        configured = self.f.config["publication_target"]
+        self.f.complete(target, {key: configured[key] for key in ("repository", "git_dir", "remote", "branch")} |
+                        dict(common_git_dir=configured["git_dir"], head=configured["baseline"], independent=True, alternates=[]))
+        self.ledger.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+            event_id="four-prompts", authorization_revision=1)
+        reopened = Ledger(self.ledger.path)
+        self.assertEqual(reopened.trial_prompt_readiness()["reason"], "model_capacity")
+        self.assertEqual(reopened.trial_prompt_readiness("trial-0")["reason"], "already_admitted")
+        self.assertFalse(reopened.admit_trial_prompts(effect_ids={f"trial-{i}": f"prompt-{i}" for i in range(4)},
+            event_id="four-prompts", authorization_revision=1)["execute"])
+
+    def test_invalid_review_output_releases_only_the_observed_inference_lease(self):
+        self.f.start()
+        self.f.capture()
+        self.f.validate()
+        prepared = self.f.prepare_review()
+        reviewer = prepared["reviewer"]
+        self.assertNotEqual(reviewer["session_id"], "child-0")
+        action = self.f.admit()
+        self.assertEqual(self.ledger.trial_prompt_readiness()["reason"], "model_capacity")
+        result = self.f.review_result(action)
+        result.pop("decision")
+        result["error"] = "Synthetic missing native decision"
+        self.f.complete(action, result, outcome="failed")
+        self.assertTrue(self.ledger.trial_prompt_readiness()["ready"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "tool_wait")
+        self.assertTrue(self.ledger.session("child-0")["active"])
+        self.assertTrue(self.ledger.session(reviewer["session_id"])["active"])
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication_acknowledgment"])
+
+    def test_rejection_returns_to_same_owner_without_reset_or_reviewer_replacement(self):
+        self.f.start()
+        self.f.reviewed(decision="reject")
+        original = self.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]["reviewer"]
+        correction = self.f.admit()
+        self.assertEqual(correction["kind"], "reconcile")
+        self.assertEqual(correction["binding"]["session_id"], "child-0")
+        self.ledger.observe_trial_owner("trial-0", record=self.f.owner_record(), event_id="late-old-completion")
+        self.assertTrue(self.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]["owner_activity"]["busy"])
+        packet = self.f.packet(candidate="corrected")
+        self.f.capture(packet=packet, dispatch=correction["effect_id"])
+        self.f.complete(correction, {"native_event": self.f.owner_record(dispatch=correction["effect_id"])["native_event"]})
+        self.f.validate()
+        review = self.f.admit()
+        self.assertEqual(review["kind"], "review")
+        self.assertEqual(review["reviewer"], original)
+        self.f.complete(review, self.f.review_result(review))
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "materialize")
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["corrections"], 1)
+
+    def test_model_matching_assertion_and_skipped_postimages_never_accept(self):
+        self.f.start()
+        self.f.capture()
+        action = self.f.admit()
+        result = self.f.validation_result()
+        result["matching"] = False
+        with self.assertRaises(StateError):
+            self.f.complete(action, result)
+        self.assertIsNone(self.ledger.assignment("trial-0")["verification"])
+        self.f.complete(action, self.f.validation_result())
+        self.f.prepare_review()
+        review = self.f.admit()
+        self.f.complete(review, self.f.review_result(review))
+        materialize = self.f.admit()
+        skipped = self.f.materialize_result()
+        skipped["actual_postimages"].pop("configure.py")
+        with self.assertRaises(StateError):
+            self.f.complete(materialize, skipped)
+        self.assertIsNone(self.ledger.assignment("trial-0")["materialization"])
+        self.f.complete(materialize, dict(error="Observed partial materialization", actual_postimages=skipped["actual_postimages"]),
+                        outcome="uncertain")
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "uncertain_effect")
+        self.assertEqual(self.ledger.snapshot()["trial"]["workflow"]["target_lease"], materialize["effect_id"])
+
+    def test_concurrent_target_admission_serializes_only_publication_generations(self):
+        self.f.start()
+        self.f.reviewed(0)
+        self.f.reviewed(1)
+        requests = [self.ledger.trial_readiness(f"trial-{i}") for i in range(2)]
+        barrier = Barrier(2)
+        def admit(index):
+            barrier.wait()
+            try:
+                return Ledger(self.ledger.path).admit_trial_action(
+                    f"trial-{index}", kind="materialize", effect_id=f"concurrent-{index}",
+                    binding=requests[index]["binding"], event_id=f"concurrent-admit-{index}", authorization_revision=1)
+            except StateError as exc:
+                return str(exc)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(admit, range(2)))
+        self.assertEqual(sum(isinstance(result, dict) and result["execute"] for result in results), 1)
+        self.assertTrue(any(isinstance(result, str) and "publication_wait" in result for result in results))
+        self.f.capture(2)
+        self.assertTrue(self.ledger.trial_readiness("trial-2")["ready"])
+        self.assertEqual(self.ledger.trial_readiness("trial-2")["kind"], "validate_delivery")
+
+    def test_each_logical_unit_push_precedes_ack_cleanup_exit_and_independent_refill(self):
+        self.f.start()
+        self.f.reviewed(packet=self.f.packet(two_units=True))
+        self.f.materialize()
+        first = self.f.admit()
+        self.assertEqual(first["binding"]["logical_unit_id"], "unit-0")
+        self.f.complete(first, self.f.commit_result(first))
+        push = self.f.admit()
+        self.f.complete(push, self.f.push_result(push))
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication_acknowledgment"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["binding"]["logical_unit_id"], "unit-1")
+        self.assertIsNotNone(self.ledger.snapshot()["trial"]["workflow"]["target_lease"])
+        self.f.publish()
+        self.assertIsNone(self.ledger.snapshot()["trial"]["workflow"]["target_lease"])
+        self.assertFalse(self.ledger.assignment("trial-0")["publication"]["external_coordinator"])
+        with self.assertRaises(StateError):
+            self.ledger.claim_trial_refill(claim=self.f.case.claim(4, slot=0),
+                                           event_id="early-refill", authorization_revision=1)
+        self.f.cleanup()
+        close = self.f.admit()
+        with self.assertRaises(StateError):
+            self.f.complete(close, dict(process_id="process-0", exit_evidence_ref="synthetic-exit-0"))
+        self.f.case.exit()
+        self.f.complete(close, dict(process_id="process-0", exit_evidence_ref="synthetic-exit"))
+        self.ledger.claim_trial_refill(claim=self.f.case.claim(4, slot=0), event_id="independent-refill", authorization_revision=1)
+        self.assertEqual(self.ledger.assignment("trial-4")["status"], "assigned")
+        self.assertNotEqual(self.ledger.assignment("trial-4")["owner_id"], "owner-0")
+        self.assertEqual(self.ledger.assignment("trial-0")["accepted_credit"], 0)
+
+    def test_definitive_commit_failure_keeps_uncommitted_bundle_lease(self):
+        self.f.start()
+        self.f.reviewed()
+        self.f.materialize()
+        action = self.f.admit()
+        self.f.complete(action, dict(error="Synthetic native commit failure", effect_absent=True), outcome="failed")
+        self.assertEqual(self.ledger.snapshot()["trial"]["workflow"]["target_lease"], action["effect_id"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "tool_wait")
+
+    def test_readonly_push_recovery_after_stop_neither_replays_nor_invents_exit(self):
+        self.f.start()
+        self.f.reviewed()
+        self.f.materialize()
+        commit = self.f.admit()
+        self.f.complete(commit, self.f.commit_result(commit))
+        push = self.f.admit()
+        self.f.complete(push, {"error": "Synthetic transport loss"}, outcome="uncertain")
+        stopped = self.ledger.request_stop(event_id="recovery-stop", reason="Synthetic recovery boundary")
+        result = self.f.push_result(push) | dict(push_exit_code=None, recovered_from_remote=True)
+        record = self.f.record(push, result)
+        record["started_at"] = datetime.now(timezone.utc).isoformat()
+        record["observed_at"] = datetime.now(timezone.utc).isoformat()
+        recovered = self.ledger.observe_trial_action(effect_id=push["effect_id"], record=record, event_id="recovered-remote")
+        self.assertFalse(recovered["execute"])
+        self.assertIsNone(self.ledger.assignment("trial-0")["publication"]["push_receipt"]["push_exit_code"])
+        self.assertFalse(self.ledger.observe_trial_action(effect_id=push["effect_id"], record=record,
+                                                          event_id="duplicate-recovered-remote")["execute"])
+        ack = self.f.admit()
+        self.assertEqual(ack["kind"], "acknowledge")
+        self.f.complete(ack, {})
+        self.assertEqual(self.ledger.authorization(), stopped)
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "explicit_pause")
+        self.assertTrue(self.ledger.session("child-0")["active"])
+
+    def test_manual_lifecycle_bypass_and_foreign_review_actor_are_rejected(self):
+        self.f.start()
+        self.f.capture()
+        self.f.validate()
+        with self.assertRaises(PolicyError):
+            self.ledger.transition("trial-0", "review_wait", details={}, event_id="manual-review", authorization_revision=1)
+        action = self.f.admit()
+        reviewer = dict(action["reviewer"], session_id="child-0", owner_id="owner-0",
+                        journal_ref="synthetic-journal", registry_ref="synthetic-registry")
+        with self.assertRaises(StateError):
+            self.f.complete(action, dict(reviewer=reviewer, native_event=dict(kind="review_gate_wait",
+                registry_id="owner-0", session_id="child-0", root_session_id="root-0")))
+        self.assertEqual(self.ledger.assignment("trial-0")["status"], "review_wait")
+
+    def test_delivery_cannot_authorize_deleting_a_preserved_candidate(self):
+        self.f.start()
+        packet = self.f.packet()
+        packet["cleanup"] = [{"path": "drafts/candidate.cpp", "identity": {"sha256": "c" * 64, "size": 3}}]
+        self.f.capture(packet=packet)
+        validation = self.f.admit()
+        with self.assertRaises(StateError):
+            self.f.complete(validation, self.f.validation_result())
+        self.assertIsNone(self.ledger.assignment("trial-0")["verification"])
+        self.f.complete(validation, {"findings": [
+            {"criterion": "ownership", "path": "", "reason": "Disposable aliases a preserved draft"}],
+            "effect_absent": True}, outcome="rejected")
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "reconcile")
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 1)
+
+    def test_nonzero_inherited_counts_survive_controller_delivery_and_approval(self):
+        fixture = WorkflowFixture(inherited_corrections=3)
+        fixture.start()
+        fixture.reviewed()
+        assignment = fixture.ledger.assignment("trial-0")
+        self.assertEqual(assignment["stages"][-1]["initial_count"], 1)
+        self.assertEqual(assignment["stages"][-1]["corrections"], 4)
+        self.assertEqual(assignment["stages"][-1]["inherited_corrections"], 3)
+        self.assertIn("preserved-best", assignment["stages"][-1]["candidates"])
+        self.assertEqual(assignment["stage"], "qwen")
+
+    def test_external_receipts_cannot_claim_controller_remote_recovery(self):
+        old = TrialLedgerTests("test_default_policy_is_unchanged_and_real_trial_is_explicit")
+        old.setUp()
+        old.ready()
+        old.observe("commit", old.receipt("commit", commit="e" * 40, local_head="e" * 40))
+        receipt = old.receipt("push", commit="e" * 40, push_exit_code=None, pushed=True,
+                              remote_contains_commit=True, remote_head="e" * 40, recovered_from_remote=True,
+                              command_refs=["synthetic-unadmitted-query"])
+        with self.assertRaises(StateError):
+            old.ledger.observe_trial_receipt("trial-0", kind="push", receipt=receipt, event_id=old.event())
+
+
+    def test_old_completion_cannot_bless_new_bytes_during_a_later_owner_turn(self):
+        self.f.start()
+        packet, _, original_record = self.f.capture()
+        self.f.validate()
+        self.f.prepare_review()
+        review = self.f.admit()
+        self.f.complete(review, self.f.review_result(review, decision="reject"))
+        correction = self.f.admit()
+        changed = json.loads(json.dumps(packet))
+        changed["logical_units"][0]["message"] = "Different pending publication intent"
+        record = dict(original_record, sha256=content_identity(changed), size=len(json.dumps(changed).encode()))
+        record["path"] = str(self.f.root / "deliveries" / "raw" / (record["sha256"] + ".json"))
+        with self.assertRaises(StateError):
+            self.ledger.record_trial_delivery("trial-0", delivery=changed, record=record, event_id="stale-native-completion")
+        activity = self.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]["owner_activity"]
+        self.assertEqual(activity["effect_id"], correction["effect_id"])
+        self.assertTrue(activity["busy"])
+
+
+    def test_missing_fixed_native_command_is_rejected_before_provider_work(self):
+        attempted = []
+        def omit_command(fixture):
+            attempted.append(fixture)
+            fixture.config["verification"]["trial-0"]["recipe"].pop("native_compile_command")
+        with self.assertRaises(StateError):
+            WorkflowFixture(configure=omit_command)
+        trial = attempted[0].ledger.snapshot()["trial"]
+        self.assertNotIn("workflow", trial)
+        self.assertEqual(trial["effects"], {})
+
+    def test_changed_relevant_inputs_supersede_inflight_verification_without_credit(self):
+        self.f.start()
+        self.f.capture()
+        action = self.f.admit()
+        self.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="synthetic-changed-header", event_id="header-changed")
+        observed = self.f.complete(action, self.f.validation_result())
+        self.assertTrue(observed["superseded"])
+        self.assertIsNone(self.ledger.assignment("trial-0")["verification"])
+        ready = self.ledger.trial_readiness("trial-0")
+        self.assertEqual(ready["kind"], "reconcile")
+        self.assertEqual(ready["binding"]["changed_input_identity"], "f" * 64)
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 1)
+
+    def test_unrelated_target_head_does_not_invalidate_immutable_verification(self):
+        self.f.start()
+        self.f.capture(0)
+        self.f.validate(0)
+        verification = self.ledger.assignment("trial-0")["verification"]
+        self.f.reviewed(1)
+        self.f.materialize(1)
+        self.f.publish(1)
+        self.assertEqual(self.ledger.assignment("trial-0")["verification"], verification)
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "prepare_review")
+
+
+    def test_workflow_process_only_commands_keep_their_real_operation(self):
+        for index, operation in enumerate(("verify", "materialize", "cleanup", "status")):
+            identity = dict(pid=90000 + index, creation_time=f"synthetic-{index}",
+                            token=f"command-{index}", job_name=f"job-{index}")
+            registered = self.ledger.register_process(process_id=f"command-{index}", session_id=None,
+                identity=identity, operation=operation, authorization_revision=1, event_id=self.f.case.event())
+            self.assertEqual(registered["operation"], operation)
+            with self.assertRaises(PolicyError):
+                self.ledger.register_process(process_id=f"session-command-{index}", session_id="child-0",
+                    identity=identity, operation=operation, authorization_revision=1, event_id=self.f.case.event())
+        revision = self.ledger.request_stop(event_id=self.f.case.event(), reason="Synthetic STOP")["revision"]
+        self.ledger.register_process(process_id="readonly-after-stop", session_id=None,
+            identity=dict(pid=91000, creation_time="synthetic-stop", token="readonly-stop", job_name="readonly-stop"),
+            operation="status", authorization_revision=revision, event_id=self.f.case.event())
+        with self.assertRaises(PolicyError):
+            self.ledger.register_process(process_id="verify-after-stop", session_id=None,
+                identity=dict(pid=91001, creation_time="synthetic-stop", token="verify-stop", job_name="verify-stop"),
+                operation="verify", authorization_revision=revision, event_id=self.f.case.event())
+        control = Ledger(self.f.root / "control-only.sqlite3")
+        control.authorize("RUN", event_id="control-run", expected_revision=0, reason="Synthetic control")
+        for operation in ("verify", "materialize", "cleanup", "status"):
+            with self.assertRaises(PolicyError):
+                control.register_process(process_id="not-a-workflow", session_id=None,
+                    identity=dict(pid=92000, creation_time="synthetic", token="control", job_name="control"),
+                    operation=operation, authorization_revision=1, event_id=self.f.case.event())
+
+    def test_missing_delivery_reconciles_same_owner_and_identical_failure_does_not_loop(self):
+        self.f.start()
+        error = dict(reason="No delivery file", original_path=str(
+            Path(self.f.case.manifest["reservations"][0]["workspace"]) / "evidence/controller-delivery.json"),
+            archive=None)
+        record = self.f.owner_record()
+        self.ledger.record_trial_delivery_error("trial-0", error=error, record=record, event_id="missing-delivery")
+        first = self.ledger.trial_readiness("trial-0")
+        self.assertTrue(first["ready"])
+        self.assertEqual(first["kind"], "reconcile")
+        self.assertIsNone(first["binding"]["delivery_id"])
+        self.ledger.record_trial_delivery_error("trial-0", error=error, record=record, event_id="duplicate-missing")
+        correction = self.f.admit()
+        self.assertTrue(correction["binding"]["repair_only"])
+        with self.assertRaises(StateError):
+            self.f.measure(self.f.packet(), dispatch=correction["effect_id"])
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 0)
+        self.assertIsNone(self.ledger.assignment("trial-0")["best_candidate"])
+        completed = self.f.owner_record(dispatch=correction["effect_id"])
+        self.f.complete(correction, {"native_event": completed["native_event"]})
+        self.ledger.record_trial_delivery_error("trial-0", error=error, record=completed, event_id="still-missing")
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "unchanged_invalid_delivery")
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 0)
+
+    def test_superseded_reviewer_is_registered_without_approving_stale_inputs(self):
+        self.f.start()
+        self.f.capture()
+        self.f.validate()
+        action = self.f.admit()
+        reviewer = dict(action["reviewer"], session_id="observed-reviewer",
+                        journal_ref="native-journal", registry_ref="native-registry")
+        self.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-header", event_id="change-during-review-preparation")
+        observed = self.f.complete(action, dict(reviewer=reviewer, native_event=dict(
+            kind="review_gate_wait", registry_id=reviewer["owner_id"], session_id=reviewer["session_id"],
+            root_session_id=reviewer["root_session_id"])))
+        self.assertTrue(observed["superseded"])
+        snapshot = self.ledger.snapshot()
+        self.assertEqual(snapshot["trial"]["workflow"]["assignments"]["trial-0"]["reviewer"], reviewer)
+        self.assertTrue(snapshot["sessions"][reviewer["session_id"]]["active"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "reconcile")
+        self.assertIsNone(self.ledger.assignment("trial-0")["review"])
+
+    def test_superseded_materialization_requires_observed_restoration_before_reconciliation(self):
+        self.f.start()
+        self.f.reviewed()
+        action = self.f.admit()
+        materialized = self.f.materialize_result()
+        self.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-header", event_id="change-during-materialization")
+        observed = self.f.complete(action, materialized)
+        self.assertTrue(observed["superseded"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "restore_materialization")
+        self.assertIsNone(self.ledger.assignment("trial-0")["materialization"])
+        restore = self.f.admit()
+        self.assertEqual(self.ledger.snapshot()["trial"]["workflow"]["target_lease"], restore["effect_id"])
+        state = self.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]
+        delivery = state["deliveries"][action["binding"]["delivery_id"]]["delivery"]
+        self.f.complete(restore, {"error": "Interrupted restoration"}, outcome="uncertain")
+        self.assertEqual(self.ledger.snapshot()["trial"]["workflow"]["target_lease"], restore["effect_id"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "uncertain_effect")
+        self.ledger.request_stop(event_id=self.f.case.event(), reason="Observe restoration without replay")
+        result = dict(restored_action_id=action["effect_id"], base_head=action["binding"]["target_head"],
+                      restored_preimages={path: change["before"] for path, change in delivery["changes"].items()},
+                      scope_verified=True, preservation_ref="retained-materialized-bytes",
+                      command_refs=["synthetic-restoration-proof"], recovered_restoration=True)
+        query = self.f.record(restore, result)
+        query["started_at"] = datetime.now(timezone.utc).isoformat()
+        query["observed_at"] = datetime.now(timezone.utc).isoformat()
+        self.ledger.observe_trial_action(effect_id=restore["effect_id"], record=query, event_id="restoration-observed")
+        self.ledger.observe_trial_action(effect_id=restore["effect_id"], record=query, event_id="restoration-duplicate")
+        self.assertIsNone(self.ledger.snapshot()["trial"]["workflow"]["target_lease"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "reconcile")
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["reason"], "explicit_pause")
+
+    def test_case_variant_binary_expectations_cannot_satisfy_127_distinct_paths(self):
+        attempted = []
+        def alias_binary(fixture):
+            attempted.append(fixture)
+            binaries = fixture.config["verification"]["trial-0"]["binary_hashes"]
+            digest = binaries.pop("originals/126.bin")
+            binaries["ORIGINALS/0.BIN"] = digest
+        with self.assertRaises(StateError):
+            WorkflowFixture(configure=alias_binary)
+        self.assertNotIn("workflow", attempted[0].ledger.snapshot()["trial"])
+
+    def test_owner_interval_cannot_impersonate_native_timing_even_with_expected_ids(self):
+        self.f.start()
+        record = self.f.case.observation(owner_id="owner-0", native_actor_id="owner-0",
+            native_session_id="child-0", phase="model_execution", started_at="2025-01-01T00:00:00+00:00",
+            observed_at="2025-01-01T00:00:01+00:00")
+        with self.assertRaises(StateError):
+            self.ledger.trial_event("trial-0", kind="interval", record=record, event_id="owner-forged-interval")
+
+
+    def test_completed_materialization_is_restored_before_changed_input_reconciliation(self):
+        self.f.start()
+        self.f.reviewed()
+        materialized = self.f.materialize()
+        self.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-after-materialization", event_id="late-header-change")
+        ready = self.ledger.trial_readiness("trial-0")
+        self.assertTrue(ready["ready"])
+        self.assertEqual(ready["kind"], "restore_materialization")
+        self.assertEqual(ready["binding"]["recovery_action_id"], materialized["effect_id"])
+        snapshot = self.ledger.snapshot()["trial"]["workflow"]
+        self.assertEqual(snapshot["target_lease"], materialized["effect_id"])
+        self.assertTrue(snapshot["actions"][materialized["effect_id"]]["superseded"])
+        state = snapshot["assignments"]["trial-0"]
+        self.assertIsNone(state["materialization"])
+        delivery = state["deliveries"][state["current_delivery_id"]]["delivery"]
+        restoration = self.f.admit()
+        self.f.complete(restoration, dict(restored_action_id=materialized["effect_id"],
+            base_head=materialized["binding"]["target_head"],
+            restored_preimages={path: change["before"] for path, change in delivery["changes"].items()},
+            scope_verified=True, preservation_ref="synthetic-preserved-materialization",
+            command_refs=["synthetic-restoration-command"]))
+        self.assertIsNone(self.ledger.snapshot()["trial"]["workflow"]["target_lease"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "reconcile")
+        self.assertTrue(self.ledger.trial_readiness("trial-0")["ready"])
+
+    def test_failed_dispatch_cannot_capture_later_valid_bytes_during_stop_recovery(self):
+        self.f.start()
+        packet = self.f.packet()
+        self.f.measure(packet)
+        completion = self.f.owner_record()
+        original = str(Path(self.f.case.manifest["reservations"][0]["workspace"]) /
+                       "evidence/controller-delivery.json")
+        self.ledger.record_trial_delivery_error("trial-0",
+            error=dict(reason="Missing at actual owner completion", original_path=original, archive=None),
+            record=completion, event_id="original-failure")
+        self.ledger.request_stop(event_id="stop-before-reread", reason="Observe only; no owner repair")
+        raw_hash = content_identity(packet)
+        capture = dict(completion, original_path=original, sha256=raw_hash,
+            size=len(json.dumps(packet).encode()), path=str(self.f.root / "deliveries/raw" / (raw_hash + ".json")))
+        with self.assertRaises(StateError):
+            self.ledger.record_trial_delivery("trial-0", delivery=packet, record=capture,
+                                             event_id="late-recovered-bytes")
+        state = self.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]
+        self.assertIsNone(state["current_delivery_id"])
+        self.assertEqual(state["correction"]["action_id"], "original-failure")
+        self.assertEqual(self.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 1)
+
+
+    def test_reporting_repair_captures_preserved_candidate_without_a_new_attempt(self):
+        self.f.start()
+        packet = self.f.packet()
+        self.f.measure(packet)
+        before = self.ledger.assignment("trial-0")
+        original = str(Path(self.f.case.manifest["reservations"][0]["workspace"]) /
+                       "evidence/controller-delivery.json")
+        self.ledger.record_trial_delivery_error("trial-0",
+            error=dict(reason="Missing delivery metadata", original_path=original, archive=None),
+            record=self.f.owner_record(), event_id="metadata-missing")
+        repair = self.f.admit()
+        with self.assertRaises(StateError):
+            self.f.measure(self.f.packet(candidate="unrequested-new-candidate"), dispatch=repair["effect_id"])
+        completion = self.f.owner_record(dispatch=repair["effect_id"])
+        self.f.complete(repair, {"native_event": completion["native_event"]})
+        raw_hash = content_identity(packet)
+        capture = dict(completion, original_path=original, sha256=raw_hash,
+            size=len(json.dumps(packet).encode()), path=str(self.f.root / "deliveries/raw" / (raw_hash + ".json")))
+        self.ledger.record_trial_delivery("trial-0", delivery=packet, record=capture, event_id="metadata-repaired")
+        after = self.ledger.assignment("trial-0")
+        self.assertEqual(after["stages"][-1]["initial_count"], before["stages"][-1]["initial_count"])
+        self.assertEqual(after["stages"][-1]["corrections"], before["stages"][-1]["corrections"])
+        self.assertEqual(after["best_candidate"], before["best_candidate"])
+        self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "validate_delivery")
 
 
 if __name__ == "__main__":
