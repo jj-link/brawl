@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint dc9bd278
+
+- Publisher verified committed snapshot `dc9bd2782bd32575afb614650880e6207dc5b4fc`: **2.978282%**, **471568 / 15833556 accepted code bytes**, **15361988 code bytes remaining**, **1397 accepted source units**. Delta versus `3a16364d`: **+8 code bytes / +1 accepted source unit**. Report SHA-256: `6acbe4c19db03485463da0779b4cdd9fd6cf06fec6d7ff57be45a5ca15a72b79`.
+- Fresh committed-source report generation and the existing calculator passed, with **127 native hash checks** plus independent output SHA-1 comparisons, **1397 accepted source-link recipes**, **1396 prior source/object identities**, and **329 original/tool identities** verified. All **20 accepted Dedede units** are complete and singly source-linked. E1F8 reproduces the owner's compared code, relocation and object identities; the source matches its immutable initial candidate. Unpublished E200/E208 work is excluded.
+- Normalized registration files have identical LF committed/checkout forms. Evidence: `build/isolated-workers/SolPublisherDB04/evidence/dc9bd278/`, including `report-published.json`, `committed-report.json`, native/calculator logs, binary/input/source-link checks, `normalized-registration-identities.json`, compiler recipes, the Dedede map and module/unit accounting. Native warnings are retained; gameplay was not exercised. Final local/public headline/history verification follows publication of this record.
+
 ## Dedede E1F8 — exact GLM source reconstruction
 
 - Accepted `fn_117_E1F8`, `.text 0xE1F8..0xE200`: **8 code bytes**, **one initial candidate / zero corrections**. Its C++ declaration agrees with the accepted `fn_117_99E4` definition; the interface adjustment and forwarded arguments reproduce the allocated code and local `R_PPC_REL24` relocation. The data-reference evidence identifies its secondary-interface table slot.
