@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 4b9ae620
+
+- Verified committed snapshot `4b9ae620fde45ed40dbc5ea21735ec19b5febd11`: **2.978838% complete**, **471656 / 15833556 accepted code bytes**, **15361900 code bytes remaining**, **1408 accepted source units**. Delta from `1ce74085`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `6c6379cb2dae285a7c94139be73dc0279d37e264e149e6baf6a73331cd455aff` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1408 accepted-source link recipes, 1407 prior source/object identities and 329 original/tool identities were validated; all 31 complete Dedede source units retain single map definitions.
+- E290's immutable source blob `dfb8433743e5bdd51547dc50e467e118a70391c8`, allocated text/relocation and candidate/target object identities reproduce the owner's comparison. The 2279-byte LF draft and 2319-byte native CRLF representation are recorded separately. Counts remain 1 initial / 0 corrections / inherited UNKNOWN. The distinct imported callee is preserved; prior accepted units remain linked, and the AI draft retains its original fallback and zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/4b9ae620/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E298/E2A0/trial work are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment.
+
 ## Dedede E290 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E290`, `.text [0xE290,0xE298)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and tail-calls `fn_27_13B998`, preserving its item pointer argument.
