@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 9bf8c4a9
+
+- Verified committed snapshot `9bf8c4a9e577b6cc3016e3602daefb188cf4f096`: **2.978687% complete**, **471632 / 15833556 accepted code bytes**, **15361924 code bytes remaining**, **1405 accepted source units**. Delta from `d3f59b9c`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `768d3d5e929b579f46c01ff75111bf8f8b74b5703cd4f2cbf8f5f85745d4d062` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1405 accepted-source link recipes, 1404 prior source/object identities and 329 original/tool identities were validated; all 28 complete Dedede source units retain single map definitions.
+- E268's immutable source blob `6abf5273359490913c691e315d8cf056651a2820`, allocated text/relocation and candidate/target object identities reproduce its owner's comparison; the LF draft and native CRLF checkout identities are recorded separately. Counts remain 1 initial / 0 corrections / inherited UNKNOWN. E270/E278 remain source-linked, and the AI draft remains incomplete with original fallback and zero credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/9bf8c4a9/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E280/E288 are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment; the prior d3 checkpoint's completed agreement remains in `evidence/d3f59b9c/final-publication-current.json`.
+
 ## Dedede E268 — reconstructed local-handler adjustment
 
 - Registered genuine C++ for `fn_117_E268`, `.text [0xE268,0xE270)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xB8` and tail-calls the local `fn_117_9E84`. Sliced and compiled objects have identical allocated text `3863ff4848000000` and the same offset-4 `R_PPC_REL24`; the linked intra-module branch resolves to the original bytes.
