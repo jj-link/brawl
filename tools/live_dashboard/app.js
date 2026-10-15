@@ -366,13 +366,19 @@
         (/^recorded checkpoint/i.test(p.timestampMeaning || '') ? 'Recorded ' : 'Published ') +
           new Date(p.updatedAt).toLocaleString()) : 'Publication date unknown') :
       (p.updatedAt ? new Date(p.updatedAt).toLocaleString() : 'timestamp unknown');
-    const exact = Number(p.acceptedBytes).toLocaleString() + ' / ' + Number(p.totalBytes).toLocaleString() +
-      ' bytes · ' + Number(p.percent).toFixed(p.precision === 6 ? 6 : 3) + '% · ' +
-      Number(p.remainingBytes).toLocaleString() + ' bytes remaining';
+    const contribution = p.source !== 'changelog' ?
+      Number(p.acceptedBytes).toLocaleString() + ' / ' + Number(p.totalBytes).toLocaleString() +
+        ' bytes · ' + Number(p.percent).toFixed(p.precision === 6 ? 6 : 3) + '% · ' +
+        Number(p.remainingBytes).toLocaleString() + ' bytes remaining' :
+      p.acceptedBytesDelta != null && p.acceptedUnitsDelta != null ?
+      '+' + Number(p.acceptedBytesDelta).toLocaleString() + ' code bytes · +' +
+        Number(p.acceptedUnitsDelta).toLocaleString() + ' source unit' +
+        (Number(p.acceptedUnitsDelta) === 1 ? '' : 's') :
+      'Checkpoint contribution unavailable';
     host.replaceChildren(
       el('strong', { text: source }),
       document.createTextNode(' · ' + at + (p.lastGood ? ' · last good checkpoint (see warnings)' : '')),
-      el('span', { class: 'checkpoint', text: exact }),
+      el('span', { class: 'checkpoint', text: contribution }),
       el('span', { class: 'checkpoint', text: [p.checkpointTitle, p.commit ? 'commit ' + p.commit : null].filter(Boolean).join(' · ') })
     );
     const u = s.unitsProvenance || {};

@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dashboard contribution accounting
+
+- Corrected predecessor selection so a distinct source checkpoint with unchanged accepted counters contributes **0 code bytes / 0 source units**, rather than borrowing an older positive contribution. Duplicate records for the same known source still retain their contribution; missing, decreasing or unidentified predecessors do not borrow unrelated credit.
+- Published the existing contribution API/frontend prerequisite together with the correction. The existing checkpoint row renders explicit zero values without changing the dashboard layout.
+- Verification: **59 checkpoint regressions passed** and an actual isolated HTTP exercise reproduced the previous `8 / 1` result and corrected it to `0 / 0` with other progress fields unchanged. Five added behavioral cases cover distinct equal-count checkpoints, same-source duplicates, unidentified legacy records, missing/decreasing baselines and last-good handling.
+- Actual local/public browser and API verification after the dashboard-only HTTP replacement `91292 → 61584` showed `+0 code bytes · +0 source units` for `d04a5160`, with its original `2026-10-15T10:51:35Z` publication time, counters and 5685 map records intact. Main observer 94768, independent Astra 101968 and proxy 11596 were preserved. The retained publisher independently confirmed exact source, deltas, module/unit data and served/persisted history agreement.
+- A native apply initially converted the two Python files to CRLF despite command-local `core.autocrlf=false`. Guarded, privately exercised exact-byte recovery restored the already-tested LF postimages; failure and recovery receipts remain retained. No global Git configuration or attributes changed.
+- Evidence: `build/checkpoint-publication-time/d/{manifest.json,regressions.txt,progress-http-smoke.json,main-recovery-receipt.json}`, `build/checkpoint-time-surface/zero-delta-followup/actual-browser-results.json` and the publisher's `evidence/d04a5160/corrected-final-endpoint-agreement.json`. The original discrepancy evidence remains unchanged.
+
 ## Dedede E270 — reconstructed member adjustment
 
 - Registered genuine C++ for `fn_117_E270`, `.text [0xE270,0xE278)`: **8 code bytes / 1 source unit**. The source adjusts the object pointer by `-0xC4` and forwards to `fn_27_135EB4`; allocated code and the single `R_PPC_REL24` relocation match the original exactly.

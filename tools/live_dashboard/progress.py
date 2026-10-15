@@ -309,6 +309,7 @@ class ProgressTracker:
         # CHANGELOG is newest-first. Recognize record intent separately from
         # measurement validity so a malformed newest checkpoint still fails.
         seen_record = False
+        checkpoint = None
         for section in re.split(r"(?m)^## ", text)[1:]:
             title, _, body = section.partition("\n")
             if not is_checkpoint_section(title.strip(), body):
@@ -325,21 +326,40 @@ class ProgressTracker:
             units = re.findall(r"([\d,]+)\s+accepted source units", plain)
             percent = re.search(r"(\d+\.\d+)%", plain)
             if not counts or not remaining or not units or not percent:
-                raise ValueError("latest verified cumulative section lacks complete counts")
+                if checkpoint is None:
+                    raise ValueError("latest verified cumulative section lacks complete counts")
+                continue
             accepted, total = (int(s.replace(",", "")) for s in counts.groups())
             left = int(remaining.group(1).replace(",", ""))
             pct = float(percent.group(1))
             if total <= 0 or accepted < 0 or left != total - accepted \
                     or abs(pct - 100 * accepted / total) > 0.00000051:
-                raise ValueError("latest verified checkpoint has inconsistent accounting")
+                if checkpoint is None:
+                    raise ValueError("latest verified checkpoint has inconsistent accounting")
+                continue
             commit = checkpoint_commit(section)
-            return {
+            candidate = {
                 "acceptedBytes": accepted, "totalBytes": total,
                 "remainingBytes": left, "percent": round(pct, 6),
                 "acceptedUnits": int(units[-1].replace(",", "")),
                 "commit": commit,
                 "checkpointTitle": section.splitlines()[0].strip(),
             }
+            if checkpoint is None:
+                checkpoint = dict(candidate, acceptedBytesDelta=None, acceptedUnitsDelta=None)
+                continue
+            if candidate["totalBytes"] != checkpoint["totalBytes"]:
+                continue
+            byte_delta = checkpoint["acceptedBytes"] - candidate["acceptedBytes"]
+            unit_delta = checkpoint["acceptedUnits"] - candidate["acceptedUnits"]
+            if byte_delta == 0 and unit_delta == 0 \
+                    and checkpoint["commit"] is not None and candidate["commit"] == checkpoint["commit"]:
+                continue  # Only repeated documentation of the same source can be skipped.
+            if byte_delta >= 0 and unit_delta >= 0:
+                checkpoint.update(acceptedBytesDelta=byte_delta, acceptedUnitsDelta=unit_delta)
+            return checkpoint
+        if checkpoint is not None:
+            return checkpoint
         raise ValueError("no verified cumulative accepted-source checkpoint found")
 
     def _select_progress(self):

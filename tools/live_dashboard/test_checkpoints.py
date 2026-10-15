@@ -170,6 +170,67 @@ class HeadlineCheckpointTests(unittest.TestCase):
         self.assertEqual(tracker.state_parts()[4], [])
 
 
+class CheckpointDeltaTests(unittest.TestCase):
+    def test_distinct_zero_credit_checkpoint_keeps_zero_delta_and_last_good(self):
+        newest = checkpoint("Committed-source checkpoint nonmatching (2026-10-15)")
+        prior = checkpoint("Committed-source checkpoint prior (2026-10-14)", commit=OLD_COMMIT)
+        earlier = checkpoint("Committed-source checkpoint earlier (2026-10-13)", 471416, 1378, "a" * 40)
+        tracker = memory_tracker(newest + prior + earlier)
+        tracker._refresh_checkpoint()
+        selected, _, _, chart, warnings = tracker.state_parts()
+        self.assertEqual((selected["acceptedBytesDelta"], selected["acceptedUnitsDelta"]), (0, 0))
+        self.assertEqual((selected["commit"], selected["acceptedBytes"], selected["acceptedUnits"]),
+                         (NEW_COMMIT, 471424, 1379))
+        self.assertEqual(selected["updatedAt"], "2026-10-15")
+        self.assertEqual(chart[-1]["acceptedBytes"], 471424)
+        self.assertEqual(warnings, [])
+        tracker._changelog_fingerprint.return_value = "malformed-newest"
+        tracker.changelog_path.read_text.return_value = (
+            "## Committed-source checkpoint unfinished\n\n- Verification passed; counts pending.\n\n"
+            + newest + prior + earlier)
+        tracker._refresh_checkpoint()
+        retained, _, _, retained_chart, warnings = tracker.state_parts()
+        self.assertTrue(retained["lastGood"])
+        self.assertEqual((retained["acceptedBytesDelta"], retained["acceptedUnitsDelta"]), (0, 0))
+        self.assertEqual((retained["commit"], retained["updatedAt"]), (NEW_COMMIT, "2026-10-15"))
+        self.assertEqual(retained_chart, chart)
+        self.assertIn("lacks complete counts", warnings[0])
+
+    def test_same_source_documentation_repeats_do_not_reset_positive_delta(self):
+        text = checkpoint() + checkpoint("Committed-source checkpoint repeated documentation")
+        text += previous_checkpoint() + checkpoint("Committed-source checkpoint oldest", 471408, 1377, "a" * 40)
+        selected = progress.ProgressTracker._parse_checkpoint(text)
+        self.assertEqual(selected["commit"], NEW_COMMIT)
+        self.assertEqual((selected["acceptedBytesDelta"], selected["acceptedUnitsDelta"]), (8, 1))
+
+    def test_same_source_repeat_stops_at_distinct_equal_total_checkpoint(self):
+        text = checkpoint() + checkpoint("Committed-source checkpoint repeated documentation")
+        text += checkpoint("Committed-source checkpoint prior", commit=OLD_COMMIT) + previous_checkpoint()
+        selected = progress.ProgressTracker._parse_checkpoint(text)
+        self.assertEqual((selected["acceptedBytesDelta"], selected["acceptedUnitsDelta"]), (0, 0))
+
+    def test_legacy_records_without_source_identity_do_not_borrow_older_credit(self):
+        latest = checkpoint("Accepted source reconstruction — latest", declaration="Source reconstruction is now")
+        latest = latest.replace(f" for committed snapshot `{NEW_COMMIT}`", "")
+        for prior_bytes, prior_units, expected in ((471424, 1379, (0, 0)), (471416, 1378, (8, 1))):
+            with self.subTest(prior_bytes=prior_bytes):
+                prior = checkpoint("Accepted source reconstruction — prior", prior_bytes, prior_units,
+                                   declaration="Source reconstruction is now")
+                prior = prior.replace(f" for committed snapshot `{NEW_COMMIT}`", "")
+                earlier = checkpoint("Committed-source checkpoint earlier", 471408, 1377, "a" * 40)
+                selected = progress.ProgressTracker._parse_checkpoint(latest + prior + earlier)
+                self.assertIsNone(selected["commit"])
+                self.assertEqual((selected["acceptedBytesDelta"], selected["acceptedUnitsDelta"]), expected)
+
+    def test_missing_baseline_and_decreasing_totals_remain_unknown(self):
+        for text in (checkpoint(), checkpoint() + checkpoint(
+                "Committed-source checkpoint higher prior", 471432, 1380, OLD_COMMIT)):
+            with self.subTest(text=text):
+                selected = progress.ProgressTracker._parse_checkpoint(text)
+                self.assertEqual((selected["acceptedBytesDelta"], selected["acceptedUnitsDelta"]), (None, None))
+                self.assertEqual((selected["acceptedBytes"], selected["acceptedUnits"]), (471424, 1379))
+
+
 class CheckpointTimestampTests(unittest.TestCase):
     def test_recorded_dates_preserve_precision_and_ignore_file_mtime(self):
         cases = [
