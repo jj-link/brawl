@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint afb1fb47
+
+- Verified committed snapshot `afb1fb475898a71edd1ae84db353c8c90aad1834`; report SHA-256 `0e55349a598e5f3f1292ad16e51b7aba060b19c3b8609052df1bc2e2a5232b5e`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979141%** complete: **471704 / 15833556 accepted code bytes**, **15361852 code bytes remaining**, **1414 accepted source units**.
+- Delta from `28c65c46`: **+8 accepted code bytes / +1 source unit**, Dedede E2B8. Corrected-v2 source publication retains E2C0 and all prior accepted sources; the rejected staging packet is excluded. Unaccepted E2C8/E2D0/E2D8, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/afb1fb47/`, including native/calculator logs, `report-published.json`, source-link/identity proofs, `native-127-final-hashes.json` and `E2B8-independent-object-comparison.json`. All 1414 accepted-source linkage gates, 1413 prior source identities, 329 original/tool identities and 37 Dedede source/MAP gates passed. Final headline/history agreement follows this documentation commit; protected originals remain retained.
+
 ## Dedede E2B8 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E2B8`, `.text [0xE2B8,0xE2C0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards the remaining item parameters to imported `fn_27_13A4A0`.
