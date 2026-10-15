@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E210 — reconstructed imported-handler adjustment
+
+- Reconstructed module 117 `fn_117_E210`, `.text [0xE210,0xE218)`, **8 code bytes**, as C++ adjusting the interface pointer by `-0x7C` and forwarding to `fn_27_135160`. GLM retained **1 initial candidate and 1 measured correction**. Best source Git blob: `d7b99bb94690916799f124399e351055b020deeb`; the correction fixes the initial comment's incorrect E200 interface-group attribution.
+- Candidate SHA-1 `7a03b09ff56c4afa1bd6a359854aa6daddba7903` and target `8a89000558edb1042daf113e01554a110dd60556` match in allocated code and relocations: `.text` `3863ff8448000000`, `R_PPC_REL24` at `+4` to `fn_27_135160`. Existing Luigi and Metaknight declarations differ in C++ types/order while occupying the same argument-register lanes; the source follows the Luigi precedent and explicitly retains that semantic qualification.
+- Full native verification at accepted source `07f79f8d8c30cc92b0ca197dbd1ca24ff928ba23` includes compiled E208 and E210 source objects in both preplf/plf link inputs. **127 original DOL/REL hashes passed**; Dedede REL SHA-1 `a6978416df878081c94afc45b487030cdbbe5371` and main DOL SHA-1 `a09cb9af20ae8356396374c27e31883d893f9ebe` match originals. Source objects and DTK-sliced comparison targets are explicitly distinguished. Gameplay was not exercised.
+- The same owner completed guarded three-path materialization at `d0d182fc`, preserving `configure.py` mode 100755 and every unrelated dirty byte in both registration files. Raw postimages match the retained native non-repository preview; removing only the owned insertions reproduces the saved preimages. Parent-index SHA-256 remained `6a9a9d06d7910bab9b59a09d6c817a6f85020ee95d1c5e2fbf2daedc9815f8cd`; parent staging uses the reviewed own-only patch, not whole dirty files.
+- Evidence: `build/isolated-workers/GlmFreshDededeE210/evidence/attempts.json`, `attempt-01/`, `00-full-build-e208set.log`, `linkage/e208-e210-link-edges-07f79f8d.txt`, `own-patch-07f79f8d.patch` and `raw-materialization/plain-mirror-preview.txt`. Superseded packaging proofs remain recorded separately; packaging corrections did not consume compiler attempts. Cumulative counters await the dedicated publisher.
+
 ## Committed-source checkpoint 07f79f8d
 
 - Verified committed snapshot `07f79f8d8c30cc92b0ca197dbd1ca24ff928ba23`: **2.978383% complete**, **471584 / 15833556 accepted code bytes**, **15361972 code bytes remaining**, **1399 accepted source units**. Delta from `9195fdd6`: **+8 code bytes, +1 source unit**.
