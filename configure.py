@@ -893,6 +893,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_e200.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_e208.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_e300.cpp",
                    cflags=cflags_fighter, extra_cflags=["-inline on,noauto", "-schedule off", "-opt nodeadstore", "-opt noprop"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_e54c.cpp",
