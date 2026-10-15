@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d3f59b9c
+
+- Verified committed snapshot `d3f59b9c2bb7110c19738b901d9e059dcefe2864`: **2.978636% complete**, **471624 / 15833556 accepted code bytes**, **15361932 code bytes remaining**, **1404 accepted source units**. Delta from `059ed2d9`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `fd9f553f8c5e80f4b30f47d981edb19fd1fdd6c69eb1a28b0aadced7035c5fbb` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1404 accepted-source link recipes, 1403 prior source/object identities and 329 original/tool identities were validated; all 27 complete Dedede source units retain single map definitions.
+- E278's immutable source blob `3ade736de88389667c795681ea5320616eedc585`, allocated text/relocation and candidate/target object identities reproduce its owner's comparison. Counts remain 1 initial / 0 corrections / inherited UNKNOWN. The AI draft remains incomplete, original-fallback-linked and excluded from completed credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/d3f59b9c/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished E268/E280 are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment; the prior 059 checkpoint's completed agreement remains in `evidence/059ed2d9/final-publication-current.json`.
+
 ## Dedede E278 — reconstructed item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E278`, `.text [0xE278,0xE280)`: **8 code bytes / 1 source unit**. The entry adjusts the object pointer by `-0xD0` and tail-calls `fn_27_13C428`; allocated text `3863ff3048000000` and the single `R_PPC_REL24` at offset 4 match the target exactly.
