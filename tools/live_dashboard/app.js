@@ -1367,7 +1367,9 @@
     }
     const panels = new Map();
     const recordedAgents = new Map();
-    const liveAgents = new Map();
+    const feeds = new Map();
+    const mainFeed = createFeed('');
+    feeds.set('', mainFeed);
     const liveItems = new Map();
     const itemsByAgent = new Map();
     const historyItems = new Map();
@@ -1375,10 +1377,9 @@
     const dirtyAgents = new Set();
     const dirtyPanels = new Map();
     const agentFields = ['name', 'state', 'model', 'definition', 'target', 'correction', 'observed', 'active',
-      'runStartedAt', 'runEndedAt'];
-    let connected = false, source = null, retryTimer = null, frame = 0;
+      'runStartedAt', 'runEndedAt', 'scope', 'streamSource', 'rootSessionId'];
+    let frame = 0;
     let flushing = false, gridReady = false;
-    let connectionError = 'Connecting to the owning runner observer…';
     let showHistory = false, historyBusy = false, historyAgain = false;
     let historyGeneration = 0, historyWanted = false;
     let historyStateRevision;
@@ -1389,8 +1390,9 @@
     }
 
     function status() {
-      writeText($('streams-status'), connected ? 'Connected' : 'Disconnected — ' + connectionError);
-      $('streams-status').classList.toggle('is-error', !connected);
+      writeText($('streams-status'), mainFeed.connected ? 'Main observer connected' :
+        'Main observer disconnected — ' + mainFeed.error);
+      $('streams-status').classList.toggle('is-error', !mainFeed.connected);
     }
 
     function requestFlush() {
@@ -1421,7 +1423,7 @@
     function syncRecordedAgents() {
       const keys = new Set();
       for (const a of S.agents) {
-        if (a.name === 'main') continue;
+        if (a.name === 'main' && a.scope !== 'independent-root') continue;
         const key = keyOf(a);
         keys.add(key);
         if (!sameAgent(recordedAgents.get(key), a)) dirtyAgent(key);
@@ -1432,8 +1434,33 @@
       }
     }
 
+    function createFeed(root) {
+      return { root, agents: new Map(), items: new Set(), source: null, retryTimer: null,
+        connected: false, error: 'Connecting to the owning runner observer…' };
+    }
+
+    function feedURL(path, feed) {
+      return path + (feed.root ? '?root=' + encodeURIComponent(feed.root) : '');
+    }
+
+    function usesIndependentObserver(a) {
+      return a.scope === 'independent-root' && a.streamSource === 'live-observer' &&
+        typeof a.rootSessionId === 'string' && !!a.rootSessionId;
+    }
+
+    function feedForAgent(a) {
+      if (usesIndependentObserver(a)) return feeds.get(a.rootSessionId) || mainFeed;
+      const key = keyOf(a);
+      if (mainFeed.agents.has(key)) return mainFeed;
+      for (const feed of feeds.values()) {
+        if (feed.agents.has(key)) return feed;
+      }
+      return mainFeed;
+    }
+
     function mergedAgent(key) {
-      const recorded = recordedAgents.get(key), live = liveAgents.get(key);
+      const recorded = recordedAgents.get(key);
+      const live = feedForAgent(recorded || { id: key }).agents.get(key);
       if (!recorded && !live) return null;
       // Runner turn states are not assignment outcomes. Reliable current
       // membership from /api/state also takes precedence over retained metadata.
@@ -1444,31 +1471,33 @@
     }
 
     function isVisible(a) {
-      return showHistory || a.active === true;
+      return showHistory || a.active === true || usesRecordedJournal(a) || usesIndependentObserver(a);
     }
 
-    function setConnected(on) {
-      if (connected === on) return;
-      connected = on;
+    function setConnection(feed, connected, error) {
+      if (feed.connected === connected && feed.error === error) return;
+      feed.connected = connected;
+      feed.error = error;
       for (const [key, panel] of panels) {
-        if (!panel.visible) continue;
+        if (!panel.visible || feedForAgent(panel.agent) !== feed) continue;
         const job = dirtyPanel(key);
         job.header = job.empty = true;
       }
+      if (feed === mainFeed) status();
     }
 
-    async function diagnoseConnection(failedSource) {
+    async function diagnoseConnection(feed, failedSource) {
       let message;
       try {
-        const response = await fetch('/api/live-status', { cache: 'no-store' });
+        const response = await fetch(feedURL('/api/live-status', feed), { cache: 'no-store' });
         const data = await response.json();
         message = data.error || 'Observer is available; reconnecting to its output stream.';
       } catch (error) {
         message = 'Cannot read observer status: ' + error.message;
       }
-      if (connected || (source && source !== failedSource)) return;
-      connectionError = message;
-      status();
+      if (feeds.get(feed.root) !== feed || feed.connected ||
+          (feed.source && feed.source !== failedSource)) return;
+      setConnection(feed, false, message);
     }
 
     function createPanel(a) {
@@ -1492,7 +1521,7 @@
         agent: a, visible: true, position: null };
     }
 
-    function row(item, historical, panel) {
+    function row(item, historical, panel, rowKey, feedRoot) {
       const label = el('span', { class: 'stream-entry-title' });
       const toggle = el('button', { class: 'stream-raw-toggle', type: 'button', text: 'Raw', attrs: {
         'aria-pressed': 'false', 'aria-label': 'Show raw entry data'
@@ -1502,7 +1531,8 @@
       const rawNode = el('pre', { class: 'stream-text stream-raw', hidden: true }, rawText);
       const status = el('div', { class: 'stream-entry-status' });
       const node = el('article', { class: 'stream-entry' + (historical ? ' stream-history' : ''),
-        attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id) } },
+        attrs: { 'data-source': historical ? 'history' : 'live', 'data-item': String(item.id),
+          'data-row-key': rowKey, 'data-feed': historical ? 'history' : feedRoot || 'main' } },
         el('div', { class: 'stream-entry-head' }, label, toggle), view.node, rawNode, status);
       const entry = { node, label, status, view, rawNode, raw: false,
         rawPart: { textNode: rawText, renderedText: '' }, complete: null };
@@ -1543,12 +1573,21 @@
     }
 
     function renderHeader(panel) {
-      const a = panel.agent, state = stateOf(a.state);
+      const a = panel.agent, state = stateOf(a.state), feed = feedForAgent(a);
+      const independent = usesIndependentObserver(a);
+      panel.node.dataset.scope = a.scope || '';
+      panel.node.dataset.streamSource = a.streamSource || 'live-observer';
+      panel.node.dataset.rootSessionId = a.rootSessionId || feed.root;
+      panel.node.dataset.connection = usesRecordedJournal(a) ? 'history' :
+        feed.connected ? 'connected' : 'disconnected';
       writeText(panel.name, String(a.name || a.id));
       writeText(panel.state, (state === 'completed' ? 'Completed' : state) +
-        (a.observed && !connected ? ' · last observed' : ''));
-      writeText(panel.identity, [a.model, a.definition, a.target,
-        a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · '));
+        (independent ? feed.connected ? ' · Live' : ' · Disconnected' :
+          a.observed && !feed.connected ? ' · last observed' : ''));
+      panel.state.title = independent ? feed.connected ? 'Live observer connected' : feed.error : '';
+      writeText(panel.identity, [a.model, a.definition,
+        usesRecordedJournal(a) ? 'Independent root · recorded journal (not live tokens)' : null,
+        a.target, a.correction != null ? 'corrections: ' + a.correction : null].filter(Boolean).join(' · '));
       const label = String(a.name || a.id) + ' terminal output';
       if (panel.log.getAttribute('aria-label') !== label) panel.log.setAttribute('aria-label', label);
       renderElapsed(panel, Date.now());
@@ -1610,11 +1649,16 @@
       }
     }
 
+    function usesRecordedJournal(a) {
+      return a.scope === 'independent-root' && a.streamSource === 'recorded-history';
+    }
+
     function renderEmpty(panel) {
       if (panel.rows.size) { panel.empty?.remove(); return; }
       if (!panel.empty) panel.empty = el('div', { class: 'stream-empty' });
-      writeText(panel.empty, connected ? 'Waiting for worker output.' :
-        'Live observer disconnected. No retained worker output; Show history loads recorded output.');
+      writeText(panel.empty, usesRecordedJournal(panel.agent) ? 'Waiting for recorded journal output.' :
+        feedForAgent(panel.agent).connected ? 'Waiting for worker output.' :
+          'Live observer disconnected. Show history loads recorded output.');
       if (panel.empty.parentNode !== panel.log) panel.log.append(panel.empty);
     }
 
@@ -1623,14 +1667,17 @@
       const live = Array.from(itemsByAgent.get(panel.key)?.values() || [])
         .filter(record => record.visible)
         .sort((a, b) => a.time - b.time || a.sequence - b.sequence);
-      const historical = showHistory ? (historyItems.get(panel.key) || []) : [];
+      const historical = showHistory || usesRecordedJournal(panel.agent) ?
+        (historyItems.get(panel.key) || []) : [];
       job.list = [
         ...historical.map(item => ({ key: 'history:' + item.id, item, historical: true })),
-        ...live.map(record => ({ key: 'live:' + record.item.id, item: record.item, historical: false }))
+        ...live.map(record => ({ key: 'live:' + record.id, item: record.item,
+          historical: false, feedRoot: record.feed.root }))
       ];
       job.keys = new Set(job.list.map(entry => entry.key));
-      job.count = live.length + ' retained live entries' +
-        (showHistory ? ' · ' + historical.length + ' recorded' : '');
+      job.count = usesRecordedJournal(panel.agent) ? historical.length + ' recorded journal entries' :
+        live.length + ' retained live entries' +
+          (showHistory ? ' · ' + historical.length + ' recorded' : '');
     }
 
     function renderRows(panel, job) {
@@ -1639,9 +1686,9 @@
           if (!job.keys.has(key)) { entry.node.remove(); panel.rows.delete(key); }
         }
         let cursor = panel.log.firstElementChild;
-        for (const { key, item, historical } of job.list) {
+        for (const { key, item, historical, feedRoot } of job.list) {
           let entry = panel.rows.get(key);
-          if (!entry) { entry = row(item, historical, panel); panel.rows.set(key, entry); }
+          if (!entry) { entry = row(item, historical, panel, key, feedRoot); panel.rows.set(key, entry); }
           renderRow(entry, item, historical);
           if (entry.node === cursor) cursor = cursor.nextElementSibling;
           else panel.log.insertBefore(entry.node, cursor);
@@ -1671,7 +1718,7 @@
       }
       let anchor = children[lo];
       if (job?.keys) {
-        const survives = node => job.keys.has(node.dataset.source + ':' + node.dataset.item);
+        const survives = node => job.keys.has(node.dataset.rowKey);
         while (anchor && !survives(anchor)) anchor = anchor.nextElementSibling;
         if (!anchor) {
           anchor = children[Math.min(lo, children.length - 1)];
@@ -1730,6 +1777,8 @@
             gridChanged = true;
             visibilityChanges.add(panel);
           }
+          if (panel.agent.streamSource !== a.streamSource || panel.agent.scope !== a.scope ||
+              panel.agent.rootSessionId !== a.rootSessionId) dirtyPanel(key, true);
           panel.agent = a;
           if (visible) dirtyPanel(key).header = true;
         }
@@ -1790,9 +1839,13 @@
       if (historyWanted) { historyWanted = false; loadHistory(); }
     }
 
-    function putItem(item) {
-      const id = String(item.id), key = String(item.agentId), old = liveItems.get(id);
-      const record = { item, visible: !!String(item.text || '') ||
+    function itemKey(feed, id) {
+      return feed.root + ':' + String(id);
+    }
+
+    function putItem(feed, item) {
+      const id = itemKey(feed, item.id), key = String(item.agentId), old = liveItems.get(id);
+      const record = { id, feed, item, visible: !!String(item.text || '') ||
         !!item.blocks?.length || item.args !== undefined || item.details !== undefined ||
         item.kind === 'tool' || !!item.errorMessage || !!item.stopReason,
         time: tsOf(item.at), sequence: Number(item.sequence) || 0 };
@@ -1806,6 +1859,7 @@
       if (!items) { items = new Map(); itemsByAgent.set(key, items); }
       items.set(id, record);
       liveItems.set(id, record);
+      feed.items.add(id);
       const structural = !old || String(old.item.agentId) !== key ||
         old.visible !== record.visible || old.time !== record.time || old.sequence !== record.sequence;
       if (structural) dirtyPanel(key, true);
@@ -1819,83 +1873,105 @@
       if (!record) return;
       const key = String(record.item.agentId), items = itemsByAgent.get(key);
       liveItems.delete(id);
+      record.feed.items.delete(id);
       items?.delete(id);
       if (!items?.size) itemsByAgent.delete(key);
       if (record.visible) dirtyPanel(key, true);
     }
 
-    function applySnapshot(data) {
-      for (const key of liveAgents.keys()) dirtyAgent(key);
-      for (const key of itemsByAgent.keys()) dirtyPanel(key, true);
-      liveAgents.clear();
-      liveItems.clear();
-      itemsByAgent.clear();
-      for (const a of data.agents || []) { liveAgents.set(keyOf(a), a); dirtyAgent(keyOf(a)); }
-      for (const item of data.items || []) putItem(item);
+    function applySnapshot(feed, data) {
+      for (const key of feed.agents.keys()) dirtyAgent(key);
+      feed.agents.clear();
+      for (const a of data.agents || []) { feed.agents.set(keyOf(a), a); dirtyAgent(keyOf(a)); }
+      const items = data.items || [], retained = new Set(items.map(item => itemKey(feed, item.id)));
+      for (const id of feed.items) {
+        if (!retained.has(id)) removeItem(id);
+      }
+      for (const item of items) putItem(feed, item);
     }
 
-    function connect() {
-      if (source || retryTimer) return;
-      const liveSource = new EventSource('/api/live');
-      source = liveSource;
-      const current = () => source === liveSource;
+    function removeAgent(feed, key) {
+      feed.agents.delete(key);
+      for (const record of itemsByAgent.get(key)?.values() || []) {
+        if (record.feed === feed) removeItem(record.id);
+      }
+      dirtyAgent(key);
+    }
+
+    function reconcileFeeds() {
+      const roots = new Set(Array.from(recordedAgents.values())
+        .filter(usesIndependentObserver).map(a => a.rootSessionId));
+      for (const [root, feed] of feeds) {
+        if (!root || roots.has(root)) continue;
+        feeds.delete(root);
+        feed.source?.close();
+        feed.source = null;
+        clearTimeout(feed.retryTimer);
+        feed.retryTimer = null;
+        for (const key of feed.agents.keys()) dirtyAgent(key);
+        feed.agents.clear();
+        for (const id of feed.items) removeItem(id);
+      }
+      for (const root of roots) {
+        if (!feeds.has(root)) feeds.set(root, createFeed(root));
+      }
+      for (const feed of feeds.values()) connect(feed);
+    }
+
+    function connect(feed) {
+      if (feed.source || feed.retryTimer || typeof EventSource === 'undefined') return;
+      const liveSource = new EventSource(feedURL('/api/live', feed));
+      feed.source = liveSource;
+      const current = () => feeds.get(feed.root) === feed && feed.source === liveSource;
       liveSource.addEventListener('snapshot', event => {
         if (!current()) return;
         try {
           const data = JSON.parse(event.data);
-          setConnected(true);
-          connectionError = '';
-          applySnapshot(data);
-          status();
+          applySnapshot(feed, data);
+          setConnection(feed, true, '');
         } catch (e) { logErr('live snapshot', e); }
       });
       liveSource.addEventListener('agent', event => {
         if (!current()) return;
         try {
           const a = JSON.parse(event.data), key = keyOf(a);
-          if (!sameAgent(liveAgents.get(key), a)) dirtyAgent(key);
-          liveAgents.set(key, a);
+          if (!sameAgent(feed.agents.get(key), a)) dirtyAgent(key);
+          feed.agents.set(key, a);
         } catch (e) { logErr('live agent', e); }
       });
       liveSource.addEventListener('text', event => {
         if (!current()) return;
-        try { putItem(JSON.parse(event.data)); }
+        try { putItem(feed, JSON.parse(event.data)); }
         catch (e) { logErr('live text', e); }
       });
       liveSource.addEventListener('evict', event => {
         if (!current()) return;
         try {
           const data = JSON.parse(event.data);
-          if (data.itemId != null) removeItem(String(data.itemId));
-          else {
-            const key = String(data.agentId), items = itemsByAgent.get(key);
-            liveAgents.delete(key);
-            if (items) for (const id of items.keys()) liveItems.delete(id);
-            itemsByAgent.delete(key);
-            dirtyAgent(key);
-            dirtyPanel(key, true);
-          }
+          if (data.itemId != null) removeItem(itemKey(feed, data.itemId));
+          else removeAgent(feed, String(data.agentId));
         } catch (e) { logErr('live retention', e); }
       });
       liveSource.addEventListener('error', () => {
         if (!current()) return;
-        setConnected(false);
-        connectionError = 'Connection lost; checking observer status…';
-        diagnoseConnection(liveSource);
-        status();
+        setConnection(feed, false, 'Connection lost; checking observer status…');
+        diagnoseConnection(feed, liveSource);
         // Closed HTTP 503 streams need an explicit retry; established SSE
         // streams use EventSource's native reconnect and authoritative snapshot.
         if (liveSource.readyState === EventSource.CLOSED) {
-          liveSource.close(); source = null;
-          retryTimer = setTimeout(() => { retryTimer = null; connect(); }, 3000);
+          liveSource.close(); feed.source = null;
+          feed.retryTimer = setTimeout(() => {
+            feed.retryTimer = null;
+            if (feeds.get(feed.root) === feed) connect(feed);
+          }, 3000);
         }
       });
     }
 
     async function loadHistory() {
-      if (!showHistory) return;
+      const wantsHistory = key => showHistory || usesRecordedJournal(mergedAgent(key) || {});
       const revision = S.state?.streamRevision;
-      const agents = Array.from(panels.values()).filter(panel => panel.visible &&
+      const agents = Array.from(panels.values()).filter(panel => panel.visible && wantsHistory(panel.key) &&
         (!historyLoaded.has(panel.key) || historyLoaded.get(panel.key) !== revision)).map(panel => panel.key);
       if (!agents.length) return;
       if (historyBusy) { historyAgain = true; return; }
@@ -1903,17 +1979,17 @@
       const generation = historyGeneration;
       try {
         // Bounded per-agent batches avoid starving less recent workers.
-        for (let i = 0; i < agents.length && showHistory && generation === historyGeneration; i += 4) {
+        for (let i = 0; i < agents.length && generation === historyGeneration; i += 4) {
           await Promise.all(agents.slice(i, i + 4).map(async key => {
             const result = await fetchJSON('/api/streams?agent=' + encodeURIComponent(key) + '&limit=200');
-            if (!showHistory || generation !== historyGeneration) return;
+            if (!wantsHistory(key) || generation !== historyGeneration) return;
             historyItems.set(key, (result.items || []).sort((a, b) => tsOf(a.at) - tsOf(b.at) || a.sequence - b.sequence));
             historyLoaded.set(key, revision);
             dirtyPanel(key, true);
           }));
         }
       } catch (e) {
-        if (showHistory && generation === historyGeneration) {
+        if (generation === historyGeneration) {
           logErr('recorded history', e);
           writeText($('streams-status'), 'Recorded history unavailable: ' + e.message);
         }
@@ -1930,7 +2006,7 @@
         historyStateRevision = revision;
         historyGeneration++;
       }
-      connect();
+      reconcileFeeds();
       historyWanted = true;
       requestFlush();
       const historyButton = $('streams-history'), pressed = String(showHistory);
@@ -1943,7 +2019,10 @@
       showHistory = !showHistory;
       historyGeneration++;
       historyLoaded.clear();
-      for (const key of new Set([...recordedAgents.keys(), ...liveAgents.keys()])) dirtyAgent(key);
+      for (const key of recordedAgents.keys()) dirtyAgent(key);
+      for (const feed of feeds.values()) {
+        for (const key of feed.agents.keys()) dirtyAgent(key);
+      }
       for (const key of panels.keys()) dirtyPanel(key, true);
       try { localStorage.setItem('brawldash.streamHistory', showHistory ? '1' : '0'); } catch (_) {}
       update();

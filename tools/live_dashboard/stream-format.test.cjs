@@ -78,3 +78,23 @@ test('partial structured output remains readable and unsupported images remain d
   assert.ok(view.parts.some(part => part.kind === 'json' && part.value?.url === 'https://example.invalid/tracking.png'));
   assert.equal(view.parts.some(part => part.kind === 'image'), false);
 });
+
+test('journal routing metadata does not become an additional output block', () => {
+  const item = { kind: 'tool', tool: 'read', text: 'Actual source output',
+    agent: 'Independent Astra', scope: 'independent-root', rootSessionId: 'root-id',
+    intent: 'Inspecting source', source: 'recorded-history' };
+  const before = JSON.stringify(item);
+  const view = describe(item);
+  assert.ok(view.parts.some(part => part.kind === 'meta' && part.text === item.intent));
+  assert.ok(view.parts.some(part => part.text === item.text));
+  assert.equal(view.parts.some(part => part.title === 'Additional data'), false);
+  assert.equal(JSON.stringify(item), before); // Raw retains the original payload.
+});
+
+test('recognizing routing metadata does not hide unknown output or nested data', () => {
+  const data = { agent: 'domain agent', intent: 'domain intent', scope: 'domain scope', rootSessionId: 'domain id' };
+  const view = describe({ kind: 'tool', tool: 'read', scope: 'independent-root',
+    text: JSON.stringify(data), extraReceipt: { verified: true } });
+  assert.ok(view.parts.some(part => JSON.stringify(part.value) === JSON.stringify(data)));
+  assert.ok(view.parts.some(part => part.value?.extraReceipt?.verified === true));
+});

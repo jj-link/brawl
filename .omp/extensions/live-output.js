@@ -1,17 +1,36 @@
-/* Read-only omp v18.9.2 observer. Native project extension discovery loads this
- * at startup and rebinds the factory to existing/revived child sessions.
- * No tools, provider hooks, session mutation or model calls.
- * Relays session-visible messages, reasoning, tool arguments/results and images
- * over one SSE feed. Provider credentials, headers and replay metadata are not
- * event sources. Assignment membership comes from the owning AgentRegistry.
+/* Read-only omp session-output observer.
+ * Native discovery/rebinding loads factories for main and child sessions.
+ * Default: loopback 8766, observing children only. Explicit same-project roots
+ * opt in via build/live-dashboard/independent-roots.json:
+ * {"sessions":[{"id":"<root UUID>","label":"Independent Sol","observerPort":18766}]}
+ * A dedicated observerPort (1..65535, excluding 8765/8766) includes that main's
+ * native message/tool updates; no provider hooks, credentials or journal replay.
+ * Config/root changes close old SSE clients before rebinding. Module/factory
+ * replacement releases listeners, registry subscriptions and managed timers.
+ * Independent-process classification survives module replacement and shutdown:
+ * removing its registration never authorizes borrowing the default 8766 port.
+ * Source edits require actual extension reload/rebinding, not settings toggles;
+ * Windows Bun's same-path module cache may prevent reload from rereading code.
  */
 import { createServer } from 'node:http';
 import { randomUUID } from 'node:crypto';
-import { openSync, readSync, closeSync } from 'node:fs';
+import { openSync, readSync, closeSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { AgentRegistry, MAIN_AGENT_ID } from '@oh-my-pi/pi-coding-agent/registry/agent-registry';
 
-const PORT = 8766;
+const DEFAULT_PORT = 8766;
+const PROJECT_ROOT = resolve(fileURLToPath(new URL('../../', import.meta.url)));
+const REGISTRATION_FILE = resolve(PROJECT_ROOT, 'build/live-dashboard/independent-roots.json');
+const OWNER_KEY = Symbol.for(`brawl.live-output:${PROJECT_ROOT.toLowerCase()}`);
+const PROCESS_SCOPE_KEY = Symbol.for(`brawl.live-output:process:${PROJECT_ROOT.toLowerCase()}`);
+// This process-wide classification deliberately outlives listener ownership.
+const processScope = globalThis[PROCESS_SCOPE_KEY] ||= { independent: false };
+const moduleToken = {};
+const bindingCleanups = new Set();
+let moduleActive = true;
+let port = null;
+let independent = null;
 const DASHBOARD_PORT = 8765;
 const MAX_ENTRIES = 200;
 const MAX_AGENTS = 512;
@@ -48,6 +67,59 @@ function sessionFile(ref) {
   return ref.session?.sessionManager.getSessionFile() || ref.sessionFile;
 }
 
+function journalHeader(file) {
+  let handle;
+  try {
+    handle = openSync(file, 'r');
+    const bytes = readSync(handle, headerBuffer, 0, headerBuffer.length, 0);
+    const lines = headerBuffer.toString('utf8', 0, bytes).split('\n', 2);
+    let header = JSON.parse(lines[0]);
+    if (header.type === 'title') header = JSON.parse(lines[1]);
+    return header.type === 'session' ? header : null;
+  } catch {
+    return null;
+  } finally {
+    if (handle !== undefined) closeSync(handle);
+  }
+}
+
+function rootRegistration(ctx) {
+  let config;
+  try {
+    config = JSON.parse(readFileSync(REGISTRATION_FILE, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') return null;
+    throw error;
+  }
+  if (!config || !Array.isArray(config.sessions)) throw new Error('expected a sessions array');
+  const ids = new Set(), ports = new Set();
+  let selected = null;
+  for (const entry of config.sessions) {
+    if (!entry || typeof entry.id !== 'string' ||
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(entry.id) ||
+        typeof entry.label !== 'string' || !entry.label.trim() ||
+        entry.label.trim().toLowerCase() === 'main') throw new Error('invalid independent root identity');
+    const id = entry.id.toLowerCase();
+    if (ids.has(id)) throw new Error('duplicate independent root identity');
+    ids.add(id);
+    if (Object.hasOwn(entry, 'observerPort')) {
+      if (!Number.isInteger(entry.observerPort) || entry.observerPort < 1 ||
+          entry.observerPort > 65535 || [DASHBOARD_PORT, DEFAULT_PORT].includes(entry.observerPort) ||
+          ports.has(entry.observerPort)) throw new Error('invalid or duplicate observerPort');
+      ports.add(entry.observerPort);
+    }
+    if (id === ctx.sessionManager.getSessionId()?.toLowerCase()) {
+      const header = journalHeader(ctx.sessionManager.getSessionFile());
+      if (!header || header.id?.toLowerCase() !== id || typeof header.cwd !== 'string' ||
+          resolve(header.cwd).toLowerCase() !== PROJECT_ROOT.toLowerCase()) {
+        throw new Error('independent root journal does not belong to this project');
+      }
+      selected = { id, label: entry.label.trim(), observerPort: entry.observerPort };
+    }
+  }
+  return selected;
+}
+
 function sessionId(ref, file = sessionFile(ref)) {
   const live = ref.session?.sessionManager.getSessionId();
   if (live) {
@@ -57,24 +129,11 @@ function sessionId(ref, file = sessionFile(ref)) {
   const cached = identities.get(ref);
   if (cached && cached.file === file) return cached.id;
   if (!file) return null;
-  let handle;
-  try {
-    handle = openSync(file, 'r');
-    const bytes = readSync(handle, headerBuffer, 0, headerBuffer.length, 0);
-    // Current journals have a fixed-width title slot before the session
-    // header; legacy journals start directly with the header. Inspect only
-    // these two prefix records, never task messages or title content.
-    const lines = headerBuffer.toString('utf8', 0, bytes).split('\n', 2);
-    let header = JSON.parse(lines[0]);
-    if (header.type === 'title') header = JSON.parse(lines[1]);
-    if (header.type !== 'session' || typeof header.id !== 'string') return null;
-    identities.set(ref, { file, id: header.id });
-    return header.id;
-  } catch {
-    return null; // Unreadable identity must not become an absent/retired UUID.
-  } finally {
-    if (handle !== undefined) closeSync(handle);
-  }
+  // Read only the identity prefix, never recorded task/output content.
+  const header = journalHeader(file);
+  if (typeof header?.id !== 'string') return null;
+  identities.set(ref, { file, id: header.id });
+  return header.id;
 }
 
 function assignmentActive(ref) {
@@ -95,6 +154,7 @@ function refreshMembership() {
       main.session.sessionManager.getSessionId() !== rootSessionId) return;
   rootSessionFile = main.session.sessionManager.getSessionFile() || rootSessionFile;
   const members = [];
+  if (independent) members.push({ id: rootSessionId });
   let complete = true;
   for (const ref of registry.list()) {
     if (ref.kind !== 'sub') continue;
@@ -124,22 +184,50 @@ function publicMembership() {
   return result;
 }
 
+function stopServer() {
+  for (const client of clients) client.response.end();
+  clients.clear();
+  server?.close();
+  server = undefined;
+  failure = null;
+}
+
 function bindRoot(ctx) {
-  // The runtime's main binding owns the feed, including resumed/forked
-  // journals. Never select a root from a child, cwd or an old UUID.
+  // Reconcile only from the owning main binding, never a child or cwd.
   const id = ctx.sessionManager.getSessionId();
-  if (rootSessionId !== id) {
-    epoch = randomUUID();
-    sequence = 0;
-    agents.clear();
-    retained.clear();
-    membership = null;
-    memberActivity.clear();
+  let registration, nextPort;
+  try {
+    registration = rootRegistration(ctx);
+    if (registration) processScope.independent = true;
+    nextPort = registration?.observerPort ??
+      (processScope.independent ? null : DEFAULT_PORT);
+  } catch (error) {
+    nextPort = null; // Invalid opt-in must never bind the default runner's port.
+    console.error(`[live-output] independent registration unavailable: ${error.message}`);
   }
+  const nextIndependent = registration || null;
+  const changed = rootSessionId !== id || port !== nextPort ||
+    JSON.stringify(independent) !== JSON.stringify(nextIndependent);
+  if (!changed) {
+    rootSessionFile = ctx.sessionManager.getSessionFile() || null;
+    refreshMembership();
+    return;
+  }
+  // End old sockets before selecting a new root/port; no delta can cross roots.
+  stopServer();
+  epoch = randomUUID();
+  sequence = 0;
+  agents.clear();
+  retained.clear();
+  membership = null;
+  memberActivity.clear();
   rootSessionId = id;
   rootSessionFile = ctx.sessionManager.getSessionFile() || null;
+  independent = nextIndependent;
+  port = nextPort;
   refreshMembership();
-  broadcast('snapshot', snapshot());
+  if (independent && port) touch(ctx, 'waiting');
+  ensureServer();
 }
 
 // Select documented user-visible block fields, not provider replay signatures,
@@ -234,6 +322,10 @@ function publicAgent(agent) {
     membership?.complete ? false : undefined;
   return { id: agent.id, name: agent.name, definition: agent.definition,
     model: agent.model, state: agent.state, lastSeen: agent.lastSeen, observed: true,
+    ...(independent && agent.id === rootSessionId ? {
+      name: independent.label, scope: 'independent-root', rootSessionId,
+      streamSource: 'live-observer',
+    } : {}),
     ...(typeof active === 'boolean' ? { active } : {}) };
 }
 
@@ -318,11 +410,16 @@ function publish(agent, item) {
 }
 
 function ensureServer() {
-  if (server || failure) return;
-  server = createServer((request, response) => {
+  if (server || failure || !port || !moduleActive) return;
+  const listeningPort = port;
+  const listener = createServer((request, response) => {
+    // A switch may precede its extension event. Never serve stale-root data.
+    if (registry.get(MAIN_AGENT_ID)?.session?.sessionManager.getSessionId() !== rootSessionId) {
+      response.writeHead(503); response.end(); return;
+    }
     const host = request.headers.host;
     const origin = request.headers.origin;
-    const allowed = host === `127.0.0.1:${PORT}` || host === `localhost:${PORT}`;
+    const allowed = host === `127.0.0.1:${listeningPort}` || host === `localhost:${listeningPort}`;
     const originOK = !origin || origin === `http://127.0.0.1:${DASHBOARD_PORT}` || origin === `http://localhost:${DASHBOARD_PORT}`;
     if (!allowed || !originOK) { response.writeHead(403); response.end(); return; }
     if (request.method !== 'GET') { response.writeHead(405, { Allow: 'GET' }); response.end(); return; }
@@ -343,24 +440,31 @@ function ensureServer() {
     response.on('close', () => { clearInterval(heartbeat); clients.delete(client); });
     response.on('error', () => { clearInterval(heartbeat); clients.delete(client); });
   });
-  server.on('error', error => {
+  server = listener;
+  listener.on('error', error => {
+    if (server !== listener) return; // A retired listener cannot poison its replacement.
     failure = error.code || error.message;
     // Fail visibly rather than attach to another process or fabricate a feed.
     console.error(`[live-output] observer listener failed: ${failure}`);
     for (const client of clients) client.response.destroy();
     clients.clear();
   });
-  server.listen(PORT, '127.0.0.1');
+  listener.listen(listeningPort, '127.0.0.1');
 }
 
 /** @param {import('@oh-my-pi/pi-coding-agent').ExtensionAPI} pi */
 export default function liveOutput(pi) {
   const completedMessages = new Set();
   const completedCalls = new Set();
+  let stopped = false;
+  let releaseRoot;
   // Journal ancestry, not cwd: isolated worktrees still belong to this root.
-  const eligible = ctx => ctx.agent.kind === 'sub' &&
-    scopedFile(ctx.sessionManager.getSessionFile() || registry.get(ctx.agent.id)?.sessionFile);
   const owningRoot = ctx => ctx.agent.kind === 'main' && ctx.agent.id === MAIN_AGENT_ID;
+  const eligible = ctx => !stopped && moduleActive && port && rootSessionId &&
+    registry.get(MAIN_AGENT_ID)?.session?.sessionManager.getSessionId() === rootSessionId &&
+    ((owningRoot(ctx) && independent && ctx.sessionManager.getSessionId() === rootSessionId) ||
+     (ctx.agent.kind === 'sub' &&
+      scopedFile(ctx.sessionManager.getSessionFile() || registry.get(ctx.agent.id)?.sessionFile)));
   const messageKey = (ctx, message) => `${ctx.sessionManager.getSessionId()}:${message.timestamp}` +
     (message.role === 'assistant' ? '' : `:${message.role}${message.details?.id ? `:${message.details.id}` : ''}`);
   const observe = (ctx, state) => {
@@ -481,6 +585,7 @@ export default function liveOutput(pi) {
   };
   const unsubscribeLifecycle = pi.events.on('task:subagent:lifecycle', payload => {
     // Executor settlement, unlike agent_end, is an assignment boundary.
+    if (stopped || !moduleActive) return;
     if (!payload || typeof payload !== 'object' || !scopedFile(payload.sessionFile)) return;
     const ref = registry.get(payload.id);
     if (!ref || ref.kind !== 'sub' ||
@@ -489,35 +594,57 @@ export default function liveOutput(pi) {
     runMembership.set(ref, payload.status === 'started');
     refreshMembership();
   });
+  const releaseBinding = () => {
+    if (!bindingCleanups.delete(releaseBinding)) return;
+    stopped = true;
+    unsubscribeLifecycle();
+  };
+  bindingCleanups.add(releaseBinding);
 
-  // The current main binding owns one listener; child bindings observe their
-  // own events, including children executing outside the root project's cwd.
+  // Main owns one listener and one managed registry poll. Factory rebinding or
+  // fresh module evaluation retires the previous owner without touching runners.
   pi.on('session_start', (_event, ctx) => {
     if (owningRoot(ctx)) {
+      if (releaseRoot && !stopped) { bindRoot(ctx); return; }
+      globalThis[OWNER_KEY]?.dispose(moduleToken);
+      stopped = false;
+      moduleActive = true;
       bindRoot(ctx);
-      if (!registryUnsubscribe) registryUnsubscribe = registry.onChange(refreshMembership);
-      // attachSession emits no registry event. A managed poll closes that gap.
-      ctx.setInterval(refreshMembership, 1000);
-      ensureServer();
+      registryUnsubscribe = registry.onChange(refreshMembership);
+      const timer = ctx.setInterval(() => bindRoot(ctx), 1000);
+      const owner = { dispose(nextToken) {
+        if (stopped) return;
+        stopped = true;
+        if (nextToken && nextToken !== moduleToken) {
+          moduleActive = false;
+          for (const cleanup of [...bindingCleanups]) cleanup();
+        }
+        ctx.clearTimer(timer);
+        registryUnsubscribe?.(); registryUnsubscribe = undefined;
+        stopServer();
+        rootSessionId = null;
+        rootSessionFile = null;
+        port = null;
+        agents.clear(); retained.clear(); membership = null; memberActivity.clear();
+        releaseBinding();
+        if (globalThis[OWNER_KEY] === owner) delete globalThis[OWNER_KEY];
+      } };
+      globalThis[OWNER_KEY] = owner;
+      releaseRoot = () => owner.dispose();
     } else if (eligible(ctx)) {
-      ensureServer();
       touch(ctx, 'waiting');
     }
   });
   pi.on('session_switch', (_event, ctx) => {
-    if (owningRoot(ctx)) bindRoot(ctx);
+    if (!stopped && moduleActive && owningRoot(ctx)) bindRoot(ctx);
   });
   pi.on('agent_start', (_event, ctx) => observe(ctx, 'working'));
   pi.on('agent_end', (event, ctx) => observe(ctx, event.willContinue ? 'working' : 'waiting'));
   pi.on('session_shutdown', (_event, ctx) => {
-    unsubscribeLifecycle();
-    if (eligible(ctx)) { observe(ctx, 'stopped'); return; }
-    if (!owningRoot(ctx)) return;
-    registryUnsubscribe?.(); registryUnsubscribe = undefined;
-    for (const client of clients) client.response.end();
-    clients.clear();
-    server?.close();
-    server = undefined;
+    if (stopped) return;
+    if (eligible(ctx)) observe(ctx, 'stopped');
+    if (owningRoot(ctx)) releaseRoot?.();
+    else releaseBinding();
   });
   pi.on('message_start', (event, ctx) => relayMessage(event.message, ctx, false));
   pi.on('message_end', (event, ctx) => relayMessage(event.message, ctx, true));

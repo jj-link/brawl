@@ -454,6 +454,7 @@ body.is-stale #topbar { border-bottom-color: rgba(229, 100, 90, 0.55); }
 .stream-panel-head { padding: 8px 10px; display: flex; align-items: baseline; gap: 8px; background: var(--bg2); }
 .stream-heading { color: var(--tx); font: 600 12px var(--mono); overflow-wrap: anywhere; }
 .stream-state { margin-left: auto; font: 10.5px var(--mono); color: var(--mint); }
+.stream-panel[data-scope="independent-root"][data-stream-source="live-observer"][data-connection="disconnected"] .stream-state { color: var(--amber2); }
 .stream-identity { padding: 4px 10px 0; min-height: 20px; font: 10px var(--mono); color: var(--tx2); overflow-wrap: anywhere; }
 .stream-toolbar { padding: 4px 10px 8px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; color: var(--tx2); font-size: 10px; }
 .stream-elapsed { font: 10px var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }

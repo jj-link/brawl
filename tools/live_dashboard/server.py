@@ -46,8 +46,8 @@ API:
     GET /api/events  Server-Sent Events: ``state`` snapshots (~2 s cadence)
                      with comment keepalives; clients reconnect and refetch
     GET /api/streams opt-in, labeled recorded message/reasoning/tool/peer history
-    GET /api/live   immediate SSE relay from the owning runner observer
-    GET /api/live-status observer connectivity (503 when not loaded)
+    GET /api/live   immediate SSE relay; ?root=UUID selects a registered independent root
+    GET /api/live-status observer connectivity (503 when not loaded), same optional root
     GET /api/throughput cached provider output-token rates and measurement status
 """
 
@@ -84,33 +84,82 @@ SSE_KEEPALIVE_SECONDS = 15.0
 MAX_WARNINGS = 12
 OBSERVER_URL = "http://127.0.0.1:8766"
 
+# build/live-dashboard/independent-roots.json opts in exact same-project journals:
+# {"sessions":[{"id":"<UUID>","label":"Independent Sol","observerPort":18766}]}
+# observerPort is a unique integer 1..65535, excluding dashboard/default observer
+# ports 8765/8766; omitted ports retain explicitly recorded-history behavior.
+# Custom --independent-roots paths support recorded-only entries; observerPort
+# entries are rejected there because the extension reads only the project path.
+# Independent APIs accept only validated UUID registrations, never upstream URLs.
+# The owning runner must actually load/rebind the updated observer extension;
+# settings toggles do not reload code (Windows Bun may cache same-path imports).
+
 
 def _utc_now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
 
 
-def _validate_observer_root(payload, watcher):
+class ObserverRouteError(ValueError):
+    """A requested feed is not an opted-in, validated independent root."""
+
+
+def _observer_route(watcher, root=None):
+    if root is None:
+        return {"url": OBSERVER_URL, "rootSessionId": watcher.session_label()}
+    try:
+        registration = watcher.independent_observer(root)
+    except ValueError as exc:
+        raise ObserverRouteError(str(exc)) from exc
+    return {**registration, "url": f"http://127.0.0.1:{registration['observerPort']}"}
+
+
+def _validate_observer_root(payload, watcher, root=None, route=None):
     if not isinstance(payload, dict):
         raise ValueError("Observer payload must be an object.")
-    expected = watcher.session_label()
+    current = _observer_route(watcher, root)
+    if route is not None and current != route:
+        raise ValueError("Observer registration changed during this connection.")
+    expected = current["rootSessionId"]
     actual = payload.get("rootSessionId")
     if not expected or not isinstance(actual, str) or actual.casefold() != expected.casefold():
         raise ValueError(
             f"Observer root session {actual or '(unknown)'} "
             f"does not match dashboard root session {expected or '(not found)'}. "
-            "Start the dashboard with --session-id set to the intended owning root session."
+            "Select the intended owning root session and load its observer extension."
         )
 
 
-def observer_status(watcher):
-    with urlopen(OBSERVER_URL + "/status", timeout=2) as response:
+def _annotate_observer(payload, route):
+    if route.get("scope") != "independent-root":
+        return payload
+    if not isinstance(payload, dict):
+        raise ValueError("Observer agent/snapshot payload must be an object.")
+    identity = {key: route[key] for key in ("scope", "rootSessionId", "streamSource")}
+    def annotate(agent):
+        if isinstance(agent, dict) and isinstance(agent.get("id"), str) \
+                and agent["id"].casefold() == route["rootSessionId"].casefold():
+            return {**agent, **identity, "name": route["label"]}
+        return agent
+    payload = {**payload}
+    if isinstance(payload.get("agents"), list):
+        payload["agents"] = [annotate(agent) for agent in payload["agents"]]
+    if isinstance(payload.get("id"), str) \
+            and payload["id"].casefold() == route["rootSessionId"].casefold():
+        payload = annotate(payload)
+    return payload
+
+
+def observer_status(watcher, root=None, route=None):
+    route = route or _observer_route(watcher, root)
+    with urlopen(route["url"] + "/status", timeout=2) as response:
         status = json.load(response)
-    _validate_observer_root(status, watcher)
-    return status
+    _validate_observer_root(status, watcher, root, route)
+    return _annotate_observer(status, route)
 
 
-def _observer_frame(upstream, watcher):
-    """Read one intact SSE frame, rejecting a root change before relaying it."""
+def _observer_frame(upstream, watcher, root=None, route=None):
+    """Read one intact SSE frame, rejecting root/registration changes first."""
+    route = route or _observer_route(watcher, root)
     lines, data, event = [], [], None
     while True:
         line = upstream.readline()
@@ -124,8 +173,14 @@ def _observer_frame(upstream, watcher):
             data.append(field[5:].lstrip(b" "))
         if field:
             continue
+        if _observer_route(watcher, root) != route:
+            raise ValueError("Observer registration changed during this connection.")
         if event in (b"snapshot", b"membership"):
-            _validate_observer_root(json.loads(b"\n".join(data)), watcher)
+            _validate_observer_root(json.loads(b"\n".join(data)), watcher, root, route)
+        if root is not None and event in (b"snapshot", b"agent"):
+            payload = _annotate_observer(json.loads(b"\n".join(data)), route)
+            return event, b"event: " + event + b"\ndata: " + json.dumps(
+                payload, separators=(",", ":")).encode("utf-8") + b"\n\n"
         return event, b"".join(lines)
 
 
@@ -292,6 +347,8 @@ class DashboardHandler(BaseHTTPRequestHandler):
             try:
                 observer = self._observer_status()
                 self._send_json(200, json.dumps(observer).encode("utf-8"))
+            except ObserverRouteError as exc:
+                self._send_json(400, json.dumps({"connected": False, "error": str(exc)}).encode("utf-8"))
             except (OSError, ValueError, URLError) as exc:
                 self._send_json(503, json.dumps({
                     "connected": False,
@@ -332,18 +389,28 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self._send_json(405, b'{"error":"method not allowed"}', {"Allow": "GET, HEAD"})
 
+    def _observer_root(self):
+        query = parse_qs(urlsplit(self.path).query, keep_blank_values=True)
+        if "root" not in query:
+            return None
+        if len(query["root"]) != 1 or not query["root"][0]:
+            raise ObserverRouteError("root must identify one registered independent live observer")
+        return query["root"][0]
+
     def _observer_status(self):
-        return observer_status(self.dashboard["watcher"])
+        return observer_status(self.dashboard["watcher"], self._observer_root())
 
     def _handle_live(self):
         """Relay actual observer frames immediately, without journal backfill."""
         try:
-            self._observer_status()
-            upstream = urlopen(OBSERVER_URL + "/events", timeout=15)
+            root = self._observer_root()
+            route = _observer_route(self.dashboard["watcher"], root)
+            observer_status(self.dashboard["watcher"], root, route)
+            upstream = urlopen(route["url"] + "/events", timeout=15)
             try:
                 initial = []
                 while True:
-                    event, frame = _observer_frame(upstream, self.dashboard["watcher"])
+                    event, frame = _observer_frame(upstream, self.dashboard["watcher"], root, route)
                     initial.append(frame)
                     if event == b"snapshot":
                         break
@@ -352,6 +419,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             except (OSError, ValueError):
                 upstream.close()
                 raise
+        except ObserverRouteError as exc:
+            self._send_json(400, json.dumps({"connected": False, "error": str(exc)}).encode("utf-8"))
+            return
         except (OSError, ValueError, URLError) as exc:
             self._send_json(503, json.dumps({"connected": False, "error": str(exc)}).encode("utf-8"))
             return
@@ -368,7 +438,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
                     # Heartbeats arrive inside the socket deadline. Rooted
                     # frames are checked before any of their bytes reach the
                     # browser, including switches after the status request.
-                    _, frame = _observer_frame(upstream, self.dashboard["watcher"])
+                    _, frame = _observer_frame(upstream, self.dashboard["watcher"], root, route)
                     self.wfile.write(frame)
                     self.wfile.flush()
             except (OSError, ValueError):
@@ -432,8 +502,13 @@ def parse_args(argv=None):
                              " ~/.omp/agent/sessions)")
     parser.add_argument("--session-id", default=None, metavar="ROOT_UUID",
                         help="pin to this root session UUID (including a forked main);"
-                             " default selects the newest matching non-fork root once"
-                             " and retains it until restart")
+                             " default selects the newest matching non-fork root once,"
+                             " excluding registered independent roots, and retains it until restart")
+    parser.add_argument("--independent-roots", type=Path, default=None, metavar="PATH",
+                        help="opt-in UUID/label registrations for independent root journals;"
+                             " custom paths support recorded-only entries (no observerPort);"
+                             " live registrations require the default project path:"
+                             " <root>/build/live-dashboard/independent-roots.json")
     parser.add_argument("--root", type=Path, default=None, metavar="DIR",
                         help="project root (default: the repository containing"
                              " tools/live_dashboard)")
@@ -480,7 +555,8 @@ def main(argv=None):
     history_path = root / "build" / "live-dashboard" / "history.json"
     static_dir = Path(__file__).resolve().parent
 
-    watcher = JournalWatcher(root, session_dir=args.session_dir, session_id=args.session_id)
+    watcher = JournalWatcher(root, session_dir=args.session_dir, session_id=args.session_id,
+                             independent_roots=args.independent_roots)
     progress = ProgressTracker(report_path, root, history_path)
     throughput = ThroughputTracker(load_config(args.throughput_config))
 

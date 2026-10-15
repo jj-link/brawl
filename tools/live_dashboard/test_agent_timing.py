@@ -1,5 +1,6 @@
 """Recorded-event run clocks; no wall-clock sleeps, journal files or services."""
 
+import json
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -298,6 +299,64 @@ class AgentTimingTests(unittest.TestCase):
                 tracker.apply(message("user", 30, content="Still active"))
                 self.assert_clock(tracker, 0)
                 self.assertFalse(tracker._run_ended)
+
+    def test_independent_root_does_not_inherit_owning_registry_retirement(self):
+        owned = self.tracker()
+        watcher = self.watcher(owned)
+        peer_id = "00000000-0000-4000-8000-000000000003"
+        peer = j.JournalTracker("peer.jsonl", "Independent reconstruction", False,
+                                stream_sink=watcher._stream_sink)
+        peer.apply(event("session", 0, id=peer_id))
+        peer.apply(tool_start(5))
+        peer.apply(message("assistant", 6, content="Reconstructing the reserved target."))
+        watcher.trackers[peer.path] = peer
+        watcher.independent_roots[peer.path] = "Independent reconstruction"
+        self.membership(watcher, 20, include_agent=False)
+        agents = {agent["id"]: agent for agent in watcher.snapshot()[0]}
+        self.assertFalse(agents[AGENT_ID]["active"])
+        self.assertNotIn("active", agents[peer_id])
+        self.assertFalse(peer._run_ended)
+        self.assertEqual(agents[peer_id]["scope"], "independent-root")
+        self.assertEqual(agents[peer_id]["streamSource"], "recorded-history")
+        self.assertEqual(agents[peer_id]["name"], "Independent reconstruction")
+        self.assertEqual(watcher.session_label(), ROOT_ID)
+        item = watcher.streams(agent=peer_id)["items"][-1]
+        self.assertEqual(item["rootSessionId"], peer_id)
+        self.assertEqual(item["scope"], "independent-root")
+        self.assertEqual(item["source"], "recorded-history")
+        self.assertEqual(item["agent"], "Independent reconstruction")
+
+    def test_independent_registration_never_imports_descendants_or_other_projects(self):
+        watcher = j.JournalWatcher(".", session_dir="sessions", session_id=ROOT_ID)
+        root = Path("sessions/root.jsonl")
+        child = Path("sessions/root/child.jsonl")
+        peer = Path("sessions/peer.jsonl")
+        descendant = Path("sessions/peer/descendant.jsonl")
+        foreign = Path("sessions/foreign.jsonl")
+        peer_id = "00000000-0000-4000-8000-000000000003"
+        foreign_id = "00000000-0000-4000-8000-000000000004"
+        headers = {
+            root: {"id": ROOT_ID, "cwd": "."},
+            child: {"id": AGENT_ID, "cwd": ".", "parentSession": ROOT_ID},
+            peer: {"id": peer_id, "cwd": "."},
+            descendant: {"id": "peer-child", "cwd": ".", "parentSession": peer_id},
+            foreign: {"id": foreign_id, "cwd": "another-project"},
+        }
+        config = json.dumps({"sessions": [
+            {"id": peer_id, "label": "Independent reconstruction"},
+            {"id": foreign_id, "label": "Not this project"},
+        ]})
+        with patch.object(watcher, "_candidates", return_value=list(headers)), \
+                patch.object(watcher, "_peek", side_effect=headers.get), \
+                patch.object(j.Path, "is_dir", return_value=False), \
+                patch.object(j.Path, "stat", return_value=SimpleNamespace(st_mtime_ns=1)), \
+                patch.object(j.Path, "read_text", return_value=config):
+            discovered = watcher._discover()
+        self.assertEqual(set(discovered), {root, child, peer})
+        self.assertEqual(watcher.parent_path, root)
+        self.assertEqual(watcher.session_label(), ROOT_ID)
+        self.assertEqual(watcher.independent_roots, {peer: "Independent reconstruction"})
+        self.assertIn(foreign_id, watcher.warnings["independent-roots"])
 
     def test_tombstone_poll_records_persisted_time_and_snapshots_are_read_only(self):
         tracker = self.tracker()

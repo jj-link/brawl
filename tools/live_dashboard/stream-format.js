@@ -13,7 +13,8 @@
   const argumentFields = ['command', 'script', 'code', 'path', 'patch', 'content'];
   const bookkeeping = ['id', 'agentId', 'at', 'sequence', 'kind', 'source', 'tool',
     'callId', 'role', 'channel', 'complete', 'isError', 'stopReason', 'sender', 'customType',
-    'args', 'text', 'blocks', 'details', 'errorMessage', ...measures];
+    'args', 'text', 'blocks', 'details', 'errorMessage',
+    'agent', 'intent', 'scope', 'rootSessionId', ...measures];
 
   function parsed(value) {
     if (typeof value !== 'string' || !value.trim()) return value;
@@ -120,6 +121,11 @@
         const extra = remaining(value, ['cells', 'language', 'languages', ...measures]);
         if (hasFields(extra)) add(key + ':extra', extra, 'Details', undefined, true);
       }
+    }
+
+    // Identity/routing metadata stays in Raw; activity is readable in either feed.
+    if (own(item, 'intent') && item.intent != null && item.intent !== '') {
+      add('intent', item.intent, 'Activity', 'meta');
     }
 
     if (own(item, 'args')) {

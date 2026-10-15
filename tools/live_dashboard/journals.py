@@ -57,6 +57,41 @@ STREAMS_PER_JOURNAL = 200
 TAIL_ANCHOR_BYTES = 256
 
 
+def load_independent_roots(path):
+    """Load sessions[{id,label,observerPort?}] from independent-roots.json.
+
+    A unique loopback port opts into /api/live?root=UUID only in the project's
+    default configuration; custom config paths support recorded-only entries.
+    Loading source edits also requires runner extension reload/rebinding, not
+    a settings toggle. Neither path accepts upstream URLs.
+    """
+    config = json.loads(Path(path).read_text(encoding="utf-8"))
+    entries = config.get("sessions") if isinstance(config, dict) else None
+    if not isinstance(entries, list):
+        raise ValueError("expected an object with a sessions array")
+    requested, ports = {}, set()
+    for entry in entries:
+        if not isinstance(entry, dict) or not isinstance(entry.get("id"), str):
+            raise ValueError("each session requires a UUID and label")
+        sid = str(uuid.UUID(entry["id"]))
+        label = entry.get("label")
+        if not isinstance(label, str) or not label.strip() or label.strip().casefold() == "main":
+            raise ValueError("each independent session requires a non-main label")
+        if sid in requested:
+            raise ValueError(f"duplicate independent session UUID {sid}")
+        registration = {"id": sid, "label": label.strip()}
+        if "observerPort" in entry:
+            port = entry["observerPort"]
+            if type(port) is not int or not 1 <= port <= 65535 or port in (8765, 8766):
+                raise ValueError("observerPort must be a loopback port other than 8765/8766")
+            if port in ports:
+                raise ValueError(f"duplicate independent observer port {port}")
+            ports.add(port)
+            registration["observerPort"] = port
+        requested[sid] = registration
+    return requested
+
+
 def _visible_text(value):
     """Preserve session text verbatim, without reading provider metadata."""
     return value if isinstance(value, str) else ""
@@ -597,10 +632,16 @@ class JournalTracker:
 class JournalWatcher:
     """Discovers the current session family and tails its journals."""
 
-    def __init__(self, root, session_dir=None, session_id=None):
+    def __init__(self, root, session_dir=None, session_id=None, independent_roots=None):
         self.root = Path(root)
         self.explicit_dir = Path(session_dir) if session_dir else None
         self.requested_session_id = _session_id(session_id)
+        self.default_independent_config = (
+            self.root / "build" / "live-dashboard" / "independent-roots.json")
+        self.independent_config = (
+            Path(independent_roots) if independent_roots else self.default_independent_config)
+        self.independent_roots = {}
+        self.independent_observers = {}
         self.trackers = {}
         self.offsets = {}
         self.buffers = {}
@@ -677,8 +718,87 @@ class JournalWatcher:
                 continue
         return out
 
+    def _load_registrations(self):
+        requested = load_independent_roots(self.independent_config)
+        if _norm(self.independent_config) != _norm(self.default_independent_config) \
+                and any("observerPort" in entry for entry in requested.values()):
+            raise ValueError(
+                "observerPort live registrations require the project configuration "
+                "build/live-dashboard/independent-roots.json; custom paths support recorded-only entries")
+        return requested
+
+    def _requested_roots(self):
+        self.warnings.pop("independent-roots", None)
+        try:
+            return self._load_registrations()
+        except FileNotFoundError:
+            return {}
+        except (OSError, UnicodeError, ValueError) as exc:
+            self.warnings["independent-roots"] = f"independent-root registration unavailable: {exc}"
+            return {}
+
+    def _registered_roots(self, candidates, family, requested=None):
+        """Opt in exact same-project root journals, never their descendants."""
+        self.independent_roots = {}
+        self.independent_observers = {}
+        if requested is None:
+            requested = self._requested_roots()
+        found = {}
+        for path in candidates:
+            info = self._peek(path) or {}
+            sid = info.get("id")
+            if sid in requested and info.get("cwd") and _norm(info["cwd"]) == _norm(self.root):
+                found.setdefault(sid, []).append(path)
+        rejected = []
+        for sid, registration in requested.items():
+            matches = found.get(sid, [])
+            if len(matches) != 1 or matches[0] in family:
+                rejected.append(sid)
+                continue
+            self.independent_roots[matches[0]] = registration["label"]
+            if "observerPort" in registration:
+                self.independent_observers[sid] = {
+                    **registration, "path": matches[0],
+                    "parentSession": (self._peek(matches[0]) or {}).get("parentSession"),
+                }
+        if rejected:
+            self.warnings["independent-roots"] = (
+                "independent roots must identify one same-project root outside the owning family: "
+                + ", ".join(rejected))
+        return list(self.independent_roots)
+
+    def independent_observer(self, root):
+        """Resolve only a discovered same-project independent live registration.
+
+        Recheck the config and journal header on reads, including during SSE:
+        revocation, reassignment and a rewritten journal fail closed.
+        """
+        try:
+            sid = str(uuid.UUID(root))
+        except (ValueError, TypeError, AttributeError):
+            raise ValueError("root must identify a registered independent live observer") from None
+        with self.lock:
+            known = self.independent_observers.get(sid)
+            if not known:
+                raise ValueError("root is not a registered independent live observer")
+            try:
+                current = self._load_registrations().get(sid)
+            except (OSError, UnicodeError, ValueError) as exc:
+                raise ValueError(f"independent-root registration unavailable: {exc}") from exc
+            info = self._peek(known["path"]) or {}
+            if not current or "observerPort" not in current \
+                    or info.get("id") != sid or not info.get("cwd") \
+                    or _norm(info["cwd"]) != _norm(self.root) \
+                    or info.get("parentSession") != known["parentSession"]:
+                raise ValueError("independent live registration or journal identity changed")
+            return {**current, "scope": "independent-root", "rootSessionId": sid,
+                    "streamSource": "live-observer"}
+
     def _discover(self):
         """Return the journal family (parent first) for the repo root."""
+        self.independent_roots = {}
+        self.independent_observers = {}
+        requested = self._requested_roots()
         candidates = self._candidates()
         # Top-level candidates live directly in a base directory; anything
         # deeper is a fork journal inside a session stem directory.
@@ -688,6 +808,11 @@ class JournalWatcher:
         for path in top_level:
             info = self._peek(path)
             if not info:
+                continue
+            # Opted-in independent roots are additional panels, never an
+            # automatic replacement for the primary owning session.
+            if not (self.requested_session_id or self.parent_session_id) \
+                    and info.get("id") in requested:
                 continue
             # A main session may be an in-place fork with parentSession set.
             # Only an explicit UUID selects such a root; ancestry alone must
@@ -712,7 +837,14 @@ class JournalWatcher:
                 self.requested_session_id or self.parent_session_id):
             # Explicit session dir: fall back to the newest journal anywhere
             # in the tree and say so.
+            independent_family = {
+                member for root in top_level
+                if (self._peek(root) or {}).get("id") in requested
+                for member in self._family(root, candidates)
+            }
             for path in candidates:
+                if path in independent_family:
+                    continue
                 try:
                     mtime = path.stat().st_mtime_ns
                 except OSError:
@@ -737,7 +869,8 @@ class JournalWatcher:
         parent = best[1]
         self.parent_path = parent
         self.parent_session_id = best[2].get("id") if best[2] else None
-        return self._family(parent, candidates)
+        family = self._family(parent, candidates)
+        return family + self._registered_roots(top_level, family, requested)
 
     def _family(self, parent, candidates):
         """Collect the parent plus every descendant fork journal.
@@ -840,6 +973,8 @@ class JournalWatcher:
             self.warnings.pop("initializing", None)
 
     def _tracker_name(self, path, info):
+        if path in self.independent_roots:
+            return self.independent_roots[path], True
         # The selected owning root is main even when its journal was forked.
         # parentSession describes ancestry, not its current runner role.
         is_parent = path == self.parent_path or (
@@ -991,7 +1126,7 @@ class JournalWatcher:
         for tracker in self.trackers.values():
             if tracker.tombstoned:
                 tracker._finish_run(tracker.tombstoned_at)
-            if not membership:
+            if not membership or tracker.path in self.independent_roots:
                 continue
             sid = tracker.session_id
             active = membership["agents"].get(
@@ -1014,7 +1149,14 @@ class JournalWatcher:
             membership = None
         for tracker, agent in zip(self.trackers.values(), agents):
             active = None
-            if membership:
+            independent = tracker.path in self.independent_roots
+            if independent:
+                agent.update(name=self.independent_roots[tracker.path],
+                             scope="independent-root",
+                             streamSource="live-observer" if agent["id"] in
+                             self.independent_observers else "recorded-history",
+                             rootSessionId=agent["id"])
+            if membership and not independent:
                 # A complete owning registry proves an absent UUID is not a
                 # current assignment; a present-but-unknown ref does not.
                 active = membership["agents"].get(
@@ -1035,7 +1177,12 @@ class JournalWatcher:
         agents.sort(key=lambda a: (a["lastSeen"] is not None, a["lastSeen"] or ""), reverse=True)
         events = []
         for tracker in self.trackers.values():
-            events.extend(tracker.events)
+            if tracker.path in self.independent_roots:
+                events.extend({**event, "agent": self.independent_roots[tracker.path],
+                               "scope": "independent-root", "rootSessionId": tracker.session_id}
+                              for event in tracker.events)
+            else:
+                events.extend(tracker.events)
         events.sort(key=lambda e: (e.get("at") or "", e.get("id") or ""))
         del events[:-MAX_EVENTS_GLOBAL]
         return agents, events, list(self.warnings.values())[:12]
@@ -1091,13 +1238,20 @@ class JournalWatcher:
                 chosen = pending[:limit]
                 has_more = len(pending) > limit
                 next_order = chosen[-1]["_order"] if has_more else self.stream_order
+            independent_names = {
+                tracker.session_id: self.independent_roots[path]
+                for path, tracker in self.trackers.items() if path in self.independent_roots
+            }
             return {
                 "cursor": f"{self.stream_epoch}:{next_order}", "reset": reset,
                 "hasMore": has_more, "retentionPerAgent": STREAMS_PER_JOURNAL,
                 "source": "recorded-history",
                 "items": [
                     {**{k: v for k, v in item.items() if k != "_order"},
-                     "source": "recorded-history"}
+                     "source": "recorded-history",
+                     **({"scope": "independent-root", "rootSessionId": item["agentId"],
+                         "agent": independent_names[item["agentId"]]}
+                        if item["agentId"] in independent_names else {})}
                     for item in chosen
                 ],
             }
