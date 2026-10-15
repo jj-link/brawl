@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 28c65c46
+
+- Verified committed snapshot `28c65c463832b4a1adcfe59a800daeba5acb1fc9`; report SHA-256 `0e5b09fa6ab8ac1a0c85448a0d3b2246f0594808a4af0f3234a8e0863a821ce2`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979091%** complete: **471696 / 15833556 accepted code bytes**, **15361860 code bytes remaining**, **1413 accepted source units**.
+- Delta from `618b6185`: **+8 accepted code bytes / +1 source unit**, Dedede E2C0. Allocated text and imported REL24 match; all prior accepted sources remain linked. E2B8/E2C8/E2D0, dirty MAIN and unaccepted trial work are excluded; the AI nonmatching draft retains original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/28c65c46/`, including `report-published.json`, native/calculator logs, 1413 accepted-source linkage recipes, 1412 retained source/blob/object identities, 329 original/tool identities and 36 complete Dedede source/MAP definitions. Headline/history verification follows this documentation commit; protected original copies and incident evidence remain retained.
+
 ## Dedede E2C0 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E2C0`, `.text [0xE2C0,0xE2C8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards the item and result pointer to imported `fn_27_13A418`.
