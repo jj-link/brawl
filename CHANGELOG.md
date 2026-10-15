@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint c85d7db3
+
+- Verified committed snapshot `c85d7db3b52d53e5274439880c205e0c70eafb00`; report SHA-256 `73670135422f25cecd3592f8fac7dcdc79f5bb7c6b3ccb2c40000458027ec33c`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979192%** complete: **471712 / 15833556 accepted code bytes**, **15361844 code bytes remaining**, **1415 accepted source units**.
+- Delta from `afb1fb47`: **+8 accepted code bytes / +1 source unit**, Dedede E2C8. All prior accepted sources, including E2B8/E2C0, remain linked. Unaccepted E2D0/E2D8/E2E0, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/c85d7db3/`, including `report-published.json`, native/calculator logs and source/link/object proofs. All 1415 accepted-source linkage gates, 1414 prior source identities, 329 original/tool identities and 38 Dedede source/MAP gates passed. The E2C8 setup/materialization coverage qualifications remain unchanged; final headline/history agreement follows this documentation commit, with protected originals retained.
+
 ## Dedede E2C8 — reconstructed damage-event interface adjustment
 
 - Registered genuine C++ for `fn_117_E2C8`, `.text [0xE2C8,0xE2D0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xE8` and forwards the damage record and module-accesser pointers to imported `fn_27_1362E4`.
