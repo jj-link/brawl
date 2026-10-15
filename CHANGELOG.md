@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d04a5160
+
+- Verified committed snapshot `d04a5160e111e1aafee17e484b30ff63ffb2874c`: **2.978535% complete**, **471608 / 15833556 accepted code bytes**, **15361948 code bytes remaining**, **1402 accepted source units**. Delta from `902fdfe3`: **0 code bytes, 0 source units**. Publishing a retained nonmatching attempt does not increase completed-reconstruction totals.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `6e170bf39f46a6ccf0bda30d33e0daf41938cc4d72e3b0ab357465d684b2c43b` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1402 accepted-source link recipes, 1402 prior source/object identities and 329 original/tool identities were validated; the accepted-unit name set is unchanged.
+- The published AI unit is explicitly incomplete: **91.08819% fuzzy comparison, zero completion credit**. Its unchanged source recompiles to the preserved best object for report comparison, while the native game link selects the original target object. The map has one `fn_27_1F38E4` definition. This publication verification is not another reconstruction correction; the retained counts remain 1 initial / 10 corrections / inherited UNKNOWN.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/d04a5160/report-published.json`, `nonmatching-ai-fallback-proof.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN work and unpublished E268/E270 are excluded. No gameplay execution was performed. Exact local/public source identity, publication timestamp, maps and history agreement follows this documentation acknowledgment; equal counters alone do not establish checkpoint freshness.
+
 ## Sora melee fn_27_1F38E4 — nonmatching—attempts exhausted
 
 - Retained the independent Astra owner's best genuine C++ attempt in `src/mo_melee/sora_melee/ai/ai_input_update.cpp`, registered as `Object(NonMatching)`. Target `.text [0x1F38E4,0x1F8A64)` contains **20864 original code bytes**; its seven target-local jump tables occupy `.data [0x47FE8,0x482C8)`, **736 bytes / 184 relocations**. Original-code fallback remains active: **zero completed-reconstruction credit**.
