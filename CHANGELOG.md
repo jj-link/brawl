@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 618b6185
+
+- Verified committed snapshot `618b61850c351942991326daafb9992d29e0edd8`: **2.979040% complete**, **471688 / 15833556 accepted code bytes**, **15361868 code bytes remaining**, **1412 accepted source units**. Delta from `adf2de71`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `9ec5e38e8f824eeaa2e6dbe25f42337a05d82668ebbb037114ea80a71b0ae088` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1412 accepted-source link recipes, 1411 prior source/object identities and 329 original/tool identities were validated; all 35 complete Dedede source units retain single map definitions.
+- E2B0 source blob `3e988495d6a4c42fc0468b550ac643ed90e0b18d`, allocated text/relocation and candidate/target identities reproduce the owner's comparison. Its 2636-byte LF draft and 2681-byte native CRLF representation remain separately recorded; counts remain 1 initial / 0 corrections / inherited UNKNOWN. Prior accepted units remain source-linked, E2B8/E2C0 remain unaccepted, and the AI draft retains original fallback and zero completion credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/618b6185/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished trial work are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment.
+
 ## Dedede E2B0 — reconstructed imported item-handler adjustment
 
 - Registered genuine C++ for `fn_117_E2B0`, `.text [0xE2B0,0xE2B8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xD0` and forwards its arguments to imported `fn_27_13A89C`.
