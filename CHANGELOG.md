@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E1F8 — exact GLM source reconstruction
+
+- Accepted `fn_117_E1F8`, `.text 0xE1F8..0xE200`: **8 code bytes**, **one initial candidate / zero corrections**. Its C++ declaration agrees with the accepted `fn_117_99E4` definition; the interface adjustment and forwarded arguments reproduce the allocated code and local `R_PPC_REL24` relocation. The data-reference evidence identifies its secondary-interface table slot.
+- Preserved source is **813 bytes**, Git blob `b4da8c35c62b5dd2a2c3374b4581aa4aaf5afd3b`. Candidate object SHA-1 `9a5c4f9ffae08ba6aec7c7bae7b72fb9334b3779` and target `f96258e3e40f6a3a6b6187c56d05da1953427c3b` differ as whole objects; allocated bytes and relocation tuples match. The full normalized `e7126beb` input set plus this registration passed **127 native checks**; the matching build links the reconstructed source, and the report marks its 8/8 code bytes complete. Gameplay was not exercised.
+- The refreshed own-only patch was actually applied to a private index at `e7126beb`, preserving the three declared modes/blobs. MAIN materialization added only the owned two-line configure entry, three-line split block and new source. Saved raw pre/postimages prove preservation of unrelated dirty content; the index still matched HEAD with no staged changes. The new C++ working file has attribute-converted CRLF, with its clean-filtered blob exactly equal to the verified source. An earlier wrong-root edit was restored byte-exactly and remains recorded as an incident.
+- Evidence: `build/isolated-workers/GlmFreshDededeE1F8/evidence/attempts.json`, immutable `attempt-00/`, `00-full-build-e7126be.log`, `private-index-validation-e7126be.txt`, `own-patch-e7126be.patch` (SHA-1 `1ee4f40222b26034340e593aa71a6c9df8d5ff9f`), and `materialization-e7126be/MATERIALIZATION-RECORD.txt` with its actual pre/postimages.
+
 ## Registration-file LF normalization and workspace-path instructions
 
 - Normalized only the committed `configure.py` and `config/RSBE01_02/rels/ft_dedede/splits.txt`: respectively **110** and **9** CRLF pairs became LF, with all other bytes and file modes preserved. Added `configure.py text eol=lf` to `.gitattributes`; the split file already has an explicit LF rule. The own-only patch excludes unrelated dirty registrations and generated configuration rewrites.
