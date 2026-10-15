@@ -105,6 +105,14 @@
 .stream-content .sc-json-number { color: var(--amber); }
 .stream-content .sc-json-boolean { color: var(--amber2); }
 .stream-content .sc-json-null { color: var(--tx3); }
+.stream-content .sc-fields { margin: 5px 0; }
+.stream-content .sc-field { margin: 7px 0; }
+.stream-content .sc-field dt { font-size: 10px; white-space: pre-wrap; }
+.stream-content .sc-field dd { margin: 2px 0 0; }
+.stream-content .sc-value { white-space: pre-wrap; }
+.stream-content .sc-structure > summary { cursor: pointer; color: var(--tx2); }
+.stream-content .sc-structure > summary:focus-visible { outline: 2px solid var(--amber); }
+.stream-content .sc-structure > :not(summary) { margin-left: 10px; }
 .stream-content .sc-meta {
   margin: 6px 0;
   color: var(--tx2);

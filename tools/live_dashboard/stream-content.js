@@ -3,6 +3,8 @@
  * StreamContent.create() -> { node: HTMLElement, update(parts): void }.
  * Parts have unique stable keys and kind prose/code/diff/json/image/meta, optional
  * title, and text/value/image payloads. The caller owns scroll anchoring and Raw.
+ * JSON is presented as labeled fields and decoded values, with nested objects and
+ * arrays expandable in place. Raw remains the caller's unchanged original item.
  */
 (function () {
   'use strict';
@@ -146,19 +148,26 @@
     return out;
   }
 
-  function jsonTokens(source) {
-    const tokens = [], pattern = /"(?:\\.|[^"\\])*"(?=\s*:)|"(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|\b(?:true|false|null)\b/g;
-    let end = 0, match;
-    while ((match = pattern.exec(source))) {
-      if (match.index > end) tokens.push(text(source.slice(end, match.index)));
-      const value = match[0];
-      const kind = value[0] === '"' ? (/^\s*:/.test(source.slice(pattern.lastIndex)) ? 'key' : 'string') :
-        value === 'null' ? 'null' : /^(?:true|false)$/.test(value) ? 'boolean' : 'number';
-      tokens.push(element('span', [text(value)], 'sc-json-' + kind));
-      end = pattern.lastIndex;
+  function structured(value, nested = false) {
+    if (value === null || typeof value !== 'object') {
+      const kind = value === null ? 'null' : typeof value;
+      const display = typeof value === 'string' ? (value === '' ? '""' : value) : String(value);
+      return element('span', [text(display)], 'sc-value sc-json-' + kind);
     }
-    if (end < source.length) tokens.push(text(source.slice(end)));
-    return tokens;
+    const array = Array.isArray(value);
+    const entries = Object.entries(value);
+    if (!entries.length) return element('span', [text(array ? '[]' : '{}')], 'sc-value');
+    const body = array ?
+      element('ol', entries.map(([, entry]) => element('li', [structured(entry, true)])), 'sc-items') :
+      element('dl', entries.map(([key, entry]) => element('div', [
+        element('dt', [text(key)], 'sc-json-key'),
+        element('dd', [structured(entry, true)])
+      ], 'sc-field')), 'sc-fields');
+    if (!nested) return body;
+    const count = entries.length;
+    const label = count + (array ? (count === 1 ? ' item' : ' items') : (count === 1 ? ' field' : ' fields'));
+    // No open attribute: user expansion survives incremental updates to this node.
+    return element('details', [element('summary', [text(label)]), body], 'sc-structure');
   }
 
   function lineView(source, kind, previous) {
@@ -170,7 +179,7 @@
         const diff = kind !== 'diff' ? '' : line.startsWith('@@') ? ' sc-diff-hunk' :
           /^(?:diff |index |--- |\+\+\+ )/.test(line) ? ' sc-diff-header' :
           line.startsWith('+') ? ' sc-diff-add' : line.startsWith('-') ? ' sc-diff-remove' : '';
-        spec = element('span', kind === 'json' ? jsonTokens(raw) : [text(raw)], 'sc-line' + diff);
+        spec = element('span', [text(raw)], 'sc-line' + diff);
       }
       cache.set(raw, spec);
       return spec;
@@ -309,7 +318,10 @@
     } else if (kind === 'prose') {
       record.blocks = markdown(source, record.kind === kind ? record.source : '', record.blocks);
       specs = record.blocks.filter(block => block.spec).map(block => block.spec);
-    } else if (kind === 'code' || kind === 'diff' || kind === 'json') {
+    } else if (kind === 'json') {
+      try { specs = [structured(JSON.parse(source))]; }
+      catch (_) { specs = [lineView(source, 'code', record.cache).spec]; }
+    } else if (kind === 'code' || kind === 'diff') {
       const view = lineView(source, kind, record.cache);
       record.cache = view.cache;
       specs = [view.spec];
