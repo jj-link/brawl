@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2C8 — reconstructed damage-event interface adjustment
+
+- Registered genuine C++ for `fn_117_E2C8`, `.text [0xE2C8,0xE2D0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xE8` and forwards the damage record and module-accesser pointers to imported `fn_27_1362E4`.
+- GLM owner GlmFreshDededeE2C8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `1aa90d89c537fc855fa53a89fdd1246161d35244`, target SHA-1 `5ae5879fc946aa2c2f29976c5d497df35afbdbfc`. Allocated text `3863ff1848000000` and offset-4 REL24 to `fn_27_1362E4`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input verification at accepted `afb1fb47` passed **127 native DOL/REL hashes**, with E2B8/E2C0/E2C8 source objects present in both actual link edges. Final staging has 47 additions and zero deletions across exactly three paths, validated in private indices against both source and documentation baselines; defective intermediate staging forms are excluded. No gameplay execution was performed.
+- Released grant `E2C8MainCaa` applied the reviewed raw patch once, native exit 0. Shared-file postimages equal saved preimages plus only the owned two/three lines; 31 captured unrelated regular-file hashes are unchanged. One additional `scratch/` entry was directory-only: its contents were not hashed. HEAD/index/attributes remained unchanged. Native source is 2332 CRLF bytes, clean blob `6a9e6976cbbf3bcc92ab3033710e6a233c94e9ab`, as observed in the repository-aware preview.
+- The setup record qualifies two poorly captured configure invocations: timestamps and absence of this unit's lines do not establish that no parent mutation occurred. Preservation beyond the captured identities remains unproven; no speculative rollback or replay was performed. The original materialization inventory totals are superseded by the actual 34-entry before / 35-entry after inventories and the coverage qualification above.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2C8/evidence/`, including `own-change-afb1fb47.patch`, `attempt-00-comparison-afb1fb47.json`, `ninja-full-build-afb1fb47.log`, `INPUT-MANIFEST.md`, raw-preview records and `main-materialization-receipt-E2C8MainCaa.md` with saved before/after inventories. Cumulative progress is published separately by the dedicated publisher.
+
 ## Committed-source checkpoint afb1fb47
 
 - Verified committed snapshot `afb1fb475898a71edd1ae84db353c8c90aad1834`; report SHA-256 `0e55349a598e5f3f1292ad16e51b7aba060b19c3b8609052df1bc2e2a5232b5e`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
