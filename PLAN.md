@@ -13,9 +13,54 @@ The deliverable is reconstructed C/C++ that reproduces the original binaries for
 - Use the project's existing source structure, headers, symbols, splits, compiler toolchain, and build infrastructure. Check provenance and license compatibility before importing external source.
 - Track the existing BrawlHeaders files directly under `include/lib/BrawlHeaders` in this repository, preserving accepted contents and license notices. Do not require a separate BrawlHeaders repository or submodule for a normal checkout.
 - Use native Windows tooling. Do not introduce Docker, move builds onto the Spark cluster, change cluster services or model-serving configuration, or build a model router, scheduler, inference client, or orchestration platform.
+- User-authorized exception: implement and evaluate a bounded Prefect–OMP integration under `tools/orchestration_eval/`, using isolated development worktrees and project-owned evaluation data, sessions, processes, and local Git fixtures. This exception covers persistent assignment/attempt/evidence records, fresh-session and model-slot enforcement, explicit run/publication/research/stop authorization, verified cancellation, relevant-input verification reuse, and duplicate-safe commit/push recovery. It does not activate a replacement reconstruction orchestrator. The existing orchestrator retains its workers, MAIN reconciliation grants, parent index, source publication, dashboard, services, and current user overrides while evaluation proceeds; publication of the integration and its documentation must be coordinated with that owner. Coding remains delegated, native Windows and existing models remain required, and Docker, Spark service changes, live-worker adoption/control, and production cutover require separate user authorization. The evaluation uses independent state and fixture repositories; it must refuse mutations of the active reconstruction repository or processes.
 - The user controls model selection and switching. Model changes do not alter the acceptance criteria.
 - Reconstruct C/C++, not assembly transcriptions. Do not count existing assembly, inline-assembly substitutions, stubs, or merely plausible implementations as completed C/C++ reconstruction.
 - Keep game dumps, extracted originals, generated binaries, and credentials out of commits.
+
+### Authorized Prefect–OMP evaluation
+
+Run `tools/orchestration_eval` only from the detached evaluation worktree at `build/isolated-workers/PrefectOmpEvaluation`. Its native-Windows commands use project-owned storage under that worktree's `build/orchestration-eval/`; the parent checkout, reconstruction processes, dashboard, and shared Git configuration remain outside its mutation boundary. The tested interfaces are Python 3.13, Prefect 3.8.8, and OMP 18.10.1.
+
+The user requires maximizing both productive throughput and consistent behavior of the agents and the orchestration process. Evaluate both goals together:
+
+- **Consistency:** enforce assignment and fresh-session ownership, authorized model slots, preserved attempts/evidence, STOP precedence, and reviewed duplicate-safe publication. Record actual violations and recovery outcomes; a model's assertion that it followed the plan is not evidence.
+- **Productive concurrency:** keep authorized slots occupied when eligible independent work exists. Separate lack of eligible work, explicit pauses, true input dependencies, tool failures, parent-decision waits, and publication waits. Preserve required exclusive MAIN materialization and commit/push ownership without making independent engineering or verification wait for a publication batch.
+- **Measurements:** retain timestamps and workload/model/slot identities for eligible idle-slot time, time blocked on the parent, manual interventions, and accepted work per hour. Report unfinished attempts separately from accepted output. Compare equivalent workloads and unchanged verification requirements rather than treating more active sessions or more tool calls as increased throughput.
+
+Passing the bounded safety exercises alone does not establish these combined goals. A sustained real-assignment trial must have explicit assignment, model/slot, ownership, acceptance, and stop boundaries agreed with the existing orchestrator before activation. The current control-session/Git-fixture results remain infrastructure evidence with zero accepted reconstruction credit; this goal update does not transfer production ownership.
+
+Install the pinned dependencies once, then reuse the resulting environment:
+
+```powershell
+python -B -m tools.orchestration_eval.setup_env --authorize-isolated-install
+```
+
+Use a fresh run ID for each test or exercise. Existing runs retain their evidence and cannot be overwritten:
+
+```powershell
+.\build\orchestration-eval\dependencies\venv\Scripts\python.exe -B -m tools.orchestration_eval test --authorize-isolated-evaluation --run-id behavior-001
+.\build\orchestration-eval\dependencies\venv\Scripts\python.exe -B -m tools.orchestration_eval exercise --authorize-isolated-evaluation --run-id native-001 --astra-capacity 1 --omp C:\Users\josep\AppData\Local\omp\omp.exe
+.\build\orchestration-eval\dependencies\venv\Scripts\python.exe -B -m tools.orchestration_eval status --run-id native-001
+```
+
+`status` is the non-executing default. `--astra-capacity 1` is an explicit evaluation policy, not a production worker-count instruction. The finite exercise uses real OMP control sessions, a private Prefect server, and independently initialized local Git repositories; fixture measurements receive zero accepted reconstruction credit. Preserve `acceptance.json`, `behavioral-tests.json`, lifecycle snapshots, process-exit receipts, RPC records, and Git observations, including failed runs.
+
+If a run is interrupted, stop and recover only that exact owned run:
+
+```powershell
+.\build\orchestration-eval\dependencies\venv\Scripts\python.exe -B -m tools.orchestration_eval stop --authorize-isolated-evaluation --run-id native-001
+```
+
+Use persisted native exit receipts, not a Prefect task state alone, to establish cancellation. The ledger distinguishes `RUN`, `PUBLISH_EXISTING`, `RESEARCH`, `STOPPING`, and `STOPPED`; publishing existing results does not authorize waking a reconstruction owner. The running reconstruction orchestrator retains its original responsibilities under the exception above.
+
+The `test` command also creates an owned run ledger and contains its real pytest process in a Windows job. Exact-run STOP and parent-exit recovery use that recorded identity. Forbidden OMP work frames terminate the owned job even without a pending RPC receiver. Native shutdown shares one five-second wait budget across the owned process set instead of spending a separate RPC timeout on each control.
+
+Initial fixture Git setup and initial source/probe/expected-file materialization run inside one admitted native job, gated on durable process registration. Later steps check the captured authorization revision; these checkpoints are not independent atomic admissions. An effect checked before STOP may remain in flight until verified job exit. No ledger/runtime lock spans Git, filesystem effects, or native waits. Partial stopped fixtures and their evidence are retained; an existing root is never adopted, overwritten, or automatically retried.
+
+Publication review and materialization bind the exact repository, remote, branch, and complete request identity. Each branch update or push requires its own durable admission, ordered with STOP. An already-admitted effect may finish after STOP; its actual outcome remains recordable and recoverable, but a later mutation needs a fresh authorization check. Observation-only recovery does not restore invalidated verification or authorize new work. This ref/push boundary is not a crash-atomic transaction covering private index and unreferenced-object preparation.
+
+The exercise deliberately submits a launch after STOP; that individual Prefect task reports `PolicyError`. Overall success requires the real flow to reach `COMPLETED`, `acceptance.json` to record `success: true` and `all_owned_processes_exited: true`, and final authorization to remain `STOPPED`.
 
 ## Work ownership
 
