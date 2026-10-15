@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 059ed2d9
+
+- Verified committed snapshot `059ed2d909a68ee7eea96164f5029b124be24e4f`: **2.978585% complete**, **471616 / 15833556 accepted code bytes**, **15361940 code bytes remaining**, **1403 accepted source units**. Delta from `d04a5160`: **+8 code bytes, +1 source unit**.
+- Dedicated publisher SolPublisherDB04 generated report SHA-256 `39a9a55958b16990de9980386474f8b92bb901dd98b5dccfd0f2d2d1c35e40a8` from the fixed committed checkout. Native report/build/calculator commands succeeded; **127 DOL/REL hashes passed**, including independent direct checks. All 1403 accepted-source link recipes, 1402 prior source/object identities and 329 original/tool identities were validated; all 26 complete Dedede source units retain single map definitions.
+- E270's immutable source blob `dbd96dd33ab2bd36ef2979c914a3b64be4d2ff6b`, allocated text/relocation and candidate/target object identities reproduce its owner's comparison; checkout CRLF is recorded separately from the normalized blob. Counts remain 1 initial / 0 corrections / inherited UNKNOWN. The AI draft remains incomplete, original-fallback-linked and excluded from completed credit.
+- Evidence: `build/isolated-workers/SolPublisherDB04/evidence/059ed2d9/report-published.json` and adjacent native/hash/linkage/input receipts. Dirty MAIN and unpublished assignments are excluded. No gameplay execution was performed. Final local/public source, headline, publication time, maps and history verification follows this documentation acknowledgment. The preceding d04 checkpoint's corrected zero-delta final agreement is retained in `evidence/d04a5160/final-publication-current.json`.
+
 ## Dashboard contribution accounting
 
 - Corrected predecessor selection so a distinct source checkpoint with unchanged accepted counters contributes **0 code bytes / 0 source units**, rather than borrowing an older positive contribution. Duplicate records for the same known source still retain their contribution; missing, decreasing or unidentified predecessors do not borrow unrelated credit.
@@ -17,7 +24,7 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - GLM owner GlmFreshDededeE270 measured **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `fe7da0342f7771da0467d7beda9d65819bbe8b4f`, target SHA-1 `cbda1af855ec877db3a42529dcb98ea13fe6b0fc`; whole ELF identities differ, while allocated sections and relocations match. Actual generated link inputs select the reconstructed object.
 - The owner's 902-era native verification passed all **127 DOL/REL hashes**. Reconciliation includes the full `d04a5160` tracked input set; unchanged Dedede inputs reuse that evidence, while the changed Sora nonmatching fallback is covered by the dedicated publisher's independent d04 native verification. The subsequent `721dcf09` change is documentation-only. No gameplay execution was performed.
 - Released grant `E270Main721` materialized only the source and its two registrations. Exact raw postimages and insertion-only preservation within both registration files passed; the parent index remained unchanged. An initial out-of-subtree apply silently skipped the registrations while the source copy landed; the same reviewed patches subsequently applied from the correct repository root. Unrelated-path status stability is not represented as an uncaptured byte-level proof.
-- Evidence: `build/isolated-workers/GlmFreshDededeE270/evidence/attempt-00/comparison.json`, `02-native-127-dtk-check.txt`, `INPUT-MANIFEST.md`, `own-change-d04a5160.patch` and `materialization-c77aa0dd/E270-MATERIALIZATION-RECEIPT.md`. Cumulative accepted-source totals remain with the dedicated publisher's committed-checkpoint report.
+- Evidence: `build/isolated-workers/GlmFreshDededeE270/evidence/attempt-00-comparison.json`, `02-native-127-dtk-check.txt`, `INPUT-MANIFEST.md`, `own-change-d04a5160.patch` and `materialization-c77aa0dd/E270-MATERIALIZATION-RECEIPT.md`. Cumulative accepted-source totals remain with the dedicated publisher's committed-checkpoint report.
 
 ## Committed-source checkpoint d04a5160
 
