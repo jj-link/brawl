@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2E0 — reconstructed single-object notification adjustment
+
+- Registered genuine C++ for `fn_117_E2E0`, `.text [0xE2E0,0xE2E8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards it to imported `fn_27_13C7D0`.
+- GLM owner GlmFreshDededeE2E0 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `9879ad849c067f516377776b2025904e93ba15da`, target SHA-1 `6d6aa521ea7fa27f0eb7be508da1927a5957cc49`. Allocated text `3863ff0c48000000` and offset-4 REL24 to `fn_27_13C7D0`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation onto accepted `7f76802e` passed **127 native DOL/REL hashes**, with accepted E2D0/E2D8 and this source linked. E2E8 remains original fallback. The subsequent `b1923df8` baseline changes documentation only; applicable game evidence is reused. No gameplay execution was performed.
+- Released grant `E2E0MainB192` applied the reviewed raw patch once; native check/apply exited 0. Actual shared-file differences contain only the owned 152/96 bytes; source is 1514 native bytes with 27 CRLF endings, clean blob `b8e048339c5f6856853e1f25d2e9112d46c885ea`. HEAD/index/attributes guards remained unchanged. This proves preservation within the two modified shared files, not an independent byte inventory of unrelated working files; config reads and absence/directory checks are not content hashes.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2E0/evidence/`, including `attempt-00-comparison-reconciled.json`, `02-native-127-dtk-check-7f76802e.txt`, `own-change-7f76802e.patch`, saved raw preimages, repository-aware previews, packet seals and `PROTECTED-PATHS-E2E0MainB192.md`. The three-path canonical patch has 32 additions and zero deletions, validated against the current committed baseline. Cumulative progress is published separately.
+
 ## Committed-source checkpoint 7f76802e
 
 - Verified committed snapshot `7f76802e4e7862f763da7bbebe1d8da59b0fd30f`; report SHA-256 `516f812333646e912f3bb5671a406b5f947d6116555791f362d0abadb2828664`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
