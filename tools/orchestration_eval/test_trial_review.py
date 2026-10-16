@@ -133,7 +133,7 @@ class TrialReviewTests(unittest.TestCase):
         contract = {key: {"synthetic_identity": key} for key in
                     ("runtime", "observer", "agent_definition", "session_directory", "session_store_grant_ref",
                      "preparation_grant_ref", "configuration_sha256", "model_definition",
-                     "workflow_config", "review_model_definition")}
+                     "workflow_config", "review_model_definition", "registration")}
         fields = ("assignment_id", "workspace", "baseline_commit", "instruction_revision", "input_identity",
                   "recipe_ref", "owned_paths", "function")
         packet = dict(contract, schema="brawl-qwen-trial-approval/v2",
@@ -155,6 +155,12 @@ class TrialReviewTests(unittest.TestCase):
         with self.assertRaises(SafetyError):
             validate_approval(changed, contract)
         contract["observer"] = {"synthetic_identity": "different-published-source"}
+        with self.assertRaises(SafetyError):
+            validate_approval(self.manifest, contract)
+
+    def test_approval_binds_controller_registration_scope(self):
+        contract, _ = self.approval_fixture()
+        contract["registration"] = {"mode": "unbound-writer"}
         with self.assertRaises(SafetyError):
             validate_approval(self.manifest, contract)
 

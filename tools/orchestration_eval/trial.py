@@ -24,11 +24,11 @@ from .state import Ledger, read_snapshot
 from .trial_runtime import TrialRuntime, immutable_json, delivery_bytes, consume_delivery
 from .trial_rpc import validate_runtime_identity
 from .trial_authority import validate_approval, require_fresh_workspace
+from .trial_registration import registration_scope
 
 OBSERVED_SESSION_DIRECTORY = Path("C:/Users/josep/.omp/agent/sessions/-Projects-personal-games-brawl-decomp")
 OBSERVED_EXECUTION = {"provider": "spark1", "model": "Qwen3.8-Flash-Next", "endpoint": "http://100.86.3.45:8000/v1"}
-OPERATIONS = frozenset({"observe", "prepare-children", "activate", "event", "eligibility",
-                        "attempt", "exhaust", "inputs", "history"})
+OPERATIONS = frozenset({"activate", "event", "eligibility", "attempt", "exhaust", "inputs", "history"})
 
 
 def canonical_digest(value):
@@ -77,6 +77,8 @@ def validate_launch_contract(manifest, contract):
             Path(observer["registration"]) != ACTIVE / "build/live-dashboard/independent-roots.json" or
             digest(Path(observer["path"])) != observer["sha256"]):
         raise SafetyError("Observer must be the exact unchanged MAIN module; no copied/guessed observer")
+    if contract.get("registration") != registration_scope(manifest, observer["registration"]):
+        raise SafetyError("Launch approval must bind automatic controller registration and four held owners")
     publication = observer.get("publication_ref")
     if (observer.get("mode") != "independent-required" or not isinstance(publication, dict) or
             not publication.get("path") or not publication.get("sha256") or
@@ -278,6 +280,7 @@ def serve(root, executable, manifest, contract):
                     raise SafetyError("Independent target preparation did not complete; retained effects require recovery")
                 time.sleep(0.05)
             runtime.prepare_initial()
+            runtime.prepare_observers_and_children()
             return runtime.serve()
 
         result = bounded_trial()

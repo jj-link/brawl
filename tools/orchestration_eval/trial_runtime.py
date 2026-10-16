@@ -60,6 +60,7 @@ class TrialRuntime(EvaluationRuntime):
         self.manifest, self.manifest_digest = trial["manifest"], trial["manifest_digest"]
         self.executable, self.launch_contract = executable, launch_contract
         self.roots, self.ready, self.offsets, self.observed = {}, {}, {}, set()
+        self.observer_initialized = {}
         self.slots, self.prepared, self.handled = {}, set(), set()
         self.held = set()
         self.refill_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="trial-refill")
@@ -127,6 +128,22 @@ class TrialRuntime(EvaluationRuntime):
                 future.result()
         return self.snapshot("four-native-roots-prepared")
 
+    def prepare_observers_and_children(self):
+        self.registrations.authority()
+        keys = [row["assignment_id"] for row in self.manifest["reservations"][:4]]
+        with ThreadPoolExecutor(max_workers=4, thread_name_prefix="trial-observe") as pool:
+            futures = {key: pool.submit(self.register_observe, key) for key in keys}
+            listeners = {key: future.result() for key, future in futures.items()}
+        path = self.root / "automatic-initial-listeners.json"
+        immutable_json(path, {"manifest_digest": self.manifest_digest, "listeners": listeners,
+                             "observed_at": now(), "provider_requests_released": False})
+        return self.prepare_children({
+            "manifest_digest": self.manifest_digest, "confirmed_by": self.manifest["coordinator_id"],
+            "coordinator_ref": self.launch_contract["approval_packet"]["path"],
+            "execution_ref": str(self.root / "launch-contract.json"), "dashboard_ref": str(path),
+            "evidence_refs": [str(path), str(self.registrations.root / "authority.json")],
+        })
+
     def native_command(self, key, operation, **values):
         rpc = self.roots[key]
         self.ledger.require_operation("launch", authorization_revision=self.ledger.authorization()["revision"])
@@ -157,13 +174,17 @@ class TrialRuntime(EvaluationRuntime):
         return result, path
 
     def observe(self, key, port):
-        identifier, _ = self.native_command(key, "observe", port=port)
-        result, path = self.await_native_result(key, identifier)
+        if key not in self.observer_initialized:
+            identifier, _ = self.native_command(key, "observe", port=port)
+            result, path = self.await_native_result(key, identifier)
+            # A successful native import is never replayed. The original observer's
+            # own timer observes an exact owned-row port change after a real race.
+            self.observer_initialized[key] = result
+            self.ready[key]["observer_evidence"] = str(path)
         self.ready[key]["observer_port"] = port
         proof = self.verify_observer(key)
         self.observed.add(key)
-        self.ready[key]["observer_evidence"] = str(path)
-        return {"native_command": result, "owned_listener": proof, "ready": True}
+        return {"native_command": self.observer_initialized[key], "owned_listener": proof, "ready": True}
 
     def verify_observer(self, key, *, require_child=False, reviewer_session=None):
         rpc = self.roots[key]
@@ -515,8 +536,19 @@ class TrialRuntime(EvaluationRuntime):
         return proof
 
     def register_observe(self, key):
-        port = self.registrations.register(key)
-        return self.observe(key, port)
+        for attempt in range(4):
+            port = self.registrations.register(key, replace_port=attempt > 0)
+            self.registrations.release_reservation(key)
+            try:
+                return self.observe(key, port)
+            except SafetyError as error:
+                if (attempt == 3 or key not in self.observer_initialized
+                        or owned_listener(self.roots[key].owned, port)
+                        or not self.registrations.port_conflict(key)):
+                    raise
+                immutable_json(self.root / "observer-conflicts" / (uuid.uuid4().hex + ".json"),
+                               {"assignment_id": key, "port": port, "error": str(error),
+                                "observed_at": now(), "native_observe_replayed": False})
 
     def prepare_refill(self):
         snapshot = self.ledger.snapshot()
@@ -591,13 +623,6 @@ class TrialRuntime(EvaluationRuntime):
             raise SafetyError("Envelope belongs to another immutable manifest")
         if operation == "history":
             return self.ledger.resolve_trial_history(key, history=data["history"], record=data["record"], event_id=event_id)
-        if operation == "observe":
-            grant = self.registrations.bind(data.get("registration_grant"), event_id)
-            if data["port"] != grant["slots"][self.slots[key]]["port"]:
-                raise SafetyError("Observe envelope port differs from its exact granted slot")
-            return self.register_observe(key)
-        if operation == "prepare-children":
-            return self.prepare_children(data)
         if operation == "activate":
             return self.activate(data)
         if operation == "event":

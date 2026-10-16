@@ -28,7 +28,7 @@ def validate_approval(manifest: dict, contract: dict) -> dict:
             raise SafetyError("Coordinator-approved inputs/revisions/workspaces differ from dispatch reservations")
         for key in ("runtime", "observer", "agent_definition", "session_directory", "session_store_grant_ref",
                     "preparation_grant_ref", "configuration_sha256", "model_definition",
-                    "workflow_config", "review_model_definition"):
+                    "workflow_config", "review_model_definition", "registration"):
             if packet[key] != contract[key]:
                 raise SafetyError(f"Coordinator approval does not bind launch identity: {key}")
         if packet["execution"] != manifest["execution"]:
