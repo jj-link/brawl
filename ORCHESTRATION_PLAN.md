@@ -8,6 +8,8 @@ This is this session's working plan for that redesign. The reconstruction coordi
 
 This document was created on 2026-10-15 by recovering the original agreement and incorporating the user's scope correction. It is not a claim that the promised separate plan existed earlier. It belongs to the orchestration-design session in its private engineering workspace. The user has now approved the execution order and detailed checklist below. The existing reconstruction session retains its active MAIN checkout; the new controller owns its isolated trial lifecycle and publication target. A later explicit cutover transfers production authority.
 
+Dashboard registration is part of this controller's authorized trial setup and lifecycle. This session/controller selects available observer ports, records exact assignment/root/process/journal bindings, and maintains only its own rows in the shared registry. Preserve unrelated rows and listeners; detect and resolve actual port or concurrent-file conflicts. A named assistant session, an old ownership message, or an unanswered coordination request is not an approval prerequisite. Use file-only coordination when a concrete shared-resource conflict needs resolution, not for routine registration, launch or refill.
+
 ## Recovered agreement
 
 The native session record `01a0e6d5-6a3d-77e7-9eb7-fd2d5544a68a` contains the basis for this work:
@@ -128,9 +130,10 @@ Unchecked means implementation or end-to-end proof is still required; it does no
 - [x] Make the complete routine lifecycle a pre-trial implementation requirement.
 - [x] Separate exercised component evidence from full-workflow proof.
 - [x] Define accepted-work throughput, eligible idle time, blocked time, interventions, violations and recovery measurements.
-- [ ] Establish a comparison baseline from usable retained evidence and record its limitations.
+- [x] Establish a comparison baseline from usable retained evidence and record its limitations.
   - Retained baseline evidence and limits: `build/orchestration-eval/controller-baseline-001/baseline-evidence-and-limits.json`. Three GLM publication examples and two concrete consistency failures are recorded; comparable full-lifecycle throughput/idle/intervention rates are not established by those receipts.
-- [ ] Map approved operating rules to enforcement points and observable verification.
+- [x] Map approved operating rules to enforcement points and observable verification.
+  - `build/orchestration-eval/parent-launch-preflight-001/rule-enforcement-map.json` maps 17 operating rules to inspected implementation points and observable checks, with separate exercised-receipt references and remaining end-to-end qualifications. This is evidence mapping, not another launch prerequisite.
 - [x] Track implementation owners, interfaces, dependencies and completion evidence.
 
 ### 2. Independent ownership
@@ -263,7 +266,7 @@ The checked selective-review items below record exercised controller, evidence-p
 ### 13. Four-Qwen real-function trial
 
 - [ ] Prepare four genuine native roots and four genuine Qwen children with zero root inference.
-- [ ] Obtain CARDS's one-time exact port/registration/cooperative-writer grant bound to actual roots, standard-store journals and native creation identities; register the roots before original independent-observer initialization. The controller manages subsequent eligible root rows under that grant without per-refill chat approval.
+- [ ] Register the trial roots through the controller using available ports and exact native root/journal/process identities; preserve unrelated registry entries, handle actual writer/port conflicts, and verify each owned listener before child preparation. Manage eligible replacement roots automatically without another session's approval.
 - [ ] Hold all four children at the abort-aware native pre-model gate; prove actual cards, registry/journals, zero provider dispatch and cancellation behavior.
 - [ ] Release all four first requests together after the agreed checks pass.
 - [ ] Capture actual successive same-item model updates from every child.
@@ -312,6 +315,14 @@ The routine registration smoke used actual published configure/splits preimages 
 Identity-checked native receipt reuse now retains fresh per-delivery coverage and acceptance. Configured judgment reasons remain exact, with automatic context separate; the actual reviewer definition, task and parser agree on unresolved-only scope. Failed or invalidated mechanical evidence cannot be waived. Canonical application data paths remain unchanged; Windows fixture fixes affect only owned fixture locations and their repository-local Git settings. All prior failure evidence, the original 16 published commits and original `d0d182fcfc11d69fcf72c2e8fcc6dd709a93658f` baseline remain retained. The six unrequested Sol-review/authentication edits remain excluded and preserved; this policy grants no additional model/default/credential authority.
 
 Engineering dashboard root/child evidence remains valid for its exercised path. Actual four-trial-child proof remains required. Original evaluation files and immutable packets remain preserved. Production service/model changes and MAIN cutover are not inferred from permission to implement the private controller.
+
+Native preparation checkpoint: `controller-four-qwen-live-003` accepted the preserved 21 publication units, then failed a canonical-path check while resolving one not-yet-created native directory during concurrent startup. Three genuine zero-provider roots completed handshakes; all 159 owned process exits were observed and the run reached STOPPED. Those three root identities are closed, not available for dashboard registration. Original inputs, publication history and failure evidence remain immutable in `build/orchestration-eval/controller-native-parent-race-001/live003-failing-before.json` and the original run directory.
+
+The narrow correction creates the strictly confined shared `native` parent before submitting the four preparation futures; native root preparation remains concurrent and `safety.py` is unchanged. The two-file frozen manifest `build/orchestration-eval/controller-native-parent-race-001/source-identities.json` has SHA256 `59bbf5cb34702337f7bfb08dab6f58bbd57a6911bf4c47fbd5dca3fe1e5034a1`. Retained Sol 6.1 native review accepted only this delta. Parent read the actual `runs/realtrial-native-parent-after-001/behavioral-tests.json` receipt: both Windows filesystem ordering/junction regressions passed in 0.73 seconds, exit 0, STOPPED/all owned exits. This is changed-path proof; successful post-correction four-root startup and the held-child/dashboard/provider checks still require their actual receipts.
+
+Parent parallel preflight independently verified the rendered public dashboard and RuntimeOwner's live card, plus Spark1's service-reported Qwen model identity and idle healthy status. `build/orchestration-eval/parent-launch-preflight-001/receipt.json`, its screenshot and browser-exit receipt retain that observation. Four authorized trial slots remain unchanged despite the service advertising five maximum streams; release-time capacity remains a separate current observation. This is point-in-time evidence, not a reservation or a requirement for another session to approve registration.
+
+Subsequent actual native smoke resolves the startup qualification above: `controller-four-qwen-live-004` prepared all four genuine RPC roots, verified their standard-store MAIN journals and live creation-bound membership in owned Windows jobs, and retained zero-message/non-streaming handshakes. The exact `build/orchestration-eval/controller-four-qwen-inputs-004/native-root-identities.json` packet has SHA256 `99ba55dec2bb93d38102c4f413dc89109d4f17c03f02fa12d21c4106d065c2da`, independently checked by parent. On the user's STOP instruction, the exact-run stop command returned exit 0 and STOPPED revision 2 at `2026-10-16T14:30:24.775417+00:00`, event `trial-recovery-stop-b099ffaf2ea04493b06b971dcaeb46ea`. The recorded root identities are historical proof, not permission to reuse stopped processes. Confirm actual controller/job closure before fresh preparation. The user has now directed correction of this plan/checklist and resumption. The prior named-session registration wait is withdrawn; registration belongs to the controller under the rule above. The separate authorized production Qwen owner remains separate and is accounted for in the release-time capacity check.
 
 
 ## Coordination channel
