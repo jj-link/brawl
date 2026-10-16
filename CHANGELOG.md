@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Approved adaptive sizing — diverse samples and a held midpoint
+
+- Replaced the fixed three-consecutive-win size rule with the user's approved per-model policy: evaluate three behaviorally different functions at a target size; two verified, accepted matches permit doubling during exploration, while two ten-correction exhausted results establish a failed upper bound.
+- After failure, evaluate the midpoint between the last successful size and the failed bound using the same two-of-three rule. A failing midpoint moves the upper bound lower; the first passing midpoint becomes the held working target. Ordinary later successes do not restart growth.
+- Track function types and actual sizes alongside existing attempt/result evidence. Near-identical destructor helpers do not count as three diverse samples. Current assignments, attempt histories, verification requirements, independent refills and model pauses remain unchanged.
+- Investigated the three current GLM sessions after the user's path report. `1ED0` had relative-path drift after nested directory changes and a Git preview that skipped all three patches inside a linked worktree. Its owner corrected the preview with explicit absolute paths and a verified non-repository context; actual postimage checks and materialization succeeded. The existing native build was reused for this path-only correction. Evidence: `GlmFreshDedede1ED0/evidence/raw-packet-1ed0/receipt.json` under `build/isolated-workers/`. `2DBC` had completed native hash verification; `55AC`'s inspected errors were object-parser failures rather than missing paths.
+
 ## Committed-source checkpoint 2f5b967c
 
 - Verified committed snapshot `2f5b967c6746974c3f3c2e67597274ec442634af`; report SHA-256 `930bf2dff694081efc8a504dda49854bb834b60d93911b9106000c1d2b5dd384`. Native build and independent final checks passed **127 DOL/REL hashes**.
