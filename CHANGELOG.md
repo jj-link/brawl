@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 3d516ba9
+
+- Verified committed snapshot `3d516ba97d16df249af98816b6a6238c7327f622`; report SHA-256 `37ad8972a2d7645c60abaf69cd4ab6e2d714bbf7b66cf3844c47a422a018c95b`. Frozen native proof passed **127/127 DOL/REL hashes**, independently checked against retained byte-identical final artifacts. Verification used frozen 199E8 evidence, the committed checkout and retained publisher artifacts, without mutable future outputs or an unchanged build/report rerun.
+- **2.990080%** complete: **473436 / 15833556 accepted code bytes**, **15360120 code bytes remaining**, **1446 accepted source units**.
+- Delta from `5bcacba9`: **+132 accepted code bytes / +1 source unit**, Dedede 199E8. All 1445 preceding source blobs and object hashes remain unchanged for this assignment; earlier accepted source-prefix exceptions remain recorded. All 1446 accepted source objects occur in native link inputs; the report contains 5738 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/3d516ba9/`, including input/prefix/link/final-hash receipts and independent object comparison. Verified 132 allocated text bytes and seven REL24 relocations; candidate `fe98d32f308824379a80cc92f1d22c08d73da537` reproduces the GLM best. Canonical target `9fdaf0c783a822ed04920562c1a90480416e28c1` differs as a whole object; matching applies to allocated sections and relocations, not producer metadata.
+- GLM observed one initial mismatch and one correction match; inherited history remains UNKNOWN. Sol used zero integration corrections and retained source blob `2256a4e933655a54ee1242ce4904f63dce583134`, covering 846 LF compiler-input bytes versus 871 CRLF working bytes, not raw equality. Prior ABI/EOL/DTK/HOLD/history/incident/restoration qualifications remain; dirty/private work is excluded and AI remains NonMatching with original fallback and zero credit. This existing 132-byte cleanup assignment is not a new diverse sample at the next adaptive target.
+
 ## Dedede 199E8 — embedded module-group cleanup
 
 - Reconstructed `fn_117_199E8`, module 117 `.text[0x199E8,0x19A6C)`, 132 original code bytes, as genuine C++ destroying embedded members at +0xD8, +0xC4 and +0x88, then the base module with the signed-short `-1` argument; only the positive outer deleting flag releases the allocation, and the original pointer is returned. This remains the existing 132-byte cleanup assignment, not a 256-byte adaptive sample or a new diverse behavior class.
