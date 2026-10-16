@@ -183,6 +183,24 @@ class TrialRpc:
         return proof
 
 
+def model_registration(definition: dict, execution: dict) -> dict:
+    """Convert a resolved native cache entry back to its model-config input."""
+    model = dict(definition)
+    if (model.pop("provider", None) != execution["provider"] or
+            model.pop("baseUrl", None) != execution["endpoint"] or model["id"] != execution["model"]):
+        raise SafetyError("Observed model registration does not equal the approved identity")
+    # Resolved compatibility includes internal defaults which are not valid
+    # models.yml input (for example toolStrictMode=mixed). Replay only the
+    # original config, not a guessed translation of those computed defaults.
+    model.pop("compat", None)
+    configured = model.pop("compatConfig", None)
+    if configured is not None:
+        if not isinstance(configured, dict):
+            raise SafetyError("Native compatibility configuration must be an object")
+        model["compat"] = configured
+    return model
+
+
 def launch_root(manager: ProcessManager, executable: Path, directory: Path, spec: dict,
                 model_definition: dict, revision: int) -> tuple[TrialRpc, dict]:
     validate_runtime_identity(executable, spec["runtime"])
@@ -196,19 +214,13 @@ def launch_root(manager: ProcessManager, executable: Path, directory: Path, spec
     # inherited credentials, discovery/fallback, or user-home session adoption.
     agent_dir = Path(environment["PI_CODING_AGENT_DIR"])
     execution = spec["execution"]
-    model = dict(model_definition)
-    if (model.pop("provider", None) != execution["provider"] or
-            model.pop("baseUrl", None) != execution["endpoint"] or model["id"] != execution["model"]):
-        raise SafetyError("Observed model registration does not equal the approved identity")
+    model = model_registration(model_definition, execution)
     providers = {execution["provider"]: {
         "baseUrl": execution["endpoint"], "api": model["api"], "auth": "none", "models": [model]}}
     review = spec.get("review")
     if review:
-        selected = dict(review["model_definition"])
         expected = review["execution"]
-        if (selected.pop("provider", None) != expected["provider"] or
-                selected.pop("baseUrl", None) != expected["endpoint"] or selected["id"] != expected["model"]):
-            raise SafetyError("Approved reviewer model registration changed")
+        selected = model_registration(review["model_definition"], expected)
         provider = providers.setdefault(expected["provider"], {
             "baseUrl": expected["endpoint"], "api": selected["api"], "auth": "none", "models": []})
         if provider["baseUrl"] != expected["endpoint"] or provider["api"] != selected["api"]:

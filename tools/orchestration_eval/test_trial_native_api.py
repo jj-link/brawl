@@ -11,7 +11,7 @@ import unittest
 from .runtime import EvaluationRuntime
 from .safety import WORKTREE, SafetyError, confined, digest, save_json
 from .state import Ledger
-from .trial_rpc import NATIVE_OMP, NATIVE_OMP_VERSION, TrialRpc, validate_runtime_identity
+from .trial_rpc import NATIVE_OMP, NATIVE_OMP_VERSION, TrialRpc, model_registration, validate_runtime_identity
 from .trial_identity import journal_header, native_process_identity
 
 
@@ -33,6 +33,11 @@ class NativeApiTests(unittest.TestCase):
             self.skipTest("Production workflow startup requires its exact infrastructure selector")
         self.run_probe("workflow-startup")
 
+    def test_registered_model_configuration_without_provider_dispatch(self):
+        if os.environ.get("OMP_EVAL_NATIVE_API_PROBE_MODE") != "registered-model-startup":
+            self.skipTest("Actual registered-model configuration needs its exact infrastructure selector")
+        self.run_probe("registered-model-startup")
+
     def run_probe(self, mode):
         run = confined(Path(os.environ["OMP_EVAL_NATIVE_API_PROBE_ROOT"]))
         root = confined(run / "native-api-infrastructure")
@@ -45,6 +50,8 @@ class NativeApiTests(unittest.TestCase):
                                    reason="Approved isolated native API infrastructure; no assignment/provider")['revision']
         runtime = EvaluationRuntime(root, ledger)
         rpc = None
+        observed = None
+        startup = mode in {"workflow-startup", "registered-model-startup"}
         try:
             version = runtime.manager.launch([str(NATIVE_OMP), "--version"], kind="native-version-metadata",
                                              cwd=root, authorization_revision=revision)
@@ -72,6 +79,22 @@ class NativeApiTests(unittest.TestCase):
                 "plan": {"defaultOnStartup": False}, "retry": {"enabled": False, "maxRetries": 0, "modelFallback": False},
                 "modelRoles": {name: "native-api-disabled/no-model" for name in ("tiny", "commit", "smol")},
             })
+            selector = "openai/gpt-4o-mini"
+            if mode == "registered-model-startup":
+                from .trial import inspect_model
+                observed = inspect_model()
+                execution = observed["execution"]
+                definition = observed["model_definition"]
+                registration = model_registration(definition, execution)
+                self.assertEqual(registration.get("compat"), definition.get("compatConfig"))
+                self.assertNotIn("compatConfig", registration)
+                agent_dir = Path(runtime.environment["PI_CODING_AGENT_DIR"])
+                save_json(agent_dir / "models.yml", {"providers": {execution["provider"]: {
+                    "baseUrl": execution["endpoint"], "api": registration["api"],
+                    "auth": "none", "models": [registration]}}})
+                save_json(root / "actual-model-registration.json", {
+                    "observation": observed, "registration": registration})
+                selector = execution["provider"] + "/" + execution["model"]
             adapter = WORKTREE / "tools/orchestration_eval/trial_native.mjs"
             probe = WORKTREE / "tools/orchestration_eval/trial_native_probe.mjs"
             gate = WORKTREE / "tools/orchestration_eval/trial_gate.mjs"
@@ -82,10 +105,10 @@ class NativeApiTests(unittest.TestCase):
             runtime.environment.update(OMP_NATIVE_API_PROBE_SPEC=str(spec_path),
                                        OMP_NATIVE_API_PROBE_SHA256=digest(spec_path))
             argv = [str(NATIVE_OMP), "--mode", "rpc", "--no-ui",
-                    *([] if mode == "workflow-startup" else ["--no-tools"]), "--no-extensions", "--no-title",
+                    *([] if startup else ["--no-tools"]), "--no-extensions", "--no-title",
                     "--no-skills", "--no-rules", "--no-lsp", "--no-pty", "--config", str(config),
                     "--cwd", str(root), "--session-dir", str(sessions), "--extension", str(probe),
-                    "--model", "openai/gpt-4o-mini"]
+                    "--model", selector]
             owned = runtime.manager.launch(argv, kind="native-api-control-only", cwd=root, pipe=True,
                                            authorization_revision=revision)
             runtime.register_process(owned, revision)
@@ -107,13 +130,16 @@ class NativeApiTests(unittest.TestCase):
             self.assertEqual(result["root"]["pid"], child["pid"])
             self.assertEqual(state["sessionId"], result["root"]["uuid"])
             self.assertEqual(state.get("messageCount", 0), 0)
+            if observed is not None:
+                for field, key in (("provider", "provider"), ("id", "model"), ("baseUrl", "endpoint")):
+                    self.assertEqual(state["model"][field], observed["execution"][key])
             self.assertEqual(result["external_requests_forwarded"], 0)
             if mode == "original":
                 self.assertEqual(result["denied_fetch_entries"], 0)
             self.assertEqual(result["children_dispatched"], 0)
             self.assertEqual(result["observer_imports"], 0)
             cases = result["cases"]
-            if mode == "workflow-startup":
+            if startup:
                 startup = cases["production_workflow_startup"]
                 self.assertEqual(startup["root_credential_checkpoints"], 0)
                 self.assertEqual(result["denied_fetch_entries"], 0)

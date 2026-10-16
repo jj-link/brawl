@@ -148,7 +148,7 @@ export default function nativeApiProbe(pi) {
         ctx.modelRegistry, undefined, root.session.settings);
       const errors = [];
       runner.onError(error => { errors.push(error); order.push('bounded-before-provider-error-isolated'); });
-      if (spec.mode === 'workflow-startup') {
+      if (spec.mode === 'workflow-startup' || spec.mode === 'registered-model-startup') {
         // Forward the actual captured native root context/start event. No child
         // context, task dispatch, observer, provider response or model is invented.
         runner.initialize(pi, ctx);
