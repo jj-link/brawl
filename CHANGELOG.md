@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 17A6C — conditional storage-release tail
+
+- Reconstructed `fn_117_17A6C`, module 117 `.text[0x17A6C,0x17AAC)`, 64 original code bytes, as genuine C++ calling `operator delete` only for a nonnull object and positive signed-short deletion request, then returning the original pointer. Source blob `f4a4602b5030f9841aff0f7305f65ae10c9df9a4`; all 64 allocated text bytes and the `R_PPC_REL24` relocation to `__dl__FPv` at offset `0x24` match.
+- GLM owner `GlmResume17A6C`, continuing retained setup from `GlmFreshDedede17A6C`: one initial candidate, zero corrections; bounded recorded predecessor count zero, lifetime total unknown. This is the first accepted win at the GLM 64-byte adaptive target.
+- Reconciled on accepted `b6eac017` with 121E4, 151C8 and 17EE4 included. Native build and final checks passed all 127 DOL/REL outputs; candidate `1c6b830a9faac77457cf51e4d1251d7b5f0e6e15` remained unchanged and linked. The earlier DOL-excluded report was superseded by actual DOL compilation and complete checks, not accepted as sufficient. No gameplay runtime exercise was performed.
+- Materialized only the new source and +2/+3 registration insertions. Exact pre/post overlay comparison preserves unrelated bytes in both shared files; parent index and HEAD remained unchanged. Canonical staged tree `69527af3a2ed301098dc0d336873f430dc85d8f7` contains exactly the three owned changes; dirty working-file identities are recorded separately. The owner released MAIN.
+- Evidence: `build/isolated-workers/GlmFreshDedede17A6C/evidence/`, including `own-only.patch`, `attempt-01/`, `reconciliation.json`, `reconciliation-full-build.log`, `final-hashes-all127-b6eac017.json`, and `raw-overlay-materialization.json`. Earlier proof-worktree removal is documented in `cleanup-manifest.json`; original/junction/evidence holds remain in effect. Cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint b6eac017
 
 - Verified committed snapshot `b6eac0172af3dc829221d43bd2d1ab56d1698141`; report SHA-256 `532d916fe8b1ec0a608e438296e06b6535dc27309cdf90665bcd5199cdf5f423`. Native build and independent final checks passed **127 DOL/REL hashes**.
