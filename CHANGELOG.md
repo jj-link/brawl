@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 5873210e
+
+- Verified committed snapshot `5873210e273a8f7c5e482f1549c62901af12d3da`; report SHA-256 `a52ca1e6bf01f6b463e65dcd3ef28d751b0f1480784eb09ef653a1cbb9882be2`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.979899%** complete: **471824 / 15833556 accepted code bytes**, **15361732 code bytes remaining**, **1426 accepted source units**.
+- Delta from `22079da7`: **+32 accepted code bytes / +1 source unit**, Dedede A800. All 1425 prior accepted source identities remain unchanged. Private 11EE0/121E4/17D38/Luna15170/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/5873210e/`. All 1426 accepted-source linkage gates, 49 contributed Dedede MAP gates (48 eight-byte functions and A800's 32-byte function), and 329 input/tool identities passed. A800 allocated text and zero relocations independently match; whole ELF metadata is not claimed equal. First accepted GLM 32-byte adaptive win is 1/3. Bounded preservation, exact-index guards and restored-original qualifications remain; all original and junction holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede A800 — guarded integer-work division reconstruction
 
 - Reconstructed `fn_117_A800`, module 117 `.text[0xA800,0xA820)`, 32 original code bytes, using the existing `soGeneralWorkSimple` layout: divide the indexed integer work value only when the divisor is nonzero. Allocated text and zero relocations exactly match; source blob `9609f777b9ce2977cbdab0db3d338642b96e2d3b`.
