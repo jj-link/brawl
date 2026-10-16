@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 1642d90f
+
+- Verified committed snapshot `1642d90fc98e9a480bb3bd85fb6a52fc02a0c66b`; report SHA-256 `e5131b76eeaa9b876adfa8d920d9ebda95309c95a040d2e52e842771a834bb89`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.982425%** complete: **472224 / 15833556 accepted code bytes**, **15361332 code bytes remaining**, **1436 accepted source units**.
+- Delta from `5368880c`: **+64 accepted code bytes / +1 source unit**, Dedede 18210. All 1435 preceding accepted source blobs and source-object hashes remain unchanged; all 1436 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/1642d90f/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `18210-independent-object-comparison.json`. Registered 64-byte allocated text matches with no relocations. Owner counts remain one initial, zero corrections, plus a measured code-neutral comment revision; lifetime UNKNOWN. The earlier 18210 setup MAIN-copy/deletion incident remains recorded: this is not an assignment-wide zero-mutation/deletion claim. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds and restoration qualifications remain in effect. Materialization and later publication captures remain distinct. Final headline/history agreement follows documentation publication.
+
 ## Dedede 18210 — chained record lookup
 
 - Reconstructed `fn_117_18210`, module 117 `.text[0x18210,0x18250)`, 64 original code bytes, as genuine C++ selecting a `0x6C`-byte record or forwarding the remaining index to a chained provider. Source blob `fe06ec8fa9a992f1a09fc9cc53d4546bc830c4ea`; all allocated text matches exactly, with no in-function relocations.
