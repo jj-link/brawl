@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 3a8478b4
+
+- Verified committed snapshot `3a8478b478353e2c5f4be709f444210de02506ed`; report SHA-256 `5a8d516e5fffc29650fec5e9cd3374ccb9fe1e2f840000b52b809005af89c948`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979394%** complete: **471744 / 15833556 accepted code bytes**, **15361812 code bytes remaining**, **1419 accepted source units**.
+- Delta from `f9b4852a`: **+8 accepted code bytes / +1 source unit**, Dedede E2E8. All prior accepted sources remain linked. Unaccepted E2F0/E2F8, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/3a8478b4/`, including native/calculator logs, `report-published.json`, source/link/object proofs and original-identity checks. All 1419 accepted-source linkage gates, 1418 prior source identities, 329 original/tool identities and 42 Dedede source/MAP gates passed. Materialization-coverage and restored-original qualifications remain as recorded; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede E2E8 — reconstructed single-object interface adjustment
 
 - Registered genuine C++ for `fn_117_E2E8`, `.text [0xE2E8,0xE2F0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards it to imported `fn_27_13CAF8`.
