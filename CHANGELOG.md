@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2E8 — reconstructed single-object interface adjustment
+
+- Registered genuine C++ for `fn_117_E2E8`, `.text [0xE2E8,0xE2F0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards it to imported `fn_27_13CAF8`.
+- GLM owner GlmFreshDededeE2E8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `217ddcd4cc3f111ef1ddac3b06e4c21574df3126`, target SHA-1 `134815f4572c8a6c34ae14044b168122cb4517ff`. Allocated text `3863ff0c48000000` and offset-4 REL24 to `fn_27_13CAF8`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation onto accepted `f9b4852a` passed **127 native DOL/REL hashes**, with accepted E2D0/E2D8/E2E0 and this source linked. E2F0 remains original fallback. The subsequent `c134be66` baseline changes documentation only; applicable game evidence is reused. No gameplay execution was performed.
+- Released grant `E2E8MainC134` applied the reviewed three-path raw patch once; native check/apply exited 0. Shared-file postimages preserve saved preimages plus the owned 152/96 bytes. All 19 captured unrelated dirty tracked files remained byte-identical; other file contents were outside that inventory. HEAD/index/attributes guards remained unchanged. Native source is 2134 bytes with 37 CRLF endings, clean blob `33bca4872bcee959e3f8ec6fc3ab82e4ae7754da`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2E8/evidence/`, including the attempt comparison, `06-native-127-dtk-check-f9b4852a.txt`, `source-link-e2e8-f9b4852a.txt`, `own-change-f9b4852a.patch`, repository-aware previews, `PACKET-SEAL-f9b4852a.md` and `main-grant-E2E8MainC134/RECEIPT.md`. The canonical patch contains 42 additions and zero deletions across three paths, validated against the current committed baseline. The superseded two-path raw packet remains retained; it was completed before any MAIN application. Cumulative progress is published separately.
+
 ## Committed-source checkpoint f9b4852a
 
 - Verified committed snapshot `f9b4852a5acf548f4604d7600ae19c51f5bfda64`; report SHA-256 `80a4f87eeb28b897698d7b2c4aacc0f04252a106708415df69d45538e1494226`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
