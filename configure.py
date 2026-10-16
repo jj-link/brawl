@@ -671,6 +671,8 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_2944.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_2dbc.cpp",
+                   cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_65b8.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_139fc.cpp",

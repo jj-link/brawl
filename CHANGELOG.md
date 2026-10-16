@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 2DBC — embedded-component cleanup
+
+- Reconstructed `fn_117_2DBC`, module 117 `.text[0x2DBC,0x2E3C)`, 128 original code bytes, as genuine C++ invoking embedded-component cleanup with the signed-short `-1` argument, conditionally releasing the containing storage, and returning the original pointer. Source blob `f2339b7b5d3369ee83abab894b5741fb41eb5a7f`; allocated text SHA-1 `be8b3f8088ca7f2e17bec452cd65eadb3227209c` and relocation contents match the original object.
+- GLM owner `GlmFreshDedede2DBC`: this assignment observed one initial candidate and zero corrections. Inherited per-model totals remain UNKNOWN; the ledger's earlier “counted from zero” wording was corrected and does not establish a lifetime reset. The objdiff capture reported 100.00% before its TUI hung; direct object comparison and subsequent native output verification are retained separately.
+- Reconciled the complete accepted input set from `1642d90f` to `cf1ebdfc`, including accepted 22EB4 and 1ED0. Required private re-verification passed **127 DOL/REL hashes**; source linkage is verified and the source-linked Dedede REL and main DOL remain byte-identical to the originals. Earlier baseline and clean split-order runs are retained. No gameplay runtime exercise was performed.
+- Actual MAIN materialization used guarded, anchored byte insertions after a raw non-repository preview; it was not an application of the saved raw patch. Actual before/after differences contain only the owned +2/+3 registration lines and the new source. Parent-observed raw SHA-1 values are `616a41cc16618a500893dd9941fb4049ed6aa2c0` for `configure.py`, `8677841b53d7a5ce9c96a25c469f330afee1c586` for the split file, and `4a3bde65a1fa6cc152183fc0c2d7e6ed8cf40cf6` for the LF source. Unrelated dirty bytes and EOLs were preserved; the owner's parent index/ref state remained unchanged and MAIN was released.
+- Function type remains embedded cleanup/destructor, the same behavior class as 1ED0. This is another accepted 128-byte function, not a second diverse behavior or an independent basis for increasing the adaptive target.
+- Evidence: `build/isolated-workers/GlmFreshDedede2DBC/evidence/`, including immutable `attempt-01/` inputs/results, `attempt-ledger.json`, `own-only.patch`, `final-hashes-all127.json` with `reverification_cf1ebdfc`, `reverify-build.log`, `main-preimages-cf1ebdfc/`, `main-postimages-cf1ebdfc.json`, and `raw-materialize-cf1ebdfc.patch`. Original/copy/junction/evidence holds remain in effect. Cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint d06eff10
 
 - Verified committed snapshot `d06eff104bb1ece59b04ccfb6756d9f1b313afa1`; report SHA-256 `9c91cedc2b6e6ab1b5e8fe2fddb85f16e3749a20aa7e9f00fe827cc53b80a674`. Native build and independent final checks passed **127 DOL/REL hashes**.
