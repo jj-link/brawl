@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 10770 — Luna float absolute-value reconstruction
+
+- Reconstructed `fn_117_10770`, module 117 `.text[0x10770,0x10778)`, as genuine C++ using `__fabsf`. All 8 allocated code bytes `fc200a104e800020` match with zero relocations; source blob `2a4fbe85b0cb3405ab7fa4e6ad4d521de11305f2`.
+- Native session identity was `openai-codex/gpt-6-luna`, no fallback, max reasoning. **1 initial candidate / 0 corrections** matched; inherited counts remain **UNKNOWN**. This is Luna's first accepted 8-byte adaptive result, **1 of 3** consecutive wins toward raising its size target.
+- Complete accepted game inputs include `bc6c67e2395267b88f810c7a839733b35520ac1a` and its E6B0 source. The reconciled native build linked both new sources and passed **127 DOL/REL hashes**; the Luna candidate remained exact. No Dolphin/gameplay exercise was available.
+- Same-owner grant `Luna10770Main8dc` applied exactly three paths. Actual postimages and reverse application on private copies prove preservation of the dirty shared preimages; HEAD/index stayed unchanged. Native path guards and the bounded 31-leaf PowerShell hash check passed. The earlier checksum-list invocation's five failures and subsequent matching individual/native checks remain explicitly preserved, not relabeled as a passing first invocation.
+- Evidence: `build/isolated-workers/LunaDedede10770/evidence/`, including immutable attempt snapshots, native/link comparisons, canonical patch `own-change-8dc92778.patch` (SHA-256 `0150f9dd4aee82f0295801c3944810f9aac286c66939a8a6679658f406b4b92f`) and `reconciliation/grant-Luna10770Main8dc-RECEIPT.md`. Original-input holds remain; cumulative dashboard publication is separate.
+
 ## Committed-source checkpoint bc6c67e2
 
 - Verified committed snapshot `bc6c67e2395267b88f810c7a839733b35520ac1a`; report SHA-256 `360392ed40b357fbe30ad1a2116cddf2ca2e765512be637ddd2fcccf22973fdd`. Fresh native build/report passed **127 DOL/REL hashes**.
