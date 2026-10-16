@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 9c2d03b3
+
+- Verified committed snapshot `9c2d03b3b4882e5690d1751229cd25b38f2551f0`; report SHA-256 `e9e23bcb77e406722bcc2abca493fb479ba3b06d1db510b59aad9a3dfb095b3d`. Frozen input-bound native proof passed **127/127 DOL/REL hashes**; retained byte-identical final artifacts were independently rehashed. No unchanged build/report regeneration or reuse of mutable 18050 outputs.
+- **2.986771%** complete: **472912 / 15833556 accepted code bytes**, **15360644 code bytes remaining**, **1442 accepted source units**.
+- Delta from `46f0bd9a`: **+120 accepted code bytes / +1 source unit**, Dedede 17F04. All 1441 preceding accepted source blobs and object hashes remain unchanged; all 1442 accepted source objects occur in native link inputs. The report contains 5733 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/9c2d03b3/`, including `report-published.json`, `input-proof-binding.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, `native-127-final-hashes.json`, and `17F04-independent-object-comparison.json`. Registered 120-byte text and three relocations match; whole candidate retains GLM identity `da612309d38e33919415248019f2dc24fe6ed0a9`.
+- GLM observed one initial candidate and zero corrections; inherited history remains UNKNOWN. One separately measured Sol ABI integration revision corrected the 17A6C declaration to its published `void*` return type, preserving the original source and unchanged whole candidate. Integrated source blob `33c72a5abf113792711e8a4ac8591f633d7f2165` covers 1277 LF compiler-input bytes versus 1306 CRLF working bytes, not raw equality. Prior historical EOL, 55AC/180E0 and eight DTK qualifications, all HOLDs and incident/restoration qualifications remain. Dirty/private work is excluded; AI remains NonMatching with original fallback and zero credit.
+
 ## Dedede 18050 — conditional record-cursor advancement
 
 - Reconstructed `fn_117_18050`, module 117 `.text[0x18050,0x180E0)`, 144 original code bytes, as genuine C++ consulting the holder's empty-state virtual, decrementing a positive local count and either nulling or advancing its 0x6C-byte record cursor, otherwise forwarding to a non-null chained holder. Canonical source blob `4cf240dcf5addc73b2207f3bc248dec2a74dc36b`, unchanged from the delivered matching source. This repeats the branching/cursor family of 180E0; it is not an independent loop sample.
