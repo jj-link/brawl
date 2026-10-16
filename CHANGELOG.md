@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 22079da7
+
+- Verified committed snapshot `22079da7b40f4963196546e16b2f0d9feb751d50`; report SHA-256 `23a7112bfe239f14bc8540eb96d541a2f9a8c8856d94ea4e21d70b6b8123d4bc`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.979697%** complete: **471792 / 15833556 accepted code bytes**, **15361764 code bytes remaining**, **1425 accepted source units**.
+- Delta from `313d6bce`: **+8 accepted code bytes / +1 source unit**, Dedede E6A4. All 1424 prior accepted source identities remain unchanged. Private A800/11EE0/Luna15170/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/22079da7/`. All 1425 accepted-source linkage gates, 48 Dedede 8-byte/MAP gates and 329 input/tool identities passed. E6A4 allocated text and zero relocations independently match; whole ELF metadata is not claimed equal. Two measured compilations, corrected bounded-inventory/native-root guards, separate publication preservation window and restored-original qualifications remain; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede E6A4 — constant-false callback reconstruction
 
 - Reconstructed `fn_117_E6A4`, module 117 `.text[0xE6A4,0xE6AC)`, as genuine C++ returning zero. Allocated text `386000004e800020` and zero relocations exactly match the original; source blob `c6857f2780252181014c865370e320648ec66f53`.
