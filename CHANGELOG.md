@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 03e71b5d
+
+- Verified committed snapshot `03e71b5d158f8de5da652e1f76628c5933f90882`; report SHA-256 `21b32d822ea6e566ad9f309cd6f06289826b444f0130f3980dfc77c1acf030e7`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.981617%** complete: **472096 / 15833556 accepted code bytes**, **15361460 code bytes remaining**, **1434 accepted source units**.
+- Delta from `bb2b5dc8`: **+64 accepted code bytes / +1 source unit**, Dedede 17FD8, the second accepted GLM 64-byte adaptive win. All 1433 preceding accepted source blobs and source-object hashes remain unchanged; all 1434 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/03e71b5d/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `17FD8-independent-object-comparison.json`. Registered 64-byte text and the `__dl__FPv` relocation match. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds remain in effect. Final headline/history agreement follows documentation publication.
+
 ## Dedede 17FD8 — article storage-release tail
 
 - Reconstructed `fn_117_17FD8`, module 117 `.text[0x17FD8,0x18018)`, 64 original code bytes, as genuine C++ conditionally calling `operator delete` for a nonnull object and positive signed-short deletion request, then returning the original pointer. Source blob `02c757dffd800a847ad9ad925c50b01b0380ba5d`; all allocated text and the single `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
