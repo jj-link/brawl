@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 5368880c
+
+- Verified committed snapshot `5368880c1612e73232281039e943ff6fb4c21060`; report SHA-256 `c4688389aa168128ad748592175503cd67a1355bc744e624d92e99b6bfe2e370`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.982021%** complete: **472160 / 15833556 accepted code bytes**, **15361396 code bytes remaining**, **1435 accepted source units**.
+- Delta from `03e71b5d`: **+64 accepted code bytes / +1 source unit**, Dedede 1C8EC. All 1434 preceding accepted source blobs and source-object hashes remain unchanged; all 1435 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/5368880c/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `1C8EC-independent-object-comparison.json`. Registered 64-byte text and the `__dl__FPv` relocation match. Owner counts remain one initial, zero corrections, lifetime UNKNOWN. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds remain in effect; restoration is not uninterrupted preservation. Materialization and later publication captures remain distinct. Final headline/history agreement follows documentation publication.
+
 ## Dedede 1C8EC — conditional storage-release tail
 
 - Reconstructed `fn_117_1C8EC`, module 117 `.text[0x1C8EC,0x1C92C)`, 64 original code bytes, as genuine C++ conditionally releasing a nonnull object's storage for a positive signed-short deletion request and returning the original pointer. Source blob `5b32cfeb57812ded8a2a9a0d3180879a45b82981`; all allocated text and the `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
