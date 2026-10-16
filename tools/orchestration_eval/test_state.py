@@ -1609,6 +1609,27 @@ class TrialLedgerTests(unittest.TestCase):
         return dict(event_id=identifier, role=role, envelope=envelope,
                     content_sha256=hashlib.sha256(raw).hexdigest())
 
+    def test_retired_controller_setup_deliveries_are_refused_without_mutating_history(self):
+        self.initial()
+        historical = self.delivery()
+        self.ledger.admit_trial_delivery(**historical, authorization_revision=self.auth["revision"])
+        self.ledger.consume_trial_delivery(**historical)
+        preserved = self.ledger.trial_delivery(historical["event_id"])
+        for stopped in (False, True):
+            if stopped:
+                self.ledger.request_stop(event_id=self.event(), reason="Retired controller setup APIs remain unavailable")
+            before = self.ledger.snapshot()
+            for operation in ("observe", "prepare-children"):
+                for role in ("coordinator", "owner"):
+                    with self.subTest(stopped=stopped, operation=operation, role=role):
+                        retired = self.delivery(operation=operation, role=role)
+                        with self.assertRaisesRegex(StateError, "Unsupported bounded delivery operation"):
+                            self.ledger.admit_trial_delivery(**retired, authorization_revision=self.auth["revision"])
+                        with self.assertRaises(StateError):
+                            self.ledger.consume_trial_delivery(**retired)
+                        self.assertEqual(self.ledger.snapshot(), before)
+                        self.assertEqual(self.ledger.trial_delivery(historical["event_id"]), preserved)
+
     def test_unadmitted_delivery_cannot_be_consumed(self):
         self.initial()
         with self.assertRaises(StateError):

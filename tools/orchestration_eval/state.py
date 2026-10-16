@@ -1928,7 +1928,7 @@ class Ledger:
         if (trial.get("workflow") is not None and operation == "event"
             and envelope["payload"].get("kind") == "interval"):
             raise StateError("Native intervals cannot originate in a submitted owner/coordinator envelope")
-        operations = {"observe", "prepare-children", "activate", "prepare-refill", "activate-refill",
+        operations = {"activate", "prepare-refill", "activate-refill",
                       "message", "receipt", "close", "event", "eligibility",
                       "attempt", "verification", "transition", "exhaust", "inputs", "history"}
         if operation not in operations:
@@ -1956,7 +1956,7 @@ class Ledger:
                 record = data.get("record")
                 if not isinstance(record, dict) or record.get("owner_id") != authority:
                     raise StateError("Owner event delivery must preserve its native owner identity")
-        effect = operation in {"observe", "prepare-children", "activate", "prepare-refill",
+        effect = operation in {"activate", "prepare-refill",
                                "activate-refill", "message", "close"}
         return authority, effect
 
