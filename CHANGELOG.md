@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 2f5b967c
+
+- Verified committed snapshot `2f5b967c6746974c3f3c2e67597274ec442634af`; report SHA-256 `930bf2dff694081efc8a504dda49854bb834b60d93911b9106000c1d2b5dd384`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.982830%** complete: **472288 / 15833556 accepted code bytes**, **15361268 code bytes remaining**, **1437 accepted source units**.
+- Delta from `1642d90f`: **+64 accepted code bytes / +1 source unit**, Dedede 22EB4. All 1436 preceding accepted source blobs and source-object hashes remain unchanged; all 1437 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/2f5b967c/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `22EB4-independent-object-comparison.json`. Registered 64-byte text and the `__dl__FPv` relocation match. Owner counts remain one initial, zero corrections, lifetime UNKNOWN. Canonical 400-byte LF source and MAIN's 411-byte CRLF representation normalize to the same source blob, not identical raw bytes. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds, restoration qualifications, and the earlier 18210 setup incident remain recorded. Materialization and later publication captures remain distinct. Final headline/history agreement follows documentation publication.
+
 ## Dedede 22EB4 — conditional storage-release tail
 
 - Reconstructed `fn_117_22EB4`, module 117 `.text[0x22EB4,0x22EF4)`, 64 original code bytes, as genuine C++ conditionally releasing a nonnull object's storage for a positive signed-short deletion request and returning the original pointer. Source blob `09269eb85cfaa8f6d25b87a36a5751bf228d056b`; allocated text and the `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
