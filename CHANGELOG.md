@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint cb5c7173
+
+- Verified committed snapshot `cb5c717322590a159675736156229116f7166494`; report SHA-256 `8f69b93aab735adceb880ae98ad2efbdb03e3c9fbc0447df192e4fe88569ff7e`. Input-bound native integration and independent publisher checks passed **127 DOL/REL hashes**; the unchanged full build and report were reused, not rerun.
+- **2.985255%** complete: **472672 / 15833556 accepted code bytes**, **15360884 code bytes remaining**, **1440 accepted source units**.
+- Delta from `b10e0508`: **+128 accepted code bytes / +1 source unit**, Dedede 55AC. All 1439 preceding accepted source blobs and object hashes remain unchanged; all 1440 accepted source objects occur in native link inputs. The report contains 5730 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/cb5c7173/`, including `report-published.json`, `input-proof-binding.json`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `55AC-independent-object-comparison.json`. Independently verified 128 text bytes and six relocations. Of 2868 recorded inputs, 2859 match raw bytes; eight DTK ordering/EOL equivalents and the new source's LF-to-CRLF-only working representation are explicitly qualified. Canonical source blob remains `593b493a656ac7375a14a07c3e47d6182425f950`.
+- Thirteen historical clean-filter EOL qualifications remain. GLM observed one initial at 93.75% and one correction at 100%; inherited history remains UNKNOWN and the missing initial object was not recreated. This repeats the cleanup behavior class, not a new diverse adaptive sample. Dirty/private work is excluded; AI remains NonMatching with original fallback and zero credit. Original/copy/junction/evidence HOLDs and earlier incident/restoration qualifications remain in force.
+
 ## Dedede 55AC — embedded-member cleanup
 
 - Reconstructed `fn_117_55AC`, module 117 `.text[0x55AC,0x562C)`, 128 original code bytes, as genuine C++ destroying two embedded members, preserving the nested null guard and signed-short deleting-destructor ABI, conditionally releasing storage, and returning the original pointer. Reviewed source blob `593b493a656ac7375a14a07c3e47d6182425f950`; registered objdiff matches **128/128 code bytes**, and allocated text SHA-1 `8aac47b8511a7c8a7321068cb3463eb18db5fca1` plus all six relocation offset/type/symbol/addend tuples match the target.
