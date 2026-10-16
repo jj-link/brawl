@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d06eff10
+
+- Verified committed snapshot `d06eff104bb1ece59b04ccfb6756d9f1b313afa1`; report SHA-256 `9c91cedc2b6e6ab1b5e8fe2fddb85f16e3749a20aa7e9f00fe827cc53b80a674`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.983638%** complete: **472416 / 15833556 accepted code bytes**, **15361140 code bytes remaining**, **1438 accepted source units**.
+- Delta from `2f5b967c`: **+128 accepted code bytes / +1 source unit**, Dedede 1ED0. All 1437 preceding accepted source blobs and source-object hashes remain unchanged; all 1438 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/d06eff10/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `1ED0-independent-object-comparison.json`. Registered 128-byte text and all six relocations match. Initial-stage evidence contains three same-batch variants plus the selected production implementation (four measured), zero feedback corrections, history UNKNOWN. Canonical 772-byte LF source and working 796-byte CRLF representation normalize to the same blob, not identical raw bytes. Corrected preimage-size metadata and failed path previews remain recorded. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds, restoration and earlier incident qualifications remain in effect. Materialization and publication captures remain distinct. Final headline/history agreement follows documentation publication.
+
 ## Dedede 1ED0 — embedded-subobject cleanup
 
 - Reconstructed `fn_117_1ED0`, module 117 `.text[0x1ED0,0x1F50)`, 128 original code bytes, as genuine C++ cleaning up embedded subobjects and conditionally releasing the containing storage. Source blob `c5ed1a7185e246befa6a3001e5c919f0a4b57b29`; allocated text and all six relocation offset/type/symbol/addend tuples match. Raw relocation-table bytes differ only in symbol-table index ordering.
