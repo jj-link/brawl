@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d6000ec7
+
+- Verified committed snapshot `d6000ec76e5d650044ddfd856566b6a318e21877`; report SHA-256 `9c77d1937945bb7193a7d42a3cdbb0f85b9b658801e39907fa2eced690213770`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979242%** complete: **471720 / 15833556 accepted code bytes**, **15361836 code bytes remaining**, **1416 accepted source units**.
+- Delta from `c85d7db3`: **+8 accepted code bytes / +1 source unit**, Dedede E2D8. All prior accepted sources, including E2C8/E2B8/E2C0, remain linked. Unaccepted E2D0/E2E0, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/d6000ec7/`, including native/calculator logs, `report-published.json`, source/link/object proofs and independent restored-original checks. All 1416 accepted-source linkage gates, 1415 prior source identities, 329 original/tool identities and 39 Dedede source/MAP gates passed. Restored-original and earlier materialization-coverage qualifications remain as recorded; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede E2D8 — reconstructed power/task notification adjustment
 
 - Registered genuine C++ for `fn_117_E2D8`, `.text [0xE2D8,0xE2E0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards the power and task arguments to imported `fn_27_13DD00`.
