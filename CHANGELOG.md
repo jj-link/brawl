@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 214edbbd
+
+- Verified committed snapshot `214edbbd323685b52c0ea574cefef03a2e2d50f7`; report SHA-256 `4da389fa294d6a70aa7a3a4b4700cd730201512f31a31635fe95c6a6d0062d05`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.980101%** complete: **471856 / 15833556 accepted code bytes**, **15361700 code bytes remaining**, **1427 accepted source units**.
+- Delta from `5873210e`: **+32 accepted code bytes / +1 source unit**, Dedede 11EE0. All 1426 prior accepted source identities remain unchanged. Private 121E4/17D38/17EE4/Luna15170/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/214edbbd/`. All 1427 accepted-source linkage gates, 50 contributed Dedede MAP gates (48 eight-byte and two 32-byte functions), and 329 input/tool identities passed. 11EE0 allocated text and both HA/LO relocations independently match; whole ELF metadata is not claimed equal. Second accepted GLM 32-byte adaptive win is 2/3. Earlier flagged guard/preservation diagnostics retain their recorded corrections and scope; restored-original qualifications and all original/junction holds remain. Final headline/history agreement follows this documentation commit.
+
 ## Dedede 11EE0 — state-record initialization reconstruction
 
 - Reconstructed `fn_117_11EE0`, module 117 `.text[0x11EE0,0x11F00)`, 32 original code bytes, as genuine C++ clearing the byte flag and initializing the two pointers from the existing `lbl_117_data_89B0` block. Allocated text and both HA/LO relocations exactly match; source blob `1bb1bd1add8f35564afc85c9dc044a0d34b774b0`.
