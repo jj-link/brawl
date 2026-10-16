@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint bb2b5dc8
+
+- Verified committed snapshot `bb2b5dc8db749f4f90bdd30703917ba6b03d8316`; report SHA-256 `2d8c3c1a00c0adbff6ee6940e0acb07128e7c9c0f14ce5d4826c9c3291760b37`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.981213%** complete: **472032 / 15833556 accepted code bytes**, **15361524 code bytes remaining**, **1433 accepted source units**.
+- Delta from `b6eac017`: **+64 accepted code bytes / +1 source unit**, Dedede 17A6C, the first accepted GLM 64-byte adaptive win. All 1432 preceding accepted source blobs and source-object hashes remain unchanged; all 1433 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/bb2b5dc8/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `17A6C-independent-object-comparison.json`. Registered 64-byte text and the `__dl__FPv` relocation match. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Materialization and publication preservation captures remain distinct. Final headline/history agreement follows documentation publication.
+
 ## Dedede 17A6C — conditional storage-release tail
 
 - Reconstructed `fn_117_17A6C`, module 117 `.text[0x17A6C,0x17AAC)`, 64 original code bytes, as genuine C++ calling `operator delete` only for a nonnull object and positive signed-short deletion request, then returning the original pointer. Source blob `f4a4602b5030f9841aff0f7305f65ae10c9df9a4`; all 64 allocated text bytes and the `R_PPC_REL24` relocation to `__dl__FPv` at offset `0x24` match.
