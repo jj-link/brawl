@@ -404,6 +404,9 @@ class TrialRuntime(EvaluationRuntime):
                 "Do not commit/push or modify MAIN or the controller publication repository. The controller performs "
                 "fixed verification, genuine independent review and separate real commit/push units automatically. "
                 "Remain the same owner for concrete reconciliation and exact evidence-preserving cleanup. "
+                "At the inherited correction bound retain the best NonMatching draft, original-code fallback and zero "
+                "accepted credit; do not hand off to another model. Do not message agent://Main: it is this process's "
+                "zero-inference control root. Use the exact durable delivery channel and native yield instead. "
                 "No other model/child, no fabricated history or verification. Use absolute workspace paths for tools and explicit "
                 "workspace cwd for every shell. The native root cwd is not your workspace. The runtime created your "
                 "fresh independently owned repository and verified its Git identity; confirm that identity "
@@ -461,14 +464,18 @@ class TrialRuntime(EvaluationRuntime):
                         continue
                     if event["kind"] == "local_result" and event["operation"] == "launch" and not event["success"]:
                         result_ref = confined(Path(event["result_ref"]), rpc.directory)
-                        assignment = self.ledger.assignment(key)
-                        if assignment["status"] not in {"blocked", "closed"}:
-                            self.ledger.transition(key, "blocked", event_id=event["id"] + "-native-failure",
-                                details={"kind": "native_task_failure", "evidence_refs": [str(result_ref)]},
-                                authorization_revision=self.ledger.authorization()["revision"])
-                        self.ledger.trial_event(key, kind="phase", event_id=event["id"] + "-tool-wait",
-                            record=observation([result_ref], owner_id=assignment["owner_id"], phase="tool_wait"))
-                        continue
+                        result = json.loads(result_ref.read_bytes())
+                        if (result.get("id") != event["id"] or result.get("operation") != "launch"
+                                or result.get("workflow_effect_id") != key + "-initial"
+                                or event.get("workflow_effect_id") != key + "-initial"
+                                or result.get("success") is not False):
+                            raise SafetyError("Native launch failure differs from its retained admitted result")
+                        self.ledger.observe_trial_effect(effect_id=key + "-launch",
+                            event_id=event["id"] + "-native-failure",
+                            record=observation([record_path, result_ref], effect_observed=True,
+                                outcome="native_child_launch_failed", native_event=event, native_result=result))
+                        raise SafetyError(f"Native child launch failed; retained result {result_ref}: "
+                                          f"{result.get('error') or result.get('result')}")
                     if event["kind"] == "provider_gate_wait":
                         assignment = self.ledger.assignment(key)
                         if event.get("owner") != assignment["owner_id"] or assignment["session_id"] is None:

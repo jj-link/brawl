@@ -27,6 +27,56 @@ class TrialWorkflowBoundaryTests(unittest.TestCase):
         self.runtime.refill_pool.shutdown(wait=True, cancel_futures=True)
         self.runtime.manager.stop_all()
 
+    def test_initial_native_failure_retains_primary_result_without_manual_transition(self):
+        from .test_runtime import held
+        fixture = WorkflowFixture()
+        fixture.case.initial(activate=False, prompts=False)
+        ledger, key = fixture.ledger, "trial-0"
+        ledger.admit_trial_effect(key, effect_id=key + "-launch", kind="launch",
+                                 event_id="launch-admitted", authorization_revision=1)
+        runtime = TrialRuntime(fixture.root, ledger, Path("not-a-native-host.exe"), {})
+        owned = held(runtime.manager, revision=1)
+        runtime.register_process(owned, 1)
+        directory = fixture.root / "native" / "failed-preflight-file-fixture"
+        directory.mkdir(parents=True)
+        runtime.roots[key] = SimpleNamespace(directory=directory, owned=owned, failure=None)
+        runtime.offsets[key] = 0
+        identifier = uuid.uuid4().hex
+        result = {"id": identifier, "operation": "launch", "workflow_effect_id": key + "-initial",
+                  "success": False, "result": {"isError": True, "content": [
+                      {"type": "text", "text": "Unknown agent: explicit native-result format fixture; no child ran"}]}}
+        path = directory / ("result-" + identifier + ".json")
+        event = {"kind": "local_result", "id": identifier, "operation": "launch",
+                 "workflow_effect_id": key + "-initial", "success": False,
+                 "result_ref": str(path), "observed_at": now()}
+        journal = directory / "native-events.jsonl"
+        journal.write_text(json.dumps(event) + "\n", encoding="utf-8")
+        before = ledger.snapshot()
+        try:
+            save_json(path, dict(result, workflow_effect_id="foreign-initial"))
+            with self.assertRaisesRegex(SafetyError, "differs from its retained admitted result"):
+                runtime.collect_native()
+            self.assertEqual(ledger.snapshot(), before)
+            runtime.offsets[key] = 0
+            save_json(path, result)
+            raw = path.read_bytes()
+            with self.assertRaisesRegex(SafetyError, "Native child launch failed.*Unknown agent"):
+                runtime.collect_native()
+            after = ledger.snapshot()
+            self.assertEqual(after["assignments"], before["assignments"])
+            self.assertIsNone(after["trial"]["activation"])
+            self.assertEqual(after["trial"]["workflow"], before["trial"]["workflow"])
+            receipt = after["trial"]["effects"][key + "-launch"]["observations"][-1]["record"]
+            self.assertEqual(receipt["outcome"], "native_child_launch_failed")
+            self.assertEqual(receipt["native_result"], result)
+            self.assertEqual(receipt["native_event"], event)
+            self.assertEqual(path.read_bytes(), raw)
+        finally:
+            runtime.stop(event_id="file-consumer-stop", reason="Actual failure-file consumer fixture complete")
+        self.assertEqual(ledger.authorization()["mode"], "STOPPED")
+        self.assertTrue(owned.record["exit_proof"]["observed_exit"])
+        self.assertEqual(owned.record["exit_proof"]["method"], "process-handle-wait+empty-windows-job")
+
     def test_failed_native_result_is_not_discarded_with_action_left_admitted(self):
         self.f.capture()
         self.f.validate()
