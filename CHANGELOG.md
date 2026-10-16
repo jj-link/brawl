@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 5843315b
+
+- Verified committed snapshot `5843315bb5a7ac554804c04257117d78e927515f`; report SHA-256 `9579e7585fff89a326c1a72ece19d96a3806c8da94d2979f1ac3b6091e13cef2`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.980152%** complete: **471864 / 15833556 accepted code bytes**, **15361692 code bytes remaining**, **1428 accepted source units**.
+- Delta from `214edbbd`: **+8 accepted code bytes / +1 source unit**, Dedede 15170. All 1427 prior accepted source identities remain unchanged. Private 121E4/17D38/17EE4/Luna151C8/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/5843315b/`. All 1428 accepted-source linkage gates, 51 contributed Dedede MAP gates (49 eight-byte and two 32-byte functions), and 329 input/tool identities passed. 15170 allocated text and zero relocations independently match; whole ELF metadata and the owner's timed-out interactive objdiff session are not acceptance claims. Second accepted Luna eight-byte adaptive win is 2/3. Materialization's 32 file hashes/three directory-presence records and the later 46-state publication capture cover separate windows; earlier flagged-check/restored-original qualifications and all original/junction holds remain. Final headline/history agreement follows this documentation commit.
+
 ## Dedede 15170 — Luna task-ID getter reconstruction
 
 - Reconstructed `fn_117_15170`, module 117 `.text[0x15170,0x15178)`, eight original code bytes, as genuine C++ returning `gfTask::m_taskId` through the existing header. Allocated text `806300284e800020` exactly matches, with no relocations or allocated data/BSS; source blob `163ab9bd39df32848dcd1807891f75550c2e7bb1`.
