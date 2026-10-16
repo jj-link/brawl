@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 46f0bd9a
+
+- Verified committed snapshot `46f0bd9a2bb125b659f38bd75421841298da3fc5`; report SHA-256 `a5af3ceab32de9e7a363b5d453b58824cab4de73160029e4618e1778e2fad5e1`. Reused the input-bound 33-step changed-input native build and report; independent publisher verification passed **127 DOL/REL hashes**, without an unchanged full-build or report rerun.
+- **2.986013%** complete: **472792 / 15833556 accepted code bytes**, **15360764 code bytes remaining**, **1441 accepted source units**.
+- Delta from `cb5c7173`: **+120 accepted code bytes / +1 source unit**, Dedede 180E0. All 1440 preceding accepted source blobs and object hashes remain unchanged; all 1441 accepted source objects occur in native link inputs. The report contains 5732 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/46f0bd9a/`, including `report-published.json`, `input-proof-binding.json`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `180E0-independent-object-comparison.json`. Independently verified 120 allocated text bytes, zero relocations and the supplied whole-object identities. Of 2869 recorded inputs, 2859 match raw bytes; eight previously qualified DTK serialization differences and two LF/CRLF-only source representations remain explicit.
+- GLM observed one initial candidate, zero corrections and zero failed compilations; inherited history remains UNKNOWN. Branched virtual dispatch/count decrement is distinct from cleanup. The new source's 4419 CRLF working bytes and 4332 LF compiler input share canonical blob `1bd44d4481fbf4c3379c84352773e5f52524acc7`; raw equality is not claimed. Prior 13 historical EOL qualifications, 55AC's representation distinction, all original/copy/junction/evidence HOLDs and incident/restoration qualifications remain. Dirty/private work is excluded; AI remains NonMatching with original fallback and zero credit.
+
 ## Dedede 180E0 — chained-holder virtual dispatch and count update
 
 - Reconstructed `fn_117_180E0`, module 117 `.text[0x180E0,0x18158)`, 120 original code bytes, as genuine C++ forwarding through a chained holder's virtual methods when its query returns zero, otherwise decrementing a positive record count. The source reloads the chained pointer after the first virtual call, preserving the original edge behavior. Canonical source blob `1bd44d4481fbf4c3379c84352773e5f52524acc7`.
