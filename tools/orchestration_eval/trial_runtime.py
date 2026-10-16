@@ -406,7 +406,7 @@ class TrialRuntime(EvaluationRuntime):
                 "Remain the same owner for concrete reconciliation and exact evidence-preserving cleanup. "
                 "At the inherited correction bound retain the best NonMatching draft, original-code fallback and zero "
                 "accepted credit; do not hand off to another model. Do not message agent://Main: it is this process's "
-                "zero-inference control root. Use the exact durable delivery channel and native yield instead. "
+                "zero-inference control root. Use the exact durable delivery channel, then end with your final message. "
                 "No other model/child, no fabricated history or verification. Use absolute workspace paths for tools and explicit "
                 "workspace cwd for every shell. The native root cwd is not your workspace. The runtime created your "
                 "fresh independently owned repository and verified its Git identity; confirm that identity "
@@ -441,12 +441,14 @@ class TrialRuntime(EvaluationRuntime):
 
     def collect_native(self):
         for key, rpc in list(self.roots.items()):
-            if rpc.owned.record.get("exit_proof"):
+            if rpc.owned.record.get("exit_proof") and getattr(rpc, "closing", False) and not rpc.failure:
                 continue
-            if rpc.failure:
-                raise rpc.failure
             record_path = rpc.directory / "native-events.jsonl"
             if not record_path.exists():
+                if rpc.failure:
+                    raise rpc.failure
+                if rpc.owned.process.poll() is not None:
+                    raise SafetyError("Retained native owner unexpectedly exited; recovery required")
                 continue
             with record_path.open("rb") as stream:
                 stream.seek(self.offsets[key])
@@ -458,7 +460,7 @@ class TrialRuntime(EvaluationRuntime):
                         break
                     event = json.loads(raw)
                     self.offsets[key] = stream.tell()
-                    if event["kind"] in {"provider_refused", "registry_error", "record_failure"}:
+                    if event["kind"] in {"provider_refused", "registry_error", "record_failure", "native_boundary_fatal"}:
                         raise SafetyError(f"Native execution boundary failure: {event}")
                     if self.workflow.native_event(key, event, record_path, raw=raw):
                         continue
@@ -530,7 +532,9 @@ class TrialRuntime(EvaluationRuntime):
                         })
                     elif assignment["session_id"] != event["session_id"]:
                         raise SafetyError("Native owner session changed")
-            if rpc.owned.process.poll() is not None and not rpc.owned.record.get("exit_proof"):
+            if rpc.failure:
+                raise rpc.failure
+            if rpc.owned.process.poll() is not None:
                 raise SafetyError("Retained native owner unexpectedly exited; recovery required")
 
     def close_owner(self, key):

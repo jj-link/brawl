@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from pathlib import Path
+import sys
 import threading
 from types import SimpleNamespace
 import unittest
@@ -76,6 +77,44 @@ class TrialWorkflowBoundaryTests(unittest.TestCase):
         self.assertEqual(ledger.authorization()["mode"], "STOPPED")
         self.assertTrue(owned.record["exit_proof"]["observed_exit"])
         self.assertEqual(owned.record["exit_proof"]["method"], "process-handle-wait+empty-windows-job")
+
+    def test_exited_native_transport_preserves_fatal_cause_and_cannot_stall(self):
+        from .trial_rpc import TrialRpc
+        for case in ("fatal", "eof", "intentional-close"):
+            with self.subTest(case=case):
+                directory = self.f.root / "native" / ("exited-pipe-format-fixture-" + case)
+                directory.mkdir(parents=True)
+                journal = directory / "native-events.jsonl"
+                fatal = {"kind": "native_boundary_fatal", "observed_at": now(),
+                         "error": "Explicit native-error file-format fixture; no native child ran"}
+                if case == "fatal":
+                    journal.write_text(json.dumps(fatal) + "\n", encoding="utf-8")
+                script = "import time; time.sleep(60)" if case == "intentional-close" else "raise SystemExit(70)"
+                owned = self.runtime.manager.launch([sys.executable, "-B", "-c", script],
+                    kind="real-transport-exit-fixture", cwd=directory, pipe=True, authorization_revision=1)
+                self.runtime.register_process(owned, 1)
+                rpc = TrialRpc(owned, directory)
+                if case == "intentional-close":
+                    rpc.closing = True
+                    owned.stop(grace=0)
+                rpc.reader.join(timeout=10)
+                self.assertFalse(rpc.reader.is_alive())
+                self.assertTrue(owned.record["exit_proof"]["observed_exit"])
+                self.assertEqual(owned.record["exit_proof"]["method"], "process-handle-wait+empty-windows-job")
+                self.runtime.roots = {"trial-0": rpc}
+                self.runtime.offsets = {"trial-0": 0}
+                before = self.f.ledger.snapshot()
+                if case == "fatal":
+                    with self.assertRaisesRegex(SafetyError, "Native execution boundary failure.*Explicit native-error"):
+                        self.runtime.collect_native()
+                    self.assertEqual(json.loads(journal.read_text(encoding="utf-8")), fatal)
+                elif case == "eof":
+                    with self.assertRaisesRegex(EOFError, "transport closed unexpectedly"):
+                        self.runtime.collect_native()
+                else:
+                    self.assertIsNone(rpc.failure)
+                    self.runtime.collect_native()
+                self.assertEqual(self.f.ledger.snapshot(), before)
 
     def test_failed_native_result_is_not_discarded_with_action_left_admitted(self):
         self.f.capture()
