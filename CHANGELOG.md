@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 2e287886
+
+- Verified committed snapshot `2e2878869a63306e26ad24bf0f2296309e079b5f`; report SHA-256 `b49d7bc17ecdc8b01f401b0f779162a9313d4e8176112692cd904439eba8561e`. Frozen native proof passed **127/127 DOL/REL hashes**, with retained byte-identical final artifacts independently rehashed. Verification used frozen 18050 evidence, the committed checkout and retained publisher artifacts, not mutable integration outputs or an unchanged build/report rerun.
+- **2.987680%** complete: **473056 / 15833556 accepted code bytes**, **15360500 code bytes remaining**, **1443 accepted source units**.
+- Delta from `9c2d03b3`: **+144 accepted code bytes / +1 source unit**, Dedede 18050. All 1442 preceding accepted source blobs and object hashes remain unchanged; all 1443 accepted source objects occur in native link inputs. The report contains 5734 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/2e287886/`, including report/input-binding/prefix-preservation/source-link/final-hash receipts and independent object comparison. Verified 144 allocated text bytes, zero relocations and whole candidate `3b6609c5e846950634b456eb9406fd6dc0e9bb97` against the independently generated canonical registered target `842b27492ec6142028e5bf14a95276ae5a14028b`. The primary original gap and derived supporting slice retain their distinct provenance.
+- GLM observed one initial mismatch and one correction match; inherited history remains UNKNOWN. The initial non-allocated path-metadata distinction remains qualified. Source blob `4cf240dcf5addc73b2207f3bc248dec2a74dc36b` covers 4568 LF compiler-input bytes versus 4664 CRLF working bytes, not raw equality. Prior EOL/eight-DTK/HOLD/incident/restoration qualifications remain. This repeats the branching/cursor family, not an independent loop sample. Dirty/private work is excluded; AI remains NonMatching with original fallback and zero credit.
+
 ## Committed-source checkpoint 9c2d03b3
 
 - Verified committed snapshot `9c2d03b3b4882e5690d1751229cd25b38f2551f0`; report SHA-256 `e9e23bcb77e406722bcc2abca493fb479ba3b06d1db510b59aad9a3dfb095b3d`. Frozen input-bound native proof passed **127/127 DOL/REL hashes**; retained byte-identical final artifacts were independently rehashed. No unchanged build/report regeneration or reuse of mutable 18050 outputs.
