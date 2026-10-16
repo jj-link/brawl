@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint b6eac017
+
+- Verified committed snapshot `b6eac0172af3dc829221d43bd2d1ab56d1698141`; report SHA-256 `532d916fe8b1ec0a608e438296e06b6535dc27309cdf90665bcd5199cdf5f423`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.980809%** complete: **471968 / 15833556 accepted code bytes**, **15361588 code bytes remaining**, **1432 accepted source units**.
+- Delta from `2d8ab829`: **+32 accepted code bytes / +1 source unit**, Dedede 17EE4. All 1431 preceding accepted source blobs and source-object hashes remain unchanged; all 1432 accepted source objects are linked. This existing 32-byte assignment is not a 64-byte adaptive win.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/b6eac017/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `17EE4-independent-object-comparison.json`. Registered 32-byte text matches with no relocations. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. The owner's 31-path materialization capture is distinct from later publication checks. Final headline/history agreement follows documentation publication.
+
 ## Dedede 17EE4 — article integer-table lookup
 
 - Reconstructed `fn_117_17EE4`, module 117 `.text[0x17EE4,0x17F04)`, 32 original code bytes, as genuine C++ returning `rows[index - firstIndex][element]`. Source blob `52eebcdfe9d552926d905a0e72acf1991c9dfb22`; allocated text matches exactly, with zero relocations.
