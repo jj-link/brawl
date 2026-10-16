@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 313d6bce
+
+- Verified committed snapshot `313d6bce4de00b463b148ff85fff86b84a3b8101`; report SHA-256 `120f93ca0710d92a1dea207c4e14d83d7958c6381660720721043ec501be0cb4`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.979647%** complete: **471784 / 15833556 accepted code bytes**, **15361772 code bytes remaining**, **1424 accepted source units**.
+- Delta from `bc6c67e2`: **+8 accepted code bytes / +1 source unit**, Luna Dedede 10770. All 1423 prior accepted source identities remain unchanged. Private E6A4/A800/GLM11EE0/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/313d6bce/`. All 1424 accepted-source linkage gates, 47 Dedede 8-byte/MAP gates and 329 input/tool identities passed. Fresh whole-ELF metadata differs from the earlier owner objects; allocated code and zero relocations independently match, without claiming whole-object identity. Checksum diagnostic, bounded preservation and restored-original qualifications remain; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede 10770 — Luna float absolute-value reconstruction
 
 - Reconstructed `fn_117_10770`, module 117 `.text[0x10770,0x10778)`, as genuine C++ using `__fabsf`. All 8 allocated code bytes `fc200a104e800020` match with zero relocations; source blob `2a4fbe85b0cb3405ab7fa4e6ad4d521de11305f2`.
