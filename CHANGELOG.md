@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 17FD8 — article storage-release tail
+
+- Reconstructed `fn_117_17FD8`, module 117 `.text[0x17FD8,0x18018)`, 64 original code bytes, as genuine C++ conditionally calling `operator delete` for a nonnull object and positive signed-short deletion request, then returning the original pointer. Source blob `02c757dffd800a847ad9ad925c50b01b0380ba5d`; all allocated text and the single `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
+- GLM owner `GlmFreshDedede17FD8`: one initial candidate, zero corrections; bounded recorded-history recovery found no attributable predecessor attempts, while lifetime counts remain unknown. This is the second accepted win at the GLM 64-byte adaptive target.
+- Complete-input reconciliation used accepted `bb2b5dc8`. Native build and all 127 DOL/REL hash checks passed with 17EE4, 17A6C and 17FD8 linked. Candidate `e80e9ab684158fcc65224f3bff1bdbbab905347f` and target `dc3beab787a64577affbb2d2f478f865ea050bcc` remained unchanged. The measured missing splits dependency required an explicit split regeneration; its config rewrites were restored afterward. Reconciliation consumed no correction attempt. No gameplay runtime exercise was performed.
+- Actual native working-tree patch check/apply exited zero. Exact +2/+3 insertions preserve all other shared-file bytes; all 19 captured unrelated modified paths and 12 untracked files were unchanged, with `scratch/` checked for presence only. HEAD, index and Git controls were preserved. The new source is 419 CRLF bytes and cleans to the reviewed blob. The owner released MAIN.
+- Evidence: `build/isolated-workers/GlmFreshDedede17FD8/evidence/`, including `own-change-bb2b5dc8.patch`, `attempt-00-comparison-bb2b5dc8.json`, `03-native-127-dtk-check-bb2b5dc8.txt`, `raw-packet-17fd8-bb2b5dc8/`, and `reconciled-bb2b5dc8.json`. Canonical private-index validation is separate from raw overlay preservation. Original/junction/evidence holds remain in effect; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint bb2b5dc8
 
 - Verified committed snapshot `bb2b5dc8db749f4f90bdd30703917ba6b03d8316`; report SHA-256 `2d8c3c1a00c0adbff6ee6940e0acb07128e7c9c0f14ce5d4826c9c3291760b37`. Native build and independent final checks passed **127 DOL/REL hashes**.
