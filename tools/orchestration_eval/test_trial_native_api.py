@@ -183,6 +183,9 @@ class NativeApiTests(unittest.TestCase):
                 self.assertEqual(Path(definitions["reviewer"]["path"]),
                                  Path(runtime.environment["HOME"]) / ".omp/agent/agents/bounded-trial-reviewer.md")
                 self.assertEqual(set(startup["definition_refusals"]), {"changed_source", "different_model"})
+                selection = startup["worker_tool_selection"]
+                self.assertCountEqual(selection["selected"], ["read", "bash", "edit", "write", "grep", "glob"])
+                self.assertCountEqual(selection["original"], selection["restored"])
                 if observed is not None:
                     self.assertEqual(definitions["worker"]["name"], "spark1-qwen")
                     self.assertEqual(definitions["worker"]["sha256"], origin["sha256"])

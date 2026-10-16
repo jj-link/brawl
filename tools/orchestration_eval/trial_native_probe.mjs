@@ -179,9 +179,21 @@ export default function nativeApiProbe(pi) {
           catch (error) { definitionRefusals[name] = String(error); }
           if (!definitionRefusals[name]) throw new Error(`Native definition boundary admitted ${name}`);
         }
+        const originalTools = pi.getActiveTools();
+        let selectedTools;
+        try {
+          selectedTools = await boundedModule.restrictReconstructionTools(pi);
+        } finally {
+          await pi.setActiveTools(originalTools);
+        }
+        const restoredTools = pi.getActiveTools();
+        if (restoredTools.length !== originalTools.length || originalTools.some(name => !restoredTools.includes(name))) {
+          throw new Error('Infrastructure probe did not restore the genuine root tool selection');
+        }
         result.cases.production_workflow_startup = { ready, root_credential_checkpoints: rootCredentialCheckpoints,
           native_home: homedir(), definition_refusals: definitionRefusals,
-          qualification: 'Actual production startup, supported task agent discovery and tool availability only; no task/write execution or reviewer/child proof' };
+          worker_tool_selection: { original: originalTools, selected: selectedTools, restored: restoredTools },
+          qualification: 'Actual production startup, task discovery and supported tool selection on the genuine control root only; no task/write execution or reviewer/child proof' };
         runner.clearManagedTimers();
         result.success = true;
         return;

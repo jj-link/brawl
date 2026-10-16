@@ -36,7 +36,17 @@ let lifecycleUnsubscribe = null;
 const dispatchCommands = new Map(), commandResults = new Map();
 const terminalTurns = new Map(), finalizedRuns = new Map(), completedDispatches = new Set();
 let workerDefinition = null, reviewerDefinition = null;
-const workerTools = ['read', 'bash', 'edit', 'write', 'grep', 'glob', 'yield'];
+const workerTools = ['read', 'bash', 'edit', 'write', 'grep', 'glob'];
+
+export async function restrictReconstructionTools(pi) {
+  // These unstructured native tasks complete with a final message, not a yield tool.
+  await pi.setActiveTools(workerTools);
+  const active = pi.getActiveTools();
+  if (active.length !== workerTools.length || workerTools.some(name => !active.includes(name))) {
+    throw new Error(`Installed reconstruction definition lacks the bounded native tool set: ${JSON.stringify(active)}`);
+  }
+  return active;
+}
 
 export async function resolveTrialAgent(binding, execution, cwd) {
   if (!binding?.path || !binding.sha256) throw new Error('Native agent definition lacks its input binding');
@@ -419,11 +429,8 @@ export default function boundedTrial(pi) {
         }
         ownChild(ctx.agent.id);
         if (ctx.agent.id === owner) {
-          await pi.setActiveTools(workerTools);
-          const active = pi.getActiveTools();
-          if (active.length !== workerTools.length || workerTools.some(name => !active.includes(name))) {
-            throw new Error('Installed reconstruction definition lacks the bounded native tool set');
-          }
+          const active = await restrictReconstructionTools(pi);
+          event('worker_tools_selected', { ...identity(ref), active_tools: active });
         }
         const starts = [];
         const adapter = new Proxy(pi, { get(target, property) {
