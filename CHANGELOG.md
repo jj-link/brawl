@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 121E4 — Waddledee pick-transactor initializer
+
+- Reconstructed `fn_117_121E4`, module 117 `.text[0x121E4,0x12204)`, 32 original code bytes, as genuine C++ initializing the flag and two static-table pointers. Source blob `6082304d8768e47884f7f0fa6e8e06cdf16594a9`; allocated text and both HA/LO relocations to `lbl_117_data_8A60` match exactly.
+- GLM owner `GlmFreshDedede121E4`: one initial candidate, zero matching corrections; inherited lifetime counts remain unknown. Bounded recovery found no attributable predecessor attempt. This existing 32-byte assignment does not count toward the new 64-byte adaptive target.
+- Complete accepted inputs are `00803035` plus the owned initializer. Actual native build/link verification passed all 127 DOL/REL hashes; candidate `b3eaadaab36f767cf10a71e10bf164562f541c18` matches target `f4542a46cdd6590d9cf5df0ab1ca889b837bd6d3` in allocated contents/relocations, not whole ELF metadata. Earlier Qwen-inclusive builds are retained as nonbinding evidence. No gameplay runtime exercise was performed.
+- Grant `Glm121E4Main00803035` used the reviewed three-path patch with native check/apply exit zero. Exact +2/+3-line insertions preserve unrelated bytes; all 32 captured other dirty regular-file identities, HEAD, parent index, attributes/config and retained Qwen artifact were unchanged. The source is 942 CRLF bytes and cleans to the reviewed blob. The owner released MAIN.
+- Evidence: `build/isolated-workers/GlmFreshDedede121E4/evidence/grant00803035/RECEIPT.txt`, `materialization-v2/luna-packet/`, and `luna-composed-verification.txt`. Canonical private-index proof and actual dirty-file preservation are separate. Earlier failed probes, all originals/junction links and contents, and restored-original qualifications remain retained; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint 00803035
 
 - Verified committed snapshot `00803035d3f259730214c015af5c561d0b4369aa`; report SHA-256 `aa14a7215ceb795772c5f20504e9a3668cbc0a99b2e0fb3098282ffb84a97754`. Fresh native build/report passed **127 DOL/REL hashes**.
