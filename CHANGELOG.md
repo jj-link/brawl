@@ -2,6 +2,17 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Adaptive GLM function-size trial
+
+- User authorized trying larger GLM functions, increasing size after consistent wins and reducing it when unsuccessful. Existing owners finish their current functions; fresh GLM assignments start near 32 original code bytes, one function per owner.
+- Three consecutive exact, fully verified accepted matches at the current target size raise it approximately twofold. Exhausting the existing ten corrections without a match lowers it approximately twofold, with an 8-byte floor. Tool/input blockers do not count as size failures. Attempt limits, original fallback, verification, publication and fresh-owner lifecycle remain unchanged.
+- Updated `PLAN.md` to record this selection policy and the already-authorized three-GLM arrangement plus the separate single-function Luna/max trial. No larger-function trial result is claimed by this policy change.
+
+## GPT-6 Luna single-function trial
+
+- User authorized one additional GPT-6 Luna reconstruction owner at maximum reasoning, alongside the existing three GLM owners. Added `.omp/agents/luna-reconstruction.md` using `openai-codex/gpt-6-luna` and `thinking-level: max`.
+- Launched fresh owner `LunaDedede10770` for the single 8-byte `fn_117_10770` assignment. Native journal records confirm the requested model, no model fallback, maximum thinking, and actual instruction-reading/ownership-acknowledgment tool calls. This records launch verification, not a reconstructed-source result or completion credit.
+
 ## Committed-source checkpoint bbbcb5c4
 
 - Verified committed snapshot `bbbcb5c42634a8a6bbe1efaf28ff7243514a34a6`; report SHA-256 `346693971e39408ae8f3f44cb409b927846d891cbccb2fcec79c7f2b55117a12`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.

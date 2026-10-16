@@ -243,7 +243,10 @@ Stop dispatch after this eight-assignment queue, or earlier on the user's STOP. 
 
 - Inspect source, headers, symbols, object splits, progress reports, dependencies, and overlapping upstream work.
 - Assign larger, independent functions within coherent subsystem groups to available Sol workers.
-- Assign 8-byte functions to available GLM and Qwen workers. Preserve unmatched local-model work after ten corrections for later pickup by a Sol worker.
+- Give fresh GLM owners one function each, starting at roughly 32 original code bytes instead of restricting them to 8 bytes. Select the nearest suitable size with independent ownership and recoverable inputs; report the actual byte size.
+- Adapt the GLM target size from observed outcomes: three consecutive exact, fully verified and accepted matches at the current size target raise the target approximately twofold; a function still unmatched after the existing ten corrections lowers it approximately twofold, with an 8-byte floor. Restart the success count when the target size changes. Existing in-flight assignments finish unchanged and do not require synchronized batches or a new approval gate.
+- Keep candidate/correction counts, actual size, matching result and assignment timing in the existing assignment evidence and changelog. Input/tool failures are blockers, not evidence that the function is too large. Preserve unmatched work and the original-code fallback under the existing publication/handoff rules; do not change the correction allowance or verification criteria.
+- Qwen assignments retain their existing 8-byte scope and current pause/trial boundaries.
 - Let current workers finish their existing assignments; apply this target selection when assigning subsequent work.
 - Define each target's boundaries, original size, compiler settings, dependencies, matching requirements, and known blockers before implementation.
 - Use Brawl headers and related reverse-engineering work as evidence. Verify layouts and implementations against Brawl's binaries rather than assuming another project's code is interchangeable.
@@ -256,13 +259,14 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | Model | Workers | Role |
 | --- | ---: | --- |
 | GPT-6.1 Sol | 8 | Larger, independent functions within coherent subsystem groups, or preserved GLM/Qwen work picked up later. |
-| GLM | 2 | 8-byte functions; preserve unmatched work after ten corrections for later Sol pickup. |
+| GLM | 3 | One function per fresh owner, with adaptive target size as specified above. |
+| GPT-6 Luna, max reasoning | 1 trial owner | One 8-byte function under the existing reconstruction lifecycle; this trial does not change the GLM assignments. |
 | Qwen3.8-Flash-Next (Spark1) | 3 | 8-byte functions, with the same ten-correction and later Sol-pickup rules as GLM. |
 | GPT-6.1 Sol | 1 | Dedicated dashboard publication from committed results, separate from the reconstruction slots. |
 
-GLM concurrency is capped at two active subagents across all assignments, including recovery work.
+The current production arrangement retains three GLM assignment owners and the dedicated publisher. Production Qwen remains paused; the separately authorized four-Qwen trial retains its own boundaries. The additional single-function Luna trial does not replace a GLM slot or authorize other model launches.
 
-The pool contains eight Sol worker slots, two GLM worker slots, and three Qwen worker slots. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
+The nominal pool contains eight Sol worker slots, three GLM worker slots, and three production Qwen worker slots, subject to the user's current pauses and model overrides above. Neither local model is a mandatory first stage: each Sol assignment may start fresh or inherit GLM or Qwen progress. A local-model handoff spawns a fresh agent in an available slot among those eight Sol workers, not an additional Sol pool, and only when that model is currently authorized. Reconstruction subagents own source edits and their targeted compile–compare–revise loops, using the existing compiler and object-comparison tooling without waiting for parent feedback after each attempt. Unmatched Sol work is handed to a fresh Astra reconstruction subagent only when authorized. Subagents also perform integration and verification; the parent coordinates that work and reviews its evidence without writing code or supplying technical advice. Existing correction counts carry forward when work resumes.
 
 ### 3. Reconstruct and compare
 
