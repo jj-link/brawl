@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## E2C8 cleanup incident — restored original game inputs
+
+- At 2026-10-16 00:07:55 UTC, GlmFreshDededeE2C8's cleanup unlinked files through its `orig/RSBE01_02/files` and `sys` junctions into MAIN. The executor checked only each file's reparse flag, not its ancestors; workspace-relative paths did not isolate the operation. All **127 canonical originals / 24805432 bytes** were subsequently missing. The initial receipt's claim that MAIN was untouched and its attribution to publication activity are disproven.
+- Recovery grant `E2C8OriginalRecoveryA3ba` recreated only the missing `files/module` directory and those 127 files, using exclusive native `CREATE_NEW` and independently retained publisher copies from checkpoint `c85d7db3`. At 00:24:02 UTC, every restored file matched its recorded SHA-256, SHA-1 and size; each is an ordinary, single-link file with an identity independent of the recovery source.
+- Recovery preserved all source copies, HEAD and index. Existing ISO identity/size and the empty `.gitkeep` were unchanged; ISO contents were not rehashed. This establishes restored current contents, not uninterrupted preservation. No additional reconstruction credit or game attempt is claimed.
+- Actual deletion commands/results remain in the E2C8 journal and cleanup evidence. Recovery receipt: `build/terminal-lifecycle/e2c8-original-recovery-20261016.json`, SHA-256 `9fd08518b63dd7ccc4a132f4f5d7b6274e5ece7fc2d6d2563cce247c9ab5485e`. The existing PLAN requirement to resolve filesystem links and shared dependencies was not satisfied by the failed cleanup; original-preservation holds remain in force.
+
 ## Committed-source checkpoint c85d7db3
 
 - Verified committed snapshot `c85d7db3b52d53e5274439880c205e0c70eafb00`; report SHA-256 `73670135422f25cecd3592f8fac7dcdc79f5bb7c6b3ccb2c40000458027ec33c`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
