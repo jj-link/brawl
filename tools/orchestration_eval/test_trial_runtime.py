@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 import json
+import ntpath
 import os
 from pathlib import Path
 import subprocess
@@ -55,6 +56,62 @@ class TrialRuntimeTests(unittest.TestCase):
         check_worktree(real_trial=True)
         with self.assertRaises(SafetyError):
             check_worktree()
+
+    def test_initial_roots_create_shared_parent_before_concurrent_path_resolution(self):
+        # Real Windows path resolution, with the observed missing-parent race
+        # scheduled deterministically. No OMP process or agent is simulated.
+        native = self.root / "native"
+        barrier, lock = threading.Barrier(4), threading.Lock()
+        directories, missing_parent_errors = [], []
+        original = ntpath._getfinalpathname
+
+        def resolve_with_concurrent_parent_creation(path):
+            try:
+                return original(path)
+            except OSError as error:
+                if error.winerror == 3 and str(path).startswith(str(native) + os.sep):
+                    with lock:
+                        missing_parent_errors.append(error.winerror)
+                        native.mkdir(exist_ok=True)
+                raise
+
+        def prepare_directory(reservation, slot):
+            barrier.wait(timeout=10)
+            directory = confined(native / str(slot), self.root)
+            directory.mkdir()
+            with lock:
+                directories.append(directory)
+
+        runtime = SimpleNamespace(root=self.root, manifest=self.manifest,
+                                  prepare=prepare_directory, snapshot=lambda label: label)
+        with patch.object(ntpath, "_getfinalpathname", side_effect=resolve_with_concurrent_parent_creation):
+            result = TrialRuntime.prepare_initial(runtime)
+        self.assertEqual(result, "four-native-roots-prepared")
+        self.assertEqual(missing_parent_errors, [])
+        self.assertEqual(len(set(directories)), 4)
+        self.assertTrue(all(path.is_dir() and path.parent == native for path in directories))
+
+    def test_initial_roots_refuse_owned_fixture_junction_parent(self):
+        native, retained = self.root / "native", self.root / "retained"
+        retained.mkdir()
+        sentinel = retained / "retain.bin"
+        sentinel.write_bytes(b"retained input")
+        result = subprocess.run(
+            ["cmd.exe", "/d", "/c", "mklink", "/J", str(native), str(retained)],
+            capture_output=True, timeout=15, creationflags=subprocess.CREATE_NO_WINDOW)
+        (self.root / "junction.stdout").write_bytes(result.stdout)
+        (self.root / "junction.stderr").write_bytes(result.stderr)
+        self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+
+        def prepare_directory(reservation, slot):
+            confined(native / str(slot), self.root).mkdir()
+
+        runtime = SimpleNamespace(root=self.root, manifest=self.manifest,
+                                  prepare=prepare_directory, snapshot=lambda label: label)
+        with self.assertRaises(SafetyError):
+            TrialRuntime.prepare_initial(runtime)
+        self.assertEqual(sentinel.read_bytes(), b"retained input")
+        self.assertEqual(list(retained.iterdir()), [sentinel])
 
     def test_coordinator_history_delivery_changes_effective_history_not_manifest_or_effects(self):
         root = self.root / "recovered-history"

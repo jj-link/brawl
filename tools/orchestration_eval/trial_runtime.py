@@ -116,6 +116,9 @@ class TrialRuntime(EvaluationRuntime):
         return ready
 
     def prepare_initial(self):
+        # A missing parent becoming present during Windows realpath can retain
+        # its extended prefix. Establish it before the four guarded resolutions.
+        confined(self.root / "native", self.root).mkdir()
         # All four prompt-free root handshakes are independent. No provider work.
         with ThreadPoolExecutor(max_workers=4, thread_name_prefix="trial-prepare") as pool:
             futures = [pool.submit(self.prepare, row, slot)
