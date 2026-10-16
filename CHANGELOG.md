@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 7f76802e
+
+- Verified committed snapshot `7f76802e4e7862f763da7bbebe1d8da59b0fd30f`; report SHA-256 `516f812333646e912f3bb5671a406b5f947d6116555791f362d0abadb2828664`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979293%** complete: **471728 / 15833556 accepted code bytes**, **15361828 code bytes remaining**, **1417 accepted source units**.
+- Delta from `d6000ec7`: **+8 accepted code bytes / +1 source unit**, Dedede E2D0. All prior accepted sources, including E2D8/E2C8/E2B8/E2C0, remain linked. Unaccepted E2E0/E2E8, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/7f76802e/`, including native/calculator logs, `report-published.json`, source/link/object proofs and original-identity checks. All 1417 accepted-source linkage gates, 1416 prior source identities, 329 original/tool identities and 40 Dedede source/MAP gates passed. Materialization-coverage and restored-original qualifications remain as recorded; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede E2D0 — reconstructed damage notification adjustment
 
 - Registered genuine C++ for `fn_117_E2D0`, `.text [0xE2D0,0xE2D8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xE8` and forwards the damage record, flag word and module accesser to imported `fn_27_13604C`.
