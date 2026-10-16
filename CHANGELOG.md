@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E6B0 — reconstructed constant-return callback
+
+- Reconstructed `fn_117_E6B0`, module 117 `.text[0xE6B0,0xE6B8)`, as genuine C++ returning `0`. All 8 allocated code bytes `386000004e800020` and the empty relocation lists match; source blob `273a14bba8b62c074ea8057055067c8300e9ae2f`.
+- GLM recorded **1 initial candidate / 1 correction**: the initial compile rejected a non-SJIS em dash in a comment; the corrected candidate matched. Inherited counts remain **UNKNOWN**. Candidate object `659f6ecef2ad6bc1bb5a7814e2e6c983f135f456` and target `4f3e5c2ab6561df757e484efae3a308452b8dd09` are retained with both attempts.
+- Complete accepted inputs include `7941f19c59feaf22e6b47995f5c220cacd1145b6`. Registered source linkage in both module link edges, exact allocated-section comparison and native **127-file** verification passed. The subsequent policy revision was docs-only; no Dolphin/gameplay exercise was performed.
+- Same-owner grant `E6B0MainF833` applied exactly three paths. Actual shared-file byte comparisons prove the saved dirty preimages plus only 152/96 owned bytes; the native CRLF source has the expected canonical blob. HEAD/index remained unchanged. The bounded inventory retained 19 unrelated modified-file hash identities; this is not an exhaustive raw-byte preservation claim.
+- Evidence: `build/isolated-workers/GlmFreshDededeE6B0/evidence/`, including both immutable attempts, native checks, `grant-E6B0MainF833-RECEIPT.md`, and canonical staging patch SHA-256 `d4b23b3b7993e6aabd02e94732e329ec323074e7c6cc7dcb8c1d53ee028b55df`. Original-input cleanup holds remain; cumulative dashboard publication is separate.
+
 ## Independent adaptive sizing for Luna and Spark1 Qwen
 
 - User extended adaptive function sizing to Luna and authorized one Spark1 Qwen3.8-Flash-Next production owner starting at 8 bytes. Luna retains max reasoning and its current 8-byte `fn_117_10770`; model-specific win counts and size targets are independent. Three GLM owners continue unchanged.
