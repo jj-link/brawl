@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 11EE0 — state-record initialization reconstruction
+
+- Reconstructed `fn_117_11EE0`, module 117 `.text[0x11EE0,0x11F00)`, 32 original code bytes, as genuine C++ clearing the byte flag and initializing the two pointers from the existing `lbl_117_data_89B0` block. Allocated text and both HA/LO relocations exactly match; source blob `1bb1bd1add8f35564afc85c9dc044a0d34b774b0`.
+- GLM owner `GlmFreshDedede11EE0`: one initial candidate, zero corrections; no predecessor attempts found in the bounded records inspected, with lifetime counts still unknown. After source publication, this is the second consecutive accepted 32-byte GLM adaptive win, 2/3.
+- Complete-input native verification includes accepted `5873210e` and 11EE0: all 127 final DOL/REL hashes pass with the reconstructed C++ units linked. Accepted canonical input identities equal the privately verified composition, so the proof was reused without an unchanged rebuild; no Dolphin runtime verification is claimed.
+- Grant `11EE0MainDa762cde` applied the exact three-path raw patch with check/apply exit zero. Shared changes are precisely the owned +2/+3-line insertions; all 31 unrelated path-bound file hashes, directory presence, HEAD, index and attributes were preserved. Corrected native prewrite guards cover literal `C:\` and all ancestors. The retained postwrite `PRESERVE STOP` diagnostics were comparison-newline artifacts; explicit inserted-line inspection and exact postimage hashes resolved them, rather than treating those diagnostics as passes.
+- Evidence: `build/isolated-workers/GlmFreshDedede11EE0/evidence/`, including `grant-da762cde-phase1.txt`, `grant-da762cde-phase3.txt`, `raw-materialization-ed627b60.RECORD.md` and canonical patch SHA-256 `5831b3b535caca1b24d1ac6498c0ef5e8d7b3cb04307236b1558f9eafdd7f3f5`. Actual repository-context working apply is recorded separately from cached staging/checkout proofs. All original-copy and junction-link/content holds remain.
+
 ## Committed-source checkpoint 5873210e
 
 - Verified committed snapshot `5873210e273a8f7c5e482f1549c62901af12d3da`; report SHA-256 `a52ca1e6bf01f6b463e65dcd3ef28d751b0f1480784eb09ef653a1cbb9882be2`. Fresh native build/report passed **127 DOL/REL hashes**.
