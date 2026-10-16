@@ -103,6 +103,48 @@ async function lateBoundaryProbe(pi, ctx, runner, errors, dbPath, result) {
   }
 }
 
+async function ledgerContentionProbe(boundedModule, result) {
+  const waitFor = async name => {
+    const deadline = Date.now() + 30000;
+    while (!existsSync(resolve(spec.root, name))) {
+      const failure = resolve(spec.root, 'contention-writer-failure.json');
+      if (existsSync(failure)) throw new Error(readFileSync(failure, 'utf8'));
+      if (Date.now() >= deadline) throw new Error(`Native contention handshake timed out: ${name}`);
+      await Bun.sleep(5);
+    }
+  };
+  const cases = {};
+  for (const name of ['transient', 'persistent', 'committed-stop', 'sentinel-stop']) {
+    writeFileSync(resolve(spec.root, `${name}-requested`), '', { flag: 'wx' });
+    await waitFor(`${name}-locked`);
+    const started = performance.now();
+    let admitted = false, error = null, authorization = null;
+    const originalQuery = Database.prototype.query;
+    // Observe the real reader boundary after admission's initial STOP check;
+    // never replace SQLite results or manufacture successful admission.
+    Database.prototype.query = function(sql, ...args) {
+      if (sql === 'SELECT data FROM ledger WHERE id=1') {
+        writeFileSync(resolve(spec.root, `${name}-read-started`), '', { flag: 'wx' });
+      }
+      return originalQuery.call(this, sql, ...args);
+    };
+    try {
+      authorization = boundedModule.admission().authorization;
+      admitted = true;
+    } catch (caught) {
+      error = String(caught);
+    } finally {
+      Database.prototype.query = originalQuery;
+    }
+    const observed = { admitted, error, authorization, elapsed_ms: performance.now() - started };
+    writeFileSync(resolve(spec.root, `${name}-read-result.json`), JSON.stringify(observed), { flag: 'wx' });
+    writeFileSync(resolve(spec.root, `${name}-read-complete`), '', { flag: 'wx' });
+    await waitFor(`${name}-writer-complete`);
+    cases[name] = observed;
+  }
+  result.cases.ledger_contention = cases;
+}
+
 export default function nativeApiProbe(pi) {
   pi.on('session_start', async (startEvent, ctx) => {
     const result = { scope: 'native-api-infrastructure-only', observed_at: new Date().toISOString(),
@@ -194,6 +236,13 @@ export default function nativeApiProbe(pi) {
           native_home: homedir(), definition_refusals: definitionRefusals,
           worker_tool_selection: { original: originalTools, selected: selectedTools, restored: restoredTools },
           qualification: 'Actual production startup, task discovery and supported tool selection on the genuine control root only; no task/write execution or reviewer/child proof' };
+        runner.clearManagedTimers();
+        result.success = true;
+        return;
+      }
+      if (spec.mode === 'ledger-contention') {
+        await ledgerContentionProbe(boundedModule, result);
+        result.cases.root_credential_checkpoints = rootCredentialCheckpoints;
         runner.clearManagedTimers();
         result.success = true;
         return;

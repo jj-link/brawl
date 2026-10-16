@@ -217,6 +217,7 @@ def run_tests(root: Path, *, targets: list[str] | None = None, native_api_probe:
             ["test_trial_native_api.py::NativeApiTests::test_native_title_prefix_and_late_payload_abort"],
             ["test_trial_native_api.py::NativeApiTests::test_production_workflow_adapter_startup_without_dispatch"],
             ["test_trial_native_api.py::NativeApiTests::test_registered_model_configuration_without_provider_dispatch"],
+            ["test_trial_native_api.py::NativeApiTests::test_native_ledger_contention_and_stop_precedence"],
         )
         if targets not in allowed_native_targets:
             raise SafetyError("Native API authorization is restricted to the permanent infrastructure probe selectors")
@@ -231,7 +232,8 @@ def run_tests(root: Path, *, targets: list[str] | None = None, native_api_probe:
                                    OMP_EVAL_NATIVE_API_PROBE_MODE=(
                                        "late-boundaries" if targets == allowed_native_targets[1] else
                                        "workflow-startup" if targets == allowed_native_targets[2] else
-                                       "registered-model-startup" if targets == allowed_native_targets[3] else "original"))
+                                       "registered-model-startup" if targets == allowed_native_targets[3] else
+                                       "ledger-contention" if targets == allowed_native_targets[4] else "original"))
     argv = [sys.executable, "-B", "-m", "pytest", *(selected or [str(scope)]),
             "-q", "-p", "no:cacheprovider", "--basetemp", str(root / "pytest-work")]
     report = {"argv": argv, "returncode": None, "stdout": "", "stderr": "", "started_at": now(),

@@ -5,6 +5,8 @@ import json
 import os
 from pathlib import Path
 import re
+import sqlite3
+import threading
 import time
 import unittest
 
@@ -38,6 +40,51 @@ class NativeApiTests(unittest.TestCase):
             self.skipTest("Actual registered-model configuration needs its exact infrastructure selector")
         self.run_probe("registered-model-startup")
 
+    def test_native_ledger_contention_and_stop_precedence(self):
+        if os.environ.get("OMP_EVAL_NATIVE_API_PROBE_MODE") != "ledger-contention":
+            self.skipTest("Concurrent native ledger proof requires its exact infrastructure selector")
+        self.run_probe("ledger-contention")
+
+    @staticmethod
+    def hold_ledger_locks(root, cancel, errors):
+        def wait_for(name):
+            deadline = time.monotonic() + 30
+            while not (root / name).exists():
+                if cancel.wait(0.01) or time.monotonic() >= deadline:
+                    raise TimeoutError("Python contention handshake interrupted: " + name)
+        try:
+            for name in ("transient", "persistent", "committed-stop", "sentinel-stop"):
+                wait_for(name + "-requested")
+                connection = sqlite3.connect(root / "api-only.sqlite3", timeout=1, isolation_level=None)
+                try:
+                    doc = {"authorization": {"mode": "RUN", "revision": 1},
+                           "trial": {"manifest_digest": "0" * 64}}
+                    connection.execute("UPDATE ledger SET data=? WHERE id=1", (json.dumps(doc),))
+                    connection.execute("BEGIN EXCLUSIVE")
+                    if name == "committed-stop":
+                        doc["authorization"] = {"mode": "STOPPED", "revision": 2}
+                        connection.execute("UPDATE ledger SET data=? WHERE id=1", (json.dumps(doc),))
+                    started = time.monotonic()
+                    (root / (name + "-locked")).touch(exist_ok=False)
+                    wait_for(name + "-read-started")
+                    if name == "persistent":
+                        wait_for(name + "-read-complete")
+                    else:
+                        if name == "sentinel-stop":
+                            (root / "STOP").touch(exist_ok=False)
+                        if cancel.wait(0.05):
+                            raise RuntimeError("Contention proof cancelled while holding its lock")
+                    connection.commit()
+                    save_json(root / (name + "-writer.json"), {
+                        "operation": "Actual Python SQLite exclusive transaction against native read connection",
+                        "lock_seconds": time.monotonic() - started, "committed_authorization": doc["authorization"]})
+                    (root / (name + "-writer-complete")).touch(exist_ok=False)
+                finally:
+                    connection.close()
+        except BaseException as error:
+            errors.append(repr(error))
+            save_json(root / "contention-writer-failure.json", {"error": repr(error)})
+
     def run_probe(self, mode):
         run = confined(Path(os.environ["OMP_EVAL_NATIVE_API_PROBE_ROOT"]))
         root = confined(run / "native-api-infrastructure")
@@ -52,6 +99,7 @@ class NativeApiTests(unittest.TestCase):
         rpc = None
         observed = None
         startup = mode in {"workflow-startup", "registered-model-startup"}
+        contention_cancel, contention_errors, contention_writer = threading.Event(), [], None
         try:
             version = runtime.manager.launch([str(NATIVE_OMP), "--version"], kind="native-version-metadata",
                                              cwd=root, authorization_revision=revision)
@@ -139,6 +187,10 @@ class NativeApiTests(unittest.TestCase):
                                            authorization_revision=revision)
             runtime.register_process(owned, revision)
             rpc = TrialRpc(owned, root)
+            if mode == "ledger-contention":
+                contention_writer = threading.Thread(target=self.hold_ledger_locks,
+                    args=(root, contention_cancel, contention_errors), name="owned-native-ledger-writer")
+                contention_writer.start()
             rpc.wait_ready(timeout=45)
             complete = root / "native-api-result.complete"
             deadline = time.monotonic() + 30
@@ -165,6 +217,27 @@ class NativeApiTests(unittest.TestCase):
             self.assertEqual(result["children_dispatched"], 0)
             self.assertEqual(result["observer_imports"], 0)
             cases = result["cases"]
+            if mode == "ledger-contention":
+                contention_writer.join(timeout=5)
+                self.assertFalse(contention_writer.is_alive())
+                self.assertFalse(contention_errors)
+                cases = cases["ledger_contention"]
+                self.assertEqual(result["denied_fetch_entries"], 0)
+                self.assertEqual(result["cases"]["root_credential_checkpoints"], 0)
+                self.assertTrue(cases["transient"]["admitted"], cases["transient"])
+                self.assertEqual(cases["transient"]["authorization"], {"mode": "RUN", "revision": 1})
+                self.assertGreaterEqual(cases["transient"]["elapsed_ms"], 30)
+                self.assertFalse(cases["persistent"]["admitted"])
+                self.assertIn("database is locked", cases["persistent"]["error"])
+                self.assertGreaterEqual(cases["persistent"]["elapsed_ms"], 150)
+                self.assertLess(cases["persistent"]["elapsed_ms"], 2000)
+                self.assertFalse(cases["committed-stop"]["admitted"])
+                self.assertGreaterEqual(cases["committed-stop"]["elapsed_ms"], 30)
+                self.assertIn("stale or stopped", cases["committed-stop"]["error"])
+                self.assertFalse(cases["sentinel-stop"]["admitted"])
+                self.assertIn("Exact-run STOP takes precedence", cases["sentinel-stop"]["error"])
+                self.assertGreaterEqual(cases["sentinel-stop"]["elapsed_ms"], 30)
+                return
             if startup:
                 startup = cases["production_workflow_startup"]
                 self.assertEqual(startup["root_credential_checkpoints"], 0)
@@ -243,9 +316,14 @@ class NativeApiTests(unittest.TestCase):
                 self.assertEqual(cases[name]["credential_checkpoints"], 0, cases[name])
             self.assertEqual(cases["production_guard_admitted_checkpoint"]["credential_checkpoints"], 1)
         finally:
+            contention_cancel.set()
+            if contention_writer is not None:
+                contention_writer.join(timeout=5)
             if rpc is not None:
                 rpc.closing = True
             final = runtime.stop(event_id="native-api-stop", reason="End isolated API probe; prove owned native exit")
             save_json(root / "native-api-final.json", {"authorization": final, "processes": runtime.manager.records()})
             self.assertEqual(final["mode"], "STOPPED")
             self.assertTrue(all(row.get("exit_proof", {}).get("observed_exit") for row in runtime.manager.records()))
+            if contention_writer is not None:
+                self.assertFalse(contention_writer.is_alive(), "Owned SQLite writer outlived native probe cleanup")

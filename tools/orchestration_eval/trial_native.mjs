@@ -19,6 +19,8 @@ const spec = JSON.parse(specBytes);
 const root = realpathSync(dirname(specPath));
 const registry = AgentRegistry.global();
 const ledger = new Database(spec.ledger_path, { readonly: true, strict: true });
+// Connection-local bounded waiting for concurrent durable ledger commits.
+ledger.exec('PRAGMA busy_timeout = 250');
 let owner = null, launched = false, rootContext = null, rootStartEvent = null, observerFactory = null;
 let internalCall = false;
 const pending = new Set();
@@ -205,9 +207,10 @@ function stopped() {
   try { readFileSync(owned(resolve(root, 'STOP'))); return true; }
   catch (error) { if (error.code === 'ENOENT') return false; throw error; }
 }
-function admission() {
+export function admission() {
   if (stopped()) throw new Error('Exact-run STOP takes precedence');
   const row = ledger.query('SELECT data FROM ledger WHERE id=1').get();
+  if (stopped()) throw new Error('Exact-run STOP takes precedence');
   const doc = JSON.parse(row.data);
   if (doc.authorization.mode !== 'RUN' || doc.authorization.revision !== spec.authorization_revision ||
       doc.trial.manifest_digest !== spec.manifest_digest) throw new Error('Durable native admission is stale or stopped');
