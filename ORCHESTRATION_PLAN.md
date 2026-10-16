@@ -21,7 +21,7 @@ The later authorized trial uses four concurrent Spark1 Qwen3.8-Flash-Next agents
 
 ## Target design
 
-Retain OMP as the native agent/session/tool runner and use the existing Prefect integration and durable ledger to implement the real workflow. Routine decisions and progression belong in software. The model performs reconstruction and required substantive review; it does not redefine scheduling, ownership, authorization, attempt limits, or acceptance rules. Reuse exercised components rather than restarting tool selection.
+Retain OMP as the native agent/session/tool runner and use the existing Prefect integration and durable ledger to implement the real workflow. Routine decisions and progression belong in software. The model performs reconstruction and specifically identified substantive judgments that fixed checks do not cover; it does not redefine scheduling, ownership, authorization, attempt limits, or acceptance rules. Reuse exercised components rather than restarting tool selection.
 
 | Component | Responsibility |
 |---|---|
@@ -29,7 +29,7 @@ Retain OMP as the native agent/session/tool runner and use the existing Prefect 
 | Workflow executor | Advance eligible work from durable native/ledger events through verification, review, integration, publication, cleanup and independent refill; enforce the approved profile, duplicate protection and recovery rules. |
 | Native OMP connection | Create genuine fresh owners, retain the same owner for its assignment, expose real tool/model events, and distinguish observing an owner from resuming it. |
 | Workspace and verification path | Give each owner a usable native-Windows environment and exclusive mutable build state. Reuse verified evidence when relevant inputs are unchanged. |
-| Review and publication path | Automatically consume own-only deliveries, execute fixed acceptance checks and required review, and publish through the controller-owned target. Prepare independent work concurrently and serialize only conflicting Git mutations. |
+| Review and publication path | Automatically consume own-only deliveries and execute fixed acceptance checks. Advance mechanically covered results without a model reviewer; dispatch focused review only for recorded unresolved judgments. Publish through the controller-owned target, preparing independently and serializing only conflicting Git mutations. |
 | STOP and recovery | Revoke new work, terminate verified owned jobs within the shared shutdown bound, retain observed effects, and require exit evidence before releasing ownership. |
 | Dashboard and measurements | Show genuine per-agent output and lifecycle state; distinguish accepted source from drafts, waiting, publication, and setup work. |
 
@@ -43,7 +43,7 @@ Production worker counts and model choices remain an explicit approved configura
 2. **Create the fresh owner.** One new function gets one new native owner/session and exclusive workspace. A continuation belongs to that same assignment; it is not permission to reuse the owner for another function.
 3. **Reconstruct and measure.** The owner performs its own implementation, registration, compile/compare loop, and integration. Preserve each measured attempt and the best candidate. Tool/setup failures are not reconstruction corrections.
 4. **Verify against the fixed criteria.** Require the existing source-selection, object/data/relocation and native binary-hash evidence. An unrelated MAIN commit is not a reason to rebuild or redo the delivery.
-5. **Review the concrete delivery.** Review actual source/evidence against the approved criteria. A rejection identifies the failed criterion or changed relevant input. It does not create a new routine requirement.
+5. **Accept mechanically or request focused review.** If passing fixed checks cover every acceptance criterion, record mechanical acceptance and advance without creating a reviewer. Otherwise bind each unresolved criterion and its concrete reason to the actual delivery/evidence and request only that judgment. Mechanical failures return to the same owner; a model decision cannot waive them.
 6. **Reconcile and publish.** Prepare own-only patches and checked working-file materialization. Acquire the short exclusive shared-file/Git window only when needed. Preserve unrelated work; record each separate commit and successful push.
 7. **Acknowledge publication.** Bind the actual published source and acceptance outcome to the assignment. Drafts, private matches, materialized files, commits, pushes, and accepted source remain distinct states.
 8. **Clean up and close.** The same owner performs authorized evidence-preserving cleanup. Retain required source, inputs, measured/best candidates, packets, and receipts. Verify native job/session exit; do not treat a returned agent turn as closure.
@@ -58,7 +58,7 @@ Duplicate events must not duplicate an assignment, model dispatch, commit, or pu
 |---|---|---|
 | Scheduling | Refill eligible slots from recorded completion/closure events rather than another conversational planning cycle. Keep independent work running. | Eligible idle-slot time; closure-to-refill latency; actual simultaneous active work. |
 | Tooling and setup | Supply working native tools and precise workspace paths. Classify infrastructure failures separately from candidate failures. | Setup duration, tool failures, manual interventions, and time blocked by each cause. |
-| Review | Use fixed acceptance criteria and relevant-input identities. Review independent deliveries concurrently where ownership permits. | Review-ready-to-decision time, rejection reasons, repeated checks, and changed-input justification. |
+| Review | Use fixed acceptance criteria and relevant-input identities. Avoid a model call when passing mechanical checks cover the criteria; scope required review to recorded unresolved judgments and permit independent deliveries to continue. | Review reason, readiness-to-decision time, actual model calls, rejection reasons, repeated checks and changed-input justification. |
 | Integration | Keep implementation, registration, verification, reconciliation, and cleanup with the assignment owner. Avoid a separate integration handoff. | Integration time, ownership changes, corrections caused by handoff errors. |
 | Publication | Prepare independently; serialize only actual shared-file materialization and Git mutation. Reuse valid narrow deliveries across unrelated commits. | Ready-to-materialize/commit/push time, exclusive-window duration, publication queue time. |
 | Cleanup | Use exact ownership and retention records rather than broad deletion or repeated exploratory cleanup. | Publication-ACK-to-close time, cleanup interventions, retained evidence, actual process exits. |
@@ -69,13 +69,29 @@ A faster graph is not sufficient evidence of better orchestration. Measure produ
 
 ## Approved execution order
 
-1. **Finish the complete controller workflow.** Implement automatic delivery validation and required review dispatch first, then connect integration, publication, cleanup and independent refill. Core lifecycle automation is required before the trial, not deferred until after it.
+1. **Finish the complete controller workflow.** Implement automatic delivery validation, mechanical acceptance and selective review for explicit unresolved judgments, then connect integration, publication, cleanup and independent refill. Core lifecycle automation is required before the trial, not deferred until after it.
 2. **Verify the connected system.** Exercise actual native processes and Git operations, including STOP, recovery, duplicate events and interrupted publication. Reuse unchanged valid evidence.
 3. **Run the four-Qwen, eight-function trial.** The controller advances the entire lifecycle; real native dashboard streams and independent refill are required.
 4. **Measure and improve both objectives.** Use accepted-work throughput, waiting, interventions, violations and recovery to identify and remove the largest avoidable bottlenecks.
 5. **Validate the approved production profile and perform explicit cutover.** Demonstrate production operation before declaring the redesign complete.
 
 Updating this file and recording baseline measurements happen alongside implementation. They are not another planning or tool-selection gate.
+
+## Approved selective-review policy
+
+The user approved replacing mandatory per-function model review with these rules:
+
+1. Execute the existing deterministic acceptance checks for every delivery: actual compilation, required code/data/relocation comparisons, source and link selection, binary hashes, relevant-input identities and permitted change scope. Preserve the existing acceptance criteria.
+2. Advance automatically only when controller-verified evidence covers every applicable criterion and all required checks pass. Record mechanical acceptance as such, bound to the delivery, source, inputs and policy. A worker's claim, function size or matching label is not coverage proof; no reviewer session or fabricated model-approval receipt is needed for this path.
+3. Request model review only for a recorded unresolved judgment. Name the criterion, concrete reason and relevant evidence; give the reviewer that scope. Missing or unknown coverage is not an automatic pass. Changed relevant inputs invalidate the corresponding acceptance or judgment.
+4. Return failed mechanical checks to the same assignment owner under the existing correction/attempt rules. A model approval cannot override failed or invalidated evidence. Preserve the separate exhausted-final-attempt publication policy and its distinction from accepted matching work.
+
+Each delivery receives fresh identity, ownership and criterion-coverage assessment. Preserve the existing reuse of native check results when their exact source, relevant inputs, artifacts, check semantics and retained evidence identities are unchanged. Reusing those results is not permission to reuse an old acceptance decision or omit a newly required judgment; unrelated repository advancement does not force a rebuild.
+
+Routine shared-registration insertions may receive mechanical ownership coverage only when a bounded checker proves the authorized transformation against actual preimages and the fixed module/source/range, preserving unrelated content. Merely naming allowed configure/splits paths is insufficient. Unrecognized transformations retain a concrete ownership judgment; the real routine registration path must be exercised rather than demonstrating automatic acceptance only with source-only fixtures.
+
+This policy changes review eligibility, not OMP defaults, model profiles or credential-store authority. The six unpublished Sol-review/authentication edits remain retained and excluded from the approved candidate. The implementation and its verification start from the published controller at `e2dfb9f84900b08d2cd46f1e3b7b7c476f2ce15b`; the original engineering/reconstruction baseline remains `d0d182fcfc11d69fcf72c2e8fcc6dd709a93658f`.
+
 
 ## Implementation ownership and interfaces
 
@@ -173,15 +189,19 @@ Unchecked means implementation or end-to-end proof is still required; it does no
 
 ### 7. Review and integration
 
-- [ ] Detect review readiness from the concrete delivery and evidence.
-- [ ] Execute mechanical acceptance checks in code.
-- [ ] Route required substantive judgment to an appropriately scoped reviewer.
+The checked selective-review items below record exercised controller, evidence-producer and publication-consumer behavior. Actual function compilation and native reviewer/provider execution remain separate trial requirements; the Git fixtures use synthetic compiler and native-owner admissions.
+
+- [x] Determine review readiness from actual verification and specific unresolved criteria.
+- [x] Execute mechanical acceptance checks in code.
+- [x] Advance fully mechanically covered deliveries without allocating a model reviewer.
+- [x] Route only the recorded unresolved substantive judgments to an appropriately scoped reviewer.
 - [ ] Review independent deliveries concurrently within approved capacity.
 - [ ] Bind rejections to failed criteria or changed relevant inputs.
-- [ ] Return corrections to the same assignment owner.
+- [x] Return corrections to the same assignment owner.
+- [x] Prevent model decisions from waiving failed or invalidated mechanical evidence.
 - [ ] Keep source/registration reconciliation with that owner.
 - [ ] Re-review affected changes without restarting unchanged review.
-- [ ] Advance accepted deliveries to publication readiness automatically.
+- [x] Advance deliveries to publication readiness through explicit mechanical acceptance or the required real model judgment, preserving the distinction.
 
 ### 8. Publication
 
@@ -281,7 +301,13 @@ Unchecked means implementation or end-to-end proof is still required; it does no
 
 The original bounded evaluation is published and closed. The retained real-trial component snapshot passed 193 tests with two explicitly gated native skips; the verification run stopped with all owned processes exited. Its frozen 21-source packet and exact-command addendum remain historical evidence, not a claim that the full automatic workflow exists.
 
-Current action: finish the startup corrections exposed by actual zero-provider preparation. Run `controller-four-qwen-live-001` refused a mismatched repository-path serialization and stopped before native roots; corrected inputs in `controller-four-qwen-live-002` passed actual existing-target Git admission but native OMP rejected the generated `models.yml` field `compat.toolStrictMode: mixed`. RuntimeOwner is correcting serialization from original input-compatible model configuration, retaining the native failure. A separate source finding in `trial_repository.py` shows that the original disjoint-unit/latest-blob checks reject a later separately committed correction to an already published path; reproduce and correct that precise admission case while retaining historical per-unit postimages, the original baseline and all commits. The same Sol 6.1 reviewers own the respective focused native/publication deltas. Integrate changed-path evidence, publish the corrections separately, and continue four genuine zero-provider roots followed by the actual held-child/dashboard gates. No unchanged full-review reset or old-orchestrator MAIN handoff is required.
+Selective-review implementation and focused verification are complete in the clean candidate, based on published `e2dfb9f84900b08d2cd46f1e3b7b7c476f2ce15b`. Its frozen 16-source manifest is `build/orchestration-eval/deterministic-policy-candidate-001/build/orchestration-eval/selective-review-delta-001/source-identities-006.json`, SHA256 `06079f5ce576583748360eef166f86eb66749d61a063955ca3c3811f17980caa`. Both retained Sol 6.1 reviewers accepted the affected source; unchanged reviews were carried forward. Current action: publish the accepted policy sources and this documentation in separate scoped commits through RuntimeOwner's independently owned target.
+
+The adjacent `verification-evidence-001.json` retains the actual runs. Initial integration produced 61 passes and three Git-fixture failures. Two intended before-correction failures demonstrated rejected canonical insertion proof and rejected native-evidence reuse. The corrected policy run passed 12 ledger/producer/ownership cases while four Git fixtures failed; the final fixture correction then passed all four actual Git cases in 145.18 seconds. These are distinct receipts, not a new all-passing full-suite claim. Managed runs ended STOPPED with all owned processes exited.
+
+The routine registration smoke used actual published configure/splits preimages and the fixed E228 recipe. The controller proved the bounded insertions, accepted the delivery mechanically, materialized it, made two separate commits and two pushes to the owned local bare remote, and derived acknowledgment with matching local/remote HEAD `30f85e5d179fb8a40589368ea16afdb7f4fd5e60`, without a reviewer. Compiler, reconstruction and native-owner admissions in that fixture are explicitly synthetic. This proves the ownership/publication path, not a new real-function compile, provider request, four-child stream or production-throughput result.
+
+Identity-checked native receipt reuse now retains fresh per-delivery coverage and acceptance. Configured judgment reasons remain exact, with automatic context separate; the actual reviewer definition, task and parser agree on unresolved-only scope. Failed or invalidated mechanical evidence cannot be waived. Canonical application data paths remain unchanged; Windows fixture fixes affect only owned fixture locations and their repository-local Git settings. All prior failure evidence, the original 16 published commits and original `d0d182fcfc11d69fcf72c2e8fcc6dd709a93658f` baseline remain retained. The six unrequested Sol-review/authentication edits remain excluded and preserved; this policy grants no additional model/default/credential authority.
 
 Engineering dashboard root/child evidence remains valid for its exercised path. Actual four-trial-child proof remains required. Original evaluation files and immutable packets remain preserved. Production service/model changes and MAIN cutover are not inferred from permission to implement the private controller.
 
