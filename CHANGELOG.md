@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint d7c9c2d3
+
+- Verified committed snapshot `d7c9c2d3face334846efb4a20a882d38d58743ef`; report SHA-256 `a41eaf719e6287769a65ba7141abef82f8f4eb1ea353d94544c591d59fdc1072`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.980354%** complete: **471896 / 15833556 accepted code bytes**, **15361660 code bytes remaining**, **1429 accepted source units**.
+- Delta from `5843315b`: **+32 accepted code bytes / +1 source unit**, Dedede 17D38. All 1428 prior accepted source identities remain unchanged. Private 121E4/17EE4/17A6C/Luna151C8/Qwen15168, trial work and dirty MAIN are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/d7c9c2d3/`. All 1429 accepted-source linkage gates, 52 contributed Dedede MAP gates (49 eight-byte and three 32-byte functions), and 329 input/tool identities passed. 17D38 allocated text and zero relocations independently match; whole ELF metadata is not claimed equal. GLM's three accepted 32-byte adaptive wins raise fresh assignments to 64 bytes; existing assignments finish unchanged. Bounded materialization/publication windows, corrected earlier statements and restored-original qualifications remain; all original/junction holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede 17D38 — article float-array lookup reconstruction
 
 - Reconstructed `fn_117_17D38`, module 117 `.text[0x17D38,0x17D58)`, 32 original code bytes, as genuine C++ indexing the article accesser's float-array table relative to its stored index base. Allocated text exactly matches with zero relocations; source blob `1926b226e05305f22dc46839c607d1a1d835e37a`.
