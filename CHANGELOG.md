@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 15170 — Luna task-ID getter reconstruction
+
+- Reconstructed `fn_117_15170`, module 117 `.text[0x15170,0x15178)`, eight original code bytes, as genuine C++ returning `gfTask::m_taskId` through the existing header. Allocated text `806300284e800020` exactly matches, with no relocations or allocated data/BSS; source blob `163ab9bd39df32848dcd1807891f75550c2e7bb1`.
+- GPT-6 Luna owner `LunaDedede15170`, max reasoning: one initial candidate, zero corrections; inherited lifetime counts remain unknown. After source publication, this is Luna's second consecutive accepted eight-byte adaptive win, 2/3.
+- Complete-input native verification covers accepted `214edbbd` plus 15170: all 127 final DOL/REL hashes pass with the reconstructed source linked. Exact accepted registration/source identities equal the previously verified composition, so no unchanged native rebuild was needed. Dolphin runtime verification is unavailable.
+- Grant `Luna15170Main734d6bc7` applied the reviewed canonical patch to the captured dirty working files with actual check/apply exit zero and empty stdout/stderr. Exact +2/+3-line insertions preserve all other registration bytes. Native absolute ancestor/regular-leaf/single-link checks passed; all 32 captured unrelated file hashes/sizes, three directory-presence records, protected 11EE0 source, HEAD, exact index and attributes were preserved. Working source is 103 CRLF bytes and cleans to the reviewed canonical blob; unrelated dirty registration content is excluded from staging.
+- Evidence: `build/isolated-workers/LunaDedede15170/evidence/`, including `final-current-prefix-packet.txt`, `complete-input-composition.txt`, and `grant-734d6bc7/{prewrite-guard-receipt.txt,apply-receipt.txt}`. Own-only canonical patch SHA-256 `8377d5553f37bc6d1fec13d51c46739c82f96a47f3b2b02fa1a2c6b4358285b4`; actual repository-context working apply is separate from cached staging proof. All original-copy and junction-link/content holds remain.
+
 ## Committed-source checkpoint 214edbbd
 
 - Verified committed snapshot `214edbbd323685b52c0ea574cefef03a2e2d50f7`; report SHA-256 `4da389fa294d6a70aa7a3a4b4700cd730201512f31a31635fe95c6a6d0062d05`. Fresh native build/report passed **127 DOL/REL hashes**.
