@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2F8 — reconstructed accesser/float-pair interface adjustment
+
+- Registered genuine C++ for `fn_117_E2F8`, `.text [0xE2F8,0xE300)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0x100` and forwards it with the float pair and module accesser to imported `fn_27_136528`.
+- GLM owner GlmFreshDededeE2F8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `9c28add82ee267d9a1c7b783a829cce921fd360a`, target SHA-1 `62297b123a6d5dc9a1bb5f4cceba8d76798ccfb1`. Allocated text `3863ff0048000000` and offset-4 REL24 to `fn_27_136528`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation onto accepted `f4c5bf35` passed **127 native DOL/REL hashes**, with accepted E2F0 and this source linked. The subsequent `06fadd6b` baseline changes documentation only; applicable game evidence is reused. E698 remains original fallback. No gameplay execution was performed.
+- Released grant `E2F8Main06fa` applied the reviewed three-path raw patch once; native check/apply exited 0. Actual shared-file postimages equal saved preimages plus the owned 152/96 bytes. All 16 byte-inventoried unrelated files remained unchanged; three additional stat-dirty files received post-apply EOL checks, not before/after byte inventories. HEAD/index/attributes guards remained unchanged. Native source is 2680 bytes with 44 CRLF endings, clean blob `faa373bc75d9c890bcdca36890f407dea8b03d26`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2F8/evidence/`, including `attempt-00-comparison.json`, `02-native-127-dtk-check-f4c5bf35.txt`, `own-change-f4c5bf35.patch`, saved raw preimages, repository-aware previews and `grant-E2F8Main06fa-RECEIPT.md`. The canonical patch contains 49 additions and zero deletions across three paths, validated against the current committed baseline. Decoder-anchor and LF-size record corrections changed no candidate or measurement. Cumulative progress is published separately.
+
 ## Committed-source checkpoint f4c5bf35
 
 - Verified committed snapshot `f4c5bf35da5c4137a07f78d6c076c16818fbe6fe`; report SHA-256 `02c7e4e1c6d84cd64e1811d4af1caf43956d67fac675a5ee98a772350543f70d`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
