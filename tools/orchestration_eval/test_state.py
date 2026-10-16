@@ -21,7 +21,7 @@ import unittest
 import uuid
 
 from .evidence import content_identity
-from .policy import Mode, PolicyError, SlotPolicy
+from .policy import Mode, PolicyError, SlotPolicy, workflow_acceptance_policy
 from .state import Ledger, StateError, read_snapshot
 
 
@@ -865,8 +865,9 @@ def recorded_trial_history(root):
 class TrialLedgerTests(unittest.TestCase):
     """No native/provider/Git effects: exercise the durable consumer boundaries."""
 
-    def setUp(self):
-        self.root = ROOT / "build" / "orchestration-eval" / "tests" / "trial-state" / uuid.uuid4().hex
+    def setUp(self, *, root=None):
+        self.root = (Path(root) if root is not None else
+                     ROOT / "build" / "orchestration-eval" / "tests" / "trial-state" / uuid.uuid4().hex)
         self.ledger = Ledger(self.root / "ledger.sqlite3", policy=SlotPolicy.real_trial())
         self.manifest = trial_manifest(self.root)
         self.serial = 0
@@ -1881,10 +1882,11 @@ class TrialLedgerTests(unittest.TestCase):
 class WorkflowFixture:
     """Synthetic native/Git observations for the controller's SQLite boundary."""
 
-    def __init__(self, *, inherited_corrections=0, prepare=None, configure=None):
+    def __init__(self, *, inherited_corrections=0, prepare=None, configure=None, mechanical=False, root=None):
         self.case = TrialLedgerTests("test_default_policy_is_unchanged_and_real_trial_is_explicit")
-        self.case.setUp()
+        self.case.setUp(root=root)
         self.ledger, self.root = self.case.ledger, self.case.root
+        self.mechanical = mechanical
         if prepare is not None:
             prepare(self)
         if inherited_corrections:
@@ -1906,7 +1908,7 @@ class WorkflowFixture:
             profile=dict(reconstruction=dict(role, stage="qwen", capacity=4),
                          review=dict(role, stage="qwen", capacity=4),
                          total_model_capacities=[dict(provider=role["provider"], model=role["model"], capacity=4)]),
-            publication_target=target, verification={})
+            publication_target=target, verification={}, acceptance_policy=workflow_acceptance_policy())
         for row in self.case.manifest["reservations"]:
             self.config["verification"][row["assignment_id"]] = dict(
                 recipe={"compiler": "synthetic-fixed-recipe", "native_compile_command": "synthetic-compiler candidate.cpp"},
@@ -1918,6 +1920,9 @@ class WorkflowFixture:
                 selection=dict(source=next(path for path in row["owned_paths"] if path.endswith(".cpp")),
                                object="build/candidate.o", link_output="build/native.rel",
                                ninja=str(self.root / "synthetic-ninja.exe"), fallback_object="build/original.o"))
+            if not mechanical:
+                self.config["verification"][row["assignment_id"]]["judgment_requirements"] = {
+                    "abi": "Synthetic source-level ABI judgment explicitly required by this fixture"}
         if configure is not None:
             configure(self)
         self.ledger.configure_trial_workflow(config=self.config, event_id=self.case.event(), authorization_revision=1)
@@ -1962,10 +1967,15 @@ class WorkflowFixture:
                 registry_id=f"owner-{index}", session_id=f"child-{index}", root_session_id=f"root-{index}",
                 request_id=dispatch, will_continue=False))
 
-    def packet(self, index=0, candidate="candidate", *, two_units=False):
+    def packet(self, index=0, candidate="candidate", *, two_units=False, source_only=None):
         row = self.case.manifest["reservations"][index]
+        source_only = self.mechanical if source_only is None else source_only
+        if source_only and two_units:
+            raise ValueError("A source-only fixture has one logical publication unit")
         changes = {}
         for path in row["owned_paths"]:
+            if source_only and not path.endswith(".cpp"):
+                continue
             content = f"synthetic-{index}-{candidate}-{path}".encode()
             changes[path] = dict(before=None if path.endswith(".cpp") else {"mode": "100644", "blob": "a" * 40},
                                  after={"mode": "100644", "blob": hashlib.sha1(content).hexdigest()},
@@ -1997,9 +2007,10 @@ class WorkflowFixture:
             outcome="matching", evidence_refs=["synthetic-measured-comparison"], quality=1,
             observation=self.owner_record(index, dispatch), authorization_revision=1, event_id=self.case.event())
 
-    def capture(self, index=0, *, packet=None, dispatch=None):
+    def capture(self, index=0, *, packet=None, dispatch=None, measure=True):
         packet = packet or self.packet(index)
-        self.measure(packet, index=index, dispatch=dispatch)
+        if measure:
+            self.measure(packet, index=index, dispatch=dispatch)
         record = self.owner_record(index, dispatch)
         raw_hash = content_identity(packet)
         record.update(path=str(self.root / "deliveries" / "raw" / (raw_hash + ".json")),
@@ -2012,12 +2023,48 @@ class WorkflowFixture:
 
     def validation_result(self, index=0):
         selection = self.config["verification"][f"trial-{index}"]["selection"]
-        return dict(valid=True, matching=True,
+        result = dict(valid=True, matching=True,
             checks={name: "synthetic-independent-" + name for name in (
                 "compile", "object_compare", "data_relocations", "source_link", "binary_hashes", "progress")},
             binary_hash_count=127, runtime_status="unavailable", runtime_reason="Synthetic boundary test",
             source_selection={key: selection[key] for key in ("source", "object", "link_output")} |
                 dict(selected=True, fallback_selected=False, evidence_ref="synthetic-actual-source-selection"))
+        snapshot = self.ledger.snapshot()
+        key = f"trial-{index}"
+        state = snapshot["trial"]["workflow"]["assignments"][key]
+        delivery = state["deliveries"][state["current_delivery_id"]]["delivery"]
+        validations = [action for action in snapshot["trial"]["workflow"]["actions"].values()
+                       if action["assignment_id"] == key and action["kind"] == "validate_delivery"
+                       and action["binding"]["delivery_id"] == state["current_delivery_id"]]
+        binding = validations[-1]["binding"] if validations else self.ledger.trial_readiness(key)["binding"]
+        policy = self.config["acceptance_policy"]
+        reasons = dict(self.config["verification"][key].get("judgment_requirements", {}))
+        if set(delivery["changes"]) != {selection["source"]}:
+            reasons.setdefault("ownership", "Synthetic shared registration insertion needs scoped source judgment")
+        covered = {}
+        for criterion, method in policy["criteria"].items():
+            if criterion in reasons:
+                continue
+            references = [result["checks"].get(criterion, "synthetic-controller-" + criterion)]
+            if criterion in {"abi", "edge_semantics"}:
+                references = [result["checks"][name] for name in (
+                    "object_compare", "data_relocations", "source_link", "binary_hashes")]
+            covered[criterion] = dict(method=method, evidence_refs=references)
+        result["coverage"] = dict(policy_identity=content_identity(policy), producer="coordinator", binding=binding,
+            covered=covered, unresolved={criterion: dict(reason=reason, evidence_refs=["synthetic-source-context"])
+                                        for criterion, reason in reasons.items()})
+        references = set(result["checks"].values()) | {result["source_selection"]["evidence_ref"]}
+        for evidence in (*covered.values(), *result["coverage"]["unresolved"].values()):
+            references.update(evidence["evidence_refs"])
+        result["check_identities"] = {
+            reference: {"sha256": hashlib.sha256(reference.encode()).hexdigest(), "size": len(reference)}
+            for reference in references}
+        result["verification_spec_identity"] = content_identity(self.config["verification"][key])
+        result["output_identities"] = {
+            path: {"sha256": hashlib.sha256(("synthetic-output:" + path).encode()).hexdigest(), "size": 8}
+            for path in (selection["object"], selection["fallback_object"], selection["link_output"],
+                         *self.config["verification"][key]["binary_hashes"])}
+        return result
 
     def validate(self, index=0):
         action = self.admit(index)
@@ -2034,8 +2081,10 @@ class WorkflowFixture:
     def review_result(self, action, *, decision="approve"):
         reviewer = action["reviewer"]
         source = self.config["verification"][action["assignment_id"]]["selection"]["source"]
-        return dict(decision=decision, findings=[] if decision == "approve" else [
-            dict(criterion="abi", path=source, reason="Synthetic declared ABI mismatch")],
+        scope = action["binding"]["unresolved_criteria"]
+        criterion = "abi" if "abi" in scope else next(iter(scope))
+        return dict(decision=decision, reviewed_criteria=sorted(scope), findings=[] if decision == "approve" else [
+            dict(criterion=criterion, path=source, reason="Synthetic scoped source judgment rejection")],
             decision_file={"path": str(self.root / (action["effect_id"] + ".json")), "sha256": "d" * 64},
             native_event=dict(kind="reviewer_turn_end", registry_id=reviewer["owner_id"],
                 session_id=reviewer["session_id"], root_session_id=reviewer["root_session_id"],
@@ -2578,6 +2627,354 @@ class WorkflowLedgerTests(unittest.TestCase):
         self.assertEqual(after["stages"][-1]["corrections"], before["stages"][-1]["corrections"])
         self.assertEqual(after["best_candidate"], before["best_candidate"])
         self.assertEqual(self.ledger.trial_readiness("trial-0")["kind"], "validate_delivery")
+
+
+class DeterministicAcceptanceTests(unittest.TestCase):
+    """Controller evidence boundaries; no native compiler/provider proof is simulated as real work."""
+
+    def started(self, **kwargs):
+        fixture = WorkflowFixture(mechanical=True, **kwargs)
+        fixture.start()
+        return fixture
+
+    def test_complete_coverage_publishes_and_closes_without_a_model_review(self):
+        f = self.started()
+        f.capture()
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "validate_delivery")
+        action = f.admit()
+        record = f.record(action, f.validation_result())
+        f.ledger.observe_trial_action(effect_id=action["effect_id"], record=record, event_id="mechanical-result")
+        f.ledger.observe_trial_action(effect_id=action["effect_id"], record=record, event_id="mechanical-duplicate")
+        assignment = f.ledger.assignment("trial-0")
+        self.assertEqual(assignment["status"], "verified")
+        self.assertEqual(assignment["acceptance"]["mode"], "mechanical")
+        self.assertIsNone(assignment["review"])
+        self.assertEqual(assignment["verification"]["evidence"]["runtime_status"], "unavailable")
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+        f.materialize()
+        f.publish()
+        f.cleanup()
+        f.close()
+        snapshot = f.ledger.snapshot()
+        self.assertFalse(any(action["kind"] in {"prepare_review", "review"}
+                             for action in snapshot["trial"]["workflow"]["actions"].values()))
+        self.assertFalse(any(session["role"] == "review" for session in snapshot["sessions"].values()))
+        assignment = f.ledger.assignment("trial-0")
+        self.assertEqual(assignment["status"], "closed")
+        self.assertEqual(assignment["external_receipts"].get("review", []), [])
+        self.assertTrue(assignment["publication_acknowledgment"]["accepted_matching"])
+        self.assertEqual(assignment["accepted_credit"], 0)
+        self.assertFalse(f.ledger.session("child-0")["active"])
+
+    def test_partial_unbound_or_worker_asserted_coverage_cannot_skip_judgment(self):
+        f = self.started()
+        f.capture()
+        action = f.admit()
+        result = f.validation_result()
+        mutations = [
+            lambda value: value.pop("coverage"),
+            lambda value: value.update(reused_from="old-delivery-verification"),
+            lambda value: value.update(coverage={"matching": True, "bytes": 8}),
+            lambda value: value["coverage"].update(producer="owner-0"),
+            lambda value: value["coverage"].update(policy_identity="f" * 64),
+            lambda value: value["coverage"]["binding"].update(input_identity="f" * 64),
+            lambda value: value["coverage"]["covered"].pop("attempt_rules"),
+            lambda value: value["coverage"]["covered"].update(unrelated={"method": "owned-native-command", "evidence_refs": ["x"]}),
+            lambda value: value["coverage"]["covered"]["abi"].update(method="matching-label"),
+            lambda value: value["coverage"]["covered"]["abi"].update(evidence_refs=["object-only"]),
+            lambda value: value["coverage"]["covered"]["relevant_inputs"].update(evidence_refs=[]),
+            lambda value: value["coverage"]["unresolved"].update(compile={"reason": "Let reviewer waive compilation", "evidence_refs": ["x"]}),
+        ]
+        for number, mutate in enumerate(mutations):
+            with self.subTest(boundary=number):
+                changed = json.loads(json.dumps(result))
+                mutate(changed)
+                with self.assertRaises(StateError):
+                    f.complete(action, changed)
+                self.assertIsNone(f.ledger.assignment("trial-0")["verification"])
+                self.assertIsNone(f.ledger.assignment("trial-0").get("acceptance"))
+        f.complete(action, result)
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+
+    def test_mechanical_rejection_returns_same_owner_and_cannot_be_waived(self):
+        f = self.started()
+        f.capture()
+        action = f.admit()
+        source = f.config["verification"]["trial-0"]["selection"]["source"]
+        f.complete(action, {"findings": [{"criterion": "compile", "path": source,
+                                         "reason": "Synthetic actual compiler rejection"}]}, outcome="rejected")
+        ready = f.ledger.trial_readiness("trial-0")
+        self.assertEqual(ready["kind"], "reconcile")
+        self.assertEqual(ready["binding"]["owner_id"], "owner-0")
+        with self.assertRaises(StateError):
+            f.ledger.admit_trial_action("trial-0", kind="review", effect_id="waive-compiler",
+                binding=ready["binding"], authorization_revision=1, event_id="invalid-waiver")
+        self.assertIsNone(f.ledger.assignment("trial-0").get("acceptance"))
+        self.assertEqual(f.ledger.assignment("trial-0")["stages"][-1]["initial_count"], 1)
+
+    def test_shared_registration_needs_exact_ownership_judgment_not_just_path_coverage(self):
+        f = self.started()
+        f.capture(packet=f.packet(source_only=False))
+        action = f.admit()
+        result = f.validation_result()
+        self.assertEqual(set(result["coverage"]["unresolved"]), {"ownership"})
+        falsely_covered = json.loads(json.dumps(result))
+        falsely_covered["coverage"]["unresolved"].pop("ownership")
+        falsely_covered["coverage"]["covered"]["ownership"] = {
+            "method": "controller-owned-delivery", "evidence_refs": ["allowed-paths-only"]}
+        with self.assertRaises(StateError):
+            f.complete(action, falsely_covered)
+        f.complete(action, result)
+        prepared = f.prepare_review()
+        self.assertEqual(set(prepared["binding"]["unresolved_criteria"]), {"ownership"})
+        review = f.admit()
+        wrong_scope = f.review_result(review)
+        wrong_scope["reviewed_criteria"] = ["abi"]
+        with self.assertRaises(StateError):
+            f.complete(review, wrong_scope)
+        f.complete(review, f.review_result(review))
+        assignment = f.ledger.assignment("trial-0")
+        self.assertEqual(assignment["acceptance"]["mode"], "model_judgment")
+        self.assertIsNotNone(assignment["review"])
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+
+    def test_authorized_registration_proof_covers_only_exact_bound_insertions(self):
+        def registration(fixture):
+            fixture.config["verification"]["trial-0"]["recipe"]["registration"] = dict(
+                schema=1, module=117, library="ft_dedede", configure_path="configure.py",
+                splits_path="config/RSBE01_02/rels/ft_dedede/splits.txt",
+                cflags="cflags_fighter", extra_cflags=["-RTTI off"])
+        f = self.started(configure=registration)
+        packet, _, _ = f.capture(packet=f.packet(source_only=False))
+        action = f.admit()
+        result = f.validation_result()
+        source = f.config["verification"]["trial-0"]["selection"]["source"]
+        shared = sorted(set(packet["changes"]) - {source})
+        proof_ref = "synthetic-host-exact-insertion-proof"
+        result["ownership_proof"] = dict(schema=1, binding=dict(action["binding"]), source=source,
+            recipe_identity=content_identity(packet["inputs"]["recipe"]),
+            paths={path: dict(json.loads(json.dumps(packet["changes"][path])),
+                             transformation="configure-obj-insertion-v1" if path == "configure.py"
+                             else "splits-section-insertion-v1") for path in shared},
+            evidence={"path": proof_ref, "sha256": "e" * 64, "size": 8})
+        result["check_identities"][proof_ref] = {"sha256": "e" * 64, "size": 8}
+        result["coverage"]["unresolved"].pop("ownership")
+        result["coverage"]["covered"]["ownership"] = {
+            "method": "controller-owned-delivery", "evidence_refs": [proof_ref]}
+        mutations = [
+            lambda value: value.pop("ownership_proof"),
+            lambda value: value["ownership_proof"]["binding"].update(delivery_id="f" * 64),
+            lambda value: value["ownership_proof"].update(recipe_identity="f" * 64),
+            lambda value: value["ownership_proof"].update(source="src/foreign.cpp"),
+            lambda value: value["ownership_proof"]["paths"].pop(shared[0]),
+            lambda value: value["ownership_proof"]["paths"].update({"foreign.txt": {}}),
+            lambda value: value["ownership_proof"]["paths"]["configure.py"].update(
+                transformation="splits-section-insertion-v1"),
+            lambda value: value["ownership_proof"]["paths"][shared[0]]["before"].update(blob="f" * 40),
+            lambda value: value["ownership_proof"]["paths"][shared[0]]["raw"].update(size=0),
+            lambda value: value["ownership_proof"]["paths"][shared[0]].pop("raw"),
+            lambda value: value["ownership_proof"]["evidence"].update(sha256="not-a-hash"),
+            lambda value: value["ownership_proof"]["evidence"].update(size=False),
+            lambda value: value["check_identities"][proof_ref].update(sha256="f" * 64),
+            lambda value: value.update(check_identities=None),
+            lambda value: value["coverage"]["covered"]["ownership"].update(evidence_refs=["allowed-paths-only"]),
+        ]
+        for number, mutate in enumerate(mutations):
+            with self.subTest(boundary=number):
+                changed = json.loads(json.dumps(result))
+                mutate(changed)
+                with self.assertRaises(StateError):
+                    f.complete(action, changed)
+                self.assertIsNone(f.ledger.assignment("trial-0").get("acceptance"))
+        f.complete(action, result)
+        self.assertEqual(f.ledger.assignment("trial-0")["acceptance"]["mode"], "mechanical")
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+        self.assertIsNone(f.ledger.assignment("trial-0")["review"])
+
+    def reusable_delivery(self, *, change_artifact=False, change_source=False):
+        f = self.started()
+        original, _, _ = f.capture()
+        previous = f.admit()
+        prior = f.validation_result()
+        f.complete(previous, prior)
+        materialize = f.admit()
+        source = f.config["verification"]["trial-0"]["selection"]["source"]
+        f.complete(materialize, {"effect_absent": True, "findings": [
+            {"criterion": "ownership", "path": source,
+             "reason": "Synthetic publication grouping correction before any target mutation"}]}, outcome="rejected")
+        correction = f.admit()
+        f.complete(correction, {"native_event": f.owner_record(dispatch=correction["effect_id"])["native_event"]})
+        packet = f.packet(candidate="changed-source") if change_source else json.loads(json.dumps(original))
+        packet["logical_units"][0]["message"] = "Corrected logical publication description"
+        if change_artifact:
+            packet["artifacts"]["compile"]["identity"]["sha256"] = "f" * 64
+        f.capture(packet=packet, dispatch=correction["effect_id"], measure=change_source)
+        action = f.admit()
+        result = f.validation_result()
+        reference = "synthetic-fresh-reuse-observation-" + action["effect_id"]
+        result["reused_from"] = previous["effect_id"]
+        result["reuse_evidence"] = dict(source_action_id=previous["effect_id"], binding=dict(action["binding"]),
+            evidence_ref=reference, identities=json.loads(json.dumps(prior["check_identities"])),
+            output_identities=json.loads(json.dumps(prior["output_identities"])))
+        result["check_identities"][reference] = {
+            "sha256": hashlib.sha256(reference.encode()).hexdigest(), "size": len(reference)}
+        return f, previous, action, result
+
+    def test_intact_native_receipts_reuse_requires_new_delivery_acceptance(self):
+        f, previous, action, result = self.reusable_delivery()
+        self.assertIsNone(f.ledger.assignment("trial-0")["acceptance"])
+        self.assertNotEqual(previous["binding"]["delivery_id"], action["binding"]["delivery_id"])
+        f.complete(action, result)
+        assignment = f.ledger.assignment("trial-0")
+        self.assertEqual(assignment["acceptance"]["mode"], "mechanical")
+        self.assertEqual(assignment["acceptance"]["validation_action_id"], action["effect_id"])
+        self.assertEqual(assignment["acceptance"]["coverage_identity"], content_identity(result["coverage"]))
+        self.assertIsNone(assignment["review"])
+        self.assertEqual(assignment["stages"][-1]["initial_count"], 1)
+        self.assertEqual(assignment["stages"][-1]["corrections"], 0)
+        self.assertEqual(len(assignment["stages"][-1]["attempts"]), 1)
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+
+    def test_reuse_rejects_stale_or_unobserved_proofs_without_reusing_acceptance(self):
+        f, previous, action, result = self.reusable_delivery()
+        reference = result["checks"]["compile"]
+        output = next(iter(result["output_identities"]))
+        mutations = [
+            lambda value: value.update(reused_from=[]),
+            lambda value: value.update(reused_from=action["effect_id"]),
+            lambda value: value.pop("reuse_evidence"),
+            lambda value: value["reuse_evidence"].update(source_action_id="foreign-validation"),
+            lambda value: value["reuse_evidence"].update(binding=previous["binding"]),
+            lambda value: value.update(verification_spec_identity="f" * 64),
+            lambda value: value["reuse_evidence"].update(identities={"intact": True}),
+            lambda value: value["reuse_evidence"]["identities"][reference].update(sha256="f" * 64),
+            lambda value: value["reuse_evidence"]["output_identities"][output].update(size=0),
+            lambda value: value["output_identities"][output].update(sha256="f" * 64),
+            lambda value: value["check_identities"][reference].update(sha256="f" * 64),
+            lambda value: value["check_identities"].pop(value["reuse_evidence"]["evidence_ref"]),
+            lambda value: value["coverage"].update(binding=previous["binding"]),
+        ]
+        for number, mutate in enumerate(mutations):
+            with self.subTest(boundary=number):
+                changed = json.loads(json.dumps(result))
+                mutate(changed)
+                with self.assertRaises(StateError):
+                    f.complete(action, changed)
+                self.assertIsNone(f.ledger.assignment("trial-0").get("acceptance"))
+        f.complete(action, result)
+        self.assertEqual(f.ledger.assignment("trial-0")["acceptance"]["validation_action_id"], action["effect_id"])
+
+    def test_changed_source_or_worker_artifact_cannot_reuse_native_receipts(self):
+        for changes in ({"change_artifact": True}, {"change_source": True}):
+            with self.subTest(changes=changes):
+                f, _, action, result = self.reusable_delivery(**changes)
+                with self.assertRaises(StateError):
+                    f.complete(action, result)
+                self.assertIsNone(f.ledger.assignment("trial-0").get("acceptance"))
+                f.complete(action, f.validation_result())
+                self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "materialize")
+
+    def test_explicit_judgment_reason_and_fixed_policy_cannot_be_replaced(self):
+        def require_abi(fixture):
+            fixture.config["verification"]["trial-0"]["judgment_requirements"] = {"abi": "Inspect a specific caller contract"}
+        f = self.started(configure=require_abi)
+        f.capture()
+        action = f.admit()
+        result = f.validation_result()
+        result["coverage"]["unresolved"]["abi"]["reason"] = "A different invented question"
+        with self.assertRaises(StateError):
+            f.complete(action, result)
+        f.complete(action, f.validation_result())
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["binding"]["unresolved_criteria"]["abi"]["reason"],
+                         "Inspect a specific caller contract")
+        def remove_criterion(fixture):
+            fixture.config["acceptance_policy"]["criteria"].pop("ownership")
+        with self.assertRaises(StateError):
+            WorkflowFixture(configure=remove_criterion)
+
+    def test_independent_mechanical_deliveries_serialize_only_the_shared_publication_target(self):
+        f = self.started()
+        for index in (0, 1):
+            f.capture(index)
+            f.validate(index)
+            self.assertTrue(f.ledger.trial_readiness(f"trial-{index}")["ready"])
+        barrier = Barrier(2)
+        def materialize(index):
+            barrier.wait()
+            try:
+                return f.admit(index)["execute"]
+            except StateError:
+                return False
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            admitted = list(pool.map(materialize, (0, 1)))
+        self.assertEqual(sum(admitted), 1)
+        snapshot = f.ledger.snapshot()
+        self.assertEqual(sum(action["kind"] == "materialize" for action in
+                             snapshot["trial"]["workflow"]["actions"].values()), 1)
+        self.assertFalse(any(session["role"] == "review" for session in snapshot["sessions"].values()))
+
+    def test_inflight_mechanical_result_after_stop_is_observation_not_publication_permission(self):
+        f = self.started()
+        f.capture()
+        action = f.admit()
+        record = f.record(action, f.validation_result())
+        stopped = f.ledger.request_stop(event_id="stop-verification", reason="Do not publish")
+        f.ledger.observe_trial_action(effect_id=action["effect_id"], record=record, event_id="late-verification")
+        f.ledger.observe_trial_action(effect_id=action["effect_id"], record=record, event_id="late-duplicate")
+        self.assertEqual(f.ledger.assignment("trial-0")["acceptance"]["mode"], "mechanical")
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["reason"], "explicit_pause")
+        self.assertEqual(f.ledger.authorization(), stopped)
+        self.assertIsNone(f.ledger.assignment("trial-0")["publication_acknowledgment"])
+
+    def test_changed_inputs_invalidate_mechanical_acceptance_not_historical_ack(self):
+        f = self.started()
+        f.capture()
+        f.validate()
+        f.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-before-publication", event_id="invalidate-mechanical")
+        self.assertIsNone(f.ledger.assignment("trial-0")["acceptance"])
+        self.assertEqual(f.ledger.trial_readiness("trial-0")["kind"], "reconcile")
+        accepted = self.started()
+        accepted.capture()
+        accepted.validate()
+        accepted.materialize()
+        accepted.publish()
+        original = accepted.ledger.assignment("trial-0")["acceptance"]
+        accepted.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-after-ack", event_id="preserve-mechanical-ack")
+        self.assertEqual(accepted.ledger.assignment("trial-0")["acceptance"], original)
+        self.assertTrue(accepted.ledger.assignment("trial-0")["publication_acknowledgment"]["accepted_matching"])
+
+    def test_exhausted_fallback_can_finish_mechanically_without_matching_credit(self):
+        f = self.started(inherited_corrections=9)
+        packet = f.packet(candidate="last-best")
+        source = f.config["verification"]["trial-0"]["selection"]["source"]
+        f.ledger.record_attempt("trial-0", candidate_id=packet["candidate_id"],
+            source_ref={"path": str(Path(f.case.manifest["reservations"][0]["workspace"]) / "drafts/last-best.cpp"),
+                        "sha256": packet["changes"][source]["raw"]["sha256"]},
+            input_identity=packet["inputs"]["identity"], recipe_ref="synthetic-fixed-recipe",
+            outcome="nonmatching", evidence_refs=["synthetic-final-comparison"], quality=0.9,
+            observation=f.owner_record(), authorization_revision=1, event_id="last-correction")
+        f.ledger.exhaust_stage("trial-0", evidence_refs=["synthetic-exhausted-history"],
+            observation=f.owner_record(), authorization_revision=1, event_id="actual-fixed-budget-exhausted")
+        raw_hash = content_identity(packet)
+        record = dict(f.owner_record(), path=str(f.root / "deliveries/raw" / (raw_hash + ".json")),
+            original_path=str(Path(f.case.manifest["reservations"][0]["workspace"]) / "evidence/controller-delivery.json"),
+            sha256=raw_hash, size=len(json.dumps(packet).encode()))
+        f.ledger.record_trial_delivery("trial-0", delivery=packet, record=record, event_id="final-draft-delivery")
+        action = f.admit()
+        result = f.validation_result()
+        result["matching"] = False
+        result["source_selection"].update(selected=False, fallback_selected=True)
+        f.complete(action, result)
+        self.assertEqual(f.ledger.assignment("trial-0")["acceptance"]["mode"], "mechanical")
+        f.materialize()
+        f.publish()
+        assignment = f.ledger.assignment("trial-0")
+        self.assertFalse(assignment["publication_acknowledgment"]["accepted_matching"])
+        self.assertEqual(assignment["selection"]["accepted_credit"], 0)
+        self.assertEqual(assignment["stages"][-1]["corrections"], 10)
+        self.assertIsNone(assignment["review"])
 
 
 if __name__ == "__main__":

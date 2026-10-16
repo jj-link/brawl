@@ -370,5 +370,49 @@ class WorkflowMetricsTests(unittest.TestCase):
         self.assertEqual(early["production_progress_credit"], 0)
 
 
+    def test_mechanical_coverage_is_not_reported_as_a_model_decision_or_publication_credit(self):
+        self.fixture = test_state.WorkflowFixture(mechanical=True)
+        self.fixture.start()
+        self.fixture.capture()
+        self.fixture.validate()
+        report = self.report()
+        acceptance = report["automatic_workflow"]["criterion_acceptance"]["trial-0"]
+        self.assertEqual(acceptance["mode"], "mechanical")
+        self.assertTrue(acceptance["coverage_current"])
+        self.assertEqual(acceptance["unresolved_criteria"], {})
+        self.assertIsNone(acceptance["actual_model_review_action_id"])
+        self.assertEqual(report["accepted_matching_functions"], 0)
+        self.assertIsNone(report["assignments"]["trial-0"]["ledger_ingestion_wait_seconds"]["substantive_review_turnaround"])
+        self.assertFalse(any(action["kind"] == "review" for action in report["automatic_workflow"]["actions"]))
+        self.assertIsNone(report["automatic_workflow"]["explicit_interval_seconds_by_phase"]["review_execution"])
+
+    def test_model_judgment_report_keeps_exact_unresolved_scope_and_actual_decision(self):
+        self.fixture.reviewed()
+        report = self.report()
+        acceptance = report["automatic_workflow"]["criterion_acceptance"]["trial-0"]
+        self.assertEqual(acceptance["mode"], "model_judgment")
+        self.assertEqual(set(acceptance["unresolved_criteria"]), {"abi", "ownership"})
+        decisions = [action for action in report["automatic_workflow"]["actions"] if action["kind"] == "review"]
+        self.assertEqual(len(decisions), 1)
+        self.assertEqual(set(decisions[0]["reviewed_criteria"]), {"abi", "ownership"})
+        self.assertEqual(acceptance["actual_model_review_action_id"], decisions[0]["effect_id"])
+        self.assertEqual(report["accepted_matching_functions"], 0)
+
+    def test_invalidated_mechanical_coverage_is_retained_but_not_current_acceptance(self):
+        self.fixture = test_state.WorkflowFixture(mechanical=True)
+        self.fixture.start()
+        self.fixture.capture()
+        self.fixture.validate()
+        self.fixture.ledger.check_input_identity("trial-0", input_identity="f" * 64,
+            evidence_ref="changed-input-proof", event_id="metric-coverage-invalidated")
+        report = self.report()
+        acceptance = report["automatic_workflow"]["criterion_acceptance"]["trial-0"]
+        self.assertIsNone(acceptance["mode"])
+        self.assertFalse(acceptance["coverage_current"])
+        self.assertIsNotNone(acceptance["coverage_identity"])
+        self.assertIsNone(acceptance["actual_model_review_action_id"])
+        self.assertEqual(report["production_progress_credit"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

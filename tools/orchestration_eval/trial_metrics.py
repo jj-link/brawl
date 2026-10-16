@@ -89,6 +89,8 @@ def _workflow_report(snapshot, trial, end_text):
             "superseded": action.get("superseded", False),
             "recovery_required": action.get("recovery_required", False), "restored_by": action.get("restored_by"),
             "verification_reused_from": (action.get("result") or {}).get("reused_from"),
+            "coverage": (action.get("result") or {}).get("coverage") if action["kind"] == "validate_delivery" else None,
+            "reviewed_criteria": (action.get("result") or {}).get("reviewed_criteria") if action["kind"] == "review" else None,
             "qualification": ("Actual read-only recovery query; original Git execution time/exit is unobserved." if recovered else
                               "Observed action interval, including local tool/transport waits; not inferred model compute."),
         })
@@ -141,11 +143,29 @@ def _workflow_report(snapshot, trial, end_text):
                 capacity=lease["capacity"], reserved_slot_seconds=0.0, unreserved_slot_seconds=0.0))
             row["reserved_slot_seconds"] += lease["held"] * duration
             row["unreserved_slot_seconds"] += (lease["capacity"] - lease["held"]) * duration
+    criterion_acceptance = {}
+    for key, state in workflow["assignments"].items():
+        assignment = snapshot["assignments"][key]
+        validation = state.get("validation")
+        acceptance = assignment.get("acceptance")
+        verification = assignment.get("verification")
+        criterion_acceptance[key] = {
+            "mode": acceptance.get("mode") if acceptance else None,
+            "policy_identity": acceptance.get("policy_identity") if acceptance else None,
+            "validation_action_id": validation["action_id"] if validation else None,
+            "coverage_identity": validation.get("coverage_identity") if validation else None,
+            "coverage_current": bool(validation and verification and verification.get("valid")
+                                     and verification["input_identity"] == assignment["current_input_identity"]
+                                     and validation["delivery_id"] == state["current_delivery_id"]),
+            "unresolved_criteria": validation["result"].get("coverage", {}).get("unresolved") if validation else None,
+            "actual_model_review_action_id": assignment["review"].get("controller_action_id") if assignment["review"] else None,
+        }
     separated = ("model_execution", "review_execution", "model_queue", "tool_execution", "tool_queue",
                  "parent_review_wait", "instrumentation")
     return {
         "run_id": workflow["config"]["run_id"], "config_digest": workflow["config_digest"],
         "profile": workflow["config"]["profile"], "publication_target": workflow["config"]["publication_target"],
+        "acceptance_policy": workflow["config"].get("acceptance_policy"), "criterion_acceptance": criterion_acceptance,
         "actions": actions, "observed_action_seconds_by_kind": totals, "native_owner_turn_intervals": owner_turns,
         "explicit_execution_intervals": intervals,
         "untrusted_reported_intervals": reported_intervals,
@@ -160,6 +180,7 @@ def _workflow_report(snapshot, trial, end_text):
         "qualification": (
             "Readiness is ledger-observed eligibility, not inferred inactivity. Inference reservations include whole native turns, "
             "not measured GPU utilization. Explicit nested spans may overlap; they are not additive to lifecycle wall time. "
+            "Criterion acceptance permits publication work, not reconstructed credit; mechanical coverage is neither a model decision nor exercised runtime. "
             "No comparable historical four-Qwen baseline, speedup, or unobserved instrumentation cost is inferred."
         ),
     }
@@ -294,6 +315,7 @@ def trial_report(snapshot: dict, *, as_of: str | None = None) -> dict:
                              or assignment["identity"].get("history", assignment["identity"]["reservation"]["history"]))
         assignments[key] = {"status": assignment["status"], "slot": claim["slot"],
                             "owner_id": claim["owner_id"], "accepted_matching": credited,
+                            "criterion_acceptance_mode": (assignment.get("acceptance") or {}).get("mode"),
                             "observed_phase_seconds": durations, "unobserved_intervals": unobserved,
                             "cleanup_to_native_close_seconds": latency,
                             "receipt_elapsed_seconds": receipt_timings,

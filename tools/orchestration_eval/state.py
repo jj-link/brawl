@@ -21,7 +21,7 @@ from typing import Callable
 from .evidence import InputError, relative_path
 from .policy import (Mode, PolicyError, SlotPolicy, Stage, TRIAL_PHASES, TRIAL_STARTS,
                      WORKFLOW_ACTION_OPERATIONS, evaluation_data_path, next_stage, require_allowed,
-                     validate_workflow_profile, workflow_model_capacity)
+                     validate_workflow_profile, workflow_acceptance_policy, workflow_model_capacity)
 from .trial_delivery import DeliveryError, WorkerDelivery
 
 
@@ -646,6 +646,8 @@ class Ledger:
                 if verification is not None:
                     verification.update(valid=False, invalidated_at=_now(), invalidation_ref=evidence_ref)
                 a["review"] = None
+                if "acceptance" in a:
+                    a["acceptance"] = None
                 a["materialization"] = None
                 self._refresh_best(a)
                 workflow = doc.get("trial", {}).get("workflow")
@@ -1695,10 +1697,12 @@ class Ledger:
             a["review"] = receipt
             a["status"] = "reconciling"
         elif kind == "materialization":
-            if a["status"] != "reconciling" or not matches(a["review"]) or not current_verified:
-                raise StateError("Owner materialization requires exact current review and full private verification")
-            if not self._receipt_follows(receipt, a["review"]):
-                raise StateError("Materialization cannot start before review authority on a comparable clock")
+            approval = a.get("acceptance") if trial.get("workflow") is not None else a["review"]
+            expected_status = "verified" if approval and approval.get("mode") == "mechanical" else "reconciling"
+            if a["status"] != expected_status or not matches(approval) or not current_verified:
+                raise StateError("Owner materialization requires exact criterion acceptance and current verification")
+            if not self._receipt_follows(receipt, approval):
+                raise StateError("Materialization cannot start before criterion acceptance on a comparable clock")
             _fields(receipt, ("grant_ref", "preservation_ref", "private_index_ref"))
             a["materialization"] = receipt
             a["status"] = "publication_wait"
@@ -2052,6 +2056,8 @@ class Ledger:
         _fields(config, ("run_id", "controller_id"))
         if config.get("schema") != 1:
             raise StateError("Unsupported controller workflow schema")
+        if config.get("acceptance_policy") != workflow_acceptance_policy():
+            raise StateError("Workflow must bind the exact approved deterministic-first acceptance policy")
         validate_workflow_profile(config.get("profile"))
         target = config.get("publication_target")
         _fields(target, ("repository", "git_dir", "remote", "branch", "baseline"))
@@ -2077,6 +2083,11 @@ class Ledger:
         for specification in verification.values():
             if not isinstance(specification, dict) or not isinstance(specification.get("recipe"), dict) or not specification["recipe"]:
                 raise StateError("Verification requires the complete approved input recipe")
+            judgments = specification.get("judgment_requirements", {})
+            if not isinstance(judgments, dict) or not set(judgments).issubset(config["acceptance_policy"]["judgment_criteria"]):
+                raise StateError("Explicit source judgment may scope only existing judgment criteria")
+            for reason in judgments.values():
+                _text(reason, "specific unresolved source judgment")
             command = _text(specification["recipe"].get("native_compile_command"), "fixed native compiler command")
             if "\0" in command or "\n" in command or "\r" in command:
                 raise StateError("The approved native compiler command must be one exact Ninja command line")
@@ -2331,6 +2342,7 @@ class Ledger:
             state["materialization"], state["units"] = None, {}
             state["correction"] = None
             assignment["review"], assignment["materialization"] = None, None
+            assignment["acceptance"] = None
             if assignment["verification"] is not None:
                 assignment["verification"].update(valid=False, invalidated_at=_now(), invalidation_ref=record["path"])
             assignment["status"] = "verifying"
@@ -2347,7 +2359,8 @@ class Ledger:
         workflow = Ledger._workflow(doc)
         config = workflow["config"]
         target = {key: config["publication_target"][key] for key in ("repository", "remote", "branch")}
-        common = dict(run_id=config["run_id"], manifest_digest=trial["manifest_digest"], publication_target=target)
+        common = dict(run_id=config["run_id"], manifest_digest=trial["manifest_digest"], publication_target=target,
+                      policy_identity=_digest(config["acceptance_policy"]))
         if assignment_id is None:
             return dict(common, baseline=config["publication_target"]["baseline"])
         assignment = Ledger._assignment(doc, assignment_id)
@@ -2433,10 +2446,11 @@ class Ledger:
                 return dict(assignment_id=assignment_id, ready=False, kind=None, reason="input_wait")
             elif not validation or validation["delivery_id"] != delivery_id:
                 kind = "validate_delivery"
-            elif not review or review["delivery_id"] != delivery_id:
-                kind = "prepare_review" if state.get("reviewer") is None else "review"
-            elif review["decision"] == "reject":
-                kind = "reconcile"
+            elif validation["result"]["coverage"]["unresolved"] and (
+                not review or review["delivery_id"] != delivery_id or review["decision"] != "approve"
+            ):
+                kind = "reconcile" if review and review["delivery_id"] == delivery_id and review["decision"] == "reject" else (
+                    "prepare_review" if state.get("reviewer") is None else "review")
             elif state.get("materialization") is None:
                 kind = "materialize"
             else:
@@ -2453,6 +2467,11 @@ class Ledger:
                     kind = "cleanup"
                 else:
                     kind = "close"
+            if validation and validation["delivery_id"] == delivery_id and kind != "validate_delivery":
+                binding.update(validation_action_id=validation["action_id"],
+                               coverage_identity=validation["coverage_identity"])
+            if kind in {"prepare_review", "review"}:
+                binding["unresolved_criteria"] = validation["result"]["coverage"]["unresolved"]
             if kind == "prepare_review":
                 claim = cls._trial(doc)["claims"][assignment_id]
                 binding.update(reviewer_id=cls._workflow_reviewer_id(workflow, assignment_id),
@@ -2567,8 +2586,7 @@ class Ledger:
 
     @staticmethod
     def _workflow_findings(findings, delivery):
-        criteria = {"compile", "object_compare", "data_relocations", "source_link", "binary_hashes",
-                    "progress", "abi", "edge_semantics", "ownership", "attempt_rules", "relevant_inputs"}
+        criteria = workflow_acceptance_policy()["criteria"]
         if not isinstance(findings, list) or not findings:
             raise StateError("Rejection must identify actual failed fixed criteria or changed relevant inputs")
         paths = {path for entries in delivery["inputs"]["inputs"].values() for path in entries}
@@ -2590,6 +2608,8 @@ class Ledger:
         # The canonical change-set digest binds every preimage, raw postimage
         # and Git blob; raw patch/command artifacts remain separate evidence.
         request["patch_identity"] = binding["source_identity"]
+        for key in ("policy_identity", "validation_action_id", "coverage_identity"):
+            request[key] = binding[key]
         receipt = dict(request, request_digest=_digest(request), request=request,
                        controller_action_id=action["effect_id"],
                        authorization_revision=action["authorization_revision"],
@@ -2598,6 +2618,131 @@ class Ledger:
         if result:
             receipt.update(result)
         return receipt
+
+    def _workflow_coverage(self, doc, action, result, delivery):
+        workflow = self._workflow(doc)
+        policy = workflow["config"]["acceptance_policy"]
+        coverage = result.get("coverage")
+        if (not isinstance(coverage, dict) or coverage.get("binding") != action["binding"]
+            or coverage.get("producer") != workflow["config"]["controller_id"]
+            or coverage.get("policy_identity") != _digest(policy)):
+            raise StateError("Coverage requires exact controller, delivery, source, input and approved-policy identities")
+        covered, unresolved = coverage.get("covered"), coverage.get("unresolved")
+        if (not isinstance(covered, dict) or not isinstance(unresolved, dict)
+            or set(covered) & set(unresolved) or set(covered) | set(unresolved) != set(policy["criteria"])
+            or not set(unresolved).issubset(policy["judgment_criteria"])):
+            raise StateError("All fixed criteria must be covered or explicitly unresolved; mechanical failures cannot be reviewed away")
+        checks = result["checks"]
+        native_chain = {checks[key] for key in ("object_compare", "data_relocations", "source_link", "binary_hashes")}
+        for criterion, evidence in covered.items():
+            if not isinstance(evidence, dict) or evidence.get("method") != policy["criteria"][criterion]:
+                raise StateError("Coverage must use the approved controller proof, not a worker success or size label")
+            _refs(evidence.get("evidence_refs"), "criterion proof references")
+            if criterion in checks and checks[criterion] not in evidence["evidence_refs"]:
+                raise StateError("Mechanical coverage must reference its actual fixed verification check")
+            if criterion in {"abi", "edge_semantics"} and not native_chain.issubset(evidence["evidence_refs"]):
+                raise StateError("Native ABI/edge equivalence requires the full pinned image proof chain")
+        for evidence in unresolved.values():
+            if not isinstance(evidence, dict):
+                raise StateError("Unresolved judgment needs its specific reason and retained context")
+            _text(evidence.get("reason"), "unresolved criterion reason")
+            _refs(evidence.get("evidence_refs"), "unresolved criterion evidence")
+        specification = workflow["config"]["verification"][action["assignment_id"]]
+        for criterion, reason in specification.get("judgment_requirements", {}).items():
+            if criterion not in unresolved or unresolved[criterion]["reason"] != reason:
+                raise StateError("A specifically required source judgment cannot be silently covered or replaced")
+        assignment = self._assignment(doc, action["assignment_id"])
+        source = self._trial_source(assignment["identity"]["reservation"])
+        shared = set(delivery["changes"]) - {source}
+        if shared and "ownership" not in unresolved:
+            proof = result.get("ownership_proof")
+            if (not isinstance(proof, dict) or proof.get("schema") != 1 or proof.get("binding") != action["binding"]
+                or proof.get("source") != source or proof.get("recipe_identity") != _digest(delivery["inputs"]["recipe"])
+                or not isinstance(proof.get("paths"), dict) or set(proof["paths"]) != shared):
+                raise StateError("Shared-file coverage needs the exact controller-proven authorized insertion transformation")
+            registration = delivery["inputs"]["recipe"].get("registration")
+            _fields(registration, ("configure_path", "splits_path"))
+            transformations = {
+                registration["configure_path"]: "configure-obj-insertion-v1",
+                registration["splits_path"]: "splits-section-insertion-v1",
+            }
+            for path, transformation in proof["paths"].items():
+                change = delivery["changes"][path]
+                if (not isinstance(transformation, dict)
+                    or path not in transformations or transformation.get("transformation") != transformations[path]
+                    or any(key not in transformation or transformation[key] != change[key]
+                           for key in ("before", "after", "raw"))):
+                    raise StateError("Insertion proof must retain every exact preimage, postimage and raw byte identity")
+            artifact = proof.get("evidence")
+            _fields(artifact, ("path", "sha256"))
+            _hex(artifact["sha256"], 64, "host insertion proof SHA-256")
+            identities = result.get("check_identities")
+            if (type(artifact.get("size")) is not int or artifact["size"] < 0
+                or not isinstance(identities, dict)
+                or artifact["path"] not in covered["ownership"]["evidence_refs"]
+                or identities.get(artifact["path"]) != {
+                    "sha256": artifact["sha256"], "size": artifact["size"]}):
+                raise StateError("Insertion coverage must retain its actual host proof artifact identity")
+        return coverage
+
+    def _workflow_acceptance(self, doc, action, record, *, mode, coverage_identity):
+        binding = dict(action["binding"], coverage_identity=coverage_identity,
+                       validation_action_id=action["effect_id"] if action["kind"] == "validate_delivery"
+                       else action["binding"]["validation_action_id"])
+        acceptance = self._workflow_receipt(dict(action, binding=binding), record, kind="acceptance",
+                                            result=dict(mode=mode))
+        acceptance["observed_by"] = self._workflow(doc)["config"]["controller_id"]
+        self._assignment(doc, action["assignment_id"])["acceptance"] = acceptance
+        return acceptance
+
+    @staticmethod
+    def _workflow_identity_map(identities, name):
+        if not isinstance(identities, dict) or not identities:
+            raise StateError(f"{name} must retain exact physical evidence identities")
+        for path, identity in identities.items():
+            _text(path, name + " path")
+            if not isinstance(identity, dict):
+                raise StateError(f"{name} needs actual file identities")
+            _hex(identity.get("sha256"), 64, name + " SHA-256")
+            if type(identity.get("size")) is not int or identity["size"] < 0:
+                raise StateError(f"{name} needs actual byte counts")
+
+    def _workflow_reuse(self, doc, action, result, state, delivery):
+        """Reuse native observations, never an earlier delivery's acceptance."""
+        _text(result["reused_from"], "prior validation action")
+        previous = self._workflow(doc)["actions"].get(result["reused_from"])
+        prior_delivery = state["deliveries"].get(previous["binding"].get("delivery_id")) if previous else None
+        specification = self._workflow(doc)["config"]["verification"][action["assignment_id"]]
+        if (previous is None or previous["kind"] != "validate_delivery" or previous["status"] != "succeeded"
+            or previous.get("superseded") or previous["assignment_id"] != action["assignment_id"]
+            or any(previous["binding"].get(key) != action["binding"].get(key)
+                   for key in ("policy_identity", "source_identity", "input_identity"))
+            or prior_delivery is None or prior_delivery["delivery"]["artifacts"] != delivery["artifacts"]):
+            raise StateError("Native receipt reuse requires the exact prior successful source, inputs, artifacts and policy")
+        prior = previous["result"]
+        witness = result.get("reuse_evidence")
+        if (not isinstance(witness, dict) or witness.get("source_action_id") != previous["effect_id"]
+            or witness.get("binding") != action["binding"]
+            or prior.get("verification_spec_identity") != _digest(specification)
+            or result.get("verification_spec_identity") != prior["verification_spec_identity"]
+            or prior["checks"] != result["checks"] or prior["matching"] != result["matching"]
+            or any(prior["source_selection"].get(key) != result["source_selection"].get(key)
+                   for key in ("source", "object", "link_output", "selected", "fallback_selected"))):
+            raise StateError("Reuse must retain the exact verification recipe and native observations with a fresh bound witness")
+        _text(witness.get("evidence_ref"), "fresh reuse observation")
+        previous_checks = prior.get("check_identities")
+        current_checks = result.get("check_identities")
+        previous_outputs = prior.get("output_identities")
+        for identities, name in ((previous_checks, "previous receipt"), (current_checks, "current receipt"),
+                                 (previous_outputs, "native output")):
+            self._workflow_identity_map(identities, name)
+        if (witness.get("identities") != previous_checks
+            or witness.get("output_identities") != previous_outputs
+            or result.get("output_identities") != previous_outputs
+            or any(reference not in previous_checks or current_checks.get(reference) != previous_checks[reference]
+                   for reference in prior["checks"].values())
+            or witness["evidence_ref"] not in current_checks):
+            raise StateError("Every reused receipt and native output must survive actual identity rechecks")
 
     def _complete_workflow_validation(self, doc, action, record, state, assignment, delivery):
         result = record["result"]
@@ -2640,16 +2785,10 @@ class Ledger:
                 input_identity=action["binding"]["input_identity"], valid=True, accepted_credit=0,
                 label="nonmatching—attempts exhausted", fallback_ref=selection["evidence_ref"],
                 evidence_refs=record["evidence_refs"])
-        reused = result.get("reused_from")
-        if reused is not None:
-            prior = self._workflow(doc)["actions"].get(reused)
-            previous = state["deliveries"].get(prior["binding"]["delivery_id"]) if prior else None
-            if (prior is None or prior["kind"] != "validate_delivery" or prior["status"] != "succeeded"
-                or prior["assignment_id"] != action["assignment_id"]
-                or any(prior["binding"][key] != action["binding"][key] for key in ("source_identity", "input_identity"))
-                or previous["delivery"]["artifacts"] != delivery["artifacts"]
-                or prior["result"]["checks"] != checks):
-                raise StateError("Verification reuse requires unchanged source, inputs and retained check evidence")
+        if result.get("reused_from") is not None:
+            self._workflow_reuse(doc, action, result, state, delivery)
+        coverage = self._workflow_coverage(doc, action, result, delivery)
+        coverage_identity = _digest(coverage)
         evidence = {key: result[key] for key in ("checks", "binary_hash_count", "runtime_status")}
         for key in ("runtime_reason", "runtime_ref"):
             if key in result:
@@ -2659,11 +2798,14 @@ class Ledger:
             input_identity=action["binding"]["input_identity"], evidence=evidence, valid=True,
             recorded_at=_now(), controller_action_id=action["effect_id"])
         previous_status = assignment["status"]
-        assignment["status"] = "review_wait"
+        assignment["status"] = "review_wait" if coverage["unresolved"] else "verified"
+        assignment["acceptance"] = None
+        if not coverage["unresolved"]:
+            self._workflow_acceptance(doc, action, record, mode="mechanical", coverage_identity=coverage_identity)
         assignment["history"].append(dict(event_id=action["effect_id"], at=_now(),
-                                          **{"from": previous_status, "to": "review_wait"}))
+                                          **{"from": previous_status, "to": assignment["status"]}))
         state["validation"] = dict(action_id=action["effect_id"], delivery_id=action["binding"]["delivery_id"],
-                                   valid=True, result=result)
+                                   valid=True, result=result, coverage_identity=coverage_identity)
 
     def _complete_workflow_review_preparation(self, doc, action, record, state):
         reviewer = record["result"].get("reviewer")
@@ -2753,6 +2895,15 @@ class Ledger:
         elif kind == "prepare_review":
             self._complete_workflow_review_preparation(doc, action, record, state)
         elif kind == "review":
+            validation = state.get("validation")
+            scope = action["binding"].get("unresolved_criteria")
+            reviewed = result.get("reviewed_criteria")
+            if (not validation or action["binding"].get("validation_action_id") != validation["action_id"]
+                or action["binding"].get("coverage_identity") != validation["coverage_identity"]
+                or not scope or scope != validation["result"]["coverage"]["unresolved"]
+                or not isinstance(reviewed, list) or any(not isinstance(key, str) for key in reviewed)
+                or len(reviewed) != len(set(reviewed)) or set(reviewed) != set(scope)):
+                raise StateError("A model decision must address exactly the recorded unresolved judgment and evidence")
             decision = result.get("decision")
             if decision not in {"approve", "reject"}:
                 raise StateError("Substantive review requires an actual independent decision")
@@ -2762,6 +2913,8 @@ class Ledger:
             if not Path(decision_file["path"]).is_absolute():
                 raise StateError("The actual native review decision file must be identified")
             if decision == "reject":
+                if any(finding.get("criterion") not in scope for finding in result.get("findings", [])):
+                    raise StateError("Scoped review cannot replace deterministic checks or add unrelated judgment")
                 self._workflow_correction(workflow, state, action, record)
                 action["status"] = "rejected"
             elif result.get("findings") != []:
@@ -2774,6 +2927,8 @@ class Ledger:
                 receipt["reviewer"] = action["reviewer"]
                 receipt["decision_file"] = decision_file
                 self._apply_trial_receipt(doc, key, "review", receipt, event_id)
+                self._workflow_acceptance(doc, action, record, mode="model_judgment",
+                                          coverage_identity=validation["coverage_identity"])
         elif kind == "materialize":
             postimages = self._workflow_postimages(result, delivery)
             source = self._trial_source(assignment["identity"]["reservation"])

@@ -113,6 +113,29 @@ WORKFLOW_ACTION_OPERATIONS = MappingProxyType({
 })
 
 
+def workflow_acceptance_policy() -> dict:
+    """Existing criteria, with native-image proof distinct from source judgment."""
+    return {
+        "schema": 1,
+        "id": "deterministic-first-v1",
+        "criteria": {
+            "compile": "owned-native-command",
+            "object_compare": "exact-object-comparison",
+            "data_relocations": "exact-object-comparison",
+            "source_link": "verified-source-selection",
+            "binary_hashes": "pinned-native-hashes",
+            "progress": "owned-native-command",
+            "abi": "fixed-native-equivalence",
+            "edge_semantics": "fixed-native-equivalence",
+            "ownership": "controller-owned-delivery",
+            "attempt_rules": "ledger-attempt-history",
+            "relevant_inputs": "bound-input-manifest",
+        },
+        "judgment_criteria": ["abi", "edge_semantics", "ownership"],
+        "shared_registration": "controller-proven-insertions-or-unresolved-ownership",
+    }
+
+
 def validate_workflow_profile(profile: dict) -> None:
     """Keep retained assignment slots separate from explicitly bounded inference."""
     if not isinstance(profile, dict):
