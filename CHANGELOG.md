@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 22EB4 — conditional storage-release tail
+
+- Reconstructed `fn_117_22EB4`, module 117 `.text[0x22EB4,0x22EF4)`, 64 original code bytes, as genuine C++ conditionally releasing a nonnull object's storage for a positive signed-short deletion request and returning the original pointer. Source blob `09269eb85cfaa8f6d25b87a36a5751bf228d056b`; allocated text and the `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
+- GLM owner `GlmFreshDedede22EB4`: one initial candidate, zero corrections and zero failed compilations. No attributable inherited attempts were found in the bounded preflight; lifetime totals remain unknown. This existing 64-byte assignment finishes unchanged and does not count toward the new 128-byte adaptive target.
+- Reconciled against complete accepted inputs `1642d90f`; native rebuild exited zero and all **127 DOL/REL hashes** passed. Candidate `410ccd067f2efc98708d4a3590361f3cb6d065f2` and target `facf87131755f206f248ef80b6da5ed7aa0f62d3` retained their exact comparison; the source-linked Dedede REL and main DOL remain byte-identical to their originals. No gameplay runtime exercise was performed.
+- Actual materialization used saved dirty preimages, plain and repository-attribute mirror proofs, and successful native check/apply calls. Only +2/+3 registration insertions and the new source were applied; 19 unrelated modified tracked files and 13 untracked entries were preserved. The new working source has 411 CRLF bytes and normalizes to the same 400-byte canonical LF blob; unrelated shared-file bytes and EOLs were unchanged. Parent HEAD/index/controls remained unchanged, and the owner released MAIN.
+- Evidence: `build/isolated-workers/GlmFreshDedede22EB4/evidence/`, including `LEDGER.md`, `own-change-1642d90f.patch`, two private-index validations, `raw-packet-22eb4/receipt.json`, raw preimages/mirrors, `attempt-00-comparison-1642d90f.json`, and `03-native-127-dtk-check-1642d90f.txt`. Canonical staged identities and raw preservation are recorded separately. Original/copy/junction/evidence holds remain in effect; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint 1642d90f
 
 - Verified committed snapshot `1642d90fc98e9a480bb3bd85fb6a52fc02a0c66b`; report SHA-256 `e5131b76eeaa9b876adfa8d920d9ebda95309c95a040d2e52e842771a834bb89`. Native build and independent final checks passed **127 DOL/REL hashes**.
