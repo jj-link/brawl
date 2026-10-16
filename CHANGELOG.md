@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint b10e0508
+
+- Verified committed snapshot `b10e05084c726c163ee4949450c10c48c8e7e4f3`; report SHA-256 `fb5b700f40c278a8144e4e2f920730f871c0f11a36fc6f1d79ba669910c656af`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.984446%** complete: **472544 / 15833556 accepted code bytes**, **15361012 code bytes remaining**, **1439 accepted source units**.
+- Delta from `d06eff10`: **+128 accepted code bytes / +1 source unit**, Dedede 2DBC. All 1438 preceding accepted source blobs and source-object hashes remain unchanged; all 1439 accepted source objects are linked.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/b10e0508/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `2DBC-independent-object-comparison.json`. Registered 128-byte text and all six relocations match. One observed initial candidate, zero corrections; inherited history UNKNOWN, not zero. Behavior repeats 1ED0's cleanup class, not a diverse adaptive sample. Actual MAIN materialization used anchored byte insertions, not git apply; its raw preservation window remains distinct from publication capture. Dirty/private work is excluded; AI remains nonmatching with original fallback and zero credit. Original/copy/junction/evidence holds and earlier incident/restoration/raw-canonical qualifications remain in effect. Final headline/history agreement follows documentation publication.
+
 ## Dedede 2DBC — embedded-component cleanup
 
 - Reconstructed `fn_117_2DBC`, module 117 `.text[0x2DBC,0x2E3C)`, 128 original code bytes, as genuine C++ invoking embedded-component cleanup with the signed-short `-1` argument, conditionally releasing the containing storage, and returning the original pointer. Source blob `f2339b7b5d3369ee83abab894b5741fb41eb5a7f`; allocated text SHA-1 `be8b3f8088ca7f2e17bec452cd65eadb3227209c` and relocation contents match the original object.
