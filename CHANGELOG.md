@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint bbbcb5c4
+
+- Verified committed snapshot `bbbcb5c42634a8a6bbe1efaf28ff7243514a34a6`; report SHA-256 `346693971e39408ae8f3f44cb409b927846d891cbccb2fcec79c7f2b55117a12`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
+- **2.979495%** complete: **471760 / 15833556 accepted code bytes**, **15361796 code bytes remaining**, **1421 accepted source units**.
+- Delta from `f4c5bf35`: **+8 accepted code bytes / +1 source unit**, Dedede E2F8. All prior accepted sources remain linked. Unaccepted E698/E6A4, dirty MAIN and trial work are excluded; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/bbbcb5c4/`, including native/calculator logs, `report-published.json`, source/link/object proofs and original-identity checks. All 1421 accepted-source linkage gates, 1420 prior source identities, 329 original/tool identities and 44 Dedede source/MAP gates passed. Materialization-coverage and restored-original qualifications remain as recorded; all original holds are retained. Final headline/history agreement follows this documentation commit.
+
 ## Dedede E2F8 — reconstructed accesser/float-pair interface adjustment
 
 - Registered genuine C++ for `fn_117_E2F8`, `.text [0xE2F8,0xE300)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0x100` and forwards it with the float pair and module accesser to imported `fn_27_136528`.
