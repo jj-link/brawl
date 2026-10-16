@@ -48,9 +48,10 @@ public:
     virtual void initialize() = 0;
 };
 } // namespace
+struct DededeGeneralWork;
 extern "C" {
 void fn_27_C74BC(void*, void*, int);
-void fn_117_7980(void*, void*, int, void*, int, void*, int);
+DededeGeneralWork* fn_117_7980(DededeGeneralWork*, int*, int, float*, int, unsigned int*, int);
 void fn_27_19E930(void*, int);
 void fn_27_1A154C(void*, int);
 void fn_27_1A1E04(void*, int);
@@ -72,7 +73,10 @@ Byte lbl_117_data_0[4] = { 0xFF, 0xFF, 0xFF, 0xFF };
 extern "C" Byte* fn_117_75F8(Byte* object, void* owner, void* resource, void* parameters) {
     fn_27_C74BC(object, resource, 0x112);
     Byte* work = object + 0x10;
-    fn_117_7980(work + 0xAC, work, 0x12, work + 0x48, 0xE, work + 0x80, 0xB);
+    fn_117_7980(reinterpret_cast<DededeGeneralWork*>(work + 0xAC),
+        reinterpret_cast<int*>(work), 0x12,
+        reinterpret_cast<float*>(work + 0x48), 0xE,
+        reinterpret_cast<unsigned int*>(work + 0x80), 0xB);
     reinterpret_cast<WorkInterface*>(work + 0xAC)->initialize();
     Byte* modules = object + 0xE0;
     fn_27_19E930(modules, 0);
