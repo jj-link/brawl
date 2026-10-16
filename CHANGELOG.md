@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 00803035
+
+- Verified committed snapshot `00803035d3f259730214c015af5c561d0b4369aa`; report SHA-256 `aa14a7215ceb795772c5f20504e9a3668cbc0a99b2e0fb3098282ffb84a97754`. Fresh native build/report passed **127 DOL/REL hashes**.
+- **2.980404%** complete: **471904 / 15833556 accepted code bytes**, **15361652 code bytes remaining**, **1430 accepted source units**.
+- Delta from `d7c9c2d3`: **+8 accepted code bytes / +1 source unit**, Luna's Dedede 151C8. All 1429 prior accepted source identities remain unchanged. This checkpoint excludes subsequent/private reconstruction and dirty MAIN; AI remains nonmatching with original fallback and zero completion credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/00803035/`. All 1430 accepted-source linkage gates, 53 contributed Dedede MAP gates (50 eight-byte and three 32-byte functions), and 329 input/tool identities passed. Fresh standalone and retained historical-window comparisons agree. Inferred ABI, bounded preservation windows, earlier failed-check qualifications and original/junction holds remain explicit. Final headline/history agreement follows documentation publication.
+
 ## Dedede 151C8 — zero-return virtual method reconstruction
 
 - Reconstructed `fn_117_151C8`, module 117 `.text[0x151C8,0x151D0)`, eight original code bytes, as genuine C++ returning false. The return type and unused argument are ABI inferences, not authoritative recovered declarations. Allocated text `386000004e800020` exactly matches, with no relocations or other allocated sections; source blob `b572b4d2f9e7b67c40892b2f0bfc86b09776074f`.
