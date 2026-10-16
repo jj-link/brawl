@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Independent adaptive sizing for Luna and Spark1 Qwen
+
+- User extended adaptive function sizing to Luna and authorized one Spark1 Qwen3.8-Flash-Next production owner starting at 8 bytes. Luna retains max reasoning and its current 8-byte `fn_117_10770`; model-specific win counts and size targets are independent. Three GLM owners continue unchanged.
+- Launched fresh `QwenFreshDedede15168` for the single 8-byte `.text[0x15168,0x15170)` function. Its native session records `spark1/Qwen3.8-Flash-Next` with no model fallback. Pre-launch Spark1 endpoints confirmed that served model, healthy TensorFold, zero active requests and five maximum streams.
+- Updated `PLAN.md` to apply the existing three-verified-wins/up, ten-correction-exhaustion/down policy separately to GLM, Luna and the single production Qwen slot. The independent four-Qwen trial retains its eight reserved functions and controller boundaries; capacity coordination was sent through the existing file-only channel. No source-completion credit or larger-function success is claimed by these launch/policy changes.
+
 ## Committed-source checkpoint 7941f19c
 
 - Verified committed snapshot `7941f19c59feaf22e6b47995f5c220cacd1145b6`; report SHA-256 `9017e2b34eb27ac87325d6fe8d1c74c4c6d30ad050079f3d2b0847e9159503bb`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
