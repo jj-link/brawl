@@ -50,7 +50,6 @@ Production worker counts and model choices remain an explicit approved configura
 7. **Acknowledge publication.** Bind the actual published source and acceptance outcome to the assignment. Drafts, private matches, materialized files, commits, pushes, and accepted source remain distinct states.
 8. **Clean up and close.** The same owner performs authorized evidence-preserving cleanup. Retain required source, inputs, measured/best candidates, packets, and receipts. Verify native job/session exit; do not treat a returned agent turn as closure.
 9. **Refill independently.** When an assignment's slot is eligible for replacement under the approved lifecycle, start its next fresh owner without waiting for a wave of unrelated owners.
-10. **Publish the dashboard checkpoint.** The retained dashboard publisher finishes its selected committed checkpoint. Unrelated MAIN advancement does not repeatedly restart that work.
 
 Duplicate events must not duplicate an assignment, model dispatch, commit, or push. Recovery must not adopt a foreign session, reset a started stage, discard better work, or replay an uncertain external effect.
 
