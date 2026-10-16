@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2D8 — reconstructed power/task notification adjustment
+
+- Registered genuine C++ for `fn_117_E2D8`, `.text [0xE2D8,0xE2E0)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards the power and task arguments to imported `fn_27_13DD00`.
+- GLM owner GlmFreshDededeE2D8 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `c99eac7af6e658e08ea6b45a59e1ee7c8387bca8`, target SHA-1 `a3f74d3fda00a91527e3245c123029d6cec1c196`. Allocated text `3863ff0c48000000` and offset-4 REL24 to `fn_27_13DD00`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input verification at accepted `c85d7db3` passed **127 native DOL/REL hashes**, with this source and all prior accepted units linked. E2D0/E2E0 remain original-code fallbacks. The intervening `e7582139` baseline changes documentation only; measured game evidence is reused. No gameplay execution was performed.
+- Released grant `E2D8MainE758` applied the reviewed raw patch once, native check/apply exit 0. Shared-file postimages preserve saved preimages plus only the owned two/three lines; 19 captured unrelated dirty tracked files are unchanged. Untracked files were outside that inventory. HEAD/index/attributes remained unchanged. Native source is 2306 bytes with 39 CRLF endings, clean blob `88c75f4dcdeafc513681c47237742d5c38e8e182`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2D8/evidence/`, including `attempts.json`, `attempt-00-comparison.json`, `02-native-127-dtk-check.txt`, `own-change-c85d7db3.patch`, repository-aware previews and `main-grant-e2d8mainE758/`. The own-only staging patch has 44 additions and zero deletions across three paths and was validated against both source and documentation baselines. Cumulative progress is published separately by the dedicated publisher.
+
 ## E2C8 cleanup incident — restored original game inputs
 
 - At 2026-10-16 00:07:55 UTC, GlmFreshDededeE2C8's cleanup unlinked files through its `orig/RSBE01_02/files` and `sys` junctions into MAIN. The executor checked only each file's reparse flag, not its ancestors; workspace-relative paths did not isolate the operation. All **127 canonical originals / 24805432 bytes** were subsequently missing. The initial receipt's claim that MAIN was untouched and its attribution to publication activity are disproven.
