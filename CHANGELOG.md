@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 17EE4 — article integer-table lookup
+
+- Reconstructed `fn_117_17EE4`, module 117 `.text[0x17EE4,0x17F04)`, 32 original code bytes, as genuine C++ returning `rows[index - firstIndex][element]`. Source blob `52eebcdfe9d552926d905a0e72acf1991c9dfb22`; allocated text matches exactly, with zero relocations.
+- GLM lineage `GlmFreshDedede17EE4` / fresh continuation `GlmResume17EE4`: one initial candidate, one matching correction, and a third code-generation-neutral source revision. Historical lifetime counts remain unknown. This existing 32-byte assignment does not count toward the 64-byte adaptive target.
+- Reconciled against accepted `2d8ab829`; one changed-input native build and the final hash check passed all 127 DOL/REL outputs with 121E4 and 17EE4 linked. Candidate `f60cd701af420f3efea03383e5a5faa94b351551` and sliced target `5d6ad566637830349b17ce2e37a806789b58ed77` retain the measured allocated-byte match. The local record view is a bounded ABI reconstruction, not a claim that differing C++ record definitions are generally interchangeable. No gameplay runtime exercise was performed.
+- Grant `Glm17EE4Main2d8` applied the reviewed three-path patch once with native check/apply success. Exact +2/+3 registration insertions preserve every other byte; all 31 captured other dirty/untracked files, HEAD and index were unchanged. The new source is 2861 CRLF bytes and cleans to the reviewed blob; canonical staged file modes/blobs are separate from dirty working-file identities.
+- Evidence: `build/isolated-workers/GlmFreshDedede17EE4/evidence/`, including `own-change-2d8ab829.patch`, `02-native-checkshasum-2d8ab829-17ee4.txt`, `materialization-2d8/receipt.json`, and the append-only `attempts.json` text ledger. Earlier failed mirror/EOL probes and all original inputs, junctions, objects and evidence remain retained. The owner released MAIN; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint 2d8ab829
 
 - Verified committed snapshot `2d8ab829a90aa09286813fe444951ab4c646731e`; report SHA-256 `d8ccd7c937ff95ecbcdc56f03adeae4e70fc43bcb2a8fe4af954ec61554c716a`. Native build and independent final checks passed **127 DOL/REL hashes**.
