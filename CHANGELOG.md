@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2F0 — reconstructed damage-float interface adjustment
+
+- Registered genuine C++ for `fn_117_E2F0`, `.text [0xE2F0,0xE2F8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xF4` and forwards it with the damage float to imported `fn_27_13C724`.
+- GLM owner GlmFreshDededeE2F0 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `d8c85b6a139e76dd925da23eac598fed66ee9714`, target SHA-1 `aebe19a9a1195cdb8d17068d2850bef78a28b2c9`. Allocated text `3863ff0c48000000` and offset-4 REL24 to `fn_27_13C724`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation onto accepted `3a8478b4` passed **127 native DOL/REL hashes**, with accepted E2E8 and this source linked. E2F8 remains original fallback. The subsequent `7e61a727` baseline changes documentation only; applicable game evidence is reused. No gameplay execution was performed.
+- Released grant `E2F0Main7e61` applied the reviewed three-path raw patch once; native check/apply exited 0. Removing the exact owned 152/96 bytes from the actual shared-file postimages reproduces the saved preimages byte-for-byte. All 31 captured unrelated dirty tracked files remained unchanged; other contents were outside that inventory. HEAD/index/attributes guards remained unchanged. Native source is 2144 bytes with 36 CRLF endings, clean blob `a785b0c9ce0ed2d0c4dec8f72b09400283ce051b`.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2F0/evidence/`, including `attempt-00-comparison-3a8478b4.json`, `02-native-127-dtk-check-3a8478b4.txt`, `reconciliation-3a8478b4.md`, `own-change-3a8478b4.patch`, repository-aware previews, `PACKET-SEAL-3a8478b4.md` and `grant-E2F0Main7e61-RECEIPT.md`. The canonical patch contains 41 additions and zero deletions across three paths, validated against the current committed baseline. Cumulative progress is published separately.
+
 ## Committed-source checkpoint 3a8478b4
 
 - Verified committed snapshot `3a8478b478353e2c5f4be709f444210de02506ed`; report SHA-256 `5a8d516e5fffc29650fec5e9cd3374ccb9fe1e2f840000b52b809005af89c948`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
