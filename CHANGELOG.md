@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 18210 — chained record lookup
+
+- Reconstructed `fn_117_18210`, module 117 `.text[0x18210,0x18250)`, 64 original code bytes, as genuine C++ selecting a `0x6C`-byte record or forwarding the remaining index to a chained provider. Source blob `fe06ec8fa9a992f1a09fc9cc53d4546bc830c4ea`; all allocated text matches exactly, with no in-function relocations.
+- GLM owner `GlmFreshDedede18210`: one initial candidate, zero corrections, zero failed compilations, and one retained comment-only revision correcting the documented instruction word. Recompilation measured the revision as code-generation-neutral: candidate `ec58f5804286af5cd78de1d8770b6fb465acd390` unchanged. Inherited lifetime counts remain unknown. This in-flight 64-byte assignment finishes unchanged and does not count toward the new 128-byte target.
+- Reconciled against complete accepted input baseline `5368880c`; one required native build exited zero, all **127 DOL/REL hashes** passed, and source linkage was regenerated. Canonical slice `a4dbf5d07cfe2c723a204f8c1f41edfdf0cb0299` and candidate retain their exact code/relocation comparison; the full Dedede REL and main DOL remain byte-identical to the originals. No gameplay runtime exercise was performed.
+- Actual MAIN materialization added only the new source and the +2/+3 registration insertions. Saved raw preimages and exact insertion diffs preserve unrelated dirty bytes and line endings. Parent HEAD/index were unchanged by the owner; a fresh private index verified the complete three-path patch, stage-zero modes and blobs.
+- Setup qualification: an earlier wrong-working-directory command created three files under MAIN `evidence/` (private input copies and an error log), then the owner individually deleted those files and removed the empty directories. This was actual MAIN writing and deletion, not a zero-mutation or zero-deletion assignment. The owner recorded the incident; retained private inputs and evidence remain under HOLD.
+- Evidence: `build/isolated-workers/GlmFreshDedede18210/evidence/`, including `attempts.json`, immutable initial and corrected-comment source snapshots, `own-change-5368880c.patch`, `reconciliation-5368880c/preimages/`, `ninja-reconciled-5368880c.log`, `02-native-checkshasum-5368880c-18210.txt`, and `attempt-00-comparison-slice-reconciled.json`. Original/copy/junction/evidence holds remain in effect; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint 5368880c
 
 - Verified committed snapshot `5368880c1612e73232281039e943ff6fb4c21060`; report SHA-256 `c4688389aa168128ad748592175503cd67a1355bc744e624d92e99b6bfe2e370`. Native build and independent final checks passed **127 DOL/REL hashes**.
