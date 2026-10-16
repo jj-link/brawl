@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede A800 — guarded integer-work division reconstruction
+
+- Reconstructed `fn_117_A800`, module 117 `.text[0xA800,0xA820)`, 32 original code bytes, using the existing `soGeneralWorkSimple` layout: divide the indexed integer work value only when the divisor is nonzero. Allocated text and zero relocations exactly match; source blob `9609f777b9ce2977cbdab0db3d338642b96e2d3b`.
+- GLM owner `GlmFreshDededeA800`: one initial candidate, zero corrections, inherited lifetime counts unknown. This is the first accepted 32-byte GLM adaptive result after source publication: one of three required consecutive wins at that size.
+- Complete-input native verification includes accepted `22079da7` and A800: all 127 final DOL/REL hashes pass with the C++ object linked. Exact accepted input identities bind the retained prospective verification; no unchanged rebuild or Dolphin runtime verification is claimed.
+- Grant `A800MainEd627b60` applied only the three reviewed source/registration paths; actual check/apply exited zero. Removing each owned insertion from private postimage copies restores the exact shared preimage. All 31 path-bound unrelated regular-file hashes, directory presence, HEAD and exact index hash were preserved; native full absolute-chain and regular-leaf guards passed.
+- Evidence: `build/isolated-workers/GlmFreshDededeA800/evidence/`, particularly `reconciliation-bc6c67e2.md`, `own-change-7941f19c.patch` and raw patch SHA-256 `11264739e1cfbe98ffe05c95437f34e402dc6f97aaf6723f827f52c6d0170a6e`. Canonical staging and dirty working-file preservation are separate proofs. All original-input holds and earlier bounded-preservation qualifications remain.
+
 ## Committed-source checkpoint 22079da7
 
 - Verified committed snapshot `22079da7b40f4963196546e16b2f0d9feb751d50`; report SHA-256 `23a7112bfe239f14bc8540eb96d541a2f9a8c8856d94ea4e21d70b6b8123d4bc`. Fresh native build/report passed **127 DOL/REL hashes**.
