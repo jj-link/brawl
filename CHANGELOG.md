@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 17D38 — article float-array lookup reconstruction
+
+- Reconstructed `fn_117_17D38`, module 117 `.text[0x17D38,0x17D58)`, 32 original code bytes, as genuine C++ indexing the article accesser's float-array table relative to its stored index base. Allocated text exactly matches with zero relocations; source blob `1926b226e05305f22dc46839c607d1a1d835e37a`.
+- GLM owner `GlmFreshDedede17D38`: one initial candidate, zero corrections; zero attributable predecessor attempts in the bounded records inspected, with inherited lifetime counts still unknown. After source publication, this is GLM's third consecutive accepted 32-byte adaptive win, 3/3: subsequent fresh GLM assignments target approximately 64 bytes, while existing assignments finish unchanged.
+- Complete-input verification includes accepted `5843315b`/documentation revision `064dda92` plus 17D38: all 127 native DOL/REL checks pass with the reconstructed object linked. Earlier `sha1sum` failures remain recorded separately from passing DTK and byte-comparison evidence; no Dolphin runtime verification is claimed.
+- Grant `Glm17D38Main064dda92` applied only the three reviewed working-file paths with check/apply exit zero and empty stdout/stderr. Exact +2/+3-line insertions preserve the dirty registration preimages; 19 modified-file hashes, 12 untracked regular-file hash/size bindings, directory presence, controls, HEAD and exact index were preserved. Native ancestor/leaf checks and the 839-byte CRLF source postimage passed; canonical stage blobs remain distinct from dirty working-file clean hashes.
+- Evidence: `build/isolated-workers/GlmFreshDedede17D38/evidence/`, including `attempt-01-comparison-064dda92.json`, `05-native-127-dtk-check-064dda92.txt`, `raw-packet-17d38-MAIN/receipt-v2.json`, and `grant-Glm17D38Main064dda92/receipt.json`. Canonical patch SHA-256 `873b4212704af40aa4ff38b108d71e4f5e7936f0d1bc70be7d5b15358dc9ce54`; raw patch SHA-256 `0b890ab232cf4802522c4d3d7ba4aa6bff2374fb58a3ee58c640b506f2eddf75`. Earlier clean-only rehearsal, limited inventory and corrected IRC size/hash statements remain qualified; all original-copy and junction-link/content holds remain.
+
 ## Committed-source checkpoint 5843315b
 
 - Verified committed snapshot `5843315bb5a7ac554804c04257117d78e927515f`; report SHA-256 `9579e7585fff89a326c1a72ece19d96a3806c8da94d2979f1ac3b6091e13cef2`. Fresh native build/report passed **127 DOL/REL hashes**.
