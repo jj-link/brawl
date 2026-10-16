@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E698 — reconstructed constant-return callback
+
+- Reconstructed `fn_117_E698`, module 117 `.text[0xE698,0xE6A0)`, as genuine C++ returning `1`. The 8 allocated code bytes `386000014e800020` match exactly with zero relocations; registered source blob `10547299eeba19c0a672bba9cb0a7d851a2b0604`.
+- GLM owner recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN** after bounded recovery. Candidate object SHA-1 `71fd83241ca8b9cc46bbdb48b02708e622ba9fc6`, original target `0cdb289497b13b23bc7af9ee8bc4800a07afe6af`; immutable initial source and comparison evidence are retained.
+- Complete-input reconciliation includes accepted source checkpoint `bbbcb5c42634a8a6bbe1efaf28ff7243514a34a6`. Exact comparison, actual source linkage in both REL edges and native **127-file** verification passed; later policy/docs changes do not change game inputs. No Dolphin/gameplay exercise was performed.
+- Same-owner MAIN grant `E698MainA080` applied only the reviewed three paths. Actual registration differences preserve preimages plus exactly 152/96 owned bytes. Of 33 unrelated files captured, 32 remained byte-identical; the concurrent parent-owned changelog edit is qualified separately, and the parent-owned plan edit was outside that inventory. Parent index/refs and originals were untouched by materialization.
+- Evidence: `build/isolated-workers/GlmFreshDededeE698/evidence/`, including `reconciliation-bbbcb5c4.md`, `own-change-bbbcb5c4.patch` (SHA-256 `672a506afb624c3ebbc6d9473649d6bec8d39880725d5752e64150bebf05def8`), immutable attempt records, native logs and `grant-E698MainA080/RECEIPT.md`. Original-input holds remain; cumulative checkpoint publication is separate.
+
 ## Adaptive GLM function-size trial
 
 - User authorized trying larger GLM functions, increasing size after consistent wins and reducing it when unsuccessful. Existing owners finish their current functions; fresh GLM assignments start near 32 original code bytes, one function per owner.
