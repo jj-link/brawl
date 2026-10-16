@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 1C8EC — conditional storage-release tail
+
+- Reconstructed `fn_117_1C8EC`, module 117 `.text[0x1C8EC,0x1C92C)`, 64 original code bytes, as genuine C++ conditionally releasing a nonnull object's storage for a positive signed-short deletion request and returning the original pointer. Source blob `5b32cfeb57812ded8a2a9a0d3180879a45b82981`; all allocated text and the `R_PPC_REL24 __dl__FPv` relocation at offset `0x24` match exactly.
+- GLM owner `GlmFreshDedede1C8EC`: one initial candidate, zero corrections; inherited lifetime counts remain unknown. This is the third accepted consecutive win at the 64-byte adaptive target, after 17A6C and 17FD8. The next fresh GLM assignment targets approximately 128 bytes with its size-specific success counter reset; existing 64-byte assignments finish unchanged.
+- Reconciled against accepted `139b6e6c`. Native build exited zero and direct per-artifact SHA-1 verification matched all 127 DOL/REL outputs. Candidate `6ad4619a1907b3f48f0581959770375effa99a41` and target `fa09a3fb2d79e7da6d6ada689b2c49d910659d18` retained their exact allocated-code/relocation match. The earlier `sha1sum -c` invocation reported six failures despite matching independent hashes and byte comparisons; its diagnostic evidence remains retained. No gameplay runtime exercise was performed.
+- Actual materialization changed only the new source and +2/+3 registration insertions. Raw pre/post comparisons show one pure insertion per shared file and preserve other pending contents. HEAD and the parent index remained unchanged; canonical private-index validation proves the exact three-path set and modes independently of the raw overlay. The owner released MAIN.
+- Evidence: `build/isolated-workers/GlmFreshDedede1C8EC/evidence/`, including `own-only.patch`, `reconciliation.json`, `full-build-139b6e6c.log`, `final-hashes-all127-139b6e6c.json`, `attempt-01/objdiff-report-139b6e6c.json`, and the raw-overlay pre/post images and diff proofs. The earlier reviewed patch and all original/junction/evidence holds remain retained. Cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint 03e71b5d
 
 - Verified committed snapshot `03e71b5d158f8de5da652e1f76628c5933f90882`; report SHA-256 `21b32d822ea6e566ad9f309cd6f06289826b444f0130f3980dfc77c1acf030e7`. Native build and independent final checks passed **127 DOL/REL hashes**.
