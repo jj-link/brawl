@@ -270,15 +270,22 @@ class TrialRepositoryTests(unittest.TestCase):
             self.assertEqual(item["environment"]["GCM_TRACE_SECRETS"], "0")
         self.assertEqual(file_identity(self.source / ".git/index"), self.source_index)
 
-    def test_exact_engineering_publication_continues_without_reinitializing_target(self):
+    def test_exact_engineering_correction_continues_without_reinitializing_target(self):
         path = self.target / "engineering-publication.txt"
         path.write_bytes(b"Owned actual Git continuation fixture\n")
         self.git(self.target, "add", "--", path.name)
         self.git(self.target, "commit", "-m", "Owned engineering publication fixture")
         head = self.git(self.target, "rev-parse", "HEAD")
+        first = head
+        first_image = {"mode": "100644", "blob": self.git(self.target, "rev-parse", first + ":" + path.name)}
+        path.write_bytes(b"Owned actual Git separately reviewed correction\n")
+        self.git(self.target, "add", "--", path.name)
+        self.git(self.target, "commit", "-m", "Owned engineering correction fixture")
+        head = self.git(self.target, "rev-parse", "HEAD")
+        final_image = {"mode": "100644", "blob": self.git(self.target, "rev-parse", head + ":" + path.name)}
         self.git(self.target, "push", "origin", "HEAD:refs/heads/controller-trial")
         index_before = file_identity(self.target / ".git/index")
-        descriptor = {"schema": "brawl-owned-engineering-publication/v1",
+        descriptor = {"schema": "brawl-owned-engineering-publication/v2",
             "engineering_baseline": self.baseline, "repository": str(self.target),
             "git_dir": str(self.target / ".git"), "remote": str(self.remote), "branch": "controller-trial",
             "head": head, "remote_head": head, "directory_identity": self.target.stat().st_ino,
@@ -289,7 +296,10 @@ class TrialRepositoryTests(unittest.TestCase):
         reviewed = self.fixture_root / "reviewed-engineering-source-identities.json"
         save_json(reviewed, {"sources": [{"path": path.name, **file_identity(path)}], "documentation": []})
         descriptor.update(source_manifest={"path": str(reviewed), "sha256": digest(reviewed)},
-                          units=[{"commit": head, "parent": self.baseline, "paths": [path.name]}])
+                          units=[{"commit": first, "parent": self.baseline, "paths": [path.name],
+                                  "postimages": {path.name: first_image}},
+                                 {"commit": head, "parent": first, "paths": [path.name],
+                                  "postimages": {path.name: final_image}}])
         def prepare(fixture):
             fixture.case.manifest["publication_target"] = dict(self.f.case.manifest["publication_target"])
         def configure(fixture):
@@ -315,6 +325,14 @@ class TrialRepositoryTests(unittest.TestCase):
             changed_sequence = dict(descriptor, units=[])
             with self.assertRaises(SafetyError):
                 repository.verify_prepared_target(action, changed_sequence)
+            changed_history = dict(descriptor, units=[
+                dict(descriptor["units"][0], postimages={path.name: final_image}), descriptor["units"][1]])
+            with self.assertRaises(SafetyError):
+                repository.verify_prepared_target(action, changed_history)
+            changed_final = dict(descriptor, files={
+                path.name: dict(descriptor["files"][path.name], blob=first_image["blob"])})
+            with self.assertRaises(SafetyError):
+                repository.verify_prepared_target(action, changed_final)
             runtime.workflow.complete(action, result, refs=result["evidence_refs"])
             self.assertEqual(continuation.ledger.snapshot()["trial"]["workflow"]["target_head"], head)
             path.write_bytes(b"Foreign edit must never be overwritten\n")

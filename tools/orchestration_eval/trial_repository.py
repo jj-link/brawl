@@ -166,7 +166,7 @@ class IndependentRepository:
     def verify_prepared_target(self, action, receipt):
         """Observe an owned implementation publication; never clone/checkout/adopt by path alone."""
         self.guard()
-        if (receipt.get("schema") != "brawl-owned-engineering-publication/v1"
+        if (receipt.get("schema") != "brawl-owned-engineering-publication/v2"
                 or receipt.get("next_run_id") != self.runtime.root.name
                 or receipt.get("controller_id") != self.config["controller_id"]
                 or any(receipt.get(name) != self.target[name] for name in ("repository", "git_dir", "remote", "branch"))
@@ -208,24 +208,27 @@ class IndependentRepository:
         commits = self.git(action, ["rev-list", "--reverse", baseline + ".." + head]).text().splitlines()
         if commits != [unit.get("commit") for unit in units]:
             raise SafetyError("Actual implementation commit sequence differs from its publication receipt")
-        previous, covered = baseline, set()
+        previous, observed_images = baseline, {}
         for unit in units:
-            commit, paths = unit["commit"], unit.get("paths")
+            commit, paths, images = unit["commit"], unit.get("paths"), unit.get("postimages")
             if (not isinstance(paths, list) or not paths or len(set(paths)) != len(paths)
-                    or covered.intersection(paths) or not set(paths).issubset(files)
+                    or not set(paths).issubset(files) or not isinstance(images, dict) or set(images) != set(paths)
                     or unit.get("parent") != previous
                     or self.git(action, ["show", "-s", "--format=%P", commit]).text() != previous):
-                raise SafetyError("Engineering logical units must retain exact parents and disjoint reviewed scope")
+                raise SafetyError("Engineering logical units must retain exact parents, scope and historical postimages")
             changed = self.git(action, ["diff-tree", "--no-commit-id", "--name-only", "-r", "-z", commit]).stdout
             if set(changed.decode().rstrip("\0").split("\0")) != set(paths):
                 raise SafetyError("Actual engineering commit contains missing or undeclared paths")
             for name in paths:
-                if self.entry(action, commit, name) != {field: files[name][field] for field in ("mode", "blob")}:
-                    raise SafetyError("Actual committed engineering postimage differs from reviewed scope")
-            covered.update(paths)
+                image = images[name]
+                if (not isinstance(image, dict) or set(image) != {"mode", "blob"} or image["mode"] != "100644"
+                        or self.entry(action, commit, name) != image):
+                    raise SafetyError("Actual committed engineering postimage differs from its historical binding")
+            observed_images.update(images)
             previous = commit
-        if covered != set(files) or previous != head:
-            raise SafetyError("Engineering commit sequence does not cover the complete reviewed implementation")
+        final_images = {name: {field: image[field] for field in ("mode", "blob")} for name, image in files.items()}
+        if observed_images != final_images or previous != head:
+            raise SafetyError("Engineering commit sequence does not produce the complete final reviewed implementation")
         for name, image in files.items():
             path = input_path(self.path, name)
             if self.git(action, ["hash-object", "--path=" + name, "--stdin"], data=path.read_bytes()).text() != image["blob"]:
