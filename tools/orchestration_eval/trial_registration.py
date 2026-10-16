@@ -14,7 +14,7 @@ import uuid
 from .evidence import reject_links
 from .processes import runtime_lock
 from .safety import ACTIVE, SafetyError, confined, now, save_json
-from .trial_identity import journal_header, native_process_identity
+from .trial_identity import journal_header, native_process_identity, owned_wrapper_identity
 
 
 class RegistryConflict(SafetyError):
@@ -174,9 +174,10 @@ class RegistrationAdapter:
         native = ready["native_process"]
         actual = native_process_identity(rpc.owned, native["pid"], runtime.executable,
                                          expected_creation=native["creation_time"])
-        if (ready["pid"] != actual["pid"] or native["host_pid"] != rpc.owned.record["pid"]
-                or native["token"] != rpc.owned.record["token"]):
-            raise SafetyError("Native registration identity escaped its actual wrapper/job ancestry")
+        if ready["pid"] != actual["pid"]:
+            raise SafetyError("Prepared native PID differs from its actual owned process")
+        host = owned_wrapper_identity(rpc.owned, actual, expected_host_pid=native["host_pid"],
+                                      expected_token=native["token"])
         reject_links(Path(ready["root_journal"]))
         header = journal_header(Path(ready["root_journal"]))
         if (header["id"] != ready["root_session_id"] or Path(header.get("cwd", "")) != ACTIVE
@@ -189,7 +190,8 @@ class RegistrationAdapter:
                 or handshake["executable_sha256"] != runtime.launch_contract["runtime"]["omp"]["sha256"]):
             raise SafetyError("Native handshake and prepared journal UUID disagree")
         return dict(actual, process_id=rpc.owned.process_id, root_session_id=ready["root_session_id"],
-                    root_journal=ready["root_journal"])
+                    root_journal=ready["root_journal"], host_process=host,
+                    launcher_process={key: rpc.owned.record[key] for key in ("pid", "creation_time")})
 
     def read_registry(self, authority):
         path = Path(authority["scope"]["registry_path"])

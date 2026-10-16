@@ -1,11 +1,14 @@
 """Real owned file/socket/SQLite boundaries; never genuine agent or observer proof."""
 import copy
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 import os
 from pathlib import Path
 import socket
 import threading
+import sys
+import time
 import unittest
 from unittest.mock import patch
 import uuid
@@ -15,6 +18,7 @@ from .test_state import WorkflowFixture
 from .trial_registration import (RegistrationAdapter, RegistryConflict, atomic_registry_update,
                                  encoded, registration_scope, retain)
 from .trial_runtime import TrialRuntime
+from .trial_identity import native_process_identity, owned_wrapper_identity
 
 
 @unittest.skipUnless(os.name == "nt" and os.environ.get("OMP_EVAL_TEST_AUTHORIZATION") == "isolated-fixtures",
@@ -238,3 +242,43 @@ class TrialRegistrationTests(unittest.TestCase):
         (self.adapter.root / "authority.json").write_bytes(encoded(changed))
         with self.assertRaises(SafetyError):
             self.adapter.authority()
+
+    def test_installed_venv_launcher_host_and_child_have_real_distinct_owned_identities(self):
+        revision = self.f.ledger.authorization()["revision"]
+        owned = self.runtime.manager.launch(
+            [sys._base_executable, "-I", "-c", "import time; time.sleep(30)"],
+            kind="owned-python-ancestry-fixture", cwd=self.f.root, authorization_revision=revision)
+        self.runtime.register_process(owned, revision)
+        try:
+            child_path = Path(owned.record["record_path"]).parent / "child.json"
+            deadline = time.monotonic() + 10
+            while not child_path.exists():
+                if owned.process.poll() is not None or time.monotonic() >= deadline:
+                    self.fail("Owned Python child did not publish its actual spawn receipt")
+                time.sleep(0.02)
+            child = json.loads(child_path.read_bytes())
+            native = native_process_identity(owned, child["pid"], Path(sys._base_executable))
+            self.assertNotEqual(child["host_pid"], owned.record["pid"])
+            def verify():
+                return owned_wrapper_identity(owned, native, expected_host_pid=child["host_pid"],
+                                              expected_token=child["token"])
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                hosts = list(pool.map(lambda _: verify(), range(4)))
+            self.assertTrue(all(host == hosts[0] for host in hosts))
+            self.assertEqual(hosts[0]["pid"], child["host_pid"])
+            with self.assertRaises(SafetyError):
+                owned_wrapper_identity(owned, native, expected_host_pid=owned.record["pid"],
+                                       expected_token=child["token"])
+            with self.assertRaises(SafetyError):
+                owned_wrapper_identity(owned, native, expected_host_pid=child["host_pid"],
+                                       expected_token="foreign-token")
+            save_json(self.f.root / "actual-installed-venv-ancestry.json", {
+                "launcher": {key: owned.record[key] for key in ("pid", "creation_time")},
+                "host": hosts[0], "child": native, "child_receipt": str(child_path),
+                "qualification": "Actual pure Python owned-job ancestry, not an OMP agent or provider trial"})
+        finally:
+            proof = owned.stop(grace=0)
+            self.f.ledger.record_process_exit(owned.process_id, event_id="exit-" + owned.process_id, proof=proof)
+        self.assertTrue(proof["observed_exit"])
+        with self.assertRaises(SafetyError):
+            owned_wrapper_identity(owned, native, expected_host_pid=child["host_pid"], expected_token=child["token"])

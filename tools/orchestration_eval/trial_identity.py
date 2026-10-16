@@ -1,8 +1,11 @@
 """Validate observed native journal ancestry, not caller-assigned session names."""
 from __future__ import annotations
 
+import ctypes
+from ctypes import wintypes
 import json
 from pathlib import Path
+import sys
 import uuid
 
 from .safety import ACTIVE, SafetyError, confined
@@ -74,7 +77,65 @@ def native_process_identity(owned, pid, executable, *, expected_creation=None):
         image = ctypes.create_unicode_buffer(size.value)
         checked(query(process, 0, image, ctypes.byref(size)))
         if Path(image.value).resolve() != Path(executable).resolve():
-            raise SafetyError("Owned native PID is not the pinned OMP executable")
+            raise SafetyError("Owned native PID is not the pinned executable")
         return {"pid": pid, "creation_time": created, "executable": image.value}
     finally:
         api.CloseHandle(process)
+
+
+class ProcessEntry(ctypes.Structure):
+    _fields_ = [("size", wintypes.DWORD), ("usage", wintypes.DWORD), ("pid", wintypes.DWORD),
+                ("heap", ctypes.c_size_t), ("module", wintypes.DWORD), ("threads", wintypes.DWORD),
+                ("parent", wintypes.DWORD), ("priority", wintypes.LONG), ("flags", wintypes.DWORD),
+                ("executable", wintypes.WCHAR * 260)]
+
+
+def owned_wrapper_identity(owned, native, *, expected_host_pid, expected_token):
+    """Bind the real owned_child host, including Windows' separate venv launcher."""
+    from .processes import checked
+
+    child_path = confined(Path(owned.record["record_path"]).parent / "child.json", owned.manager.root)
+    child = json.loads(child_path.read_bytes())
+    if (owned.process.poll() is not None or child.get("pid") != native["pid"]
+            or child.get("host_pid") != expected_host_pid
+            or child.get("token") != expected_token or expected_token != owned.record["token"]
+            or child["host_pid"] == child["pid"]):
+        raise SafetyError("Native child and owned wrapper receipt disagree")
+    host = native_process_identity(owned, child["host_pid"], Path(sys._base_executable))
+    if not int(owned.record["creation_time"]) <= int(host["creation_time"]) <= int(native["creation_time"]):
+        raise SafetyError("Owned wrapper creation identity cannot precede its launcher or follow its child")
+
+    api = owned.manager.api
+    api.CreateToolhelp32Snapshot.argtypes = [wintypes.DWORD, wintypes.DWORD]
+    api.CreateToolhelp32Snapshot.restype = wintypes.HANDLE
+    for name in ("Process32FirstW", "Process32NextW"):
+        function = getattr(api, name)
+        function.argtypes, function.restype = [wintypes.HANDLE, ctypes.POINTER(ProcessEntry)], wintypes.BOOL
+    snapshot = api.CreateToolhelp32Snapshot(2, 0)
+    if snapshot == ctypes.c_void_p(-1).value:
+        raise ctypes.WinError(ctypes.get_last_error())
+    parents = {}
+    try:
+        entry = ProcessEntry()
+        entry.size = ctypes.sizeof(entry)
+        present = checked(api.Process32FirstW(snapshot, ctypes.byref(entry)))
+        while present:
+            if entry.pid in {native["pid"], host["pid"]}:
+                parents[entry.pid] = entry.parent
+            if len(parents) == 2:
+                break
+            present = api.Process32NextW(snapshot, ctypes.byref(entry))
+            if not present and ctypes.get_last_error() != 18:
+                raise ctypes.WinError(ctypes.get_last_error())
+    finally:
+        api.CloseHandle(snapshot)
+    if (parents.get(native["pid"]) != host["pid"]
+            or (host["pid"] != owned.record["pid"] and parents.get(host["pid"]) != owned.record["pid"])):
+        raise SafetyError("Actual native process ancestry escaped its owned launcher/host chain")
+    # Recheck creation and live job membership after the snapshot; never accept
+    # a stale parent PID or an exited/replaced child merely from a process list.
+    native_process_identity(owned, native["pid"], Path(native["executable"]),
+                            expected_creation=native["creation_time"])
+    native_process_identity(owned, host["pid"], Path(host["executable"]),
+                            expected_creation=host["creation_time"])
+    return host
