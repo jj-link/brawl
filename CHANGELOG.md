@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 2d8ab829
+
+- Verified committed snapshot `2d8ab829a90aa09286813fe444951ab4c646731e`; report SHA-256 `d8ccd7c937ff95ecbcdc56f03adeae4e70fc43bcb2a8fe4af954ec61554c716a`. Native build and independent final checks passed **127 DOL/REL hashes**.
+- **2.980607%** complete: **471936 / 15833556 accepted code bytes**, **15361620 code bytes remaining**, **1431 accepted source units**.
+- Delta from `00803035`: **+32 accepted code bytes / +1 source unit**, Dedede 121E4. All 1430 preceding accepted source blobs and source-object hashes remain unchanged; all 1431 accepted source objects are linked. This existing 32-byte assignment is not a 64-byte adaptive win.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/2d8ab829/`, including `report-published.json`, `native-build-report.log`, `native-127-final-hashes.json`, `source-provenance-link-proof.json`, `accepted-prefix-object-preservation.json`, and `121E4-independent-object-comparison.json`. Allocated text and both relocations match. Existing compiler/linker warnings remain recorded; dirty/private work is excluded. AI remains nonmatching with original fallback and zero credit. Final headline/history agreement follows documentation publication.
+
 ## Dedede 121E4 — Waddledee pick-transactor initializer
 
 - Reconstructed `fn_117_121E4`, module 117 `.text[0x121E4,0x12204)`, 32 original code bytes, as genuine C++ initializing the flag and two static-table pointers. Source blob `6082304d8768e47884f7f0fa6e8e06cdf16594a9`; allocated text and both HA/LO relocations to `lbl_117_data_8A60` match exactly.
