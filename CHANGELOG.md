@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E6A4 — constant-false callback reconstruction
+
+- Reconstructed `fn_117_E6A4`, module 117 `.text[0xE6A4,0xE6AC)`, as genuine C++ returning zero. Allocated text `386000004e800020` and zero relocations exactly match the original; source blob `c6857f2780252181014c865370e320648ec66f53`.
+- GLM owner `GlmFreshDededeE6A4`: one initial candidate, zero feedback corrections, two measured compilations (initial bool/Fighter* spelling and parameterless-int convention spelling, identical objects); inherited lifetime counts remain unknown. This finishes an existing 8-byte assignment, not a 32-byte adaptive win.
+- Complete-input native verification includes accepted `313d6bce` source, Luna 10770 and E6A4: all 127 final DOL/REL hashes pass with the C++ object linked. Identity-bound prospective verification was reused; no Dolphin runtime verification is claimed.
+- Grant `E6A4Main017be06d` applied only the three reviewed source/registration paths; actual check/apply exited zero. Shared raw bytes outside owned insertions, 31 path-bound unrelated regular files, HEAD and index were preserved; one unrelated directory was checked for presence only. Native full-chain guards include literal `C:\`; the earlier drive-relative-root and pathless-inventory records remain qualified.
+- Evidence: `build/isolated-workers/GlmFreshDededeE6A4/evidence/`, including `materialization/materialization-receipt.json`, raw patch SHA-256 `71b629b51a24044b3e7f1d9e5203c5d4b8c1f43b2ca4aebf578d4b5f11a59454` and own-only `own-change-017be06d.patch`. Canonical publication is separate from dirty working-file preservation. Unrelated dirty-file origin is not attributed to Luna; all original-input holds remain.
+
 ## Committed-source checkpoint 313d6bce
 
 - Verified committed snapshot `313d6bce4de00b463b148ff85fff86b84a3b8101`; report SHA-256 `120f93ca0710d92a1dea207c4e14d83d7958c6381660720721043ec501be0cb4`. Fresh native build/report passed **127 DOL/REL hashes**.
