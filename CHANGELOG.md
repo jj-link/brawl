@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede E2D0 — reconstructed damage notification adjustment
+
+- Registered genuine C++ for `fn_117_E2D0`, `.text [0xE2D0,0xE2D8)`: **8 code bytes / 1 source unit**. The entry adjusts the interface pointer by `-0xE8` and forwards the damage record, flag word and module accesser to imported `fn_27_13604C`.
+- GLM owner GlmFreshDededeE2D0 recorded **1 initial candidate / 0 corrections**; inherited counts remain **UNKNOWN**. Candidate SHA-1 `13949ea513163744e3aa9096d66964c124699acb`, target SHA-1 `632ed00e54f02a6e88c01dc494b4aee9eeb82f82`. Allocated text `3863ff1848000000` and offset-4 REL24 to `fn_27_13604C`, symbol-relative addend 0, match; whole-object metadata differs.
+- Complete-input reconciliation onto accepted `d6000ec7` passed **127 native DOL/REL hashes**, with this source and accepted E2D8 linked. E2E0/E2E8 remain original-code fallbacks. The subsequent `c30e3b9b` baseline changes documentation only; applicable game evidence is reused. No gameplay execution was performed.
+- Released grant `E2D0MainC30` applied the corrected raw patch once; native check/apply exited 0. Shared-file postimages equal saved preimages plus the owned 152/96 bytes. The inventory proves 31 unrelated files unchanged; `scratch/` was recorded only as a directory, not its contents. Pre-write path checks established existence, not native ancestor isolation. HEAD/index/attributes remained unchanged. Native source is 2492 bytes with 43 CRLF endings, clean blob `867b68b3d39f8692646a9352e3a1cc32b42ca213`.
+- A separate post-materialization native check found all three written files ordinary and single-link, with distinct file identities, and all eight checked ancestor directories non-reparse and resolving under MAIN. This proves current path state, not the missing pre-write isolation check; the qualification and raw results are retained.
+- Evidence: `build/isolated-workers/GlmFreshDededeE2D0/evidence/`, including the attempt ledger/comparison, `build-full-d6000ec7.log`, `02-native-127-dtk-check-d6000ec7.log`, `own-change-d6000ec7-full-index.patch`, corrected raw previews, saved materialization preimages and `grant-main-postconditions.json`. The three-path staging patch has 48 additions and zero deletions. Rejected raw ordering/indentation artifacts and abbreviated staging representations remain retained; no game attempt was added for packet corrections. Cumulative progress is published separately.
+
 ## Committed-source checkpoint d6000ec7
 
 - Verified committed snapshot `d6000ec76e5d650044ddfd856566b6a318e21877`; report SHA-256 `9c77d1937945bb7193a7d42a3cdbb0f85b9b658801e39907fa2eced690213770`. Fresh native build/report and direct verification passed **127 DOL/REL hashes**.
