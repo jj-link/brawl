@@ -90,7 +90,7 @@ Updating this file and recording baseline measurements happen alongside implemen
 
 Implementation milestone: `build/orchestration-eval/controller-integrated-final-002/source-identities.json` freezes 38 reviewed source/test files. Sol 6.1 reviewers accepted the corrected automatic registration, native completion/decision handling and credential-authority boundaries. Actual local Git publication/recovery, changed-path regressions and native root/process-identity startup were exercised; receipts remain in that packet's `verification.json`.
 
-Verification qualification: the earlier full run remains 253 passed, five obsolete-consumer failures and three gated skips; those five changed cases subsequently passed. Later focused correction passes do not relabel it as an all-passing full run. Real assignment/reviewer execution, four-child dashboard streams, independent refill and authenticated target publication still require their actual execution evidence. RuntimeOwner is proceeding with operative inputs, guarded independent publication and four zero-provider root preparation.
+Verification qualification: the earlier full run remains 253 passed, five obsolete-consumer failures and three gated skips; those five changed cases subsequently passed. Later focused correction passes do not relabel it as an all-passing full run. Real assignment/reviewer execution, four-child dashboard streams and independent refill still require their actual execution evidence.
 
 ## Independent trial ownership
 
@@ -99,6 +99,8 @@ The approved trial design uses an independently owned publication repository and
 Reserve and record the exact target before remote publication. Production-MAIN integration and transfer are later explicit steps. An isolated branch run proves its exercised lifecycle, not production-MAIN contention or sustained production performance. Preserve the concurrently running reconstruction session's assignments, services, workers and files.
 
 Selected target: `build/orchestration-eval/controller-publication` within this workspace; remote `https://github.com/jj-link/brawl.git`; branch `orchestration-redesign-trial`. The exact target was absent locally and `git ls-remote --heads` returned no matching remote ref at selection. `build/orchestration-eval/controller-target-001/target.json` records the actual commands and scope. RuntimeOwner owns guarded initialization; fresh checks precede writes.
+
+Publication checkpoint: 39 reviewed code/documentation paths were committed and separately pushed in 13 units to `orchestration-redesign-trial`, ending at local/remote HEAD `1e708b513cd3ebf1ac19f2d3d9bc857c05f6e81f`. `build/orchestration-eval/controller-engineering-publication-001/engineering-publication.json` retains the exact unit sequence and source identities; `complete.json` records STOPPED/all owned processes exited. Parent read all 13 owned push exit proofs. The original engineering baseline and published packets remain unchanged.
 
 ## Complete execution checklist
 
@@ -117,7 +119,7 @@ Unchecked means implementation or end-to-end proof is still required; it does no
 
 ### 2. Independent ownership
 
-- [ ] Establish the exact controller-owned publication repository/branch and bounded authority.
+- [x] Establish the exact controller-owned publication repository/branch and bounded authority.
 - [ ] Give the controller responsibility for the reserved assignments' complete lifecycle.
 - [ ] Preserve all eight reservations and exclude other sessions' assignments.
 - [ ] Isolate mutable source, build outputs, Git indexes/refs/objects and publication state.
@@ -279,7 +281,7 @@ Unchecked means implementation or end-to-end proof is still required; it does no
 
 The original bounded evaluation is published and closed. The retained real-trial component snapshot passed 193 tests with two explicitly gated native skips; the verification run stopped with all owned processes exited. Its frozen 21-source packet and exact-command addendum remain historical evidence, not a claim that the full automatic workflow exists.
 
-The current implementation task is automatic delivery validation and required review dispatch, followed by integration/publication/cleanup/refill in the same pre-trial implementation phase. Private implementation does not wait for the old source-packet MAIN handoff. The old MAIN grant request is superseded by the independent trial publication design; no other session's MAIN/index/refs are granted to this session.
+Current action: finish the startup corrections exposed by actual zero-provider preparation. Run `controller-four-qwen-live-001` refused a mismatched repository-path serialization and stopped before native roots; corrected inputs in `controller-four-qwen-live-002` passed actual existing-target Git admission but native OMP rejected the generated `models.yml` field `compat.toolStrictMode: mixed`. RuntimeOwner is correcting serialization from original input-compatible model configuration, retaining the native failure. A separate source finding in `trial_repository.py` shows that the original disjoint-unit/latest-blob checks reject a later separately committed correction to an already published path; reproduce and correct that precise admission case while retaining historical per-unit postimages, the original baseline and all commits. The same Sol 6.1 reviewers own the respective focused native/publication deltas. Integrate changed-path evidence, publish the corrections separately, and continue four genuine zero-provider roots followed by the actual held-child/dashboard gates. No unchanged full-review reset or old-orchestrator MAIN handoff is required.
 
 Engineering dashboard root/child evidence remains valid for its exercised path. Actual four-trial-child proof remains required. Original evaluation files and immutable packets remain preserved. Production service/model changes and MAIN cutover are not inferred from permission to implement the private controller.
 
