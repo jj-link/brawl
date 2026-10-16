@@ -9,9 +9,9 @@ import time
 import unittest
 
 from .runtime import EvaluationRuntime
-from .safety import WORKTREE, SafetyError, confined, digest, save_json
+from .safety import ACTIVE, WORKTREE, SafetyError, confined, digest, save_json
 from .state import Ledger
-from .trial_rpc import NATIVE_OMP, NATIVE_OMP_VERSION, TrialRpc, model_registration, validate_runtime_identity
+from .trial_rpc import NATIVE_OMP, NATIVE_OMP_VERSION, TrialRpc, model_registration, prepare_review_agent, validate_runtime_identity
 from .trial_identity import journal_header, native_process_identity
 
 
@@ -72,7 +72,8 @@ class NativeApiTests(unittest.TestCase):
             config = root / "config.yml"
             save_json(config, {
                 "autoResume": False, "autoTitle": False, "enabledProviders": [],
-                "disabledProviders": ["native", "claude", "codex", "gemini", "github", "opencode", "cursor", "agents-md"],
+                "disabledProviders": ["native", "claude", "codex", "gemini", "github", "opencode", "cursor", "agents-md",
+                                      "ollama", "llama.cpp", "lm-studio"],
                 "providers": {"cacheWarming": "off"}, "telemetry": {"otlpExportEnabled": False},
                 "advisor": {"enabled": False}, "memory": {"enabled": False, "backend": "off"},
                 "compaction": {"enabled": False}, "completion": {"enabled": False},
@@ -95,13 +96,38 @@ class NativeApiTests(unittest.TestCase):
                 save_json(root / "actual-model-registration.json", {
                     "observation": observed, "registration": registration})
                 selector = execution["provider"] + "/" + execution["model"]
+            agent_fixture = None
+            if startup:
+                agent_directory = root / ".omp" / "agents"
+                agent_directory.mkdir(parents=True)
+                worker = agent_directory / "worker.md"
+                execution = {"provider": selector.split("/", 1)[0], "model": selector.split("/", 1)[1],
+                             "endpoint": "infrastructure-no-provider-request"}
+                if observed is not None:
+                    execution = observed["execution"]
+                    original = ACTIVE / ".omp/agents/spark1-qwen.md"
+                    worker.write_bytes(original.read_bytes())
+                    origin = {"path": str(original), "sha256": digest(original)}
+                else:
+                    worker.write_text("---\nname: infrastructure-worker\ndescription: Discovery fixture only\n"
+                                      f"model: {selector}\n---\nNo dispatch or provider work.\n", encoding="utf-8")
+                    origin = {"qualification": "Synthetic definition; no assigned function or child"}
+                review_binding = prepare_review_agent(runtime.environment, execution)
+                agent_fixture = {"agent_definition": {"path": str(worker), "sha256": digest(worker)},
+                                 "execution": execution,
+                                 "review": {"execution": execution, "agent_definition": review_binding}}
+                save_json(root / "actual-agent-discovery-inputs.json", {
+                    "fixture": agent_fixture, "worker_origin": origin,
+                    "home": runtime.environment["HOME"], "userprofile": runtime.environment["USERPROFILE"],
+                    "private_runtime_agent_dir": runtime.environment["PI_CODING_AGENT_DIR"]})
             adapter = WORKTREE / "tools/orchestration_eval/trial_native.mjs"
             probe = WORKTREE / "tools/orchestration_eval/trial_native_probe.mjs"
             gate = WORKTREE / "tools/orchestration_eval/trial_gate.mjs"
             spec_path = root / "api-probe-spec.json"
             save_json(spec_path, {"root": str(root), "adapter": str(adapter), "adapter_sha256": digest(adapter),
                                   "probe_sha256": digest(probe), "expected_runtime": approved,
-                                  "gate": str(gate), "gate_sha256": digest(gate), "mode": mode})
+                                  "gate": str(gate), "gate_sha256": digest(gate), "mode": mode,
+                                  "agent_fixture": agent_fixture, "expected_home": runtime.environment["HOME"]})
             runtime.environment.update(OMP_NATIVE_API_PROBE_SPEC=str(spec_path),
                                        OMP_NATIVE_API_PROBE_SHA256=digest(spec_path))
             argv = [str(NATIVE_OMP), "--mode", "rpc", "--no-ui",
@@ -147,6 +173,19 @@ class NativeApiTests(unittest.TestCase):
                 self.assertEqual(startup["ready"]["pid"], child["pid"])
                 self.assertEqual({row["name"] for row in startup["ready"]["tools"] if row["available"]}, {"task", "write"})
                 self.assertTrue(startup["ready"]["enforceable_guard"])
+                definitions = startup["ready"]["agent_definitions"]
+                self.assertEqual(definitions["worker"]["sha256"], agent_fixture["agent_definition"]["sha256"])
+                self.assertEqual(definitions["reviewer"]["sha256"], agent_fixture["review"]["agent_definition"]["sha256"])
+                self.assertEqual(definitions["worker"]["model"], selector)
+                self.assertEqual(definitions["reviewer"]["model"], selector)
+                self.assertEqual(Path(startup["native_home"]), Path(runtime.environment["HOME"]))
+                self.assertEqual(Path(startup["native_home"]), Path(runtime.environment["USERPROFILE"]))
+                self.assertEqual(Path(definitions["reviewer"]["path"]),
+                                 Path(runtime.environment["HOME"]) / ".omp/agent/agents/bounded-trial-reviewer.md")
+                self.assertEqual(set(startup["definition_refusals"]), {"changed_source", "different_model"})
+                if observed is not None:
+                    self.assertEqual(definitions["worker"]["name"], "spark1-qwen")
+                    self.assertEqual(definitions["worker"]["sha256"], origin["sha256"])
                 header = journal_header(confined(Path(startup["ready"]["root_journal"]), sessions))
                 self.assertEqual(header["id"], result["root"]["uuid"])
                 self.assertEqual(Path(header["cwd"]), root)

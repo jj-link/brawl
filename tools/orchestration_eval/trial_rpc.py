@@ -201,6 +201,31 @@ def model_registration(definition: dict, execution: dict) -> dict:
     return model
 
 
+def prepare_review_agent(environment: dict, execution: dict) -> dict:
+    # Task discovery uses generic getConfigDirs, not PI_CODING_AGENT_DIR.
+    # Keep its scoped definition in the genuine isolated user discovery root.
+    agents = confined(Path(environment["HOME"]) / ".omp" / "agent" / "agents")
+    agents.mkdir(parents=True, exist_ok=True)
+    path = agents / "bounded-trial-reviewer.md"
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(
+            "---\nname: bounded-trial-reviewer\ndescription: Independent scoped reconstruction review\n"
+            f"model: {execution['provider']}/{execution['model']}\n"
+            "thinking: high\ntools: read, grep, glob, write\n---\n"
+            "Review only the exact supplied assignment/delivery and its explicit unresolved-criteria packet. "
+            "Independently inspect source, original assembly and retained evidence only as needed for those named judgments. "
+            "The controller's mandatory mechanical checks cannot be waived, replaced or broadened into another review. "
+            "Do not redo already covered criteria or infer a new runtime gate from unavailable in-game execution. "
+            "An exhausted NonMatching draft retains original fallback and zero accepted credit. "
+            "Reject concrete findings only within the recorded unresolved scope, not unrelated repository advancement. "
+            "Do not edit source or perform integration. Your only write is the exact supplied decision filename. "
+            "Read the supplied native review-identity record after your preparation gate opens, and bind your JSON decision "
+            "to that actual reviewer/session/action and delivery. Return reviewed_criteria listing exactly those unresolved "
+            "IDs once, decision approve or reject and concrete findings (criterion,path,reason). "
+            "Never manufacture acceptance, a native identity, or measurements.\n")
+    return {"path": str(path), "sha256": digest(path), "name": "bounded-trial-reviewer"}
+
+
 def launch_root(manager: ProcessManager, executable: Path, directory: Path, spec: dict,
                 model_definition: dict, revision: int) -> tuple[TrialRpc, dict]:
     validate_runtime_identity(executable, spec["runtime"])
@@ -231,52 +256,20 @@ def launch_root(manager: ProcessManager, executable: Path, directory: Path, spec
         if existing is None:
             provider["models"].append(selected)
     save_json(agent_dir / "models.yml", {"providers": providers})
-    agents = agent_dir / "agents"
-    agents.mkdir()
     worker_source = Path(spec["agent_definition"]["path"])
     if digest(worker_source) != spec["agent_definition"]["sha256"]:
         raise SafetyError("Coordinator-approved native reconstruction instructions changed")
-    worker_text = worker_source.read_text(encoding="utf-8")
-    if not worker_text.startswith("---\n") or "\n---\n" not in worker_text:
-        raise SafetyError("Native reconstruction definition lacks its expected frontmatter")
-    worker_body = worker_text.split("\n---\n", 1)[1]
-    (agents / "bounded-trial-worker.md").write_text(
-        "---\nname: bounded-trial-worker\ndescription: One authorized matching reconstruction assignment\n"
-        f"model: {execution['provider']}/{execution['model']}\n"
-        "thinking: high\ntools: read, bash, edit, write, grep, glob\n---\n"
-        + worker_body + "\nCurrent canonical bounded-trial overrides: do not hand off to Sol or any other model. "
-        "After the inherited Qwen ten-correction bound, preserve/publish the best nonmatching draft with original-code fallback "
-        "and zero accepted credit. Keep the same owner through automatic independent review, concrete reconciliation, "
-        "controller-owned separate source commit/push acknowledgment, safe cleanup and verified closure. "
-        "Do not send agent://Main messages: this process's "
-        "Main is a zero-inference control root, not the external coordinator. Use the supplied durable receipt channel and yield. "
-        "Never fabricate missing history or measurements; tool/environment failures remain blocked.\n",
-        encoding="utf-8", newline="\n")
-    overrides = {"bounded-trial-worker": f"{execution['provider']}/{execution['model']}"}
+    overrides = {}
     if review:
         selected = review["execution"]
         overrides["bounded-trial-reviewer"] = f"{selected['provider']}/{selected['model']}"
-        (agents / "bounded-trial-reviewer.md").write_text(
-            "---\nname: bounded-trial-reviewer\ndescription: Independent scoped reconstruction review\n"
-            f"model: {selected['provider']}/{selected['model']}\n"
-            "thinking: high\ntools: read, grep, glob, write\n---\n"
-            "Review only the exact supplied assignment/delivery and its explicit unresolved-criteria packet. "
-            "Independently inspect source, original assembly and retained evidence only as needed for those named judgments. "
-            "The controller's mandatory mechanical checks cannot be waived, replaced or broadened into another review. "
-            "Do not redo already covered criteria or infer a new runtime gate from unavailable in-game execution. "
-            "An exhausted NonMatching draft retains original fallback and zero accepted credit. "
-            "Reject concrete findings only within the recorded unresolved scope, not unrelated repository advancement. "
-            "Do not edit source or perform integration. Your only write is the exact supplied decision filename. "
-            "Read the supplied native review-identity record after your preparation gate opens, and bind your JSON decision "
-            "to that actual reviewer/session/action and delivery. Return reviewed_criteria listing exactly those unresolved "
-            "IDs once, decision approve or reject and concrete findings (criterion,path,reason). "
-            "Never manufacture acceptance, a native identity, or measurements.\n",
-            encoding="utf-8", newline="\n")
+        review["agent_definition"] = prepare_review_agent(environment, selected)
     config = directory / "config.yml"
     save_json(config, {
         "autoResume": False, "autoTitle": False, "enabledProviders": [],
-        "disabledProviders": ["claude", "codex", "gemini", "github", "opencode", "cursor", "agents-md"],
-        "enabledModels": sorted(set(overrides.values())),
+        "disabledProviders": ["claude", "codex", "gemini", "github", "opencode", "cursor", "agents-md",
+                              "ollama", "llama.cpp", "lm-studio"],
+        "enabledModels": sorted({f"{execution['provider']}/{execution['model']}", *overrides.values()}),
         # No auxiliary title/auto-thinking/model work. Unresolvable exact
         # selectors plus disabled fallback are checked by the native bridge.
         "modelRoles": {role: "bounded-trial-disabled/no-auxiliary-model" for role in ("tiny", "commit", "smol")},

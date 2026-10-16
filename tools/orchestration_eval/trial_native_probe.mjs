@@ -2,6 +2,7 @@
 import { readFileSync, writeFileSync, existsSync, renameSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
+import { homedir } from 'node:os';
 import { loadLegacyPiModule } from '@oh-my-pi/pi-coding-agent/extensibility/plugins/legacy-pi-compat';
 import { Database } from 'bun:sqlite';
 import { Agent } from '@oh-my-pi/pi-agent-core';
@@ -123,7 +124,8 @@ export default function nativeApiProbe(pi) {
         trial: { manifest_digest: '0'.repeat(64) } }));
       db.close();
       const boundedSpec = { infrastructure_probe: true, assignment_id: 'APIProbeNotAssignment', ledger_path: dbPath,
-        authorization_revision: 1, manifest_digest: '0'.repeat(64), execution: { provider: 'none', model: 'none', endpoint: 'none' } };
+        authorization_revision: 1, manifest_digest: '0'.repeat(64), execution: { provider: 'none', model: 'none', endpoint: 'none' },
+        ...(spec.agent_fixture ?? {}) };
       const boundedPath = resolve(spec.root, 'bounded-api-fixture.json');
       const boundedBytes = JSON.stringify(boundedSpec);
       writeFileSync(boundedPath, boundedBytes, { flag: 'wx' });
@@ -135,7 +137,8 @@ export default function nativeApiProbe(pi) {
         rootCredentialCheckpoints++;
         throw new Error('INFRASTRUCTURE_ROOT_CREDENTIAL_DENIAL');
       };
-      const bounded = (await loadLegacyPiModule(spec.adapter)).default;
+      const boundedModule = await loadLegacyPiModule(spec.adapter);
+      const bounded = boundedModule.default;
       const runtime = new ExtensionRuntime();
       const extension = await loadExtensionFromFactory(bounded, ctx.cwd, pi.events, runtime, spec.adapter);
       if (spec.mode === 'original') {
@@ -163,8 +166,22 @@ export default function nativeApiProbe(pi) {
           throw new Error('Infrastructure startup unexpectedly dispatched a native child');
         }
         await ctx.sessionManager.flush();
+        if (resolve(homedir()) !== resolve(spec.expected_home) ||
+            resolve(homedir()) !== resolve(process.env.USERPROFILE)) {
+          throw new Error('Actual Windows native home differs from isolated HOME/USERPROFILE');
+        }
+        const definitionRefusals = {};
+        for (const [name, binding, execution] of [
+          ['changed_source', { ...boundedSpec.agent_definition, sha256: '0'.repeat(64) }, boundedSpec.execution],
+          ['different_model', boundedSpec.agent_definition, { ...boundedSpec.execution, model: 'unapproved-model' }],
+        ]) {
+          try { await boundedModule.resolveTrialAgent(binding, execution, ctx.cwd); }
+          catch (error) { definitionRefusals[name] = String(error); }
+          if (!definitionRefusals[name]) throw new Error(`Native definition boundary admitted ${name}`);
+        }
         result.cases.production_workflow_startup = { ready, root_credential_checkpoints: rootCredentialCheckpoints,
-          qualification: 'Actual production adapter startup and tool availability only; no task/write execution or reviewer/child proof' };
+          native_home: homedir(), definition_refusals: definitionRefusals,
+          qualification: 'Actual production startup, supported task agent discovery and tool availability only; no task/write execution or reviewer/child proof' };
         runner.clearManagedTimers();
         result.success = true;
         return;

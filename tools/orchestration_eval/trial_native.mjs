@@ -7,6 +7,7 @@ import { resolve, dirname, sep } from 'node:path';
 import { loadLegacyPiModule } from '@oh-my-pi/pi-coding-agent/extensibility/plugins/legacy-pi-compat';
 import { installAdmissionGuard } from './trial_gate.mjs';
 import { AgentRegistry, MAIN_AGENT_ID } from '@oh-my-pi/pi-coding-agent/registry/agent-registry';
+import { discoverAgents } from '@oh-my-pi/pi-coding-agent/task/discovery';
 import { Database } from 'bun:sqlite';
 
 const specPath = process.env.OMP_BOUNDED_TRIAL_SPEC;
@@ -34,6 +35,27 @@ let registryWatching = false;
 let lifecycleUnsubscribe = null;
 const dispatchCommands = new Map(), commandResults = new Map();
 const terminalTurns = new Map(), finalizedRuns = new Map(), completedDispatches = new Set();
+let workerDefinition = null, reviewerDefinition = null;
+const workerTools = ['read', 'bash', 'edit', 'write', 'grep', 'glob', 'yield'];
+
+export async function resolveTrialAgent(binding, execution, cwd) {
+  if (!binding?.path || !binding.sha256) throw new Error('Native agent definition lacks its input binding');
+  const path = realpathSync(binding.path);
+  if (hash(readFileSync(path)) !== binding.sha256) throw new Error('Bound native agent definition changed');
+  const canonical = value => process.platform === 'win32' ? value.toLowerCase() : value;
+  const discovered = await discoverAgents(cwd);
+  const matches = discovered.agents.filter(agent => ['project', 'user'].includes(agent.source) &&
+    agent.filePath && canonical(realpathSync(agent.filePath)) === canonical(path));
+  if (matches.length !== 1) throw new Error(`Bound native definition is not uniquely discoverable: ${path}`);
+  const agent = matches[0];
+  const models = Array.isArray(agent.model) ? agent.model : [agent.model];
+  const expected = `${execution.provider}/${execution.model}`;
+  if ((binding.name && agent.name !== binding.name) || models.length !== 1 || models[0] !== expected) {
+    throw new Error('Discovered native agent name/model differs from its approved input');
+  }
+  return { name: agent.name, path, sha256: binding.sha256, source: agent.source,
+    model: expected, declared_tools: agent.tools ?? null };
+}
 
 function fatalBoundary(error) {
   try { event('native_boundary_fatal', { error: String(error?.stack || error) }); }
@@ -376,6 +398,10 @@ export default function boundedTrial(pi) {
         rootStartEvent = evt;
         const auxiliaryModels = ['tiny', 'commit', 'smol'].filter(role => ctx.models.resolve(`@${role}`));
         if (auxiliaryModels.length) throw new Error(`Auxiliary model roles remain enabled: ${auxiliaryModels}`);
+        workerDefinition = await resolveTrialAgent(spec.agent_definition, spec.execution, ctx.cwd);
+        if (spec.review) {
+          reviewerDefinition = await resolveTrialAgent(spec.review.agent_definition, spec.review.execution, ctx.cwd);
+        }
         pi.appendEntry('brawl.bounded-trial.root', {
           assignment_id: spec.assignment_id, manifest_digest: spec.manifest_digest,
         });
@@ -385,12 +411,20 @@ export default function boundedTrial(pi) {
         await ctx.sessionManager.flush();
         record('native-ready.json', { root_session_id: ctx.sessionManager.getSessionId(),
           root_journal: ctx.sessionManager.getSessionFile(), cwd: ctx.cwd, tools, pid: process.pid,
-          spec_sha256: hash(specBytes), protocol: 'bounded-native-commands-v2', enforceable_guard: true });
+          spec_sha256: hash(specBytes), protocol: 'bounded-native-commands-v2', enforceable_guard: true,
+          agent_definitions: { worker: workerDefinition, reviewer: reviewerDefinition } });
       } else {
         if ((ctx.agent.id !== owner && ctx.agent.id !== reviewer?.owner_id) || !observerFactory) {
           throw new Error('Unexpected or unobserved native child');
         }
         ownChild(ctx.agent.id);
+        if (ctx.agent.id === owner) {
+          await pi.setActiveTools(workerTools);
+          const active = pi.getActiveTools();
+          if (active.length !== workerTools.length || workerTools.some(name => !active.includes(name))) {
+            throw new Error('Installed reconstruction definition lacks the bounded native tool set');
+          }
+        }
         const starts = [];
         const adapter = new Proxy(pi, { get(target, property) {
           if (property === 'on') return (name, handler) => name === 'session_start' ? starts.push(handler) : target.on(name, handler);
@@ -400,7 +434,9 @@ export default function boundedTrial(pi) {
         for (const start of starts) await start(evt, ctx);
         readyChildren.add(ref.session.agent);
         event(ctx.agent.id === owner ? 'child_gate_installed' : 'reviewer_gate_installed',
-              { ...identity(ref), root_session_id: rootContext.sessionManager.getSessionId() });
+              { ...identity(ref), root_session_id: rootContext.sessionManager.getSessionId(),
+                agent_definition: ctx.agent.id === owner ? workerDefinition : reviewerDefinition,
+                active_tools: pi.getActiveTools() });
       }
     } catch (error) {
       // session_start exceptions are also isolated by OMP. Terminate this
@@ -469,8 +505,10 @@ export default function boundedTrial(pi) {
         launched = true;
         ownerDispatch = spec.assignment_id + '-initial';
         dispatchCommands.set(ownerDispatch, request.id);
+        const definition = await resolveTrialAgent(spec.agent_definition, spec.execution, ctx.cwd);
+        if (definition.name !== workerDefinition.name) throw new Error('Prepared worker definition changed');
         track(request.id, nativeTool('task', { context: request.context, tasks: [{ name: owner,
-          agent: 'bounded-trial-worker', task: request.task, solutionSpace: 'Matching reconstruction; exact cause and implementation open' }] }, request.id), 'launch', ownerDispatch);
+          agent: definition.name, task: request.task, solutionSpace: 'Matching reconstruction; exact cause and implementation open' }] }, request.id), 'launch', ownerDispatch);
       } else if (request.operation === 'release') {
         const doc = admission();
         if (!doc.trial.activation || !doc.trial.effects[spec.assignment_id + '-initial']) {
@@ -495,9 +533,11 @@ export default function boundedTrial(pi) {
                      released: false, decision_path: owned(request.decision_path), command_id: request.id };
         record(`action-${request.effect_id}.json`, { command_id: request.id, kind: action.kind });
         const task = request.task + `\nWrite your concrete decision only to ${reviewer.decision_path}.`;
+        const definition = await resolveTrialAgent(spec.review?.agent_definition, spec.review?.execution, ctx.cwd);
+        if (definition.name !== reviewerDefinition?.name) throw new Error('Prepared reviewer definition changed');
         const work = existing
           ? nativeTool('write', { path: `agent://${id}`, content: task }, request.id)
-          : nativeTool('task', { context: request.context, tasks: [{ name: id, agent: 'bounded-trial-reviewer',
+          : nativeTool('task', { context: request.context, tasks: [{ name: id, agent: definition.name,
               task, solutionSpace: 'Independent substantive review of concrete source and fixed acceptance evidence' }] }, request.id);
         track(request.id, work, 'prepare-review', request.effect_id, !existing);
       } else if (request.operation === 'release-review') {
