@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Approved production split — unit reconstruction and Sol integration
+
+- User approved ending reconstruction assignments after the agent solves and verifies its unit and returns source/evidence. Removed reconstruction duties for newer-MAIN reconciliation, shared-file application, publication-index preparation, commit/push waiting and post-publication cleanup.
+- Added one retained GPT-6.1 Sol integration/source-publication role for registration, conflicts, complete-input verification, checked MAIN application, own-only staging and separate per-assignment commits/pushes. The existing dedicated dashboard publisher remains separate. Parent maintains plan/checkpoint documentation and coordinates only actual shared-write/index publication windows, not private builds.
+- Updated canonical ownership, dispatch, lifecycle, handoff, cleanup, worker arrangement and publication instructions consistently. Production remains three GLM unit workers; Luna, production Qwen and other reconstruction models remain paused. Adaptive sizing, original-code fallback, attempt limits/history and original/copy/junction/evidence HOLDs are preserved.
+- Cutover preserves 55AC's already-reviewed source and verification rather than restarting its reconstruction. Its outstanding integration grant is withdrawn for transfer to Sol; existing running-write results, if any, must be reported without rollback. 180E0 and 7980 keep their current units and private work; publication work is removed from their responsibilities. Reconstruction slots are refilled on delivered results, independently of source/dashboard publication.
+
 ## Committed-source checkpoint b10e0508
 
 - Verified committed snapshot `b10e05084c726c163ee4949450c10c48c8e7e4f3`; report SHA-256 `fb5b700f40c278a8144e4e2f920730f871c0f11a36fc6f1d79ba669910c656af`. Native build and independent final checks passed **127 DOL/REL hashes**.
