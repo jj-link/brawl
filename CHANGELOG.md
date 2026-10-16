@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 5bcacba9
+
+- Verified committed snapshot `5bcacba9cc0fd2294a1d2df623f23a6075db39e8`; report SHA-256 `b00334a1dbd8874747f4b205ba4528fc34872c12efd850d91cb9582291933026`. Frozen native proof passed **127/127 DOL/REL hashes**, independently checked against retained byte-identical final artifacts. Verification used frozen 19970 evidence, the committed checkout and retained publisher artifacts, without mutable future outputs or an unchanged build/report rerun.
+- **2.989246%** complete: **473304 / 15833556 accepted code bytes**, **15360252 code bytes remaining**, **1445 accepted source units**.
+- Delta from `35c544c2`: **+120 accepted code bytes / +1 source unit**, Dedede 19970. All 1444 preceding source blobs and object hashes remain unchanged for this assignment; the earlier accepted 75F8 source-prefix exception remains recorded. All 1445 accepted source objects occur in native link inputs; the report contains 5737 units across 127 modules.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/5bcacba9/`, including input/prefix/link/final-hash receipts and independent object comparison. Verified 120 allocated text bytes and three REL24 relocations; whole candidate `0b822c4abad5343af15c930f4d65a9234d113f9a` and canonical target `c369cbc56c62817d9197c4d343155277068e1121` reproduce frozen identities.
+- GLM observed one initial candidate, zero corrections and zero failed compilations; inherited history remains UNKNOWN. One separately measured new-TU resource-destructor return-declaration correction preserves the original source and unchanged whole candidate. Integrated source blob `8e141000b3a5cee12685092aad517fd2822509d6` covers 596 LF compiler-input bytes versus 617 CRLF working bytes, not raw equality. Prior EOL/DTK/HOLD/history/incident/restoration qualifications remain; dirty/private work is excluded and AI remains NonMatching with original fallback and zero credit. This existing 120-byte cleanup assignment is not a new diverse sample at the next adaptive target.
+
 ## Dedede 19970 — embedded resource-module cleanup
 
 - Reconstructed `fn_117_19970`, module 117 `.text[0x19970,0x199E8)`, 120 original code bytes, as genuine C++ destroying the resource-module member at +0x18 with the signed-short `-1` argument, retaining the nested null test before base cleanup with flag zero, conditionally releasing the outer allocation, and returning the original pointer. This is another embedded-cleanup/destructor, not a distinct adaptive sample or a change to the already assigned unit size.
