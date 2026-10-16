@@ -170,7 +170,8 @@ class TrialWorkflowBoundaryTests(unittest.TestCase):
         _, decision, _ = self.runtime.workflow.review_paths("trial-0", action["binding"]["delivery_id"])
         save_json(decision, {"delivery_id": action["binding"]["delivery_id"], "effect_id": action["effect_id"],
             "reviewer_id": action["reviewer"]["owner_id"], "session_id": action["reviewer"]["session_id"],
-            "decision": "approve", "findings": []})
+            "decision": "approve", "findings": [],
+            "reviewed_criteria": sorted(action["binding"]["unresolved_criteria"])})
         native = {"kind": "reviewer_turn_end", "registry_id": action["reviewer"]["owner_id"],
             "session_id": action["reviewer"]["session_id"], "journal_ref": action["reviewer"]["journal_ref"],
             "root_session_id": "root-0", "request_id": action["effect_id"], "will_continue": False,
@@ -252,13 +253,32 @@ class TrialWorkflowBoundaryTests(unittest.TestCase):
         action, _, _, path = self.review_boundary()
         valid = json.loads(path.read_bytes())
         for value in ([], None, {}, dict(valid, decision=[]), dict(valid, findings={}),
-                      dict(valid, findings=[{"criterion": [], "path": "", "reason": "bad"}])):
+                      dict(valid, findings=[{"criterion": [], "path": "", "reason": "bad"}]),
+                      dict(valid, reviewed_criteria=[]),
+                      dict(valid, reviewed_criteria=valid["reviewed_criteria"] * 2),
+                      dict(valid, reviewed_criteria=valid["reviewed_criteria"] + ["compile"]),
+                      dict(valid, decision="reject", findings=[{
+                          "criterion": "compile", "path": "", "reason": "A model cannot waive or replace compilation"}])):
             with self.subTest(value=value):
                 save_json(path, value)
                 with self.assertRaises(SafetyError):
                     review_decision(path, action)
         save_json(path, valid)
         self.assertEqual(review_decision(path, action)["decision"], "approve")
+
+    def test_review_packet_contains_only_exact_unresolved_judgments(self):
+        from .trial_delivery import WorkerDelivery
+        action, _, _, _ = self.review_boundary()
+        state = self.f.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]
+        delivery = WorkerDelivery.from_dict(state["deliveries"][action["binding"]["delivery_id"]]["delivery"])
+        task, decision, _ = self.runtime.workflow.review_task(action, delivery)
+        scope = json.loads((decision.parent / (action["effect_id"] + "-judgments.json")).read_bytes())
+        self.assertEqual(scope["unresolved_criteria"], action["binding"]["unresolved_criteria"])
+        self.assertNotIn("compile", scope["unresolved_criteria"])
+        self.assertIn("cannot be waived", task)
+        self.assertIn("reviewed_criteria", task)
+        with self.assertRaises(SafetyError):
+            self.runtime.workflow.review_task(dict(action, binding=dict(action["binding"], unresolved_criteria={})), delivery)
 
     def test_unsettled_turn_stays_uncertain_without_freeing_reviewer_capacity(self):
         action, native, journal, _ = self.review_boundary(finalized=False)

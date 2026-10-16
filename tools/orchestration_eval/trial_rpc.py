@@ -260,15 +260,17 @@ def launch_root(manager: ProcessManager, executable: Path, directory: Path, spec
             "---\nname: bounded-trial-reviewer\ndescription: Independent scoped reconstruction review\n"
             f"model: {selected['provider']}/{selected['model']}\n"
             "thinking: high\ntools: read, grep, glob, write\n---\n"
-            "Review only the exact supplied assignment and immutable delivery. Independently inspect its source, "
-            "original assembly, caller ABI, edge semantics, actual compiler/object/relocation/source-selection "
-            "receipts and all required binary hashes. A worker claim or matching final binary is not source-selection proof. "
-            "An exhausted NonMatching final attempt intentionally retains original-code fallback and zero accepted credit. "
-            "Check ownership and preserved attempt limits; reject concrete failed criteria, not unrelated repository advancement. "
+            "Review only the exact supplied assignment/delivery and its explicit unresolved-criteria packet. "
+            "Independently inspect source, original assembly and retained evidence only as needed for those named judgments. "
+            "The controller's mandatory mechanical checks cannot be waived, replaced or broadened into another review. "
+            "Do not redo already covered criteria or infer a new runtime gate from unavailable in-game execution. "
+            "An exhausted NonMatching draft retains original fallback and zero accepted credit. "
+            "Reject concrete findings only within the recorded unresolved scope, not unrelated repository advancement. "
             "Do not edit source or perform integration. Your only write is the exact supplied decision filename. "
             "Read the supplied native review-identity record after your preparation gate opens, and bind your JSON decision "
-            "to that actual reviewer/session/action and delivery. Return decision approve or reject and concrete findings "
-            "(criterion, path, reason). Never manufacture acceptance, a native identity, or measurements.\n",
+            "to that actual reviewer/session/action and delivery. Return reviewed_criteria listing exactly those unresolved "
+            "IDs once, decision approve or reject and concrete findings (criterion,path,reason). "
+            "Never manufacture acceptance, a native identity, or measurements.\n",
             encoding="utf-8", newline="\n")
     config = directory / "config.yml"
     save_json(config, {

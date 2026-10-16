@@ -73,5 +73,14 @@ def review_decision(path, action):
             or any(not isinstance(item, dict) or any(not isinstance(item.get(name), str)
                    for name in ("criterion", "path", "reason")) for item in findings)):
         raise SafetyError("Actual review decision requires approve/reject and typed concrete findings")
-    return {"decision": value["decision"], "findings": findings,
+    scope = action["binding"].get("unresolved_criteria")
+    reviewed = value.get("reviewed_criteria")
+    if (not isinstance(scope, dict) or not scope or not isinstance(reviewed, list)
+            or any(not isinstance(item, str) for item in reviewed)
+            or len(reviewed) != len(set(reviewed)) or set(reviewed) != set(scope)
+            or any(item["criterion"] not in scope or not item["reason"].strip() for item in findings)
+            or (value["decision"] == "approve" and findings)
+            or (value["decision"] == "reject" and not findings)):
+        raise SafetyError("Review must judge exactly the unresolved scope and cannot waive mechanical criteria")
+    return {"decision": value["decision"], "findings": findings, "reviewed_criteria": reviewed,
             "decision_file": {"path": str(path), "sha256": hashlib.sha256(raw).hexdigest()}}

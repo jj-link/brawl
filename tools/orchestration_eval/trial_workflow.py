@@ -93,6 +93,9 @@ class TrialWorkflow:
 
     def review_task(self, action, delivery):
         key = action["assignment_id"]
+        unresolved = action["binding"].get("unresolved_criteria")
+        if not isinstance(unresolved, dict) or not unresolved:
+            raise SafetyError("Model review requires explicit remaining criterion judgments")
         directory, decision, identity = self.review_paths(key, delivery.delivery_id)
         packet = directory / "delivery.json"
         if not packet.exists():
@@ -102,14 +105,20 @@ class TrialWorkflow:
         verification = directory / "verification.json"
         if not verification.exists():
             save_json(verification, state["validation"])
-        task = (f"Independently review this exact delivery {packet} and actual controller verification {verification}. "
+        scope = directory / (action["effect_id"] + "-judgments.json")
+        save_json(scope, {"binding": action["binding"], "unresolved_criteria": unresolved})
+        task = (f"Review only the explicit unresolved judgments in {scope}, for exact delivery {packet} "
+                f"and controller verification {verification}. "
                 f"Candidate workspace: {assignment['identity']['reservation']['workspace']}. "
                 f"Before reviewing read your genuine native/action identity at {identity}. "
-                "Inspect actual source, original assembly/caller ABI and fixed evidence. Do not trust worker claims. "
-                "Write one JSON object with keys delivery_id, effect_id, reviewer_id, session_id, decision, findings. "
-                "Identity values come from that identity record. decision is approve or reject; approval findings is []; "
-                "rejection findings each has criterion,path,reason. Fixed criteria: compile,object_compare,data_relocations,"
-                "source_link,binary_hashes,progress,abi,edge_semantics,ownership,attempt_rules,relevant_inputs. "
+                "Inspect actual source, original assembly/caller ABI and the named evidence for those judgments. "
+                "Mechanical checks are mandatory and cannot be waived or replaced by your opinion. "
+                "Do not broaden this review to already covered criteria or treat unavailable runtime as a new criterion. "
+                "Write one JSON object with keys delivery_id, effect_id, reviewer_id, session_id, "
+                "reviewed_criteria, decision, findings. "
+                "Identity values come from that identity record. reviewed_criteria lists exactly the unresolved IDs once. "
+                "decision is approve or reject; approval findings is []; rejection findings is nonempty and each "
+                "has criterion,path,reason concerning only the recorded unresolved scope. "
                 "A path is a concrete delivery input/artifact relative path, or empty for a global criterion. "
                 "Do not edit code, invoke another model, publish or manufacture evidence. "
                 f"Your sole output file is {decision}.")
