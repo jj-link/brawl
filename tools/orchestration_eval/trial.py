@@ -309,7 +309,7 @@ def main(argv=None):
     parser.add_argument("--omp", type=Path)
     parser.add_argument("--test-target", action="append", help="Owned package test file, optionally ::Class::method")
     args = parser.parse_args(argv)
-    check_worktree(real_trial=True)
+    check_worktree(real_trial=True, engineering_candidate=args.command in {"test", "status", "stop", "recover"})
     if args.command == "inspect-model":
         result = inspect_model()
     elif args.command == "status":

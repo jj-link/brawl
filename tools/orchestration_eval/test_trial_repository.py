@@ -1,4 +1,5 @@
 """Actual owned Git/process effects; fixture review/compile admissions are explicitly synthetic."""
+import ast
 import hashlib
 import json
 import os
@@ -10,7 +11,7 @@ import uuid
 
 from . import trial_repository
 from .evidence import capture_inputs, file_identity
-from .safety import SafetyError, digest, isolated_environment, save_json
+from .safety import BUILD, WORKTREE, RESERVED_WORKTREE, SafetyError, digest, isolated_environment, save_json
 from .test_state import WorkflowFixture
 from .trial_delivery import WorkerDelivery
 from .trial_recovery import ReadOnlyGit, recover_action
@@ -21,7 +22,7 @@ from .trial_runtime import TrialRuntime
 @unittest.skipUnless(os.name == "nt" and os.environ.get("OMP_EVAL_TEST_AUTHORIZATION") == "isolated-fixtures",
                      "Explicit owned Git/native process verification required")
 class TrialRepositoryTests(unittest.TestCase):
-    def git(self, cwd, *arguments, data=None):
+    def git(self, cwd, *arguments, data=None, raw=False):
         argv = ["git", "-C", str(cwd), "-c", "core.longpaths=true", "-c", "core.autocrlf=false",
                 "-c", "user.name=Owned Git regression", "-c", "user.email=owned-git@invalid", *arguments]
         result = subprocess.run(argv, input=data, env=self.environment, capture_output=True, timeout=30)
@@ -29,35 +30,51 @@ class TrialRepositoryTests(unittest.TestCase):
                   {"argv": argv, "returncode": result.returncode, "stdout": result.stdout.decode(errors="replace"),
                    "stderr": result.stderr.decode(errors="replace"), "qualification": "Owned local Git fixture setup/query"})
         self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
-        return result.stdout.decode().strip()
+        return result.stdout if raw else result.stdout.decode().strip()
 
     def prepare(self, fixture):
         self.fixture_root = fixture.root
         self.environment = isolated_environment(fixture.root / "git-setup-environment")
         self.environment.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT="0")
-        self.source = fixture.root / "read-only-source"
-        self.remote = fixture.root / "owned-remote.git"
-        self.target = fixture.root / "independent-publication"
+        # Keep the canonical application data root; shorten only disposable Git
+        # fixture paths, including the clone child's stricter $GIT_DIR guard.
+        git_root = BUILD / "g" / uuid.uuid4().hex[:16]
+        git_root.mkdir(parents=True)
+        self.source = git_root / "s"
+        self.remote = git_root / "r.git"
+        self.target = git_root / "p"
         self.source.mkdir()
         self.remote.mkdir()
         self.git(self.source, "init", "-b", "baseline")
+        # The clone's upload-pack subprocess reads the source repository's own
+        # config, not just our setup command's -c options.
+        self.git(self.source, "config", "--local", "core.longpaths", "true")
         self.git(self.remote, "init", "--bare")
         self.git(self.remote, "config", "--local", "core.longpaths", "true")
         row = fixture.case.manifest["reservations"][0]
+        if self.routine:
+            row["function"] = {"module": 117, "symbol": "fn_117_E228", "start": 0xE228, "end": 0xE230, "size": 8}
+            row["owned_paths"][0] = "src/mo_fighter/ft_dedede/ft_dedede_function_e228.cpp"
+            assembly = json.loads((WORKTREE / "candidate-assembly.json").read_bytes())
+            publication = json.loads(Path(assembly["publication_receipt"]["path"]).read_bytes())
+            self.approved_repository = Path(publication["repository"])
+            self.approved_baseline = assembly["implementation_baseline"]
         for name in row["owned_paths"]:
             if name.endswith(".cpp"):
                 continue
             path = self.source / name
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(b"baseline registration\n")
+            path.write_bytes(self.git(self.approved_repository, "show", self.approved_baseline + ":" + name, raw=True)
+                             if self.routine else b"baseline registration\n")
         (self.source / ".gitattributes").write_bytes(b"*.cpp text eol=lf\n*.py text eol=lf\n*.txt text eol=lf\n")
         self.git(self.source, "add", "--", ".")
         self.git(self.source, "commit", "-m", "Owned fixture baseline")
         self.baseline = self.git(self.source, "rev-parse", "HEAD")
         fixture.case.manifest["publication_target"] = {
             "repository": str(self.target), "remote": str(self.remote), "branch": "controller-trial"}
-        for reservation in fixture.case.manifest["reservations"]:
+        for index, reservation in enumerate(fixture.case.manifest["reservations"]):
             reservation["baseline_commit"] = self.baseline
+            reservation["workspace"] = str(git_root / f"w{index}")
         self.source_index = file_identity(self.source / ".git/index")
         self.source_head = (self.source / ".git/HEAD").read_bytes()
 
@@ -77,9 +94,24 @@ class TrialRepositoryTests(unittest.TestCase):
         path = fixture.root / "actual-fixture-target.json"
         save_json(path, authority)
         target["ownership_evidence"] = {"path": str(path), "sha256": digest(path)}
+        if self.routine:
+            recipe_path = RESERVED_WORKTREE / "build/orchestration-eval/controller-four-qwen-inputs-001/e228-recipe.json"
+            recipe = json.loads(recipe_path.read_bytes())["recipe"]
+            recipe["registration"] = {
+                "schema": 1, "module": 117, "library": "ft_dedede", "configure_path": "configure.py",
+                "splits_path": "config/RSBE01_02/rels/ft_dedede/splits.txt",
+                "cflags": "cflags_fighter", "extra_cflags": ["-RTTI off"]}
+            fixture.config["verification"]["trial-0"]["recipe"] = recipe
+            save_json(fixture.root / "actual-registration-template-inputs.json", {
+                "repository": str(self.approved_repository), "commit": self.approved_baseline,
+                "recipe_ref": str(recipe_path), "recipe_sha256": digest(recipe_path),
+                "qualification": "Real approved configure/splits and fixed recipe; compile admissions remain synthetic fixture data"})
 
     def setUp(self):
-        self.f = WorkflowFixture(prepare=self.prepare, configure=self.configure)
+        self.mechanical = self._testMethodName.startswith("test_mechanical_")
+        self.routine = self._testMethodName == "test_mechanical_routine_registration_reaches_real_publication"
+        self.f = WorkflowFixture(root=BUILD / "g" / uuid.uuid4().hex[:16] / "e",
+                                 prepare=self.prepare, configure=self.configure, mechanical=self.mechanical)
         self.runtime = TrialRuntime(self.f.root, self.f.ledger, Path("never-a-native-model-host.exe"), {})
         self.source_override = patch.object(trial_repository, "ACTIVE", self.source)
         self.source_override.start()
@@ -92,8 +124,29 @@ class TrialRepositoryTests(unittest.TestCase):
         self.workspace = Path(self.f.case.manifest["reservations"][0]["workspace"])
         self.workspace.parent.mkdir(parents=True, exist_ok=True)
         self.git(self.source, "clone", "--no-local", "--no-hardlinks", str(self.source), str(self.workspace))
+        self.git(self.workspace, "config", "--local", "core.longpaths", "true")
         self.packet = self.real_delivery()
-        self.f.reviewed(packet=self.packet)
+        if self.mechanical:
+            self.f.capture(packet=self.packet)
+            if self.routine:
+                from .trial_execution import OwnedCommands
+                from .trial_verification import delivery_ownership
+                action = self.admit()
+                result = self.f.validation_result()
+                proof = delivery_ownership(self.runtime, action, WorkerDelivery.from_dict(self.packet),
+                    self.f.config["verification"]["trial-0"], OwnedCommands(self.runtime),
+                    self.runtime.workflow.directory(action["effect_id"]), matching=True, cleanup_ref="fixture-cleanup-admission")
+                self.assertIsNotNone(proof["proof"], proof)
+                result["ownership_proof"] = proof["proof"]
+                result["check_identities"][proof["evidence_ref"]] = file_identity(Path(proof["evidence_ref"]))
+                result["coverage"]["unresolved"].pop("ownership")
+                result["coverage"]["covered"]["ownership"] = {
+                    "method": "controller-owned-delivery", "evidence_refs": [proof["evidence_ref"]]}
+                self.runtime.workflow.complete(action, result)
+            elif self._testMethodName != "test_mechanical_failure_cannot_reach_publication":
+                self.f.validate()
+        else:
+            self.f.reviewed(packet=self.packet)
         self.delivery = WorkerDelivery.from_dict(self.packet)
 
     def tearDown(self):
@@ -107,15 +160,40 @@ class TrialRepositoryTests(unittest.TestCase):
         return action
 
     def real_delivery(self):
-        packet = self.f.packet(two_units=True)
+        packet = self.f.packet(two_units=not self.mechanical or self.routine,
+                               source_only=self.mechanical and not self.routine)
         paths = self.f.case.manifest["reservations"][0]["owned_paths"]
         source_name = next(name for name in paths if name.endswith(".cpp"))
+        if self.mechanical and not self.routine:
+            paths = [source_name]
         changes = {}
         for name in paths:
             path = self.workspace / name
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(b"int fixture_function() { return 1; }\r\n" if name == source_name
-                             else b"baseline registration\r\nowned registration\r\n")
+            if self.routine and name != source_name:
+                before_raw = path.read_bytes()
+                relative = Path(source_name).relative_to("src").as_posix()
+                if name == "configure.py":
+                    tree = ast.parse(before_raw.decode("utf-8"))
+                    libraries = [node for node in ast.walk(tree) if isinstance(node, ast.Dict)
+                                 and any(isinstance(key, ast.Constant) and key.value == "lib"
+                                         and isinstance(value, ast.Constant) and value.value == "ft_dedede"
+                                         for key, value in zip(node.keys, node.values))]
+                    objects = next(value for key, value in zip(libraries[0].keys, libraries[0].values)
+                                   if isinstance(key, ast.Constant) and key.value == "objects")
+                    lines = before_raw.splitlines(keepends=True)
+                    lines.insert(objects.elts[0].lineno - 1, (
+                        f'            Object(Matching, "{relative}",\n'
+                        '                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),\n').encode())
+                    path.write_bytes(b"".join(lines))
+                else:
+                    function = self.f.case.manifest["reservations"][0]["function"]
+                    path.write_bytes(before_raw + (
+                        f'\n{relative}:\n\t.text start:0x{function["start"]:08X} '
+                        f'end:0x{function["end"]:08X}\n').encode())
+            else:
+                path.write_bytes(b"int fixture_function() { return 1; }\r\n" if name == source_name
+                                 else b"baseline registration\r\nowned registration\r\n")
             before = self.git(self.source, "ls-tree", self.baseline, "--", name)
             entry = None if not before else {"mode": before.split()[0], "blob": before.split()[2]}
             changes[name] = {"before": entry, "after": {"mode": "100644", "blob": self.git(
@@ -124,9 +202,11 @@ class TrialRepositoryTests(unittest.TestCase):
         inputs = capture_inputs(self.workspace, {"source": [source_name], "header": [], "tool": [],
             "config": [name for name in paths if name != source_name] + [".gitattributes"]},
             self.f.config["verification"]["trial-0"]["recipe"])
-        packet.update(changes=changes, inputs=inputs.to_dict(), cleanup=[], logical_units=[
-            {"message": "Owned source logical unit", "paths": [source_name]},
-            {"message": "Owned registration logical unit", "paths": [name for name in paths if name != source_name]}])
+        units = [{"message": "Owned source logical unit", "paths": [source_name]}]
+        if not self.mechanical or self.routine:
+            units.append({"message": "Owned registration logical unit",
+                          "paths": [name for name in paths if name != source_name]})
+        packet.update(changes=changes, inputs=inputs.to_dict(), cleanup=[], logical_units=units)
         for name in packet["artifacts"]:
             path = self.workspace / "evidence" / (name + ".json")
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -140,6 +220,70 @@ class TrialRepositoryTests(unittest.TestCase):
         result = self.runtime.workflow.dispatch(action)
         self.runtime.workflow.complete(action, result)
         return action, result
+
+    def test_mechanical_routine_registration_reaches_real_publication(self):
+        self.assertEqual(self.f.ledger.assignment("trial-0")["acceptance"]["mode"], "mechanical")
+        stages = []
+        while True:
+            action = self.admit()
+            stages.append(action["kind"])
+            self.runtime.workflow.complete(action, self.runtime.workflow.dispatch(action))
+            if action["kind"] == "acknowledge":
+                break
+        self.assertEqual(stages, ["materialize", "commit", "push", "commit", "push", "acknowledge"])
+        actions = self.f.ledger.snapshot()["trial"]["workflow"]["actions"].values()
+        self.assertFalse(any(action["kind"] in {"prepare_review", "review"} for action in actions))
+        validation = next(action for action in actions if action["kind"] == "validate_delivery")
+        self.assertEqual({row["transformation"] for row in validation["result"]["ownership_proof"]["paths"].values()},
+                         {"configure-obj-insertion-v1", "splits-section-insertion-v1"})
+        self.assertEqual(self.git(self.target, "rev-parse", "HEAD"),
+                         self.git(self.remote, "rev-parse", "refs/heads/controller-trial"))
+        self.assertEqual(file_identity(self.source / ".git/index"), self.source_index)
+        self.assertTrue(all(row.get("exit_proof", {}).get("observed_exit") for row in self.runtime.manager.records()))
+
+    def test_mechanical_acceptance_reaches_real_publication_without_reviewer(self):
+        state = self.f.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]
+        self.assertEqual(self.f.ledger.assignment("trial-0")["acceptance"]["mode"], "mechanical")
+        self.assertIsNone(state["reviewer"])
+        self.assertIsNone(state["review"])
+        performed = []
+        while True:
+            action = self.admit()
+            performed.append(action["kind"])
+            self.assertNotIn(action["kind"], {"prepare_review", "review"})
+            result = self.runtime.workflow.dispatch(action)
+            self.runtime.workflow.complete(action, result)
+            if action["kind"] == "acknowledge":
+                break
+        self.assertEqual(performed, ["materialize", "commit", "push", "acknowledge"])
+        for name, change in self.packet["changes"].items():
+            self.assertEqual(file_identity(self.target / name), change["raw"])
+        self.assertEqual(self.git(self.target, "rev-parse", "HEAD"),
+                         self.git(self.remote, "rev-parse", "refs/heads/controller-trial"))
+        actions = self.f.ledger.snapshot()["trial"]["workflow"]["actions"].values()
+        self.assertFalse(any(action["kind"] in {"prepare_review", "review"} for action in actions))
+        self.assertEqual(self.runtime.roots, {})
+        self.assertEqual(file_identity(self.source / ".git/index"), self.source_index)
+        self.assertTrue(all(row.get("exit_proof", {}).get("observed_exit")
+                            for row in self.runtime.manager.records()))
+
+    def test_mechanical_failure_cannot_reach_publication(self):
+        from .trial_verification import VerificationRejected
+        action = self.admit()
+        self.assertEqual(action["kind"], "validate_delivery")
+        source = self.workspace / next(name for name in self.packet["changes"] if name.endswith(".cpp"))
+        source.write_bytes(source.read_bytes() + b"/* changed after measured delivery */\n")
+        with self.assertRaises(VerificationRejected) as rejected:
+            self.runtime.workflow.dispatch(action)
+        self.runtime.workflow.complete(action, {"findings": rejected.exception.findings,
+                                               "effect_absent": True}, outcome="rejected")
+        readiness = self.f.ledger.trial_readiness("trial-0")
+        self.assertEqual(readiness["kind"], "reconcile")
+        state = self.f.ledger.snapshot()["trial"]["workflow"]["assignments"]["trial-0"]
+        self.assertIsNone(self.f.ledger.assignment("trial-0").get("acceptance"))
+        self.assertIsNone(state["reviewer"])
+        self.assertEqual(self.git(self.target, "rev-parse", "HEAD"), self.baseline)
+        self.assertEqual(self.f.ledger.assignment("trial-0")["owner_id"], self.packet["owner_id"])
 
     def test_actual_raw_materialization_and_separate_commit_push_units(self):
         index_before = file_identity(self.target / ".git/index")

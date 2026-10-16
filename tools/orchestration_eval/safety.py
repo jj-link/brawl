@@ -10,8 +10,11 @@ import subprocess
 from datetime import datetime, timezone
 
 WORKTREE = Path(__file__).resolve().parents[2]
+RESERVED_WORKTREE = (WORKTREE.parents[2] if WORKTREE.parent.name == "orchestration-eval"
+                    and WORKTREE.parent.parent.name == "build"
+                    and WORKTREE.parents[2].name == "PrefectOmpRealFunctionTrial" else WORKTREE)
 BUILD = WORKTREE / "build" / "orchestration-eval"
-ACTIVE = WORKTREE.parents[2]
+ACTIVE = RESERVED_WORKTREE.parents[2]
 NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 
 
@@ -45,15 +48,34 @@ def confined(path: Path | str, root: Path = BUILD) -> Path:
     return path
 
 
-def check_worktree(*, real_trial: bool = False, control_plane: bool = False) -> None:
+def check_worktree(*, real_trial: bool = False, control_plane: bool = False,
+                   engineering_candidate: bool = False) -> None:
     names = {"PrefectOmpRealFunctionTrial"} if real_trial else {"PrefectOmpEvaluation"}
     if control_plane:
         names.add("PrefectOmpRealFunctionTrial")
-    expected = ACTIVE / "build" / "isolated-workers" / WORKTREE.name
-    if os.name != "nt" or WORKTREE.name not in names or WORKTREE != expected or not (WORKTREE / ".git").is_file():
+    if WORKTREE != RESERVED_WORKTREE:
+        if not engineering_candidate:
+            raise SafetyError("An engineering source assembly cannot launch a real trial")
+        confined(WORKTREE, RESERVED_WORKTREE / "build" / "orchestration-eval")
+        assembly_path = confined(WORKTREE / "candidate-assembly.json", WORKTREE)
+        assembly = json.loads(assembly_path.read_bytes())
+        receipt = assembly["publication_receipt"]
+        receipt_path = confined(Path(receipt["path"]), RESERVED_WORKTREE / "build" / "orchestration-eval")
+        published = json.loads(receipt_path.read_bytes())
+        if (assembly.get("schema") != "brawl-engineering-candidate/v1"
+                or Path(assembly["candidate"]) != WORKTREE
+                or Path(assembly["reserved_workspace"]) != RESERVED_WORKTREE
+                or digest(receipt_path) != receipt["sha256"]
+                or published["head"] != assembly["implementation_baseline"]
+                or published["remote_head"] != published["head"]
+                or published["engineering_baseline"] != assembly["engineering_baseline"]):
+            raise SafetyError("Engineering assembly lacks its exact approved publication baseline")
+    expected = ACTIVE / "build" / "isolated-workers" / RESERVED_WORKTREE.name
+    if (os.name != "nt" or RESERVED_WORKTREE.name not in names or RESERVED_WORKTREE != expected
+            or not (RESERVED_WORKTREE / ".git").is_file()):
         raise SafetyError(f"Requires an authorized native-Windows detached worktree: {sorted(names)}")
     common = subprocess.run(
-        ["git", "-C", str(WORKTREE), "rev-parse", "--path-format=absolute", "--git-common-dir"],
+        ["git", "-C", str(RESERVED_WORKTREE), "rev-parse", "--path-format=absolute", "--git-common-dir"],
         capture_output=True, text=True, check=True, creationflags=NO_WINDOW,
         env=isolated_environment(BUILD / "boundary", create=False),
     ).stdout.strip()
