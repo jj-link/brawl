@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Dedede 151C8 — zero-return virtual method reconstruction
+
+- Reconstructed `fn_117_151C8`, module 117 `.text[0x151C8,0x151D0)`, eight original code bytes, as genuine C++ returning false. The return type and unused argument are ABI inferences, not authoritative recovered declarations. Allocated text `386000004e800020` exactly matches, with no relocations or other allocated sections; source blob `b572b4d2f9e7b67c40892b2f0bfc86b09776074f`.
+- GPT-6 Luna owner `LunaDedede151C8`, max reasoning: one initial candidate, zero corrections; inherited lifetime counts remain unknown. The retained wrong-directory comparison invocation was not a measured correction. After source publication, this is Luna's third consecutive accepted eight-byte adaptive win; the next fresh owner targets 16 bytes.
+- Complete native inputs cover accepted `d7c9c2d3` plus 151C8, including accepted 17D38. Actual native linkage places both functions correctly and all 127 final DOL/REL hashes pass. Candidate object `5e31e1e1293421c60fff0ac109fd6a7b8bf335b3` matches the retained original region's owned eight-byte window; whole ELF identity is not claimed. No gameplay runtime exercise was performed.
+- Grant `Luna151C8Main1a110ce9` applied only the reviewed three-path patch with actual native check/apply exit zero. Exact +2/+3-line insertions preserve all other registration bytes; source is 61 CRLF bytes and cleans to the reviewed blob. Native ancestor/non-reparse/single-link checks, captured unrelated dirty-file hashes/sizes and directory states, HEAD, exact parent index, attributes/config and the retained Qwen metadata artifact were preserved. The owner explicitly released MAIN.
+- Evidence: `build/isolated-workers/LunaDedede151C8/evidence/`, including `review-ready-17d38-complete-prefix.txt`, `main-grant-1a110-reconciled-receipt.txt` and the absolute private-index proof against full baseline `1a110ce96bfb09f6c555e1da72e7e4c38026c49b`. Canonical own-only stage blobs/modes are separate from dirty working bytes. Earlier evidence, all original copies/junction links and contents, and restored-original qualifications remain retained; cumulative dashboard credit follows independent publication.
+
 ## Committed-source checkpoint d7c9c2d3
 
 - Verified committed snapshot `d7c9c2d3face334846efb4a20a882d38d58743ef`; report SHA-256 `a41eaf719e6287769a65ba7141abef82f8f4eb1ea353d94544c591d59fdc1072`. Fresh native build/report passed **127 DOL/REL hashes**.
