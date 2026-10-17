@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Four simultaneous GLM reconstruction owners
+
+- The user increased the GLM reconstruction pool from three to four simultaneous owners. Each fresh owner still solves one separately reserved function in its own worktree and finishes at delivery.
+- The current 192-byte adaptive target, attempt accounting and independent refill rules are unchanged. One retained GPT-6.1 Sol owner continues integration, verification, source commit/push and automated dashboard publication.
+
 ## Sol integration retained after user-ended GLM trial
 
 - The user ended the one-function GLM integration trial and selected GPT-6.1 Sol for integration/publication. `GlmIntegrationTrialLuigi8054` was cancelled, then its session and registration were explicitly closed; the tool reported 9 minutes 1 second and 9 requests, with no returned result.
