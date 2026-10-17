@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 0530b90c
+
+- Verified committed snapshot `0530b90cdc362ca4926ca0864a69a0fea7cb2744`; report SHA-256 `98f417c34a1c6731001eb063c4f05c1d38c92b856f310160fee270729c73b2d0`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2894 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.014459%** complete: **477296 / 15833556 accepted code bytes**, **15356260 code bytes remaining**, **1465 accepted source units**.
+- Delta from `b8a25eeb3a6edb58fb2269ce5cf7b0e846c0c417`: **+196 accepted code bytes / +1 source units**. The complete map has **5769 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Dedede fn_117_6EC8 — collision-attack aggregate construction, matching source integration
 
 - Integrated unchanged genuine C++ for module117 `ft_dedede` `.text [0x6EC8, 0x6F8C)`, **196 bytes**. Actual caller at fighter+0x19E0 and next member+0x209C establishes the0x6BC extent. Real headers and original helper bodies confirm five144-byte attack parts, five120-byte groups, two104-byte absolutes, each vector's12-byte header, and the160-byte module at+0x61C. A144-byte temporary in the0xC0 frame is constructed with category0/booltrue and destroyed before the remaining vectors. Accesser, integer task, extracted byte task category, descriptor, stack bool and returned config match the original. No source/ABI/header/caller revision or tuning was required.
