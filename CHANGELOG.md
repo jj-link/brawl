@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 6f84d71c
+
+- Verified committed snapshot `6f84d71c2b57f0bd2c4e71732350dfdaadf2e33a`; report SHA-256 `62aa1950ad4a7d2a6c0bd96f61a95b56c18179c3d4e4d273fd1ee795e3685aeb`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2901 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.022593%** complete: **478584 / 15833556 accepted code bytes**, **15354972 code bytes remaining**, **1472 accepted source units**.
+- Delta from `679a55d8b30ae661dc102eaa8f86745ff43ec3dc`: **+204 accepted code bytes / +1 source units**. The complete map has **5783 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi 79C8 — embedded aggregate initialization
 
 - Integrate `fn_99_79C8` (`ft_luigi` .text `[0x79C8,0x7A94)`, 204 bytes) using the existing fighter recipe plus per-object `-RTTI off`. Independently trace the actual sole observed caller: `fn_99_70` saves the outer receiver in `r24`, sets `r25 = outer+0x194` for `LuigiEventStorage`, then passes `r25+0xB940` at `.text 0x7E4`. This function initializes and returns **that embedded receiver, outer+0xBAD4**, not the fighter base. Preserve the five ordered initializers at receiver offsets `0/0x38/0x50/0x5C/0x6C`, the twelve-word register/stack argument mapping, and literal 10. Review actual module-27 callee prologues/storage handling and external data ownership; no body, ABI, header or caller changes, and no gameplay exercise.
