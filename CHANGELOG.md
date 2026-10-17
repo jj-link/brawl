@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 679a55d8
+
+- Verified committed snapshot `679a55d8b30ae661dc102eaa8f86745ff43ec3dc`; report SHA-256 `646a0b42660657bab6a0208052641667581295773672cc622210a8bb69365bff`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2900 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.021305%** complete: **478380 / 15833556 accepted code bytes**, **15355176 code bytes remaining**, **1471 accepted source units**.
+- Delta from `ad519b77caf4f554ce925617785d23baf8b2a587`: **+180 accepted code bytes / +1 source units**. The complete map has **5781 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness D524 — work-array virtual size maximum
 
 - Integrate `fn_101_D524` (`ft_ness` .text `[0xD524,0xD5D8)`, 180 bytes) as matching C++, preserving the delivered 472-byte source SHA1 `25288a30d498af678376e5bf3002780b34349a4a` and existing fighter compiler recipe. The anonymous work-array view agrees with accepted `ness_function_d62c.cpp`: pointer members at `+0x10/+0x14/+0x18`, using the real `soArrayFixed`/`soNullableInterface` headers and signed `size() const` virtual slot `+0x14`. Preserve flags-first ordering, signed comparisons/ties/negative results, conditional winning-member reload and second virtual call, and absence of added null guards. No source-body, ABI, header or caller revisions; no gameplay exercise.
