@@ -262,7 +262,7 @@ Stop dispatch after this eight-assignment queue, or earlier on the user's STOP. 
 - Preserve the existing 8-byte floor. If there is no successful lower bound or no suitable intermediate size, record that limitation rather than inventing a midpoint result; retain a known successful working size when available. The result is a tested working size, not a claimed maximum model capability.
 - Keep candidate/correction counts, actual size, function type, sample membership, sizing phase (exploration, midpoint search, or held), observed bounds, matching result and assignment timing in the existing assignment evidence and changelog. Preserve prior measurements, unmatched work and the original-code fallback; do not reset function histories or change correction allowances or acceptance criteria.
 - Existing in-flight assignments finish unchanged. Refill slots independently; sample collection does not create a synchronized build batch or a new approval gate. Current results may contribute where they meet the diversity requirement, but several near-identical in-flight functions do not establish a diverse three-function result. A size-policy update does not authorize paused models or additional workers.
-- The separately authorized four-Qwen/eight-function trial retains its separately coordinated boundaries; this production arrangement does not resize, launch or adopt it. The user has authorized one production Qwen3.8-Flash-Next worker on Spark1 alongside the three GLM workers.
+- The separately authorized four-Qwen/eight-function trial retains its separately coordinated boundaries; this production arrangement does not resize, launch or adopt it. The user has paused the production Qwen worker; do not refill or resume it without renewed authorization.
 - Let current workers finish their existing assignments; apply this target selection when assigning subsequent work.
 - Define each target's boundaries, original size, compiler settings, dependencies, matching requirements, and known blockers before implementation.
 - Use Brawl headers and related reverse-engineering work as evidence. Verify layouts and implementations against Brawl's binaries rather than assuming another project's code is interchangeable.
@@ -275,14 +275,22 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | Model | Workers | Role |
 | --- | ---: | --- |
 | GLM | 3 | Solve and verify one unit per fresh owner; adaptive sizing as specified above; finish on delivery. |
-| Qwen3.8-Flash-Next on Spark1 | 1 | Solve and verify one unit per fresh owner; independent Qwen adaptive-size record, continuing at 8 bytes; finish on delivery. |
+| Qwen3.8-Flash-Next on Spark1 | 0 active | User-paused; retain work, attempts and the independent 8-byte adaptive target. No refill or resumption without authorization. |
 | GPT-6.1 Sol | 1 | Retained integration and source-publication owner; handles completed units through source commit/push. |
 | GPT-6.1 Sol | 1 | Existing retained dashboard publisher; cumulative progress from committed results. |
 | GPT-6 Luna and other reconstruction models | 0 active | Remain paused. Preserved work and attempt histories remain available. |
 
-The user-approved arrangement separates reconstruction from integration/publication. Three GLM workers and one production Qwen worker deliver unit solutions; a fresh owner of the same model fills each completed slot immediately. The retained Sol integration owner and the existing dashboard publisher serve both models and remain separate roles. Qwen uses the same adaptive-size rule with its own samples, outcomes, successful/failed bounds and held target; GLM's current size and results do not change Qwen's size. Continue Qwen at its recorded 8-byte target without resetting any function's attempts or discarding earlier evidence. This authorizes one production Qwen slot, not Luna or additional workers, and does not activate or transfer ownership of the separately coordinated four-Qwen trial.
+The user-approved arrangement separates reconstruction from integration/publication. Three GLM workers deliver unit solutions; a fresh GLM owner fills each completed slot immediately. The retained Sol integration owner and the existing dashboard publisher remain separate roles until the approved automation below is verified. Qwen is user-paused; preserve its separate samples, outcomes, bounds, 8-byte target and all function attempts. GLM's current size and results do not change Qwen's size. This arrangement does not activate Luna, additional workers or the separately coordinated four-Qwen trial.
 
 Reconstruction workers independently run their compile–compare–revise loops and unit verification without parent implementation advice. Sol handles shared-file integration, input-required final verification and source publication. Existing attempts and evidence carry forward; changing these roles does not reset a stage or authorize additional reconstruction models.
+
+#### Approved dashboard-publication automation
+
+The user approved replacing the separate dashboard-publisher agent with a program run by the existing Sol integration/source publisher after each source push. That retained Sol owner implements and verifies the command; this is an explicit extension of its role, not authorization for another reconstruction owner or an orchestration redesign.
+
+The command must perform the existing committed-checkpoint workflow: bind saved verification evidence to the exact source commit, publish the verified report, record and commit/push the checkpoint entry in `CHANGELOG.md`, and verify local/public dashboard source identity, totals, unit/module map and persisted progress history. Reuse verified unchanged inputs and outputs; preserve existing acceptance criteria, own-only publication boundaries and original/evidence HOLDs. A failed update must report its concrete error without presenting unverified progress as accepted.
+
+Keep the existing dashboard publisher available until the replacement passes actual checkpoint verification. After that cutover, retain three GLM reconstruction owners and one Sol integration/source publisher, which invokes the command after each source push. This change does not hold independent GLM reconstruction or activate paused models.
 
 ### 3. Reconstruct and compare
 
