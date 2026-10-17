@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 77d1d7dc
+
+- Verified committed snapshot `77d1d7dcf286f963f112362f8ccf2df6154ffd4a`; report SHA-256 `1e7fef8e28006b6b44e8fa97c22950edf6724f6c59a9a2e60078029410bee5ef`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2892 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.011983%** complete: **476904 / 15833556 accepted code bytes**, **15356652 code bytes remaining**, **1463 accepted source units**.
+- Delta from `96db877ac830254c6de6e5c653405257e8da3a30`: **+196 accepted code bytes / +1 source units**. The complete map has **5766 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness fn_101_99DC — collision-attack aggregate construction, matching source integration
 
 - Integrated the delivered C++ for module101 `ft_ness` `.text [0x99DC, 0x9AA0)`, **196 bytes**, unchanged. It constructs a144-byte attack-part temporary, initializes five parts, destroys the temporary before the remaining arrays, builds five groups at+0x2DC/two absolutes at+0x540 and placement-constructs the160-byte module at+0x61C. Actual headers/helpers and caller confirm the0x6BC layout extent, byte category, stack bool and returned object. Member-array and raw-offset address expressions denote those same embedded fields; they introduce no fake work, barriers, volatile or register bindings. Declaration-only constructor views and placement-new pragma follow accepted conventions. No source/ABI/header/caller revision or new tuning was required.
