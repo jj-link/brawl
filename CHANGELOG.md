@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint c3dcb78c
+
+- Verified committed snapshot `c3dcb78cb9f8dba64c432cec4af067595e566d13`; report SHA-256 `45479060a1219d49310eee8991248fb61c3d55baa5ed72a8034fe8cefbe8c92f`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2905 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.026458%** complete: **479196 / 15833556 accepted code bytes**, **15354360 code bytes remaining**, **1475 accepted source units**.
+- Delta from `2a3269343bc8f9210587fc6aebde9c67c0dfcf7a`: **+0 accepted code bytes / +0 source units**. The complete map has **5790 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi 7308 — nonmatching—attempts exhausted
 
 - Preserve `fn_99_7308` (`ft_luigi` .text `[0x7308,0x73B8)`, 176 original bytes) as a genuine **NonMatching** C++ draft, with **zero accepted reconstruction credit**. Publish the fully retained initial direct-header implementation, source SHA1 `95889f1beed5a270ad1d0423ed71723b45f183b0` (841 bytes), rather than the later prohibited alias-view draft. The existing `soGeneralWorkSimple` layout provides the real integer/float/flag pointers at `0xC/0x14/0x1C` and unsigned counts at `0x10/0x18/0x20`; its header's direct-member clearing idiom is used unchanged. Each signed-index loop clears its appropriate array, with float zero supplied by `lbl_99_rodata_8`. No inline assembly, volatile, physical register bindings, synthetic alias barrier, body/ABI/header/caller revisions or gameplay exercise.
