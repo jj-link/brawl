@@ -204,6 +204,17 @@ Stop dispatch after this eight-assignment queue, or earlier on the user's STOP. 
 6. Keep received workspaces and evidence available. Follow the cleanup/HOLD rules without waking the closed reconstruction worker or delaying its replacement. With no queued unit, return `awaiting-parent`; the integration role remains retained.
 
 
+### One-function GLM integration trial
+
+The user approved one fresh GLM-5.3-Flash agent testing integration and publication preparation for one delivered function in an exclusive isolated worktree. This temporary trial is additional to the three reconstruction slots; it does not replace the retained Sol publisher or interrupt a unit Sol is already integrating.
+
+- Assign a completed unit not already owned by active Sol integration. Supply its preserved reconstruction workspace, source/object evidence, attempt history, current accepted baseline, existing integration recipe and publication-command contract.
+- The trial owner follows the existing private integration and own-only publication-preparation requirements: reconcile against accepted inputs, resolve applicable registration/interface conflicts, verify the object/data/relocations, actual source linkage and all 127 binary hashes, and prepare the exact owned changes and checkpoint inputs. These duties explicitly override the reconstruction-only profile for this assignment alone.
+- Preserve the original reconstruction ledger and record integration changes separately. Do not start another reconstruction stage, reset attempts, alter acceptance criteria, spawn children or take a second unit.
+- The trial owner makes no MAIN, shared-index, shared-ref, source-push or live-dashboard changes. Deliver the private result and observed verification to the parent and retained Sol.
+- Sol checks the actual trial result before any MAIN grant and retains source commit/push plus automated checkpoint execution. Reuse applicable verified artifacts rather than rebuilding unchanged inputs solely for the handoff.
+- Record whether GLM completed the private workload correctly, any required corrections/interventions and observed timing. Do not describe this private trial as proof that GLM has independently committed, pushed or operated production publication. Any permanent role replacement requires a further user decision.
+
 ### Automated dashboard publication
 
 1. The retained integration/source publisher runs `python tools/live_dashboard/publish_checkpoint.py` after each source push. Supply `--root`, exact full `--source`, `--integration-root`, `--evidence`, project-owned `--receipts`, `--session`, `--public-url`, `--publish`, actual post-source `--expected-head` and `--expected-index-sha256`. The local URL defaults to `http://127.0.0.1:8765`; supply the configured public endpoint. Without `--publish`, the command verifies an already recorded checkpoint without live publication.
@@ -277,6 +288,7 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | GLM | 3 | Solve and verify one unit per fresh owner; adaptive sizing as specified above; finish on delivery. |
 | Qwen3.8-Flash-Next on Spark1 | 0 active | User-paused; retain work, attempts and the independent 8-byte adaptive target. No refill or resumption without authorization. |
 | GPT-6.1 Sol | 1 | Retained integration/source publisher; commits/pushes units and runs the automated dashboard-checkpoint command. |
+| GLM-5.3-Flash | 1 temporary trial slot | One fresh owner tests private integration/publication preparation for one delivered function; Sol checks before MAIN changes. |
 | GPT-6 Luna and other reconstruction models | 0 active | Remain paused. Preserved work and attempt histories remain available. |
 
 The user-approved arrangement separates reconstruction from integration/publication. Three GLM workers deliver unit solutions; a fresh GLM owner fills each completed slot immediately. One retained Sol owner integrates and pushes those results, then runs the automated dashboard-publication command. Qwen is user-paused; preserve its separate samples, outcomes, bounds, 8-byte target and all function attempts. GLM's current size and results do not change Qwen's size. This arrangement does not activate Luna, additional workers or the separately coordinated four-Qwen trial.
