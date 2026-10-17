@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint b8a25eeb
+
+- Verified committed snapshot `b8a25eeb3a6edb58fb2269ce5cf7b0e846c0c417`; report SHA-256 `0adae8af41c5607306bc404924d798463fc4ad7b2ba739d232a943be3c1cbefc`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2893 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.013221%** complete: **477100 / 15833556 accepted code bytes**, **15356456 code bytes remaining**, **1464 accepted source units**.
+- Delta from `77d1d7dcf286f963f112362f8ccf2df6154ffd4a`: **+196 accepted code bytes / +1 source units**. The complete map has **5768 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Dedede fn_117_6F8C — collision-hit aggregate construction, matching source integration
 
 - Integrated unchanged genuine C++ for module117 `ft_dedede` `.text [0x6F8C, 0x7050)`, **196 bytes**. Actual caller, headers and helper bodies confirm the0x95C embedded extent:20 hit parts (104-byte elements plus12-byte vector header), one120-byte group, one56-byte hit group and104-byte hit module at+0x8F4. A104-byte temporary in the0x90 frame is constructed with category0/mask0x3FF and destroyed before the remaining vectors; the byte task category, stack bool, accesser/descriptor and returned object match the original. Out-of-line constructor declarations and placement-new pragma follow accepted ABI-view conventions. No source/ABI/header/caller change or tuning was required.
