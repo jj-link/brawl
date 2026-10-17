@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 96db877a
+
+- Verified committed snapshot `96db877ac830254c6de6e5c653405257e8da3a30`; report SHA-256 `962e7cf1a6ffea5508d5fbe435d94ad66395f380baebdbf296190c400f4cc2a5`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2891 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.010745%** complete: **476708 / 15833556 accepted code bytes**, **15356848 code bytes remaining**, **1462 accepted source units**.
+- Delta from `70f565d62c5ce46751ca902945fbe2b6f97db4e3`: **+196 accepted code bytes / +1 source units**. The complete map has **5765 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi fn_99_6930 — technically matching late-exact integration; correction-limit violation retained
 
 - **The worker's “1 initial + 1 correction, zero failed compilations” ledger is rejected as incomplete.** Bound native history records **1 initial + 11 changed target-source/recipe corrections**, **four unchanged failed repeat invocations**, and **three separate controls**: **19 actual compiler invocations, eight failed and11 successful**. The first measured full-unit exact object occurs at **correction11**, after the required ten-correction stop. This is a **stop-rule violation**, not a within-budget result, adaptive success, reset or retroactive allowance. Existing late-exact code is evaluated under ordinary technical acceptance gates, not falsely labeled instruction-nonmatching solely because the violation was discovered later. No new reconstruction correction or model stage was authorized or performed.
