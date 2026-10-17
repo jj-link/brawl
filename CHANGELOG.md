@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint ad856386
+
+- Verified committed snapshot `ad856386dfebf1d59d8c1a1a9aff62bfd26ea74c`; report SHA-256 `098db6aebd98f6cf7b9404341b7696c674964b3a8e43bc0adbd39188d5fa5f18`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2898 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.019031%** complete: **478020 / 15833556 accepted code bytes**, **15355536 code bytes remaining**, **1469 accepted source units**.
+- Delta from `753e3b9f64433cdc7690aede6e185059a1ec97d4`: **+180 accepted code bytes / +1 source units**. The complete map has **5777 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi fn_99_8C28 — signed virtual array-size selection, matching source integration
 
 - Integrated unchanged genuine C++ for module99 `ft_luigi` `.text [0x8C28, 0x8CDC)`, **180 bytes**. Reuses committed `ft_luigi_function_8d30.h` and actual Brawl `soArrayFixed::size() const` signed32-bit interface, with constituent pointers at+0x10/+0x14/+0x18 and virtual slot+0x14. The sequence reads addresses3 first, then compares addresses1 and addresses2 with signed comparisons; each strictly winning branch reloads the pointer and invokes size() again. Negative values, ties, observable repeated calls and original absence of null checks are preserved, not replaced by cached/std::max behavior. Existing8D30 source/header/object remain unchanged; no new header, source-body/ABI/caller revision or tuning was needed.
