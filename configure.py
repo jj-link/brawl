@@ -1479,6 +1479,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", '-pragma "use_simple_stdpnew on"']),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_9330.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_8c28.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_8d30.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_83a8.cpp",
