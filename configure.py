@@ -2143,6 +2143,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_article_event_storage_destructor.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_ness/ness_function_5f7c.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_function_572c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_extended_module_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_large_aggregate_destructor.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_23a78.cpp", cflags=cflags_fighter),
