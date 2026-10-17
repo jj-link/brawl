@@ -1458,6 +1458,8 @@ config.libs = [
         "objects": [
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_5f5c.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_60b4.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off", "-opt noprop"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_65c4.cpp",
                    cflags=cflags_fighter,
                    extra_cflags=["-RTTI off", "-schedule off", "-opt nopropagation"]),
