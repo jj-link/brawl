@@ -2094,6 +2094,7 @@ config.libs = [
                    extra_cflags=["-opt noprop"]),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1a3d0.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1bf44.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_function_1c3c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_24250.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_ef30.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1c220.cpp", cflags=cflags_fighter,
