@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Automated dashboard publication in use
+
+- The installed command published and verified its first new production checkpoint after source commit `4518df63a6bea25c310d486839159e5a08e67b69`, creating and pushing checkpoint documentation commit `0e9d0ae020bd2424611771c23685228555d903bd` without a second parent approval or documentation handoff.
+- Actual command exit was zero in 15.38 seconds. Both local/public endpoints and persisted history agreed at `2026-10-17T08:18:45.453353Z`; receipt: `build/checkpoint-publications/4518df63a6bea25c310d486839159e5a08e67b69/final-endpoint-agreement.json`.
+- The separate dashboard-publisher role is retired with its worktree and evidence preserved. The arrangement is three GLM reconstruction owners and one retained Sol integration/source publisher, which runs the command after source pushes. Qwen remains paused. Existing reconstruction attempts, verification requirements and original/evidence HOLDs are unchanged.
+
 ## Committed-source checkpoint 4518df63
 
 - Verified committed snapshot `4518df63a6bea25c310d486839159e5a08e67b69`; report SHA-256 `1b6c95327c49eb658dad3794000a0c89eb754fb679376be001890db8d8abddbb`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2884 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
