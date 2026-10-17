@@ -2139,6 +2139,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_function_19b8c.cpp", cflags=cflags_fighter,
                    extra_cflags=["-opt nodeadstore"]),
             Object(Matching, "mo_fighter/ft_ness/ness_function_19228.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_function_18e28.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_18ef4.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_1886c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_18430.cpp", cflags=cflags_fighter),
