@@ -1787,6 +1787,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_aggregate_destructor.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_1944.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_edcc.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-inline off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_observer_flag_four.cpp",
