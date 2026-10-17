@@ -283,6 +283,8 @@ The user-approved arrangement separates reconstruction from integration/publicat
 
 Reconstruction workers independently run their compile–compare–revise loops and unit verification without parent implementation advice. Sol handles shared-file integration, input-required final verification and source publication. Existing attempts and evidence carry forward; changing these roles does not reset a stage or authorize additional reconstruction models.
 
+GLM's current sizing phase is **held at nominal 192 bytes**. All three designated midpoint samples are accepted: Ness 572C (196 bytes, cleanup), Ness B9FC (188 bytes, straight-line work-state reset), and Luigi 8054 (188 bytes, guarded initialization/virtual dispatch). This completes the midpoint between the prior successful 128-byte target and failed 256-byte upper bound. Keep choosing the nearest suitable independent functions around 192 bytes; ordinary successes do not restart upward exploration. Existing assignments and attempt histories remain unchanged.
+
 #### Approved dashboard-publication automation
 
 The separate dashboard-publisher agent is replaced by `tools/live_dashboard/publish_checkpoint.py`, run by the retained Sol integration/source publisher after each source push. That owner maintains the command as needed; this does not authorize another reconstruction owner or an orchestration redesign.

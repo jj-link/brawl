@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## GLM midpoint accepted — hold the 192-byte working target
+
+- All three designated, behaviorally distinct midpoint samples are now published and verified: Ness 572C, 196 bytes, cleanup (`1d408269`); Ness B9FC, 188 bytes, straight-line work-state reset (`75776f09`); Luigi 8054, 188 bytes, guarded initialization/virtual dispatch (`8799688e`).
+- Recorded initial/correction counts are respectively **1 + 2**, **1 + 0**, and **1 + 8 conservative target-feedback corrections**. Preserve each assignment's complete diagnostic/control-count qualifications and UNKNOWN inherited history; no attempt reset or extra allowance.
+- Under the existing midpoint rule, this passes the nominal192 sample set and changes its phase from midpoint search to held. The previous successful lower target was128 and failed upper bound256. The working target stays192; no renewed doubling or claim of maximum model capability. Four GLM owners continue independent refills; existing assignments, Sol's role and paused models are unchanged.
+- Luigi8054's automated checkpoint `7cae4743` verified full source identity, headline, all5756 unit classifications/127 modules and served/persisted history at both endpoints. Accepted totals:475740bytes/1457units; command16.70seconds. Retained decision: `build/terminal-lifecycle/parent-glm-midpoint192-held.json`.
+
 ## Committed-source checkpoint 8799688e
 
 - Verified committed snapshot `8799688ef965f8f18ebc43600a068e4cb452ade2`; report SHA-256 `87fa050f5106114b18f6de52c7e7bad48dc332bf8aaa570096b5cc49d553069d`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2886 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
