@@ -685,6 +685,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_6c20.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-schedule off", "-opt noprop"]),
+            Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_6ec8.cpp",
+                   cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_6f8c.cpp",
                    cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_dedede/ft_dedede_function_75f8.cpp",
