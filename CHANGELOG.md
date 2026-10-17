@@ -2,6 +2,15 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 75776f09
+
+- Verified committed snapshot `75776f096e63bfcc71633a872075fe96b9b2b8b9`; report SHA-256 `82a7f378bd988adf11c789a98346058794dc208bcbad7b7d2442b614316dd412`. Frozen input-bound native verification and independent final checks passed **127 DOL/REL hashes**.
+- **3.001044%** complete: **475172 / 15833556 accepted code bytes**, **15358384 code bytes remaining**, **1454 accepted source units**; 5752 report units across 127 modules.
+- Delta from `c0a9627f`: **+188 accepted code bytes / +1 source unit**, Ness B9FC. All 1453 preceding source/header inputs and object hashes remain unchanged and linked; no new source-prefix exception. New 188-byte text and all six raw relocations match; external rodata at offset 8 remains linked from its original provider and receives no new source-data credit.
+- Dedicated publisher evidence: `build/isolated-workers/SolPublisherDB04/evidence/75776f09/`, including report receipt, frozen 2883-input/111-record binding, source/link and prefix proofs, independent object comparison, original-rodata provider proof and final hashes. Final headline/history agreement follows documentation publication.
+- GLM history remains **one initial / zero corrections**, older history UNKNOWN. Original pipeline success is not a separately captured compiler exit status; full historical diagnostics were not retained. One factual comment correction and one input-required integration compile, with no ABI/body/header/caller revision. Actual 940-byte CRLF source is the exact conversion of the reviewed 919-byte LF source, not raw-identical. Assignment evidence retains these and earlier EOL/input qualifications.
+- B9FC is the second accepted diverse nominal-192 midpoint sample; the third designated 8054 outcome remains pending. No cohort finalization or size increase. Qwen remains user-paused with its history and 8-byte target retained.
+
 ## Ness B9FC — status-exit work-state reset midpoint sample
 
 - Added matching module 101 `fn_101_B9FC`, `.text[0xB9FC,0xBAB8)`, **188 code bytes**, a straight-line status-exit reset. It first forwards both original arguments to `fn_27_130808`, then follows `object+0x60` / accesser `+0xD8` / modules `+0x64` to the real `soWorkManageModule`. It unconditionally clears flag `0x1200003D`, writes the original external zero float to work IDs `0x11000015` and `0x11000016`, then sets work integer `0x10000040` to zero. No extra validation, null checks, literal-constant substitution or behavior change was introduced.
