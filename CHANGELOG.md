@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 753e3b9f
+
+- Verified committed snapshot `753e3b9f64433cdc7690aede6e185059a1ec97d4`; report SHA-256 `a868c9f96314ce051bc38ff34811028c05018903c650887a8b585218eba62541`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2897 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.017894%** complete: **477840 / 15833556 accepted code bytes**, **15355716 code bytes remaining**, **1468 accepted source units**.
+- Delta from `7af97f6e075dcb859ad76e18541daed5756a77dd`: **+180 accepted code bytes / +1 source units**. The complete map has **5775 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Dedede fn_117_5FB0 — embedded holder aggregate cleanup, matching source integration
 
 - Integrated genuine C++ for module117 `ft_dedede` `.text [0x5FB0, 0x6064)`, **180 bytes**. Actual published2944 caller declares `void*(void*, short)` and passes its object+0x1440 with signed-short-1; original assembly independently confirms that address. The source's “front of fighter” ownership comment was misleading: **only four comment lines were clarified** to identify the embedded aggregate and deletion of the passed storage, not the enclosing fighter. Body, declarations, line count, ABI, caller, headers and recipe remain unchanged. Original source SHA-1 `a0272e0b35e49109125fa2de7e308d6d80b6c949` is retained; integration SHA-1 `15e4b71d79921a761b7cafc2b2c013571cf713b1`. This is a non-code integration clarification, not a reconstruction correction.
