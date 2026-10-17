@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint ad519b77
+
+- Verified committed snapshot `ad519b77caf4f554ce925617785d23baf8b2a587`; report SHA-256 `efa09ecd66787d7255a08f787d186dc31878a429cc68df9bfbfbc39d1c9ef958`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2899 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.020168%** complete: **478200 / 15833556 accepted code bytes**, **15355356 code bytes remaining**, **1470 accepted source units**.
+- Delta from `ad856386dfebf1d59d8c1a1a9aff62bfd26ea74c`: **+180 accepted code bytes / +1 source units**. The complete map has **5779 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness 8B60 — embedded aggregate cleanup
 
 - Integrate `fn_101_8B60` (`ft_ness` .text `[0x8B60,0x8C14)`, 180 bytes) as matching C++, retaining the delivered source byte-for-byte and the existing fighter compiler recipe. The published `fn_101_2B2C` caller passes its embedded object at `+0x1440` with short `-1`; null handling, all eight ordered member/base calls with `-1`, signed-short positive deletion and returning the original pointer are preserved. No source-body, header, caller or ABI changes; gameplay was not exercised.
