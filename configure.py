@@ -2161,6 +2161,7 @@ config.libs = [
             Object(Matching, "mo_fighter/ft_ness/ness_function_c5c4.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_15838.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_bda0.cpp", cflags=cflags_fighter),
+            Object(Matching, "mo_fighter/ft_ness/ness_function_b07c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_b68c.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_b9fc.cpp", cflags=cflags_fighter),
             Object(Matching, "mo_fighter/ft_ness/ness_function_70a0.cpp", cflags=cflags_fighter),
