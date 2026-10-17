@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 8f4d5dc4
+
+- Verified committed snapshot `8f4d5dc47e52aedf11d6df57ba31b1acd3741475`; report SHA-256 `9158674e875c9e5f9a504646b6258b1786572d8e8436cfd13de47500edee999a`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2889 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.008269%** complete: **476316 / 15833556 accepted code bytes**, **15357240 code bytes remaining**, **1460 accepted source units**.
+- Delta from `cb10c0915f7b3f6538c25120c03ababed6d60b3a`: **+196 accepted code bytes / +1 source units**. The complete map has **5762 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi fn_99_686C — collision-attack aggregate construction, matching source integration
 
 - Integrated the delivered C++ for module99 `ft_luigi` `.text [0x686C, 0x6930)`, **196 bytes**. It constructs a144-byte attack-part temporary, copies five parts, destroys the temporary, initializes five groups at+0x2DC and two absolutes at+0x540, then placement-constructs the attack module at+0x61C with byte-narrowed task category and returns the original storage. Actual caller arguments, helper bodies and shared header constructor signatures/144-byte temporary/160-byte full module were reviewed. The declaration-only out-of-line constructor views and `use_simple_stdpnew` follow existing accepted Ness article-builder conventions; the empty module view is not a complete-size claim. The original caller's0x6BC storage extent agrees with0x61C+160. No source/ABI/header/caller revision, heap allocation or extra null handling was introduced.
