@@ -2,6 +2,14 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Qwen fresh-session instruction trial — Dedede 15334
+
+- User authorized replacing the Qwen agent with a fresh session and revised instructions, explicitly selecting **Fresh Qwen agent**, not a Spark1 model-server restart. The previous `QwenFreshDedede15334` session was cancelled and its registration dropped; its worktree and journal remain intact.
+- Published Qwen-specific execution guidance and the narrow PLAN exception in `c9b6087151b9803491bfdfdb17d1c4a3d1f17c7f`: concise action-oriented planning, reuse of resolved facts, concrete prerequisite checks, documented tool interfaces and explicit blocker reporting. Common correctness/attempt/ownership rules and GLM instructions are unchanged.
+- Launched fresh owner `QwenFreshDedede15334B` in its separately created detached worktree at that revision, continuing the same module 117 `fn_117_15334`, `.text[0x15334,0x1533C)`, **8 bytes**. Actual journal model record `12252088` identifies `spark1/Qwen3.8-Flash-Next`, fallback false, OMP 18.11.1; session `01a14834-a711-724b-a2b2-a9995ad590ed`. Its actual loaded system prompt contains the revised Qwen execution guidance.
+- The stopped session's inspected records through its final abort show **zero candidate compilations and zero corrections**; native final Git status was clean and no target candidate/evidence artifact was found. This is bounded session evidence, not a lifetime-zero claim: older inherited history remains **UNKNOWN**, and no attempt allowance or adaptive sample is reset.
+- The fresh dispatch preserves the predecessor journal SHA-256 `a7ec7e11671b9d8d6b9509ee0b948777c9ebca77a86b2b164d80b1c68db4485e`, workspace and history; supplies verified original/tool locations and retained same-module recipe evidence; and leaves implementation decisions to the worker. Integration/publication remain with the retained Sol owners. Instruction-loading and model selection are verified; performance improvement and unit matching are not yet established.
+
 ## Committed-source checkpoint 8d9469f3
 
 - Verified committed snapshot `8d9469f381577d354e72d60b55d92040df5e0ba2`; report SHA-256 `064d53258f7a70e2e4686d91d880fe30d9ab92f9c0e4d9a02a6ac1f3e9d0ac90`. Frozen native proof passed **127/127 DOL/REL hashes**, independently checked against retained byte-identical final artifacts and bound committed inputs. No mutable future outputs or unchanged build/report regeneration were used.
