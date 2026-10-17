@@ -1475,6 +1475,8 @@ config.libs = [
                    cflags=cflags_fighter, extra_cflags=["-RTTI off", "-opt nodeadstore", "-opt noprop"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_8fb0.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
+            Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_8054.cpp",
+                   cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(NonMatching, "mo_fighter/ft_luigi/ft_luigi_function_8110.cpp",
                    cflags=cflags_fighter, extra_cflags=["-RTTI off"]),
             Object(Matching, "mo_fighter/ft_luigi/ft_luigi_function_6f00.cpp",
