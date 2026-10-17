@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 4e3f0248
+
+- Verified committed snapshot `4e3f0248a9f986aae081dffbfa6e414e37b544ff`; report SHA-256 `d5451cd83c617aa20e0f7e693138ce7ae9965c75cd5f81b4e905ae49d59bf8b4`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2906 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.027469%** complete: **479356 / 15833556 accepted code bytes**, **15354200 code bytes remaining**, **1476 accepted source units**.
+- Delta from `c3dcb78cb9f8dba64c432cec4af067595e566d13`: **+160 accepted code bytes / +1 source units**. The complete map has **5791 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi 8208 — sender-query link-event override; late exact, correction-stop violation
 
 - Integrate `fn_99_8208` (`ft_luigi` .text `[0x8208,0x82A8)`, 160 bytes), using the existing fighter recipe plus `-RTTI off`. Preserve the original single indirect sender query through its dispatch pointer at `+0x3C`, entry `+0xA8`; only query value `0x74` together with event kind `0x3C` selects `fn_27_12D904(self,true,true,0)` and returns. Every other combination forwards the five original argument words through `fn_27_1324D4` exactly once. Retain the selected nested switches and shared forward call; no additional null guards, dispatches, allocations or failure suppression and no gameplay exercise.
