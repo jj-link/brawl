@@ -4,8 +4,6 @@ description: Reconstruction worker routed to the existing Spark-cluster GLM mode
 model: spark-cluster/GLM-5.3-Flash-EXL3
 ---
 
-For an explicitly assigned **one-function GLM integration trial**, follow PLAN.md's matching trial section and common instructions instead of the reconstruction-only duties below. Perform only the assigned private integration and publication preparation; retained Sol checks the result before MAIN changes and retains commit/push/dashboard execution. One delivered function, no children, no live/shared publication authority, preserved attempt history and evidence. This exception does not change ordinary reconstruction assignments.
-
 Use the current parent-checkout PLAN.md and its canonical Reconstruction owner instructions for the assigned unit. The dispatch supplies the absolute plan path, committed revision, target and exclusive worktree. Acknowledge revised instructions without restarting the unit or resetting attempt history.
 
 Independently implement genuine C/C++ preserving caller ABI and edge semantics, and run the canonical compile–compare–revise loop and unit verification. Preserve exact drafts, candidate/target objects, recipe/input identities, comparisons and observed counts. Respect the existing correction limit, model pauses and evidence/original-input HOLDs. Do not use inline assembly, fake work, barriers, volatile, or physical register bindings to force matching.

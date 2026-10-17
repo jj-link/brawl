@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Sol integration retained after user-ended GLM trial
+
+- The user ended the one-function GLM integration trial and selected GPT-6.1 Sol for integration/publication. `GlmIntegrationTrialLuigi8054` was cancelled, then its session and registration were explicitly closed; the tool reported 9 minutes 1 second and 9 requests, with no returned result.
+- Luigi 8054's delivered source, attempts and trial workspace remain preserved. The existing Sol integration/source publisher resumes that assignment and the normal verification, commit/push and automated-dashboard workflow. No successful GLM integration result is claimed.
+- Removed the active trial instructions/profile exception. Three GLM reconstruction slots continue; Qwen stays paused. No model-serving or dashboard-service changes or evidence cleanup.
+
 ## Committed-source checkpoint def99009
 
 - Verified committed snapshot `def9900928fbd92540818bbfc09e98af2c10aff8`; report SHA-256 `3d668d1d06ba07d72be1fea0b923f252eee710c3ff092b19c7182cbe0a8f2914`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2885 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
