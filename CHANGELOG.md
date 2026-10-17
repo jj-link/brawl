@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 7af97f6e
+
+- Verified committed snapshot `7af97f6e075dcb859ad76e18541daed5756a77dd`; report SHA-256 `504b420fa785c8170b7ce0cf8e54882864e9dada2a00b957455781ae8b04dacb`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2896 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.016758%** complete: **477660 / 15833556 accepted code bytes**, **15355896 code bytes remaining**, **1467 accepted source units**.
+- Delta from `640d44a8e95198f92de83a1557ec595cdbe6a5ac`: **+180 accepted code bytes / +1 source units**. The complete map has **5773 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi fn_99_59F0 — embedded aggregate deleting cleanup, matching source integration
 
 - Integrated genuine C++ for module99 `ft_luigi` `.text [0x59F0, 0x5AA4)`, **180 bytes**. Actual published2834 caller declares `void*(void*, short)` and passes fighter storage+0x14DC with signed-short-1. Consequently the received comment about deleting/returning the outer fighter was inaccurate: **only those two comment lines were clarified** to identify the passed embedded config storage. Function body, declarations, line count, caller, ABI and recipe are unchanged. Original source SHA-1 `d5e913f4f96d7f5f1d6862dc2f7f35bf9ee7f3d9` is retained; integration source SHA-1 `c096d67ba889994ec605b384146d319cbc2c0014`. This comment-only integration revision is not a reconstruction correction.
