@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Four-worker Luna adaptive reconstruction run
+
+- User authorized four concurrent GPT-6 Luna owners starting with eight-byte functions and using the same adaptive sizing strategy as GLM: independent three-function/two-of-three outcomes, doubling during exploration, midpoint search after failure, then a held successful size.
+- Retained max reasoning and all historical Luna results and function attempts. This explicit eight-byte starting size does not reset correction allowances or overwrite earlier measurements.
+- Aligned the existing Luna profile with the current unit-only reconstruction role. Fresh owners finish on unit delivery; retained Sol handles integration, source publication and the automated dashboard checkpoint. The three GLM workers and their current sizing trial remain unchanged.
+
 ## Committed-source checkpoint c3dcb78c
 
 - Verified committed snapshot `c3dcb78cb9f8dba64c432cec4af067595e566d13`; report SHA-256 `45479060a1219d49310eee8991248fb61c3d55baa5ed72a8034fe8cefbe8c92f`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2905 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.

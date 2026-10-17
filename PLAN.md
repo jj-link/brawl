@@ -277,9 +277,10 @@ This is the current arrangement, not a permanent restriction; the user may chang
 | GLM | 3 | Solve and verify one unit per fresh owner; adaptive sizing as specified above; finish on delivery. |
 | Qwen3.8-Flash-Next on Spark1 | 0 active | User-paused; retain work, attempts and the independent 8-byte adaptive target. No refill or resumption without authorization. |
 | GPT-6.1 Sol | 1 | Retained integration/source publisher; commits/pushes units and runs the automated dashboard-checkpoint command. |
-| GPT-6 Luna and other reconstruction models | 0 active | Remain paused. Preserved work and attempt histories remain available. |
+| GPT-6 Luna | 4 | Fresh single-function reconstruction owners at max reasoning; start this user-authorized run at 8 bytes and use the independent adaptive sizing rules above; finish on delivery. |
+| Other reconstruction models | 0 active | Remain paused. Preserved work and attempt histories remain available. |
 
-The user-approved arrangement separates reconstruction from integration/publication. Three GLM workers deliver unit solutions; a fresh GLM owner fills each completed slot immediately. One retained Sol owner integrates and pushes those results, then runs the automated dashboard-publication command. Qwen is user-paused; preserve its separate samples, outcomes, bounds, 8-byte target and all function attempts. GLM's current size and results do not change Qwen's size. This arrangement does not activate Luna, additional workers or the separately coordinated four-Qwen trial.
+The user-approved arrangement separates reconstruction from integration/publication. Three GLM workers and four Luna workers deliver unit solutions; a fresh owner of the same model fills each completed slot independently. One retained Sol owner integrates and pushes those results, then runs the automated dashboard-publication command. Qwen is user-paused; preserve its separate samples, outcomes, bounds, 8-byte target and all function attempts. Each model's adaptive sizes and outcomes remain separate. This arrangement does not activate other reconstruction models or the separately coordinated four-Qwen trial.
 
 Reconstruction workers independently run their compile–compare–revise loops and unit verification without parent implementation advice. Sol handles shared-file integration, input-required final verification and source publication. Existing attempts and evidence carry forward; changing these roles does not reset a stage or authorize additional reconstruction models.
 
@@ -287,13 +288,15 @@ GLM's established held target is **nominal 192 bytes**. All three designated mid
 
 The user approved a **160-byte target trial for the next three fresh GLM assignments**. Let current workers finish unchanged, then select the nearest suitable independent functions around 160 bytes and refill slots independently. Compare accepted bytes per hour with recent 192-byte-target assignments, using actual function sizes and elapsed time including integration and publication. Keep the existing three-worker limit, attempt allowances and acceptance criteria unchanged.
 
+The user authorized four concurrent GPT-6 Luna owners at max reasoning, starting this run with **8-byte functions**. Preserve Luna's historical accepted results and prior function attempts; the explicit new starting size is not an attempt-history reset. Apply the same three-behaviorally-different-function, two-of-three acceptance rule, doubling during exploration and searching the midpoint after a failed size; hold a passing midpoint without resuming upward exploration. Refill the four slots independently, with sample membership recorded separately from worker count. Existing GLM assignments and its 160-byte trial remain unchanged.
+
 #### Approved dashboard-publication automation
 
 The separate dashboard-publisher agent is replaced by `tools/live_dashboard/publish_checkpoint.py`, run by the retained Sol integration/source publisher after each source push. That owner maintains the command as needed; this does not authorize another reconstruction owner or an orchestration redesign.
 
 The command must perform the existing committed-checkpoint workflow: bind saved verification evidence to the exact source commit, publish the verified report, record and commit/push the checkpoint entry in `CHANGELOG.md`, and verify local/public dashboard source identity, totals, unit/module map and persisted progress history. Reuse verified unchanged inputs and outputs; preserve existing acceptance criteria, own-only publication boundaries and original/evidence HOLDs. A failed update must report its concrete error without presenting unverified progress as accepted.
 
-Retain three GLM reconstruction owners and one Sol integration/source publisher. The separate dashboard-publisher role is retired; preserve its worktree and evidence. Do not introduce another per-checkpoint approval or documentation handoff, hold independent reconstruction, or activate paused models.
+Retain three GLM reconstruction owners, four Luna reconstruction owners and one Sol integration/source publisher. The separate dashboard-publisher role is retired; preserve its worktree and evidence. Do not introduce another per-checkpoint approval or documentation handoff, hold independent reconstruction, or activate paused models.
 
 ### 3. Reconstruct and compare
 
