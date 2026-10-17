@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 18f215e6
+
+- Verified committed snapshot `18f215e62719e2e87c047c44c6115fd86990f816`; report SHA-256 `162fae962efc9392eb42c0591f8e871f89bd916341598cfc1b0996fbc690c6e2`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2903 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.025170%** complete: **478992 / 15833556 accepted code bytes**, **15354564 code bytes remaining**, **1474 accepted source units**.
+- Delta from `e8492e08ffff778301c5f122718fce9a63acb9d2`: **+204 accepted code bytes / +1 source units**. The complete map has **5787 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Dedede 8550 — embedded effect-work initialization
 
 - Integrate `fn_117_8550` (`ft_dedede` .text `[0x8550,0x861C)`, 204 bytes), canonical fighter recipe without extra flags. Independently trace `fn_117_70`: it saves the outer receiver in `r24`, sets `r25=outer+0x194` for `DededeEventStorage`, then calls at `.text 0x7F8` with `r25+0x44D34`, so the initialized block is **outer+0x44EC8**. Preserve the five initializer receivers at offsets `0/0x38/0x50/0x5C/0x6C`, all seven observed entry values and the twelve-word outgoing argument mapping, literal 10 and original block-pointer return. The actual header pins `soEffectModuleImpl` to `0x138` bytes; the unique opaque view's regions sum to `0x1A4`. No body, ABI, header or caller changes and no gameplay exercise.
