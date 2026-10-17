@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 4518df63
+
+- Verified committed snapshot `4518df63a6bea25c310d486839159e5a08e67b69`; report SHA-256 `1b6c95327c49eb658dad3794000a0c89eb754fb679376be001890db8d8abddbb`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2884 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.002206%** complete: **475356 / 15833556 accepted code bytes**, **15358200 code bytes remaining**, **1455 accepted source units**.
+- Delta from `75776f096e63bfcc71633a872075fe96b9b2b8b9`: **+184 accepted code bytes / +1 source units**. The complete map has **5754 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness 1C3C — embedded-member destructor
 
 - Added matching module 101 `fn_101_1C3C`, `.text[0x1C3C,0x1CF4)`, **184 code bytes**, using unchanged delivered C++. Null input returns null; otherwise seven embedded members at `+0x84,+0x70,+0x5C,+0x48,+0x34,+0x20,+0x8` are destroyed in descending order with signed-short `-1`, base cleanup receives zero, storage is freed only for signed-short `deleting > 0`, and the original pointer is returned. The original 1B9C caller's member-base/flag forwarding and helper cleanup conventions agree with `void*(void*,short)` and the established deleting-destructor family; no ABI/body/header/caller revision was needed.
