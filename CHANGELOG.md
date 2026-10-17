@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 640d44a8
+
+- Verified committed snapshot `640d44a8e95198f92de83a1557ec595cdbe6a5ac`; report SHA-256 `775e411e466593f0db300a92ee7bc3cd93500e948e0d24f759b79ff8bc4f328e`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2895 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.015621%** complete: **477480 / 15833556 accepted code bytes**, **15356076 code bytes remaining**, **1466 accepted source units**.
+- Delta from `0530b90cdc362ca4926ca0864a69a0fea7cb2744`: **+184 accepted code bytes / +1 source units**. The complete map has **5771 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Dedede fn_117_1A54 — guarded seven-member deleting cleanup, matching source integration
 
 - Integrated unchanged genuine C++ for module117 `ft_dedede` `.text [0x1A54, 0x1B0C)`, **184 bytes**. Original caller19B4 passes its embedded object at+0x476C0 with signed-short-1; the vtable also references this entry. The body preserves null-aware return, cleanup at+0x84/+0x70/+0x5C/+0x48/+0x34/+0x20/+0x08 in descending order, each with signed-short-1, base layer1DF4 with0, deletion only for signed-short flags greater than0, and the original returned pointer. Original member/base bodies confirm the short-delete/return ABI; no conflicting published source declaration was found. No source/ABI/header/caller change or tuning was needed.
