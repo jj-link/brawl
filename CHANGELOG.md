@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint def99009
+
+- Verified committed snapshot `def9900928fbd92540818bbfc09e98af2c10aff8`; report SHA-256 `3d668d1d06ba07d72be1fea0b923f252eee710c3ff092b19c7182cbe0a8f2914`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2885 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.003444%** complete: **475552 / 15833556 accepted code bytes**, **15358004 code bytes remaining**, **1456 accepted source units**.
+- Delta from `4518df63a6bea25c310d486839159e5a08e67b69`: **+196 accepted code bytes / +1 source units**. The complete map has **5755 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness 9224 — independent resource acquisitions and module construction
 
 - Added matching module 101 `fn_101_9224`, `.text[0x9224,0x92E8)`, **196 code bytes**, using unchanged delivered C++. It independently dynamic-casts the accesser's stage object twice, reads each acquired fighter resource at `+0x10C`, initializes primary/secondary handles at storage `+4/+0x18`, seeds the tagged handle's original vtable and index `-1`, initializes the module at `+0x30`, then returns storage. No extra null guard or resource-cache substitution was introduced. Flat ABI views match original offsets; the shared 24-byte resource-ID type is not the original 20-byte handle and was not substituted. Pointer arguments/returns agree with actual helper instructions and existing pointer-ABI calling patterns; no source/ABI/header/caller revision was needed.
