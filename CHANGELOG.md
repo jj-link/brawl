@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint fa6be589
+
+- Verified committed snapshot `fa6be589f4a928ed6f4ead7f3562eb98cd862fe4`; report SHA-256 `66d70844d7daa1a77ecb411702e8ac093b14f8bb9e2f6a683df80eb23e4c7b2a`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2887 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.005794%** complete: **475924 / 15833556 accepted code bytes**, **15357632 code bytes remaining**, **1458 accepted source units**.
+- Delta from `8799688ef965f8f18ebc43600a068e4cb452ade2`: **+184 accepted code bytes / +1 source units**. The complete map has **5758 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Luigi fn_99_1944 — aggregate destructor, matching source integration
 
 - Integrated the delivered C++ reconstruction of module99 `ft_luigi` `.text [0x1944, 0x19FC)`, **184 bytes**. The null-aware aggregate destructor destroys seven embedded members in reverse order at offsets `0x84/0x70/0x5C/0x48/0x34/0x20/0x8` with signed-short flag `-1`, calls the base destructor with flag0, frees only for a positive signed-short deleting flag and returns the original object. The existing accepted Luigi aggregate-destructor convention and actual member/base callees support the preserved ABI; no source, header or caller changes were required.
