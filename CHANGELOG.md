@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint 70f565d6
+
+- Verified committed snapshot `70f565d62c5ce46751ca902945fbe2b6f97db4e3`; report SHA-256 `b0e5ba13e59476e46ef3e1e5f92c5876d2f304df75681f4074b88315a2d000b8`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2890 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.009507%** complete: **476512 / 15833556 accepted code bytes**, **15357044 code bytes remaining**, **1461 accepted source units**.
+- Delta from `8f4d5dc47e52aedf11d6df57ba31b1acd3741475`: **+196 accepted code bytes / +1 source units**. The complete map has **5764 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness fn_101_9AA0 — collision-hit aggregate construction, matching source integration
 
 - Integrated the delivered C++ for module101 `ft_ness` `.text [0x9AA0, 0x9B64)`, **196 bytes**. It constructs a104-byte hit-part temporary with category0/opponent mask0x3FF, fills20 parts, destroys the temporary before initializing the remaining one-element group/hit-group arrays, then placement-constructs the104-byte hit module at+0x8F4 with byte-narrowed task category and returns the config. Actual header signatures/sizes, module27 helpers and caller were reviewed: vector extents0x82C/0x84/0x44 plus module0x68 total0x95C, exactly the caller's storage interval. Existing declaration-only constructor views/placement-new pragma are retained; no source, ABI, header, caller, heap-allocation or extra null-handling changes were introduced.
