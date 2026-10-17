@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Committed-source checkpoint e8492e08
+
+- Verified committed snapshot `e8492e08ffff778301c5f122718fce9a63acb9d2`; report SHA-256 `6b7f9fdd365b7db45638a83f745530f44e9957caeb8aec29eeb2c7d82c8853b7`. Saved complete-input/object/link evidence and **127/127 native hashes** are independently checked; **2902 compiler inputs** bind this exact source. No unchanged build/report regeneration or mutable future-output substitution.
+- **3.023882%** complete: **478788 / 15833556 accepted code bytes**, **15354768 code bytes remaining**, **1473 accepted source units**.
+- Delta from `6f84d71c2b57f0bd2c4e71732350dfdaadf2e33a`: **+204 accepted code bytes / +1 source units**. The complete map has **5785 units across 127 modules**. Assembly/inline assembly, incomplete drafts and original fallback code retain their existing credit exclusions.
+- Original unit attempt, ABI, prefix, EOL, runtime and adaptive qualifications remain in their source-assignment entries and retained evidence. Gameplay was not exercised by checkpoint publication; no worker/model/service or original-input changes were made. All original/copy/junction/evidence HOLDs remain.
+
 ## Ness B07C — embedded effect-support initialization
 
 - Integrate `fn_101_B07C` (`ft_ness` .text `[0xB07C,0xB148)`, 204 bytes), canonical fighter flags with no extra per-object setting. Actual caller `fn_101_70` at `.text 0x800` passes `NessEventStorage+0x4853C`: `r24` retains the outer receiver, and `r25` was set to `outer+0x194`, so this is **outer+0x486D0**, not the outer fighter base. Preserve the five ordered initializer calls at receiver offsets `0/0x38/0x50/0x5C/0x6C`, the twelve-word register/stack argument mapping and literal 10, and return the embedded block. One comment-only integration clarification removes unsupported individual emitter/module classifications and records actual boundaries. All C++ from the typedefs onward is unchanged; no body, ABI, header or caller revisions and no gameplay exercise.
