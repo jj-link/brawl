@@ -11,7 +11,7 @@ bool fn_27_8D810(void*, soArticle*);
 void* fn_101_C374();
 bool fn_27_329818(void*, StageObject*, void*);
 int fn_101_C3E4(void*, soModuleAccesser*);
-bool fn_101_C5C4(StageObject*, void*);
+bool fn_101_C5C4(Weapon*, soModuleAccesser*);
 bool fn_101_C6C0(StageObject*, void*);
 bool fn_101_CA3C(StageObject*, void*);
 bool fn_101_CB28(void*, soModuleAccesser*);
