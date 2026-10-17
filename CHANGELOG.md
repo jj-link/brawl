@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## One production Qwen worker with independent adaptive sizing
+
+- User authorized one Spark1 Qwen3.8-Flash-Next reconstruction worker alongside the existing three GLM workers. Published `PLAN.md` and `.omp/agents/spark1-qwen.md` revision `430ec9f9e3ab32faf86544c692442b7c3b77c368`: Qwen now uses the same unit-only delivery lifecycle as GLM, with Sol retaining integration/source publication and the separate dashboard publisher retaining checkpoint verification. Removed the obsolete Qwen instructions requiring self-integration, full-project verification and MAIN reconciliation.
+- Launched fresh `QwenFreshDedede15334` for module 117 `fn_117_15334`, `.text[0x15334,0x1533C)`, eight bytes, with exclusive workspace `build/isolated-workers/QwenFreshDedede15334` at that full baseline. Native model-change record `7a3675b6`, timestamp `2026-10-17T01:32:21.513Z`, confirms `spark1/Qwen3.8-Flash-Next`, fallback false, OMP 18.11.1. Dispatch: `local://QwenFreshDedede15334-dispatch.json`.
+- Qwen continues at its eight-byte adaptive target with separate behavior samples, outcomes, bounds and held target. The existing three-function/two-of-three doubling and midpoint-held rules apply independently; GLM results do not resize Qwen. Existing Qwen drafts and attempt histories remain retained, and missing target history remains UNKNOWN rather than zero.
+- The three GLM assignments and both retained Sol roles remain unchanged. This addition does not activate Luna, add another production Qwen slot, adopt the separate four-Qwen trial, change model services, or award reconstruction credit before verified source publication.
+
 ## Committed-source checkpoint 195b34bb
 
 - Verified committed snapshot `195b34bb2ca2888183624882279aa3f11b75c6fa`; report SHA-256 `b27064ec3658ff925ab1a424aa2b77aaecc5921b84ca71ec2d4f486945f3fcf4`. Frozen native proof passed **127/127 DOL/REL hashes**, independently checked against retained byte-identical final artifacts. Verification used frozen F410 evidence, the committed checkout and retained publisher artifacts, without mutable future outputs or an unchanged build/report rerun.
