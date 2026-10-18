@@ -1,0 +1,27 @@
+#pragma force_active on
+extern "C" {
+    void* __nw__FUlQ25Heaps8HeapType(unsigned long, int);
+    void __construct_array(void*, void (*)(void*), void (*)(void*), unsigned long, int);
+    void __ct__16muMenuControllerFv(void*);
+    void __dt__16muMenuControllerFv(void*);
+    void fn_1_8EC0(void*);
+    extern char lbl_1_data_20C0[];
+    extern char lbl_1_data_211C[];
+    extern void* __vt__6muMenu[];
+}
+
+extern "C" void* fn_1_8E20() {
+    void* mem = __nw__FUlQ25Heaps8HeapType(0x3a0, 0x2e);
+    if (mem) {
+        *(void**)mem = (void*)&lbl_1_data_20C0;
+        *(void**)((char*)mem + 4) = (void*)&__vt__6muMenu;
+        __construct_array((char*)mem + 8, &__ct__16muMenuControllerFv, &__dt__16muMenuControllerFv, 0xa8, 5);
+        *(void**)((char*)mem + 4) = (void*)&lbl_1_data_211C;
+        *(unsigned int*)((char*)mem + 0x35c) = 0;
+        *(unsigned int*)((char*)mem + 0x394) = 0;
+        *(unsigned int*)((char*)mem + 0x398) = 0;
+        *(unsigned int*)((char*)mem + 0x39c) = 0;
+        fn_1_8EC0(mem);
+    }
+    return mem;
+}
