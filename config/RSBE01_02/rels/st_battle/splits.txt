@@ -11,6 +11,126 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_battle/st_battle_function_1e4.cpp:
+	.text       start:0x000001E4 end:0x000001EC
+
+mo_stage/st_battle/st_battle_function_680.cpp:
+	.text       start:0x00000680 end:0x00000688
+
+mo_stage/st_battle/st_battle_function_8b0.cpp:
+	.text       start:0x000008B0 end:0x000008B4
+
+mo_stage/st_battle/st_battle_function_8b4.cpp:
+	.text       start:0x000008B4 end:0x000008B8
+
+mo_stage/st_battle/st_battle_function_8b8.cpp:
+	.text       start:0x000008B8 end:0x000008C0
+
+mo_stage/st_battle/st_battle_function_8c0.cpp:
+	.text       start:0x000008C0 end:0x000008C8
+
+mo_stage/st_battle/st_battle_function_8c8.cpp:
+	.text       start:0x000008C8 end:0x000008D0
+
+mo_stage/st_battle/st_battle_function_8d0.cpp:
+	.text       start:0x000008D0 end:0x000008D8
+
+mo_stage/st_battle/st_battle_function_8d8.cpp:
+	.text       start:0x000008D8 end:0x000008E0
+
+mo_stage/st_battle/st_battle_function_8e0.cpp:
+	.text       start:0x000008E0 end:0x000008E4
+
+mo_stage/st_battle/st_battle_function_8e4.cpp:
+	.text       start:0x000008E4 end:0x000008EC
+
+mo_stage/st_battle/st_battle_function_8ec.cpp:
+	.text       start:0x000008EC end:0x000008F4
+
+mo_stage/st_battle/st_battle_function_8f4.cpp:
+	.text       start:0x000008F4 end:0x000008FC
+
+mo_stage/st_battle/st_battle_function_938.cpp:
+	.text       start:0x00000938 end:0x00000940
+
+mo_stage/st_battle/st_battle_function_940.cpp:
+	.text       start:0x00000940 end:0x00000948
+
+mo_stage/st_battle/st_battle_function_948.cpp:
+	.text       start:0x00000948 end:0x00000950
+
+mo_stage/st_battle/st_battle_function_950.cpp:
+	.text       start:0x00000950 end:0x00000958
+
+mo_stage/st_battle/st_battle_function_958.cpp:
+	.text       start:0x00000958 end:0x00000960
+
+mo_stage/st_battle/st_battle_function_960.cpp:
+	.text       start:0x00000960 end:0x00000964
+
+mo_stage/st_battle/st_battle_function_980.cpp:
+	.text       start:0x00000980 end:0x00000988
+
+mo_stage/st_battle/st_battle_function_988.cpp:
+	.text       start:0x00000988 end:0x00000990
+
+mo_stage/st_battle/st_battle_function_990.cpp:
+	.text       start:0x00000990 end:0x00000998
+
+mo_stage/st_battle/st_battle_function_998.cpp:
+	.text       start:0x00000998 end:0x000009A0
+
+mo_stage/st_battle/st_battle_function_9ac.cpp:
+	.text       start:0x000009AC end:0x000009B0
+
+mo_stage/st_battle/st_battle_function_9b0.cpp:
+	.text       start:0x000009B0 end:0x000009B8
+
+mo_stage/st_battle/st_battle_function_9b8.cpp:
+	.text       start:0x000009B8 end:0x000009C0
+
+mo_stage/st_battle/st_battle_function_9c0.cpp:
+	.text       start:0x000009C0 end:0x000009C8
+
+mo_stage/st_battle/st_battle_function_9c8.cpp:
+	.text       start:0x000009C8 end:0x000009D0
+
+mo_stage/st_battle/st_battle_function_adc.cpp:
+	.text       start:0x00000ADC end:0x00000AE0
+
+mo_stage/st_battle/st_battle_function_ae0.cpp:
+	.text       start:0x00000AE0 end:0x00000AE8
+
+mo_stage/st_battle/st_battle_function_ae8.cpp:
+	.text       start:0x00000AE8 end:0x00000AF0
+
+mo_stage/st_battle/st_battle_function_af0.cpp:
+	.text       start:0x00000AF0 end:0x00000AF4
+
+mo_stage/st_battle/st_battle_function_af4.cpp:
+	.text       start:0x00000AF4 end:0x00000AF8
+
+mo_stage/st_battle/st_battle_function_b24.cpp:
+	.text       start:0x00000B24 end:0x00000B2C
+
+mo_stage/st_battle/st_battle_function_b2c.cpp:
+	.text       start:0x00000B2C end:0x00000B34
+
+mo_stage/st_battle/st_battle_function_b34.cpp:
+	.text       start:0x00000B34 end:0x00000B38
+
+mo_stage/st_battle/st_battle_function_b38.cpp:
+	.text       start:0x00000B38 end:0x00000B40
+
+mo_stage/st_battle/st_battle_function_f6c.cpp:
+	.text       start:0x00000F6C end:0x00000F74
+
+mo_stage/st_battle/st_battle_function_f74.cpp:
+	.text       start:0x00000F74 end:0x00000F7C
+
+mo_stage/st_battle/st_battle_function_f7c.cpp:
+	.text       start:0x00000F7C end:0x00000F84
+
 mo_stage/mo_stage.cpp:
 	.text       start:0x00000F84 end:0x00001020
 	.data       start:0x000007D8 end:0x000007E5
