@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_dedede: 257 template functions
+
+- Matched 257 functions in `ft_dedede` with decomp-orchestrator's template solver (adjust_return 2, const_return 37, empty 108, getter 15, setter 9, tail_call 5, thunk 81).
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## Ness 92E8 — nullable byte-state accessor; Luna eight-byte sample 1
 
 - Integrate `fn_101_92E8` (`ft_ness` .text `[0x92E8,0x92F0)`, 8 bytes) from Luna's unchanged 174-byte genuine C++ source, SHA-256 `e8c256945ec78062acad21914f3928e6b885f4e43f7b37ad7893c6ab5c675eeb`. Its const receiver view returns the bool byte at offset 4 directly; preserve the unconditional `lbz r3,4(r3); blr`, with no null guard, stores, calls, extra bool normalization or allocated data. The leading word in the view is unused, not dereferenced or a claim that every derived nullable object's complete vtable layout is recovered. Review the real `soNullable` header's bool/const-accessor semantics and size-8 contract alongside the actual binary; no shared header, caller, source-body or ABI revisions.
