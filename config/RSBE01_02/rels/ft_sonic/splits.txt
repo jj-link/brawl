@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_sonic/ft_sonic_function_18d8.cpp:
+	.text       start:0x000018D8 end:0x00001978
+
 mo_fighter/ft_sonic/ft_sonic_function_6e08.cpp:
 	.text       start:0x00006E08 end:0x00006E10
 
