@@ -20,17 +20,53 @@ mo_fighter/ft_ness/ness_function_1c3c.cpp:
 mo_fighter/ft_ness/ness_large_aggregate_destructor.cpp:
 	.text       start:0x00002B2C end:0x00002DD8
 
+mo_fighter/ft_ness/ness_function_361c.cpp:
+	.text       start:0x0000361C end:0x0000367C
+
+mo_fighter/ft_ness/ness_function_367c.cpp:
+	.text       start:0x0000367C end:0x000036DC
+
 mo_fighter/ft_ness/ness_fighter_module_destructor.cpp:
 	.text       start:0x000036DC end:0x00003A70
 
 mo_fighter/ft_ness/ness_support_base_destructor.cpp:
 	.text       start:0x00003B0C end:0x00003B4C
 
+mo_fighter/ft_ness/ness_function_3db4.cpp:
+	.text       start:0x00003DB4 end:0x00003E14
+
+mo_fighter/ft_ness/ness_function_4030.cpp:
+	.text       start:0x00004030 end:0x00004090
+
+mo_fighter/ft_ness/ness_function_4114.cpp:
+	.text       start:0x00004114 end:0x00004174
+
+mo_fighter/ft_ness/ness_function_41fc.cpp:
+	.text       start:0x000041FC end:0x0000425C
+
+mo_fighter/ft_ness/ness_function_4558.cpp:
+	.text       start:0x00004558 end:0x000045B8
+
+mo_fighter/ft_ness/ness_function_45b8.cpp:
+	.text       start:0x000045B8 end:0x00004618
+
 mo_fighter/ft_ness/ness_event_storage_destructor.cpp:
 	.text       start:0x00004B48 end:0x00004C74
 
+mo_fighter/ft_ness/ness_function_4d5c.cpp:
+	.text       start:0x00004D5C end:0x00004DBC
+
 mo_fighter/ft_ness/ness_article_composite_destructor.cpp:
 	.text       start:0x00004DBC end:0x000051CC
+
+mo_fighter/ft_ness/ness_function_51cc.cpp:
+	.text       start:0x000051CC end:0x0000522C
+
+mo_fighter/ft_ness/ness_function_522c.cpp:
+	.text       start:0x0000522C end:0x0000528C
+
+mo_fighter/ft_ness/ness_function_5378.cpp:
+	.text       start:0x00005378 end:0x000053D8
 
 mo_fighter/ft_ness/ness_extended_module_destructor.cpp:
 	.text       start:0x000053D8 end:0x0000572C
@@ -44,8 +80,23 @@ mo_fighter/ft_ness/ness_article_module_destructor.cpp:
 mo_fighter/ft_ness/ness_article_base_destructors.cpp:
 	.text       start:0x00005D14 end:0x00005DD4
 
+mo_fighter/ft_ness/ness_function_5dd4.cpp:
+	.text       start:0x00005DD4 end:0x00005E34
+
+mo_fighter/ft_ness/ness_function_5f1c.cpp:
+	.text       start:0x00005F1C end:0x00005F7C
+
 mo_fighter/ft_ness/ness_function_5f7c.cpp:
 	.text       start:0x00005F7C end:0x00006280
+
+mo_fighter/ft_ness/ness_function_6890.cpp:
+	.text       start:0x00006890 end:0x000068F0
+
+mo_fighter/ft_ness/ness_function_6960.cpp:
+	.text       start:0x00006960 end:0x000069C0
+
+mo_fighter/ft_ness/ness_function_69c0.cpp:
+	.text       start:0x000069C0 end:0x00006A20
 
 mo_fighter/ft_ness/ness_article_aggregate_destructor.cpp:
 	.text       start:0x00006A20 end:0x00006CAC
@@ -53,11 +104,32 @@ mo_fighter/ft_ness/ness_article_aggregate_destructor.cpp:
 mo_fighter/ft_ness/ness_article_event_storage_destructor.cpp:
 	.text       start:0x00006DF0 end:0x00006F1C
 
+mo_fighter/ft_ness/ness_function_6f80.cpp:
+	.text       start:0x00006F80 end:0x00006FE0
+
+mo_fighter/ft_ness/ness_function_6fe0.cpp:
+	.text       start:0x00006FE0 end:0x00007040
+
+mo_fighter/ft_ness/ness_function_7040.cpp:
+	.text       start:0x00007040 end:0x000070A0
+
 mo_fighter/ft_ness/ness_function_70a0.cpp:
 	.text       start:0x000070A0 end:0x000073EC
 
+mo_fighter/ft_ness/ness_function_73ec.cpp:
+	.text       start:0x000073EC end:0x0000744C
+
+mo_fighter/ft_ness/ness_function_80b0.cpp:
+	.text       start:0x000080B0 end:0x00008110
+
+mo_fighter/ft_ness/ness_function_8aa4.cpp:
+	.text       start:0x00008AA4 end:0x00008B04
+
 mo_fighter/ft_ness/ness_function_8b60.cpp:
 	.text       start:0x00008B60 end:0x00008C14
+
+mo_fighter/ft_ness/ness_function_8ec4.cpp:
+	.text       start:0x00008EC4 end:0x00008F24
 
 mo_fighter/ft_ness/ness_primary_event_storage_destructor.cpp:
 	.text       start:0x000090CC end:0x00009210
@@ -82,6 +154,9 @@ mo_fighter/ft_ness/ness_function_9aa0.cpp:
 
 mo_fighter/ft_ness/ness_function_b07c.cpp:
 	.text       start:0x0000B07C end:0x0000B148
+
+mo_fighter/ft_ness/ness_function_b1e0.cpp:
+	.text       start:0x0000B1E0 end:0x0000B240
 
 mo_fighter/ft_ness/ness_function_b58c.cpp:
 	.text       start:0x0000B58C end:0x0000B590
@@ -129,6 +204,9 @@ mo_fighter/ft_ness/ness_function_cc80.cpp:
 mo_fighter/ft_ness/ness_function_ce18.cpp:
 	.text       start:0x0000CE18 end:0x0000CE1C
 
+mo_fighter/ft_ness/ness_function_ce1c.cpp:
+	.text       start:0x0000CE1C end:0x0000CE7C
+
 mo_fighter/ft_ness/ness_function_cf68.cpp:
 	.text       start:0x0000CF68 end:0x0000CF7C
 
@@ -147,14 +225,44 @@ mo_fighter/ft_ness/ness_function_cf9c.cpp:
 mo_fighter/ft_ness/ness_function_cfb4.cpp:
 	.text       start:0x0000CFB4 end:0x0000CFC8
 
+mo_fighter/ft_ness/ness_function_cfc8.cpp:
+	.text       start:0x0000CFC8 end:0x0000CFDC
+
 mo_fighter/ft_ness/ness_function_cfdc.cpp:
 	.text       start:0x0000CFDC end:0x0000CFE0
 
 mo_fighter/ft_ness/ness_function_cfe0.cpp:
 	.text       start:0x0000CFE0 end:0x0000CFE4
 
+mo_fighter/ft_ness/ness_function_cfe4.cpp:
+	.text       start:0x0000CFE4 end:0x0000CFF8
+
+mo_fighter/ft_ness/ness_function_cff8.cpp:
+	.text       start:0x0000CFF8 end:0x0000D00C
+
+mo_fighter/ft_ness/ness_function_d00c.cpp:
+	.text       start:0x0000D00C end:0x0000D020
+
+mo_fighter/ft_ness/ness_function_d020.cpp:
+	.text       start:0x0000D020 end:0x0000D034
+
+mo_fighter/ft_ness/ness_function_d034.cpp:
+	.text       start:0x0000D034 end:0x0000D048
+
+mo_fighter/ft_ness/ness_function_d048.cpp:
+	.text       start:0x0000D048 end:0x0000D05C
+
+mo_fighter/ft_ness/ness_function_d05c.cpp:
+	.text       start:0x0000D05C end:0x0000D070
+
 mo_fighter/ft_ness/ness_function_d070.cpp:
 	.text       start:0x0000D070 end:0x0000D074
+
+mo_fighter/ft_ness/ness_function_d074.cpp:
+	.text       start:0x0000D074 end:0x0000D088
+
+mo_fighter/ft_ness/ness_function_d088.cpp:
+	.text       start:0x0000D088 end:0x0000D09C
 
 mo_fighter/ft_ness/ness_function_d09c.cpp:
 	.text       start:0x0000D09C end:0x0000D0A0
@@ -215,6 +323,12 @@ mo_fighter/ft_ness/ness_function_d0e8.cpp:
 
 mo_fighter/ft_ness/ness_function_d0ec.cpp:
 	.text       start:0x0000D0EC end:0x0000D0F0
+
+mo_fighter/ft_ness/ness_function_d0f0.cpp:
+	.text       start:0x0000D0F0 end:0x0000D104
+
+mo_fighter/ft_ness/ness_function_d104.cpp:
+	.text       start:0x0000D104 end:0x0000D118
 
 mo_fighter/ft_ness/ness_function_d118.cpp:
 	.text       start:0x0000D118 end:0x0000D11C
@@ -306,6 +420,9 @@ mo_fighter/ft_ness/ness_function_d2e8.cpp:
 mo_fighter/ft_ness/ness_function_d380.cpp:
 	.text       start:0x0000D380 end:0x0000D398
 
+mo_fighter/ft_ness/ness_function_d398.cpp:
+	.text       start:0x0000D398 end:0x0000D3AC
+
 mo_fighter/ft_ness/ness_function_d3ac.cpp:
 	.text       start:0x0000D3AC end:0x0000D3C4
 
@@ -351,6 +468,9 @@ mo_fighter/ft_ness/ness_function_d524.cpp:
 mo_fighter/ft_ness/ness_function_d62c.cpp:
 	.text       start:0x0000D62C end:0x0000D758
 
+mo_fighter/ft_ness/ness_function_d84c.cpp:
+	.text       start:0x0000D84C end:0x0000D8AC
+
 mo_fighter/ft_ness/ness_function_d8ac.cpp:
 	.text       start:0x0000D8AC end:0x0000E160
 	.data       start:0x00004438 end:0x0000447C
@@ -365,6 +485,9 @@ mo_fighter/ft_ness/ness_function_ed14.cpp:
 mo_fighter/ft_ness/ness_function_ee70.cpp:
 	.text       start:0x0000EE70 end:0x0000EE78
 
+mo_fighter/ft_ness/ness_function_ee90.cpp:
+	.text       start:0x0000EE90 end:0x0000EEA4
+
 mo_fighter/ft_ness/ness_function_ef00.cpp:
 	.text       start:0x0000EF00 end:0x0000EF18
 
@@ -376,6 +499,69 @@ mo_fighter/ft_ness/ness_function_ef30.cpp:
 
 mo_fighter/ft_ness/ness_function_f0b8.cpp:
 	.text       start:0x0000F0B8 end:0x0000F0D0
+
+mo_fighter/ft_ness/ness_function_f0d0.cpp:
+	.text       start:0x0000F0D0 end:0x0000F130
+
+mo_fighter/ft_ness/ness_function_f130.cpp:
+	.text       start:0x0000F130 end:0x0000F190
+
+mo_fighter/ft_ness/ness_function_f190.cpp:
+	.text       start:0x0000F190 end:0x0000F1F0
+
+mo_fighter/ft_ness/ness_function_f1f0.cpp:
+	.text       start:0x0000F1F0 end:0x0000F250
+
+mo_fighter/ft_ness/ness_function_f310.cpp:
+	.text       start:0x0000F310 end:0x0000F370
+
+mo_fighter/ft_ness/ness_function_f370.cpp:
+	.text       start:0x0000F370 end:0x0000F3D0
+
+mo_fighter/ft_ness/ness_function_f440.cpp:
+	.text       start:0x0000F440 end:0x0000F4A0
+
+mo_fighter/ft_ness/ness_function_f4a0.cpp:
+	.text       start:0x0000F4A0 end:0x0000F500
+
+mo_fighter/ft_ness/ness_function_f500.cpp:
+	.text       start:0x0000F500 end:0x0000F560
+
+mo_fighter/ft_ness/ness_function_f5d8.cpp:
+	.text       start:0x0000F5D8 end:0x0000F638
+
+mo_fighter/ft_ness/ness_function_f638.cpp:
+	.text       start:0x0000F638 end:0x0000F698
+
+mo_fighter/ft_ness/ness_function_f698.cpp:
+	.text       start:0x0000F698 end:0x0000F6F8
+
+mo_fighter/ft_ness/ness_function_f7cc.cpp:
+	.text       start:0x0000F7CC end:0x0000F82C
+
+mo_fighter/ft_ness/ness_function_f82c.cpp:
+	.text       start:0x0000F82C end:0x0000F88C
+
+mo_fighter/ft_ness/ness_function_f904.cpp:
+	.text       start:0x0000F904 end:0x0000F964
+
+mo_fighter/ft_ness/ness_function_f964.cpp:
+	.text       start:0x0000F964 end:0x0000F9C4
+
+mo_fighter/ft_ness/ness_function_f9c4.cpp:
+	.text       start:0x0000F9C4 end:0x0000FA24
+
+mo_fighter/ft_ness/ness_function_faf8.cpp:
+	.text       start:0x0000FAF8 end:0x0000FB58
+
+mo_fighter/ft_ness/ness_function_fb58.cpp:
+	.text       start:0x0000FB58 end:0x0000FBB8
+
+mo_fighter/ft_ness/ness_function_fc8c.cpp:
+	.text       start:0x0000FC8C end:0x0000FCEC
+
+mo_fighter/ft_ness/ness_function_fcec.cpp:
+	.text       start:0x0000FCEC end:0x0000FD4C
 
 mo_fighter/ft_ness/ness_function_fe20.cpp:
 	.text       start:0x0000FE20 end:0x0000FE24
@@ -397,6 +583,12 @@ mo_fighter/ft_ness/ness_function_10338.cpp:
 
 mo_fighter/ft_ness/ness_function_10530.cpp:
 	.text       start:0x00010530 end:0x00010534
+
+mo_fighter/ft_ness/ness_function_10544.cpp:
+	.text       start:0x00010544 end:0x00010558
+
+mo_fighter/ft_ness/ness_function_10558.cpp:
+	.text       start:0x00010558 end:0x0001056C
 
 mo_fighter/ft_ness/ness_function_1056c.cpp:
 	.text       start:0x0001056C end:0x00010574
@@ -793,6 +985,9 @@ mo_fighter/ft_ness/ness_function_15e58.cpp:
 mo_fighter/ft_ness/ness_function_15e5c.cpp:
 	.text       start:0x00015E5C end:0x00015E60
 
+mo_fighter/ft_ness/ness_function_15e60.cpp:
+	.text       start:0x00015E60 end:0x00015E74
+
 mo_fighter/ft_ness/ness_function_15e74.cpp:
 	.text       start:0x00015E74 end:0x00015E7C
 
@@ -1072,8 +1267,20 @@ mo_fighter/ft_ness/ness_function_1646c.cpp:
 mo_fighter/ft_ness/ness_function_18430.cpp:
 	.text       start:0x00018430 end:0x000185E4
 
+mo_fighter/ft_ness/ness_function_1879c.cpp:
+	.text       start:0x0001879C end:0x000187FC
+
 mo_fighter/ft_ness/ness_function_1886c.cpp:
 	.text       start:0x0001886C end:0x00018ABC
+
+mo_fighter/ft_ness/ness_function_18c6c.cpp:
+	.text       start:0x00018C6C end:0x00018CCC
+
+mo_fighter/ft_ness/ness_function_18d68.cpp:
+	.text       start:0x00018D68 end:0x00018DC8
+
+mo_fighter/ft_ness/ness_function_18dc8.cpp:
+	.text       start:0x00018DC8 end:0x00018E28
 
 mo_fighter/ft_ness/ness_function_18e28.cpp:
 	.text       start:0x00018E28 end:0x00018EF4
@@ -1100,6 +1307,9 @@ mo_fighter/ft_ness/ness_function_19b8c.cpp:
 mo_fighter/ft_ness/ness_function_19d10.cpp:
 	.text       start:0x00019D10 end:0x00019EE8
 	.data       start:0x0000A7B8 end:0x0000A7FC
+
+mo_fighter/ft_ness/ness_function_19ee8.cpp:
+	.text       start:0x00019EE8 end:0x00019F48
 
 mo_fighter/ft_ness/ness_function_19f48.cpp:
 	.text       start:0x00019F48 end:0x00019F50
@@ -1149,6 +1359,9 @@ mo_fighter/ft_ness/ness_function_1a3d0.cpp:
 mo_fighter/ft_ness/ness_function_1bf44.cpp:
 	.text       start:0x0001BF44 end:0x0001C0C4
 
+mo_fighter/ft_ness/ness_function_1c160.cpp:
+	.text       start:0x0001C160 end:0x0001C1C0
+
 mo_fighter/ft_ness/ness_function_1c220.cpp:
 	.text       start:0x0001C220 end:0x0001C520
 
@@ -1197,6 +1410,9 @@ mo_fighter/ft_ness/ness_function_1c788.cpp:
 
 mo_fighter/ft_ness/ness_function_1e1e8.cpp:
 	.text       start:0x0001E1E8 end:0x0001E35C
+
+mo_fighter/ft_ness/ness_function_1e3d4.cpp:
+	.text       start:0x0001E3D4 end:0x0001E434
 
 mo_fighter/ft_ness/ness_function_1e680.cpp:
 	.text       start:0x0001E680 end:0x0001E954
