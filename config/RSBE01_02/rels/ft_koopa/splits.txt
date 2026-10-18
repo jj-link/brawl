@@ -80,6 +80,9 @@ mo_fighter/ft_koopa/ft_koopa_function_8a30.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_8c18.cpp:
 	.text       start:0x00008C18 end:0x00008C1C
 
+mo_fighter/ft_koopa/ft_koopa_function_8c1c.cpp:
+	.text       start:0x00008C1C end:0x00008C7C
+
 mo_fighter/ft_koopa/ft_koopa_function_8d74.cpp:
 	.text       start:0x00008D74 end:0x00008D78
 
@@ -245,6 +248,9 @@ mo_fighter/ft_koopa/ft_koopa_function_906c.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_9074.cpp:
 	.text       start:0x00009074 end:0x0000907C
 
+mo_fighter/ft_koopa/ft_koopa_function_907c.cpp:
+	.text       start:0x0000907C end:0x000090DC
+
 mo_fighter/ft_koopa/ft_koopa_function_90dc.cpp:
 	.text       start:0x000090DC end:0x000090E4
 
@@ -290,8 +296,77 @@ mo_fighter/ft_koopa/ft_koopa_function_92d8.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_9310.cpp:
 	.text       start:0x00009310 end:0x00009318
 
+mo_fighter/ft_koopa/ft_koopa_function_9640.cpp:
+	.text       start:0x00009640 end:0x000096A0
+
+mo_fighter/ft_koopa/ft_koopa_function_a13c.cpp:
+	.text       start:0x0000A13C end:0x0000A19C
+
 mo_fighter/ft_koopa/ft_koopa_function_a19c.cpp:
 	.text       start:0x0000A19C end:0x0000A1A4
+
+mo_fighter/ft_koopa/ft_koopa_function_a298.cpp:
+	.text       start:0x0000A298 end:0x0000A2F8
+
+mo_fighter/ft_koopa/ft_koopa_function_a2f8.cpp:
+	.text       start:0x0000A2F8 end:0x0000A358
+
+mo_fighter/ft_koopa/ft_koopa_function_a358.cpp:
+	.text       start:0x0000A358 end:0x0000A3B8
+
+mo_fighter/ft_koopa/ft_koopa_function_a3b8.cpp:
+	.text       start:0x0000A3B8 end:0x0000A418
+
+mo_fighter/ft_koopa/ft_koopa_function_a4d8.cpp:
+	.text       start:0x0000A4D8 end:0x0000A538
+
+mo_fighter/ft_koopa/ft_koopa_function_a538.cpp:
+	.text       start:0x0000A538 end:0x0000A598
+
+mo_fighter/ft_koopa/ft_koopa_function_a608.cpp:
+	.text       start:0x0000A608 end:0x0000A668
+
+mo_fighter/ft_koopa/ft_koopa_function_a668.cpp:
+	.text       start:0x0000A668 end:0x0000A6C8
+
+mo_fighter/ft_koopa/ft_koopa_function_a6c8.cpp:
+	.text       start:0x0000A6C8 end:0x0000A728
+
+mo_fighter/ft_koopa/ft_koopa_function_a7a0.cpp:
+	.text       start:0x0000A7A0 end:0x0000A800
+
+mo_fighter/ft_koopa/ft_koopa_function_a800.cpp:
+	.text       start:0x0000A800 end:0x0000A860
+
+mo_fighter/ft_koopa/ft_koopa_function_a860.cpp:
+	.text       start:0x0000A860 end:0x0000A8C0
+
+mo_fighter/ft_koopa/ft_koopa_function_a994.cpp:
+	.text       start:0x0000A994 end:0x0000A9F4
+
+mo_fighter/ft_koopa/ft_koopa_function_a9f4.cpp:
+	.text       start:0x0000A9F4 end:0x0000AA54
+
+mo_fighter/ft_koopa/ft_koopa_function_aacc.cpp:
+	.text       start:0x0000AACC end:0x0000AB2C
+
+mo_fighter/ft_koopa/ft_koopa_function_ab2c.cpp:
+	.text       start:0x0000AB2C end:0x0000AB8C
+
+mo_fighter/ft_koopa/ft_koopa_function_ab8c.cpp:
+	.text       start:0x0000AB8C end:0x0000ABEC
+
+mo_fighter/ft_koopa/ft_koopa_function_acc0.cpp:
+	.text       start:0x0000ACC0 end:0x0000AD20
+
+mo_fighter/ft_koopa/ft_koopa_function_ad20.cpp:
+	.text       start:0x0000AD20 end:0x0000AD80
+
+mo_fighter/ft_koopa/ft_koopa_function_ae54.cpp:
+	.text       start:0x0000AE54 end:0x0000AEB4
+
+mo_fighter/ft_koopa/ft_koopa_function_aeb4.cpp:
+	.text       start:0x0000AEB4 end:0x0000AF14
 
 mo_fighter/ft_koopa/ft_koopa_function_afe8.cpp:
 	.text       start:0x0000AFE8 end:0x0000AFEC
@@ -551,11 +626,23 @@ mo_fighter/ft_koopa/ft_koopa_function_e290.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_10d40.cpp:
 	.text       start:0x00010D40 end:0x00010DE0
 
+mo_fighter/ft_koopa/ft_koopa_function_1196c.cpp:
+	.text       start:0x0001196C end:0x000119CC
+
+mo_fighter/ft_koopa/ft_koopa_function_11a3c.cpp:
+	.text       start:0x00011A3C end:0x00011A9C
+
+mo_fighter/ft_koopa/ft_koopa_function_12278.cpp:
+	.text       start:0x00012278 end:0x000122D8
+
 mo_fighter/ft_koopa/ft_koopa_function_12c88.cpp:
 	.text       start:0x00012C88 end:0x00012C8C
 
 mo_fighter/ft_koopa/ft_koopa_function_14038.cpp:
 	.text       start:0x00014038 end:0x0001403C
+
+mo_fighter/ft_koopa/ft_koopa_function_1403c.cpp:
+	.text       start:0x0001403C end:0x0001409C
 
 mo_fighter/ft_koopa/ft_koopa_function_1416c.cpp:
 	.text       start:0x0001416C end:0x00014174
