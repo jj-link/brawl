@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## sora_melee: 2000 template functions
+
+- Matched 2000 functions in `sora_melee` with decomp-orchestrator's template solver (adjust_return 6, const_return 607, empty 1092, getter 82, setter 44, tail_call 23, thunk 146).
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_wario, ft_wolf and 12 more: 2000 template functions
 
 - Matched 2000 functions in `ft_wario, ft_wolf and 12 more` with decomp-orchestrator's template solver (adjust_return 56, const_return 329, empty 563, getter 149, setter 96, tail_call 39, thunk 768).
