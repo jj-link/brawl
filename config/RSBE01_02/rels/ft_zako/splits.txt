@@ -11,14 +11,59 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_zako/ft_zako_function_1ce8.cpp:
+	.text       start:0x00001CE8 end:0x00001D68
+
+mo_fighter/ft_zako/ft_zako_function_2ed4.cpp:
+	.text       start:0x00002ED4 end:0x00002F34
+
+mo_fighter/ft_zako/ft_zako_function_3048.cpp:
+	.text       start:0x00003048 end:0x000030A8
+
+mo_fighter/ft_zako/ft_zako_function_311c.cpp:
+	.text       start:0x0000311C end:0x000031B8
+
+mo_fighter/ft_zako/ft_zako_function_323c.cpp:
+	.text       start:0x0000323C end:0x0000329C
+
+mo_fighter/ft_zako/ft_zako_function_3370.cpp:
+	.text       start:0x00003370 end:0x000033D0
+
+mo_fighter/ft_zako/ft_zako_function_3410.cpp:
+	.text       start:0x00003410 end:0x00003470
+
+mo_fighter/ft_zako/ft_zako_function_3d50.cpp:
+	.text       start:0x00003D50 end:0x00003DB0
+
+mo_fighter/ft_zako/ft_zako_function_3db0.cpp:
+	.text       start:0x00003DB0 end:0x00003E10
+
+mo_fighter/ft_zako/ft_zako_function_3e7c.cpp:
+	.text       start:0x00003E7C end:0x00003EDC
+
+mo_fighter/ft_zako/ft_zako_function_4018.cpp:
+	.text       start:0x00004018 end:0x00004098
+
+mo_fighter/ft_zako/ft_zako_function_4d08.cpp:
+	.text       start:0x00004D08 end:0x00004D68
+
 mo_fighter/ft_zako/ft_zako_function_50f0.cpp:
 	.text       start:0x000050F0 end:0x00005104
 
 mo_fighter/ft_zako/ft_zako_function_51c8.cpp:
 	.text       start:0x000051C8 end:0x000051D0
 
+mo_fighter/ft_zako/ft_zako_function_62d8.cpp:
+	.text       start:0x000062D8 end:0x00006358
+
+mo_fighter/ft_zako/ft_zako_function_69d0.cpp:
+	.text       start:0x000069D0 end:0x00006A30
+
 mo_fighter/ft_zako/ft_zako_function_6d00.cpp:
 	.text       start:0x00006D00 end:0x00006D04
+
+mo_fighter/ft_zako/ft_zako_function_6db4.cpp:
+	.text       start:0x00006DB4 end:0x00006E14
 
 mo_fighter/ft_zako/ft_zako_function_6f20.cpp:
 	.text       start:0x00006F20 end:0x00006F24
@@ -28,6 +73,9 @@ mo_fighter/ft_zako/ft_zako_function_6f24.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_6f54.cpp:
 	.text       start:0x00006F54 end:0x00006F58
+
+mo_fighter/ft_zako/ft_zako_function_6f58.cpp:
+	.text       start:0x00006F58 end:0x00006FB8
 
 mo_fighter/ft_zako/ft_zako_function_70a4.cpp:
 	.text       start:0x000070A4 end:0x000070B8
@@ -242,6 +290,9 @@ mo_fighter/ft_zako/ft_zako_function_73c8.cpp:
 mo_fighter/ft_zako/ft_zako_function_73d0.cpp:
 	.text       start:0x000073D0 end:0x000073D8
 
+mo_fighter/ft_zako/ft_zako_function_73d8.cpp:
+	.text       start:0x000073D8 end:0x00007438
+
 mo_fighter/ft_zako/ft_zako_function_7478.cpp:
 	.text       start:0x00007478 end:0x00007480
 
@@ -290,11 +341,77 @@ mo_fighter/ft_zako/ft_zako_function_7674.cpp:
 mo_fighter/ft_zako/ft_zako_function_76ac.cpp:
 	.text       start:0x000076AC end:0x000076B4
 
+mo_fighter/ft_zako/ft_zako_function_79dc.cpp:
+	.text       start:0x000079DC end:0x00007A3C
+
 mo_fighter/ft_zako/ft_zako_function_7a3c.cpp:
 	.text       start:0x00007A3C end:0x00007A44
 
 mo_fighter/ft_zako/ft_zako_function_7a54.cpp:
 	.text       start:0x00007A54 end:0x00007A5C
+
+mo_fighter/ft_zako/ft_zako_function_7a9c.cpp:
+	.text       start:0x00007A9C end:0x00007AFC
+
+mo_fighter/ft_zako/ft_zako_function_7afc.cpp:
+	.text       start:0x00007AFC end:0x00007B5C
+
+mo_fighter/ft_zako/ft_zako_function_7b5c.cpp:
+	.text       start:0x00007B5C end:0x00007BBC
+
+mo_fighter/ft_zako/ft_zako_function_7bbc.cpp:
+	.text       start:0x00007BBC end:0x00007C1C
+
+mo_fighter/ft_zako/ft_zako_function_7cdc.cpp:
+	.text       start:0x00007CDC end:0x00007D3C
+
+mo_fighter/ft_zako/ft_zako_function_7d3c.cpp:
+	.text       start:0x00007D3C end:0x00007D9C
+
+mo_fighter/ft_zako/ft_zako_function_7e0c.cpp:
+	.text       start:0x00007E0C end:0x00007E6C
+
+mo_fighter/ft_zako/ft_zako_function_7e6c.cpp:
+	.text       start:0x00007E6C end:0x00007ECC
+
+mo_fighter/ft_zako/ft_zako_function_7ecc.cpp:
+	.text       start:0x00007ECC end:0x00007F2C
+
+mo_fighter/ft_zako/ft_zako_function_7fa4.cpp:
+	.text       start:0x00007FA4 end:0x00008004
+
+mo_fighter/ft_zako/ft_zako_function_8004.cpp:
+	.text       start:0x00008004 end:0x00008064
+
+mo_fighter/ft_zako/ft_zako_function_8064.cpp:
+	.text       start:0x00008064 end:0x000080C4
+
+mo_fighter/ft_zako/ft_zako_function_8198.cpp:
+	.text       start:0x00008198 end:0x000081F8
+
+mo_fighter/ft_zako/ft_zako_function_81f8.cpp:
+	.text       start:0x000081F8 end:0x00008258
+
+mo_fighter/ft_zako/ft_zako_function_82d0.cpp:
+	.text       start:0x000082D0 end:0x00008330
+
+mo_fighter/ft_zako/ft_zako_function_8330.cpp:
+	.text       start:0x00008330 end:0x00008390
+
+mo_fighter/ft_zako/ft_zako_function_8390.cpp:
+	.text       start:0x00008390 end:0x000083F0
+
+mo_fighter/ft_zako/ft_zako_function_84c4.cpp:
+	.text       start:0x000084C4 end:0x00008524
+
+mo_fighter/ft_zako/ft_zako_function_8524.cpp:
+	.text       start:0x00008524 end:0x00008584
+
+mo_fighter/ft_zako/ft_zako_function_8658.cpp:
+	.text       start:0x00008658 end:0x000086B8
+
+mo_fighter/ft_zako/ft_zako_function_86b8.cpp:
+	.text       start:0x000086B8 end:0x00008718
 
 mo_fighter/ft_zako/ft_zako_function_87ec.cpp:
 	.text       start:0x000087EC end:0x000087F0
@@ -503,6 +620,12 @@ mo_fighter/ft_zako/ft_zako_function_99a8.cpp:
 mo_fighter/ft_zako/ft_zako_function_99b0.cpp:
 	.text       start:0x000099B0 end:0x000099B8
 
+mo_fighter/ft_zako/ft_zako_function_b488.cpp:
+	.text       start:0x0000B488 end:0x0000B4E8
+
+mo_fighter/ft_zako/ft_zako_function_b61c.cpp:
+	.text       start:0x0000B61C end:0x0000B67C
+
 mo_fighter/ft_zako/ft_zako_function_b6f0.cpp:
 	.text       start:0x0000B6F0 end:0x0000B6F8
 
@@ -521,6 +644,12 @@ mo_fighter/ft_zako/ft_zako_function_b91c.cpp:
 mo_fighter/ft_zako/ft_zako_function_b924.cpp:
 	.text       start:0x0000B924 end:0x0000B92C
 
+mo_fighter/ft_zako/ft_zako_function_d3fc.cpp:
+	.text       start:0x0000D3FC end:0x0000D45C
+
+mo_fighter/ft_zako/ft_zako_function_d590.cpp:
+	.text       start:0x0000D590 end:0x0000D5F0
+
 mo_fighter/ft_zako/ft_zako_function_d664.cpp:
 	.text       start:0x0000D664 end:0x0000D66C
 
@@ -538,6 +667,12 @@ mo_fighter/ft_zako/ft_zako_function_d890.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_d898.cpp:
 	.text       start:0x0000D898 end:0x0000D8A0
+
+mo_fighter/ft_zako/ft_zako_function_f370.cpp:
+	.text       start:0x0000F370 end:0x0000F3D0
+
+mo_fighter/ft_zako/ft_zako_function_f504.cpp:
+	.text       start:0x0000F504 end:0x0000F564
 
 mo_fighter/ft_zako/ft_zako_function_f5d8.cpp:
 	.text       start:0x0000F5D8 end:0x0000F5E0
