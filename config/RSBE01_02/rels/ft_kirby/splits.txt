@@ -11,8 +11,20 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_kirby/ft_kirby_function_1e98.cpp:
+	.text       start:0x00001E98 end:0x00001F18
+
 mo_fighter/ft_kirby/ft_kirby_function_28d0.cpp:
 	.text       start:0x000028D0 end:0x000028D8
+
+mo_fighter/ft_kirby/ft_kirby_function_45d4.cpp:
+	.text       start:0x000045D4 end:0x00004654
+
+mo_fighter/ft_kirby/ft_kirby_function_4d6c.cpp:
+	.text       start:0x00004D6C end:0x00004DEC
+
+mo_fighter/ft_kirby/ft_kirby_function_9cec.cpp:
+	.text       start:0x00009CEC end:0x00009D6C
 
 mo_fighter/ft_kirby/ft_kirby_function_ab5c.cpp:
 	.text       start:0x0000AB5C end:0x0000AB60
@@ -28,6 +40,9 @@ mo_fighter/ft_kirby/ft_kirby_function_bc6c.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_c17c.cpp:
 	.text       start:0x0000C17C end:0x0000C184
+
+mo_fighter/ft_kirby/ft_kirby_function_e090.cpp:
+	.text       start:0x0000E090 end:0x0000E110
 
 mo_fighter/ft_kirby/ft_kirby_function_e240.cpp:
 	.text       start:0x0000E240 end:0x0000E248
@@ -503,6 +518,9 @@ mo_fighter/ft_kirby/ft_kirby_function_13d80.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_141a8.cpp:
 	.text       start:0x000141A8 end:0x000141AC
 
+mo_fighter/ft_kirby/ft_kirby_function_14b80.cpp:
+	.text       start:0x00014B80 end:0x00014C00
+
 mo_fighter/ft_kirby/ft_kirby_function_14c00.cpp:
 	.text       start:0x00014C00 end:0x00014C04
 
@@ -544,6 +562,9 @@ mo_fighter/ft_kirby/ft_kirby_function_1c244.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_1d66c.cpp:
 	.text       start:0x0001D66C end:0x0001D68C
+
+mo_fighter/ft_kirby/ft_kirby_function_1d734.cpp:
+	.text       start:0x0001D734 end:0x0001D7B4
 
 mo_fighter/ft_kirby/ft_kirby_function_1e1f4.cpp:
 	.text       start:0x0001E1F4 end:0x0001E1FC

@@ -11,14 +11,29 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_ike/ft_ike_function_1eac.cpp:
+	.text       start:0x00001EAC end:0x00001F2C
+
+mo_fighter/ft_ike/ft_ike_function_2d98.cpp:
+	.text       start:0x00002D98 end:0x00002E18
+
+mo_fighter/ft_ike/ft_ike_function_46bc.cpp:
+	.text       start:0x000046BC end:0x0000473C
+
 mo_fighter/ft_ike/ft_ike_function_58e4.cpp:
 	.text       start:0x000058E4 end:0x000058EC
+
+mo_fighter/ft_ike/ft_ike_function_6a90.cpp:
+	.text       start:0x00006A90 end:0x00006B10
 
 mo_fighter/ft_ike/ft_ike_function_7610.cpp:
 	.text       start:0x00007610 end:0x00007614
 
 mo_fighter/ft_ike/ft_ike_function_7c5c.cpp:
 	.text       start:0x00007C5C end:0x00007C64
+
+mo_fighter/ft_ike/ft_ike_function_8f10.cpp:
+	.text       start:0x00008F10 end:0x00008F90
 
 mo_fighter/ft_ike/ft_ike_function_913c.cpp:
 	.text       start:0x0000913C end:0x00009144
