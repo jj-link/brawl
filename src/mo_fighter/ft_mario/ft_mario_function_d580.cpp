@@ -1,0 +1,5 @@
+#pragma force_active on
+extern "C" void* fn_91_D580(unsigned char* object, int flag) {
+    if (flag == 0) return object + 12;
+    return 0;
+}
