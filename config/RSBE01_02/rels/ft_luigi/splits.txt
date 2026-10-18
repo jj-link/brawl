@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_luigi/ft_luigi_function_18a4.cpp:
+	.text       start:0x000018A4 end:0x00001944
+
 mo_fighter/ft_luigi/ft_luigi_function_1944.cpp:
 	.text       start:0x00001944 end:0x000019FC
 

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_lucas/ft_lucas_function_1af0.cpp:
+	.text       start:0x00001AF0 end:0x00001B90
+
 mo_fighter/ft_lucas/ft_lucas_function_200c.cpp:
 	.text       start:0x0000200C end:0x0000208C
 

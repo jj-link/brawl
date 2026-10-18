@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_metaknight/ft_metaknight_function_18ac.cpp:
+	.text       start:0x000018AC end:0x0000194C
+
 mo_fighter/ft_metaknight/ft_metaknight_function_5f38.cpp:
 	.text       start:0x00005F38 end:0x00005F40
 
