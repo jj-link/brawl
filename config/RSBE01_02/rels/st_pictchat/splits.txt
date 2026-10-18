@@ -11,6 +11,543 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_pictchat/st_pictchat_function_2c0.cpp:
+	.text       start:0x000002C0 end:0x000002C8
+
+mo_stage/st_pictchat/st_pictchat_function_8dc.cpp:
+	.text       start:0x000008DC end:0x000008E4
+
+mo_stage/st_pictchat/st_pictchat_function_8e4.cpp:
+	.text       start:0x000008E4 end:0x000008EC
+
+mo_stage/st_pictchat/st_pictchat_function_8ec.cpp:
+	.text       start:0x000008EC end:0x000008F4
+
+mo_stage/st_pictchat/st_pictchat_function_9d0.cpp:
+	.text       start:0x000009D0 end:0x000009D8
+
+mo_stage/st_pictchat/st_pictchat_function_9d8.cpp:
+	.text       start:0x000009D8 end:0x000009E0
+
+mo_stage/st_pictchat/st_pictchat_function_b38.cpp:
+	.text       start:0x00000B38 end:0x00000B40
+
+mo_stage/st_pictchat/st_pictchat_function_b40.cpp:
+	.text       start:0x00000B40 end:0x00000B48
+
+mo_stage/st_pictchat/st_pictchat_function_12b0.cpp:
+	.text       start:0x000012B0 end:0x000012B8
+
+mo_stage/st_pictchat/st_pictchat_function_12b8.cpp:
+	.text       start:0x000012B8 end:0x000012C0
+
+mo_stage/st_pictchat/st_pictchat_function_12c0.cpp:
+	.text       start:0x000012C0 end:0x000012C8
+
+mo_stage/st_pictchat/st_pictchat_function_12c8.cpp:
+	.text       start:0x000012C8 end:0x000012D0
+
+mo_stage/st_pictchat/st_pictchat_function_12d0.cpp:
+	.text       start:0x000012D0 end:0x000012D8
+
+mo_stage/st_pictchat/st_pictchat_function_12d8.cpp:
+	.text       start:0x000012D8 end:0x000012E0
+
+mo_stage/st_pictchat/st_pictchat_function_12e0.cpp:
+	.text       start:0x000012E0 end:0x000012E8
+
+mo_stage/st_pictchat/st_pictchat_function_12e8.cpp:
+	.text       start:0x000012E8 end:0x000012F0
+
+mo_stage/st_pictchat/st_pictchat_function_12f0.cpp:
+	.text       start:0x000012F0 end:0x000012F8
+
+mo_stage/st_pictchat/st_pictchat_function_12f8.cpp:
+	.text       start:0x000012F8 end:0x00001300
+
+mo_stage/st_pictchat/st_pictchat_function_1300.cpp:
+	.text       start:0x00001300 end:0x00001308
+
+mo_stage/st_pictchat/st_pictchat_function_1308.cpp:
+	.text       start:0x00001308 end:0x00001310
+
+mo_stage/st_pictchat/st_pictchat_function_1310.cpp:
+	.text       start:0x00001310 end:0x00001318
+
+mo_stage/st_pictchat/st_pictchat_function_1318.cpp:
+	.text       start:0x00001318 end:0x00001320
+
+mo_stage/st_pictchat/st_pictchat_function_1320.cpp:
+	.text       start:0x00001320 end:0x00001328
+
+mo_stage/st_pictchat/st_pictchat_function_1328.cpp:
+	.text       start:0x00001328 end:0x00001330
+
+mo_stage/st_pictchat/st_pictchat_function_156c.cpp:
+	.text       start:0x0000156C end:0x00001574
+
+mo_stage/st_pictchat/st_pictchat_function_1574.cpp:
+	.text       start:0x00001574 end:0x0000157C
+
+mo_stage/st_pictchat/st_pictchat_function_157c.cpp:
+	.text       start:0x0000157C end:0x00001584
+
+mo_stage/st_pictchat/st_pictchat_function_1584.cpp:
+	.text       start:0x00001584 end:0x0000158C
+
+mo_stage/st_pictchat/st_pictchat_function_158c.cpp:
+	.text       start:0x0000158C end:0x00001594
+
+mo_stage/st_pictchat/st_pictchat_function_1848.cpp:
+	.text       start:0x00001848 end:0x00001850
+
+mo_stage/st_pictchat/st_pictchat_function_1850.cpp:
+	.text       start:0x00001850 end:0x00001858
+
+mo_stage/st_pictchat/st_pictchat_function_1858.cpp:
+	.text       start:0x00001858 end:0x00001860
+
+mo_stage/st_pictchat/st_pictchat_function_1860.cpp:
+	.text       start:0x00001860 end:0x00001868
+
+mo_stage/st_pictchat/st_pictchat_function_1868.cpp:
+	.text       start:0x00001868 end:0x00001870
+
+mo_stage/st_pictchat/st_pictchat_function_19b8.cpp:
+	.text       start:0x000019B8 end:0x000019BC
+
+mo_stage/st_pictchat/st_pictchat_function_1c74.cpp:
+	.text       start:0x00001C74 end:0x00001C7C
+
+mo_stage/st_pictchat/st_pictchat_function_1c7c.cpp:
+	.text       start:0x00001C7C end:0x00001C84
+
+mo_stage/st_pictchat/st_pictchat_function_1c84.cpp:
+	.text       start:0x00001C84 end:0x00001C8C
+
+mo_stage/st_pictchat/st_pictchat_function_1c8c.cpp:
+	.text       start:0x00001C8C end:0x00001C94
+
+mo_stage/st_pictchat/st_pictchat_function_1c94.cpp:
+	.text       start:0x00001C94 end:0x00001C9C
+
+mo_stage/st_pictchat/st_pictchat_function_2a30.cpp:
+	.text       start:0x00002A30 end:0x00002A34
+
+mo_stage/st_pictchat/st_pictchat_function_2a34.cpp:
+	.text       start:0x00002A34 end:0x00002A3C
+
+mo_stage/st_pictchat/st_pictchat_function_2a3c.cpp:
+	.text       start:0x00002A3C end:0x00002A44
+
+mo_stage/st_pictchat/st_pictchat_function_2a44.cpp:
+	.text       start:0x00002A44 end:0x00002A4C
+
+mo_stage/st_pictchat/st_pictchat_function_2a4c.cpp:
+	.text       start:0x00002A4C end:0x00002A54
+
+mo_stage/st_pictchat/st_pictchat_function_2a54.cpp:
+	.text       start:0x00002A54 end:0x00002A5C
+
+mo_stage/st_pictchat/st_pictchat_function_2a5c.cpp:
+	.text       start:0x00002A5C end:0x00002A60
+
+mo_stage/st_pictchat/st_pictchat_function_2a60.cpp:
+	.text       start:0x00002A60 end:0x00002A68
+
+mo_stage/st_pictchat/st_pictchat_function_2a68.cpp:
+	.text       start:0x00002A68 end:0x00002A70
+
+mo_stage/st_pictchat/st_pictchat_function_2a70.cpp:
+	.text       start:0x00002A70 end:0x00002A78
+
+mo_stage/st_pictchat/st_pictchat_function_2ab4.cpp:
+	.text       start:0x00002AB4 end:0x00002ABC
+
+mo_stage/st_pictchat/st_pictchat_function_2abc.cpp:
+	.text       start:0x00002ABC end:0x00002AC4
+
+mo_stage/st_pictchat/st_pictchat_function_2ac4.cpp:
+	.text       start:0x00002AC4 end:0x00002ACC
+
+mo_stage/st_pictchat/st_pictchat_function_2acc.cpp:
+	.text       start:0x00002ACC end:0x00002AD4
+
+mo_stage/st_pictchat/st_pictchat_function_2ad4.cpp:
+	.text       start:0x00002AD4 end:0x00002ADC
+
+mo_stage/st_pictchat/st_pictchat_function_2adc.cpp:
+	.text       start:0x00002ADC end:0x00002AE0
+
+mo_stage/st_pictchat/st_pictchat_function_2afc.cpp:
+	.text       start:0x00002AFC end:0x00002B04
+
+mo_stage/st_pictchat/st_pictchat_function_2b04.cpp:
+	.text       start:0x00002B04 end:0x00002B0C
+
+mo_stage/st_pictchat/st_pictchat_function_2b0c.cpp:
+	.text       start:0x00002B0C end:0x00002B14
+
+mo_stage/st_pictchat/st_pictchat_function_2b14.cpp:
+	.text       start:0x00002B14 end:0x00002B1C
+
+mo_stage/st_pictchat/st_pictchat_function_2b28.cpp:
+	.text       start:0x00002B28 end:0x00002B2C
+
+mo_stage/st_pictchat/st_pictchat_function_2b2c.cpp:
+	.text       start:0x00002B2C end:0x00002B34
+
+mo_stage/st_pictchat/st_pictchat_function_2b34.cpp:
+	.text       start:0x00002B34 end:0x00002B3C
+
+mo_stage/st_pictchat/st_pictchat_function_2b3c.cpp:
+	.text       start:0x00002B3C end:0x00002B44
+
+mo_stage/st_pictchat/st_pictchat_function_2b44.cpp:
+	.text       start:0x00002B44 end:0x00002B4C
+
+mo_stage/st_pictchat/st_pictchat_function_2c58.cpp:
+	.text       start:0x00002C58 end:0x00002C5C
+
+mo_stage/st_pictchat/st_pictchat_function_2c5c.cpp:
+	.text       start:0x00002C5C end:0x00002C64
+
+mo_stage/st_pictchat/st_pictchat_function_3378.cpp:
+	.text       start:0x00003378 end:0x00003380
+
+mo_stage/st_pictchat/st_pictchat_function_3380.cpp:
+	.text       start:0x00003380 end:0x00003388
+
+mo_stage/st_pictchat/st_pictchat_function_3388.cpp:
+	.text       start:0x00003388 end:0x0000338C
+
+mo_stage/st_pictchat/st_pictchat_function_338c.cpp:
+	.text       start:0x0000338C end:0x00003390
+
+mo_stage/st_pictchat/st_pictchat_function_33bc.cpp:
+	.text       start:0x000033BC end:0x000033C4
+
+mo_stage/st_pictchat/st_pictchat_function_33c4.cpp:
+	.text       start:0x000033C4 end:0x000033C8
+
+mo_stage/st_pictchat/st_pictchat_function_33c8.cpp:
+	.text       start:0x000033C8 end:0x000033D0
+
+mo_stage/st_pictchat/st_pictchat_function_33ec.cpp:
+	.text       start:0x000033EC end:0x000033F4
+
+mo_stage/st_pictchat/st_pictchat_function_33f4.cpp:
+	.text       start:0x000033F4 end:0x000033FC
+
+mo_stage/st_pictchat/st_pictchat_function_3a68.cpp:
+	.text       start:0x00003A68 end:0x00003A6C
+
+mo_stage/st_pictchat/st_pictchat_function_3c2c.cpp:
+	.text       start:0x00003C2C end:0x00003C30
+
+mo_stage/st_pictchat/st_pictchat_function_3e5c.cpp:
+	.text       start:0x00003E5C end:0x00003E60
+
+mo_stage/st_pictchat/st_pictchat_function_3f04.cpp:
+	.text       start:0x00003F04 end:0x00003F08
+
+mo_stage/st_pictchat/st_pictchat_function_3f08.cpp:
+	.text       start:0x00003F08 end:0x00003F0C
+
+mo_stage/st_pictchat/st_pictchat_function_3ff4.cpp:
+	.text       start:0x00003FF4 end:0x00003FF8
+
+mo_stage/st_pictchat/st_pictchat_function_41d4.cpp:
+	.text       start:0x000041D4 end:0x000041D8
+
+mo_stage/st_pictchat/st_pictchat_function_4ff8.cpp:
+	.text       start:0x00004FF8 end:0x00004FFC
+
+mo_stage/st_pictchat/st_pictchat_function_9370.cpp:
+	.text       start:0x00009370 end:0x00009378
+
+mo_stage/st_pictchat/st_pictchat_function_9378.cpp:
+	.text       start:0x00009378 end:0x0000937C
+
+mo_stage/st_pictchat/st_pictchat_function_937c.cpp:
+	.text       start:0x0000937C end:0x00009384
+
+mo_stage/st_pictchat/st_pictchat_function_9384.cpp:
+	.text       start:0x00009384 end:0x0000938C
+
+mo_stage/st_pictchat/st_pictchat_function_9490.cpp:
+	.text       start:0x00009490 end:0x00009494
+
+mo_stage/st_pictchat/st_pictchat_function_96d0.cpp:
+	.text       start:0x000096D0 end:0x000096D8
+
+mo_stage/st_pictchat/st_pictchat_function_96d8.cpp:
+	.text       start:0x000096D8 end:0x000096E0
+
+mo_stage/st_pictchat/st_pictchat_function_96e0.cpp:
+	.text       start:0x000096E0 end:0x000096E4
+
+mo_stage/st_pictchat/st_pictchat_function_96e4.cpp:
+	.text       start:0x000096E4 end:0x000096EC
+
+mo_stage/st_pictchat/st_pictchat_function_96ec.cpp:
+	.text       start:0x000096EC end:0x000096F0
+
+mo_stage/st_pictchat/st_pictchat_function_96f0.cpp:
+	.text       start:0x000096F0 end:0x000096F4
+
+mo_stage/st_pictchat/st_pictchat_function_96f4.cpp:
+	.text       start:0x000096F4 end:0x000096F8
+
+mo_stage/st_pictchat/st_pictchat_function_96f8.cpp:
+	.text       start:0x000096F8 end:0x000096FC
+
+mo_stage/st_pictchat/st_pictchat_function_96fc.cpp:
+	.text       start:0x000096FC end:0x00009700
+
+mo_stage/st_pictchat/st_pictchat_function_9720.cpp:
+	.text       start:0x00009720 end:0x00009728
+
+mo_stage/st_pictchat/st_pictchat_function_9770.cpp:
+	.text       start:0x00009770 end:0x00009774
+
+mo_stage/st_pictchat/st_pictchat_function_97b4.cpp:
+	.text       start:0x000097B4 end:0x000097B8
+
+mo_stage/st_pictchat/st_pictchat_function_97b8.cpp:
+	.text       start:0x000097B8 end:0x000097BC
+
+mo_stage/st_pictchat/st_pictchat_function_9da0.cpp:
+	.text       start:0x00009DA0 end:0x00009DA8
+
+mo_stage/st_pictchat/st_pictchat_function_9e38.cpp:
+	.text       start:0x00009E38 end:0x00009E40
+
+mo_stage/st_pictchat/st_pictchat_function_9ed0.cpp:
+	.text       start:0x00009ED0 end:0x00009ED8
+
+mo_stage/st_pictchat/st_pictchat_function_9f68.cpp:
+	.text       start:0x00009F68 end:0x00009F70
+
+mo_stage/st_pictchat/st_pictchat_function_a068.cpp:
+	.text       start:0x0000A068 end:0x0000A070
+
+mo_stage/st_pictchat/st_pictchat_function_a938.cpp:
+	.text       start:0x0000A938 end:0x0000A940
+
+mo_stage/st_pictchat/st_pictchat_function_a940.cpp:
+	.text       start:0x0000A940 end:0x0000A944
+
+mo_stage/st_pictchat/st_pictchat_function_a944.cpp:
+	.text       start:0x0000A944 end:0x0000A948
+
+mo_stage/st_pictchat/st_pictchat_function_a948.cpp:
+	.text       start:0x0000A948 end:0x0000A94C
+
+mo_stage/st_pictchat/st_pictchat_function_a94c.cpp:
+	.text       start:0x0000A94C end:0x0000A950
+
+mo_stage/st_pictchat/st_pictchat_function_a950.cpp:
+	.text       start:0x0000A950 end:0x0000A954
+
+mo_stage/st_pictchat/st_pictchat_function_a954.cpp:
+	.text       start:0x0000A954 end:0x0000A958
+
+mo_stage/st_pictchat/st_pictchat_function_a958.cpp:
+	.text       start:0x0000A958 end:0x0000A95C
+
+mo_stage/st_pictchat/st_pictchat_function_a95c.cpp:
+	.text       start:0x0000A95C end:0x0000A964
+
+mo_stage/st_pictchat/st_pictchat_function_a964.cpp:
+	.text       start:0x0000A964 end:0x0000A96C
+
+mo_stage/st_pictchat/st_pictchat_function_a96c.cpp:
+	.text       start:0x0000A96C end:0x0000A970
+
+mo_stage/st_pictchat/st_pictchat_function_a970.cpp:
+	.text       start:0x0000A970 end:0x0000A978
+
+mo_stage/st_pictchat/st_pictchat_function_ac50.cpp:
+	.text       start:0x0000AC50 end:0x0000AC58
+
+mo_stage/st_pictchat/st_pictchat_function_adb0.cpp:
+	.text       start:0x0000ADB0 end:0x0000ADB8
+
+mo_stage/st_pictchat/st_pictchat_function_b83c.cpp:
+	.text       start:0x0000B83C end:0x0000B844
+
+mo_stage/st_pictchat/st_pictchat_function_c58c.cpp:
+	.text       start:0x0000C58C end:0x0000C594
+
+mo_stage/st_pictchat/st_pictchat_function_cea8.cpp:
+	.text       start:0x0000CEA8 end:0x0000CEB0
+
+mo_stage/st_pictchat/st_pictchat_function_cfc4.cpp:
+	.text       start:0x0000CFC4 end:0x0000CFCC
+
+mo_stage/st_pictchat/st_pictchat_function_cfcc.cpp:
+	.text       start:0x0000CFCC end:0x0000CFD4
+
+mo_stage/st_pictchat/st_pictchat_function_cfd4.cpp:
+	.text       start:0x0000CFD4 end:0x0000CFDC
+
+mo_stage/st_pictchat/st_pictchat_function_cfdc.cpp:
+	.text       start:0x0000CFDC end:0x0000CFE4
+
+mo_stage/st_pictchat/st_pictchat_function_cfe4.cpp:
+	.text       start:0x0000CFE4 end:0x0000CFEC
+
+mo_stage/st_pictchat/st_pictchat_function_cfec.cpp:
+	.text       start:0x0000CFEC end:0x0000CFF4
+
+mo_stage/st_pictchat/st_pictchat_function_cff4.cpp:
+	.text       start:0x0000CFF4 end:0x0000CFFC
+
+mo_stage/st_pictchat/st_pictchat_function_cffc.cpp:
+	.text       start:0x0000CFFC end:0x0000D004
+
+mo_stage/st_pictchat/st_pictchat_function_d004.cpp:
+	.text       start:0x0000D004 end:0x0000D00C
+
+mo_stage/st_pictchat/st_pictchat_function_d00c.cpp:
+	.text       start:0x0000D00C end:0x0000D014
+
+mo_stage/st_pictchat/st_pictchat_function_d014.cpp:
+	.text       start:0x0000D014 end:0x0000D01C
+
+mo_stage/st_pictchat/st_pictchat_function_d01c.cpp:
+	.text       start:0x0000D01C end:0x0000D024
+
+mo_stage/st_pictchat/st_pictchat_function_d024.cpp:
+	.text       start:0x0000D024 end:0x0000D02C
+
+mo_stage/st_pictchat/st_pictchat_function_d02c.cpp:
+	.text       start:0x0000D02C end:0x0000D034
+
+mo_stage/st_pictchat/st_pictchat_function_d034.cpp:
+	.text       start:0x0000D034 end:0x0000D03C
+
+mo_stage/st_pictchat/st_pictchat_function_d03c.cpp:
+	.text       start:0x0000D03C end:0x0000D044
+
+mo_stage/st_pictchat/st_pictchat_function_d044.cpp:
+	.text       start:0x0000D044 end:0x0000D04C
+
+mo_stage/st_pictchat/st_pictchat_function_d04c.cpp:
+	.text       start:0x0000D04C end:0x0000D054
+
+mo_stage/st_pictchat/st_pictchat_function_d054.cpp:
+	.text       start:0x0000D054 end:0x0000D05C
+
+mo_stage/st_pictchat/st_pictchat_function_d05c.cpp:
+	.text       start:0x0000D05C end:0x0000D064
+
+mo_stage/st_pictchat/st_pictchat_function_d064.cpp:
+	.text       start:0x0000D064 end:0x0000D06C
+
+mo_stage/st_pictchat/st_pictchat_function_d06c.cpp:
+	.text       start:0x0000D06C end:0x0000D074
+
+mo_stage/st_pictchat/st_pictchat_function_d074.cpp:
+	.text       start:0x0000D074 end:0x0000D07C
+
+mo_stage/st_pictchat/st_pictchat_function_d07c.cpp:
+	.text       start:0x0000D07C end:0x0000D084
+
+mo_stage/st_pictchat/st_pictchat_function_d084.cpp:
+	.text       start:0x0000D084 end:0x0000D08C
+
+mo_stage/st_pictchat/st_pictchat_function_d08c.cpp:
+	.text       start:0x0000D08C end:0x0000D094
+
+mo_stage/st_pictchat/st_pictchat_function_d094.cpp:
+	.text       start:0x0000D094 end:0x0000D09C
+
+mo_stage/st_pictchat/st_pictchat_function_d09c.cpp:
+	.text       start:0x0000D09C end:0x0000D0A4
+
+mo_stage/st_pictchat/st_pictchat_function_d0a4.cpp:
+	.text       start:0x0000D0A4 end:0x0000D0AC
+
+mo_stage/st_pictchat/st_pictchat_function_d0ac.cpp:
+	.text       start:0x0000D0AC end:0x0000D0B4
+
+mo_stage/st_pictchat/st_pictchat_function_d0b4.cpp:
+	.text       start:0x0000D0B4 end:0x0000D0BC
+
+mo_stage/st_pictchat/st_pictchat_function_d0bc.cpp:
+	.text       start:0x0000D0BC end:0x0000D0C4
+
+mo_stage/st_pictchat/st_pictchat_function_d0c4.cpp:
+	.text       start:0x0000D0C4 end:0x0000D0CC
+
+mo_stage/st_pictchat/st_pictchat_function_d0cc.cpp:
+	.text       start:0x0000D0CC end:0x0000D0D4
+
+mo_stage/st_pictchat/st_pictchat_function_d0d4.cpp:
+	.text       start:0x0000D0D4 end:0x0000D0DC
+
+mo_stage/st_pictchat/st_pictchat_function_d0dc.cpp:
+	.text       start:0x0000D0DC end:0x0000D0E4
+
+mo_stage/st_pictchat/st_pictchat_function_d0e4.cpp:
+	.text       start:0x0000D0E4 end:0x0000D0EC
+
+mo_stage/st_pictchat/st_pictchat_function_d0ec.cpp:
+	.text       start:0x0000D0EC end:0x0000D0F4
+
+mo_stage/st_pictchat/st_pictchat_function_d0f4.cpp:
+	.text       start:0x0000D0F4 end:0x0000D0FC
+
+mo_stage/st_pictchat/st_pictchat_function_d0fc.cpp:
+	.text       start:0x0000D0FC end:0x0000D104
+
+mo_stage/st_pictchat/st_pictchat_function_d104.cpp:
+	.text       start:0x0000D104 end:0x0000D10C
+
+mo_stage/st_pictchat/st_pictchat_function_d10c.cpp:
+	.text       start:0x0000D10C end:0x0000D114
+
+mo_stage/st_pictchat/st_pictchat_function_d114.cpp:
+	.text       start:0x0000D114 end:0x0000D11C
+
+mo_stage/st_pictchat/st_pictchat_function_d11c.cpp:
+	.text       start:0x0000D11C end:0x0000D124
+
+mo_stage/st_pictchat/st_pictchat_function_d124.cpp:
+	.text       start:0x0000D124 end:0x0000D12C
+
+mo_stage/st_pictchat/st_pictchat_function_d12c.cpp:
+	.text       start:0x0000D12C end:0x0000D134
+
+mo_stage/st_pictchat/st_pictchat_function_d134.cpp:
+	.text       start:0x0000D134 end:0x0000D13C
+
+mo_stage/st_pictchat/st_pictchat_function_d13c.cpp:
+	.text       start:0x0000D13C end:0x0000D144
+
+mo_stage/st_pictchat/st_pictchat_function_d144.cpp:
+	.text       start:0x0000D144 end:0x0000D14C
+
+mo_stage/st_pictchat/st_pictchat_function_d14c.cpp:
+	.text       start:0x0000D14C end:0x0000D154
+
+mo_stage/st_pictchat/st_pictchat_function_d154.cpp:
+	.text       start:0x0000D154 end:0x0000D15C
+
+mo_stage/st_pictchat/st_pictchat_function_d5a8.cpp:
+	.text       start:0x0000D5A8 end:0x0000D5AC
+
+mo_stage/st_pictchat/st_pictchat_function_d778.cpp:
+	.text       start:0x0000D778 end:0x0000D77C
+
+mo_stage/st_pictchat/st_pictchat_function_dba8.cpp:
+	.text       start:0x0000DBA8 end:0x0000DBAC
+
+mo_stage/st_pictchat/st_pictchat_function_effc.cpp:
+	.text       start:0x0000EFFC end:0x0000F000
+
 mo_stage/mo_stage.cpp:
 	.text       start:0x0000F378 end:0x0000F414
 	.data       start:0x00005E48 end:0x00005E55
