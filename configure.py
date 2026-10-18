@@ -3470,6 +3470,23 @@ config.libs = [
     },
 ]
 
+# decomp-orchestrator units (generated list; see config/<version>/orchestrated_units.json)
+def _add_orchestrated_units():
+    import json as _json
+
+    units_file = Path("config") / config.version / "orchestrated_units.json"
+    if not units_file.is_file():
+        return
+    libs = {lib["lib"]: lib for lib in config.libs}
+    for unit in _json.loads(units_file.read_text(encoding="utf-8")):
+        options = {"cflags": globals()[unit["cflags"]]}
+        if unit["extra_cflags"]:
+            options["extra_cflags"] = unit["extra_cflags"]
+        libs[unit["lib"]]["objects"].append(Object(Matching, unit["path"], **options))
+
+
+_add_orchestrated_units()
+
 # Optional extra categories for progress tracking
 # Adjust as desired for your project
 config.progress_categories = [
