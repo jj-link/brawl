@@ -194,6 +194,9 @@ mo_stage/st_gw/st_gw_function_1f38.cpp:
 mo_stage/st_gw/st_gw_function_1f40.cpp:
 	.text       start:0x00001F40 end:0x00001F48
 
+mo_stage/st_gw/st_gw_function_2224.cpp:
+	.text       start:0x00002224 end:0x00002240
+
 mo_stage/st_gw/st_gw_function_2890.cpp:
 	.text       start:0x00002890 end:0x00002894
 
@@ -224,6 +227,18 @@ mo_stage/st_gw/st_gw_function_28c8.cpp:
 mo_stage/st_gw/st_gw_function_28d0.cpp:
 	.text       start:0x000028D0 end:0x000028D8
 
+mo_stage/st_gw/st_gw_function_28d8.cpp:
+	.text       start:0x000028D8 end:0x000028E4
+
+mo_stage/st_gw/st_gw_function_28e4.cpp:
+	.text       start:0x000028E4 end:0x000028F0
+
+mo_stage/st_gw/st_gw_function_28f0.cpp:
+	.text       start:0x000028F0 end:0x00002900
+
+mo_stage/st_gw/st_gw_function_2900.cpp:
+	.text       start:0x00002900 end:0x00002914
+
 mo_stage/st_gw/st_gw_function_2914.cpp:
 	.text       start:0x00002914 end:0x0000291C
 
@@ -253,6 +268,9 @@ mo_stage/st_gw/st_gw_function_296c.cpp:
 
 mo_stage/st_gw/st_gw_function_2974.cpp:
 	.text       start:0x00002974 end:0x0000297C
+
+mo_stage/st_gw/st_gw_function_297c.cpp:
+	.text       start:0x0000297C end:0x00002988
 
 mo_stage/st_gw/st_gw_function_2988.cpp:
 	.text       start:0x00002988 end:0x0000298C
@@ -287,6 +305,15 @@ mo_stage/st_gw/st_gw_function_3330.cpp:
 mo_stage/st_gw/st_gw_function_3334.cpp:
 	.text       start:0x00003334 end:0x00003338
 
+mo_stage/st_gw/st_gw_function_3338.cpp:
+	.text       start:0x00003338 end:0x00003348
+
+mo_stage/st_gw/st_gw_function_3348.cpp:
+	.text       start:0x00003348 end:0x00003358
+
+mo_stage/st_gw/st_gw_function_3358.cpp:
+	.text       start:0x00003358 end:0x00003364
+
 mo_stage/st_gw/st_gw_function_3364.cpp:
 	.text       start:0x00003364 end:0x0000336C
 
@@ -295,6 +322,9 @@ mo_stage/st_gw/st_gw_function_336c.cpp:
 
 mo_stage/st_gw/st_gw_function_3370.cpp:
 	.text       start:0x00003370 end:0x00003378
+
+mo_stage/st_gw/st_gw_function_3378.cpp:
+	.text       start:0x00003378 end:0x00003394
 
 mo_stage/st_gw/st_gw_function_3394.cpp:
 	.text       start:0x00003394 end:0x0000339C
@@ -332,6 +362,15 @@ mo_stage/st_gw/st_gw_function_5528.cpp:
 mo_stage/st_gw/st_gw_function_5da8.cpp:
 	.text       start:0x00005DA8 end:0x00005DAC
 
+mo_stage/st_gw/st_gw_function_85f4.cpp:
+	.text       start:0x000085F4 end:0x00008634
+
+mo_stage/st_gw/st_gw_function_8634.cpp:
+	.text       start:0x00008634 end:0x00008674
+
+mo_stage/st_gw/st_gw_function_8674.cpp:
+	.text       start:0x00008674 end:0x000086B4
+
 mo_stage/st_gw/st_gw_function_933c.cpp:
 	.text       start:0x0000933C end:0x00009344
 
@@ -343,6 +382,12 @@ mo_stage/st_gw/st_gw_function_9348.cpp:
 
 mo_stage/st_gw/st_gw_function_9350.cpp:
 	.text       start:0x00009350 end:0x00009358
+
+mo_stage/st_gw/st_gw_function_93dc.cpp:
+	.text       start:0x000093DC end:0x0000941C
+
+mo_stage/st_gw/st_gw_function_941c.cpp:
+	.text       start:0x0000941C end:0x0000945C
 
 mo_stage/st_gw/st_gw_function_945c.cpp:
 	.text       start:0x0000945C end:0x00009460
@@ -362,6 +407,9 @@ mo_stage/st_gw/st_gw_function_96ac.cpp:
 mo_stage/st_gw/st_gw_function_96b4.cpp:
 	.text       start:0x000096B4 end:0x000096B8
 
+mo_stage/st_gw/st_gw_function_96b8.cpp:
+	.text       start:0x000096B8 end:0x000096C4
+
 mo_stage/st_gw/st_gw_function_96c4.cpp:
 	.text       start:0x000096C4 end:0x000096CC
 
@@ -376,6 +424,15 @@ mo_stage/st_gw/st_gw_function_96dc.cpp:
 
 mo_stage/st_gw/st_gw_function_96e0.cpp:
 	.text       start:0x000096E0 end:0x000096E4
+
+mo_stage/st_gw/st_gw_function_96e4.cpp:
+	.text       start:0x000096E4 end:0x000096F0
+
+mo_stage/st_gw/st_gw_function_96f0.cpp:
+	.text       start:0x000096F0 end:0x000096FC
+
+mo_stage/st_gw/st_gw_function_96fc.cpp:
+	.text       start:0x000096FC end:0x00009708
 
 mo_stage/st_gw/st_gw_function_9708.cpp:
 	.text       start:0x00009708 end:0x0000970C
@@ -425,6 +482,9 @@ mo_stage/st_gw/st_gw_function_9750.cpp:
 mo_stage/st_gw/st_gw_function_9758.cpp:
 	.text       start:0x00009758 end:0x00009760
 
+mo_stage/st_gw/st_gw_function_9760.cpp:
+	.text       start:0x00009760 end:0x0000976C
+
 mo_stage/st_gw/st_gw_function_976c.cpp:
 	.text       start:0x0000976C end:0x00009774
 
@@ -464,17 +524,77 @@ mo_stage/st_gw/st_gw_function_97b8.cpp:
 mo_stage/st_gw/st_gw_function_97bc.cpp:
 	.text       start:0x000097BC end:0x000097C0
 
+mo_stage/st_gw/st_gw_function_97c0.cpp:
+	.text       start:0x000097C0 end:0x000097E0
+
 mo_stage/st_gw/st_gw_function_97e0.cpp:
 	.text       start:0x000097E0 end:0x000097E8
 
 mo_stage/st_gw/st_gw_function_9830.cpp:
 	.text       start:0x00009830 end:0x00009834
 
+mo_stage/st_gw/st_gw_function_9834.cpp:
+	.text       start:0x00009834 end:0x00009874
+
+mo_stage/st_gw/st_gw_function_99d0.cpp:
+	.text       start:0x000099D0 end:0x00009A10
+
+mo_stage/st_gw/st_gw_function_9bb4.cpp:
+	.text       start:0x00009BB4 end:0x00009BC0
+
+mo_stage/st_gw/st_gw_function_9bc0.cpp:
+	.text       start:0x00009BC0 end:0x00009BD0
+
+mo_stage/st_gw/st_gw_function_9bd0.cpp:
+	.text       start:0x00009BD0 end:0x00009BDC
+
 mo_stage/st_gw/st_gw_function_9bdc.cpp:
 	.text       start:0x00009BDC end:0x00009BE4
 
+mo_stage/st_gw/st_gw_function_9d40.cpp:
+	.text       start:0x00009D40 end:0x00009D4C
+
+mo_stage/st_gw/st_gw_function_9d4c.cpp:
+	.text       start:0x00009D4C end:0x00009D5C
+
+mo_stage/st_gw/st_gw_function_9d5c.cpp:
+	.text       start:0x00009D5C end:0x00009D68
+
 mo_stage/st_gw/st_gw_function_9d68.cpp:
 	.text       start:0x00009D68 end:0x00009D70
+
+mo_stage/st_gw/st_gw_function_9d70.cpp:
+	.text       start:0x00009D70 end:0x00009D80
+
+mo_stage/st_gw/st_gw_function_9d80.cpp:
+	.text       start:0x00009D80 end:0x00009DC0
+
+mo_stage/st_gw/st_gw_function_9e90.cpp:
+	.text       start:0x00009E90 end:0x00009ED0
+
+mo_stage/st_gw/st_gw_function_9ed0.cpp:
+	.text       start:0x00009ED0 end:0x00009F10
+
+mo_stage/st_gw/st_gw_function_a1f4.cpp:
+	.text       start:0x0000A1F4 end:0x0000A234
+
+mo_stage/st_gw/st_gw_function_a234.cpp:
+	.text       start:0x0000A234 end:0x0000A274
+
+mo_stage/st_gw/st_gw_function_a590.cpp:
+	.text       start:0x0000A590 end:0x0000A5D0
+
+mo_stage/st_gw/st_gw_function_a5d0.cpp:
+	.text       start:0x0000A5D0 end:0x0000A610
+
+mo_stage/st_gw/st_gw_function_a610.cpp:
+	.text       start:0x0000A610 end:0x0000A650
+
+mo_stage/st_gw/st_gw_function_ac1c.cpp:
+	.text       start:0x0000AC1C end:0x0000AC9C
+
+mo_stage/st_gw/st_gw_function_ac9c.cpp:
+	.text       start:0x0000AC9C end:0x0000AD1C
 
 mo_stage/st_gw/st_gw_function_ad1c.cpp:
 	.text       start:0x0000AD1C end:0x0000AD24
@@ -512,17 +632,137 @@ mo_stage/st_gw/st_gw_function_ad50.cpp:
 mo_stage/st_gw/st_gw_function_ad54.cpp:
 	.text       start:0x0000AD54 end:0x0000AD5C
 
+mo_stage/st_gw/st_gw_function_ad5c.cpp:
+	.text       start:0x0000AD5C end:0x0000AD68
+
+mo_stage/st_gw/st_gw_function_ad78.cpp:
+	.text       start:0x0000AD78 end:0x0000AD88
+
+mo_stage/st_gw/st_gw_function_ad98.cpp:
+	.text       start:0x0000AD98 end:0x0000ADA8
+
+mo_stage/st_gw/st_gw_function_ada8.cpp:
+	.text       start:0x0000ADA8 end:0x0000ADB8
+
+mo_stage/st_gw/st_gw_function_adb8.cpp:
+	.text       start:0x0000ADB8 end:0x0000ADC8
+
+mo_stage/st_gw/st_gw_function_adc8.cpp:
+	.text       start:0x0000ADC8 end:0x0000ADD4
+
 mo_stage/st_gw/st_gw_function_add4.cpp:
 	.text       start:0x0000ADD4 end:0x0000ADDC
+
+mo_stage/st_gw/st_gw_function_addc.cpp:
+	.text       start:0x0000ADDC end:0x0000ADEC
+
+mo_stage/st_gw/st_gw_function_ae24.cpp:
+	.text       start:0x0000AE24 end:0x0000AE30
+
+mo_stage/st_gw/st_gw_function_ae40.cpp:
+	.text       start:0x0000AE40 end:0x0000AE50
+
+mo_stage/st_gw/st_gw_function_ae50.cpp:
+	.text       start:0x0000AE50 end:0x0000AE60
+
+mo_stage/st_gw/st_gw_function_ae60.cpp:
+	.text       start:0x0000AE60 end:0x0000AE70
+
+mo_stage/st_gw/st_gw_function_ae70.cpp:
+	.text       start:0x0000AE70 end:0x0000AE80
 
 mo_stage/st_gw/st_gw_function_ae9c.cpp:
 	.text       start:0x0000AE9C end:0x0000AEA4
 
+mo_stage/st_gw/st_gw_function_aea4.cpp:
+	.text       start:0x0000AEA4 end:0x0000AEB4
+
+mo_stage/st_gw/st_gw_function_aedc.cpp:
+	.text       start:0x0000AEDC end:0x0000AEEC
+
+mo_stage/st_gw/st_gw_function_aeec.cpp:
+	.text       start:0x0000AEEC end:0x0000AEFC
+
+mo_stage/st_gw/st_gw_function_aefc.cpp:
+	.text       start:0x0000AEFC end:0x0000AF0C
+
+mo_stage/st_gw/st_gw_function_af0c.cpp:
+	.text       start:0x0000AF0C end:0x0000AF1C
+
+mo_stage/st_gw/st_gw_function_af1c.cpp:
+	.text       start:0x0000AF1C end:0x0000AF2C
+
+mo_stage/st_gw/st_gw_function_af3c.cpp:
+	.text       start:0x0000AF3C end:0x0000AF4C
+
+mo_stage/st_gw/st_gw_function_af74.cpp:
+	.text       start:0x0000AF74 end:0x0000AF84
+
+mo_stage/st_gw/st_gw_function_af84.cpp:
+	.text       start:0x0000AF84 end:0x0000AF90
+
+mo_stage/st_gw/st_gw_function_afa0.cpp:
+	.text       start:0x0000AFA0 end:0x0000AFB0
+
+mo_stage/st_gw/st_gw_function_afb0.cpp:
+	.text       start:0x0000AFB0 end:0x0000AFC0
+
+mo_stage/st_gw/st_gw_function_afc0.cpp:
+	.text       start:0x0000AFC0 end:0x0000AFD0
+
+mo_stage/st_gw/st_gw_function_afd0.cpp:
+	.text       start:0x0000AFD0 end:0x0000AFE0
+
+mo_stage/st_gw/st_gw_function_aff0.cpp:
+	.text       start:0x0000AFF0 end:0x0000AFFC
+
 mo_stage/st_gw/st_gw_function_affc.cpp:
 	.text       start:0x0000AFFC end:0x0000B004
 
+mo_stage/st_gw/st_gw_function_b004.cpp:
+	.text       start:0x0000B004 end:0x0000B014
+
+mo_stage/st_gw/st_gw_function_b04c.cpp:
+	.text       start:0x0000B04C end:0x0000B05C
+
+mo_stage/st_gw/st_gw_function_b06c.cpp:
+	.text       start:0x0000B06C end:0x0000B07C
+
+mo_stage/st_gw/st_gw_function_b07c.cpp:
+	.text       start:0x0000B07C end:0x0000B08C
+
+mo_stage/st_gw/st_gw_function_b08c.cpp:
+	.text       start:0x0000B08C end:0x0000B09C
+
+mo_stage/st_gw/st_gw_function_b0e4.cpp:
+	.text       start:0x0000B0E4 end:0x0000B0F0
+
+mo_stage/st_gw/st_gw_function_b0f0.cpp:
+	.text       start:0x0000B0F0 end:0x0000B100
+
+mo_stage/st_gw/st_gw_function_b120.cpp:
+	.text       start:0x0000B120 end:0x0000B130
+
+mo_stage/st_gw/st_gw_function_b130.cpp:
+	.text       start:0x0000B130 end:0x0000B140
+
+mo_stage/st_gw/st_gw_function_b150.cpp:
+	.text       start:0x0000B150 end:0x0000B15C
+
 mo_stage/st_gw/st_gw_function_b15c.cpp:
 	.text       start:0x0000B15C end:0x0000B164
+
+mo_stage/st_gw/st_gw_function_b1ac.cpp:
+	.text       start:0x0000B1AC end:0x0000B1B8
+
+mo_stage/st_gw/st_gw_function_b1e8.cpp:
+	.text       start:0x0000B1E8 end:0x0000B1F8
+
+mo_stage/st_gw/st_gw_function_b1f8.cpp:
+	.text       start:0x0000B1F8 end:0x0000B208
+
+mo_stage/st_gw/st_gw_function_b218.cpp:
+	.text       start:0x0000B218 end:0x0000B224
 
 mo_stage/st_gw/st_gw_function_b224.cpp:
 	.text       start:0x0000B224 end:0x0000B22C
@@ -710,6 +950,18 @@ mo_stage/st_gw/st_gw_function_fba8.cpp:
 mo_stage/st_gw/st_gw_function_fbb0.cpp:
 	.text       start:0x0000FBB0 end:0x0000FBB8
 
+mo_stage/st_gw/st_gw_function_10a1c.cpp:
+	.text       start:0x00010A1C end:0x00010A28
+
+mo_stage/st_gw/st_gw_function_10a28.cpp:
+	.text       start:0x00010A28 end:0x00010A34
+
+mo_stage/st_gw/st_gw_function_10abc.cpp:
+	.text       start:0x00010ABC end:0x00010AC8
+
+mo_stage/st_gw/st_gw_function_10ad8.cpp:
+	.text       start:0x00010AD8 end:0x00010AE4
+
 mo_stage/st_gw/st_gw_function_10ae4.cpp:
 	.text       start:0x00010AE4 end:0x00010AEC
 
@@ -730,6 +982,12 @@ mo_stage/st_gw/st_gw_function_10ba4.cpp:
 
 mo_stage/st_gw/st_gw_function_10bac.cpp:
 	.text       start:0x00010BAC end:0x00010BB4
+
+mo_stage/st_gw/st_gw_function_11f34.cpp:
+	.text       start:0x00011F34 end:0x00011F40
+
+mo_stage/st_gw/st_gw_function_11f50.cpp:
+	.text       start:0x00011F50 end:0x00011F5C
 
 mo_stage/st_gw/st_gw_function_11f5c.cpp:
 	.text       start:0x00011F5C end:0x00011F64
