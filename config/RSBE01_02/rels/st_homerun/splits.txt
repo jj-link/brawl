@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_homerun/st_homerun_function_320.cpp:
+	.text       start:0x00000320 end:0x000003E0
+
 mo_stage/st_homerun/st_homerun_function_3e0.cpp:
 	.text       start:0x000003E0 end:0x000003E8
 
