@@ -11,6 +11,51 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_iceclimber/ft_iceclimber_function_1d90.cpp:
+	.text       start:0x00001D90 end:0x00001DD0
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_1e2c.cpp:
+	.text       start:0x00001E2C end:0x00001E6C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_21e8.cpp:
+	.text       start:0x000021E8 end:0x00002228
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_2228.cpp:
+	.text       start:0x00002228 end:0x00002268
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_3674.cpp:
+	.text       start:0x00003674 end:0x000036B4
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_3710.cpp:
+	.text       start:0x00003710 end:0x00003750
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_3c80.cpp:
+	.text       start:0x00003C80 end:0x00003CC0
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_3d5c.cpp:
+	.text       start:0x00003D5C end:0x00003D9C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_40c0.cpp:
+	.text       start:0x000040C0 end:0x00004100
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_45e4.cpp:
+	.text       start:0x000045E4 end:0x00004624
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_48d8.cpp:
+	.text       start:0x000048D8 end:0x00004918
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_4918.cpp:
+	.text       start:0x00004918 end:0x00004958
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_62cc.cpp:
+	.text       start:0x000062CC end:0x0000630C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_630c.cpp:
+	.text       start:0x0000630C end:0x0000634C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_72f4.cpp:
+	.text       start:0x000072F4 end:0x00007334
+
 mo_fighter/ft_iceclimber/ft_iceclimber_function_8130.cpp:
 	.text       start:0x00008130 end:0x00008138
 
@@ -446,6 +491,9 @@ mo_fighter/ft_iceclimber/ft_iceclimber_function_1301c.cpp:
 mo_fighter/ft_iceclimber/ft_iceclimber_function_13020.cpp:
 	.text       start:0x00013020 end:0x00013024
 
+mo_fighter/ft_iceclimber/ft_iceclimber_function_13024.cpp:
+	.text       start:0x00013024 end:0x00013064
+
 mo_fighter/ft_iceclimber/ft_iceclimber_function_13064.cpp:
 	.text       start:0x00013064 end:0x00013068
 
@@ -458,8 +506,29 @@ mo_fighter/ft_iceclimber/ft_iceclimber_function_1306c.cpp:
 mo_fighter/ft_iceclimber/ft_iceclimber_function_13070.cpp:
 	.text       start:0x00013070 end:0x00013074
 
+mo_fighter/ft_iceclimber/ft_iceclimber_function_13698.cpp:
+	.text       start:0x00013698 end:0x000136D8
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_13de0.cpp:
+	.text       start:0x00013DE0 end:0x00013E20
+
 mo_fighter/ft_iceclimber/ft_iceclimber_function_13e78.cpp:
 	.text       start:0x00013E78 end:0x00013E7C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_143e0.cpp:
+	.text       start:0x000143E0 end:0x00014420
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_14b50.cpp:
+	.text       start:0x00014B50 end:0x00014B90
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_14fb8.cpp:
+	.text       start:0x00014FB8 end:0x00014FF8
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_15b2c.cpp:
+	.text       start:0x00015B2C end:0x00015B6C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_17a84.cpp:
+	.text       start:0x00017A84 end:0x00017C04
 
 mo_fighter/ft_iceclimber/ft_iceclimber_function_18158.cpp:
 	.text       start:0x00018158 end:0x00018160
