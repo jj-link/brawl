@@ -65,6 +65,9 @@ mo_fighter/ft_fox/ft_fox_function_4050.cpp:
 mo_fighter/ft_fox/ft_fox_function_4220.cpp:
 	.text       start:0x00004220 end:0x00004280
 
+mo_fighter/ft_fox/ft_fox_function_4280.cpp:
+	.text       start:0x00004280 end:0x000042E0
+
 mo_fighter/ft_fox/ft_fox_function_43c8.cpp:
 	.text       start:0x000043C8 end:0x00004408
 
@@ -74,11 +77,35 @@ mo_fighter/ft_fox/ft_fox_function_46a0.cpp:
 mo_fighter/ft_fox/ft_fox_function_46e0.cpp:
 	.text       start:0x000046E0 end:0x00004720
 
+mo_fighter/ft_fox/ft_fox_function_4868.cpp:
+	.text       start:0x00004868 end:0x000048C8
+
 mo_fighter/ft_fox/ft_fox_function_4c84.cpp:
 	.text       start:0x00004C84 end:0x00004CC4
 
 mo_fighter/ft_fox/ft_fox_function_4e18.cpp:
 	.text       start:0x00004E18 end:0x00004E58
+
+mo_fighter/ft_fox/ft_fox_function_4e58.cpp:
+	.text       start:0x00004E58 end:0x00004EB8
+
+mo_fighter/ft_fox/ft_fox_function_5218.cpp:
+	.text       start:0x00005218 end:0x00005278
+
+mo_fighter/ft_fox/ft_fox_function_5354.cpp:
+	.text       start:0x00005354 end:0x000053B4
+
+mo_fighter/ft_fox/ft_fox_function_56cc.cpp:
+	.text       start:0x000056CC end:0x0000572C
+
+mo_fighter/ft_fox/ft_fox_function_5790.cpp:
+	.text       start:0x00005790 end:0x000057F0
+
+mo_fighter/ft_fox/ft_fox_function_57f0.cpp:
+	.text       start:0x000057F0 end:0x00005850
+
+mo_fighter/ft_fox/ft_fox_function_5850.cpp:
+	.text       start:0x00005850 end:0x000058B0
 
 mo_fighter/ft_fox/ft_fox_function_6208.cpp:
 	.text       start:0x00006208 end:0x00006248
@@ -89,17 +116,41 @@ mo_fighter/ft_fox/ft_fox_function_6248.cpp:
 mo_fighter/ft_fox/ft_fox_function_6288.cpp:
 	.text       start:0x00006288 end:0x000062C8
 
+mo_fighter/ft_fox/ft_fox_function_6478.cpp:
+	.text       start:0x00006478 end:0x000064D8
+
+mo_fighter/ft_fox/ft_fox_function_64d8.cpp:
+	.text       start:0x000064D8 end:0x00006538
+
+mo_fighter/ft_fox/ft_fox_function_6720.cpp:
+	.text       start:0x00006720 end:0x00006780
+
+mo_fighter/ft_fox/ft_fox_function_7060.cpp:
+	.text       start:0x00007060 end:0x000070C0
+
+mo_fighter/ft_fox/ft_fox_function_70c0.cpp:
+	.text       start:0x000070C0 end:0x00007120
+
 mo_fighter/ft_fox/ft_fox_function_7270.cpp:
 	.text       start:0x00007270 end:0x000072F0
 
 mo_fighter/ft_fox/ft_fox_function_7480.cpp:
 	.text       start:0x00007480 end:0x000074C0
 
+mo_fighter/ft_fox/ft_fox_function_8000.cpp:
+	.text       start:0x00008000 end:0x00008060
+
+mo_fighter/ft_fox/ft_fox_function_8060.cpp:
+	.text       start:0x00008060 end:0x00008074
+
 mo_fighter/ft_fox/ft_fox_function_8138.cpp:
 	.text       start:0x00008138 end:0x00008140
 
 mo_fighter/ft_fox/ft_fox_function_9248.cpp:
 	.text       start:0x00009248 end:0x000092C8
+
+mo_fighter/ft_fox/ft_fox_function_9ca0.cpp:
+	.text       start:0x00009CA0 end:0x00009D00
 
 mo_fighter/ft_fox/ft_fox_function_a04c.cpp:
 	.text       start:0x0000A04C end:0x0000A050
@@ -110,6 +161,12 @@ mo_fighter/ft_fox/ft_fox_function_abd4.cpp:
 mo_fighter/ft_fox/ft_fox_function_ad60.cpp:
 	.text       start:0x0000AD60 end:0x0000AD64
 
+mo_fighter/ft_fox/ft_fox_function_ad64.cpp:
+	.text       start:0x0000AD64 end:0x0000ADC4
+
+mo_fighter/ft_fox/ft_fox_function_aed4.cpp:
+	.text       start:0x0000AED4 end:0x0000AEE8
+
 mo_fighter/ft_fox/ft_fox_function_aee8.cpp:
 	.text       start:0x0000AEE8 end:0x0000AEEC
 
@@ -119,14 +176,50 @@ mo_fighter/ft_fox/ft_fox_function_aeec.cpp:
 mo_fighter/ft_fox/ft_fox_function_aef4.cpp:
 	.text       start:0x0000AEF4 end:0x0000AEF8
 
+mo_fighter/ft_fox/ft_fox_function_aef8.cpp:
+	.text       start:0x0000AEF8 end:0x0000AF0C
+
+mo_fighter/ft_fox/ft_fox_function_af0c.cpp:
+	.text       start:0x0000AF0C end:0x0000AF20
+
+mo_fighter/ft_fox/ft_fox_function_af20.cpp:
+	.text       start:0x0000AF20 end:0x0000AF34
+
 mo_fighter/ft_fox/ft_fox_function_af34.cpp:
 	.text       start:0x0000AF34 end:0x0000AF38
 
 mo_fighter/ft_fox/ft_fox_function_af38.cpp:
 	.text       start:0x0000AF38 end:0x0000AF3C
 
+mo_fighter/ft_fox/ft_fox_function_af3c.cpp:
+	.text       start:0x0000AF3C end:0x0000AF50
+
+mo_fighter/ft_fox/ft_fox_function_af50.cpp:
+	.text       start:0x0000AF50 end:0x0000AF64
+
+mo_fighter/ft_fox/ft_fox_function_af64.cpp:
+	.text       start:0x0000AF64 end:0x0000AF78
+
+mo_fighter/ft_fox/ft_fox_function_af78.cpp:
+	.text       start:0x0000AF78 end:0x0000AF8C
+
+mo_fighter/ft_fox/ft_fox_function_af8c.cpp:
+	.text       start:0x0000AF8C end:0x0000AFA0
+
+mo_fighter/ft_fox/ft_fox_function_afa0.cpp:
+	.text       start:0x0000AFA0 end:0x0000AFB4
+
+mo_fighter/ft_fox/ft_fox_function_afb4.cpp:
+	.text       start:0x0000AFB4 end:0x0000AFC8
+
 mo_fighter/ft_fox/ft_fox_function_afc8.cpp:
 	.text       start:0x0000AFC8 end:0x0000AFCC
+
+mo_fighter/ft_fox/ft_fox_function_afcc.cpp:
+	.text       start:0x0000AFCC end:0x0000AFE0
+
+mo_fighter/ft_fox/ft_fox_function_afe0.cpp:
+	.text       start:0x0000AFE0 end:0x0000AFF4
 
 mo_fighter/ft_fox/ft_fox_function_aff4.cpp:
 	.text       start:0x0000AFF4 end:0x0000AFF8
@@ -187,6 +280,12 @@ mo_fighter/ft_fox/ft_fox_function_b040.cpp:
 
 mo_fighter/ft_fox/ft_fox_function_b044.cpp:
 	.text       start:0x0000B044 end:0x0000B048
+
+mo_fighter/ft_fox/ft_fox_function_b048.cpp:
+	.text       start:0x0000B048 end:0x0000B05C
+
+mo_fighter/ft_fox/ft_fox_function_b05c.cpp:
+	.text       start:0x0000B05C end:0x0000B070
 
 mo_fighter/ft_fox/ft_fox_function_b070.cpp:
 	.text       start:0x0000B070 end:0x0000B074
@@ -272,6 +371,9 @@ mo_fighter/ft_fox/ft_fox_function_b1d8.cpp:
 mo_fighter/ft_fox/ft_fox_function_b1e0.cpp:
 	.text       start:0x0000B1E0 end:0x0000B1E8
 
+mo_fighter/ft_fox/ft_fox_function_b1e8.cpp:
+	.text       start:0x0000B1E8 end:0x0000B248
+
 mo_fighter/ft_fox/ft_fox_function_b248.cpp:
 	.text       start:0x0000B248 end:0x0000B250
 
@@ -307,6 +409,9 @@ mo_fighter/ft_fox/ft_fox_function_b27c.cpp:
 
 mo_fighter/ft_fox/ft_fox_function_b314.cpp:
 	.text       start:0x0000B314 end:0x0000B32C
+
+mo_fighter/ft_fox/ft_fox_function_b32c.cpp:
+	.text       start:0x0000B32C end:0x0000B340
 
 mo_fighter/ft_fox/ft_fox_function_b340.cpp:
 	.text       start:0x0000B340 end:0x0000B358
@@ -350,6 +455,9 @@ mo_fighter/ft_fox/ft_fox_function_b4b0.cpp:
 mo_fighter/ft_fox/ft_fox_function_b778.cpp:
 	.text       start:0x0000B778 end:0x0000B784
 
+mo_fighter/ft_fox/ft_fox_function_b7e0.cpp:
+	.text       start:0x0000B7E0 end:0x0000B840
+
 mo_fighter/ft_fox/ft_fox_function_c8f0.cpp:
 	.text       start:0x0000C8F0 end:0x0000C8F8
 
@@ -371,8 +479,74 @@ mo_fighter/ft_fox/ft_fox_function_c980.cpp:
 mo_fighter/ft_fox/ft_fox_function_ca1c.cpp:
 	.text       start:0x0000CA1C end:0x0000CA34
 
+mo_fighter/ft_fox/ft_fox_function_ca34.cpp:
+	.text       start:0x0000CA34 end:0x0000CA94
+
+mo_fighter/ft_fox/ft_fox_function_ca94.cpp:
+	.text       start:0x0000CA94 end:0x0000CAF4
+
+mo_fighter/ft_fox/ft_fox_function_caf4.cpp:
+	.text       start:0x0000CAF4 end:0x0000CB54
+
+mo_fighter/ft_fox/ft_fox_function_cb54.cpp:
+	.text       start:0x0000CB54 end:0x0000CBB4
+
+mo_fighter/ft_fox/ft_fox_function_cc74.cpp:
+	.text       start:0x0000CC74 end:0x0000CCD4
+
+mo_fighter/ft_fox/ft_fox_function_ccd4.cpp:
+	.text       start:0x0000CCD4 end:0x0000CD34
+
+mo_fighter/ft_fox/ft_fox_function_cda4.cpp:
+	.text       start:0x0000CDA4 end:0x0000CE04
+
+mo_fighter/ft_fox/ft_fox_function_ce04.cpp:
+	.text       start:0x0000CE04 end:0x0000CE64
+
+mo_fighter/ft_fox/ft_fox_function_ce64.cpp:
+	.text       start:0x0000CE64 end:0x0000CEC4
+
+mo_fighter/ft_fox/ft_fox_function_cf3c.cpp:
+	.text       start:0x0000CF3C end:0x0000CF9C
+
+mo_fighter/ft_fox/ft_fox_function_cf9c.cpp:
+	.text       start:0x0000CF9C end:0x0000CFFC
+
+mo_fighter/ft_fox/ft_fox_function_cffc.cpp:
+	.text       start:0x0000CFFC end:0x0000D05C
+
+mo_fighter/ft_fox/ft_fox_function_d130.cpp:
+	.text       start:0x0000D130 end:0x0000D190
+
+mo_fighter/ft_fox/ft_fox_function_d190.cpp:
+	.text       start:0x0000D190 end:0x0000D1F0
+
+mo_fighter/ft_fox/ft_fox_function_d268.cpp:
+	.text       start:0x0000D268 end:0x0000D2C8
+
+mo_fighter/ft_fox/ft_fox_function_d2c8.cpp:
+	.text       start:0x0000D2C8 end:0x0000D328
+
+mo_fighter/ft_fox/ft_fox_function_d328.cpp:
+	.text       start:0x0000D328 end:0x0000D388
+
+mo_fighter/ft_fox/ft_fox_function_d45c.cpp:
+	.text       start:0x0000D45C end:0x0000D4BC
+
+mo_fighter/ft_fox/ft_fox_function_d4bc.cpp:
+	.text       start:0x0000D4BC end:0x0000D51C
+
+mo_fighter/ft_fox/ft_fox_function_d5f0.cpp:
+	.text       start:0x0000D5F0 end:0x0000D650
+
+mo_fighter/ft_fox/ft_fox_function_d650.cpp:
+	.text       start:0x0000D650 end:0x0000D6B0
+
 mo_fighter/ft_fox/ft_fox_function_d784.cpp:
 	.text       start:0x0000D784 end:0x0000D788
+
+mo_fighter/ft_fox/ft_fox_function_d7c0.cpp:
+	.text       start:0x0000D7C0 end:0x0000D7D4
 
 mo_fighter/ft_fox/ft_fox_function_d86c.cpp:
 	.text       start:0x0000D86C end:0x0000D878
@@ -385,6 +559,9 @@ mo_fighter/ft_fox/ft_fox_function_d884.cpp:
 
 mo_fighter/ft_fox/ft_fox_function_de94.cpp:
 	.text       start:0x0000DE94 end:0x0000DE98
+
+mo_fighter/ft_fox/ft_fox_function_debc.cpp:
+	.text       start:0x0000DEBC end:0x0000DED0
 
 mo_fighter/ft_fox/ft_fox_function_ded0.cpp:
 	.text       start:0x0000DED0 end:0x0000DED8
@@ -605,6 +782,9 @@ mo_fighter/ft_fox/ft_fox_function_ea7c.cpp:
 mo_fighter/ft_fox/ft_fox_function_106c0.cpp:
 	.text       start:0x000106C0 end:0x00010700
 
+mo_fighter/ft_fox/ft_fox_function_10700.cpp:
+	.text       start:0x00010700 end:0x00010760
+
 mo_fighter/ft_fox/ft_fox_function_107b8.cpp:
 	.text       start:0x000107B8 end:0x000107F8
 
@@ -619,6 +799,9 @@ mo_fighter/ft_fox/ft_fox_function_10938.cpp:
 
 mo_fighter/ft_fox/ft_fox_function_10940.cpp:
 	.text       start:0x00010940 end:0x00010948
+
+mo_fighter/ft_fox/ft_fox_function_10958.cpp:
+	.text       start:0x00010958 end:0x0001096C
 
 mo_fighter/ft_fox/ft_fox_function_10998.cpp:
 	.text       start:0x00010998 end:0x000109A0
@@ -679,6 +862,9 @@ mo_fighter/ft_fox/ft_fox_function_10b18.cpp:
 
 mo_fighter/ft_fox/ft_fox_function_10b1c.cpp:
 	.text       start:0x00010B1C end:0x00010B20
+
+mo_fighter/ft_fox/ft_fox_function_10b20.cpp:
+	.text       start:0x00010B20 end:0x00010B34
 
 mo_fighter/ft_fox/ft_fox_function_10b34.cpp:
 	.text       start:0x00010B34 end:0x00010B3C
