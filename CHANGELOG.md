@@ -4,6 +4,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## sora_melee: 2000 template functions
 
+- Matched 2000 functions in `sora_melee` with decomp-orchestrator's template solver (adjust_return 3, const_return 308, empty 247, getter 43, setter 12, tail_call 10, thunk 1377).
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
+## sora_melee: 2000 template functions
+
 - Matched 2000 functions in `sora_melee` with decomp-orchestrator's template solver (adjust_return 3, const_return 482, empty 478, getter 69, setter 33, tail_call 15, thunk 920).
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
