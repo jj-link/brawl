@@ -126,6 +126,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 config = ProjectConfig()
+config.generate_compile_commands = False  # only editors read it, and writing it took minutes per build
 config.version = str(args.version)
 version_num = VERSIONS.index(config.version)
 
