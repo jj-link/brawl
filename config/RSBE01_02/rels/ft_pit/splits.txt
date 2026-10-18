@@ -35,6 +35,9 @@ mo_fighter/ft_pit/ft_pit_function_3cc8.cpp:
 mo_fighter/ft_pit/ft_pit_function_4134.cpp:
 	.text       start:0x00004134 end:0x00004194
 
+mo_fighter/ft_pit/ft_pit_function_476c.cpp:
+	.text       start:0x0000476C end:0x00004808
+
 mo_fighter/ft_pit/ft_pit_function_4848.cpp:
 	.text       start:0x00004848 end:0x000048A8
 
@@ -58,6 +61,9 @@ mo_fighter/ft_pit/ft_pit_function_4fc4.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_5a18.cpp:
 	.text       start:0x00005A18 end:0x00005A78
+
+mo_fighter/ft_pit/ft_pit_function_5af0.cpp:
+	.text       start:0x00005AF0 end:0x00005B8C
 
 mo_fighter/ft_pit/ft_pit_function_5c60.cpp:
 	.text       start:0x00005C60 end:0x00005CC0
@@ -305,6 +311,9 @@ mo_fighter/ft_pit/ft_pit_function_a8b0.cpp:
 mo_fighter/ft_pit/ft_pit_function_a8b8.cpp:
 	.text       start:0x0000A8B8 end:0x0000A8C0
 
+mo_fighter/ft_pit/ft_pit_function_a8c0.cpp:
+	.text       start:0x0000A8C0 end:0x0000A920
+
 mo_fighter/ft_pit/ft_pit_function_a920.cpp:
 	.text       start:0x0000A920 end:0x0000A928
 
@@ -367,6 +376,69 @@ mo_fighter/ft_pit/ft_pit_function_be38.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_be98.cpp:
 	.text       start:0x0000BE98 end:0x0000BEB0
+
+mo_fighter/ft_pit/ft_pit_function_beb0.cpp:
+	.text       start:0x0000BEB0 end:0x0000BF10
+
+mo_fighter/ft_pit/ft_pit_function_bf10.cpp:
+	.text       start:0x0000BF10 end:0x0000BF70
+
+mo_fighter/ft_pit/ft_pit_function_bf70.cpp:
+	.text       start:0x0000BF70 end:0x0000BFD0
+
+mo_fighter/ft_pit/ft_pit_function_bfd0.cpp:
+	.text       start:0x0000BFD0 end:0x0000C030
+
+mo_fighter/ft_pit/ft_pit_function_c0f0.cpp:
+	.text       start:0x0000C0F0 end:0x0000C150
+
+mo_fighter/ft_pit/ft_pit_function_c150.cpp:
+	.text       start:0x0000C150 end:0x0000C1B0
+
+mo_fighter/ft_pit/ft_pit_function_c220.cpp:
+	.text       start:0x0000C220 end:0x0000C280
+
+mo_fighter/ft_pit/ft_pit_function_c280.cpp:
+	.text       start:0x0000C280 end:0x0000C2E0
+
+mo_fighter/ft_pit/ft_pit_function_c2e0.cpp:
+	.text       start:0x0000C2E0 end:0x0000C340
+
+mo_fighter/ft_pit/ft_pit_function_c3b8.cpp:
+	.text       start:0x0000C3B8 end:0x0000C418
+
+mo_fighter/ft_pit/ft_pit_function_c418.cpp:
+	.text       start:0x0000C418 end:0x0000C478
+
+mo_fighter/ft_pit/ft_pit_function_c478.cpp:
+	.text       start:0x0000C478 end:0x0000C4D8
+
+mo_fighter/ft_pit/ft_pit_function_c5ac.cpp:
+	.text       start:0x0000C5AC end:0x0000C60C
+
+mo_fighter/ft_pit/ft_pit_function_c60c.cpp:
+	.text       start:0x0000C60C end:0x0000C66C
+
+mo_fighter/ft_pit/ft_pit_function_c6e4.cpp:
+	.text       start:0x0000C6E4 end:0x0000C744
+
+mo_fighter/ft_pit/ft_pit_function_c744.cpp:
+	.text       start:0x0000C744 end:0x0000C7A4
+
+mo_fighter/ft_pit/ft_pit_function_c7a4.cpp:
+	.text       start:0x0000C7A4 end:0x0000C804
+
+mo_fighter/ft_pit/ft_pit_function_c8d8.cpp:
+	.text       start:0x0000C8D8 end:0x0000C938
+
+mo_fighter/ft_pit/ft_pit_function_c938.cpp:
+	.text       start:0x0000C938 end:0x0000C998
+
+mo_fighter/ft_pit/ft_pit_function_ca6c.cpp:
+	.text       start:0x0000CA6C end:0x0000CACC
+
+mo_fighter/ft_pit/ft_pit_function_cacc.cpp:
+	.text       start:0x0000CACC end:0x0000CB2C
 
 mo_fighter/ft_pit/ft_pit_function_cc00.cpp:
 	.text       start:0x0000CC00 end:0x0000CC04
@@ -653,8 +725,14 @@ mo_fighter/ft_pit/ft_pit_function_e438.cpp:
 mo_fighter/ft_pit/ft_pit_function_e6e0.cpp:
 	.text       start:0x0000E6E0 end:0x0000E6E8
 
+mo_fighter/ft_pit/ft_pit_function_eb28.cpp:
+	.text       start:0x0000EB28 end:0x0000EBC4
+
 mo_fighter/ft_pit/ft_pit_function_ef54.cpp:
 	.text       start:0x0000EF54 end:0x0000EF5C
+
+mo_fighter/ft_pit/ft_pit_function_f098.cpp:
+	.text       start:0x0000F098 end:0x0000F0F8
 
 mo_fighter/ft_pit/ft_pit_function_110c0.cpp:
 	.text       start:0x000110C0 end:0x000110C8
@@ -950,6 +1028,9 @@ mo_fighter/ft_pit/ft_pit_function_115d4.cpp:
 mo_fighter/ft_pit/ft_pit_function_11624.cpp:
 	.text       start:0x00011624 end:0x00011628
 
+mo_fighter/ft_pit/ft_pit_function_11628.cpp:
+	.text       start:0x00011628 end:0x00011688
+
 mo_fighter/ft_pit/ft_pit_function_11688.cpp:
 	.text       start:0x00011688 end:0x000116A8
 
@@ -958,6 +1039,33 @@ mo_fighter/ft_pit/ft_pit_function_116a8.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_116c8.cpp:
 	.text       start:0x000116C8 end:0x000116E0
+
+mo_fighter/ft_pit/ft_pit_function_11848.cpp:
+	.text       start:0x00011848 end:0x000118A8
+
+mo_fighter/ft_pit/ft_pit_function_118a8.cpp:
+	.text       start:0x000118A8 end:0x00011908
+
+mo_fighter/ft_pit/ft_pit_function_11908.cpp:
+	.text       start:0x00011908 end:0x00011968
+
+mo_fighter/ft_pit/ft_pit_function_119cc.cpp:
+	.text       start:0x000119CC end:0x00011A2C
+
+mo_fighter/ft_pit/ft_pit_function_11a2c.cpp:
+	.text       start:0x00011A2C end:0x00011A8C
+
+mo_fighter/ft_pit/ft_pit_function_11afc.cpp:
+	.text       start:0x00011AFC end:0x00011B5C
+
+mo_fighter/ft_pit/ft_pit_function_11b5c.cpp:
+	.text       start:0x00011B5C end:0x00011BBC
+
+mo_fighter/ft_pit/ft_pit_function_11c90.cpp:
+	.text       start:0x00011C90 end:0x00011CF0
+
+mo_fighter/ft_pit/ft_pit_function_11cf0.cpp:
+	.text       start:0x00011CF0 end:0x00011D50
 
 mo_fighter/ft_pit/ft_pit_function_121dc.cpp:
 	.text       start:0x000121DC end:0x000121E0
@@ -1145,6 +1253,21 @@ mo_fighter/ft_pit/ft_pit_function_12730.cpp:
 mo_fighter/ft_pit/ft_pit_function_12738.cpp:
 	.text       start:0x00012738 end:0x000127D8
 
+mo_fighter/ft_pit/ft_pit_function_152c4.cpp:
+	.text       start:0x000152C4 end:0x00015324
+
+mo_fighter/ft_pit/ft_pit_function_15708.cpp:
+	.text       start:0x00015708 end:0x00015768
+
+mo_fighter/ft_pit/ft_pit_function_15768.cpp:
+	.text       start:0x00015768 end:0x00015804
+
+mo_fighter/ft_pit/ft_pit_function_15860.cpp:
+	.text       start:0x00015860 end:0x000158C0
+
+mo_fighter/ft_pit/ft_pit_function_159a0.cpp:
+	.text       start:0x000159A0 end:0x00015A00
+
 mo_fighter/ft_pit/ft_pit_function_15ca8.cpp:
 	.text       start:0x00015CA8 end:0x00015E24
 
@@ -1174,6 +1297,9 @@ mo_fighter/ft_pit/ft_pit_function_15f0c.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_15f10.cpp:
 	.text       start:0x00015F10 end:0x00015F14
+
+mo_fighter/ft_pit/ft_pit_function_16a48.cpp:
+	.text       start:0x00016A48 end:0x00016AA8
 
 mo_fighter/ft_pit/ft_pit_function_16aa8.cpp:
 	.text       start:0x00016AA8 end:0x00016AB0
