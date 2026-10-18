@@ -6,11 +6,17 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_9f4.cpp:
+	.text       start:0x000009F4 end:0x00000A0C
+
 mo_menu_replay/sora_menu_replay/sora_menu_replay_function_a0c.cpp:
 	.text       start:0x00000A0C end:0x00000A10
 
 mo_menu_replay/sora_menu_replay/sora_menu_replay_function_a10.cpp:
 	.text       start:0x00000A10 end:0x00000A14
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_d58.cpp:
+	.text       start:0x00000D58 end:0x00000D70
 
 mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1474.cpp:
 	.text       start:0x00001474 end:0x0000147C

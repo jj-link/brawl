@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_poke/ft_poke_function_1928.cpp:
+	.text       start:0x00001928 end:0x000019C8
+
 mo_fighter/ft_poke/ft_poke_function_7384.cpp:
 	.text       start:0x00007384 end:0x0000738C
 
@@ -526,6 +529,9 @@ mo_fighter/ft_poke/ft_poke_function_dee8.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_df2c.cpp:
 	.text       start:0x0000DF2C end:0x0000DF30
+
+mo_fighter/ft_poke/ft_poke_function_104b0.cpp:
+	.text       start:0x000104B0 end:0x00010550
 
 mo_fighter/ft_poke/ft_poke_function_111c4.cpp:
 	.text       start:0x000111C4 end:0x000111CC
