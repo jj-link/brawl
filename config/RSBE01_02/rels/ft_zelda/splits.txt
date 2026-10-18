@@ -392,14 +392,29 @@ mo_fighter/ft_zelda/ft_zelda_function_ab30.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_ab68.cpp:
 	.text       start:0x0000AB68 end:0x0000AB70
 
+mo_fighter/ft_zelda/ft_zelda_function_ae30.cpp:
+	.text       start:0x0000AE30 end:0x0000AE3C
+
 mo_fighter/ft_zelda/ft_zelda_function_ae98.cpp:
 	.text       start:0x0000AE98 end:0x0000AEF8
 
 mo_fighter/ft_zelda/ft_zelda_function_bf28.cpp:
 	.text       start:0x0000BF28 end:0x0000BF30
 
+mo_fighter/ft_zelda/ft_zelda_function_bf30.cpp:
+	.text       start:0x0000BF30 end:0x0000BF3C
+
+mo_fighter/ft_zelda/ft_zelda_function_bf3c.cpp:
+	.text       start:0x0000BF3C end:0x0000BF48
+
 mo_fighter/ft_zelda/ft_zelda_function_bf48.cpp:
 	.text       start:0x0000BF48 end:0x0000BF5C
+
+mo_fighter/ft_zelda/ft_zelda_function_bf5c.cpp:
+	.text       start:0x0000BF5C end:0x0000BF68
+
+mo_fighter/ft_zelda/ft_zelda_function_bf68.cpp:
+	.text       start:0x0000BF68 end:0x0000BF74
 
 mo_fighter/ft_zelda/ft_zelda_function_bfb8.cpp:
 	.text       start:0x0000BFB8 end:0x0000BFD0
@@ -476,6 +491,12 @@ mo_fighter/ft_zelda/ft_zelda_function_cda8.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_cde4.cpp:
 	.text       start:0x0000CDE4 end:0x0000CDF8
 
+mo_fighter/ft_zelda/ft_zelda_function_ce90.cpp:
+	.text       start:0x0000CE90 end:0x0000CE9C
+
+mo_fighter/ft_zelda/ft_zelda_function_ce9c.cpp:
+	.text       start:0x0000CE9C end:0x0000CEA8
+
 mo_fighter/ft_zelda/ft_zelda_function_cea8.cpp:
 	.text       start:0x0000CEA8 end:0x0000CEC0
 
@@ -490,6 +511,9 @@ mo_fighter/ft_zelda/ft_zelda_function_d4e0.cpp:
 
 mo_fighter/ft_zelda/ft_zelda_function_d4f4.cpp:
 	.text       start:0x0000D4F4 end:0x0000D4FC
+
+mo_fighter/ft_zelda/ft_zelda_function_d4fc.cpp:
+	.text       start:0x0000D4FC end:0x0000D508
 
 mo_fighter/ft_zelda/ft_zelda_function_d53c.cpp:
 	.text       start:0x0000D53C end:0x0000D540
@@ -562,6 +586,9 @@ mo_fighter/ft_zelda/ft_zelda_function_db98.cpp:
 
 mo_fighter/ft_zelda/ft_zelda_function_dc40.cpp:
 	.text       start:0x0000DC40 end:0x0000DC48
+
+mo_fighter/ft_zelda/ft_zelda_function_dc48.cpp:
+	.text       start:0x0000DC48 end:0x0000DC54
 
 mo_fighter/ft_zelda/ft_zelda_function_de44.cpp:
 	.text       start:0x0000DE44 end:0x0000DE4C
@@ -791,11 +818,23 @@ mo_fighter/ft_zelda/ft_zelda_function_127d8.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_127e0.cpp:
 	.text       start:0x000127E0 end:0x000127E8
 
+mo_fighter/ft_zelda/ft_zelda_function_127e8.cpp:
+	.text       start:0x000127E8 end:0x000127F4
+
 mo_fighter/ft_zelda/ft_zelda_function_127f4.cpp:
 	.text       start:0x000127F4 end:0x000127FC
 
+mo_fighter/ft_zelda/ft_zelda_function_127fc.cpp:
+	.text       start:0x000127FC end:0x00012808
+
 mo_fighter/ft_zelda/ft_zelda_function_12808.cpp:
 	.text       start:0x00012808 end:0x00012810
+
+mo_fighter/ft_zelda/ft_zelda_function_12810.cpp:
+	.text       start:0x00012810 end:0x0001281C
+
+mo_fighter/ft_zelda/ft_zelda_function_1281c.cpp:
+	.text       start:0x0001281C end:0x00012828
 
 mo_fighter/ft_zelda/ft_zelda_function_12828.cpp:
 	.text       start:0x00012828 end:0x00012830
@@ -1118,6 +1157,9 @@ mo_fighter/ft_zelda/ft_zelda_function_15660.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_15668.cpp:
 	.text       start:0x00015668 end:0x0001566C
 
+mo_fighter/ft_zelda/ft_zelda_function_1566c.cpp:
+	.text       start:0x0001566C end:0x00015678
+
 mo_fighter/ft_zelda/ft_zelda_function_15724.cpp:
 	.text       start:0x00015724 end:0x0001572C
 
@@ -1214,8 +1256,20 @@ mo_fighter/ft_zelda/ft_zelda_function_1bb2c.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_1d018.cpp:
 	.text       start:0x0001D018 end:0x0001D020
 
+mo_fighter/ft_zelda/ft_zelda_function_1d020.cpp:
+	.text       start:0x0001D020 end:0x0001D02C
+
+mo_fighter/ft_zelda/ft_zelda_function_1d02c.cpp:
+	.text       start:0x0001D02C end:0x0001D038
+
 mo_fighter/ft_zelda/ft_zelda_function_1d038.cpp:
 	.text       start:0x0001D038 end:0x0001D04C
+
+mo_fighter/ft_zelda/ft_zelda_function_1d04c.cpp:
+	.text       start:0x0001D04C end:0x0001D058
+
+mo_fighter/ft_zelda/ft_zelda_function_1d058.cpp:
+	.text       start:0x0001D058 end:0x0001D064
 
 mo_fighter/ft_zelda/ft_zelda_function_1d064.cpp:
 	.text       start:0x0001D064 end:0x0001D07C

@@ -95,6 +95,24 @@ mo_fighter/ft_falco/ft_falco_function_2df4.cpp:
 mo_fighter/ft_falco/ft_falco_function_2e50.cpp:
 	.text       start:0x00002E50 end:0x00002EAC
 
+mo_fighter/ft_falco/ft_falco_function_2eac.cpp:
+	.text       start:0x00002EAC end:0x00002F08
+
+mo_fighter/ft_falco/ft_falco_function_3014.cpp:
+	.text       start:0x00003014 end:0x00003070
+
+mo_fighter/ft_falco/ft_falco_function_3108.cpp:
+	.text       start:0x00003108 end:0x00003164
+
+mo_fighter/ft_falco/ft_falco_function_3164.cpp:
+	.text       start:0x00003164 end:0x000031C0
+
+mo_fighter/ft_falco/ft_falco_function_3248.cpp:
+	.text       start:0x00003248 end:0x000032A4
+
+mo_fighter/ft_falco/ft_falco_function_3314.cpp:
+	.text       start:0x00003314 end:0x00003370
+
 mo_fighter/ft_falco/ft_falco_function_33ec.cpp:
 	.text       start:0x000033EC end:0x0000344C
 
@@ -104,8 +122,14 @@ mo_fighter/ft_falco/ft_falco_function_344c.cpp:
 mo_fighter/ft_falco/ft_falco_function_36c8.cpp:
 	.text       start:0x000036C8 end:0x00003708
 
+mo_fighter/ft_falco/ft_falco_function_39a4.cpp:
+	.text       start:0x000039A4 end:0x00003A00
+
 mo_fighter/ft_falco/ft_falco_function_3a8c.cpp:
 	.text       start:0x00003A8C end:0x00003AEC
+
+mo_fighter/ft_falco/ft_falco_function_3aec.cpp:
+	.text       start:0x00003AEC end:0x00003B48
 
 mo_fighter/ft_falco/ft_falco_function_3b48.cpp:
 	.text       start:0x00003B48 end:0x00003B88
@@ -128,14 +152,29 @@ mo_fighter/ft_falco/ft_falco_function_3e38.cpp:
 mo_fighter/ft_falco/ft_falco_function_3f20.cpp:
 	.text       start:0x00003F20 end:0x00003F60
 
+mo_fighter/ft_falco/ft_falco_function_3fcc.cpp:
+	.text       start:0x00003FCC end:0x00004028
+
+mo_fighter/ft_falco/ft_falco_function_4028.cpp:
+	.text       start:0x00004028 end:0x00004084
+
 mo_fighter/ft_falco/ft_falco_function_40f0.cpp:
 	.text       start:0x000040F0 end:0x00004150
 
 mo_fighter/ft_falco/ft_falco_function_4150.cpp:
 	.text       start:0x00004150 end:0x000041B0
 
+mo_fighter/ft_falco/ft_falco_function_41b0.cpp:
+	.text       start:0x000041B0 end:0x0000420C
+
 mo_fighter/ft_falco/ft_falco_function_4298.cpp:
 	.text       start:0x00004298 end:0x000042D8
+
+mo_fighter/ft_falco/ft_falco_function_42d8.cpp:
+	.text       start:0x000042D8 end:0x00004334
+
+mo_fighter/ft_falco/ft_falco_function_43a8.cpp:
+	.text       start:0x000043A8 end:0x00004404
 
 mo_fighter/ft_falco/ft_falco_function_4570.cpp:
 	.text       start:0x00004570 end:0x000045B0
@@ -143,11 +182,23 @@ mo_fighter/ft_falco/ft_falco_function_4570.cpp:
 mo_fighter/ft_falco/ft_falco_function_45b0.cpp:
 	.text       start:0x000045B0 end:0x000045F0
 
+mo_fighter/ft_falco/ft_falco_function_45f0.cpp:
+	.text       start:0x000045F0 end:0x0000464C
+
 mo_fighter/ft_falco/ft_falco_function_4864.cpp:
 	.text       start:0x00004864 end:0x000048C4
 
+mo_fighter/ft_falco/ft_falco_function_4c24.cpp:
+	.text       start:0x00004C24 end:0x00004C80
+
 mo_fighter/ft_falco/ft_falco_function_4c80.cpp:
 	.text       start:0x00004C80 end:0x00004CC0
+
+mo_fighter/ft_falco/ft_falco_function_4cc0.cpp:
+	.text       start:0x00004CC0 end:0x00004D1C
+
+mo_fighter/ft_falco/ft_falco_function_4d1c.cpp:
+	.text       start:0x00004D1C end:0x00004D78
 
 mo_fighter/ft_falco/ft_falco_function_4d78.cpp:
 	.text       start:0x00004D78 end:0x00004E14
@@ -185,6 +236,9 @@ mo_fighter/ft_falco/ft_falco_function_6118.cpp:
 mo_fighter/ft_falco/ft_falco_function_6158.cpp:
 	.text       start:0x00006158 end:0x00006198
 
+mo_fighter/ft_falco/ft_falco_function_62ec.cpp:
+	.text       start:0x000062EC end:0x00006348
+
 mo_fighter/ft_falco/ft_falco_function_6348.cpp:
 	.text       start:0x00006348 end:0x000063A8
 
@@ -193,6 +247,9 @@ mo_fighter/ft_falco/ft_falco_function_63a8.cpp:
 
 mo_fighter/ft_falco/ft_falco_function_6480.cpp:
 	.text       start:0x00006480 end:0x0000651C
+
+mo_fighter/ft_falco/ft_falco_function_651c.cpp:
+	.text       start:0x0000651C end:0x00006578
 
 mo_fighter/ft_falco/ft_falco_function_65f0.cpp:
 	.text       start:0x000065F0 end:0x00006650
@@ -206,11 +263,47 @@ mo_fighter/ft_falco/ft_falco_function_6f90.cpp:
 mo_fighter/ft_falco/ft_falco_function_7140.cpp:
 	.text       start:0x00007140 end:0x000071C0
 
+mo_fighter/ft_falco/ft_falco_function_71c0.cpp:
+	.text       start:0x000071C0 end:0x0000721C
+
+mo_fighter/ft_falco/ft_falco_function_721c.cpp:
+	.text       start:0x0000721C end:0x00007278
+
 mo_fighter/ft_falco/ft_falco_function_7350.cpp:
 	.text       start:0x00007350 end:0x00007390
 
+mo_fighter/ft_falco/ft_falco_function_7404.cpp:
+	.text       start:0x00007404 end:0x00007460
+
+mo_fighter/ft_falco/ft_falco_function_7460.cpp:
+	.text       start:0x00007460 end:0x000074BC
+
+mo_fighter/ft_falco/ft_falco_function_74bc.cpp:
+	.text       start:0x000074BC end:0x00007518
+
+mo_fighter/ft_falco/ft_falco_function_7518.cpp:
+	.text       start:0x00007518 end:0x00007574
+
 mo_fighter/ft_falco/ft_falco_function_78f4.cpp:
 	.text       start:0x000078F4 end:0x00007954
+
+mo_fighter/ft_falco/ft_falco_function_7954.cpp:
+	.text       start:0x00007954 end:0x000079B0
+
+mo_fighter/ft_falco/ft_falco_function_7ad0.cpp:
+	.text       start:0x00007AD0 end:0x00007B2C
+
+mo_fighter/ft_falco/ft_falco_function_7b2c.cpp:
+	.text       start:0x00007B2C end:0x00007B88
+
+mo_fighter/ft_falco/ft_falco_function_7b88.cpp:
+	.text       start:0x00007B88 end:0x00007BE4
+
+mo_fighter/ft_falco/ft_falco_function_7c5c.cpp:
+	.text       start:0x00007C5C end:0x00007CB8
+
+mo_fighter/ft_falco/ft_falco_function_7d30.cpp:
+	.text       start:0x00007D30 end:0x00007D8C
 
 mo_fighter/ft_falco/ft_falco_function_7ed0.cpp:
 	.text       start:0x00007ED0 end:0x00007F30
@@ -220,6 +313,9 @@ mo_fighter/ft_falco/ft_falco_function_7f30.cpp:
 
 mo_fighter/ft_falco/ft_falco_function_8008.cpp:
 	.text       start:0x00008008 end:0x00008010
+
+mo_fighter/ft_falco/ft_falco_function_8b30.cpp:
+	.text       start:0x00008B30 end:0x00008B8C
 
 mo_fighter/ft_falco/ft_falco_function_9118.cpp:
 	.text       start:0x00009118 end:0x00009198
@@ -241,6 +337,9 @@ mo_fighter/ft_falco/ft_falco_function_ac04.cpp:
 
 mo_fighter/ft_falco/ft_falco_function_ac08.cpp:
 	.text       start:0x0000AC08 end:0x0000AC68
+
+mo_fighter/ft_falco/ft_falco_function_ac68.cpp:
+	.text       start:0x0000AC68 end:0x0000ACC4
 
 mo_fighter/ft_falco/ft_falco_function_ad64.cpp:
 	.text       start:0x0000AD64 end:0x0000AD78
@@ -425,6 +524,9 @@ mo_fighter/ft_falco/ft_falco_function_af78.cpp:
 mo_fighter/ft_falco/ft_falco_function_af7c.cpp:
 	.text       start:0x0000AF7C end:0x0000AF8C
 
+mo_fighter/ft_falco/ft_falco_function_afe0.cpp:
+	.text       start:0x0000AFE0 end:0x0000B03C
+
 mo_fighter/ft_falco/ft_falco_function_b03c.cpp:
 	.text       start:0x0000B03C end:0x0000B044
 
@@ -542,8 +644,14 @@ mo_fighter/ft_falco/ft_falco_function_c794.cpp:
 mo_fighter/ft_falco/ft_falco_function_c7a0.cpp:
 	.text       start:0x0000C7A0 end:0x0000C7AC
 
+mo_fighter/ft_falco/ft_falco_function_c7e0.cpp:
+	.text       start:0x0000C7E0 end:0x0000C7F0
+
 mo_fighter/ft_falco/ft_falco_function_c7f0.cpp:
 	.text       start:0x0000C7F0 end:0x0000C808
+
+mo_fighter/ft_falco/ft_falco_function_c830.cpp:
+	.text       start:0x0000C830 end:0x0000C88C
 
 mo_fighter/ft_falco/ft_falco_function_c88c.cpp:
 	.text       start:0x0000C88C end:0x0000C8A4
@@ -559,6 +667,9 @@ mo_fighter/ft_falco/ft_falco_function_c964.cpp:
 
 mo_fighter/ft_falco/ft_falco_function_c9c4.cpp:
 	.text       start:0x0000C9C4 end:0x0000CA24
+
+mo_fighter/ft_falco/ft_falco_function_ca88.cpp:
+	.text       start:0x0000CA88 end:0x0000CAE4
 
 mo_fighter/ft_falco/ft_falco_function_cae4.cpp:
 	.text       start:0x0000CAE4 end:0x0000CB44
@@ -584,6 +695,9 @@ mo_fighter/ft_falco/ft_falco_function_ce0c.cpp:
 mo_fighter/ft_falco/ft_falco_function_ce6c.cpp:
 	.text       start:0x0000CE6C end:0x0000CECC
 
+mo_fighter/ft_falco/ft_falco_function_cf44.cpp:
+	.text       start:0x0000CF44 end:0x0000CFA0
+
 mo_fighter/ft_falco/ft_falco_function_cfa0.cpp:
 	.text       start:0x0000CFA0 end:0x0000D000
 
@@ -599,17 +713,26 @@ mo_fighter/ft_falco/ft_falco_function_d138.cpp:
 mo_fighter/ft_falco/ft_falco_function_d198.cpp:
 	.text       start:0x0000D198 end:0x0000D1F8
 
+mo_fighter/ft_falco/ft_falco_function_d270.cpp:
+	.text       start:0x0000D270 end:0x0000D2CC
+
 mo_fighter/ft_falco/ft_falco_function_d2cc.cpp:
 	.text       start:0x0000D2CC end:0x0000D32C
 
 mo_fighter/ft_falco/ft_falco_function_d32c.cpp:
 	.text       start:0x0000D32C end:0x0000D38C
 
+mo_fighter/ft_falco/ft_falco_function_d404.cpp:
+	.text       start:0x0000D404 end:0x0000D460
+
 mo_fighter/ft_falco/ft_falco_function_d460.cpp:
 	.text       start:0x0000D460 end:0x0000D4C0
 
 mo_fighter/ft_falco/ft_falco_function_d4c0.cpp:
 	.text       start:0x0000D4C0 end:0x0000D520
+
+mo_fighter/ft_falco/ft_falco_function_d598.cpp:
+	.text       start:0x0000D598 end:0x0000D5F4
 
 mo_fighter/ft_falco/ft_falco_function_d5f4.cpp:
 	.text       start:0x0000D5F4 end:0x0000D5F8
@@ -857,6 +980,18 @@ mo_fighter/ft_falco/ft_falco_function_e7e4.cpp:
 mo_fighter/ft_falco/ft_falco_function_10364.cpp:
 	.text       start:0x00010364 end:0x00010400
 
+mo_fighter/ft_falco/ft_falco_function_10400.cpp:
+	.text       start:0x00010400 end:0x0001045C
+
+mo_fighter/ft_falco/ft_falco_function_104e0.cpp:
+	.text       start:0x000104E0 end:0x0001053C
+
+mo_fighter/ft_falco/ft_falco_function_105b4.cpp:
+	.text       start:0x000105B4 end:0x00010610
+
+mo_fighter/ft_falco/ft_falco_function_10610.cpp:
+	.text       start:0x00010610 end:0x0001066C
+
 mo_fighter/ft_falco/ft_falco_function_1066c.cpp:
 	.text       start:0x0001066C end:0x000106AC
 
@@ -959,6 +1094,9 @@ mo_fighter/ft_falco/ft_falco_function_10b1c.cpp:
 mo_fighter/ft_falco/ft_falco_function_10b24.cpp:
 	.text       start:0x00010B24 end:0x00010B34
 
+mo_fighter/ft_falco/ft_falco_function_10b34.cpp:
+	.text       start:0x00010B34 end:0x00010B90
+
 mo_fighter/ft_falco/ft_falco_function_10b90.cpp:
 	.text       start:0x00010B90 end:0x00010B98
 
@@ -1030,6 +1168,9 @@ mo_fighter/ft_falco/ft_falco_function_10c14.cpp:
 
 mo_fighter/ft_falco/ft_falco_function_10c1c.cpp:
 	.text       start:0x00010C1C end:0x00010C24
+
+mo_fighter/ft_falco/ft_falco_function_10c24.cpp:
+	.text       start:0x00010C24 end:0x00010C34
 
 mo_fighter/ft_falco/ft_falco_function_10c34.cpp:
 	.text       start:0x00010C34 end:0x00010C3C

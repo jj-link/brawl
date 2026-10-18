@@ -1,0 +1,6 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" void fn_113_2A458(s16* destination, const s16* source) {
+    *destination = *source;
+}

@@ -95,11 +95,26 @@ mo_fighter/ft_kirby/ft_kirby_function_60cc.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_6700.cpp:
 	.text       start:0x00006700 end:0x00006740
 
+mo_fighter/ft_kirby/ft_kirby_function_6740.cpp:
+	.text       start:0x00006740 end:0x00006780
+
+mo_fighter/ft_kirby/ft_kirby_function_6780.cpp:
+	.text       start:0x00006780 end:0x000067C0
+
+mo_fighter/ft_kirby/ft_kirby_function_6ad0.cpp:
+	.text       start:0x00006AD0 end:0x00006B10
+
+mo_fighter/ft_kirby/ft_kirby_function_6b6c.cpp:
+	.text       start:0x00006B6C end:0x00006BAC
+
 mo_fighter/ft_kirby/ft_kirby_function_6d1c.cpp:
 	.text       start:0x00006D1C end:0x00006D7C
 
 mo_fighter/ft_kirby/ft_kirby_function_6ecc.cpp:
 	.text       start:0x00006ECC end:0x00006F2C
+
+mo_fighter/ft_kirby/ft_kirby_function_7124.cpp:
+	.text       start:0x00007124 end:0x00007164
 
 mo_fighter/ft_kirby/ft_kirby_function_7164.cpp:
 	.text       start:0x00007164 end:0x000071C4
@@ -143,11 +158,23 @@ mo_fighter/ft_kirby/ft_kirby_function_8044.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_80a4.cpp:
 	.text       start:0x000080A4 end:0x00008104
 
+mo_fighter/ft_kirby/ft_kirby_function_84bc.cpp:
+	.text       start:0x000084BC end:0x000084FC
+
+mo_fighter/ft_kirby/ft_kirby_function_84fc.cpp:
+	.text       start:0x000084FC end:0x0000853C
+
 mo_fighter/ft_kirby/ft_kirby_function_85a8.cpp:
 	.text       start:0x000085A8 end:0x00008608
 
 mo_fighter/ft_kirby/ft_kirby_function_8608.cpp:
 	.text       start:0x00008608 end:0x00008668
+
+mo_fighter/ft_kirby/ft_kirby_function_88e8.cpp:
+	.text       start:0x000088E8 end:0x00008928
+
+mo_fighter/ft_kirby/ft_kirby_function_8b78.cpp:
+	.text       start:0x00008B78 end:0x00008C1C
 
 mo_fighter/ft_kirby/ft_kirby_function_8c1c.cpp:
 	.text       start:0x00008C1C end:0x00008C7C
@@ -188,6 +215,9 @@ mo_fighter/ft_kirby/ft_kirby_function_ad6c.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_af94.cpp:
 	.text       start:0x0000AF94 end:0x0000AF98
 
+mo_fighter/ft_kirby/ft_kirby_function_b488.cpp:
+	.text       start:0x0000B488 end:0x0000B494
+
 mo_fighter/ft_kirby/ft_kirby_function_b890.cpp:
 	.text       start:0x0000B890 end:0x0000B8A4
 
@@ -202,6 +232,12 @@ mo_fighter/ft_kirby/ft_kirby_function_bc6c.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_c17c.cpp:
 	.text       start:0x0000C17C end:0x0000C184
+
+mo_fighter/ft_kirby/ft_kirby_function_d7d0.cpp:
+	.text       start:0x0000D7D0 end:0x0000D874
+
+mo_fighter/ft_kirby/ft_kirby_function_d874.cpp:
+	.text       start:0x0000D874 end:0x0000D918
 
 mo_fighter/ft_kirby/ft_kirby_function_e090.cpp:
 	.text       start:0x0000E090 end:0x0000E110
@@ -325,6 +361,9 @@ mo_fighter/ft_kirby/ft_kirby_function_f160.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_f164.cpp:
 	.text       start:0x0000F164 end:0x0000F168
+
+mo_fighter/ft_kirby/ft_kirby_function_f168.cpp:
+	.text       start:0x0000F168 end:0x0000F17C
 
 mo_fighter/ft_kirby/ft_kirby_function_f17c.cpp:
 	.text       start:0x0000F17C end:0x0000F190
@@ -500,14 +539,29 @@ mo_fighter/ft_kirby/ft_kirby_function_f5d0.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_f5e0.cpp:
 	.text       start:0x0000F5E0 end:0x0000F5E8
 
+mo_fighter/ft_kirby/ft_kirby_function_f8a8.cpp:
+	.text       start:0x0000F8A8 end:0x0000F8B4
+
 mo_fighter/ft_kirby/ft_kirby_function_f910.cpp:
 	.text       start:0x0000F910 end:0x0000F970
 
 mo_fighter/ft_kirby/ft_kirby_function_115e8.cpp:
 	.text       start:0x000115E8 end:0x000115F0
 
+mo_fighter/ft_kirby/ft_kirby_function_115f0.cpp:
+	.text       start:0x000115F0 end:0x000115FC
+
+mo_fighter/ft_kirby/ft_kirby_function_115fc.cpp:
+	.text       start:0x000115FC end:0x00011608
+
 mo_fighter/ft_kirby/ft_kirby_function_11608.cpp:
 	.text       start:0x00011608 end:0x0001161C
+
+mo_fighter/ft_kirby/ft_kirby_function_1161c.cpp:
+	.text       start:0x0001161C end:0x00011628
+
+mo_fighter/ft_kirby/ft_kirby_function_11628.cpp:
+	.text       start:0x00011628 end:0x00011634
 
 mo_fighter/ft_kirby/ft_kirby_function_11678.cpp:
 	.text       start:0x00011678 end:0x000116D8
@@ -611,6 +665,12 @@ mo_fighter/ft_kirby/ft_kirby_function_123fc.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_12530.cpp:
 	.text       start:0x00012530 end:0x00012534
 
+mo_fighter/ft_kirby/ft_kirby_function_12604.cpp:
+	.text       start:0x00012604 end:0x00012610
+
+mo_fighter/ft_kirby/ft_kirby_function_12610.cpp:
+	.text       start:0x00012610 end:0x0001261C
+
 mo_fighter/ft_kirby/ft_kirby_function_1261c.cpp:
 	.text       start:0x0001261C end:0x00012630
 
@@ -625,6 +685,9 @@ mo_fighter/ft_kirby/ft_kirby_function_12c3c.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_12c64.cpp:
 	.text       start:0x00012C64 end:0x00012C6C
+
+mo_fighter/ft_kirby/ft_kirby_function_12c6c.cpp:
+	.text       start:0x00012C6C end:0x00012C78
 
 mo_fighter/ft_kirby/ft_kirby_function_12cac.cpp:
 	.text       start:0x00012CAC end:0x00012CB0
@@ -688,6 +751,9 @@ mo_fighter/ft_kirby/ft_kirby_function_13260.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_13308.cpp:
 	.text       start:0x00013308 end:0x00013310
+
+mo_fighter/ft_kirby/ft_kirby_function_13310.cpp:
+	.text       start:0x00013310 end:0x0001331C
 
 mo_fighter/ft_kirby/ft_kirby_function_1350c.cpp:
 	.text       start:0x0001350C end:0x00013514
@@ -908,8 +974,20 @@ mo_fighter/ft_kirby/ft_kirby_function_13d38.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_13d3c.cpp:
 	.text       start:0x00013D3C end:0x00013D40
 
+mo_fighter/ft_kirby/ft_kirby_function_13d40.cpp:
+	.text       start:0x00013D40 end:0x00013D80
+
 mo_fighter/ft_kirby/ft_kirby_function_13d80.cpp:
 	.text       start:0x00013D80 end:0x00013D84
+
+mo_fighter/ft_kirby/ft_kirby_function_13d84.cpp:
+	.text       start:0x00013D84 end:0x00013DC4
+
+mo_fighter/ft_kirby/ft_kirby_function_13dc4.cpp:
+	.text       start:0x00013DC4 end:0x00013E04
+
+mo_fighter/ft_kirby/ft_kirby_function_13e04.cpp:
+	.text       start:0x00013E04 end:0x00013E44
 
 mo_fighter/ft_kirby/ft_kirby_function_13ee0.cpp:
 	.text       start:0x00013EE0 end:0x00013EF0
@@ -926,6 +1004,9 @@ mo_fighter/ft_kirby/ft_kirby_function_13f10.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_141a8.cpp:
 	.text       start:0x000141A8 end:0x000141AC
 
+mo_fighter/ft_kirby/ft_kirby_function_142dc.cpp:
+	.text       start:0x000142DC end:0x0001431C
+
 mo_fighter/ft_kirby/ft_kirby_function_14364.cpp:
 	.text       start:0x00014364 end:0x00014374
 
@@ -940,6 +1021,15 @@ mo_fighter/ft_kirby/ft_kirby_function_14c00.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_15278.cpp:
 	.text       start:0x00015278 end:0x0001527C
+
+mo_fighter/ft_kirby/ft_kirby_function_15a68.cpp:
+	.text       start:0x00015A68 end:0x00015AA8
+
+mo_fighter/ft_kirby/ft_kirby_function_15aa8.cpp:
+	.text       start:0x00015AA8 end:0x00015AE8
+
+mo_fighter/ft_kirby/ft_kirby_function_15ae8.cpp:
+	.text       start:0x00015AE8 end:0x00015B28
 
 mo_fighter/ft_kirby/ft_kirby_function_15ba8.cpp:
 	.text       start:0x00015BA8 end:0x00015BB8
@@ -956,6 +1046,12 @@ mo_fighter/ft_kirby/ft_kirby_function_15d64.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_15d68.cpp:
 	.text       start:0x00015D68 end:0x00015D6C
 
+mo_fighter/ft_kirby/ft_kirby_function_1609c.cpp:
+	.text       start:0x0001609C end:0x000160DC
+
+mo_fighter/ft_kirby/ft_kirby_function_16144.cpp:
+	.text       start:0x00016144 end:0x00016150
+
 mo_fighter/ft_kirby/ft_kirby_function_16150.cpp:
 	.text       start:0x00016150 end:0x00016160
 
@@ -965,11 +1061,17 @@ mo_fighter/ft_kirby/ft_kirby_function_163d8.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_163dc.cpp:
 	.text       start:0x000163DC end:0x000163E0
 
+mo_fighter/ft_kirby/ft_kirby_function_16810.cpp:
+	.text       start:0x00016810 end:0x00016850
+
 mo_fighter/ft_kirby/ft_kirby_function_168b8.cpp:
 	.text       start:0x000168B8 end:0x000168C8
 
 mo_fighter/ft_kirby/ft_kirby_function_169b8.cpp:
 	.text       start:0x000169B8 end:0x000169BC
+
+mo_fighter/ft_kirby/ft_kirby_function_16b48.cpp:
+	.text       start:0x00016B48 end:0x00016B88
 
 mo_fighter/ft_kirby/ft_kirby_function_16bd0.cpp:
 	.text       start:0x00016BD0 end:0x00016BE0
@@ -977,8 +1079,14 @@ mo_fighter/ft_kirby/ft_kirby_function_16bd0.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_16f0c.cpp:
 	.text       start:0x00016F0C end:0x00016F10
 
+mo_fighter/ft_kirby/ft_kirby_function_17798.cpp:
+	.text       start:0x00017798 end:0x000177D8
+
 mo_fighter/ft_kirby/ft_kirby_function_17820.cpp:
 	.text       start:0x00017820 end:0x00017830
+
+mo_fighter/ft_kirby/ft_kirby_function_17a78.cpp:
+	.text       start:0x00017A78 end:0x00017AB8
 
 mo_fighter/ft_kirby/ft_kirby_function_17b00.cpp:
 	.text       start:0x00017B00 end:0x00017B10
@@ -988,6 +1096,9 @@ mo_fighter/ft_kirby/ft_kirby_function_17c20.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_17ef0.cpp:
 	.text       start:0x00017EF0 end:0x00017EF4
+
+mo_fighter/ft_kirby/ft_kirby_function_17f88.cpp:
+	.text       start:0x00017F88 end:0x00017FC8
 
 mo_fighter/ft_kirby/ft_kirby_function_18010.cpp:
 	.text       start:0x00018010 end:0x00018020
@@ -1000,6 +1111,9 @@ mo_fighter/ft_kirby/ft_kirby_function_1930c.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_1b8e8.cpp:
 	.text       start:0x0001B8E8 end:0x0001BA64
+
+mo_fighter/ft_kirby/ft_kirby_function_1c18c.cpp:
+	.text       start:0x0001C18C end:0x0001C1CC
 
 mo_fighter/ft_kirby/ft_kirby_function_1c234.cpp:
 	.text       start:0x0001C234 end:0x0001C244
@@ -1031,6 +1145,21 @@ mo_fighter/ft_kirby/ft_kirby_function_1dfbc.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_1e01c.cpp:
 	.text       start:0x0001E01C end:0x0001E07C
 
+mo_fighter/ft_kirby/ft_kirby_function_1e07c.cpp:
+	.text       start:0x0001E07C end:0x0001E0BC
+
+mo_fighter/ft_kirby/ft_kirby_function_1e0bc.cpp:
+	.text       start:0x0001E0BC end:0x0001E0FC
+
+mo_fighter/ft_kirby/ft_kirby_function_1e0fc.cpp:
+	.text       start:0x0001E0FC end:0x0001E13C
+
+mo_fighter/ft_kirby/ft_kirby_function_1e13c.cpp:
+	.text       start:0x0001E13C end:0x0001E17C
+
+mo_fighter/ft_kirby/ft_kirby_function_1e17c.cpp:
+	.text       start:0x0001E17C end:0x0001E188
+
 mo_fighter/ft_kirby/ft_kirby_function_1e1b8.cpp:
 	.text       start:0x0001E1B8 end:0x0001E1C8
 
@@ -1040,8 +1169,14 @@ mo_fighter/ft_kirby/ft_kirby_function_1e1c8.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_1e1d8.cpp:
 	.text       start:0x0001E1D8 end:0x0001E1E8
 
+mo_fighter/ft_kirby/ft_kirby_function_1e1e8.cpp:
+	.text       start:0x0001E1E8 end:0x0001E1F4
+
 mo_fighter/ft_kirby/ft_kirby_function_1e1f4.cpp:
 	.text       start:0x0001E1F4 end:0x0001E1FC
+
+mo_fighter/ft_kirby/ft_kirby_function_1e244.cpp:
+	.text       start:0x0001E244 end:0x0001E250
 
 mo_fighter/ft_kirby/ft_kirby_function_1e280.cpp:
 	.text       start:0x0001E280 end:0x0001E290
@@ -1049,8 +1184,14 @@ mo_fighter/ft_kirby/ft_kirby_function_1e280.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_1e290.cpp:
 	.text       start:0x0001E290 end:0x0001E2A0
 
+mo_fighter/ft_kirby/ft_kirby_function_1e2b0.cpp:
+	.text       start:0x0001E2B0 end:0x0001E2BC
+
 mo_fighter/ft_kirby/ft_kirby_function_1e2bc.cpp:
 	.text       start:0x0001E2BC end:0x0001E2C4
+
+mo_fighter/ft_kirby/ft_kirby_function_1e30c.cpp:
+	.text       start:0x0001E30C end:0x0001E318
 
 mo_fighter/ft_kirby/ft_kirby_function_1e318.cpp:
 	.text       start:0x0001E318 end:0x0001E328
@@ -1060,6 +1201,9 @@ mo_fighter/ft_kirby/ft_kirby_function_1e348.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_1e358.cpp:
 	.text       start:0x0001E358 end:0x0001E368
+
+mo_fighter/ft_kirby/ft_kirby_function_1e378.cpp:
+	.text       start:0x0001E378 end:0x0001E384
 
 mo_fighter/ft_kirby/ft_kirby_function_1e384.cpp:
 	.text       start:0x0001E384 end:0x0001E38C
@@ -1151,8 +1295,14 @@ mo_fighter/ft_kirby/ft_kirby_function_217ec.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_23140.cpp:
 	.text       start:0x00023140 end:0x000232C0
 
+mo_fighter/ft_kirby/ft_kirby_function_233d4.cpp:
+	.text       start:0x000233D4 end:0x00023414
+
 mo_fighter/ft_kirby/ft_kirby_function_23414.cpp:
 	.text       start:0x00023414 end:0x00023474
+
+mo_fighter/ft_kirby/ft_kirby_function_234cc.cpp:
+	.text       start:0x000234CC end:0x0002350C
 
 mo_fighter/ft_kirby/ft_kirby_function_239c8.cpp:
 	.text       start:0x000239C8 end:0x000239DC
@@ -1165,6 +1315,12 @@ mo_fighter/ft_kirby/ft_kirby_function_23a08.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_23a10.cpp:
 	.text       start:0x00023A10 end:0x00023A18
+
+mo_fighter/ft_kirby/ft_kirby_function_23a9c.cpp:
+	.text       start:0x00023A9C end:0x00023ADC
+
+mo_fighter/ft_kirby/ft_kirby_function_23adc.cpp:
+	.text       start:0x00023ADC end:0x00023B1C
 
 mo_fighter/ft_kirby/ft_kirby_function_23b1c.cpp:
 	.text       start:0x00023B1C end:0x00023B20
@@ -1184,11 +1340,23 @@ mo_fighter/ft_kirby/ft_kirby_function_23b2c.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_23b34.cpp:
 	.text       start:0x00023B34 end:0x00023B3C
 
+mo_fighter/ft_kirby/ft_kirby_function_23b3c.cpp:
+	.text       start:0x00023B3C end:0x00023B48
+
 mo_fighter/ft_kirby/ft_kirby_function_23b48.cpp:
 	.text       start:0x00023B48 end:0x00023B50
 
+mo_fighter/ft_kirby/ft_kirby_function_23b50.cpp:
+	.text       start:0x00023B50 end:0x00023B5C
+
 mo_fighter/ft_kirby/ft_kirby_function_23b5c.cpp:
 	.text       start:0x00023B5C end:0x00023B64
+
+mo_fighter/ft_kirby/ft_kirby_function_23b64.cpp:
+	.text       start:0x00023B64 end:0x00023B70
+
+mo_fighter/ft_kirby/ft_kirby_function_23b70.cpp:
+	.text       start:0x00023B70 end:0x00023B7C
 
 mo_fighter/ft_kirby/ft_kirby_function_23b7c.cpp:
 	.text       start:0x00023B7C end:0x00023B84
@@ -1240,6 +1408,9 @@ mo_fighter/ft_kirby/ft_kirby_function_23c54.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_23c5c.cpp:
 	.text       start:0x00023C5C end:0x00023C60
+
+mo_fighter/ft_kirby/ft_kirby_function_23c60.cpp:
+	.text       start:0x00023C60 end:0x00023C6C
 
 mo_fighter/ft_kirby/ft_kirby_function_23c6c.cpp:
 	.text       start:0x00023C6C end:0x00023C74
@@ -1514,6 +1685,9 @@ mo_fighter/ft_kirby/ft_kirby_function_24218.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_2439c.cpp:
 	.text       start:0x0002439C end:0x000243A0
 
+mo_fighter/ft_kirby/ft_kirby_function_243a0.cpp:
+	.text       start:0x000243A0 end:0x000243E0
+
 mo_fighter/ft_kirby/ft_kirby_function_24428.cpp:
 	.text       start:0x00024428 end:0x00024438
 
@@ -1585,6 +1759,9 @@ mo_fighter/ft_kirby/ft_kirby_function_28614.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_28e78.cpp:
 	.text       start:0x00028E78 end:0x00028E98
+
+mo_fighter/ft_kirby/ft_kirby_function_28f30.cpp:
+	.text       start:0x00028F30 end:0x00028F70
 
 mo_fighter/ft_kirby/ft_kirby_function_28fb8.cpp:
 	.text       start:0x00028FB8 end:0x00028FC8
@@ -1660,6 +1837,9 @@ mo_fighter/ft_kirby/ft_kirby_function_2d210.cpp:
 
 mo_fighter/ft_kirby/ft_kirby_function_2d218.cpp:
 	.text       start:0x0002D218 end:0x0002D220
+
+mo_fighter/ft_kirby/ft_kirby_function_2da0c.cpp:
+	.text       start:0x0002DA0C end:0x0002DA4C
 
 mo_fighter/ft_kirby/ft_kirby_function_2da94.cpp:
 	.text       start:0x0002DA94 end:0x0002DAA4

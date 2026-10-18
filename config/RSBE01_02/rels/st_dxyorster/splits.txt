@@ -77,6 +77,12 @@ mo_stage/st_dxyorster/st_dxyorster_function_8b0.cpp:
 mo_stage/st_dxyorster/st_dxyorster_function_8b8.cpp:
 	.text       start:0x000008B8 end:0x000008C0
 
+mo_stage/st_dxyorster/st_dxyorster_function_8c0.cpp:
+	.text       start:0x000008C0 end:0x000008CC
+
+mo_stage/st_dxyorster/st_dxyorster_function_8cc.cpp:
+	.text       start:0x000008CC end:0x000008D8
+
 mo_stage/st_dxyorster/st_dxyorster_function_8fc.cpp:
 	.text       start:0x000008FC end:0x00000904
 
@@ -106,6 +112,9 @@ mo_stage/st_dxyorster/st_dxyorster_function_954.cpp:
 
 mo_stage/st_dxyorster/st_dxyorster_function_95c.cpp:
 	.text       start:0x0000095C end:0x00000964
+
+mo_stage/st_dxyorster/st_dxyorster_function_964.cpp:
+	.text       start:0x00000964 end:0x00000970
 
 mo_stage/st_dxyorster/st_dxyorster_function_970.cpp:
 	.text       start:0x00000970 end:0x00000974
@@ -139,6 +148,9 @@ mo_stage/st_dxyorster/st_dxyorster_function_10c4.cpp:
 
 mo_stage/st_dxyorster/st_dxyorster_function_10c8.cpp:
 	.text       start:0x000010C8 end:0x000010CC
+
+mo_stage/st_dxyorster/st_dxyorster_function_10ec.cpp:
+	.text       start:0x000010EC end:0x000010F8
 
 mo_stage/st_dxyorster/st_dxyorster_function_10f8.cpp:
 	.text       start:0x000010F8 end:0x00001100
@@ -188,6 +200,9 @@ mo_stage/st_dxyorster/st_dxyorster_function_2ea0.cpp:
 mo_stage/st_dxyorster/st_dxyorster_function_2ea8.cpp:
 	.text       start:0x00002EA8 end:0x00002EAC
 
+mo_stage/st_dxyorster/st_dxyorster_function_2eac.cpp:
+	.text       start:0x00002EAC end:0x00002EB8
+
 mo_stage/st_dxyorster/st_dxyorster_function_2eb8.cpp:
 	.text       start:0x00002EB8 end:0x00002EC0
 
@@ -202,6 +217,15 @@ mo_stage/st_dxyorster/st_dxyorster_function_2ed0.cpp:
 
 mo_stage/st_dxyorster/st_dxyorster_function_2ed4.cpp:
 	.text       start:0x00002ED4 end:0x00002ED8
+
+mo_stage/st_dxyorster/st_dxyorster_function_2ed8.cpp:
+	.text       start:0x00002ED8 end:0x00002EE4
+
+mo_stage/st_dxyorster/st_dxyorster_function_2ee4.cpp:
+	.text       start:0x00002EE4 end:0x00002EF0
+
+mo_stage/st_dxyorster/st_dxyorster_function_2ef0.cpp:
+	.text       start:0x00002EF0 end:0x00002EFC
 
 mo_stage/st_dxyorster/st_dxyorster_function_2efc.cpp:
 	.text       start:0x00002EFC end:0x00002F00
@@ -251,6 +275,9 @@ mo_stage/st_dxyorster/st_dxyorster_function_2f44.cpp:
 mo_stage/st_dxyorster/st_dxyorster_function_2f4c.cpp:
 	.text       start:0x00002F4C end:0x00002F54
 
+mo_stage/st_dxyorster/st_dxyorster_function_2f54.cpp:
+	.text       start:0x00002F54 end:0x00002F60
+
 mo_stage/st_dxyorster/st_dxyorster_function_2f60.cpp:
 	.text       start:0x00002F60 end:0x00002F68
 
@@ -299,17 +326,47 @@ mo_stage/st_dxyorster/st_dxyorster_function_2fd4.cpp:
 mo_stage/st_dxyorster/st_dxyorster_function_3024.cpp:
 	.text       start:0x00003024 end:0x00003028
 
+mo_stage/st_dxyorster/st_dxyorster_function_337c.cpp:
+	.text       start:0x0000337C end:0x00003388
+
+mo_stage/st_dxyorster/st_dxyorster_function_3398.cpp:
+	.text       start:0x00003398 end:0x000033A4
+
 mo_stage/st_dxyorster/st_dxyorster_function_33a4.cpp:
 	.text       start:0x000033A4 end:0x000033AC
+
+mo_stage/st_dxyorster/st_dxyorster_function_3ce0.cpp:
+	.text       start:0x00003CE0 end:0x00003CEC
+
+mo_stage/st_dxyorster/st_dxyorster_function_3d4c.cpp:
+	.text       start:0x00003D4C end:0x00003D58
 
 mo_stage/st_dxyorster/st_dxyorster_function_3d58.cpp:
 	.text       start:0x00003D58 end:0x00003D60
 
+mo_stage/st_dxyorster/st_dxyorster_function_3da8.cpp:
+	.text       start:0x00003DA8 end:0x00003DB4
+
+mo_stage/st_dxyorster/st_dxyorster_function_3e14.cpp:
+	.text       start:0x00003E14 end:0x00003E20
+
 mo_stage/st_dxyorster/st_dxyorster_function_3e20.cpp:
 	.text       start:0x00003E20 end:0x00003E28
 
+mo_stage/st_dxyorster/st_dxyorster_function_3e70.cpp:
+	.text       start:0x00003E70 end:0x00003E7C
+
+mo_stage/st_dxyorster/st_dxyorster_function_3edc.cpp:
+	.text       start:0x00003EDC end:0x00003EE8
+
 mo_stage/st_dxyorster/st_dxyorster_function_3ee8.cpp:
 	.text       start:0x00003EE8 end:0x00003EF0
+
+mo_stage/st_dxyorster/st_dxyorster_function_3fd0.cpp:
+	.text       start:0x00003FD0 end:0x00003FDC
+
+mo_stage/st_dxyorster/st_dxyorster_function_403c.cpp:
+	.text       start:0x0000403C end:0x00004048
 
 mo_stage/st_dxyorster/st_dxyorster_function_4048.cpp:
 	.text       start:0x00004048 end:0x00004050

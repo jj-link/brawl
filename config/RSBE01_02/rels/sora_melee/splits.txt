@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_melee/sora_melee/sora_melee_function_314.cpp:
+	.text       start:0x00000314 end:0x00000514
+
 mo_melee/sora_melee/sora_melee_function_e54.cpp:
 	.text       start:0x00000E54 end:0x00000E58
 
@@ -155,8 +158,14 @@ mo_melee/sora_melee/sora_melee_function_9df8.cpp:
 mo_melee/sora_melee/sora_melee_function_9e34.cpp:
 	.text       start:0x00009E34 end:0x00009E38
 
+mo_melee/sora_melee/sora_melee_function_b22c.cpp:
+	.text       start:0x0000B22C end:0x0000B238
+
 mo_melee/sora_melee/sora_melee_function_db64.cpp:
 	.text       start:0x0000DB64 end:0x0000DB6C
+
+mo_melee/sora_melee/sora_melee_function_e108.cpp:
+	.text       start:0x0000E108 end:0x0000E114
 
 mo_melee/sora_melee/sora_melee_function_e114.cpp:
 	.text       start:0x0000E114 end:0x0000E118
@@ -311,6 +320,9 @@ mo_melee/sora_melee/sora_melee_function_14d00.cpp:
 mo_melee/sora_melee/sora_melee_function_166f8.cpp:
 	.text       start:0x000166F8 end:0x000166FC
 
+mo_melee/sora_melee/sora_melee_function_166fc.cpp:
+	.text       start:0x000166FC end:0x00016708
+
 mo_melee/sora_melee/sora_melee_function_16ca8.cpp:
 	.text       start:0x00016CA8 end:0x00016CB0
 
@@ -362,6 +374,9 @@ mo_melee/sora_melee/sora_melee_function_1cac8.cpp:
 mo_melee/sora_melee/sora_melee_function_1cb10.cpp:
 	.text       start:0x0001CB10 end:0x0001CB18
 
+mo_melee/sora_melee/sora_melee_function_1cb18.cpp:
+	.text       start:0x0001CB18 end:0x0001CB24
+
 mo_melee/sora_melee/sora_melee_function_1cb80.cpp:
 	.text       start:0x0001CB80 end:0x0001CB88
 
@@ -377,14 +392,38 @@ mo_melee/sora_melee/sora_melee_function_1cbb4.cpp:
 mo_melee/sora_melee/sora_melee_function_1cbcc.cpp:
 	.text       start:0x0001CBCC end:0x0001CBD0
 
+mo_melee/sora_melee/sora_melee_function_1cdac.cpp:
+	.text       start:0x0001CDAC end:0x0001CDB8
+
+mo_melee/sora_melee/sora_melee_function_1d304.cpp:
+	.text       start:0x0001D304 end:0x0001D310
+
+mo_melee/sora_melee/sora_melee_function_1d370.cpp:
+	.text       start:0x0001D370 end:0x0001D37C
+
 mo_melee/sora_melee/sora_melee_function_1d37c.cpp:
 	.text       start:0x0001D37C end:0x0001D384
+
+mo_melee/sora_melee/sora_melee_function_1d3cc.cpp:
+	.text       start:0x0001D3CC end:0x0001D3D8
+
+mo_melee/sora_melee/sora_melee_function_1d438.cpp:
+	.text       start:0x0001D438 end:0x0001D444
 
 mo_melee/sora_melee/sora_melee_function_1d444.cpp:
 	.text       start:0x0001D444 end:0x0001D44C
 
+mo_melee/sora_melee/sora_melee_function_1d494.cpp:
+	.text       start:0x0001D494 end:0x0001D4A0
+
+mo_melee/sora_melee/sora_melee_function_1d500.cpp:
+	.text       start:0x0001D500 end:0x0001D50C
+
 mo_melee/sora_melee/sora_melee_function_1d50c.cpp:
 	.text       start:0x0001D50C end:0x0001D514
+
+mo_melee/sora_melee/sora_melee_function_1d55c.cpp:
+	.text       start:0x0001D55C end:0x0001D568
 
 mo_melee/sora_melee/sora_melee_function_1d5c8.cpp:
 	.text       start:0x0001D5C8 end:0x0001D5D0
@@ -570,6 +609,9 @@ mo_melee/sora_melee/sora_melee_function_25504.cpp:
 mo_melee/sora_melee/sora_melee_function_2550c.cpp:
 	.text       start:0x0002550C end:0x00025510
 
+mo_melee/sora_melee/sora_melee_function_25510.cpp:
+	.text       start:0x00025510 end:0x0002551C
+
 mo_melee/sora_melee/sora_melee_function_2551c.cpp:
 	.text       start:0x0002551C end:0x00025520
 
@@ -669,6 +711,12 @@ mo_melee/sora_melee/sora_melee_function_2e808.cpp:
 mo_melee/sora_melee/sora_melee_function_2e810.cpp:
 	.text       start:0x0002E810 end:0x0002E818
 
+mo_melee/sora_melee/sora_melee_function_2ef48.cpp:
+	.text       start:0x0002EF48 end:0x0002EF54
+
+mo_melee/sora_melee/sora_melee_function_2ef54.cpp:
+	.text       start:0x0002EF54 end:0x0002EF60
+
 mo_melee/sora_melee/sora_melee_function_2ef60.cpp:
 	.text       start:0x0002EF60 end:0x0002EF68
 
@@ -711,6 +759,9 @@ mo_melee/sora_melee/sora_melee_function_30e5c.cpp:
 mo_melee/sora_melee/sora_melee_function_310f4.cpp:
 	.text       start:0x000310F4 end:0x00031174
 
+mo_melee/sora_melee/sora_melee_function_355ac.cpp:
+	.text       start:0x000355AC end:0x000355B8
+
 mo_melee/sora_melee/sora_melee_function_35830.cpp:
 	.text       start:0x00035830 end:0x00035834
 
@@ -741,8 +792,20 @@ mo_melee/sora_melee/sora_melee_function_37c78.cpp:
 mo_melee/sora_melee/sora_melee_function_37fa8.cpp:
 	.text       start:0x00037FA8 end:0x00038048
 
+mo_melee/sora_melee/sora_melee_function_38724.cpp:
+	.text       start:0x00038724 end:0x00038730
+
+mo_melee/sora_melee/sora_melee_function_38988.cpp:
+	.text       start:0x00038988 end:0x00038994
+
 mo_melee/sora_melee/sora_melee_function_38c64.cpp:
 	.text       start:0x00038C64 end:0x00038C68
+
+mo_melee/sora_melee/sora_melee_function_38d70.cpp:
+	.text       start:0x00038D70 end:0x00038D7C
+
+mo_melee/sora_melee/sora_melee_function_38ddc.cpp:
+	.text       start:0x00038DDC end:0x00038DE8
 
 mo_melee/sora_melee/sora_melee_function_38de8.cpp:
 	.text       start:0x00038DE8 end:0x00038DF0
@@ -855,6 +918,12 @@ mo_melee/sora_melee/sora_melee_function_41484.cpp:
 mo_melee/sora_melee/sora_melee_function_41968.cpp:
 	.text       start:0x00041968 end:0x00041988
 
+mo_melee/sora_melee/sora_melee_function_419f0.cpp:
+	.text       start:0x000419F0 end:0x000419FC
+
+mo_melee/sora_melee/sora_melee_function_41a5c.cpp:
+	.text       start:0x00041A5C end:0x00041A68
+
 mo_melee/sora_melee/sora_melee_function_41a68.cpp:
 	.text       start:0x00041A68 end:0x00041A70
 
@@ -891,11 +960,17 @@ mo_melee/sora_melee/sora_melee_function_422bc.cpp:
 mo_melee/sora_melee/sora_melee_function_42898.cpp:
 	.text       start:0x00042898 end:0x000428A0
 
+mo_melee/sora_melee/sora_melee_function_42948.cpp:
+	.text       start:0x00042948 end:0x00042954
+
 mo_melee/sora_melee/sora_melee_function_43524.cpp:
 	.text       start:0x00043524 end:0x00043528
 
 mo_melee/sora_melee/sora_melee_function_4390c.cpp:
 	.text       start:0x0004390C end:0x00043910
+
+mo_melee/sora_melee/sora_melee_function_44f74.cpp:
+	.text       start:0x00044F74 end:0x00044F80
 
 mo_melee/sora_melee/sora_melee_function_4500c.cpp:
 	.text       start:0x0004500C end:0x00045014
@@ -960,6 +1035,9 @@ mo_melee/sora_melee/sora_melee_function_48a0c.cpp:
 mo_melee/sora_melee/sora_melee_function_48a14.cpp:
 	.text       start:0x00048A14 end:0x00048A1C
 
+mo_melee/sora_melee/sora_melee_function_48f28.cpp:
+	.text       start:0x00048F28 end:0x00048F34
+
 mo_melee/sora_melee/sora_melee_function_4ac28.cpp:
 	.text       start:0x0004AC28 end:0x0004AC30
 
@@ -969,8 +1047,14 @@ mo_melee/sora_melee/sora_melee_function_4ac30.cpp:
 mo_melee/sora_melee/sora_melee_function_4ac38.cpp:
 	.text       start:0x0004AC38 end:0x0004AC40
 
+mo_melee/sora_melee/sora_melee_function_4ad90.cpp:
+	.text       start:0x0004AD90 end:0x0004AD9C
+
 mo_melee/sora_melee/sora_melee_function_4b0e4.cpp:
 	.text       start:0x0004B0E4 end:0x0004B0E8
+
+mo_melee/sora_melee/sora_melee_function_4b77c.cpp:
+	.text       start:0x0004B77C end:0x0004B788
 
 mo_melee/sora_melee/sora_melee_function_4b788.cpp:
 	.text       start:0x0004B788 end:0x0004B808
@@ -983,6 +1067,12 @@ mo_melee/sora_melee/sora_melee_function_4ca94.cpp:
 
 mo_melee/sora_melee/sora_melee_function_4ca98.cpp:
 	.text       start:0x0004CA98 end:0x0004CAA0
+
+mo_melee/sora_melee/sora_melee_function_4cb18.cpp:
+	.text       start:0x0004CB18 end:0x0004CB24
+
+mo_melee/sora_melee/sora_melee_function_4cb84.cpp:
+	.text       start:0x0004CB84 end:0x0004CB90
 
 mo_melee/sora_melee/sora_melee_function_4cb90.cpp:
 	.text       start:0x0004CB90 end:0x0004CB98
@@ -1020,6 +1110,9 @@ mo_melee/sora_melee/sora_melee_function_4d7f0.cpp:
 mo_melee/sora_melee/sora_melee_function_4d7f8.cpp:
 	.text       start:0x0004D7F8 end:0x0004D800
 
+mo_melee/sora_melee/sora_melee_function_4d950.cpp:
+	.text       start:0x0004D950 end:0x0004D95C
+
 mo_melee/sora_melee/sora_melee_function_4dc04.cpp:
 	.text       start:0x0004DC04 end:0x0004DC08
 
@@ -1034,6 +1127,9 @@ mo_melee/sora_melee/sora_melee_function_4edc0.cpp:
 
 mo_melee/sora_melee/sora_melee_function_4fa7c.cpp:
 	.text       start:0x0004FA7C end:0x0004FA80
+
+mo_melee/sora_melee/sora_melee_function_4fa80.cpp:
+	.text       start:0x0004FA80 end:0x0004FA8C
 
 mo_melee/sora_melee/sora_melee_function_4fa8c.cpp:
 	.text       start:0x0004FA8C end:0x0004FA94
@@ -1059,8 +1155,14 @@ mo_melee/sora_melee/sora_melee_function_50108.cpp:
 mo_melee/sora_melee/sora_melee_function_5032c.cpp:
 	.text       start:0x0005032C end:0x00050330
 
+mo_melee/sora_melee/sora_melee_function_5057c.cpp:
+	.text       start:0x0005057C end:0x00050588
+
 mo_melee/sora_melee/sora_melee_function_505c8.cpp:
 	.text       start:0x000505C8 end:0x000505E0
+
+mo_melee/sora_melee/sora_melee_function_508b0.cpp:
+	.text       start:0x000508B0 end:0x000509B0
 
 mo_melee/sora_melee/sora_melee_function_51074.cpp:
 	.text       start:0x00051074 end:0x0005108C
@@ -1071,11 +1173,26 @@ mo_melee/sora_melee/sora_melee_function_5108c.cpp:
 mo_melee/sora_melee/sora_melee_function_510bc.cpp:
 	.text       start:0x000510BC end:0x000510C4
 
+mo_melee/sora_melee/sora_melee_function_54218.cpp:
+	.text       start:0x00054218 end:0x00054224
+
 mo_melee/sora_melee/sora_melee_function_5428c.cpp:
 	.text       start:0x0005428C end:0x00054294
 
+mo_melee/sora_melee/sora_melee_function_542e0.cpp:
+	.text       start:0x000542E0 end:0x000542EC
+
+mo_melee/sora_melee/sora_melee_function_5434c.cpp:
+	.text       start:0x0005434C end:0x00054358
+
 mo_melee/sora_melee/sora_melee_function_54358.cpp:
 	.text       start:0x00054358 end:0x00054360
+
+mo_melee/sora_melee/sora_melee_function_543a8.cpp:
+	.text       start:0x000543A8 end:0x000543B4
+
+mo_melee/sora_melee/sora_melee_function_54414.cpp:
+	.text       start:0x00054414 end:0x00054420
 
 mo_melee/sora_melee/sora_melee_function_54420.cpp:
 	.text       start:0x00054420 end:0x00054428
@@ -1137,14 +1254,35 @@ mo_melee/sora_melee/sora_melee_function_568a8.cpp:
 mo_melee/sora_melee/sora_melee_function_568ac.cpp:
 	.text       start:0x000568AC end:0x000568B4
 
+mo_melee/sora_melee/sora_melee_function_56b88.cpp:
+	.text       start:0x00056B88 end:0x00056B94
+
+mo_melee/sora_melee/sora_melee_function_56b94.cpp:
+	.text       start:0x00056B94 end:0x00056BA0
+
+mo_melee/sora_melee/sora_melee_function_56ba0.cpp:
+	.text       start:0x00056BA0 end:0x00056BAC
+
 mo_melee/sora_melee/sora_melee_function_56bac.cpp:
 	.text       start:0x00056BAC end:0x00056BC4
+
+mo_melee/sora_melee/sora_melee_function_56be0.cpp:
+	.text       start:0x00056BE0 end:0x00056BEC
 
 mo_melee/sora_melee/sora_melee_function_56c2c.cpp:
 	.text       start:0x00056C2C end:0x00056C30
 
+mo_melee/sora_melee/sora_melee_function_56c30.cpp:
+	.text       start:0x00056C30 end:0x00056C3C
+
+mo_melee/sora_melee/sora_melee_function_56c3c.cpp:
+	.text       start:0x00056C3C end:0x00056C48
+
 mo_melee/sora_melee/sora_melee_function_57528.cpp:
 	.text       start:0x00057528 end:0x00057530
+
+mo_melee/sora_melee/sora_melee_function_57530.cpp:
+	.text       start:0x00057530 end:0x0005753C
 
 mo_melee/sora_melee/sora_melee_function_575e0.cpp:
 	.text       start:0x000575E0 end:0x000575E4
@@ -1209,6 +1347,9 @@ mo_melee/sora_melee/sora_melee_function_58404.cpp:
 mo_melee/sora_melee/sora_melee_function_58484.cpp:
 	.text       start:0x00058484 end:0x00058488
 
+mo_melee/sora_melee/sora_melee_function_58488.cpp:
+	.text       start:0x00058488 end:0x00058588
+
 mo_melee/sora_melee/sora_melee_function_596a4.cpp:
 	.text       start:0x000596A4 end:0x000596A8
 
@@ -1233,6 +1374,9 @@ mo_melee/sora_melee/sora_melee_function_596bc.cpp:
 mo_melee/sora_melee/sora_melee_function_596c4.cpp:
 	.text       start:0x000596C4 end:0x000596CC
 
+mo_melee/sora_melee/sora_melee_function_596cc.cpp:
+	.text       start:0x000596CC end:0x000596D8
+
 mo_melee/sora_melee/sora_melee_function_596d8.cpp:
 	.text       start:0x000596D8 end:0x000596DC
 
@@ -1243,6 +1387,12 @@ mo_melee/sora_melee/so/so_controller_module_link_ref.cpp:
 	.text       start:0x000598CC end:0x00059FD4
 	.rodata     start:0x00000748 end:0x0000075C
 	.data       start:0x00005ED8 end:0x00006050
+
+mo_melee/sora_melee/sora_melee_function_5a104.cpp:
+	.text       start:0x0005A104 end:0x0005A110
+
+mo_melee/sora_melee/sora_melee_function_5a110.cpp:
+	.text       start:0x0005A110 end:0x0005A11C
 
 mo_melee/sora_melee/sora_melee_function_5aa64.cpp:
 	.text       start:0x0005AA64 end:0x0005AA6C
@@ -1277,6 +1427,9 @@ mo_melee/sora_melee/sora_melee_function_5aacc.cpp:
 mo_melee/sora_melee/sora_melee_function_5aad4.cpp:
 	.text       start:0x0005AAD4 end:0x0005AADC
 
+mo_melee/sora_melee/sora_melee_function_5aadc.cpp:
+	.text       start:0x0005AADC end:0x0005AAE8
+
 mo_melee/sora_melee/sora_melee_function_5aae8.cpp:
 	.text       start:0x0005AAE8 end:0x0005AAF0
 
@@ -1286,8 +1439,14 @@ mo_melee/sora_melee/sora_melee_function_5aaf0.cpp:
 mo_melee/sora_melee/sora_melee_function_5aaf8.cpp:
 	.text       start:0x0005AAF8 end:0x0005AB00
 
+mo_melee/sora_melee/sora_melee_function_5ab00.cpp:
+	.text       start:0x0005AB00 end:0x0005AB0C
+
 mo_melee/sora_melee/sora_melee_function_5ab0c.cpp:
 	.text       start:0x0005AB0C end:0x0005AB14
+
+mo_melee/sora_melee/sora_melee_function_5ab14.cpp:
+	.text       start:0x0005AB14 end:0x0005AB20
 
 mo_melee/sora_melee/sora_melee_function_5ab20.cpp:
 	.text       start:0x0005AB20 end:0x0005AB28
@@ -1312,6 +1471,9 @@ mo_melee/sora_melee/sora_melee_function_5ab50.cpp:
 
 mo_melee/sora_melee/sora_melee_function_5ab58.cpp:
 	.text       start:0x0005AB58 end:0x0005AB60
+
+mo_melee/sora_melee/sora_melee_function_5af08.cpp:
+	.text       start:0x0005AF08 end:0x0005AF14
 
 mo_melee/sora_melee/sora_melee_function_5af14.cpp:
 	.text       start:0x0005AF14 end:0x0005AF1C
@@ -1379,6 +1541,9 @@ mo_melee/sora_melee/sora_melee_function_5c5d4.cpp:
 mo_melee/sora_melee/sora_melee_function_5c5dc.cpp:
 	.text       start:0x0005C5DC end:0x0005C5E4
 
+mo_melee/sora_melee/sora_melee_function_5c5e4.cpp:
+	.text       start:0x0005C5E4 end:0x0005C5F0
+
 mo_melee/sora_melee/sora_melee_function_5c5f0.cpp:
 	.text       start:0x0005C5F0 end:0x0005C5F8
 
@@ -1439,8 +1604,26 @@ mo_melee/sora_melee/sora_melee_function_5e204.cpp:
 mo_melee/sora_melee/sora_melee_function_5e20c.cpp:
 	.text       start:0x0005E20C end:0x0005E214
 
+mo_melee/sora_melee/sora_melee_function_5ed18.cpp:
+	.text       start:0x0005ED18 end:0x0005ED24
+
+mo_melee/sora_melee/sora_melee_function_5ed24.cpp:
+	.text       start:0x0005ED24 end:0x0005ED30
+
 mo_melee/sora_melee/sora_melee_function_5ed30.cpp:
 	.text       start:0x0005ED30 end:0x0005ED38
+
+mo_melee/sora_melee/sora_melee_function_5ed38.cpp:
+	.text       start:0x0005ED38 end:0x0005ED44
+
+mo_melee/sora_melee/sora_melee_function_5ed44.cpp:
+	.text       start:0x0005ED44 end:0x0005ED50
+
+mo_melee/sora_melee/sora_melee_function_5ed50.cpp:
+	.text       start:0x0005ED50 end:0x0005ED5C
+
+mo_melee/sora_melee/sora_melee_function_5ef8c.cpp:
+	.text       start:0x0005EF8C end:0x0005EF98
 
 mo_melee/sora_melee/sora_melee_function_60424.cpp:
 	.text       start:0x00060424 end:0x0006042C
@@ -1459,6 +1642,9 @@ mo_melee/sora_melee/sora_melee_function_60444.cpp:
 
 mo_melee/sora_melee/sora_melee_function_6044c.cpp:
 	.text       start:0x0006044C end:0x00060454
+
+mo_melee/sora_melee/sora_melee_function_60464.cpp:
+	.text       start:0x00060464 end:0x00060470
 
 mo_melee/sora_melee/sora_melee_function_60470.cpp:
 	.text       start:0x00060470 end:0x00060478
@@ -1553,6 +1739,9 @@ mo_melee/sora_melee/sora_melee_function_612f0.cpp:
 mo_melee/sora_melee/sora_melee_function_6164c.cpp:
 	.text       start:0x0006164C end:0x00061654
 
+mo_melee/sora_melee/sora_melee_function_61a0c.cpp:
+	.text       start:0x00061A0C end:0x00061A18
+
 mo_melee/sora_melee/sora_melee_function_61ed8.cpp:
 	.text       start:0x00061ED8 end:0x00061EE0
 
@@ -1594,6 +1783,15 @@ mo_melee/sora_melee/sora_melee_function_633f8.cpp:
 
 mo_melee/sora_melee/sora_melee_function_63400.cpp:
 	.text       start:0x00063400 end:0x00063404
+
+mo_melee/sora_melee/sora_melee_function_63404.cpp:
+	.text       start:0x00063404 end:0x00063410
+
+mo_melee/sora_melee/sora_melee_function_63410.cpp:
+	.text       start:0x00063410 end:0x0006341C
+
+mo_melee/sora_melee/sora_melee_function_6341c.cpp:
+	.text       start:0x0006341C end:0x00063428
 
 mo_melee/sora_melee/sora_melee_function_63428.cpp:
 	.text       start:0x00063428 end:0x0006342C
@@ -1650,8 +1848,17 @@ mo_melee/sora_melee/so/so_heap_module_impl.cpp:
 mo_melee/sora_melee/sora_melee_function_64a90.cpp:
 	.text       start:0x00064A90 end:0x00064AF0
 
+mo_melee/sora_melee/sora_melee_function_64c28.cpp:
+	.text       start:0x00064C28 end:0x00064C34
+
 mo_melee/sora_melee/sora_melee_function_64e74.cpp:
 	.text       start:0x00064E74 end:0x00064E78
+
+mo_melee/sora_melee/sora_melee_function_65018.cpp:
+	.text       start:0x00065018 end:0x00065024
+
+mo_melee/sora_melee/sora_melee_function_65024.cpp:
+	.text       start:0x00065024 end:0x00065030
 
 mo_melee/sora_melee/sora_melee_function_65ed0.cpp:
 	.text       start:0x00065ED0 end:0x00065ED8
@@ -1664,6 +1871,9 @@ mo_melee/sora_melee/sora_melee_function_65edc.cpp:
 
 mo_melee/sora_melee/sora_melee_function_661b4.cpp:
 	.text       start:0x000661B4 end:0x000661B8
+
+mo_melee/sora_melee/sora_melee_function_661c8.cpp:
+	.text       start:0x000661C8 end:0x000661D4
 
 mo_melee/sora_melee/sora_melee_function_66bd4.cpp:
 	.text       start:0x00066BD4 end:0x00066BDC
@@ -1765,6 +1975,9 @@ mo_melee/sora_melee/sora_melee_function_69ea4.cpp:
 mo_melee/sora_melee/sora_melee_function_69ebc.cpp:
 	.text       start:0x00069EBC end:0x00069EC0
 
+mo_melee/sora_melee/sora_melee_function_6a1e4.cpp:
+	.text       start:0x0006A1E4 end:0x0006A1F0
+
 mo_melee/sora_melee/sora_melee_function_6a20c.cpp:
 	.text       start:0x0006A20C end:0x0006A214
 
@@ -1779,6 +1992,9 @@ mo_melee/sora_melee/sora_melee_function_6a234.cpp:
 
 mo_melee/sora_melee/sora_melee_function_6a23c.cpp:
 	.text       start:0x0006A23C end:0x0006A244
+
+mo_melee/sora_melee/sora_melee_function_6a5d4.cpp:
+	.text       start:0x0006A5D4 end:0x0006A5E0
 
 mo_melee/sora_melee/sora_melee_function_6a770.cpp:
 	.text       start:0x0006A770 end:0x0006A7F0
@@ -1822,6 +2038,9 @@ mo_melee/sora_melee/sora_melee_function_6f304.cpp:
 mo_melee/sora_melee/sora_melee_function_6f30c.cpp:
 	.text       start:0x0006F30C end:0x0006F314
 
+mo_melee/sora_melee/sora_melee_function_6f418.cpp:
+	.text       start:0x0006F418 end:0x0006F518
+
 mo_melee/sora_melee/so/so_resource_module_impl.cpp:
 	.text       start:0x0006F850 end:0x0006FCF4
 	.data       start:0x00008028 end:0x000080F8
@@ -1840,6 +2059,15 @@ mo_melee/sora_melee/sora_melee_function_7131c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_71320.cpp:
 	.text       start:0x00071320 end:0x000713E0
+
+mo_melee/sora_melee/sora_melee_function_714a4.cpp:
+	.text       start:0x000714A4 end:0x000714B0
+
+mo_melee/sora_melee/sora_melee_function_72dc0.cpp:
+	.text       start:0x00072DC0 end:0x00072DCC
+
+mo_melee/sora_melee/sora_melee_function_72e2c.cpp:
+	.text       start:0x00072E2C end:0x00072E38
 
 mo_melee/sora_melee/sora_melee_function_72e38.cpp:
 	.text       start:0x00072E38 end:0x00072E40
@@ -1910,6 +2138,9 @@ mo_melee/sora_melee/sora_melee_function_744b0.cpp:
 mo_melee/sora_melee/sora_melee_function_749f0.cpp:
 	.text       start:0x000749F0 end:0x000749F8
 
+mo_melee/sora_melee/sora_melee_function_749f8.cpp:
+	.text       start:0x000749F8 end:0x00074A04
+
 mo_melee/sora_melee/sora_melee_function_75498.cpp:
 	.text       start:0x00075498 end:0x000754A0
 
@@ -1943,11 +2174,17 @@ mo_melee/sora_melee/sora_melee_function_7567c.cpp:
 mo_melee/sora_melee/sora_melee_function_75680.cpp:
 	.text       start:0x00075680 end:0x00075684
 
+mo_melee/sora_melee/sora_melee_function_758e4.cpp:
+	.text       start:0x000758E4 end:0x000758F0
+
 mo_melee/sora_melee/sora_melee_function_75df0.cpp:
 	.text       start:0x00075DF0 end:0x00075DF8
 
 mo_melee/sora_melee/sora_melee_function_75e04.cpp:
 	.text       start:0x00075E04 end:0x00075E0C
+
+mo_melee/sora_melee/sora_melee_function_761c0.cpp:
+	.text       start:0x000761C0 end:0x000761CC
 
 mo_melee/sora_melee/sora_melee_function_7622c.cpp:
 	.text       start:0x0007622C end:0x00076234
@@ -1996,6 +2233,12 @@ mo_melee/sora_melee/sora_melee_function_77524.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7aac8.cpp:
 	.text       start:0x0007AAC8 end:0x0007AAD0
+
+mo_melee/sora_melee/sora_melee_function_7ab60.cpp:
+	.text       start:0x0007AB60 end:0x0007AB6C
+
+mo_melee/sora_melee/sora_melee_function_7abcc.cpp:
+	.text       start:0x0007ABCC end:0x0007ABD8
 
 mo_melee/sora_melee/sora_melee_function_7abd8.cpp:
 	.text       start:0x0007ABD8 end:0x0007ABE0
@@ -2105,6 +2348,15 @@ mo_melee/sora_melee/sora_melee_function_7b948.cpp:
 mo_melee/sora_melee/sora_melee_function_7b950.cpp:
 	.text       start:0x0007B950 end:0x0007B954
 
+mo_melee/sora_melee/sora_melee_function_7b954.cpp:
+	.text       start:0x0007B954 end:0x0007B960
+
+mo_melee/sora_melee/sora_melee_function_7b960.cpp:
+	.text       start:0x0007B960 end:0x0007B96C
+
+mo_melee/sora_melee/sora_melee_function_7b96c.cpp:
+	.text       start:0x0007B96C end:0x0007B978
+
 mo_melee/sora_melee/sora_melee_function_7b978.cpp:
 	.text       start:0x0007B978 end:0x0007B97C
 
@@ -2138,14 +2390,35 @@ mo_melee/sora_melee/sora_melee_function_7b9b0.cpp:
 mo_melee/sora_melee/sora_melee_function_7b9f4.cpp:
 	.text       start:0x0007B9F4 end:0x0007B9FC
 
+mo_melee/sora_melee/sora_melee_function_7b9fc.cpp:
+	.text       start:0x0007B9FC end:0x0007BA08
+
 mo_melee/sora_melee/sora_melee_function_7ba08.cpp:
 	.text       start:0x0007BA08 end:0x0007BA10
+
+mo_melee/sora_melee/sora_melee_function_7ba10.cpp:
+	.text       start:0x0007BA10 end:0x0007BA1C
+
+mo_melee/sora_melee/sora_melee_function_7ba1c.cpp:
+	.text       start:0x0007BA1C end:0x0007BA28
+
+mo_melee/sora_melee/sora_melee_function_7ba28.cpp:
+	.text       start:0x0007BA28 end:0x0007BA34
+
+mo_melee/sora_melee/sora_melee_function_7ba34.cpp:
+	.text       start:0x0007BA34 end:0x0007BA40
 
 mo_melee/sora_melee/sora_melee_function_7ba40.cpp:
 	.text       start:0x0007BA40 end:0x0007BA44
 
+mo_melee/sora_melee/sora_melee_function_7ba44.cpp:
+	.text       start:0x0007BA44 end:0x0007BA50
+
 mo_melee/sora_melee/sora_melee_function_7ba50.cpp:
 	.text       start:0x0007BA50 end:0x0007BA54
+
+mo_melee/sora_melee/sora_melee_function_7ba54.cpp:
+	.text       start:0x0007BA54 end:0x0007BA60
 
 mo_melee/sora_melee/sora_melee_function_7ba60.cpp:
 	.text       start:0x0007BA60 end:0x0007BA68
@@ -2183,8 +2456,17 @@ mo_melee/sora_melee/sora_melee_function_7bb1c.cpp:
 mo_melee/sora_melee/sora_melee_function_7bb24.cpp:
 	.text       start:0x0007BB24 end:0x0007BB2C
 
+mo_melee/sora_melee/sora_melee_function_7bb2c.cpp:
+	.text       start:0x0007BB2C end:0x0007BB38
+
+mo_melee/sora_melee/sora_melee_function_7bb38.cpp:
+	.text       start:0x0007BB38 end:0x0007BB44
+
 mo_melee/sora_melee/sora_melee_function_7bb44.cpp:
 	.text       start:0x0007BB44 end:0x0007BB48
+
+mo_melee/sora_melee/sora_melee_function_7bb48.cpp:
+	.text       start:0x0007BB48 end:0x0007BB54
 
 mo_melee/sora_melee/sora_melee_function_7bb54.cpp:
 	.text       start:0x0007BB54 end:0x0007BB5C
@@ -2221,6 +2503,9 @@ mo_melee/sora_melee/sora_melee_function_7bc0c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7bc10.cpp:
 	.text       start:0x0007BC10 end:0x0007BC18
+
+mo_melee/sora_melee/sora_melee_function_7bc18.cpp:
+	.text       start:0x0007BC18 end:0x0007BC24
 
 mo_melee/sora_melee/sora_melee_function_7bc24.cpp:
 	.text       start:0x0007BC24 end:0x0007BC28
@@ -2261,6 +2546,12 @@ mo_melee/sora_melee/sora_melee_function_7bc9c.cpp:
 mo_melee/sora_melee/sora_melee_function_7bca0.cpp:
 	.text       start:0x0007BCA0 end:0x0007BCA8
 
+mo_melee/sora_melee/sora_melee_function_7bca8.cpp:
+	.text       start:0x0007BCA8 end:0x0007BCB4
+
+mo_melee/sora_melee/sora_melee_function_7bcb4.cpp:
+	.text       start:0x0007BCB4 end:0x0007BCC0
+
 mo_melee/sora_melee/sora_melee_function_7bcc0.cpp:
 	.text       start:0x0007BCC0 end:0x0007BCC4
 
@@ -2281,6 +2572,12 @@ mo_melee/sora_melee/sora_melee_function_7bd54.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7bd58.cpp:
 	.text       start:0x0007BD58 end:0x0007BD5C
+
+mo_melee/sora_melee/sora_melee_function_7bd5c.cpp:
+	.text       start:0x0007BD5C end:0x0007BD68
+
+mo_melee/sora_melee/sora_melee_function_7bd68.cpp:
+	.text       start:0x0007BD68 end:0x0007BD74
 
 mo_melee/sora_melee/sora_melee_function_7bd74.cpp:
 	.text       start:0x0007BD74 end:0x0007BD78
@@ -2519,6 +2816,9 @@ mo_melee/sora_melee/sora_melee_function_7c154.cpp:
 mo_melee/sora_melee/sora_melee_function_7c15c.cpp:
 	.text       start:0x0007C15C end:0x0007C160
 
+mo_melee/sora_melee/sora_melee_function_7c160.cpp:
+	.text       start:0x0007C160 end:0x0007C16C
+
 mo_melee/sora_melee/sora_melee_function_7c16c.cpp:
 	.text       start:0x0007C16C end:0x0007C174
 
@@ -2633,8 +2933,17 @@ mo_melee/sora_melee/sora_melee_function_7c2c0.cpp:
 mo_melee/sora_melee/sora_melee_function_7c2c4.cpp:
 	.text       start:0x0007C2C4 end:0x0007C2C8
 
+mo_melee/sora_melee/sora_melee_function_7c2c8.cpp:
+	.text       start:0x0007C2C8 end:0x0007C2D4
+
+mo_melee/sora_melee/sora_melee_function_7c2d4.cpp:
+	.text       start:0x0007C2D4 end:0x0007C2E0
+
 mo_melee/sora_melee/sora_melee_function_7c2e0.cpp:
 	.text       start:0x0007C2E0 end:0x0007C2E4
+
+mo_melee/sora_melee/sora_melee_function_7c2e4.cpp:
+	.text       start:0x0007C2E4 end:0x0007C2F0
 
 mo_melee/sora_melee/sora_melee_function_7c370.cpp:
 	.text       start:0x0007C370 end:0x0007C374
@@ -2677,6 +2986,9 @@ mo_melee/sora_melee/sora_melee_function_7c4fc.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7c504.cpp:
 	.text       start:0x0007C504 end:0x0007C508
+
+mo_melee/sora_melee/sora_melee_function_7c508.cpp:
+	.text       start:0x0007C508 end:0x0007C514
 
 mo_melee/sora_melee/sora_melee_function_7c554.cpp:
 	.text       start:0x0007C554 end:0x0007C558
@@ -2752,6 +3064,9 @@ mo_melee/sora_melee/sora_melee_function_7c5d4.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7c5d8.cpp:
 	.text       start:0x0007C5D8 end:0x0007C5DC
+
+mo_melee/sora_melee/sora_melee_function_7c5dc.cpp:
+	.text       start:0x0007C5DC end:0x0007C5E8
 
 mo_melee/sora_melee/sora_melee_function_7c5e8.cpp:
 	.text       start:0x0007C5E8 end:0x0007C5EC
@@ -2887,6 +3202,9 @@ mo_melee/sora_melee/sora_melee_function_7c79c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7c7a0.cpp:
 	.text       start:0x0007C7A0 end:0x0007C7A4
+
+mo_melee/sora_melee/sora_melee_function_7c7a4.cpp:
+	.text       start:0x0007C7A4 end:0x0007C7B0
 
 mo_melee/sora_melee/sora_melee_function_7c7b0.cpp:
 	.text       start:0x0007C7B0 end:0x0007C7B8
@@ -3083,6 +3401,9 @@ mo_melee/sora_melee/sora_melee_function_7c9e8.cpp:
 mo_melee/sora_melee/sora_melee_function_7c9ec.cpp:
 	.text       start:0x0007C9EC end:0x0007C9F0
 
+mo_melee/sora_melee/sora_melee_function_7c9f0.cpp:
+	.text       start:0x0007C9F0 end:0x0007C9FC
+
 mo_melee/sora_melee/sora_melee_function_7c9fc.cpp:
 	.text       start:0x0007C9FC end:0x0007CA04
 
@@ -3224,6 +3545,9 @@ mo_melee/sora_melee/sora_melee_function_7cc20.cpp:
 mo_melee/sora_melee/sora_melee_function_7cc24.cpp:
 	.text       start:0x0007CC24 end:0x0007CC28
 
+mo_melee/sora_melee/sora_melee_function_7cc28.cpp:
+	.text       start:0x0007CC28 end:0x0007CC34
+
 mo_melee/sora_melee/sora_melee_function_7cc34.cpp:
 	.text       start:0x0007CC34 end:0x0007CC3C
 
@@ -3307,6 +3631,9 @@ mo_melee/sora_melee/sora_melee_function_7cd3c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7cd44.cpp:
 	.text       start:0x0007CD44 end:0x0007CD4C
+
+mo_melee/sora_melee/sora_melee_function_7cd4c.cpp:
+	.text       start:0x0007CD4C end:0x0007CD58
 
 mo_melee/sora_melee/sora_melee_function_7cd58.cpp:
 	.text       start:0x0007CD58 end:0x0007CD60
@@ -3413,6 +3740,9 @@ mo_melee/sora_melee/sora_melee_function_7cf28.cpp:
 mo_melee/sora_melee/sora_melee_function_7cf2c.cpp:
 	.text       start:0x0007CF2C end:0x0007CF30
 
+mo_melee/sora_melee/sora_melee_function_7cf70.cpp:
+	.text       start:0x0007CF70 end:0x0007CF7C
+
 mo_melee/sora_melee/sora_melee_function_7cf7c.cpp:
 	.text       start:0x0007CF7C end:0x0007CF80
 
@@ -3442,6 +3772,9 @@ mo_melee/sora_melee/sora_melee_function_7cfa4.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7cfa8.cpp:
 	.text       start:0x0007CFA8 end:0x0007CFAC
+
+mo_melee/sora_melee/sora_melee_function_7cfac.cpp:
+	.text       start:0x0007CFAC end:0x0007CFB8
 
 mo_melee/sora_melee/sora_melee_function_7cfb8.cpp:
 	.text       start:0x0007CFB8 end:0x0007CFC0
@@ -3478,6 +3811,9 @@ mo_melee/sora_melee/sora_melee_function_7d068.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7d070.cpp:
 	.text       start:0x0007D070 end:0x0007D078
+
+mo_melee/sora_melee/sora_melee_function_7d078.cpp:
+	.text       start:0x0007D078 end:0x0007D084
 
 mo_melee/sora_melee/sora_melee_function_7d104.cpp:
 	.text       start:0x0007D104 end:0x0007D108
@@ -3517,6 +3853,9 @@ mo_melee/sora_melee/sora_melee_function_7d140.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7d144.cpp:
 	.text       start:0x0007D144 end:0x0007D148
+
+mo_melee/sora_melee/sora_melee_function_7d148.cpp:
+	.text       start:0x0007D148 end:0x0007D154
 
 mo_melee/sora_melee/sora_melee_function_7d154.cpp:
 	.text       start:0x0007D154 end:0x0007D158
@@ -3698,6 +4037,9 @@ mo_melee/sora_melee/sora_melee_function_7d300.cpp:
 mo_melee/sora_melee/sora_melee_function_7d304.cpp:
 	.text       start:0x0007D304 end:0x0007D308
 
+mo_melee/sora_melee/sora_melee_function_7d308.cpp:
+	.text       start:0x0007D308 end:0x0007D314
+
 mo_melee/sora_melee/sora_melee_function_7d314.cpp:
 	.text       start:0x0007D314 end:0x0007D318
 
@@ -3830,8 +4172,17 @@ mo_melee/sora_melee/sora_melee_function_7d534.cpp:
 mo_melee/sora_melee/sora_melee_function_7d53c.cpp:
 	.text       start:0x0007D53C end:0x0007D544
 
+mo_melee/sora_melee/sora_melee_function_7d544.cpp:
+	.text       start:0x0007D544 end:0x0007D550
+
+mo_melee/sora_melee/sora_melee_function_7d550.cpp:
+	.text       start:0x0007D550 end:0x0007D55C
+
 mo_melee/sora_melee/sora_melee_function_7d55c.cpp:
 	.text       start:0x0007D55C end:0x0007D560
+
+mo_melee/sora_melee/sora_melee_function_7d560.cpp:
+	.text       start:0x0007D560 end:0x0007D56C
 
 mo_melee/sora_melee/sora_melee_function_7d56c.cpp:
 	.text       start:0x0007D56C end:0x0007D570
@@ -3857,11 +4208,20 @@ mo_melee/sora_melee/sora_melee_function_7d58c.cpp:
 mo_melee/sora_melee/sora_melee_function_7d594.cpp:
 	.text       start:0x0007D594 end:0x0007D59C
 
+mo_melee/sora_melee/sora_melee_function_7d59c.cpp:
+	.text       start:0x0007D59C end:0x0007D5A8
+
+mo_melee/sora_melee/sora_melee_function_7d5a8.cpp:
+	.text       start:0x0007D5A8 end:0x0007D5B4
+
 mo_melee/sora_melee/sora_melee_function_7d5b4.cpp:
 	.text       start:0x0007D5B4 end:0x0007D5B8
 
 mo_melee/sora_melee/sora_melee_function_7d5b8.cpp:
 	.text       start:0x0007D5B8 end:0x0007D5BC
+
+mo_melee/sora_melee/sora_melee_function_7d5bc.cpp:
+	.text       start:0x0007D5BC end:0x0007D5C8
 
 mo_melee/sora_melee/sora_melee_function_7d5c8.cpp:
 	.text       start:0x0007D5C8 end:0x0007D5CC
@@ -3892,6 +4252,9 @@ mo_melee/sora_melee/sora_melee_function_7d5f0.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7d5f8.cpp:
 	.text       start:0x0007D5F8 end:0x0007D600
+
+mo_melee/sora_melee/sora_melee_function_7d600.cpp:
+	.text       start:0x0007D600 end:0x0007D60C
 
 mo_melee/sora_melee/sora_melee_function_7d60c.cpp:
 	.text       start:0x0007D60C end:0x0007D610
@@ -3929,6 +4292,12 @@ mo_melee/sora_melee/sora_melee_function_7d650.cpp:
 mo_melee/sora_melee/sora_melee_function_7d654.cpp:
 	.text       start:0x0007D654 end:0x0007D658
 
+mo_melee/sora_melee/sora_melee_function_7d658.cpp:
+	.text       start:0x0007D658 end:0x0007D664
+
+mo_melee/sora_melee/sora_melee_function_7d664.cpp:
+	.text       start:0x0007D664 end:0x0007D670
+
 mo_melee/sora_melee/sora_melee_function_7d670.cpp:
 	.text       start:0x0007D670 end:0x0007D678
 
@@ -3947,8 +4316,17 @@ mo_melee/sora_melee/sora_melee_function_7d690.cpp:
 mo_melee/sora_melee/sora_melee_function_7d698.cpp:
 	.text       start:0x0007D698 end:0x0007D6A0
 
+mo_melee/sora_melee/sora_melee_function_7d6a0.cpp:
+	.text       start:0x0007D6A0 end:0x0007D6AC
+
+mo_melee/sora_melee/sora_melee_function_7d6ac.cpp:
+	.text       start:0x0007D6AC end:0x0007D6B8
+
 mo_melee/sora_melee/sora_melee_function_7d6b8.cpp:
 	.text       start:0x0007D6B8 end:0x0007D6C0
+
+mo_melee/sora_melee/sora_melee_function_7d6c0.cpp:
+	.text       start:0x0007D6C0 end:0x0007D6CC
 
 mo_melee/sora_melee/sora_melee_function_7d6cc.cpp:
 	.text       start:0x0007D6CC end:0x0007D6D0
@@ -3964,6 +4342,9 @@ mo_melee/sora_melee/sora_melee_function_7d6dc.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7d6e0.cpp:
 	.text       start:0x0007D6E0 end:0x0007D6E4
+
+mo_melee/sora_melee/sora_melee_function_7d6e4.cpp:
+	.text       start:0x0007D6E4 end:0x0007D6F0
 
 mo_melee/sora_melee/sora_melee_function_7d6f0.cpp:
 	.text       start:0x0007D6F0 end:0x0007D6F4
@@ -4046,11 +4427,17 @@ mo_melee/sora_melee/sora_melee_function_7d7ec.cpp:
 mo_melee/sora_melee/sora_melee_function_7d7f0.cpp:
 	.text       start:0x0007D7F0 end:0x0007D7F4
 
+mo_melee/sora_melee/sora_melee_function_7d7f4.cpp:
+	.text       start:0x0007D7F4 end:0x0007D800
+
 mo_melee/sora_melee/sora_melee_function_7d800.cpp:
 	.text       start:0x0007D800 end:0x0007D804
 
 mo_melee/sora_melee/sora_melee_function_7d804.cpp:
 	.text       start:0x0007D804 end:0x0007D808
+
+mo_melee/sora_melee/sora_melee_function_7d808.cpp:
+	.text       start:0x0007D808 end:0x0007D814
 
 mo_melee/sora_melee/sora_melee_function_7d814.cpp:
 	.text       start:0x0007D814 end:0x0007D818
@@ -4214,6 +4601,9 @@ mo_melee/sora_melee/sora_melee_function_7da2c.cpp:
 mo_melee/sora_melee/sora_melee_function_7da34.cpp:
 	.text       start:0x0007DA34 end:0x0007DA38
 
+mo_melee/sora_melee/sora_melee_function_7da38.cpp:
+	.text       start:0x0007DA38 end:0x0007DA44
+
 mo_melee/sora_melee/sora_melee_function_7da68.cpp:
 	.text       start:0x0007DA68 end:0x0007DA70
 
@@ -4307,6 +4697,9 @@ mo_melee/sora_melee/sora_melee_function_7db78.cpp:
 mo_melee/sora_melee/sora_melee_function_7db80.cpp:
 	.text       start:0x0007DB80 end:0x0007DB88
 
+mo_melee/sora_melee/sora_melee_function_7db88.cpp:
+	.text       start:0x0007DB88 end:0x0007DB94
+
 mo_melee/sora_melee/sora_melee_function_7db94.cpp:
 	.text       start:0x0007DB94 end:0x0007DB9C
 
@@ -4364,6 +4757,15 @@ mo_melee/sora_melee/sora_melee_function_7dca4.cpp:
 mo_melee/sora_melee/sora_melee_function_7dca8.cpp:
 	.text       start:0x0007DCA8 end:0x0007DCB0
 
+mo_melee/sora_melee/sora_melee_function_7dcb0.cpp:
+	.text       start:0x0007DCB0 end:0x0007DCBC
+
+mo_melee/sora_melee/sora_melee_function_7dcbc.cpp:
+	.text       start:0x0007DCBC end:0x0007DCC8
+
+mo_melee/sora_melee/sora_melee_function_7dcc8.cpp:
+	.text       start:0x0007DCC8 end:0x0007DCD4
+
 mo_melee/sora_melee/sora_melee_function_7dcd4.cpp:
 	.text       start:0x0007DCD4 end:0x0007DCD8
 
@@ -4415,6 +4817,15 @@ mo_melee/sora_melee/sora_melee_function_7dd74.cpp:
 mo_melee/sora_melee/sora_melee_function_7dd78.cpp:
 	.text       start:0x0007DD78 end:0x0007DD7C
 
+mo_melee/sora_melee/sora_melee_function_7dd7c.cpp:
+	.text       start:0x0007DD7C end:0x0007DD88
+
+mo_melee/sora_melee/sora_melee_function_7dd88.cpp:
+	.text       start:0x0007DD88 end:0x0007DD94
+
+mo_melee/sora_melee/sora_melee_function_7dd94.cpp:
+	.text       start:0x0007DD94 end:0x0007DDA0
+
 mo_melee/sora_melee/sora_melee_function_7dda0.cpp:
 	.text       start:0x0007DDA0 end:0x0007DDA4
 
@@ -4462,6 +4873,9 @@ mo_melee/sora_melee/sora_melee_function_7dde8.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7ddf0.cpp:
 	.text       start:0x0007DDF0 end:0x0007DDF8
+
+mo_melee/sora_melee/sora_melee_function_7ddf8.cpp:
+	.text       start:0x0007DDF8 end:0x0007DE04
 
 mo_melee/sora_melee/sora_melee_function_7de04.cpp:
 	.text       start:0x0007DE04 end:0x0007DE0C
@@ -4541,6 +4955,9 @@ mo_melee/sora_melee/sora_melee_function_7df0c.cpp:
 mo_melee/sora_melee/sora_melee_function_7df10.cpp:
 	.text       start:0x0007DF10 end:0x0007DF14
 
+mo_melee/sora_melee/sora_melee_function_7df14.cpp:
+	.text       start:0x0007DF14 end:0x0007DF20
+
 mo_melee/sora_melee/sora_melee_function_7df20.cpp:
 	.text       start:0x0007DF20 end:0x0007DF28
 
@@ -4580,8 +4997,14 @@ mo_melee/sora_melee/sora_melee_function_7df90.cpp:
 mo_melee/sora_melee/sora_melee_function_7df98.cpp:
 	.text       start:0x0007DF98 end:0x0007DFB0
 
+mo_melee/sora_melee/sora_melee_function_7dfb0.cpp:
+	.text       start:0x0007DFB0 end:0x0007DFBC
+
 mo_melee/sora_melee/sora_melee_function_7dfbc.cpp:
 	.text       start:0x0007DFBC end:0x0007DFC0
+
+mo_melee/sora_melee/sora_melee_function_7dfc0.cpp:
+	.text       start:0x0007DFC0 end:0x0007DFCC
 
 mo_melee/sora_melee/sora_melee_function_7dfcc.cpp:
 	.text       start:0x0007DFCC end:0x0007DFD4
@@ -4607,8 +5030,14 @@ mo_melee/sora_melee/sora_melee_function_7dfe8.cpp:
 mo_melee/sora_melee/sora_melee_function_7e02c.cpp:
 	.text       start:0x0007E02C end:0x0007E030
 
+mo_melee/sora_melee/sora_melee_function_7e030.cpp:
+	.text       start:0x0007E030 end:0x0007E03C
+
 mo_melee/sora_melee/sora_melee_function_7e03c.cpp:
 	.text       start:0x0007E03C end:0x0007E044
+
+mo_melee/sora_melee/sora_melee_function_7e044.cpp:
+	.text       start:0x0007E044 end:0x0007E050
 
 mo_melee/sora_melee/sora_melee_function_7e050.cpp:
 	.text       start:0x0007E050 end:0x0007E068
@@ -4636,6 +5065,15 @@ mo_melee/sora_melee/sora_melee_function_7e088.cpp:
 
 mo_melee/sora_melee/sora_melee_function_7e090.cpp:
 	.text       start:0x0007E090 end:0x0007E098
+
+mo_melee/sora_melee/sora_melee_function_7e098.cpp:
+	.text       start:0x0007E098 end:0x0007E0A4
+
+mo_melee/sora_melee/sora_melee_function_7e0a4.cpp:
+	.text       start:0x0007E0A4 end:0x0007E0B0
+
+mo_melee/sora_melee/sora_melee_function_7e0b0.cpp:
+	.text       start:0x0007E0B0 end:0x0007E0BC
 
 mo_melee/sora_melee/sora_melee_function_7e0c8.cpp:
 	.text       start:0x0007E0C8 end:0x0007E0CC
@@ -9243,6 +9681,9 @@ mo_melee/sora_melee/sora_melee_function_af508.cpp:
 mo_melee/sora_melee/sora_melee_function_af86c.cpp:
 	.text       start:0x000AF86C end:0x000AF884
 
+mo_melee/sora_melee/sora_melee_function_afb14.cpp:
+	.text       start:0x000AFB14 end:0x000AFC14
+
 mo_melee/sora_melee/sora_melee_function_b02d8.cpp:
 	.text       start:0x000B02D8 end:0x000B02F0
 
@@ -10411,6 +10852,9 @@ mo_melee/sora_melee/sora_melee_function_d32c4.cpp:
 
 mo_melee/sora_melee/sora_melee_function_d351c.cpp:
 	.text       start:0x000D351C end:0x000D3524
+
+mo_melee/sora_melee/sora_melee_function_d3544.cpp:
+	.text       start:0x000D3544 end:0x000D35A4
 
 mo_melee/sora_melee/sora_melee_function_d365c.cpp:
 	.text       start:0x000D365C end:0x000D3664
@@ -13040,6 +13484,9 @@ mo_melee/sora_melee/sora_melee_function_10b29c.cpp:
 mo_melee/sora_melee/sora_melee_function_10c488.cpp:
 	.text       start:0x0010C488 end:0x0010C48C
 
+mo_melee/sora_melee/sora_melee_function_10c788.cpp:
+	.text       start:0x0010C788 end:0x0010C7E8
+
 mo_melee/sora_melee/sora_melee_function_10c7e8.cpp:
 	.text       start:0x0010C7E8 end:0x0010C7F0
 
@@ -13276,6 +13723,9 @@ mo_melee/sora_melee/sora_melee_function_10fc8c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_10fc90.cpp:
 	.text       start:0x0010FC90 end:0x0010FC94
+
+mo_melee/sora_melee/sora_melee_function_1102e0.cpp:
+	.text       start:0x001102E0 end:0x00110340
 
 mo_melee/sora_melee/sora_melee_function_110fd4.cpp:
 	.text       start:0x00110FD4 end:0x00110FDC
@@ -13709,6 +14159,9 @@ mo_melee/sora_melee/sora_melee_function_13040c.cpp:
 mo_melee/sora_melee/sora_melee_function_130438.cpp:
 	.text       start:0x00130438 end:0x00130440
 
+mo_melee/sora_melee/sora_melee_function_132174.cpp:
+	.text       start:0x00132174 end:0x001321D4
+
 mo_melee/sora_melee/sora_melee_function_13515c.cpp:
 	.text       start:0x0013515C end:0x00135160
 
@@ -14125,6 +14578,9 @@ mo_melee/sora_melee/ft/ft_extend_param_accesser.cpp:
 mo_melee/sora_melee/sora_melee_function_14b540.cpp:
 	.text       start:0x0014B540 end:0x0014B548
 
+mo_melee/sora_melee/sora_melee_function_14b5f8.cpp:
+	.text       start:0x0014B5F8 end:0x0014B658
+
 mo_melee/sora_melee/sora_melee_function_14bcdc.cpp:
 	.text       start:0x0014BCDC end:0x0014BCE4
 
@@ -14293,6 +14749,9 @@ mo_melee/sora_melee/sora_melee_function_1516d4.cpp:
 mo_melee/sora_melee/sora_melee_function_151818.cpp:
 	.text       start:0x00151818 end:0x00151820
 
+mo_melee/sora_melee/sora_melee_function_151820.cpp:
+	.text       start:0x00151820 end:0x00151880
+
 mo_melee/sora_melee/sora_melee_function_151880.cpp:
 	.text       start:0x00151880 end:0x00151888
 
@@ -14377,6 +14836,9 @@ mo_melee/sora_melee/sora_melee_function_16e2a8.cpp:
 mo_melee/sora_melee/sora_melee_function_16f88c.cpp:
 	.text       start:0x0016F88C end:0x0016F890
 
+mo_melee/sora_melee/sora_melee_function_16f890.cpp:
+	.text       start:0x0016F890 end:0x0016F8F0
+
 mo_melee/sora_melee/sora_melee_function_174198.cpp:
 	.text       start:0x00174198 end:0x00174314
 
@@ -14398,6 +14860,9 @@ mo_melee/sora_melee/sora_melee_function_177ba8.cpp:
 mo_melee/sora_melee/sora_melee_function_177bac.cpp:
 	.text       start:0x00177BAC end:0x00177BB0
 
+mo_melee/sora_melee/sora_melee_function_177c80.cpp:
+	.text       start:0x00177C80 end:0x00177CE0
+
 mo_melee/sora_melee/sora_melee_function_177ce0.cpp:
 	.text       start:0x00177CE0 end:0x00177CE4
 
@@ -14409,6 +14874,9 @@ mo_melee/sora_melee/sora_melee_function_178030.cpp:
 
 mo_melee/sora_melee/sora_melee_function_1780e8.cpp:
 	.text       start:0x001780E8 end:0x001780EC
+
+mo_melee/sora_melee/sora_melee_function_1780ec.cpp:
+	.text       start:0x001780EC end:0x0017814C
 
 mo_melee/sora_melee/sora_melee_function_17893c.cpp:
 	.text       start:0x0017893C end:0x00178940
@@ -14460,6 +14928,12 @@ mo_melee/sora_melee/sora_melee_function_17c5dc.cpp:
 
 mo_melee/sora_melee/sora_melee_function_17cce8.cpp:
 	.text       start:0x0017CCE8 end:0x0017CCEC
+
+mo_melee/sora_melee/sora_melee_function_17d3ec.cpp:
+	.text       start:0x0017D3EC end:0x0017D3F4
+
+mo_melee/sora_melee/sora_melee_function_17f21c.cpp:
+	.text       start:0x0017F21C end:0x0017F224
 
 mo_melee/sora_melee/sora_melee_function_17f598.cpp:
 	.text       start:0x0017F598 end:0x0017F59C
@@ -14578,6 +15052,12 @@ mo_melee/sora_melee/sora_melee_function_189e88.cpp:
 mo_melee/sora_melee/sora_melee_function_18a04c.cpp:
 	.text       start:0x0018A04C end:0x0018A054
 
+mo_melee/sora_melee/sora_melee_function_18a0bc.cpp:
+	.text       start:0x0018A0BC end:0x0018A11C
+
+mo_melee/sora_melee/sora_melee_function_18a6e4.cpp:
+	.text       start:0x0018A6E4 end:0x0018A744
+
 mo_melee/sora_melee/sora_melee_function_18b3f4.cpp:
 	.text       start:0x0018B3F4 end:0x0018B3F8
 
@@ -14647,6 +15127,9 @@ mo_melee/sora_melee/sora_melee_function_1919b8.cpp:
 mo_melee/sora_melee/sora_melee_function_1919bc.cpp:
 	.text       start:0x001919BC end:0x001919C4
 
+mo_melee/sora_melee/sora_melee_function_192438.cpp:
+	.text       start:0x00192438 end:0x001924B8
+
 mo_melee/sora_melee/sora_melee_function_1924b8.cpp:
 	.text       start:0x001924B8 end:0x001924C0
 
@@ -14684,11 +15167,17 @@ mo_melee/sora_melee/ft/ft_fighter_build_data.cpp:
 	.data       start:0x00032A98 end:0x00032BF8
 	.bss        start:0x00005040 end:0x00005050
 
+mo_melee/sora_melee/sora_melee_function_194a74.cpp:
+	.text       start:0x00194A74 end:0x00194AD4
+
 mo_melee/sora_melee/sora_melee_function_1963f0.cpp:
 	.text       start:0x001963F0 end:0x0019656C
 
 mo_melee/sora_melee/sora_melee_function_196ee0.cpp:
 	.text       start:0x00196EE0 end:0x00196EE8
+
+mo_melee/sora_melee/sora_melee_function_19731c.cpp:
+	.text       start:0x0019731C end:0x00197324
 
 mo_melee/sora_melee/sora_melee_function_197c88.cpp:
 	.text       start:0x00197C88 end:0x00197C8C
@@ -15313,6 +15802,9 @@ mo_melee/sora_melee/sora_melee_function_1b9580.cpp:
 
 mo_melee/sora_melee/sora_melee_function_1b9cac.cpp:
 	.text       start:0x001B9CAC end:0x001B9CB4
+
+mo_melee/sora_melee/sora_melee_function_1b9cb4.cpp:
+	.text       start:0x001B9CB4 end:0x001B9D34
 
 mo_melee/sora_melee/sora_melee_function_1ba390.cpp:
 	.text       start:0x001BA390 end:0x001BA398
@@ -18899,6 +19391,9 @@ mo_melee/sora_melee/sora_melee_function_1d5aec.cpp:
 mo_melee/sora_melee/sora_melee_function_1d5fc0.cpp:
 	.text       start:0x001D5FC0 end:0x001D5FC8
 
+mo_melee/sora_melee/sora_melee_function_1d5fc8.cpp:
+	.text       start:0x001D5FC8 end:0x001D6048
+
 mo_melee/sora_melee/sora_melee_function_1d6048.cpp:
 	.text       start:0x001D6048 end:0x001D6050
 
@@ -18961,6 +19456,12 @@ mo_melee/sora_melee/sora_melee_function_1da030.cpp:
 
 mo_melee/sora_melee/sora_melee_function_1da034.cpp:
 	.text       start:0x001DA034 end:0x001DA038
+
+mo_melee/sora_melee/sora_melee_function_1da5a4.cpp:
+	.text       start:0x001DA5A4 end:0x001DA5C4
+
+mo_melee/sora_melee/sora_melee_function_1da690.cpp:
+	.text       start:0x001DA690 end:0x001DA698
 
 mo_melee/sora_melee/sora_melee_function_1db0e8.cpp:
 	.text       start:0x001DB0E8 end:0x001DB0EC
@@ -19581,6 +20082,12 @@ mo_melee/sora_melee/sora_melee_function_1f8a74.cpp:
 mo_melee/sora_melee/sora_melee_function_206d6c.cpp:
 	.text       start:0x00206D6C end:0x00206D74
 
+mo_melee/sora_melee/sora_melee_function_20e2ec.cpp:
+	.text       start:0x0020E2EC end:0x0020E30C
+
+mo_melee/sora_melee/sora_melee_function_210fb0.cpp:
+	.text       start:0x00210FB0 end:0x00210FD0
+
 mo_melee/sora_melee/sora_melee_function_213ab4.cpp:
 	.text       start:0x00213AB4 end:0x00213AB8
 
@@ -19592,6 +20099,9 @@ mo_melee/sora_melee/sora_melee_function_21cd50.cpp:
 
 mo_melee/sora_melee/sora_melee_function_21cdd8.cpp:
 	.text       start:0x0021CDD8 end:0x0021CE78
+
+mo_melee/sora_melee/sora_melee_function_21f4ac.cpp:
+	.text       start:0x0021F4AC end:0x0021F4CC
 
 mo_melee/sora_melee/sora_melee_function_2201a8.cpp:
 	.text       start:0x002201A8 end:0x002201AC
@@ -19638,6 +20148,9 @@ mo_melee/sora_melee/sora_melee_function_2227ac.cpp:
 mo_melee/sora_melee/sora_melee_function_2227e0.cpp:
 	.text       start:0x002227E0 end:0x002227E8
 
+mo_melee/sora_melee/sora_melee_function_222830.cpp:
+	.text       start:0x00222830 end:0x00222850
+
 mo_melee/sora_melee/sora_melee_function_222874.cpp:
 	.text       start:0x00222874 end:0x00222878
 
@@ -19680,8 +20193,17 @@ mo_melee/sora_melee/sora_melee_function_2237a0.cpp:
 mo_melee/sora_melee/sora_melee_function_2237a8.cpp:
 	.text       start:0x002237A8 end:0x002237B0
 
+mo_melee/sora_melee/sora_melee_function_2237b0.cpp:
+	.text       start:0x002237B0 end:0x002237D0
+
 mo_melee/sora_melee/sora_melee_function_223a08.cpp:
 	.text       start:0x00223A08 end:0x00223A10
+
+mo_melee/sora_melee/sora_melee_function_224798.cpp:
+	.text       start:0x00224798 end:0x002247B8
+
+mo_melee/sora_melee/sora_melee_function_2247b8.cpp:
+	.text       start:0x002247B8 end:0x002247D8
 
 mo_melee/sora_melee/sora_melee_function_2247d8.cpp:
 	.text       start:0x002247D8 end:0x002247E0
@@ -19737,6 +20259,9 @@ mo_melee/sora_melee/sora_melee_function_224b60.cpp:
 mo_melee/sora_melee/sora_melee_function_224b68.cpp:
 	.text       start:0x00224B68 end:0x00224B70
 
+mo_melee/sora_melee/sora_melee_function_224b70.cpp:
+	.text       start:0x00224B70 end:0x00224B90
+
 mo_melee/sora_melee/sora_melee_function_224d5c.cpp:
 	.text       start:0x00224D5C end:0x00224D64
 
@@ -19754,6 +20279,9 @@ mo_melee/sora_melee/sora_melee_function_224dac.cpp:
 
 mo_melee/sora_melee/sora_melee_function_224db4.cpp:
 	.text       start:0x00224DB4 end:0x00224DB8
+
+mo_melee/sora_melee/sora_melee_function_2252d8.cpp:
+	.text       start:0x002252D8 end:0x002252E0
 
 mo_melee/sora_melee/sora_melee_function_2256c4.cpp:
 	.text       start:0x002256C4 end:0x002256C8
@@ -19866,6 +20394,9 @@ mo_melee/sora_melee/sora_melee_function_231070.cpp:
 mo_melee/sora_melee/sora_melee_function_231074.cpp:
 	.text       start:0x00231074 end:0x00231078
 
+mo_melee/sora_melee/sora_melee_function_2310cc.cpp:
+	.text       start:0x002310CC end:0x002310EC
+
 mo_melee/sora_melee/sora_melee_function_231b70.cpp:
 	.text       start:0x00231B70 end:0x00231B78
 
@@ -19901,6 +20432,12 @@ mo_melee/sora_melee/sora_melee_function_231d10.cpp:
 
 mo_melee/sora_melee/sora_melee_function_231e24.cpp:
 	.text       start:0x00231E24 end:0x00231E28
+
+mo_melee/sora_melee/sora_melee_function_2322c4.cpp:
+	.text       start:0x002322C4 end:0x002322E4
+
+mo_melee/sora_melee/sora_melee_function_2322e4.cpp:
+	.text       start:0x002322E4 end:0x00232304
 
 mo_melee/sora_melee/sora_melee_function_233178.cpp:
 	.text       start:0x00233178 end:0x0023317C
@@ -19962,6 +20499,15 @@ mo_melee/sora_melee/sora_melee_function_239660.cpp:
 
 mo_melee/sora_melee/sora_melee_function_239664.cpp:
 	.text       start:0x00239664 end:0x002397E4
+
+mo_melee/sora_melee/sora_melee_function_2398c8.cpp:
+	.text       start:0x002398C8 end:0x002398D0
+
+mo_melee/sora_melee/sora_melee_function_2398d0.cpp:
+	.text       start:0x002398D0 end:0x002398D8
+
+mo_melee/sora_melee/sora_melee_function_2398d8.cpp:
+	.text       start:0x002398D8 end:0x002398E0
 
 mo_melee/sora_melee/sora_melee_function_239ae0.cpp:
 	.text       start:0x00239AE0 end:0x00239AE4
@@ -20686,6 +21232,12 @@ mo_melee/sora_melee/sora_melee_function_26daf0.cpp:
 mo_melee/sora_melee/sora_melee_function_26de28.cpp:
 	.text       start:0x0026DE28 end:0x0026DE2C
 
+mo_melee/sora_melee/sora_melee_function_26e434.cpp:
+	.text       start:0x0026E434 end:0x0026E43C
+
+mo_melee/sora_melee/sora_melee_function_26e95c.cpp:
+	.text       start:0x0026E95C end:0x0026E964
+
 mo_melee/sora_melee/sora_melee_function_26eb5c.cpp:
 	.text       start:0x0026EB5C end:0x0026EB64
 
@@ -20997,6 +21549,9 @@ mo_melee/sora_melee/sora_melee_function_27bdb0.cpp:
 
 mo_melee/sora_melee/sora_melee_function_27bf40.cpp:
 	.text       start:0x0027BF40 end:0x0027BF44
+
+mo_melee/sora_melee/sora_melee_function_27c470.cpp:
+	.text       start:0x0027C470 end:0x0027C478
 
 mo_melee/sora_melee/sora_melee_function_27d2a8.cpp:
 	.text       start:0x0027D2A8 end:0x0027D2AC
@@ -21781,8 +22336,14 @@ mo_melee/sora_melee/sora_melee_function_29d53c.cpp:
 mo_melee/sora_melee/sora_melee_function_29de28.cpp:
 	.text       start:0x0029DE28 end:0x0029DE30
 
+mo_melee/sora_melee/sora_melee_function_29e758.cpp:
+	.text       start:0x0029E758 end:0x0029E760
+
 mo_melee/sora_melee/sora_melee_function_29ed60.cpp:
 	.text       start:0x0029ED60 end:0x0029ED64
+
+mo_melee/sora_melee/sora_melee_function_29ef3c.cpp:
+	.text       start:0x0029EF3C end:0x0029EF44
 
 mo_melee/sora_melee/sora_melee_function_29f0e4.cpp:
 	.text       start:0x0029F0E4 end:0x0029F0E8
@@ -21987,6 +22548,9 @@ mo_melee/sora_melee/sora_melee_function_2bb394.cpp:
 
 mo_melee/sora_melee/sora_melee_function_2bb548.cpp:
 	.text       start:0x002BB548 end:0x002BB550
+
+mo_melee/sora_melee/sora_melee_function_2bb980.cpp:
+	.text       start:0x002BB980 end:0x002BB988
 
 mo_melee/sora_melee/sora_melee_function_2bbb04.cpp:
 	.text       start:0x002BBB04 end:0x002BBB0C
@@ -23731,6 +24295,9 @@ mo_melee/sora_melee/sora_melee_function_363b60.cpp:
 mo_melee/sora_melee/sora_melee_function_363b68.cpp:
 	.text       start:0x00363B68 end:0x00363B6C
 
+mo_melee/sora_melee/sora_melee_function_364d34.cpp:
+	.text       start:0x00364D34 end:0x00364D3C
+
 mo_melee/sora_melee/sora_melee_function_364d3c.cpp:
 	.text       start:0x00364D3C end:0x00364D40
 
@@ -24540,6 +25107,9 @@ mo_melee/sora_melee/sora_melee_function_3a0684.cpp:
 
 mo_melee/sora_melee/sora_melee_function_3a068c.cpp:
 	.text       start:0x003A068C end:0x003A0694
+
+mo_melee/sora_melee/sora_melee_function_3a0918.cpp:
+	.text       start:0x003A0918 end:0x003A0920
 
 mo_melee/sora_melee/sora_melee_function_3a1b50.cpp:
 	.text       start:0x003A1B50 end:0x003A1B54

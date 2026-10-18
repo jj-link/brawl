@@ -92,6 +92,12 @@ mo_stage/st_earth/st_earth_function_2a00.cpp:
 mo_stage/st_earth/st_earth_function_2a08.cpp:
 	.text       start:0x00002A08 end:0x00002A10
 
+mo_stage/st_earth/st_earth_function_2a10.cpp:
+	.text       start:0x00002A10 end:0x00002A1C
+
+mo_stage/st_earth/st_earth_function_2a1c.cpp:
+	.text       start:0x00002A1C end:0x00002A28
+
 mo_stage/st_earth/st_earth_function_2a4c.cpp:
 	.text       start:0x00002A4C end:0x00002A54
 
@@ -121,6 +127,9 @@ mo_stage/st_earth/st_earth_function_2aa4.cpp:
 
 mo_stage/st_earth/st_earth_function_2aac.cpp:
 	.text       start:0x00002AAC end:0x00002AB4
+
+mo_stage/st_earth/st_earth_function_2ab4.cpp:
+	.text       start:0x00002AB4 end:0x00002AC0
 
 mo_stage/st_earth/st_earth_function_2ac0.cpp:
 	.text       start:0x00002AC0 end:0x00002AC4
@@ -154,6 +163,9 @@ mo_stage/st_earth/st_earth_function_2cc8.cpp:
 
 mo_stage/st_earth/st_earth_function_2ccc.cpp:
 	.text       start:0x00002CCC end:0x00002CD0
+
+mo_stage/st_earth/st_earth_function_2ce0.cpp:
+	.text       start:0x00002CE0 end:0x00002CEC
 
 mo_stage/st_earth/st_earth_function_2cec.cpp:
 	.text       start:0x00002CEC end:0x00002CF4
@@ -212,6 +224,9 @@ mo_stage/st_earth/st_earth_function_92bc.cpp:
 mo_stage/st_earth/st_earth_function_92c4.cpp:
 	.text       start:0x000092C4 end:0x000092C8
 
+mo_stage/st_earth/st_earth_function_92c8.cpp:
+	.text       start:0x000092C8 end:0x000092D4
+
 mo_stage/st_earth/st_earth_function_92d4.cpp:
 	.text       start:0x000092D4 end:0x000092DC
 
@@ -226,6 +241,15 @@ mo_stage/st_earth/st_earth_function_92ec.cpp:
 
 mo_stage/st_earth/st_earth_function_92f0.cpp:
 	.text       start:0x000092F0 end:0x000092F4
+
+mo_stage/st_earth/st_earth_function_92f4.cpp:
+	.text       start:0x000092F4 end:0x00009300
+
+mo_stage/st_earth/st_earth_function_9300.cpp:
+	.text       start:0x00009300 end:0x0000930C
+
+mo_stage/st_earth/st_earth_function_930c.cpp:
+	.text       start:0x0000930C end:0x00009318
 
 mo_stage/st_earth/st_earth_function_9318.cpp:
 	.text       start:0x00009318 end:0x0000931C
@@ -275,6 +299,9 @@ mo_stage/st_earth/st_earth_function_9360.cpp:
 mo_stage/st_earth/st_earth_function_9368.cpp:
 	.text       start:0x00009368 end:0x00009370
 
+mo_stage/st_earth/st_earth_function_9370.cpp:
+	.text       start:0x00009370 end:0x0000937C
+
 mo_stage/st_earth/st_earth_function_937c.cpp:
 	.text       start:0x0000937C end:0x00009384
 
@@ -320,8 +347,17 @@ mo_stage/st_earth/st_earth_function_93f0.cpp:
 mo_stage/st_earth/st_earth_function_9440.cpp:
 	.text       start:0x00009440 end:0x00009444
 
+mo_stage/st_earth/st_earth_function_9784.cpp:
+	.text       start:0x00009784 end:0x00009790
+
+mo_stage/st_earth/st_earth_function_97a0.cpp:
+	.text       start:0x000097A0 end:0x000097AC
+
 mo_stage/st_earth/st_earth_function_97ac.cpp:
 	.text       start:0x000097AC end:0x000097B4
+
+mo_stage/st_earth/st_earth_function_98a8.cpp:
+	.text       start:0x000098A8 end:0x000098B4
 
 mo_stage/st_earth/st_earth_function_98d0.cpp:
 	.text       start:0x000098D0 end:0x000098D8
@@ -362,17 +398,44 @@ mo_stage/st_earth/st_earth_function_a260.cpp:
 mo_stage/st_earth/st_earth_function_a264.cpp:
 	.text       start:0x0000A264 end:0x0000A26C
 
+mo_stage/st_earth/st_earth_function_a26c.cpp:
+	.text       start:0x0000A26C end:0x0000A278
+
+mo_stage/st_earth/st_earth_function_a2d8.cpp:
+	.text       start:0x0000A2D8 end:0x0000A2E4
+
 mo_stage/st_earth/st_earth_function_a2e4.cpp:
 	.text       start:0x0000A2E4 end:0x0000A2EC
+
+mo_stage/st_earth/st_earth_function_a3a0.cpp:
+	.text       start:0x0000A3A0 end:0x0000A3AC
 
 mo_stage/st_earth/st_earth_function_a3ac.cpp:
 	.text       start:0x0000A3AC end:0x0000A3B4
 
+mo_stage/st_earth/st_earth_function_a52c.cpp:
+	.text       start:0x0000A52C end:0x0000A538
+
+mo_stage/st_earth/st_earth_function_a598.cpp:
+	.text       start:0x0000A598 end:0x0000A5A4
+
 mo_stage/st_earth/st_earth_function_a5a4.cpp:
 	.text       start:0x0000A5A4 end:0x0000A5AC
 
+mo_stage/st_earth/st_earth_function_a5f4.cpp:
+	.text       start:0x0000A5F4 end:0x0000A600
+
+mo_stage/st_earth/st_earth_function_a660.cpp:
+	.text       start:0x0000A660 end:0x0000A66C
+
 mo_stage/st_earth/st_earth_function_a66c.cpp:
 	.text       start:0x0000A66C end:0x0000A674
+
+mo_stage/st_earth/st_earth_function_a6bc.cpp:
+	.text       start:0x0000A6BC end:0x0000A6C8
+
+mo_stage/st_earth/st_earth_function_a728.cpp:
+	.text       start:0x0000A728 end:0x0000A734
 
 mo_stage/st_earth/st_earth_function_a734.cpp:
 	.text       start:0x0000A734 end:0x0000A73C
@@ -547,6 +610,9 @@ mo_stage/st_earth/st_earth_function_fdc8.cpp:
 
 mo_stage/st_earth/st_earth_function_11158.cpp:
 	.text       start:0x00011158 end:0x00011160
+
+mo_stage/st_earth/st_earth_function_112d0.cpp:
+	.text       start:0x000112D0 end:0x000112DC
 
 mo_stage/st_earth/st_earth_function_112f8.cpp:
 	.text       start:0x000112F8 end:0x00011300
