@@ -71,6 +71,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_50bc.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_6fec.cpp:
 	.text       start:0x00006FEC end:0x00006FF4
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_6ff4.cpp:
+	.text       start:0x00006FF4 end:0x00007034
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_77dc.cpp:
 	.text       start:0x000077DC end:0x0000783C
 
@@ -212,6 +215,24 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_fc38.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10288.cpp:
 	.text       start:0x00010288 end:0x000102A0
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11500.cpp:
+	.text       start:0x00011500 end:0x00011540
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11540.cpp:
+	.text       start:0x00011540 end:0x00011580
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11590.cpp:
+	.text       start:0x00011590 end:0x000115D0
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_115d0.cpp:
+	.text       start:0x000115D0 end:0x00011610
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11610.cpp:
+	.text       start:0x00011610 end:0x00011650
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11650.cpp:
+	.text       start:0x00011650 end:0x00011690
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11690.cpp:
 	.text       start:0x00011690 end:0x0001169C
 
@@ -281,6 +302,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16444.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16854.cpp:
 	.text       start:0x00016854 end:0x00016860
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16860.cpp:
+	.text       start:0x00016860 end:0x000168A0
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_168a0.cpp:
 	.text       start:0x000168A0 end:0x000168A4
 
@@ -293,8 +317,14 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_168ec.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_168f0.cpp:
 	.text       start:0x000168F0 end:0x000168FC
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_168fc.cpp:
+	.text       start:0x000168FC end:0x0001693C
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16d8c.cpp:
 	.text       start:0x00016D8C end:0x00016D98
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16d98.cpp:
+	.text       start:0x00016D98 end:0x00016DD8
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_16dd8.cpp:
 	.text       start:0x00016DD8 end:0x00016DE4
@@ -310,6 +340,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_173a0.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_173a8.cpp:
 	.text       start:0x000173A8 end:0x000173B0
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_173b0.cpp:
+	.text       start:0x000173B0 end:0x000173F0
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_173f0.cpp:
 	.text       start:0x000173F0 end:0x000173F4
@@ -329,8 +362,14 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_19be4.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_19ca8.cpp:
 	.text       start:0x00019CA8 end:0x00019D48
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_19d48.cpp:
+	.text       start:0x00019D48 end:0x00019D88
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1cb08.cpp:
 	.text       start:0x0001CB08 end:0x0001CB1C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1cb1c.cpp:
+	.text       start:0x0001CB1C end:0x0001CB5C
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1cddc.cpp:
 	.text       start:0x0001CDDC end:0x0001CDF0
@@ -352,6 +391,12 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1d6d4.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1d6dc.cpp:
 	.text       start:0x0001D6DC end:0x0001D6E4
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1d768.cpp:
+	.text       start:0x0001D768 end:0x0001D7A8
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1d7a8.cpp:
+	.text       start:0x0001D7A8 end:0x0001D7E8
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1d7e8.cpp:
 	.text       start:0x0001D7E8 end:0x0001D7EC
@@ -505,6 +550,12 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1def0.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1defc.cpp:
 	.text       start:0x0001DEFC end:0x0001DF04
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1df14.cpp:
+	.text       start:0x0001DF14 end:0x0001DF54
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1e2f8.cpp:
+	.text       start:0x0001E2F8 end:0x0001E338
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1e338.cpp:
 	.text       start:0x0001E338 end:0x0001E344
@@ -803,6 +854,15 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_26c3c.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_273f8.cpp:
 	.text       start:0x000273F8 end:0x00027494
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_27cec.cpp:
+	.text       start:0x00027CEC end:0x00027D2C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_280dc.cpp:
+	.text       start:0x000280DC end:0x0002811C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2811c.cpp:
+	.text       start:0x0002811C end:0x0002815C
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_28250.cpp:
 	.text       start:0x00028250 end:0x0002825C
 
@@ -943,6 +1003,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2991c.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_29924.cpp:
 	.text       start:0x00029924 end:0x0002992C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_299e4.cpp:
+	.text       start:0x000299E4 end:0x00029A24
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_29da4.cpp:
 	.text       start:0x00029DA4 end:0x00029DB8
@@ -1260,6 +1323,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3dde4.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3e188.cpp:
 	.text       start:0x0003E188 end:0x0003E194
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3e220.cpp:
+	.text       start:0x0003E220 end:0x0003E260
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3edb0.cpp:
 	.text       start:0x0003EDB0 end:0x0003EE4C
