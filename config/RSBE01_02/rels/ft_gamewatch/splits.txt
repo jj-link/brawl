@@ -176,6 +176,9 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_a810.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_ab10.cpp:
 	.text       start:0x0000AB10 end:0x0000AB50
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_b444.cpp:
+	.text       start:0x0000B444 end:0x0000B454
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_b648.cpp:
 	.text       start:0x0000B648 end:0x0000B64C
 
@@ -422,6 +425,12 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_c5c0.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_c5d8.cpp:
 	.text       start:0x0000C5D8 end:0x0000C5F0
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_c5f0.cpp:
+	.text       start:0x0000C5F0 end:0x0000C600
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_c600.cpp:
+	.text       start:0x0000C600 end:0x0000C610
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_c610.cpp:
 	.text       start:0x0000C610 end:0x0000C618
 
@@ -442,6 +451,12 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_c680.cpp:
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_c698.cpp:
 	.text       start:0x0000C698 end:0x0000C6B0
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_c6b0.cpp:
+	.text       start:0x0000C6B0 end:0x0000C6C0
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_c6c0.cpp:
+	.text       start:0x0000C6C0 end:0x0000C6D0
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_c6d0.cpp:
 	.text       start:0x0000C6D0 end:0x0000C6D8
@@ -568,6 +583,9 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_efc8.cpp:
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_f5d4.cpp:
 	.text       start:0x0000F5D4 end:0x0000F5D8
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_f5d8.cpp:
+	.text       start:0x0000F5D8 end:0x0000F5E8
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_f5e8.cpp:
 	.text       start:0x0000F5E8 end:0x0000F5FC
@@ -845,8 +863,14 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_11e34.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_11e38.cpp:
 	.text       start:0x00011E38 end:0x00011E3C
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_11e84.cpp:
+	.text       start:0x00011E84 end:0x00011E94
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12120.cpp:
 	.text       start:0x00012120 end:0x00012160
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_121a8.cpp:
+	.text       start:0x000121A8 end:0x000121B8
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_122a4.cpp:
 	.text       start:0x000122A4 end:0x000122A8
@@ -854,17 +878,32 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_122a4.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_122a8.cpp:
 	.text       start:0x000122A8 end:0x000122E8
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12330.cpp:
+	.text       start:0x00012330 end:0x00012340
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12580.cpp:
 	.text       start:0x00012580 end:0x000125C0
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12608.cpp:
+	.text       start:0x00012608 end:0x00012618
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_1268c.cpp:
 	.text       start:0x0001268C end:0x000126CC
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12714.cpp:
+	.text       start:0x00012714 end:0x00012724
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12870.cpp:
 	.text       start:0x00012870 end:0x000128B0
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_128f8.cpp:
+	.text       start:0x000128F8 end:0x00012908
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12a94.cpp:
 	.text       start:0x00012A94 end:0x00012AD4
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12b1c.cpp:
+	.text       start:0x00012B1C end:0x00012B2C
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12cd0.cpp:
 	.text       start:0x00012CD0 end:0x00012D10
@@ -872,26 +911,50 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_12cd0.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12d10.cpp:
 	.text       start:0x00012D10 end:0x00012D50
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12d98.cpp:
+	.text       start:0x00012D98 end:0x00012DA8
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_12ea0.cpp:
 	.text       start:0x00012EA0 end:0x00012EE0
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_12f28.cpp:
+	.text       start:0x00012F28 end:0x00012F38
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_1317c.cpp:
 	.text       start:0x0001317C end:0x000131BC
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_13204.cpp:
+	.text       start:0x00013204 end:0x00013214
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_134cc.cpp:
 	.text       start:0x000134CC end:0x0001350C
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_13554.cpp:
+	.text       start:0x00013554 end:0x00013564
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_138dc.cpp:
 	.text       start:0x000138DC end:0x0001391C
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_13964.cpp:
+	.text       start:0x00013964 end:0x00013974
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_13c04.cpp:
 	.text       start:0x00013C04 end:0x00013C44
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_13c8c.cpp:
+	.text       start:0x00013C8C end:0x00013C9C
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_13f1c.cpp:
 	.text       start:0x00013F1C end:0x00013F5C
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_13fa4.cpp:
+	.text       start:0x00013FA4 end:0x00013FB4
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_14590.cpp:
 	.text       start:0x00014590 end:0x00014594
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_145dc.cpp:
+	.text       start:0x000145DC end:0x000145EC
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_15eb4.cpp:
 	.text       start:0x00015EB4 end:0x00016034
@@ -913,6 +976,9 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_164e8.cpp:
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_16500.cpp:
 	.text       start:0x00016500 end:0x00016514
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_16514.cpp:
+	.text       start:0x00016514 end:0x00016524
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_16540.cpp:
 	.text       start:0x00016540 end:0x00016548
@@ -988,6 +1054,9 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_166ec.cpp:
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_166f4.cpp:
 	.text       start:0x000166F4 end:0x000166FC
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_166fc.cpp:
+	.text       start:0x000166FC end:0x0001670C
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_16768.cpp:
 	.text       start:0x00016768 end:0x00016770

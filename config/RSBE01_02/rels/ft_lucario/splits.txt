@@ -80,8 +80,23 @@ mo_fighter/ft_lucario/ft_lucario_composite_storage_hierarchy.cpp:
 mo_fighter/ft_lucario/ft_lucario_component_lifetime_destructors.cpp:
 	.text       start:0x00004DD8 end:0x00004F70
 
+mo_fighter/ft_lucario/ft_lucario_function_51bc.cpp:
+	.text       start:0x000051BC end:0x0000521C
+
+mo_fighter/ft_lucario/ft_lucario_function_5afc.cpp:
+	.text       start:0x00005AFC end:0x00005B5C
+
+mo_fighter/ft_lucario/ft_lucario_function_5b5c.cpp:
+	.text       start:0x00005B5C end:0x00005BBC
+
 mo_fighter/ft_lucario/ft_lucario_function_5d0c.cpp:
 	.text       start:0x00005D0C end:0x00005D8C
+
+mo_fighter/ft_lucario/ft_lucario_function_64c0.cpp:
+	.text       start:0x000064C0 end:0x00006520
+
+mo_fighter/ft_lucario/ft_lucario_function_68e0.cpp:
+	.text       start:0x000068E0 end:0x00006940
 
 mo_fighter/ft_lucario/ft_lucario_function_6c2c.cpp:
 	.text       start:0x00006C2C end:0x00006C40
@@ -94,6 +109,9 @@ mo_fighter/ft_lucario/ft_lucario_native_module_constructors.cpp:
 
 mo_fighter/ft_lucario/ft_lucario_general_work_constructor.cpp:
 	.text       start:0x00007E14 end:0x00007E94
+
+mo_fighter/ft_lucario/ft_lucario_function_86d4.cpp:
+	.text       start:0x000086D4 end:0x00008734
 
 mo_fighter/ft_lucario/ft_lucario_function_8a80.cpp:
 	.text       start:0x00008A80 end:0x00008A84
@@ -112,6 +130,9 @@ mo_fighter/ft_lucario/ft_lucario_function_9c50.cpp:
 
 mo_fighter/ft_lucario/ft_lucario_function_9e70.cpp:
 	.text       start:0x00009E70 end:0x00009E74
+
+mo_fighter/ft_lucario/ft_lucario_function_9e74.cpp:
+	.text       start:0x00009E74 end:0x00009ED4
 
 mo_fighter/ft_lucario/ft_lucario_function_9fc0.cpp:
 	.text       start:0x00009FC0 end:0x00009FD4
@@ -320,6 +341,9 @@ mo_fighter/ft_lucario/ft_lucario_function_a2d4.cpp:
 mo_fighter/ft_lucario/ft_lucario_function_a2dc.cpp:
 	.text       start:0x0000A2DC end:0x0000A2E4
 
+mo_fighter/ft_lucario/ft_lucario_function_a2e4.cpp:
+	.text       start:0x0000A2E4 end:0x0000A344
+
 mo_fighter/ft_lucario/ft_lucario_function_a344.cpp:
 	.text       start:0x0000A344 end:0x0000A34C
 
@@ -368,6 +392,9 @@ mo_fighter/ft_lucario/ft_lucario_function_a540.cpp:
 mo_fighter/ft_lucario/ft_lucario_function_a578.cpp:
 	.text       start:0x0000A578 end:0x0000A580
 
+mo_fighter/ft_lucario/ft_lucario_function_a8a8.cpp:
+	.text       start:0x0000A8A8 end:0x0000A908
+
 mo_fighter/ft_lucario/ft_lucario_function_b584.cpp:
 	.text       start:0x0000B584 end:0x0000B58C
 
@@ -379,6 +406,69 @@ mo_fighter/ft_lucario/ft_lucario_function_b5a0.cpp:
 
 mo_fighter/ft_lucario/ft_lucario_function_b610.cpp:
 	.text       start:0x0000B610 end:0x0000B628
+
+mo_fighter/ft_lucario/ft_lucario_function_b660.cpp:
+	.text       start:0x0000B660 end:0x0000B6C0
+
+mo_fighter/ft_lucario/ft_lucario_function_b6c0.cpp:
+	.text       start:0x0000B6C0 end:0x0000B720
+
+mo_fighter/ft_lucario/ft_lucario_function_b720.cpp:
+	.text       start:0x0000B720 end:0x0000B780
+
+mo_fighter/ft_lucario/ft_lucario_function_b780.cpp:
+	.text       start:0x0000B780 end:0x0000B7E0
+
+mo_fighter/ft_lucario/ft_lucario_function_b8a0.cpp:
+	.text       start:0x0000B8A0 end:0x0000B900
+
+mo_fighter/ft_lucario/ft_lucario_function_b900.cpp:
+	.text       start:0x0000B900 end:0x0000B960
+
+mo_fighter/ft_lucario/ft_lucario_function_b9d0.cpp:
+	.text       start:0x0000B9D0 end:0x0000BA30
+
+mo_fighter/ft_lucario/ft_lucario_function_ba30.cpp:
+	.text       start:0x0000BA30 end:0x0000BA90
+
+mo_fighter/ft_lucario/ft_lucario_function_ba90.cpp:
+	.text       start:0x0000BA90 end:0x0000BAF0
+
+mo_fighter/ft_lucario/ft_lucario_function_bb68.cpp:
+	.text       start:0x0000BB68 end:0x0000BBC8
+
+mo_fighter/ft_lucario/ft_lucario_function_bbc8.cpp:
+	.text       start:0x0000BBC8 end:0x0000BC28
+
+mo_fighter/ft_lucario/ft_lucario_function_bc28.cpp:
+	.text       start:0x0000BC28 end:0x0000BC88
+
+mo_fighter/ft_lucario/ft_lucario_function_bd5c.cpp:
+	.text       start:0x0000BD5C end:0x0000BDBC
+
+mo_fighter/ft_lucario/ft_lucario_function_bdbc.cpp:
+	.text       start:0x0000BDBC end:0x0000BE1C
+
+mo_fighter/ft_lucario/ft_lucario_function_be94.cpp:
+	.text       start:0x0000BE94 end:0x0000BEF4
+
+mo_fighter/ft_lucario/ft_lucario_function_bef4.cpp:
+	.text       start:0x0000BEF4 end:0x0000BF54
+
+mo_fighter/ft_lucario/ft_lucario_function_bf54.cpp:
+	.text       start:0x0000BF54 end:0x0000BFB4
+
+mo_fighter/ft_lucario/ft_lucario_function_c088.cpp:
+	.text       start:0x0000C088 end:0x0000C0E8
+
+mo_fighter/ft_lucario/ft_lucario_function_c0e8.cpp:
+	.text       start:0x0000C0E8 end:0x0000C148
+
+mo_fighter/ft_lucario/ft_lucario_function_c21c.cpp:
+	.text       start:0x0000C21C end:0x0000C27C
+
+mo_fighter/ft_lucario/ft_lucario_function_c27c.cpp:
+	.text       start:0x0000C27C end:0x0000C2DC
 
 mo_fighter/ft_lucario/ft_lucario_function_c3b0.cpp:
 	.text       start:0x0000C3B0 end:0x0000C3B4
