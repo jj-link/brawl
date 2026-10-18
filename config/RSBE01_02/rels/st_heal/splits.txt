@@ -11,6 +11,84 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_heal/st_heal_function_150.cpp:
+	.text       start:0x00000150 end:0x00000158
+
+mo_stage/st_heal/st_heal_function_d10.cpp:
+	.text       start:0x00000D10 end:0x00000D14
+
+mo_stage/st_heal/st_heal_function_d14.cpp:
+	.text       start:0x00000D14 end:0x00000D1C
+
+mo_stage/st_heal/st_heal_function_d1c.cpp:
+	.text       start:0x00000D1C end:0x00000D24
+
+mo_stage/st_heal/st_heal_function_d24.cpp:
+	.text       start:0x00000D24 end:0x00000D2C
+
+mo_stage/st_heal/st_heal_function_d2c.cpp:
+	.text       start:0x00000D2C end:0x00000D34
+
+mo_stage/st_heal/st_heal_function_d34.cpp:
+	.text       start:0x00000D34 end:0x00000D3C
+
+mo_stage/st_heal/st_heal_function_d3c.cpp:
+	.text       start:0x00000D3C end:0x00000D40
+
+mo_stage/st_heal/st_heal_function_d40.cpp:
+	.text       start:0x00000D40 end:0x00000D48
+
+mo_stage/st_heal/st_heal_function_d48.cpp:
+	.text       start:0x00000D48 end:0x00000D50
+
+mo_stage/st_heal/st_heal_function_d50.cpp:
+	.text       start:0x00000D50 end:0x00000D58
+
+mo_stage/st_heal/st_heal_function_d94.cpp:
+	.text       start:0x00000D94 end:0x00000D9C
+
+mo_stage/st_heal/st_heal_function_d9c.cpp:
+	.text       start:0x00000D9C end:0x00000DA4
+
+mo_stage/st_heal/st_heal_function_da4.cpp:
+	.text       start:0x00000DA4 end:0x00000DAC
+
+mo_stage/st_heal/st_heal_function_dac.cpp:
+	.text       start:0x00000DAC end:0x00000DB4
+
+mo_stage/st_heal/st_heal_function_db4.cpp:
+	.text       start:0x00000DB4 end:0x00000DBC
+
+mo_stage/st_heal/st_heal_function_dbc.cpp:
+	.text       start:0x00000DBC end:0x00000DC0
+
+mo_stage/st_heal/st_heal_function_ddc.cpp:
+	.text       start:0x00000DDC end:0x00000DE4
+
+mo_stage/st_heal/st_heal_function_de4.cpp:
+	.text       start:0x00000DE4 end:0x00000DEC
+
+mo_stage/st_heal/st_heal_function_dec.cpp:
+	.text       start:0x00000DEC end:0x00000DF4
+
+mo_stage/st_heal/st_heal_function_df4.cpp:
+	.text       start:0x00000DF4 end:0x00000DFC
+
+mo_stage/st_heal/st_heal_function_e08.cpp:
+	.text       start:0x00000E08 end:0x00000E0C
+
+mo_stage/st_heal/st_heal_function_e0c.cpp:
+	.text       start:0x00000E0C end:0x00000E14
+
+mo_stage/st_heal/st_heal_function_e14.cpp:
+	.text       start:0x00000E14 end:0x00000E1C
+
+mo_stage/st_heal/st_heal_function_e1c.cpp:
+	.text       start:0x00000E1C end:0x00000E24
+
+mo_stage/st_heal/st_heal_function_f98.cpp:
+	.text       start:0x00000F98 end:0x00000F9C
+
 mo_stage/mo_stage.cpp:
 	.text       start:0x00000F9C end:0x00001038
 	.data       start:0x00000450 end:0x0000045D

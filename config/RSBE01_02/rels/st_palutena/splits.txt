@@ -11,6 +11,243 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_palutena/st_palutena_function_16c.cpp:
+	.text       start:0x0000016C end:0x00000174
+
+mo_stage/st_palutena/st_palutena_function_880.cpp:
+	.text       start:0x00000880 end:0x00000888
+
+mo_stage/st_palutena/st_palutena_function_888.cpp:
+	.text       start:0x00000888 end:0x0000088C
+
+mo_stage/st_palutena/st_palutena_function_d14.cpp:
+	.text       start:0x00000D14 end:0x00000D1C
+
+mo_stage/st_palutena/st_palutena_function_d1c.cpp:
+	.text       start:0x00000D1C end:0x00000D24
+
+mo_stage/st_palutena/st_palutena_function_d24.cpp:
+	.text       start:0x00000D24 end:0x00000D2C
+
+mo_stage/st_palutena/st_palutena_function_e10.cpp:
+	.text       start:0x00000E10 end:0x00000E18
+
+mo_stage/st_palutena/st_palutena_function_10ec.cpp:
+	.text       start:0x000010EC end:0x000010F4
+
+mo_stage/st_palutena/st_palutena_function_11cc.cpp:
+	.text       start:0x000011CC end:0x000011D4
+
+mo_stage/st_palutena/st_palutena_function_14a8.cpp:
+	.text       start:0x000014A8 end:0x000014B0
+
+mo_stage/st_palutena/st_palutena_function_1cf0.cpp:
+	.text       start:0x00001CF0 end:0x00001CF4
+
+mo_stage/st_palutena/st_palutena_function_1cf4.cpp:
+	.text       start:0x00001CF4 end:0x00001CFC
+
+mo_stage/st_palutena/st_palutena_function_1cfc.cpp:
+	.text       start:0x00001CFC end:0x00001D04
+
+mo_stage/st_palutena/st_palutena_function_1d04.cpp:
+	.text       start:0x00001D04 end:0x00001D0C
+
+mo_stage/st_palutena/st_palutena_function_1d0c.cpp:
+	.text       start:0x00001D0C end:0x00001D14
+
+mo_stage/st_palutena/st_palutena_function_1d14.cpp:
+	.text       start:0x00001D14 end:0x00001D1C
+
+mo_stage/st_palutena/st_palutena_function_1d1c.cpp:
+	.text       start:0x00001D1C end:0x00001D20
+
+mo_stage/st_palutena/st_palutena_function_1d20.cpp:
+	.text       start:0x00001D20 end:0x00001D28
+
+mo_stage/st_palutena/st_palutena_function_1d28.cpp:
+	.text       start:0x00001D28 end:0x00001D30
+
+mo_stage/st_palutena/st_palutena_function_1d30.cpp:
+	.text       start:0x00001D30 end:0x00001D38
+
+mo_stage/st_palutena/st_palutena_function_1d74.cpp:
+	.text       start:0x00001D74 end:0x00001D7C
+
+mo_stage/st_palutena/st_palutena_function_1d7c.cpp:
+	.text       start:0x00001D7C end:0x00001D84
+
+mo_stage/st_palutena/st_palutena_function_1d84.cpp:
+	.text       start:0x00001D84 end:0x00001D8C
+
+mo_stage/st_palutena/st_palutena_function_1d8c.cpp:
+	.text       start:0x00001D8C end:0x00001D94
+
+mo_stage/st_palutena/st_palutena_function_1d94.cpp:
+	.text       start:0x00001D94 end:0x00001D9C
+
+mo_stage/st_palutena/st_palutena_function_1d9c.cpp:
+	.text       start:0x00001D9C end:0x00001DA0
+
+mo_stage/st_palutena/st_palutena_function_1dbc.cpp:
+	.text       start:0x00001DBC end:0x00001DC4
+
+mo_stage/st_palutena/st_palutena_function_1dc4.cpp:
+	.text       start:0x00001DC4 end:0x00001DCC
+
+mo_stage/st_palutena/st_palutena_function_1dcc.cpp:
+	.text       start:0x00001DCC end:0x00001DD4
+
+mo_stage/st_palutena/st_palutena_function_1dd4.cpp:
+	.text       start:0x00001DD4 end:0x00001DDC
+
+mo_stage/st_palutena/st_palutena_function_1de8.cpp:
+	.text       start:0x00001DE8 end:0x00001DEC
+
+mo_stage/st_palutena/st_palutena_function_1dec.cpp:
+	.text       start:0x00001DEC end:0x00001DF4
+
+mo_stage/st_palutena/st_palutena_function_1df4.cpp:
+	.text       start:0x00001DF4 end:0x00001DFC
+
+mo_stage/st_palutena/st_palutena_function_1dfc.cpp:
+	.text       start:0x00001DFC end:0x00001E04
+
+mo_stage/st_palutena/st_palutena_function_1e04.cpp:
+	.text       start:0x00001E04 end:0x00001E0C
+
+mo_stage/st_palutena/st_palutena_function_1f74.cpp:
+	.text       start:0x00001F74 end:0x00001F78
+
+mo_stage/st_palutena/st_palutena_function_2050.cpp:
+	.text       start:0x00002050 end:0x00002058
+
+mo_stage/st_palutena/st_palutena_function_2114.cpp:
+	.text       start:0x00002114 end:0x0000211C
+
+mo_stage/st_palutena/st_palutena_function_211c.cpp:
+	.text       start:0x0000211C end:0x00002124
+
+mo_stage/st_palutena/st_palutena_function_2124.cpp:
+	.text       start:0x00002124 end:0x00002128
+
+mo_stage/st_palutena/st_palutena_function_2128.cpp:
+	.text       start:0x00002128 end:0x0000212C
+
+mo_stage/st_palutena/st_palutena_function_2158.cpp:
+	.text       start:0x00002158 end:0x00002160
+
+mo_stage/st_palutena/st_palutena_function_2160.cpp:
+	.text       start:0x00002160 end:0x00002168
+
+mo_stage/st_palutena/st_palutena_function_2184.cpp:
+	.text       start:0x00002184 end:0x0000218C
+
+mo_stage/st_palutena/st_palutena_function_218c.cpp:
+	.text       start:0x0000218C end:0x00002194
+
+mo_stage/st_palutena/st_palutena_function_4294.cpp:
+	.text       start:0x00004294 end:0x0000429C
+
+mo_stage/st_palutena/st_palutena_function_429c.cpp:
+	.text       start:0x0000429C end:0x000042A0
+
+mo_stage/st_palutena/st_palutena_function_42a0.cpp:
+	.text       start:0x000042A0 end:0x000042A8
+
+mo_stage/st_palutena/st_palutena_function_42a8.cpp:
+	.text       start:0x000042A8 end:0x000042B0
+
+mo_stage/st_palutena/st_palutena_function_43b4.cpp:
+	.text       start:0x000043B4 end:0x000043B8
+
+mo_stage/st_palutena/st_palutena_function_45f4.cpp:
+	.text       start:0x000045F4 end:0x000045F8
+
+mo_stage/st_palutena/st_palutena_function_45f8.cpp:
+	.text       start:0x000045F8 end:0x000045FC
+
+mo_stage/st_palutena/st_palutena_function_45fc.cpp:
+	.text       start:0x000045FC end:0x00004604
+
+mo_stage/st_palutena/st_palutena_function_4604.cpp:
+	.text       start:0x00004604 end:0x0000460C
+
+mo_stage/st_palutena/st_palutena_function_460c.cpp:
+	.text       start:0x0000460C end:0x00004610
+
+mo_stage/st_palutena/st_palutena_function_461c.cpp:
+	.text       start:0x0000461C end:0x00004624
+
+mo_stage/st_palutena/st_palutena_function_4624.cpp:
+	.text       start:0x00004624 end:0x0000462C
+
+mo_stage/st_palutena/st_palutena_function_462c.cpp:
+	.text       start:0x0000462C end:0x00004634
+
+mo_stage/st_palutena/st_palutena_function_4634.cpp:
+	.text       start:0x00004634 end:0x00004638
+
+mo_stage/st_palutena/st_palutena_function_4638.cpp:
+	.text       start:0x00004638 end:0x0000463C
+
+mo_stage/st_palutena/st_palutena_function_4660.cpp:
+	.text       start:0x00004660 end:0x00004664
+
+mo_stage/st_palutena/st_palutena_function_4664.cpp:
+	.text       start:0x00004664 end:0x00004668
+
+mo_stage/st_palutena/st_palutena_function_4668.cpp:
+	.text       start:0x00004668 end:0x0000466C
+
+mo_stage/st_palutena/st_palutena_function_466c.cpp:
+	.text       start:0x0000466C end:0x00004670
+
+mo_stage/st_palutena/st_palutena_function_4670.cpp:
+	.text       start:0x00004670 end:0x00004674
+
+mo_stage/st_palutena/st_palutena_function_4674.cpp:
+	.text       start:0x00004674 end:0x0000467C
+
+mo_stage/st_palutena/st_palutena_function_467c.cpp:
+	.text       start:0x0000467C end:0x00004684
+
+mo_stage/st_palutena/st_palutena_function_4684.cpp:
+	.text       start:0x00004684 end:0x00004688
+
+mo_stage/st_palutena/st_palutena_function_4688.cpp:
+	.text       start:0x00004688 end:0x00004690
+
+mo_stage/st_palutena/st_palutena_function_4690.cpp:
+	.text       start:0x00004690 end:0x00004694
+
+mo_stage/st_palutena/st_palutena_function_4694.cpp:
+	.text       start:0x00004694 end:0x00004698
+
+mo_stage/st_palutena/st_palutena_function_4698.cpp:
+	.text       start:0x00004698 end:0x0000469C
+
+mo_stage/st_palutena/st_palutena_function_469c.cpp:
+	.text       start:0x0000469C end:0x000046A0
+
+mo_stage/st_palutena/st_palutena_function_46a0.cpp:
+	.text       start:0x000046A0 end:0x000046A8
+
+mo_stage/st_palutena/st_palutena_function_46a8.cpp:
+	.text       start:0x000046A8 end:0x000046B0
+
+mo_stage/st_palutena/st_palutena_function_46b0.cpp:
+	.text       start:0x000046B0 end:0x000046B8
+
+mo_stage/st_palutena/st_palutena_function_46c4.cpp:
+	.text       start:0x000046C4 end:0x000046CC
+
+mo_stage/st_palutena/st_palutena_function_46cc.cpp:
+	.text       start:0x000046CC end:0x000046D4
+
+mo_stage/st_palutena/st_palutena_function_46d4.cpp:
+	.text       start:0x000046D4 end:0x000046DC
+
 mo_stage/mo_stage.cpp:
 	.text       start:0x0000D088 end:0x0000D124
 	.data       start:0x00002FF0 end:0x00002FFD
