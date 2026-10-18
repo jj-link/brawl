@@ -938,20 +938,13 @@ def generate_build_ninja(
                 else:
                     preplf_map = None
                     plf_map = None
-                n.build(
-                    outputs=preplf_path,
-                    rule="link",
-                    inputs=self.inputs,
-                    implicit=mwld_implicit,
-                    implicit_outputs=preplf_map,
-                    variables={"ldflags": preplf_ldflags},
-                    order_only="post-compile",
-                )
+                # No separate partial link (.preplf) first: nothing reads it, and for a module of many
+                # objects it doubled the link time.
                 n.build(
                     outputs=plf_path,
                     rule="link",
                     inputs=self.inputs,
-                    implicit=[self.ldscript, preplf_path, *mwld_implicit],
+                    implicit=[self.ldscript, *mwld_implicit],
                     implicit_outputs=plf_map,
                     variables={"ldflags": plf_ldflags},
                     order_only="post-compile",
