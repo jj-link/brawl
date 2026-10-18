@@ -299,14 +299,44 @@ mo_fighter/ft_peach/ft_peach_function_a040.cpp:
 mo_fighter/ft_peach/ft_peach_function_a0a8.cpp:
 	.text       start:0x0000A0A8 end:0x0000A0B0
 
+mo_fighter/ft_peach/ft_peach_function_a140.cpp:
+	.text       start:0x0000A140 end:0x0000A158
+
+mo_fighter/ft_peach/ft_peach_function_a16c.cpp:
+	.text       start:0x0000A16C end:0x0000A184
+
 mo_fighter/ft_peach/ft_peach_function_a184.cpp:
 	.text       start:0x0000A184 end:0x0000A18C
+
+mo_fighter/ft_peach/ft_peach_function_a1b4.cpp:
+	.text       start:0x0000A1B4 end:0x0000A1CC
+
+mo_fighter/ft_peach/ft_peach_function_a1cc.cpp:
+	.text       start:0x0000A1CC end:0x0000A1E4
+
+mo_fighter/ft_peach/ft_peach_function_a1e4.cpp:
+	.text       start:0x0000A1E4 end:0x0000A1FC
 
 mo_fighter/ft_peach/ft_peach_function_a21c.cpp:
 	.text       start:0x0000A21C end:0x0000A224
 
+mo_fighter/ft_peach/ft_peach_function_a224.cpp:
+	.text       start:0x0000A224 end:0x0000A23C
+
+mo_fighter/ft_peach/ft_peach_function_a23c.cpp:
+	.text       start:0x0000A23C end:0x0000A254
+
 mo_fighter/ft_peach/ft_peach_function_a254.cpp:
 	.text       start:0x0000A254 end:0x0000A274
+
+mo_fighter/ft_peach/ft_peach_function_a274.cpp:
+	.text       start:0x0000A274 end:0x0000A28C
+
+mo_fighter/ft_peach/ft_peach_function_a28c.cpp:
+	.text       start:0x0000A28C end:0x0000A2A4
+
+mo_fighter/ft_peach/ft_peach_function_a2a4.cpp:
+	.text       start:0x0000A2A4 end:0x0000A2BC
 
 mo_fighter/ft_peach/ft_peach_function_a2dc.cpp:
 	.text       start:0x0000A2DC end:0x0000A2E4
@@ -353,6 +383,9 @@ mo_fighter/ft_peach/ft_peach_function_c880.cpp:
 mo_fighter/ft_peach/ft_peach_short_assign.cpp:
 	.text       start:0x0000C888 end:0x0000C894
 
+mo_fighter/ft_peach/ft_peach_function_c894.cpp:
+	.text       start:0x0000C894 end:0x0000C8AC
+
 mo_fighter/ft_peach/ft_peach_attribute_update.cpp:
 	.text       start:0x0000C8AC end:0x0000C93C
 
@@ -362,17 +395,26 @@ mo_fighter/ft_peach/ft_peach_attribute_secondary.cpp:
 mo_fighter/ft_peach/ft_peach_function_c978.cpp:
 	.text       start:0x0000C978 end:0x0000C97C
 
+mo_fighter/ft_peach/ft_peach_function_c97c.cpp:
+	.text       start:0x0000C97C end:0x0000C994
+
 mo_fighter/ft_peach/ft_peach_attribute_propagate.cpp:
 	.text       start:0x0000C994 end:0x0000CA24
 
 mo_fighter/ft_peach/ft_peach_function_ca24.cpp:
 	.text       start:0x0000CA24 end:0x0000CA2C
 
+mo_fighter/ft_peach/ft_peach_function_ca2c.cpp:
+	.text       start:0x0000CA2C end:0x0000CA44
+
 mo_fighter/ft_peach/ft_peach_attribute_ca44.cpp:
 	.text       start:0x0000CA44 end:0x0000CAD4
 
 mo_fighter/ft_peach/ft_peach_function_cad4.cpp:
 	.text       start:0x0000CAD4 end:0x0000CADC
+
+mo_fighter/ft_peach/ft_peach_function_cadc.cpp:
+	.text       start:0x0000CADC end:0x0000CAF4
 
 mo_fighter/ft_peach/ft_peach_attribute_caf4.cpp:
 	.text       start:0x0000CAF4 end:0x0000CB84
@@ -383,6 +425,9 @@ mo_fighter/ft_peach/ft_peach_function_cb84.cpp:
 mo_fighter/ft_peach/ft_peach_function_cbc0.cpp:
 	.text       start:0x0000CBC0 end:0x0000CBC4
 
+mo_fighter/ft_peach/ft_peach_function_cbc4.cpp:
+	.text       start:0x0000CBC4 end:0x0000CBDC
+
 mo_fighter/ft_peach/ft_peach_attribute_cbdc.cpp:
 	.text       start:0x0000CBDC end:0x0000CC6C
 
@@ -391,6 +436,9 @@ mo_fighter/ft_peach/ft_peach_function_cc6c.cpp:
 
 mo_fighter/ft_peach/ft_peach_function_cca8.cpp:
 	.text       start:0x0000CCA8 end:0x0000CCAC
+
+mo_fighter/ft_peach/ft_peach_function_ccac.cpp:
+	.text       start:0x0000CCAC end:0x0000CCC4
 
 mo_fighter/ft_peach/ft_peach_attribute_ccc4.cpp:
 	.text       start:0x0000CCC4 end:0x0000CD54
@@ -401,6 +449,9 @@ mo_fighter/ft_peach/ft_peach_function_cd54.cpp:
 mo_fighter/ft_peach/ft_peach_function_cd90.cpp:
 	.text       start:0x0000CD90 end:0x0000CD94
 
+mo_fighter/ft_peach/ft_peach_function_cd94.cpp:
+	.text       start:0x0000CD94 end:0x0000CDAC
+
 mo_fighter/ft_peach/ft_peach_attribute_cdac.cpp:
 	.text       start:0x0000CDAC end:0x0000CE3C
 
@@ -409,6 +460,9 @@ mo_fighter/ft_peach/ft_peach_function_ce3c.cpp:
 
 mo_fighter/ft_peach/ft_peach_function_ce78.cpp:
 	.text       start:0x0000CE78 end:0x0000CE7C
+
+mo_fighter/ft_peach/ft_peach_function_ce7c.cpp:
+	.text       start:0x0000CE7C end:0x0000CE94
 
 mo_fighter/ft_peach/ft_peach_attribute_ce94.cpp:
 	.text       start:0x0000CE94 end:0x0000CF24
@@ -841,6 +895,9 @@ mo_fighter/ft_peach/ft_peach_function_1348c.cpp:
 
 mo_fighter/ft_peach/ft_peach_function_134ac.cpp:
 	.text       start:0x000134AC end:0x000134CC
+
+mo_fighter/ft_peach/ft_peach_function_134cc.cpp:
+	.text       start:0x000134CC end:0x000134E4
 
 mo_fighter/ft_peach/ft_peach_function_13590.cpp:
 	.text       start:0x00013590 end:0x00013598
