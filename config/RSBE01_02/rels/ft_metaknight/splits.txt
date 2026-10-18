@@ -11,6 +11,24 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_metaknight/ft_metaknight_function_5f38.cpp:
+	.text       start:0x00005F38 end:0x00005F40
+
+mo_fighter/ft_metaknight/ft_metaknight_function_7bc8.cpp:
+	.text       start:0x00007BC8 end:0x00007BCC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_8198.cpp:
+	.text       start:0x00008198 end:0x0000819C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_819c.cpp:
+	.text       start:0x0000819C end:0x000081A0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_81a0.cpp:
+	.text       start:0x000081A0 end:0x000081A8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_82f8.cpp:
+	.text       start:0x000082F8 end:0x000082FC
+
 mo_fighter/ft_metaknight/ft_metaknight_param_accesser_destructors.cpp:
 	.text       start:0x000082FC end:0x000083B8
 
@@ -145,6 +163,333 @@ mo_fighter/ft_metaknight/ft_metaknight_posture_exit.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_null_callbacks.cpp:
 	.text       start:0x0000C8E4 end:0x0000C960
+
+mo_fighter/ft_metaknight/ft_metaknight_function_d824.cpp:
+	.text       start:0x0000D824 end:0x0000D828
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10bd0.cpp:
+	.text       start:0x00010BD0 end:0x00010BD8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10bd8.cpp:
+	.text       start:0x00010BD8 end:0x00010BE0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10c30.cpp:
+	.text       start:0x00010C30 end:0x00010C38
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10c38.cpp:
+	.text       start:0x00010C38 end:0x00010C40
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d44.cpp:
+	.text       start:0x00010D44 end:0x00010D48
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d48.cpp:
+	.text       start:0x00010D48 end:0x00010D4C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d4c.cpp:
+	.text       start:0x00010D4C end:0x00010D50
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d50.cpp:
+	.text       start:0x00010D50 end:0x00010D54
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d54.cpp:
+	.text       start:0x00010D54 end:0x00010D5C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d5c.cpp:
+	.text       start:0x00010D5C end:0x00010D64
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d70.cpp:
+	.text       start:0x00010D70 end:0x00010D78
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10d84.cpp:
+	.text       start:0x00010D84 end:0x00010D8C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10da4.cpp:
+	.text       start:0x00010DA4 end:0x00010DAC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10dac.cpp:
+	.text       start:0x00010DAC end:0x00010DB0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10db0.cpp:
+	.text       start:0x00010DB0 end:0x00010DB4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10db4.cpp:
+	.text       start:0x00010DB4 end:0x00010DB8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10dcc.cpp:
+	.text       start:0x00010DCC end:0x00010DD4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10dd4.cpp:
+	.text       start:0x00010DD4 end:0x00010DDC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ddc.cpp:
+	.text       start:0x00010DDC end:0x00010DE4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10de4.cpp:
+	.text       start:0x00010DE4 end:0x00010DEC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e58.cpp:
+	.text       start:0x00010E58 end:0x00010E60
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e60.cpp:
+	.text       start:0x00010E60 end:0x00010E64
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e64.cpp:
+	.text       start:0x00010E64 end:0x00010E6C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e6c.cpp:
+	.text       start:0x00010E6C end:0x00010E74
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e74.cpp:
+	.text       start:0x00010E74 end:0x00010E7C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e7c.cpp:
+	.text       start:0x00010E7C end:0x00010E84
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e84.cpp:
+	.text       start:0x00010E84 end:0x00010E88
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e94.cpp:
+	.text       start:0x00010E94 end:0x00010E9C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10e9c.cpp:
+	.text       start:0x00010E9C end:0x00010EA0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ea0.cpp:
+	.text       start:0x00010EA0 end:0x00010EA4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ea4.cpp:
+	.text       start:0x00010EA4 end:0x00010EA8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ea8.cpp:
+	.text       start:0x00010EA8 end:0x00010EAC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10eac.cpp:
+	.text       start:0x00010EAC end:0x00010EB0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10eb0.cpp:
+	.text       start:0x00010EB0 end:0x00010EB4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10eb4.cpp:
+	.text       start:0x00010EB4 end:0x00010EB8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10eb8.cpp:
+	.text       start:0x00010EB8 end:0x00010EBC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ebc.cpp:
+	.text       start:0x00010EBC end:0x00010EC0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ec0.cpp:
+	.text       start:0x00010EC0 end:0x00010EC8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ec8.cpp:
+	.text       start:0x00010EC8 end:0x00010ED0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ed0.cpp:
+	.text       start:0x00010ED0 end:0x00010ED4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ed4.cpp:
+	.text       start:0x00010ED4 end:0x00010EDC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10edc.cpp:
+	.text       start:0x00010EDC end:0x00010EE4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10ee4.cpp:
+	.text       start:0x00010EE4 end:0x00010EEC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10efc.cpp:
+	.text       start:0x00010EFC end:0x00010F04
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f44.cpp:
+	.text       start:0x00010F44 end:0x00010F4C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f4c.cpp:
+	.text       start:0x00010F4C end:0x00010F54
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f54.cpp:
+	.text       start:0x00010F54 end:0x00010F5C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f5c.cpp:
+	.text       start:0x00010F5C end:0x00010F64
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f64.cpp:
+	.text       start:0x00010F64 end:0x00010F6C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f6c.cpp:
+	.text       start:0x00010F6C end:0x00010F74
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f74.cpp:
+	.text       start:0x00010F74 end:0x00010F7C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f7c.cpp:
+	.text       start:0x00010F7C end:0x00010F84
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f84.cpp:
+	.text       start:0x00010F84 end:0x00010F8C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f8c.cpp:
+	.text       start:0x00010F8C end:0x00010F94
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f94.cpp:
+	.text       start:0x00010F94 end:0x00010F9C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10f9c.cpp:
+	.text       start:0x00010F9C end:0x00010FA4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fb4.cpp:
+	.text       start:0x00010FB4 end:0x00010FBC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fbc.cpp:
+	.text       start:0x00010FBC end:0x00010FC0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fc0.cpp:
+	.text       start:0x00010FC0 end:0x00010FC4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fc4.cpp:
+	.text       start:0x00010FC4 end:0x00010FC8
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fc8.cpp:
+	.text       start:0x00010FC8 end:0x00010FCC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fcc.cpp:
+	.text       start:0x00010FCC end:0x00010FD0
+
+mo_fighter/ft_metaknight/ft_metaknight_function_10fec.cpp:
+	.text       start:0x00010FEC end:0x00010FF4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1103c.cpp:
+	.text       start:0x0001103C end:0x00011040
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11144.cpp:
+	.text       start:0x00011144 end:0x0001114C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1114c.cpp:
+	.text       start:0x0001114C end:0x00011154
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11154.cpp:
+	.text       start:0x00011154 end:0x0001115C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1115c.cpp:
+	.text       start:0x0001115C end:0x00011164
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11164.cpp:
+	.text       start:0x00011164 end:0x0001116C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1116c.cpp:
+	.text       start:0x0001116C end:0x00011174
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11174.cpp:
+	.text       start:0x00011174 end:0x0001117C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1117c.cpp:
+	.text       start:0x0001117C end:0x00011184
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11184.cpp:
+	.text       start:0x00011184 end:0x0001118C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1118c.cpp:
+	.text       start:0x0001118C end:0x00011194
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11194.cpp:
+	.text       start:0x00011194 end:0x0001119C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1119c.cpp:
+	.text       start:0x0001119C end:0x000111A4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111a4.cpp:
+	.text       start:0x000111A4 end:0x000111AC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111ac.cpp:
+	.text       start:0x000111AC end:0x000111B4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111b4.cpp:
+	.text       start:0x000111B4 end:0x000111BC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111bc.cpp:
+	.text       start:0x000111BC end:0x000111C4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111c4.cpp:
+	.text       start:0x000111C4 end:0x000111CC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111cc.cpp:
+	.text       start:0x000111CC end:0x000111D4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111d4.cpp:
+	.text       start:0x000111D4 end:0x000111DC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111dc.cpp:
+	.text       start:0x000111DC end:0x000111E4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111e4.cpp:
+	.text       start:0x000111E4 end:0x000111EC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111ec.cpp:
+	.text       start:0x000111EC end:0x000111F4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111f4.cpp:
+	.text       start:0x000111F4 end:0x000111FC
+
+mo_fighter/ft_metaknight/ft_metaknight_function_111fc.cpp:
+	.text       start:0x000111FC end:0x00011204
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11204.cpp:
+	.text       start:0x00011204 end:0x0001120C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1120c.cpp:
+	.text       start:0x0001120C end:0x00011214
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11214.cpp:
+	.text       start:0x00011214 end:0x0001121C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1121c.cpp:
+	.text       start:0x0001121C end:0x00011224
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11224.cpp:
+	.text       start:0x00011224 end:0x0001122C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1122c.cpp:
+	.text       start:0x0001122C end:0x00011234
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11234.cpp:
+	.text       start:0x00011234 end:0x0001123C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1123c.cpp:
+	.text       start:0x0001123C end:0x00011244
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11244.cpp:
+	.text       start:0x00011244 end:0x0001124C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1124c.cpp:
+	.text       start:0x0001124C end:0x00011254
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11254.cpp:
+	.text       start:0x00011254 end:0x0001125C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1125c.cpp:
+	.text       start:0x0001125C end:0x00011264
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11264.cpp:
+	.text       start:0x00011264 end:0x0001126C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1126c.cpp:
+	.text       start:0x0001126C end:0x00011274
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11274.cpp:
+	.text       start:0x00011274 end:0x0001127C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1127c.cpp:
+	.text       start:0x0001127C end:0x00011284
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11284.cpp:
+	.text       start:0x00011284 end:0x0001128C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1128c.cpp:
+	.text       start:0x0001128C end:0x00011294
+
+mo_fighter/ft_metaknight/ft_metaknight_function_11294.cpp:
+	.text       start:0x00011294 end:0x0001129C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_1129c.cpp:
+	.text       start:0x0001129C end:0x000112A4
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000112A4 end:0x00011340
