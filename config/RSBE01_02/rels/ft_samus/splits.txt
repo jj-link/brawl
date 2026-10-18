@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_samus/ft_samus_function_191c.cpp:
 	.text       start:0x0000191C end:0x000019BC
 
+mo_fighter/ft_samus/ft_samus_function_6c20.cpp:
+	.text       start:0x00006C20 end:0x00006C34
+
 mo_fighter/ft_samus/ft_samus_function_6cf8.cpp:
 	.text       start:0x00006CF8 end:0x00006D00
 
@@ -29,6 +32,12 @@ mo_fighter/ft_samus/ft_samus_function_a630.cpp:
 mo_fighter/ft_samus/ft_samus_function_a82c.cpp:
 	.text       start:0x0000A82C end:0x0000A830
 
+mo_fighter/ft_samus/ft_samus_function_a8a4.cpp:
+	.text       start:0x0000A8A4 end:0x0000A8B8
+
+mo_fighter/ft_samus/ft_samus_function_a8b8.cpp:
+	.text       start:0x0000A8B8 end:0x0000A8CC
+
 mo_fighter/ft_samus/ft_samus_function_a8cc.cpp:
 	.text       start:0x0000A8CC end:0x0000A8D0
 
@@ -38,14 +47,50 @@ mo_fighter/ft_samus/ft_samus_function_a8d0.cpp:
 mo_fighter/ft_samus/ft_samus_function_a8d8.cpp:
 	.text       start:0x0000A8D8 end:0x0000A8DC
 
+mo_fighter/ft_samus/ft_samus_function_a8dc.cpp:
+	.text       start:0x0000A8DC end:0x0000A8F0
+
+mo_fighter/ft_samus/ft_samus_function_a8f0.cpp:
+	.text       start:0x0000A8F0 end:0x0000A904
+
+mo_fighter/ft_samus/ft_samus_function_a904.cpp:
+	.text       start:0x0000A904 end:0x0000A918
+
 mo_fighter/ft_samus/ft_samus_function_a918.cpp:
 	.text       start:0x0000A918 end:0x0000A91C
 
 mo_fighter/ft_samus/ft_samus_function_a91c.cpp:
 	.text       start:0x0000A91C end:0x0000A920
 
+mo_fighter/ft_samus/ft_samus_function_a920.cpp:
+	.text       start:0x0000A920 end:0x0000A934
+
+mo_fighter/ft_samus/ft_samus_function_a934.cpp:
+	.text       start:0x0000A934 end:0x0000A948
+
+mo_fighter/ft_samus/ft_samus_function_a948.cpp:
+	.text       start:0x0000A948 end:0x0000A95C
+
+mo_fighter/ft_samus/ft_samus_function_a95c.cpp:
+	.text       start:0x0000A95C end:0x0000A970
+
+mo_fighter/ft_samus/ft_samus_function_a970.cpp:
+	.text       start:0x0000A970 end:0x0000A984
+
+mo_fighter/ft_samus/ft_samus_function_a984.cpp:
+	.text       start:0x0000A984 end:0x0000A998
+
+mo_fighter/ft_samus/ft_samus_function_a998.cpp:
+	.text       start:0x0000A998 end:0x0000A9AC
+
 mo_fighter/ft_samus/ft_samus_function_a9ac.cpp:
 	.text       start:0x0000A9AC end:0x0000A9B0
+
+mo_fighter/ft_samus/ft_samus_function_a9b0.cpp:
+	.text       start:0x0000A9B0 end:0x0000A9C4
+
+mo_fighter/ft_samus/ft_samus_function_a9c4.cpp:
+	.text       start:0x0000A9C4 end:0x0000A9D8
 
 mo_fighter/ft_samus/ft_samus_function_a9d8.cpp:
 	.text       start:0x0000A9D8 end:0x0000A9DC
@@ -106,6 +151,12 @@ mo_fighter/ft_samus/ft_samus_function_aa24.cpp:
 
 mo_fighter/ft_samus/ft_samus_function_aa28.cpp:
 	.text       start:0x0000AA28 end:0x0000AA2C
+
+mo_fighter/ft_samus/ft_samus_function_aa2c.cpp:
+	.text       start:0x0000AA2C end:0x0000AA40
+
+mo_fighter/ft_samus/ft_samus_function_aa40.cpp:
+	.text       start:0x0000AA40 end:0x0000AA54
 
 mo_fighter/ft_samus/ft_samus_function_aa54.cpp:
 	.text       start:0x0000AA54 end:0x0000AA58
@@ -206,6 +257,9 @@ mo_fighter/ft_samus/ft_samus_function_ae9c.cpp:
 mo_fighter/ft_samus/ft_samus_function_af34.cpp:
 	.text       start:0x0000AF34 end:0x0000AF4C
 
+mo_fighter/ft_samus/ft_samus_function_af4c.cpp:
+	.text       start:0x0000AF4C end:0x0000AF60
+
 mo_fighter/ft_samus/ft_samus_function_af60.cpp:
 	.text       start:0x0000AF60 end:0x0000AF78
 
@@ -248,6 +302,9 @@ mo_fighter/ft_samus/ft_samus_function_b0d0.cpp:
 mo_fighter/ft_samus/ft_samus_function_ccdc.cpp:
 	.text       start:0x0000CCDC end:0x0000CCE4
 
+mo_fighter/ft_samus/ft_samus_function_ccfc.cpp:
+	.text       start:0x0000CCFC end:0x0000CD10
+
 mo_fighter/ft_samus/ft_samus_function_cd6c.cpp:
 	.text       start:0x0000CD6C end:0x0000CD84
 
@@ -260,8 +317,20 @@ mo_fighter/ft_samus/ft_samus_function_ce0c.cpp:
 mo_fighter/ft_samus/ft_samus_function_dc2c.cpp:
 	.text       start:0x0000DC2C end:0x0000DC30
 
+mo_fighter/ft_samus/ft_samus_function_dc68.cpp:
+	.text       start:0x0000DC68 end:0x0000DC7C
+
+mo_fighter/ft_samus/ft_samus_function_dd2c.cpp:
+	.text       start:0x0000DD2C end:0x0000DD40
+
 mo_fighter/ft_samus/ft_samus_function_e338.cpp:
 	.text       start:0x0000E338 end:0x0000E33C
+
+mo_fighter/ft_samus/ft_samus_function_e34c.cpp:
+	.text       start:0x0000E34C end:0x0000E360
+
+mo_fighter/ft_samus/ft_samus_function_e360.cpp:
+	.text       start:0x0000E360 end:0x0000E374
 
 mo_fighter/ft_samus/ft_samus_function_e374.cpp:
 	.text       start:0x0000E374 end:0x0000E37C
@@ -506,6 +575,12 @@ mo_fighter/ft_samus/ft_samus_function_f514.cpp:
 mo_fighter/ft_samus/ft_samus_function_f518.cpp:
 	.text       start:0x0000F518 end:0x0000F51C
 
+mo_fighter/ft_samus/ft_samus_function_fabc.cpp:
+	.text       start:0x0000FABC end:0x0000FAD0
+
+mo_fighter/ft_samus/ft_samus_function_10940.cpp:
+	.text       start:0x00010940 end:0x00010954
+
 mo_fighter/ft_samus/ft_samus_function_11894.cpp:
 	.text       start:0x00011894 end:0x0001189C
 
@@ -523,6 +598,9 @@ mo_fighter/ft_samus/ft_samus_function_18804.cpp:
 
 mo_fighter/ft_samus/ft_samus_function_199d8.cpp:
 	.text       start:0x000199D8 end:0x000199E0
+
+mo_fighter/ft_samus/ft_samus_function_199f8.cpp:
+	.text       start:0x000199F8 end:0x00019A0C
 
 mo_fighter/ft_samus/ft_samus_function_19ab4.cpp:
 	.text       start:0x00019AB4 end:0x00019ACC
@@ -566,6 +644,9 @@ mo_fighter/ft_samus/ft_samus_function_1c60c.cpp:
 mo_fighter/ft_samus/ft_samus_function_1d73c.cpp:
 	.text       start:0x0001D73C end:0x0001D744
 
+mo_fighter/ft_samus/ft_samus_function_1d754.cpp:
+	.text       start:0x0001D754 end:0x0001D768
+
 mo_fighter/ft_samus/ft_samus_function_1d794.cpp:
 	.text       start:0x0001D794 end:0x0001D79C
 
@@ -607,6 +688,9 @@ mo_fighter/ft_samus/ft_samus_function_1d914.cpp:
 
 mo_fighter/ft_samus/ft_samus_function_1d918.cpp:
 	.text       start:0x0001D918 end:0x0001D91C
+
+mo_fighter/ft_samus/ft_samus_function_1d91c.cpp:
+	.text       start:0x0001D91C end:0x0001D930
 
 mo_fighter/ft_samus/ft_samus_function_1d930.cpp:
 	.text       start:0x0001D930 end:0x0001D938

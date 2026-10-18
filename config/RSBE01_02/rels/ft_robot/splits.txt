@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_robot/ft_robot_function_1988.cpp:
 	.text       start:0x00001988 end:0x00001A28
 
+mo_fighter/ft_robot/ft_robot_function_5bd8.cpp:
+	.text       start:0x00005BD8 end:0x00005BEC
+
 mo_fighter/ft_robot/ft_robot_function_5cb0.cpp:
 	.text       start:0x00005CB0 end:0x00005CB8
 
@@ -41,6 +44,12 @@ mo_fighter/ft_robot/ft_robot_function_9234.cpp:
 mo_fighter/ft_robot/ft_robot_function_9488.cpp:
 	.text       start:0x00009488 end:0x0000948C
 
+mo_fighter/ft_robot/ft_robot_function_95bc.cpp:
+	.text       start:0x000095BC end:0x000095D0
+
+mo_fighter/ft_robot/ft_robot_function_95d0.cpp:
+	.text       start:0x000095D0 end:0x000095E4
+
 mo_fighter/ft_robot/ft_robot_function_95e4.cpp:
 	.text       start:0x000095E4 end:0x000095E8
 
@@ -50,11 +59,47 @@ mo_fighter/ft_robot/ft_robot_function_95e8.cpp:
 mo_fighter/ft_robot/ft_robot_function_95f0.cpp:
 	.text       start:0x000095F0 end:0x000095F4
 
+mo_fighter/ft_robot/ft_robot_function_95f4.cpp:
+	.text       start:0x000095F4 end:0x00009608
+
+mo_fighter/ft_robot/ft_robot_function_9608.cpp:
+	.text       start:0x00009608 end:0x0000961C
+
+mo_fighter/ft_robot/ft_robot_function_961c.cpp:
+	.text       start:0x0000961C end:0x00009630
+
 mo_fighter/ft_robot/ft_robot_function_9630.cpp:
 	.text       start:0x00009630 end:0x00009634
 
 mo_fighter/ft_robot/ft_robot_function_9634.cpp:
 	.text       start:0x00009634 end:0x00009638
+
+mo_fighter/ft_robot/ft_robot_function_9638.cpp:
+	.text       start:0x00009638 end:0x0000964C
+
+mo_fighter/ft_robot/ft_robot_function_964c.cpp:
+	.text       start:0x0000964C end:0x00009660
+
+mo_fighter/ft_robot/ft_robot_function_9660.cpp:
+	.text       start:0x00009660 end:0x00009674
+
+mo_fighter/ft_robot/ft_robot_function_9674.cpp:
+	.text       start:0x00009674 end:0x00009688
+
+mo_fighter/ft_robot/ft_robot_function_9688.cpp:
+	.text       start:0x00009688 end:0x0000969C
+
+mo_fighter/ft_robot/ft_robot_function_969c.cpp:
+	.text       start:0x0000969C end:0x000096B0
+
+mo_fighter/ft_robot/ft_robot_function_96b0.cpp:
+	.text       start:0x000096B0 end:0x000096C4
+
+mo_fighter/ft_robot/ft_robot_function_96c4.cpp:
+	.text       start:0x000096C4 end:0x000096D8
+
+mo_fighter/ft_robot/ft_robot_function_96d8.cpp:
+	.text       start:0x000096D8 end:0x000096EC
 
 mo_fighter/ft_robot/ft_robot_function_96ec.cpp:
 	.text       start:0x000096EC end:0x000096F0
@@ -115,6 +160,12 @@ mo_fighter/ft_robot/ft_robot_function_9738.cpp:
 
 mo_fighter/ft_robot/ft_robot_function_973c.cpp:
 	.text       start:0x0000973C end:0x00009740
+
+mo_fighter/ft_robot/ft_robot_function_9740.cpp:
+	.text       start:0x00009740 end:0x00009754
+
+mo_fighter/ft_robot/ft_robot_function_9754.cpp:
+	.text       start:0x00009754 end:0x00009768
 
 mo_fighter/ft_robot/ft_robot_function_9768.cpp:
 	.text       start:0x00009768 end:0x0000976C
@@ -206,6 +257,9 @@ mo_fighter/ft_robot/ft_robot_function_9980.cpp:
 mo_fighter/ft_robot/ft_robot_function_9a18.cpp:
 	.text       start:0x00009A18 end:0x00009A30
 
+mo_fighter/ft_robot/ft_robot_function_9a30.cpp:
+	.text       start:0x00009A30 end:0x00009A44
+
 mo_fighter/ft_robot/ft_robot_function_9a44.cpp:
 	.text       start:0x00009A44 end:0x00009A5C
 
@@ -248,6 +302,9 @@ mo_fighter/ft_robot/ft_robot_function_9bb4.cpp:
 mo_fighter/ft_robot/ft_robot_function_af30.cpp:
 	.text       start:0x0000AF30 end:0x0000AF38
 
+mo_fighter/ft_robot/ft_robot_function_af50.cpp:
+	.text       start:0x0000AF50 end:0x0000AF64
+
 mo_fighter/ft_robot/ft_robot_function_afc0.cpp:
 	.text       start:0x0000AFC0 end:0x0000AFD8
 
@@ -260,8 +317,20 @@ mo_fighter/ft_robot/ft_robot_function_b018.cpp:
 mo_fighter/ft_robot/ft_robot_function_bd80.cpp:
 	.text       start:0x0000BD80 end:0x0000BD84
 
+mo_fighter/ft_robot/ft_robot_function_bdbc.cpp:
+	.text       start:0x0000BDBC end:0x0000BDD0
+
+mo_fighter/ft_robot/ft_robot_function_be80.cpp:
+	.text       start:0x0000BE80 end:0x0000BE94
+
 mo_fighter/ft_robot/ft_robot_function_c48c.cpp:
 	.text       start:0x0000C48C end:0x0000C490
+
+mo_fighter/ft_robot/ft_robot_function_c4a0.cpp:
+	.text       start:0x0000C4A0 end:0x0000C4B4
+
+mo_fighter/ft_robot/ft_robot_function_c4b4.cpp:
+	.text       start:0x0000C4B4 end:0x0000C4C8
 
 mo_fighter/ft_robot/ft_robot_function_c4c8.cpp:
 	.text       start:0x0000C4C8 end:0x0000C4D0
@@ -539,6 +608,9 @@ mo_fighter/ft_robot/ft_robot_function_13954.cpp:
 mo_fighter/ft_robot/ft_robot_function_1395c.cpp:
 	.text       start:0x0001395C end:0x00013964
 
+mo_fighter/ft_robot/ft_robot_function_13974.cpp:
+	.text       start:0x00013974 end:0x00013988
+
 mo_fighter/ft_robot/ft_robot_function_139b4.cpp:
 	.text       start:0x000139B4 end:0x000139BC
 
@@ -580,6 +652,9 @@ mo_fighter/ft_robot/ft_robot_function_13b34.cpp:
 
 mo_fighter/ft_robot/ft_robot_function_13b38.cpp:
 	.text       start:0x00013B38 end:0x00013B3C
+
+mo_fighter/ft_robot/ft_robot_function_13b3c.cpp:
+	.text       start:0x00013B3C end:0x00013B50
 
 mo_fighter/ft_robot/ft_robot_function_13b50.cpp:
 	.text       start:0x00013B50 end:0x00013B58
