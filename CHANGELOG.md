@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_poke, ft_purin and 6 more: 2000 template functions
+
+- Matched 2000 functions in `ft_poke, ft_purin and 6 more` with decomp-orchestrator's template solver (adjust_return 60, const_return 287, empty 623, getter 142, setter 68, tail_call 12, thunk 808).
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_mario, ft_marth and 7 more: 2000 template functions
 
 - Matched 2000 functions in `ft_mario, ft_marth and 7 more` with decomp-orchestrator's template solver (adjust_return 73, const_return 317, empty 641, getter 128, setter 49, tail_call 11, thunk 781).
