@@ -6,6 +6,42 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_b30.cpp:
+	.text       start:0x00000B30 end:0x00000B38
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_b44.cpp:
+	.text       start:0x00000B44 end:0x00000B4C
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_b4c.cpp:
+	.text       start:0x00000B4C end:0x00000B54
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_f6c.cpp:
+	.text       start:0x00000F6C end:0x00000F74
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_f74.cpp:
+	.text       start:0x00000F74 end:0x00000F78
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_1194.cpp:
+	.text       start:0x00001194 end:0x00001198
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_1198.cpp:
+	.text       start:0x00001198 end:0x0000119C
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_119c.cpp:
+	.text       start:0x0000119C end:0x000011A0
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_11a0.cpp:
+	.text       start:0x000011A0 end:0x000011A4
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_11a4.cpp:
+	.text       start:0x000011A4 end:0x000011A8
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_11a8.cpp:
+	.text       start:0x000011A8 end:0x000011AC
+
+mo_menu_rule/sora_menu_rule/sora_menu_rule_function_12d8.cpp:
+	.text       start:0x000012D8 end:0x000012E0
+
 mo_menu/mo_menu.cpp:
 	.text       start:0x00009638 end:0x000096D4
 	.data       start:0x00001938 end:0x00001944

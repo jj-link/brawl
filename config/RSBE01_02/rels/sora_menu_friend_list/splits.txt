@@ -6,6 +6,30 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_f38.cpp:
+	.text       start:0x00000F38 end:0x00000F40
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_f78.cpp:
+	.text       start:0x00000F78 end:0x00000F80
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_39b4.cpp:
+	.text       start:0x000039B4 end:0x000039BC
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_4698.cpp:
+	.text       start:0x00004698 end:0x0000469C
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_75d4.cpp:
+	.text       start:0x000075D4 end:0x000075D8
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_8954.cpp:
+	.text       start:0x00008954 end:0x00008958
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_902c.cpp:
+	.text       start:0x0000902C end:0x00009030
+
+mo_menu_friend_list/sora_menu_friend_list/sora_menu_friend_list_function_9594.cpp:
+	.text       start:0x00009594 end:0x00009598
+
 mo_menu/mo_menu.cpp:
 	.text       start:0x00009C70 end:0x00009D0C
 	.data       start:0x00000588 end:0x00000594

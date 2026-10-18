@@ -6,6 +6,48 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_a0c.cpp:
+	.text       start:0x00000A0C end:0x00000A10
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_a10.cpp:
+	.text       start:0x00000A10 end:0x00000A14
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1474.cpp:
+	.text       start:0x00001474 end:0x0000147C
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_147c.cpp:
+	.text       start:0x0000147C end:0x00001480
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1480.cpp:
+	.text       start:0x00001480 end:0x00001484
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1484.cpp:
+	.text       start:0x00001484 end:0x00001488
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1488.cpp:
+	.text       start:0x00001488 end:0x0000148C
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_148c.cpp:
+	.text       start:0x0000148C end:0x00001490
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1490.cpp:
+	.text       start:0x00001490 end:0x00001494
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1494.cpp:
+	.text       start:0x00001494 end:0x00001498
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_1498.cpp:
+	.text       start:0x00001498 end:0x0000149C
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_149c.cpp:
+	.text       start:0x0000149C end:0x000014A0
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_14a0.cpp:
+	.text       start:0x000014A0 end:0x000014A4
+
+mo_menu_replay/sora_menu_replay/sora_menu_replay_function_14e4.cpp:
+	.text       start:0x000014E4 end:0x000014E8
+
 mo_menu/mo_menu.cpp:
 	.text       start:0x000015B8 end:0x00001654
 	.data       start:0x000006D0 end:0x000006DC
