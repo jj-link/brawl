@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_wolf/ft_wolf_function_19d0.cpp:
 	.text       start:0x000019D0 end:0x00001A70
 
+mo_fighter/ft_wolf/ft_wolf_function_7f88.cpp:
+	.text       start:0x00007F88 end:0x00007F9C
+
 mo_fighter/ft_wolf/ft_wolf_function_8060.cpp:
 	.text       start:0x00008060 end:0x00008068
 
@@ -26,6 +29,12 @@ mo_fighter/ft_wolf/ft_wolf_function_aaec.cpp:
 mo_fighter/ft_wolf/ft_wolf_function_ac78.cpp:
 	.text       start:0x0000AC78 end:0x0000AC7C
 
+mo_fighter/ft_wolf/ft_wolf_function_add8.cpp:
+	.text       start:0x0000ADD8 end:0x0000ADEC
+
+mo_fighter/ft_wolf/ft_wolf_function_adec.cpp:
+	.text       start:0x0000ADEC end:0x0000AE00
+
 mo_fighter/ft_wolf/ft_wolf_function_ae00.cpp:
 	.text       start:0x0000AE00 end:0x0000AE04
 
@@ -35,14 +44,50 @@ mo_fighter/ft_wolf/ft_wolf_function_ae04.cpp:
 mo_fighter/ft_wolf/ft_wolf_function_ae0c.cpp:
 	.text       start:0x0000AE0C end:0x0000AE10
 
+mo_fighter/ft_wolf/ft_wolf_function_ae10.cpp:
+	.text       start:0x0000AE10 end:0x0000AE24
+
+mo_fighter/ft_wolf/ft_wolf_function_ae24.cpp:
+	.text       start:0x0000AE24 end:0x0000AE38
+
+mo_fighter/ft_wolf/ft_wolf_function_ae38.cpp:
+	.text       start:0x0000AE38 end:0x0000AE4C
+
 mo_fighter/ft_wolf/ft_wolf_function_ae4c.cpp:
 	.text       start:0x0000AE4C end:0x0000AE50
 
 mo_fighter/ft_wolf/ft_wolf_function_ae50.cpp:
 	.text       start:0x0000AE50 end:0x0000AE54
 
+mo_fighter/ft_wolf/ft_wolf_function_ae54.cpp:
+	.text       start:0x0000AE54 end:0x0000AE68
+
+mo_fighter/ft_wolf/ft_wolf_function_ae68.cpp:
+	.text       start:0x0000AE68 end:0x0000AE7C
+
+mo_fighter/ft_wolf/ft_wolf_function_ae7c.cpp:
+	.text       start:0x0000AE7C end:0x0000AE90
+
+mo_fighter/ft_wolf/ft_wolf_function_ae90.cpp:
+	.text       start:0x0000AE90 end:0x0000AEA4
+
+mo_fighter/ft_wolf/ft_wolf_function_aea4.cpp:
+	.text       start:0x0000AEA4 end:0x0000AEB8
+
+mo_fighter/ft_wolf/ft_wolf_function_aeb8.cpp:
+	.text       start:0x0000AEB8 end:0x0000AECC
+
+mo_fighter/ft_wolf/ft_wolf_function_aecc.cpp:
+	.text       start:0x0000AECC end:0x0000AEE0
+
 mo_fighter/ft_wolf/ft_wolf_function_aee0.cpp:
 	.text       start:0x0000AEE0 end:0x0000AEE4
+
+mo_fighter/ft_wolf/ft_wolf_function_aee4.cpp:
+	.text       start:0x0000AEE4 end:0x0000AEF8
+
+mo_fighter/ft_wolf/ft_wolf_function_aef8.cpp:
+	.text       start:0x0000AEF8 end:0x0000AF0C
 
 mo_fighter/ft_wolf/ft_wolf_function_af0c.cpp:
 	.text       start:0x0000AF0C end:0x0000AF10
@@ -103,6 +148,12 @@ mo_fighter/ft_wolf/ft_wolf_function_af58.cpp:
 
 mo_fighter/ft_wolf/ft_wolf_function_af5c.cpp:
 	.text       start:0x0000AF5C end:0x0000AF60
+
+mo_fighter/ft_wolf/ft_wolf_function_af60.cpp:
+	.text       start:0x0000AF60 end:0x0000AF74
+
+mo_fighter/ft_wolf/ft_wolf_function_af74.cpp:
+	.text       start:0x0000AF74 end:0x0000AF88
 
 mo_fighter/ft_wolf/ft_wolf_function_af88.cpp:
 	.text       start:0x0000AF88 end:0x0000AF8C
@@ -223,6 +274,9 @@ mo_fighter/ft_wolf/ft_wolf_function_b194.cpp:
 
 mo_fighter/ft_wolf/ft_wolf_function_b22c.cpp:
 	.text       start:0x0000B22C end:0x0000B244
+
+mo_fighter/ft_wolf/ft_wolf_function_b244.cpp:
+	.text       start:0x0000B244 end:0x0000B258
 
 mo_fighter/ft_wolf/ft_wolf_function_b258.cpp:
 	.text       start:0x0000B258 end:0x0000B270
