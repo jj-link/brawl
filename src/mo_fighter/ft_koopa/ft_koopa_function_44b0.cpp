@@ -1,0 +1,24 @@
+#pragma force_active on
+extern "C" void* fn_102_3BC8(void* object, short deleting);
+extern "C" void* fn_102_3C4C(void* object, short deleting);
+extern "C" void* fn_102_454C(void* object, short deleting);
+extern "C" void* fn_102_45A8(void* object, short deleting);
+extern "C" void* fn_102_4FC0(void* object, short deleting);
+extern "C" void* fn_27_C74E8(void* object, short deleting);
+extern "C" void operator delete(void*);
+
+extern "C" void* fn_102_44B0(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* storage = static_cast<unsigned char*>(object);
+        fn_102_3BC8(storage + 0xddc, -1);
+        fn_102_3C4C(storage + 0xdc8, -1);
+        fn_102_454C(storage + 0x930, -1);
+        fn_102_45A8(storage + 0xbc, -1);
+        fn_102_4FC0(storage + 0x10, -1);
+        fn_27_C74E8(object, -1);
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}
