@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_mario/ft_mario_function_1938.cpp:
+	.text       start:0x00001938 end:0x000019B8
+
 mo_fighter/ft_mario/ft_mario_function_1a70.cpp:
 	.text       start:0x00001A70 end:0x00001A84
 
@@ -44,11 +47,17 @@ mo_fighter/ft_mario/ft_mario_function_2cfc.cpp:
 mo_fighter/ft_mario/ft_mario_function_3bbc.cpp:
 	.text       start:0x00003BBC end:0x00003BFC
 
+mo_fighter/ft_mario/ft_mario_function_3e50.cpp:
+	.text       start:0x00003E50 end:0x00003ED0
+
 mo_fighter/ft_mario/ft_mario_function_40d0.cpp:
 	.text       start:0x000040D0 end:0x00004110
 
 mo_fighter/ft_mario/ft_mario_function_4504.cpp:
 	.text       start:0x00004504 end:0x00004564
+
+mo_fighter/ft_mario/ft_mario_function_45e8.cpp:
+	.text       start:0x000045E8 end:0x00004668
 
 mo_fighter/ft_mario/ft_mario_function_4668.cpp:
 	.text       start:0x00004668 end:0x000046A8
@@ -142,6 +151,9 @@ mo_fighter/ft_mario/ft_mario_function_7de8.cpp:
 
 mo_fighter/ft_mario/ft_mario_function_83c0.cpp:
 	.text       start:0x000083C0 end:0x00008420
+
+mo_fighter/ft_mario/ft_mario_function_8624.cpp:
+	.text       start:0x00008624 end:0x000086A4
 
 mo_fighter/ft_mario/ft_mario_function_9488.cpp:
 	.text       start:0x00009488 end:0x0000948C
@@ -428,6 +440,9 @@ mo_fighter/ft_mario/ft_mario_function_a8e8.cpp:
 mo_fighter/ft_mario/ft_mario_function_a900.cpp:
 	.text       start:0x0000A900 end:0x0000A910
 
+mo_fighter/ft_mario/ft_mario_function_a910.cpp:
+	.text       start:0x0000A910 end:0x0000A920
+
 mo_fighter/ft_mario/ft_mario_function_a920.cpp:
 	.text       start:0x0000A920 end:0x0000A928
 
@@ -523,6 +538,9 @@ mo_fighter/ft_mario/ft_mario_function_cd18.cpp:
 
 mo_fighter/ft_mario/ft_mario_function_d328.cpp:
 	.text       start:0x0000D328 end:0x0000D32C
+
+mo_fighter/ft_mario/ft_mario_function_d32c.cpp:
+	.text       start:0x0000D32C end:0x0000D33C
 
 mo_fighter/ft_mario/ft_mario_function_d33c.cpp:
 	.text       start:0x0000D33C end:0x0000D350
@@ -793,6 +811,9 @@ mo_fighter/ft_mario/ft_mario_function_e150.cpp:
 
 mo_fighter/ft_mario/ft_mario_function_e154.cpp:
 	.text       start:0x0000E154 end:0x0000E158
+
+mo_fighter/ft_mario/ft_mario_function_e1a0.cpp:
+	.text       start:0x0000E1A0 end:0x0000E1B0
 
 mo_fighter/ft_mario/ft_mario_status_uniq_process_special_lw_shoot.cpp:
 	.text       start:0x0000E1B0 end:0x0000E3C4
@@ -1132,6 +1153,9 @@ mo_fighter/ft_mario/ft_mario_article_third_ground_effect.cpp:
 
 mo_fighter/ft_mario/ft_mario_function_19444.cpp:
 	.text       start:0x00019444 end:0x00019484
+
+mo_fighter/ft_mario/ft_mario_function_194cc.cpp:
+	.text       start:0x000194CC end:0x000194DC
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x000194DC end:0x00019578
