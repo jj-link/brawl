@@ -11,8 +11,20 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_diddy/ft_diddy_function_1e70.cpp:
+	.text       start:0x00001E70 end:0x00001EF0
+
+mo_fighter/ft_diddy/ft_diddy_function_2d50.cpp:
+	.text       start:0x00002D50 end:0x00002DD0
+
+mo_fighter/ft_diddy/ft_diddy_function_55f8.cpp:
+	.text       start:0x000055F8 end:0x00005678
+
 mo_fighter/ft_diddy/ft_diddy_function_672c.cpp:
 	.text       start:0x0000672C end:0x00006734
+
+mo_fighter/ft_diddy/ft_diddy_function_783c.cpp:
+	.text       start:0x0000783C end:0x000078BC
 
 mo_fighter/ft_diddy/ft_diddy_function_8734.cpp:
 	.text       start:0x00008734 end:0x00008738
@@ -196,6 +208,9 @@ mo_fighter/ft_diddy/ft_diddy_function_a34c.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_a3e4.cpp:
 	.text       start:0x0000A3E4 end:0x0000A3EC
+
+mo_fighter/ft_diddy/ft_diddy_function_a41c.cpp:
+	.text       start:0x0000A41C end:0x0000A43C
 
 mo_fighter/ft_diddy/ft_diddy_function_a4a4.cpp:
 	.text       start:0x0000A4A4 end:0x0000A4AC
@@ -452,6 +467,9 @@ mo_fighter/ft_diddy/ft_diddy_function_dd84.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_dd88.cpp:
 	.text       start:0x0000DD88 end:0x0000DD8C
 
+mo_fighter/ft_diddy/ft_diddy_function_e59c.cpp:
+	.text       start:0x0000E59C end:0x0000E5A4
+
 mo_fighter/ft_diddy/ft_diddy_function_e5a4.cpp:
 	.text       start:0x0000E5A4 end:0x0000E5A8
 
@@ -460,6 +478,9 @@ mo_fighter/ft_diddy/ft_diddy_function_ef8c.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_f024.cpp:
 	.text       start:0x0000F024 end:0x0000F028
+
+mo_fighter/ft_diddy/ft_diddy_function_f3d4.cpp:
+	.text       start:0x0000F3D4 end:0x0000F454
 
 mo_fighter/ft_diddy/ft_diddy_function_f93c.cpp:
 	.text       start:0x0000F93C end:0x0000F940

@@ -11,8 +11,20 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_falco/ft_falco_function_1e94.cpp:
+	.text       start:0x00001E94 end:0x00001F14
+
+mo_fighter/ft_falco/ft_falco_function_2d74.cpp:
+	.text       start:0x00002D74 end:0x00002DF4
+
+mo_fighter/ft_falco/ft_falco_function_7140.cpp:
+	.text       start:0x00007140 end:0x000071C0
+
 mo_fighter/ft_falco/ft_falco_function_8008.cpp:
 	.text       start:0x00008008 end:0x00008010
+
+mo_fighter/ft_falco/ft_falco_function_9118.cpp:
+	.text       start:0x00009118 end:0x00009198
 
 mo_fighter/ft_falco/ft_falco_function_9f1c.cpp:
 	.text       start:0x00009F1C end:0x00009F20

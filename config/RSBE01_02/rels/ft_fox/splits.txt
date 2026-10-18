@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_fox/ft_fox_function_1ef0.cpp:
+	.text       start:0x00001EF0 end:0x00001F70
+
+mo_fighter/ft_fox/ft_fox_function_2dd0.cpp:
+	.text       start:0x00002DD0 end:0x00002E50
+
+mo_fighter/ft_fox/ft_fox_function_7270.cpp:
+	.text       start:0x00007270 end:0x000072F0
+
 mo_fighter/ft_fox/ft_fox_function_8138.cpp:
 	.text       start:0x00008138 end:0x00008140
 

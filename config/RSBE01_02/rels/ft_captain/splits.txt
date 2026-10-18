@@ -11,14 +11,23 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_captain/ft_captain_function_1e38.cpp:
+	.text       start:0x00001E38 end:0x00001EB8
+
 mo_fighter/ft_captain/ft_captain_function_28ac.cpp:
 	.text       start:0x000028AC end:0x00002B4C
+
+mo_fighter/ft_captain/ft_captain_function_2d18.cpp:
+	.text       start:0x00002D18 end:0x00002D98
 
 mo_fighter/ft_captain/captain_fighter_module_destructor.cpp:
 	.text       start:0x00003440 end:0x000037BC
 
 mo_fighter/ft_captain/ft_captain_function_49d4.cpp:
 	.text       start:0x000049D4 end:0x00004D24
+
+mo_fighter/ft_captain/ft_captain_function_5c58.cpp:
+	.text       start:0x00005C58 end:0x00005CD8
 
 mo_fighter/ft_captain/ft_captain_function_6c60.cpp:
 	.text       start:0x00006C60 end:0x00006C68
@@ -29,8 +38,14 @@ mo_fighter/ft_captain/ft_captain_function_6c68.cpp:
 mo_fighter/ft_captain/ft_captain_function_79e8.cpp:
 	.text       start:0x000079E8 end:0x00007D70
 
+mo_fighter/ft_captain/ft_captain_function_7d70.cpp:
+	.text       start:0x00007D70 end:0x00007DF0
+
 mo_fighter/ft_captain/ft_captain_function_896c.cpp:
 	.text       start:0x0000896C end:0x00008970
+
+mo_fighter/ft_captain/ft_captain_function_8b54.cpp:
+	.text       start:0x00008B54 end:0x00008BD4
 
 mo_fighter/ft_captain/ft_captain_function_91a0.cpp:
 	.text       start:0x000091A0 end:0x000091A8
@@ -208,6 +223,9 @@ mo_fighter/ft_captain/ft_captain_function_98c4.cpp:
 
 mo_fighter/ft_captain/ft_captain_function_995c.cpp:
 	.text       start:0x0000995C end:0x00009964
+
+mo_fighter/ft_captain/ft_captain_function_9994.cpp:
+	.text       start:0x00009994 end:0x000099B4
 
 mo_fighter/ft_captain/ft_captain_function_9a1c.cpp:
 	.text       start:0x00009A1C end:0x00009A24
@@ -682,6 +700,12 @@ mo_fighter/ft_captain/ft_captain_function_134d4.cpp:
 
 mo_fighter/ft_captain/ft_captain_function_13524.cpp:
 	.text       start:0x00013524 end:0x00013528
+
+mo_fighter/ft_captain/ft_captain_function_13528.cpp:
+	.text       start:0x00013528 end:0x00013548
+
+mo_fighter/ft_captain/ft_captain_function_13548.cpp:
+	.text       start:0x00013548 end:0x00013568
 
 mo_fighter/ft_captain/ft_captain_function_1362c.cpp:
 	.text       start:0x0001362C end:0x00013634

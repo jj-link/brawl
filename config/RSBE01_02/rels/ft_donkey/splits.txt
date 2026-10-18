@@ -11,8 +11,20 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_donkey/ft_donkey_function_1ee4.cpp:
+	.text       start:0x00001EE4 end:0x00001F64
+
+mo_fighter/ft_donkey/ft_donkey_function_2dc4.cpp:
+	.text       start:0x00002DC4 end:0x00002E44
+
+mo_fighter/ft_donkey/ft_donkey_function_5e38.cpp:
+	.text       start:0x00005E38 end:0x00005EB8
+
 mo_fighter/ft_donkey/ft_donkey_function_6e9c.cpp:
 	.text       start:0x00006E9C end:0x00006EA4
+
+mo_fighter/ft_donkey/ft_donkey_function_7fac.cpp:
+	.text       start:0x00007FAC end:0x0000802C
 
 mo_fighter/ft_donkey/ft_donkey_function_8c3c.cpp:
 	.text       start:0x00008C3C end:0x00008C40

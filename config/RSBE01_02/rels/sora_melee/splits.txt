@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_melee/sora_melee/sora_melee_function_e54.cpp:
 	.text       start:0x00000E54 end:0x00000E58
 
+mo_melee/sora_melee/sora_melee_function_1050.cpp:
+	.text       start:0x00001050 end:0x00001058
+
 mo_melee/sora_melee/sora_melee_function_1e14.cpp:
 	.text       start:0x00001E14 end:0x00001E18
 
@@ -9815,8 +9818,14 @@ mo_melee/sora_melee/sora_melee_function_d5128.cpp:
 mo_melee/sora_melee/sora_melee_function_d83c8.cpp:
 	.text       start:0x000D83C8 end:0x000D83D0
 
+mo_melee/sora_melee/sora_melee_function_d8808.cpp:
+	.text       start:0x000D8808 end:0x000D8810
+
 mo_melee/sora_melee/sora_melee_function_d89cc.cpp:
 	.text       start:0x000D89CC end:0x000D89D4
+
+mo_melee/sora_melee/sora_melee_function_d8e04.cpp:
+	.text       start:0x000D8E04 end:0x000D8E0C
 
 mo_melee/sora_melee/sora_melee_function_d9cf0.cpp:
 	.text       start:0x000D9CF0 end:0x000D9CF4
