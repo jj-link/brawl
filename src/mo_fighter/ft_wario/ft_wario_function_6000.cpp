@@ -1,0 +1,14 @@
+#include <stddef.h>
+#pragma force_active on
+
+extern "C" {
+void __dl__FPv(void* p);
+
+void* fn_110_6000(void* p, short flags)
+{
+    if (p != NULL && flags > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}

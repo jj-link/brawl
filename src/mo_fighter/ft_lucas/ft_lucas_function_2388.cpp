@@ -1,0 +1,13 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" void __dl__FPv(void* p);
+
+extern "C" void* fn_114_2388(void* obj, s16 flag) {
+    if (obj != 0) {
+        if (flag > 0) {
+            __dl__FPv(obj);
+        }
+    }
+    return obj;
+}

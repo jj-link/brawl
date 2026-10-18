@@ -1,0 +1,17 @@
+#pragma force_active on
+extern "C" void* fn_27_D2AA4(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_41_2F078(void* object, short count) {
+    if (object != 0) {
+        if (object != 0) {
+            fn_27_D2AA4(object, static_cast<short>(-1));
+        }
+
+        if (count > 0) {
+            __dl__FPv(object);
+        }
+    }
+
+    return object;
+}

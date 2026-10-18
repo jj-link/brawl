@@ -6,6 +6,12 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_adv_menu_name/sora_adv_menu_name/sora_adv_menu_name_function_0.cpp:
+	.text       start:0x00000000 end:0x00000060
+
+mo_adv_menu_name/sora_adv_menu_name/sora_adv_menu_name_function_290.cpp:
+	.text       start:0x00000290 end:0x000002D0
+
 mo_adv_menu_name/sora_adv_menu_name/sora_adv_menu_name_function_2d0.cpp:
 	.text       start:0x000002D0 end:0x00000450
 
