@@ -14,8 +14,20 @@ global_destructor_chain.c:
 mo_fighter/ft_dedede/ft_dedede_function_1a54.cpp:
 	.text       start:0x00001A54 end:0x00001B0C
 
+mo_fighter/ft_dedede/ft_dedede_function_1df4.cpp:
+	.text       start:0x00001DF4 end:0x00001E34
+
+mo_fighter/ft_dedede/ft_dedede_function_1e90.cpp:
+	.text       start:0x00001E90 end:0x00001ED0
+
 mo_fighter/ft_dedede/ft_dedede_function_1ed0.cpp:
 	.text       start:0x00001ED0 end:0x00001F50
+
+mo_fighter/ft_dedede/ft_dedede_function_224c.cpp:
+	.text       start:0x0000224C end:0x0000228C
+
+mo_fighter/ft_dedede/ft_dedede_function_228c.cpp:
+	.text       start:0x0000228C end:0x000022CC
 
 mo_fighter/ft_dedede/ft_dedede_function_2944.cpp:
 	.text       start:0x00002944 end:0x00002BF0
@@ -23,11 +35,35 @@ mo_fighter/ft_dedede/ft_dedede_function_2944.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_2dbc.cpp:
 	.text       start:0x00002DBC end:0x00002E3C
 
+mo_fighter/ft_dedede/ft_dedede_function_43a8.cpp:
+	.text       start:0x000043A8 end:0x000043E8
+
+mo_fighter/ft_dedede/ft_dedede_function_43e8.cpp:
+	.text       start:0x000043E8 end:0x00004428
+
+mo_fighter/ft_dedede/ft_dedede_function_4428.cpp:
+	.text       start:0x00004428 end:0x00004468
+
+mo_fighter/ft_dedede/ft_dedede_function_4524.cpp:
+	.text       start:0x00004524 end:0x00004564
+
+mo_fighter/ft_dedede/ft_dedede_function_4964.cpp:
+	.text       start:0x00004964 end:0x000049A4
+
 mo_fighter/ft_dedede/ft_dedede_function_55ac.cpp:
 	.text       start:0x000055AC end:0x0000562C
 
+mo_fighter/ft_dedede/ft_dedede_function_57bc.cpp:
+	.text       start:0x000057BC end:0x000057FC
+
+mo_fighter/ft_dedede/ft_dedede_function_5e34.cpp:
+	.text       start:0x00005E34 end:0x00005E74
+
 mo_fighter/ft_dedede/ft_dedede_function_5fb0.cpp:
 	.text       start:0x00005FB0 end:0x00006064
+
+mo_fighter/ft_dedede/ft_dedede_function_64c0.cpp:
+	.text       start:0x000064C0 end:0x00006500
 
 mo_fighter/ft_dedede/ft_dedede_function_65b8.cpp:
 	.text       start:0x000065B8 end:0x000066FC
@@ -71,6 +107,9 @@ mo_fighter/ft_dedede/ft_dedede_function_8e98.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_8f34.cpp:
 	.text       start:0x00008F34 end:0x000092AC
+
+mo_fighter/ft_dedede/ft_dedede_function_92ac.cpp:
+	.text       start:0x000092AC end:0x000092BC
 
 mo_fighter/ft_dedede/ft_dedede_function_94dc.cpp:
 	.text       start:0x000094DC end:0x000099D8
@@ -193,6 +232,9 @@ mo_fighter/ft_dedede/ft_dedede_function_a44c.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_a450.cpp:
 	.text       start:0x0000A450 end:0x0000A458
 
+mo_fighter/ft_dedede/ft_dedede_function_a458.cpp:
+	.text       start:0x0000A458 end:0x0000A468
+
 mo_fighter/ft_dedede/ft_dedede_function_a468.cpp:
 	.text       start:0x0000A468 end:0x0000A470
 
@@ -228,6 +270,9 @@ mo_fighter/ft_dedede/ft_dedede_function_a49c.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_a4a0.cpp:
 	.text       start:0x0000A4A0 end:0x0000A4A4
+
+mo_fighter/ft_dedede/ft_dedede_function_a4a4.cpp:
+	.text       start:0x0000A4A4 end:0x0000A4B4
 
 mo_fighter/ft_dedede/ft_dedede_function_a564.cpp:
 	.text       start:0x0000A564 end:0x0000A56C
@@ -274,11 +319,23 @@ mo_fighter/ft_dedede/ft_dedede_function_a65c.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_a730.cpp:
 	.text       start:0x0000A730 end:0x0000A738
 
+mo_fighter/ft_dedede/ft_dedede_function_a7a8.cpp:
+	.text       start:0x0000A7A8 end:0x0000A7B8
+
+mo_fighter/ft_dedede/ft_dedede_function_a7b8.cpp:
+	.text       start:0x0000A7B8 end:0x0000A7C8
+
 mo_fighter/ft_dedede/ft_dedede_function_a7c8.cpp:
 	.text       start:0x0000A7C8 end:0x0000A7D0
 
 mo_fighter/ft_dedede/ft_dedede_function_a800.cpp:
 	.text       start:0x0000A800 end:0x0000A820
+
+mo_fighter/ft_dedede/ft_dedede_function_a868.cpp:
+	.text       start:0x0000A868 end:0x0000A878
+
+mo_fighter/ft_dedede/ft_dedede_function_a878.cpp:
+	.text       start:0x0000A878 end:0x0000A888
 
 mo_fighter/ft_dedede/ft_dedede_function_a888.cpp:
 	.text       start:0x0000A888 end:0x0000A890
@@ -297,6 +354,9 @@ mo_fighter/ft_dedede/ft_dedede_function_aac4.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_aaf8.cpp:
 	.text       start:0x0000AAF8 end:0x0000AB50
+
+mo_fighter/ft_dedede/ft_dedede_function_ab50.cpp:
+	.text       start:0x0000AB50 end:0x0000AB5C
 
 mo_fighter/ft_dedede/ft_dedede_function_ab5c.cpp:
 	.text       start:0x0000AB5C end:0x0000ABB8
@@ -326,8 +386,23 @@ mo_fighter/ft_dedede/ft_dedede_function_bfd4.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_c104.cpp:
 	.text       start:0x0000C104 end:0x0000C10C
 
+mo_fighter/ft_dedede/ft_dedede_function_c10c.cpp:
+	.text       start:0x0000C10C end:0x0000C118
+
+mo_fighter/ft_dedede/ft_dedede_function_c118.cpp:
+	.text       start:0x0000C118 end:0x0000C124
+
+mo_fighter/ft_dedede/ft_dedede_function_c138.cpp:
+	.text       start:0x0000C138 end:0x0000C144
+
+mo_fighter/ft_dedede/ft_dedede_function_c144.cpp:
+	.text       start:0x0000C144 end:0x0000C150
+
 mo_fighter/ft_dedede/ft_dedede_function_c150.cpp:
 	.text       start:0x0000C150 end:0x0000C184
+
+mo_fighter/ft_dedede/ft_dedede_function_c184.cpp:
+	.text       start:0x0000C184 end:0x0000C194
 
 mo_fighter/ft_dedede/ft_dedede_function_c194.cpp:
 	.text       start:0x0000C194 end:0x0000C308
@@ -428,6 +503,15 @@ mo_fighter/ft_dedede/ft_dedede_function_cf64.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_d0f8.cpp:
 	.text       start:0x0000D0F8 end:0x0000D0FC
 
+mo_fighter/ft_dedede/ft_dedede_function_d1e0.cpp:
+	.text       start:0x0000D1E0 end:0x0000D1EC
+
+mo_fighter/ft_dedede/ft_dedede_function_d1ec.cpp:
+	.text       start:0x0000D1EC end:0x0000D1F8
+
+mo_fighter/ft_dedede/ft_dedede_function_d20c.cpp:
+	.text       start:0x0000D20C end:0x0000D21C
+
 mo_fighter/ft_dedede/ft_dedede_function_d21c.cpp:
 	.text       start:0x0000D21C end:0x0000D378
 
@@ -443,8 +527,14 @@ mo_fighter/ft_dedede/ft_dedede_function_d734.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_d804.cpp:
 	.text       start:0x0000D804 end:0x0000D808
 
+mo_fighter/ft_dedede/ft_dedede_function_d808.cpp:
+	.text       start:0x0000D808 end:0x0000D818
+
 mo_fighter/ft_dedede/ft_dedede_function_d840.cpp:
 	.text       start:0x0000D840 end:0x0000D848
+
+mo_fighter/ft_dedede/ft_dedede_function_d848.cpp:
+	.text       start:0x0000D848 end:0x0000D854
 
 mo_fighter/ft_dedede/ft_dedede_function_d888.cpp:
 	.text       start:0x0000D888 end:0x0000D88C
@@ -493,6 +583,9 @@ mo_fighter/ft_dedede/ft_dedede_function_dee0.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_df8c.cpp:
 	.text       start:0x0000DF8C end:0x0000DF94
+
+mo_fighter/ft_dedede/ft_dedede_function_df94.cpp:
+	.text       start:0x0000DF94 end:0x0000DFA0
 
 mo_fighter/ft_dedede/ft_dedede_function_e190.cpp:
 	.text       start:0x0000E190 end:0x0000E198
@@ -672,15 +765,39 @@ mo_fighter/ft_dedede/ft_dedede_function_e6c0.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_e6c4.cpp:
 	.text       start:0x0000E6C4 end:0x0000E6C8
 
+mo_fighter/ft_dedede/ft_dedede_function_e6c8.cpp:
+	.text       start:0x0000E6C8 end:0x0000E708
+
 mo_fighter/ft_dedede/ft_dedede_function_e708.cpp:
 	.text       start:0x0000E708 end:0x0000E70C
 
 mo_fighter/ft_dedede/ft_dedede_function_e70c.cpp:
 	.text       start:0x0000E70C end:0x0000E710
 
+mo_fighter/ft_dedede/ft_dedede_function_e758.cpp:
+	.text       start:0x0000E758 end:0x0000E768
+
 mo_fighter/ft_dedede/ft_dedede_function_e768.cpp:
 	.text       start:0x0000E768 end:0x0000EAD0
 	.rodata     start:0x00000028 end:0x00000034 align:4
+
+mo_fighter/ft_dedede/ft_dedede_function_ee78.cpp:
+	.text       start:0x0000EE78 end:0x0000EEB8
+
+mo_fighter/ft_dedede/ft_dedede_function_ef00.cpp:
+	.text       start:0x0000EF00 end:0x0000EF10
+
+mo_fighter/ft_dedede/ft_dedede_function_ef10.cpp:
+	.text       start:0x0000EF10 end:0x0000EF20
+
+mo_fighter/ft_dedede/ft_dedede_function_efbc.cpp:
+	.text       start:0x0000EFBC end:0x0000EFCC
+
+mo_fighter/ft_dedede/ft_dedede_function_efe8.cpp:
+	.text       start:0x0000EFE8 end:0x0000F028
+
+mo_fighter/ft_dedede/ft_dedede_function_f070.cpp:
+	.text       start:0x0000F070 end:0x0000F080
 
 mo_fighter/ft_dedede/ft_dedede_function_f080.cpp:
 	.text       start:0x0000F080 end:0x0000F15C
@@ -694,11 +811,23 @@ mo_fighter/ft_dedede/ft_dedede_function_f2b8.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_f2d8.cpp:
 	.text       start:0x0000F2D8 end:0x0000F374
 
+mo_fighter/ft_dedede/ft_dedede_function_f374.cpp:
+	.text       start:0x0000F374 end:0x0000F3B4
+
+mo_fighter/ft_dedede/ft_dedede_function_f3fc.cpp:
+	.text       start:0x0000F3FC end:0x0000F40C
+
 mo_fighter/ft_dedede/ft_dedede_function_f40c.cpp:
 	.text       start:0x0000F40C end:0x0000F410
 
 mo_fighter/ft_dedede/ft_dedede_function_f410.cpp:
 	.text       start:0x0000F410 end:0x0000F500
+
+mo_fighter/ft_dedede/ft_dedede_function_f500.cpp:
+	.text       start:0x0000F500 end:0x0000F540
+
+mo_fighter/ft_dedede/ft_dedede_function_f588.cpp:
+	.text       start:0x0000F588 end:0x0000F598
 
 mo_fighter/ft_dedede/ft_dedede_function_f938.cpp:
 	.text       start:0x0000F938 end:0x0000FC90
@@ -712,6 +841,12 @@ mo_fighter/ft_dedede/ft_dedede_function_fd3c.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_ff50.cpp:
 	.text       start:0x0000FF50 end:0x00010044
+
+mo_fighter/ft_dedede/ft_dedede_function_100b4.cpp:
+	.text       start:0x000100B4 end:0x000100F4
+
+mo_fighter/ft_dedede/ft_dedede_function_1013c.cpp:
+	.text       start:0x0001013C end:0x0001014C
 
 mo_fighter/ft_dedede/ft_dedede_function_1014c.cpp:
 	.text       start:0x0001014C end:0x00010608
@@ -729,6 +864,15 @@ mo_fighter/ft_dedede/ft_dedede_function_10778.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_10b18.cpp:
 	.text       start:0x00010B18 end:0x00010D20
 
+mo_fighter/ft_dedede/ft_dedede_function_10d20.cpp:
+	.text       start:0x00010D20 end:0x00010D60
+
+mo_fighter/ft_dedede/ft_dedede_function_10dc8.cpp:
+	.text       start:0x00010DC8 end:0x00010DD4
+
+mo_fighter/ft_dedede/ft_dedede_function_10dd4.cpp:
+	.text       start:0x00010DD4 end:0x00010DE4
+
 mo_fighter/ft_dedede/ft_dedede_function_10de4.cpp:
 	.text       start:0x00010DE4 end:0x00010F00
 
@@ -743,6 +887,9 @@ mo_fighter/ft_dedede/ft_dedede_function_1119c.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_111a0.cpp:
 	.text       start:0x000111A0 end:0x00011268
+
+mo_fighter/ft_dedede/ft_dedede_function_11310.cpp:
+	.text       start:0x00011310 end:0x00011320
 
 mo_fighter/ft_dedede/ft_dedede_function_11320.cpp:
 	.text       start:0x00011320 end:0x000114AC
@@ -759,11 +906,20 @@ mo_fighter/ft_dedede/ft_dedede_function_11694.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_11698.cpp:
 	.text       start:0x00011698 end:0x000117D4
 
+mo_fighter/ft_dedede/ft_dedede_function_11b24.cpp:
+	.text       start:0x00011B24 end:0x00011B64
+
+mo_fighter/ft_dedede/ft_dedede_function_11bac.cpp:
+	.text       start:0x00011BAC end:0x00011BBC
+
 mo_fighter/ft_dedede/ft_dedede_function_11bbc.cpp:
 	.text       start:0x00011BBC end:0x00011BC0
 
 mo_fighter/ft_dedede/ft_dedede_function_11bc0.cpp:
 	.text       start:0x00011BC0 end:0x00011DF8
+
+mo_fighter/ft_dedede/ft_dedede_function_11df8.cpp:
+	.text       start:0x00011DF8 end:0x00011E38
 
 mo_fighter/ft_dedede/ft_dedede_function_11ee0.cpp:
 	.text       start:0x00011EE0 end:0x00011F00
@@ -774,8 +930,14 @@ mo_fighter/ft_dedede/ft_dedede_function_11f00.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_11fc0.cpp:
 	.text       start:0x00011FC0 end:0x000120DC
 
+mo_fighter/ft_dedede/ft_dedede_function_1213c.cpp:
+	.text       start:0x0001213C end:0x0001217C
+
 mo_fighter/ft_dedede/ft_dedede_function_121e4.cpp:
 	.text       start:0x000121E4 end:0x00012204
+
+mo_fighter/ft_dedede/ft_dedede_function_13960.cpp:
+	.text       start:0x00013960 end:0x000139A0
 
 mo_fighter/ft_dedede/ft_dedede_function_139fc.cpp:
 	.text       start:0x000139FC end:0x00013B28
@@ -819,6 +981,9 @@ mo_fighter/ft_dedede/ft_dedede_function_14ebc.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_14f18.cpp:
 	.text       start:0x00014F18 end:0x00015158
 
+mo_fighter/ft_dedede/ft_dedede_function_15158.cpp:
+	.text       start:0x00015158 end:0x00015164
+
 mo_fighter/ft_dedede/ft_dedede_function_15164.cpp:
 	.text       start:0x00015164 end:0x00015168
 
@@ -858,11 +1023,23 @@ mo_fighter/ft_dedede/ft_dedede_function_152e8.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_152ec.cpp:
 	.text       start:0x000152EC end:0x000152F4
 
+mo_fighter/ft_dedede/ft_dedede_function_152f4.cpp:
+	.text       start:0x000152F4 end:0x00015300
+
 mo_fighter/ft_dedede/ft_dedede_function_15300.cpp:
 	.text       start:0x00015300 end:0x00015308
 
+mo_fighter/ft_dedede/ft_dedede_function_15308.cpp:
+	.text       start:0x00015308 end:0x00015314
+
 mo_fighter/ft_dedede/ft_dedede_function_15314.cpp:
 	.text       start:0x00015314 end:0x0001531C
+
+mo_fighter/ft_dedede/ft_dedede_function_1531c.cpp:
+	.text       start:0x0001531C end:0x00015328
+
+mo_fighter/ft_dedede/ft_dedede_function_15328.cpp:
+	.text       start:0x00015328 end:0x00015334
 
 mo_fighter/ft_dedede/ft_dedede_function_15334.cpp:
 	.text       start:0x00015334 end:0x0001533C
@@ -888,6 +1065,9 @@ mo_fighter/ft_dedede/ft_dedede_function_1536c.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_15374.cpp:
 	.text       start:0x00015374 end:0x0001537C
 
+mo_fighter/ft_dedede/ft_dedede_function_1537c.cpp:
+	.text       start:0x0001537C end:0x0001538C
+
 mo_fighter/ft_dedede/ft_dedede_function_1538c.cpp:
 	.text       start:0x0001538C end:0x000153E8
 
@@ -911,6 +1091,9 @@ mo_fighter/ft_dedede/ft_dedede_function_1540c.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_15414.cpp:
 	.text       start:0x00015414 end:0x00015418
+
+mo_fighter/ft_dedede/ft_dedede_function_15418.cpp:
+	.text       start:0x00015418 end:0x00015424
 
 mo_fighter/ft_dedede/ft_dedede_function_15424.cpp:
 	.text       start:0x00015424 end:0x0001542C
@@ -1197,6 +1380,9 @@ mo_fighter/ft_dedede/ft_dedede_function_17f04.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_17fd8.cpp:
 	.text       start:0x00017FD8 end:0x00018018
 
+mo_fighter/ft_dedede/ft_dedede_function_18030.cpp:
+	.text       start:0x00018030 end:0x00018040
+
 mo_fighter/ft_dedede/ft_dedede_function_18050.cpp:
 	.text       start:0x00018050 end:0x000180E0
 
@@ -1228,8 +1414,20 @@ mo_fighter/ft_dedede/ft_dedede_function_1a290.cpp:
 	.text       start:0x0001A290 end:0x0001A52C
 	.data       start:0x00009648 end:0x0000967C align:4 rename:.data$dedede1A290
 
+mo_fighter/ft_dedede/ft_dedede_function_1a52c.cpp:
+	.text       start:0x0001A52C end:0x0001A53C
+
 mo_fighter/ft_dedede/ft_dedede_function_1a53c.cpp:
 	.text       start:0x0001A53C end:0x0001A544
+
+mo_fighter/ft_dedede/ft_dedede_function_1a544.cpp:
+	.text       start:0x0001A544 end:0x0001A554
+
+mo_fighter/ft_dedede/ft_dedede_function_1a564.cpp:
+	.text       start:0x0001A564 end:0x0001A574
+
+mo_fighter/ft_dedede/ft_dedede_function_1a574.cpp:
+	.text       start:0x0001A574 end:0x0001A584
 
 mo_fighter/ft_dedede/ft_dedede_function_1a584.cpp:
 	.text       start:0x0001A584 end:0x0001A58C
@@ -1266,6 +1464,9 @@ mo_fighter/ft_dedede/ft_dedede_function_1a5d4.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_1a5dc.cpp:
 	.text       start:0x0001A5DC end:0x0001A5E4
+
+mo_fighter/ft_dedede/ft_dedede_function_1a5e4.cpp:
+	.text       start:0x0001A5E4 end:0x0001A5F4
 
 mo_fighter/ft_dedede/ft_dedede_function_1a6a0.cpp:
 	.text       start:0x0001A6A0 end:0x0001A6A8
@@ -1336,6 +1537,9 @@ mo_fighter/ft_dedede/ft_dedede_function_1c8e8.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_1c8ec.cpp:
 	.text       start:0x0001C8EC end:0x0001C92C
 
+mo_fighter/ft_dedede/ft_dedede_function_1c974.cpp:
+	.text       start:0x0001C974 end:0x0001C984
+
 mo_fighter/ft_dedede/ft_dedede_function_1c984.cpp:
 	.text       start:0x0001C984 end:0x0001CD04
 	.data       start:0x0000A158 end:0x0000A168 align:4 rename:.data$dedede1C984Name
@@ -1346,11 +1550,29 @@ mo_fighter/ft_dedede/ft_dedede_function_1c984_vtable.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_1cd04.cpp:
 	.text       start:0x0001CD04 end:0x0001CD0C
 
+mo_fighter/ft_dedede/ft_dedede_function_1cd0c.cpp:
+	.text       start:0x0001CD0C end:0x0001CD18
+
+mo_fighter/ft_dedede/ft_dedede_function_1cd18.cpp:
+	.text       start:0x0001CD18 end:0x0001CD24
+
+mo_fighter/ft_dedede/ft_dedede_function_1cd24.cpp:
+	.text       start:0x0001CD24 end:0x0001CD30
+
 mo_fighter/ft_dedede/ft_dedede_function_1cd30.cpp:
 	.text       start:0x0001CD30 end:0x0001CD38
 
+mo_fighter/ft_dedede/ft_dedede_function_1cd38.cpp:
+	.text       start:0x0001CD38 end:0x0001CD44
+
+mo_fighter/ft_dedede/ft_dedede_function_1cd44.cpp:
+	.text       start:0x0001CD44 end:0x0001CD50
+
 mo_fighter/ft_dedede/ft_dedede_function_1eccc.cpp:
 	.text       start:0x0001ECCC end:0x0001EE88
+
+mo_fighter/ft_dedede/ft_dedede_function_1f228.cpp:
+	.text       start:0x0001F228 end:0x0001F234
 
 mo_fighter/ft_dedede/ft_dedede_function_1f234.cpp:
 	.text       start:0x0001F234 end:0x0001F2EC
@@ -1418,11 +1640,17 @@ mo_fighter/ft_dedede/ft_dedede_function_21a40.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_21b10.cpp:
 	.text       start:0x00021B10 end:0x00021B14
 
+mo_fighter/ft_dedede/ft_dedede_function_21b14.cpp:
+	.text       start:0x00021B14 end:0x00021B24
+
 mo_fighter/ft_dedede/ft_dedede_function_21b38.cpp:
 	.text       start:0x00021B38 end:0x00021B3C
 
 mo_fighter/ft_dedede/ft_dedede_function_21b3c.cpp:
 	.text       start:0x00021B3C end:0x00021B44
+
+mo_fighter/ft_dedede/ft_dedede_function_21b44.cpp:
+	.text       start:0x00021B44 end:0x00021B50
 
 mo_fighter/ft_dedede/ft_dedede_function_21bd4.cpp:
 	.text       start:0x00021BD4 end:0x00021BD8
@@ -1462,6 +1690,9 @@ mo_fighter/ft_dedede/ft_dedede_function_21f50.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_21fe0.cpp:
 	.text       start:0x00021FE0 end:0x00021FE8
+
+mo_fighter/ft_dedede/ft_dedede_function_21fe8.cpp:
+	.text       start:0x00021FE8 end:0x00021FF4
 
 mo_fighter/ft_dedede/ft_dedede_function_21ff4.cpp:
 	.text       start:0x00021FF4 end:0x00021FFC
@@ -1525,6 +1756,9 @@ mo_fighter/ft_dedede/ft_dedede_function_22cf0.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_22eb4.cpp:
 	.text       start:0x00022EB4 end:0x00022EF4
 
+mo_fighter/ft_dedede/ft_dedede_function_22f3c.cpp:
+	.text       start:0x00022F3C end:0x00022F4C
+
 mo_fighter/ft_dedede/ft_dedede_function_22f4c.cpp:
 	.text       start:0x00022F4C end:0x0002322C
 
@@ -1543,6 +1777,12 @@ mo_fighter/ft_dedede/ft_dedede_function_23880.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_239bc.cpp:
 	.text       start:0x000239BC end:0x00023AAC
 
+mo_fighter/ft_dedede/ft_dedede_function_23b34.cpp:
+	.text       start:0x00023B34 end:0x00023B44
+
+mo_fighter/ft_dedede/ft_dedede_function_23b44.cpp:
+	.text       start:0x00023B44 end:0x00023B50
+
 mo_fighter/ft_dedede/ft_dedede_function_23b50.cpp:
 	.text       start:0x00023B50 end:0x00023CC0
 
@@ -1557,6 +1797,9 @@ mo_fighter/ft_dedede/ft_dedede_function_23d1c.cpp:
 
 mo_fighter/ft_dedede/ft_dedede_function_23d24.cpp:
 	.text       start:0x00023D24 end:0x00023D2C
+
+mo_fighter/ft_dedede/ft_dedede_function_23d2c.cpp:
+	.text       start:0x00023D2C end:0x00023D38
 
 mo_fighter/ft_dedede/ft_dedede_function_23d38.cpp:
 	.text       start:0x00023D38 end:0x00023D40
@@ -1591,6 +1834,9 @@ mo_fighter/ft_dedede/ft_dedede_function_23d6c.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_23d70.cpp:
 	.text       start:0x00023D70 end:0x00023D78
 
+mo_fighter/ft_dedede/ft_dedede_function_23d78.cpp:
+	.text       start:0x00023D78 end:0x00023D84
+
 mo_fighter/ft_dedede/ft_dedede_function_23d84.cpp:
 	.text       start:0x00023D84 end:0x00023D8C
 
@@ -1606,8 +1852,20 @@ mo_fighter/ft_dedede/ft_dedede_function_23d9c.cpp:
 mo_fighter/ft_dedede/ft_dedede_function_23da0.cpp:
 	.text       start:0x00023DA0 end:0x00023DA4
 
+mo_fighter/ft_dedede/ft_dedede_function_23da4.cpp:
+	.text       start:0x00023DA4 end:0x00023DB0
+
+mo_fighter/ft_dedede/ft_dedede_function_23db0.cpp:
+	.text       start:0x00023DB0 end:0x00023DBC
+
+mo_fighter/ft_dedede/ft_dedede_function_23dbc.cpp:
+	.text       start:0x00023DBC end:0x00023DC8
+
 mo_fighter/ft_dedede/ft_dedede_function_23dc8.cpp:
 	.text       start:0x00023DC8 end:0x00023DD0
+
+mo_fighter/ft_dedede/ft_dedede_function_23e58.cpp:
+	.text       start:0x00023E58 end:0x00023E68
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x00023E68 end:0x00023F04
