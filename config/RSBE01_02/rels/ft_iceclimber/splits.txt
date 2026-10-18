@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_iceclimber/ft_iceclimber_function_1950.cpp:
+	.text       start:0x00001950 end:0x000019F0
+
 mo_fighter/ft_iceclimber/ft_iceclimber_function_1d90.cpp:
 	.text       start:0x00001D90 end:0x00001DD0
 
@@ -940,6 +943,9 @@ mo_fighter/ft_iceclimber/ft_iceclimber_function_1881c.cpp:
 
 mo_fighter/ft_iceclimber/ft_iceclimber_function_18824.cpp:
 	.text       start:0x00018824 end:0x0001882C
+
+mo_fighter/ft_iceclimber/ft_iceclimber_function_1acb0.cpp:
+	.text       start:0x0001ACB0 end:0x0001AD50
 
 mo_fighter/ft_iceclimber/ft_iceclimber_function_1bafc.cpp:
 	.text       start:0x0001BAFC end:0x0001BB00
