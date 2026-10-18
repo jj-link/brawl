@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_3bc.cpp:
+	.text       start:0x000003BC end:0x000003C8
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_4160.cpp:
 	.text       start:0x00004160 end:0x00004164
 
@@ -14,6 +17,12 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_4164.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_4168.cpp:
 	.text       start:0x00004168 end:0x0000416C
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_5e50.cpp:
+	.text       start:0x00005E50 end:0x00006050
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_6470.cpp:
+	.text       start:0x00006470 end:0x0000647C
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_85ac.cpp:
 	.text       start:0x000085AC end:0x000085CC
@@ -110,6 +119,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_1ef40.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_1ef44.cpp:
 	.text       start:0x0001EF44 end:0x0001EF48
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_1ef48.cpp:
+	.text       start:0x0001EF48 end:0x0001EF54
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_1ef54.cpp:
 	.text       start:0x0001EF54 end:0x0001EF58
@@ -273,11 +285,17 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_32298.cpp:
 mo_menu_main/sora_menu_main/sora_menu_main_function_35f7c.cpp:
 	.text       start:0x00035F7C end:0x00035FDC
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_36908.cpp:
+	.text       start:0x00036908 end:0x00036914
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_36914.cpp:
 	.text       start:0x00036914 end:0x0003691C
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_3691c.cpp:
 	.text       start:0x0003691C end:0x00036934
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_36934.cpp:
+	.text       start:0x00036934 end:0x00036940
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_36d28.cpp:
 	.text       start:0x00036D28 end:0x00036D40
@@ -300,6 +318,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_39eb4.cpp:
 mo_menu_main/sora_menu_main/sora_menu_main_function_39f9c.cpp:
 	.text       start:0x00039F9C end:0x00039FB4
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_3a308.cpp:
+	.text       start:0x0003A308 end:0x0003A314
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_3bf08.cpp:
 	.text       start:0x0003BF08 end:0x0003BF0C
 
@@ -308,6 +329,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_3cba4.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_3cbac.cpp:
 	.text       start:0x0003CBAC end:0x0003CBB4
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_3d1ac.cpp:
+	.text       start:0x0003D1AC end:0x0003D1B8
 
 mo_menu/mo_menu.cpp:
 	.text       start:0x0003D1B8 end:0x0003D254
