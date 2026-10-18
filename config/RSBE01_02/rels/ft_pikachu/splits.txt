@@ -6,67 +6,31 @@ Sections:
 	.data       type:data align:8
 	.bss        type:bss align:8
 
-mo_fighter/ft_pikachu/ft_pikachu_function_11190.cpp:
-	.text       start:0x00011190 end:0x00011344
-
-mo_fighter/ft_pikachu/ft_pikachu_function_4c34.cpp:
-	.text       start:0x00004C34 end:0x00004D60
-
-mo_fighter/ft_pikachu/ft_pikachu_event_aggregate_destructor.cpp:
-	.text       start:0x00007230 end:0x00007374
-
-mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_size.cpp:
-	.text       start:0x00018CA8 end:0x00018E2C
-	.data       start:0x0000919C end:0x000091E0 align:4 rename:.data$pikachu18CA8
-
-mo_fighter/ft_pikachu/ft_pikachu_function_18e2c.cpp:
-	.text       start:0x00018E2C end:0x00019004
-	.data       start:0x000091E0 end:0x00009224 align:4 rename:.data$pikachu18E2C
-
-mo_fighter/ft_pikachu/ft_pikachu_function_e8d0.cpp:
-	.text       start:0x0000E8D0 end:0x0000EA24
-
-mo_fighter/ft_pikachu/ft_pikachu_function_e608.cpp:
-	.text       start:0x0000E608 end:0x0000E704
-
-mo_fighter/ft_pikachu/ft_pikachu_function_9708.cpp:
-	.text       start:0x00009708 end:0x0000984C
-
-mo_fighter/ft_pikachu/ft_pikachu_function_e554.cpp:
-	.text       start:0x0000E554 end:0x0000E608
-
-mo_fighter/ft_pikachu/ft_pikachu_function_df6c.cpp:
-	.text       start:0x0000DF6C end:0x0000E158
-	.data       start:0x00007344 end:0x00007364 align:4 rename:.data$pikachuDF6C
-
-mo_fighter/ft_pikachu/ft_pikachu_article_bank_traversal.cpp:
-	.text       start:0x0000B4A8 end:0x0000B59C
-
-mo_fighter/ft_pikachu/wn_pikachu_storage_aggregate_destructor.cpp:
-	.text       start:0x0000398C end:0x00003AEC
-
 global_destructor_chain.c:
 	.text       start:0x00000000 end:0x00000070
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
-mo_fighter/ft_pikachu/ft_pikachu_function_b0e0.cpp:
-	.text       start:0x0000B0E0 end:0x0000B264
-	.data       start:0x0000315C end:0x000031A0 align:4 rename:.data$pikachuB0E0
+mo_fighter/ft_pikachu/ft_pikachu_module_aggregate_destructor.cpp:
+	.text       start:0x0000288C end:0x00002B2C
 
-mo_fighter/ft_pikachu/ft_pikachu_function_10c18.cpp:
-	.text       start:0x00010C18 end:0x00010D44
+mo_fighter/ft_pikachu/wn_pikachu_large_owner_destructor.cpp:
+	.text       start:0x00003650 end:0x000038F0
 
-mo_fighter/ft_pikachu/ft_pikachu_function_10b10.cpp:
-	.text       start:0x00010B10 end:0x00010C18
+mo_fighter/ft_pikachu/wn_pikachu_storage_aggregate_destructor.cpp:
+	.text       start:0x0000398C end:0x00003AEC
 
-mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp:
-	.text       start:0x00010510 end:0x00010B10
-	.rodata     start:0x00000070 end:0x00000078
+mo_fighter/ft_pikachu/wn_pikachu_storage_buffer_destructor.cpp:
+	.text       start:0x00003CF8 end:0x00003F10
 
-mo_fighter/ft_pikachu/ft_pikachu_function_81d4.cpp:
-	.text       start:0x000081D4 end:0x0000855C
-	.data       start:0x00000000 end:0x00000004 align:4
+mo_fighter/ft_pikachu/ft_pikachu_function_4c34.cpp:
+	.text       start:0x00004C34 end:0x00004D60
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_destructor.cpp:
+	.text       start:0x00005034 end:0x00005384
+
+mo_fighter/ft_pikachu/ft_pikachu_event_aggregate_destructor.cpp:
+	.text       start:0x00007230 end:0x00007374
 
 mo_fighter/ft_pikachu/ft_pikachu_event_storage.cpp:
 	.text       start:0x00007454 end:0x000077A8
@@ -74,26 +38,36 @@ mo_fighter/ft_pikachu/ft_pikachu_event_storage.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_7898.cpp:
 	.text       start:0x00007898 end:0x00007A34
 
-mo_fighter/ft_pikachu/ft_pikachu_function_11624.cpp:
-	.text       start:0x00011624 end:0x0001187C
+mo_fighter/ft_pikachu/ft_pikachu_function_81d4.cpp:
+	.text       start:0x000081D4 end:0x0000855C
+	.data       start:0x00000000 end:0x00000004 align:4
 
-mo_fighter/ft_pikachu/ft_pikachu_function_1187c.cpp:
-	.text       start:0x0001187C end:0x00011A08
+mo_fighter/ft_pikachu/ft_pikachu_function_9708.cpp:
+	.text       start:0x00009708 end:0x0000984C
 
-mo_fighter/ft_pikachu/ft_pikachu_function_11a08.cpp:
-	.text       start:0x00011A08 end:0x00011B2C
+mo_fighter/ft_pikachu/ft_pikachu_observer_byte_accessor.cpp:
+	.text       start:0x00009C28 end:0x00009C30
 
-mo_fighter/ft_pikachu/wn_pikachu_vortex_destructor.cpp:
-	.text       start:0x00005034 end:0x00005384
+mo_fighter/ft_pikachu/ft_pikachu_observer_registration_group.cpp:
+	.text       start:0x00009C34 end:0x00009C70
 
-mo_fighter/ft_pikachu/ft_pikachu_module_aggregate_destructor.cpp:
-	.text       start:0x0000288C end:0x00002B2C
+mo_fighter/ft_pikachu/ft_pikachu_function_a2c8.cpp:
+	.text       start:0x0000A2C8 end:0x0000A3F4
 
-mo_fighter/ft_pikachu/ft_pikachu_function_13724.cpp:
-	.text       start:0x00013724 end:0x000138B0
+mo_fighter/ft_pikachu/ft_pikachu_article_allocate.cpp:
+	.text       start:0x0000A548 end:0x0000AAC8
+	.data       start:0x00003090 end:0x000030D4 align:4 rename:.data$pikachuA548
 
-mo_fighter/ft_pikachu/ft_pikachu_special_hi_kinetic_reset.cpp:
-	.text       start:0x0000F5D0 end:0x0000FA14
+mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp:
+	.text       start:0x0000AAC8 end:0x0000AD94
+	.data       start:0x000030D4 end:0x00003118 align:4 rename:.data$pikachuAAC8
+
+mo_fighter/ft_pikachu/ft_pikachu_function_b0e0.cpp:
+	.text       start:0x0000B0E0 end:0x0000B264
+	.data       start:0x0000315C end:0x000031A0 align:4 rename:.data$pikachuB0E0
+
+mo_fighter/ft_pikachu/ft_pikachu_article_bank_traversal.cpp:
+	.text       start:0x0000B4A8 end:0x0000B59C
 
 mo_fighter/ft_pikachu/ft_pikachu_energy_activation.cpp:
 	.text       start:0x0000C558 end:0x0000C6B4
@@ -104,55 +78,53 @@ mo_fighter/ft_pikachu/ft_pikachu_kinetic_mediator_update.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_c948.cpp:
 	.text       start:0x0000C948 end:0x0000CA70
 
-mo_fighter/ft_pikachu/ft_pikachu_function_da34.cpp:
-	.text       start:0x0000DA34 end:0x0000DC20
-	.data       start:0x00007304 end:0x00007324 align:4 rename:.data$pikachuDA34
-
-mo_fighter/ft_pikachu/ft_pikachu_function_d798.cpp:
-	.text       start:0x0000D798 end:0x0000D984
-	.data       start:0x000072E4 end:0x00007304 align:4 rename:.data$pikachuD798
-
-mo_fighter/ft_pikachu/ft_pikachu_function_d264.cpp:
-	.text       start:0x0000D264 end:0x0000D44C
-	.data       start:0x000072A4 end:0x000072C4 align:4 rename:.data$pikachuD264
-
-mo_fighter/ft_pikachu/ft_pikachu_function_dcd0.cpp:
-	.text       start:0x0000DCD0 end:0x0000DEBC
-	.data       start:0x00007324 end:0x00007344 align:4 rename:.data$pikachuDCD0
-
-mo_fighter/ft_pikachu/ft_pikachu_function_cfc8.cpp:
-	.text       start:0x0000CFC8 end:0x0000D1B4
-	.data       start:0x00007284 end:0x000072A4 align:4 rename:.data$pikachuCFC8
-
-mo_fighter/ft_pikachu/ft_pikachu_storage_vertical_range.cpp:
-	.text       start:0x000145A0 end:0x000146E8
-
-mo_fighter/ft_pikachu/ft_pikachu_energy_d4fc_update.cpp:
-	.text       start:0x0000D4FC end:0x0000D6E8
-	.data       start:0x000072C4 end:0x000072E4 align:4 rename:.data$pikachuD4FC
-
-mo_fighter/ft_pikachu/ft_pikachu_root_transform.cpp:
-	.text       start:0x00014328 end:0x0001448C
-	.data       start:0x00007BE0 end:0x00007BE4 align:4 rename:.data$pikachu14328
+mo_fighter/ft_pikachu/ft_pikachu_energy_dynamic_update.cpp:
+	.text       start:0x0000CA70 end:0x0000CCDC
+	.data       start:0x00007244 end:0x00007264 align:4 rename:.data$pikachuCA70
 
 mo_fighter/ft_pikachu/ft_pikachu_energy_update_cd2c.cpp:
 	.text       start:0x0000CD2C end:0x0000CF18
 	.data       start:0x00007264 end:0x00007284 align:4 rename:.data$pikachuCD2C
 
-mo_fighter/ft_pikachu/ft_pikachu_energy_dynamic_update.cpp:
-	.text       start:0x0000CA70 end:0x0000CCDC
-	.data       start:0x00007244 end:0x00007264 align:4 rename:.data$pikachuCA70
+mo_fighter/ft_pikachu/ft_pikachu_function_cfc8.cpp:
+	.text       start:0x0000CFC8 end:0x0000D1B4
+	.data       start:0x00007284 end:0x000072A4 align:4 rename:.data$pikachuCFC8
 
-mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp:
-	.text       start:0x0000AAC8 end:0x0000AD94
-	.data       start:0x000030D4 end:0x00003118 align:4 rename:.data$pikachuAAC8
+mo_fighter/ft_pikachu/ft_pikachu_function_d264.cpp:
+	.text       start:0x0000D264 end:0x0000D44C
+	.data       start:0x000072A4 end:0x000072C4 align:4 rename:.data$pikachuD264
 
-mo_fighter/ft_pikachu/ft_pikachu_function_a2c8.cpp:
-	.text       start:0x0000A2C8 end:0x0000A3F4
+mo_fighter/ft_pikachu/ft_pikachu_energy_d4fc_update.cpp:
+	.text       start:0x0000D4FC end:0x0000D6E8
+	.data       start:0x000072C4 end:0x000072E4 align:4 rename:.data$pikachuD4FC
 
-mo_fighter/ft_pikachu/ft_pikachu_article_allocate.cpp:
-	.text       start:0x0000A548 end:0x0000AAC8
-	.data       start:0x00003090 end:0x000030D4 align:4 rename:.data$pikachuA548
+mo_fighter/ft_pikachu/ft_pikachu_function_d798.cpp:
+	.text       start:0x0000D798 end:0x0000D984
+	.data       start:0x000072E4 end:0x00007304 align:4 rename:.data$pikachuD798
+
+mo_fighter/ft_pikachu/ft_pikachu_function_da34.cpp:
+	.text       start:0x0000DA34 end:0x0000DC20
+	.data       start:0x00007304 end:0x00007324 align:4 rename:.data$pikachuDA34
+
+mo_fighter/ft_pikachu/ft_pikachu_function_dcd0.cpp:
+	.text       start:0x0000DCD0 end:0x0000DEBC
+	.data       start:0x00007324 end:0x00007344 align:4 rename:.data$pikachuDCD0
+
+mo_fighter/ft_pikachu/ft_pikachu_function_df6c.cpp:
+	.text       start:0x0000DF6C end:0x0000E158
+	.data       start:0x00007344 end:0x00007364 align:4 rename:.data$pikachuDF6C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_e554.cpp:
+	.text       start:0x0000E554 end:0x0000E608
+
+mo_fighter/ft_pikachu/ft_pikachu_function_e608.cpp:
+	.text       start:0x0000E608 end:0x0000E704
+
+mo_fighter/ft_pikachu/ft_pikachu_function_e704.cpp:
+	.text       start:0x0000E704 end:0x0000E878
+
+mo_fighter/ft_pikachu/ft_pikachu_function_e8d0.cpp:
+	.text       start:0x0000E8D0 end:0x0000EA24
 
 mo_fighter/ft_pikachu/ft_pikachu_quick_attack_gravity_update.cpp:
 	.text       start:0x0000EA24 end:0x0000EB60
@@ -160,33 +132,53 @@ mo_fighter/ft_pikachu/ft_pikachu_quick_attack_gravity_update.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_quick_attack_start.cpp:
 	.text       start:0x0000EB60 end:0x0000F034
 
-mo_fighter/ft_pikachu/ft_pikachu_observer_byte_accessor.cpp:
-	.text       start:0x00009C28 end:0x00009C30
+mo_fighter/ft_pikachu/ft_pikachu_special_hi_kinetic_reset.cpp:
+	.text       start:0x0000F5D0 end:0x0000FA14
 
-mo_fighter/ft_pikachu/ft_pikachu_observer_registration_group.cpp:
-	.text       start:0x00009C34 end:0x00009C70
+mo_fighter/ft_pikachu/ft_pikachu_function_10114.cpp:
+	.text       start:0x00010114 end:0x00010474
+
+mo_fighter/ft_pikachu/ft_pikachu_function_10660.cpp:
+	.text       start:0x00010510 end:0x00010B10
+	.rodata     start:0x00000070 end:0x00000078
+
+mo_fighter/ft_pikachu/ft_pikachu_function_10b10.cpp:
+	.text       start:0x00010B10 end:0x00010C18
+
+mo_fighter/ft_pikachu/ft_pikachu_function_10c18.cpp:
+	.text       start:0x00010C18 end:0x00010D44
+
+mo_fighter/ft_pikachu/ft_pikachu_function_11190.cpp:
+	.text       start:0x00011190 end:0x00011344
+
+mo_fighter/ft_pikachu/ft_pikachu_function_11624.cpp:
+	.text       start:0x00011624 end:0x0001187C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_1187c.cpp:
+	.text       start:0x0001187C end:0x00011A08
+
+mo_fighter/ft_pikachu/ft_pikachu_function_11a08.cpp:
+	.text       start:0x00011A08 end:0x00011B2C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_13724.cpp:
+	.text       start:0x00013724 end:0x000138B0
+
+mo_fighter/ft_pikachu/ft_pikachu_root_transform.cpp:
+	.text       start:0x00014328 end:0x0001448C
+	.data       start:0x00007BE0 end:0x00007BE4 align:4 rename:.data$pikachu14328
+
+mo_fighter/ft_pikachu/ft_pikachu_storage_vertical_range.cpp:
+	.text       start:0x000145A0 end:0x000146E8
 
 mo_fighter/ft_pikachu/ft_pikachu_final_position.cpp:
 	.text       start:0x0001525C end:0x000157D4
 	.rodata     start:0x000000C0 end:0x000000C8 align:4
 
-mo_fighter/ft_pikachu/ft_pikachu_function_e704.cpp:
-	.text       start:0x0000E704 end:0x0000E878
-
-mo_fighter/ft_pikachu/ft_pikachu_function_10114.cpp:
-	.text       start:0x00010114 end:0x00010474
-
 mo_fighter/ft_pikachu/wn_pikachu_owner_destructor.cpp:
 	.text       start:0x000170B0 end:0x00017140
 
-mo_fighter/ft_pikachu/wn_pikachu_large_owner_destructor.cpp:
-	.text       start:0x00003650 end:0x000038F0
-
 mo_fighter/ft_pikachu/wn_pikachu_storage_destructors.cpp:
 	.text       start:0x00017140 end:0x00017350
-
-mo_fighter/ft_pikachu/wn_pikachu_storage_buffer_destructor.cpp:
-	.text       start:0x00003CF8 end:0x00003F10
 
 mo_fighter/ft_pikachu/wn_pikachu_storage_component_destructors.cpp:
 	.text       start:0x00017350 end:0x000175D4
@@ -248,16 +240,24 @@ mo_fighter/ft_pikachu/wn_pikachu_collision_log_reference.cpp:
 mo_fighter/ft_pikachu/wn_pikachu_storage_position_dispatch.cpp:
 	.text       start:0x00018494 end:0x0001856C
 
-mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp:
-	.text       start:0x000188A8 end:0x00018A98
-	.data       start:0x00009114 end:0x00009158 align:4 rename:.data$pikachu188A8
-
 mo_fighter/ft_pikachu/wn_pikachu_storage_float_forward.cpp:
 	.text       start:0x0001856C end:0x000185A8
 
 mo_fighter/ft_pikachu/wn_pikachu_vortex_article_allocate.cpp:
 	.text       start:0x000185A8 end:0x000188A8
 	.data       start:0x000090D0 end:0x00009114 align:4 rename:.data$pikachu185A8
+
+mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp:
+	.text       start:0x000188A8 end:0x00018A98
+	.data       start:0x00009114 end:0x00009158 align:4 rename:.data$pikachu188A8
+
+mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_size.cpp:
+	.text       start:0x00018CA8 end:0x00018E2C
+	.data       start:0x0000919C end:0x000091E0 align:4 rename:.data$pikachu18CA8
+
+mo_fighter/ft_pikachu/ft_pikachu_function_18e2c.cpp:
+	.text       start:0x00018E2C end:0x00019004
+	.data       start:0x000091E0 end:0x00009224 align:4 rename:.data$pikachu18E2C
 
 mo_fighter/ft_pikachu/wn_pikachu_vortex_storage_availability.cpp:
 	.text       start:0x00019004 end:0x00019078

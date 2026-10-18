@@ -25,38 +25,6 @@ mo_fighter/ft_mario/ft_mario_status_uniq_process_special_s.cpp:
 	.data       start:0x00007828 end:0x000078E8
 	.bss        start:0x000001F8 end:0x00000208
 
-mo_fighter/mo_fighter.cpp:
-	.text       start:0x000194DC end:0x00019578
-	.data       start:0x0000A068 end:0x0000A077
-
-home_button_icon.cpp:
-	.data       start:0x0000A080 end:0x0000B940
-
-mo_fighter/ft_mario/ft_mario_mantle_leaf.cpp:
-	.text       start:0x0000FF8C end:0x0000FFFC
-
-mo_fighter/ft_mario/ft_mario_mantle_destructors.cpp:
-	.text       start:0x00010080 end:0x00010100
-
-mo_fighter/ft_mario/ft_mario_mantle_interface.cpp:
-	.text       start:0x00010100 end:0x00010174
-
-mo_fighter/ft_mario/ft_mario_scalar_multiplier.cpp:
-	.text       start:0x00010174 end:0x000101B8
-
-mo_fighter/ft_mario/ft_mario_adapter_callbacks.cpp:
-	.text       start:0x000101B8 end:0x00010268
-
-
-mo_fighter/ft_mario/ft_mario_parameter_dispatch.cpp:
-	.text       start:0x00010268 end:0x000102D8
-
-mo_fighter/ft_mario/ft_mario_parameter_accessors.cpp:
-	.text       start:0x000102D8 end:0x00010338
-
-mo_fighter/ft_mario/ft_mario_parameter_defaults.cpp:
-	.text       start:0x00010338 end:0x000103D4
-
 mo_fighter/ft_mario/ft_mario_mantle_teardown.cpp:
 	.text       start:0x0000F9D4 end:0x0000FAA0
 
@@ -72,8 +40,32 @@ mo_fighter/ft_mario/ft_mario_mantle_parameter_constructor.cpp:
 mo_fighter/ft_mario/ft_mario_mantle_initialize.cpp:
 	.text       start:0x0000FE5C end:0x0000FF8C
 
+mo_fighter/ft_mario/ft_mario_mantle_leaf.cpp:
+	.text       start:0x0000FF8C end:0x0000FFFC
+
 mo_fighter/ft_mario/ft_mario_mantle_singleton.cpp:
 	.text       start:0x0000FFFC end:0x00010080
+
+mo_fighter/ft_mario/ft_mario_mantle_destructors.cpp:
+	.text       start:0x00010080 end:0x00010100
+
+mo_fighter/ft_mario/ft_mario_mantle_interface.cpp:
+	.text       start:0x00010100 end:0x00010174
+
+mo_fighter/ft_mario/ft_mario_scalar_multiplier.cpp:
+	.text       start:0x00010174 end:0x000101B8
+
+mo_fighter/ft_mario/ft_mario_adapter_callbacks.cpp:
+	.text       start:0x000101B8 end:0x00010268
+
+mo_fighter/ft_mario/ft_mario_parameter_dispatch.cpp:
+	.text       start:0x00010268 end:0x000102D8
+
+mo_fighter/ft_mario/ft_mario_parameter_accessors.cpp:
+	.text       start:0x000102D8 end:0x00010338
+
+mo_fighter/ft_mario/ft_mario_parameter_defaults.cpp:
+	.text       start:0x00010338 end:0x000103D4
 
 mo_fighter/ft_mario/ft_mario_parameter_singleton.cpp:
 	.text       start:0x000103D4 end:0x00010480
@@ -125,6 +117,9 @@ mo_fighter/ft_mario/ft_mario_article_second_submodule_teardown.cpp:
 mo_fighter/ft_mario/ft_mario_article_transform_helpers.cpp:
 	.text       start:0x00016908 end:0x00016A20
 
+mo_fighter/ft_mario/ft_mario_article_reflect_speed.cpp:
+	.text       start:0x00016A20 end:0x00016B14
+
 mo_fighter/ft_mario/ft_mario_article_second_resource_helpers.cpp:
 	.text       start:0x00016B14 end:0x00016B94
 
@@ -138,9 +133,6 @@ mo_fighter/ft_mario/ft_mario_article_second_global_initialize.cpp:
 	.text       start:0x00016D54 end:0x00016DEC
 	.ctors      start:0x00000014 end:0x00000018
 	.bss        start:0x00000398 end:0x000003A8
-
-mo_fighter/ft_mario/ft_mario_article_reflect_speed.cpp:
-	.text       start:0x00016A20 end:0x00016B14
 
 mo_fighter/ft_mario/ft_mario_article_third_teardown.cpp:
 	.text       start:0x000185F4 end:0x000189AC
@@ -171,3 +163,10 @@ mo_fighter/ft_mario/ft_mario_article_third_node_work.cpp:
 
 mo_fighter/ft_mario/ft_mario_article_third_ground_effect.cpp:
 	.text       start:0x00019184 end:0x000192D0
+
+mo_fighter/mo_fighter.cpp:
+	.text       start:0x000194DC end:0x00019578
+	.data       start:0x0000A068 end:0x0000A077
+
+home_button_icon.cpp:
+	.data       start:0x0000A080 end:0x0000B940
