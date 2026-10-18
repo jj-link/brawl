@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_captain, ft_diddy and 6 more: 2000 template functions
+
+- Matched 2000 functions in `ft_captain, ft_diddy and 6 more` with decomp-orchestrator's template solver (adjust_return 80, const_return 295, empty 718, getter 154, setter 66, tail_call 2, thunk 685).
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_dedede: 257 template functions
 
 - Matched 257 functions in `ft_dedede` with decomp-orchestrator's template solver (adjust_return 2, const_return 37, empty 108, getter 15, setter 9, tail_call 5, thunk 81).
