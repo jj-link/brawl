@@ -6,8 +6,14 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_37c.cpp:
+	.text       start:0x0000037C end:0x000003BC
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_3bc.cpp:
 	.text       start:0x000003BC end:0x000003C8
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_300c.cpp:
+	.text       start:0x0000300C end:0x0000304C
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_4160.cpp:
 	.text       start:0x00004160 end:0x00004164
@@ -24,6 +30,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_5e50.cpp:
 mo_menu_main/sora_menu_main/sora_menu_main_function_6470.cpp:
 	.text       start:0x00006470 end:0x0000647C
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_668c.cpp:
+	.text       start:0x0000668C end:0x0000678C
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_85ac.cpp:
 	.text       start:0x000085AC end:0x000085CC
 
@@ -35,6 +44,12 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_9bc0.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_9f34.cpp:
 	.text       start:0x00009F34 end:0x00009F3C
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_ca90.cpp:
+	.text       start:0x0000CA90 end:0x0000CB10
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_df90.cpp:
+	.text       start:0x0000DF90 end:0x0000E010
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_12f48.cpp:
 	.text       start:0x00012F48 end:0x00012F50
@@ -174,6 +189,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_2393c.cpp:
 mo_menu_main/sora_menu_main/sora_menu_main_function_23940.cpp:
 	.text       start:0x00023940 end:0x00023960
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_24dd0.cpp:
+	.text       start:0x00024DD0 end:0x00024DE0
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_25b90.cpp:
 	.text       start:0x00025B90 end:0x00025BA8
 
@@ -200,6 +218,9 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_26980.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_269b4.cpp:
 	.text       start:0x000269B4 end:0x000269B8
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_269b8.cpp:
+	.text       start:0x000269B8 end:0x00026A38
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_27380.cpp:
 	.text       start:0x00027380 end:0x00027384
