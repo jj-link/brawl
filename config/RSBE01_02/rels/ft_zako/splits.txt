@@ -11,6 +11,12 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_zako/ft_zako_function_1c0c.cpp:
+	.text       start:0x00001C0C end:0x00001C4C
+
+mo_fighter/ft_zako/ft_zako_function_1ca8.cpp:
+	.text       start:0x00001CA8 end:0x00001CE8
+
 mo_fighter/ft_zako/ft_zako_function_1ce8.cpp:
 	.text       start:0x00001CE8 end:0x00001D68
 
@@ -260,6 +266,9 @@ mo_fighter/ft_zako/ft_zako_function_72b8.cpp:
 mo_fighter/ft_zako/ft_zako_function_72c0.cpp:
 	.text       start:0x000072C0 end:0x000072C8
 
+mo_fighter/ft_zako/ft_zako_function_72c8.cpp:
+	.text       start:0x000072C8 end:0x000072D8
+
 mo_fighter/ft_zako/ft_zako_function_7388.cpp:
 	.text       start:0x00007388 end:0x00007390
 
@@ -316,6 +325,9 @@ mo_fighter/ft_zako/ft_zako_function_759c.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_75b4.cpp:
 	.text       start:0x000075B4 end:0x000075CC
+
+mo_fighter/ft_zako/ft_zako_function_75cc.cpp:
+	.text       start:0x000075CC end:0x000075DC
 
 mo_fighter/ft_zako/ft_zako_function_75ec.cpp:
 	.text       start:0x000075EC end:0x000075F4

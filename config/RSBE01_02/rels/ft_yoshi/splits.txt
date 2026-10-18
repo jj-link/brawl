@@ -14,6 +14,12 @@ global_destructor_chain.c:
 mo_fighter/ft_yoshi/ft_yoshi_function_1aa4.cpp:
 	.text       start:0x00001AA4 end:0x00001B44
 
+mo_fighter/ft_yoshi/ft_yoshi_function_1ee4.cpp:
+	.text       start:0x00001EE4 end:0x00001F24
+
+mo_fighter/ft_yoshi/ft_yoshi_function_1f80.cpp:
+	.text       start:0x00001F80 end:0x00001FC0
+
 mo_fighter/ft_yoshi/ft_yoshi_function_1fc0.cpp:
 	.text       start:0x00001FC0 end:0x00002040
 
@@ -119,11 +125,17 @@ mo_fighter/ft_yoshi/ft_yoshi_function_9ca8.cpp:
 mo_fighter/ft_yoshi/ft_yoshi_function_a054.cpp:
 	.text       start:0x0000A054 end:0x0000A058
 
+mo_fighter/ft_yoshi/ft_yoshi_function_a108.cpp:
+	.text       start:0x0000A108 end:0x0000A118
+
 mo_fighter/ft_yoshi/ft_yoshi_function_a118.cpp:
 	.text       start:0x0000A118 end:0x0000A11C
 
 mo_fighter/ft_yoshi/ft_yoshi_function_a8b4.cpp:
 	.text       start:0x0000A8B4 end:0x0000A8BC
+
+mo_fighter/ft_yoshi/ft_yoshi_function_abb4.cpp:
+	.text       start:0x0000ABB4 end:0x0000ABC4
 
 mo_fighter/ft_yoshi/ft_yoshi_function_af98.cpp:
 	.text       start:0x0000AF98 end:0x0000AFA0

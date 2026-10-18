@@ -1,0 +1,31 @@
+#pragma force_active on
+struct St54Obj {
+    char pad0[0x24];
+    float f24;
+    float f28;
+    float f2c;
+    char pad1[0x38 - 0x30];
+    unsigned int f38;
+    char rest[0x68 - 0x3C];
+};
+
+extern "C" {
+extern signed char lbl_54_bss_70;
+extern St54Obj lbl_54_bss_78;
+extern unsigned char lbl_54_bss_40[];
+extern float lbl_54_rodata_8C;
+void fn_54_4C18(void);
+void* __register_global_object(void*, void*, void*);
+
+void* fn_54_63C8(void) {
+    if (lbl_54_bss_70 == 0) {
+        lbl_54_bss_78.f24 = lbl_54_rodata_8C;
+        lbl_54_bss_78.f28 = lbl_54_rodata_8C;
+        lbl_54_bss_78.f2c = lbl_54_rodata_8C;
+        lbl_54_bss_78.f38 = lbl_54_bss_78.f38 & ~31u;
+        __register_global_object(&lbl_54_bss_78, (void*)fn_54_4C18, lbl_54_bss_40);
+        lbl_54_bss_70 = 1;
+    }
+    return &lbl_54_bss_78;
+}
+}

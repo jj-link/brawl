@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_scene/sora_scene/sora_scene_function_464.cpp:
+	.text       start:0x00000464 end:0x00000470
+
 mo_scene/sora_scene/sora_scene_function_670.cpp:
 	.text       start:0x00000670 end:0x00000678
 
@@ -28,8 +31,14 @@ mo_scene/sora_scene/sc_tutorial.cpp:
 mo_scene/sora_scene/sora_scene_function_40d8.cpp:
 	.text       start:0x000040D8 end:0x000040E0
 
+mo_scene/sora_scene/sora_scene_function_5018.cpp:
+	.text       start:0x00005018 end:0x00005058
+
 mo_scene/sora_scene/sora_scene_function_5190.cpp:
 	.text       start:0x00005190 end:0x00005230
+
+mo_scene/sora_scene/sora_scene_function_5e64.cpp:
+	.text       start:0x00005E64 end:0x00005E70
 
 mo_scene/sora_scene/sora_scene_function_618c.cpp:
 	.text       start:0x0000618C end:0x00006194
@@ -47,6 +56,15 @@ mo_scene/sora_scene/sora_scene_function_6a24.cpp:
 mo_scene/sora_scene/sora_scene_function_6cb4.cpp:
 	.text       start:0x00006CB4 end:0x00006CBC
 
+mo_scene/sora_scene/sora_scene_function_6d74.cpp:
+	.text       start:0x00006D74 end:0x00006D80
+
+mo_scene/sora_scene/sora_scene_function_6d94.cpp:
+	.text       start:0x00006D94 end:0x00006DA0
+
+mo_scene/sora_scene/sora_scene_function_6db4.cpp:
+	.text       start:0x00006DB4 end:0x00006DC0
+
 mo_scene/sora_scene/sora_scene_function_7058.cpp:
 	.text       start:0x00007058 end:0x00007070
 
@@ -58,6 +76,9 @@ mo_scene/sora_scene/sc_seal_disp.cpp:
 	.text       start:0x00007230 end:0x000074B4
 	.rodata     start:0x00000018 end:0x00000020
 	.data       start:0x000018D8 end:0x00001920
+
+mo_scene/sora_scene/sora_scene_function_7ee0.cpp:
+	.text       start:0x00007EE0 end:0x00007F20
 
 mo_scene/sora_scene/sora_scene_function_7f9c.cpp:
 	.text       start:0x00007F9C end:0x00007FA4
