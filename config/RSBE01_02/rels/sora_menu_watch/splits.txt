@@ -6,6 +6,12 @@ Sections:
 	.data       type:data align:8
 	.bss        type:bss align:8
 
+mo_menu_watch/sora_menu_watch/sora_menu_watch_function_0.cpp:
+	.text       start:0x00000000 end:0x00000060
+
+mo_menu_watch/sora_menu_watch/sora_menu_watch_function_b1c.cpp:
+	.text       start:0x00000B1C end:0x00000CA0
+
 mo_menu_watch/sora_menu_watch/sora_menu_watch_function_4078.cpp:
 	.text       start:0x00004078 end:0x00004090
 
