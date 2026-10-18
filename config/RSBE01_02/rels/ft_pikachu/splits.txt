@@ -342,12 +342,18 @@ mo_fighter/ft_pikachu/ft_pikachu_function_cfc8.cpp:
 	.text       start:0x0000CFC8 end:0x0000D1B4
 	.data       start:0x00007284 end:0x000072A4 align:4 rename:.data$pikachuCFC8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_d1b4.cpp:
+	.text       start:0x0000D1B4 end:0x0000D1CC
+
 mo_fighter/ft_pikachu/ft_pikachu_function_d25c.cpp:
 	.text       start:0x0000D25C end:0x0000D264
 
 mo_fighter/ft_pikachu/ft_pikachu_function_d264.cpp:
 	.text       start:0x0000D264 end:0x0000D44C
 	.data       start:0x000072A4 end:0x000072C4 align:4 rename:.data$pikachuD264
+
+mo_fighter/ft_pikachu/ft_pikachu_function_d44c.cpp:
+	.text       start:0x0000D44C end:0x0000D464
 
 mo_fighter/ft_pikachu/ft_pikachu_function_d4f4.cpp:
 	.text       start:0x0000D4F4 end:0x0000D4FC
@@ -356,12 +362,18 @@ mo_fighter/ft_pikachu/ft_pikachu_energy_d4fc_update.cpp:
 	.text       start:0x0000D4FC end:0x0000D6E8
 	.data       start:0x000072C4 end:0x000072E4 align:4 rename:.data$pikachuD4FC
 
+mo_fighter/ft_pikachu/ft_pikachu_function_d6e8.cpp:
+	.text       start:0x0000D6E8 end:0x0000D700
+
 mo_fighter/ft_pikachu/ft_pikachu_function_d790.cpp:
 	.text       start:0x0000D790 end:0x0000D798
 
 mo_fighter/ft_pikachu/ft_pikachu_function_d798.cpp:
 	.text       start:0x0000D798 end:0x0000D984
 	.data       start:0x000072E4 end:0x00007304 align:4 rename:.data$pikachuD798
+
+mo_fighter/ft_pikachu/ft_pikachu_function_d984.cpp:
+	.text       start:0x0000D984 end:0x0000D99C
 
 mo_fighter/ft_pikachu/ft_pikachu_function_da2c.cpp:
 	.text       start:0x0000DA2C end:0x0000DA34
@@ -370,6 +382,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_da34.cpp:
 	.text       start:0x0000DA34 end:0x0000DC20
 	.data       start:0x00007304 end:0x00007324 align:4 rename:.data$pikachuDA34
 
+mo_fighter/ft_pikachu/ft_pikachu_function_dc20.cpp:
+	.text       start:0x0000DC20 end:0x0000DC38
+
 mo_fighter/ft_pikachu/ft_pikachu_function_dcc8.cpp:
 	.text       start:0x0000DCC8 end:0x0000DCD0
 
@@ -377,12 +392,18 @@ mo_fighter/ft_pikachu/ft_pikachu_function_dcd0.cpp:
 	.text       start:0x0000DCD0 end:0x0000DEBC
 	.data       start:0x00007324 end:0x00007344 align:4 rename:.data$pikachuDCD0
 
+mo_fighter/ft_pikachu/ft_pikachu_function_debc.cpp:
+	.text       start:0x0000DEBC end:0x0000DED4
+
 mo_fighter/ft_pikachu/ft_pikachu_function_df64.cpp:
 	.text       start:0x0000DF64 end:0x0000DF6C
 
 mo_fighter/ft_pikachu/ft_pikachu_function_df6c.cpp:
 	.text       start:0x0000DF6C end:0x0000E158
 	.data       start:0x00007344 end:0x00007364 align:4 rename:.data$pikachuDF6C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_e158.cpp:
+	.text       start:0x0000E158 end:0x0000E170
 
 mo_fighter/ft_pikachu/ft_pikachu_function_e200.cpp:
 	.text       start:0x0000E200 end:0x0000E208

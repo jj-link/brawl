@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_captain/ft_captain_function_191c.cpp:
+	.text       start:0x0000191C end:0x000019BC
+
 mo_fighter/ft_captain/ft_captain_function_1d5c.cpp:
 	.text       start:0x00001D5C end:0x00001D9C
 
@@ -77,6 +80,9 @@ mo_fighter/ft_captain/ft_captain_function_3f74.cpp:
 mo_fighter/ft_captain/ft_captain_function_4144.cpp:
 	.text       start:0x00004144 end:0x000041A4
 
+mo_fighter/ft_captain/ft_captain_function_41a4.cpp:
+	.text       start:0x000041A4 end:0x00004204
+
 mo_fighter/ft_captain/ft_captain_function_4370.cpp:
 	.text       start:0x00004370 end:0x000043B0
 
@@ -85,6 +91,9 @@ mo_fighter/ft_captain/ft_captain_function_4648.cpp:
 
 mo_fighter/ft_captain/ft_captain_function_4688.cpp:
 	.text       start:0x00004688 end:0x000046C8
+
+mo_fighter/ft_captain/ft_captain_function_48b4.cpp:
+	.text       start:0x000048B4 end:0x00004914
 
 mo_fighter/ft_captain/ft_captain_function_49d4.cpp:
 	.text       start:0x000049D4 end:0x00004D24
@@ -703,6 +712,9 @@ mo_fighter/ft_captain/ft_captain_function_dda0.cpp:
 
 mo_fighter/ft_captain/ft_captain_function_debc.cpp:
 	.text       start:0x0000DEBC end:0x0000DEFC
+
+mo_fighter/ft_captain/ft_captain_function_e89c.cpp:
+	.text       start:0x0000E89C end:0x0000E93C
 
 mo_fighter/ft_captain/ft_captain_function_ecec.cpp:
 	.text       start:0x0000ECEC end:0x0000EFF0

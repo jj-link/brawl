@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_falco/ft_falco_function_1978.cpp:
+	.text       start:0x00001978 end:0x00001A18
+
 mo_fighter/ft_falco/ft_falco_function_1db8.cpp:
 	.text       start:0x00001DB8 end:0x00001DF8
 

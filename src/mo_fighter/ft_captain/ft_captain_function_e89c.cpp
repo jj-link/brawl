@@ -1,0 +1,37 @@
+#pragma force_active on
+extern "C" {
+int fn_100_10794(void* self, void* c);
+void fn_100_FF9C(int x);
+void fn_100_10288();
+void fn_100_1046C();
+void fn_100_FF50();
+void fn_100_10518(void* self, int x);
+void fn_100_10B74(void* self);
+void fn_100_10A4C(void* self);
+void fn_100_FC20(void* self);
+void fn_100_FCE0();
+void fn_100_10C78(int x);
+void fn_100_10774();
+void fn_100_10CEC(int x);
+void fn_100_F7F4();
+extern void* g_soWorld;
+}
+
+extern "C" void fn_100_E89C(void* a, void* obj, void* c) {
+    (void)a;
+    if (fn_100_10794(obj, c) != 0) return;
+    fn_100_FF9C(1);
+    fn_100_10288();
+    fn_100_1046C();
+    fn_100_FF50();
+    fn_100_10518(obj, 0);
+    *(unsigned char*)((char*)g_soWorld + 0xd) = 1;
+    fn_100_10B74(obj);
+    fn_100_10A4C(obj);
+    fn_100_FC20(obj);
+    fn_100_FCE0();
+    fn_100_10C78(1);
+    fn_100_10774();
+    fn_100_10CEC(0);
+    fn_100_F7F4();
+}
