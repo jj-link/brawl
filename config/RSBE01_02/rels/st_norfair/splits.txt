@@ -134,6 +134,9 @@ mo_stage/st_norfair/st_norfair_function_2a2c.cpp:
 mo_stage/st_norfair/st_norfair_function_2a38.cpp:
 	.text       start:0x00002A38 end:0x00002A44
 
+mo_stage/st_norfair/st_norfair_function_2a44.cpp:
+	.text       start:0x00002A44 end:0x00002A54
+
 mo_stage/st_norfair/st_norfair_function_2a54.cpp:
 	.text       start:0x00002A54 end:0x00002A68
 
@@ -188,6 +191,9 @@ mo_stage/st_norfair/st_norfair_function_2af8.cpp:
 mo_stage/st_norfair/st_norfair_function_2b00.cpp:
 	.text       start:0x00002B00 end:0x00002B0C
 
+mo_stage/st_norfair/st_norfair_function_2b94.cpp:
+	.text       start:0x00002B94 end:0x00002C08
+
 mo_stage/st_norfair/st_norfair_function_2c08.cpp:
 	.text       start:0x00002C08 end:0x00002C3C
 
@@ -220,6 +226,12 @@ mo_stage/st_norfair/st_norfair_function_334c.cpp:
 
 mo_stage/st_norfair/st_norfair_function_3350.cpp:
 	.text       start:0x00003350 end:0x00003354
+
+mo_stage/st_norfair/st_norfair_function_3354.cpp:
+	.text       start:0x00003354 end:0x00003364
+
+mo_stage/st_norfair/st_norfair_function_3364.cpp:
+	.text       start:0x00003364 end:0x00003374
 
 mo_stage/st_norfair/st_norfair_function_3374.cpp:
 	.text       start:0x00003374 end:0x00003380
@@ -262,6 +274,9 @@ mo_stage/st_norfair/st_norfair_function_51f4.cpp:
 
 mo_stage/st_norfair/st_norfair_function_51fc.cpp:
 	.text       start:0x000051FC end:0x00005204
+
+mo_stage/st_norfair/st_norfair_function_5204.cpp:
+	.text       start:0x00005204 end:0x00005288
 
 mo_stage/st_norfair/st_norfair_function_5288.cpp:
 	.text       start:0x00005288 end:0x000052C8
@@ -437,6 +452,9 @@ mo_stage/st_norfair/st_norfair_function_59b8.cpp:
 mo_stage/st_norfair/st_norfair_function_5a20.cpp:
 	.text       start:0x00005A20 end:0x00005A2C
 
+mo_stage/st_norfair/st_norfair_function_5a2c.cpp:
+	.text       start:0x00005A2C end:0x00005A3C
+
 mo_stage/st_norfair/st_norfair_function_5a3c.cpp:
 	.text       start:0x00005A3C end:0x00005A48
 
@@ -530,11 +548,23 @@ mo_stage/st_norfair/st_norfair_function_6598.cpp:
 mo_stage/st_norfair/st_norfair_function_65d0.cpp:
 	.text       start:0x000065D0 end:0x000065DC
 
+mo_stage/st_norfair/st_norfair_function_663c.cpp:
+	.text       start:0x0000663C end:0x00006648
+
 mo_stage/st_norfair/st_norfair_function_6648.cpp:
 	.text       start:0x00006648 end:0x00006650
 
 mo_stage/st_norfair/st_norfair_function_6660.cpp:
 	.text       start:0x00006660 end:0x00006688
+
+mo_stage/st_norfair/st_norfair_function_66f8.cpp:
+	.text       start:0x000066F8 end:0x00006720
+
+mo_stage/st_norfair/st_norfair_function_6730.cpp:
+	.text       start:0x00006730 end:0x0000673C
+
+mo_stage/st_norfair/st_norfair_function_679c.cpp:
+	.text       start:0x0000679C end:0x000067A8
 
 mo_stage/st_norfair/st_norfair_function_67a8.cpp:
 	.text       start:0x000067A8 end:0x000067B0
@@ -545,11 +575,23 @@ mo_stage/st_norfair/st_norfair_function_67c0.cpp:
 mo_stage/st_norfair/st_norfair_function_6858.cpp:
 	.text       start:0x00006858 end:0x00006880
 
+mo_stage/st_norfair/st_norfair_function_6890.cpp:
+	.text       start:0x00006890 end:0x0000689C
+
+mo_stage/st_norfair/st_norfair_function_68fc.cpp:
+	.text       start:0x000068FC end:0x00006908
+
 mo_stage/st_norfair/st_norfair_function_6908.cpp:
 	.text       start:0x00006908 end:0x00006910
 
 mo_stage/st_norfair/st_norfair_function_6920.cpp:
 	.text       start:0x00006920 end:0x00006948
+
+mo_stage/st_norfair/st_norfair_function_6958.cpp:
+	.text       start:0x00006958 end:0x00006964
+
+mo_stage/st_norfair/st_norfair_function_69c4.cpp:
+	.text       start:0x000069C4 end:0x000069D0
 
 mo_stage/st_norfair/st_norfair_function_69d0.cpp:
 	.text       start:0x000069D0 end:0x000069D8
@@ -604,6 +646,9 @@ mo_stage/st_norfair/st_norfair_function_aff0.cpp:
 
 mo_stage/st_norfair/st_norfair_function_b038.cpp:
 	.text       start:0x0000B038 end:0x0000B040
+
+mo_stage/st_norfair/st_norfair_function_b040.cpp:
+	.text       start:0x0000B040 end:0x0000B0B8
 
 mo_stage/st_norfair/st_norfair_function_b0b8.cpp:
 	.text       start:0x0000B0B8 end:0x0000B0EC
@@ -761,6 +806,9 @@ mo_stage/st_norfair/st_norfair_function_b324.cpp:
 mo_stage/st_norfair/st_norfair_function_b32c.cpp:
 	.text       start:0x0000B32C end:0x0000B334
 
+mo_stage/st_norfair/st_norfair_function_b500.cpp:
+	.text       start:0x0000B500 end:0x0000B574
+
 mo_stage/st_norfair/st_norfair_function_c170.cpp:
 	.text       start:0x0000C170 end:0x0000C1C8
 
@@ -773,8 +821,20 @@ mo_stage/st_norfair/st_norfair_function_d0f4.cpp:
 mo_stage/st_norfair/st_norfair_function_e1c0.cpp:
 	.text       start:0x0000E1C0 end:0x0000E334
 
+mo_stage/st_norfair/st_norfair_function_e3e4.cpp:
+	.text       start:0x0000E3E4 end:0x0000E3F0
+
+mo_stage/st_norfair/st_norfair_function_e3f0.cpp:
+	.text       start:0x0000E3F0 end:0x0000E3FC
+
 mo_stage/st_norfair/st_norfair_function_e41c.cpp:
 	.text       start:0x0000E41C end:0x0000E484
+
+mo_stage/st_norfair/st_norfair_function_e484.cpp:
+	.text       start:0x0000E484 end:0x0000E490
+
+mo_stage/st_norfair/st_norfair_function_e4a0.cpp:
+	.text       start:0x0000E4A0 end:0x0000E4AC
 
 mo_stage/st_norfair/st_norfair_function_e4ac.cpp:
 	.text       start:0x0000E4AC end:0x0000E4B4
@@ -806,8 +866,14 @@ mo_stage/st_norfair/st_norfair_function_e70c.cpp:
 mo_stage/st_norfair/st_norfair_function_e764.cpp:
 	.text       start:0x0000E764 end:0x0000E7D0
 
+mo_stage/st_norfair/st_norfair_function_e7d0.cpp:
+	.text       start:0x0000E7D0 end:0x0000E844
+
 mo_stage/st_norfair/st_norfair_function_efc8.cpp:
 	.text       start:0x0000EFC8 end:0x0000EFD0
+
+mo_stage/st_norfair/st_norfair_function_f16c.cpp:
+	.text       start:0x0000F16C end:0x0000F1F0
 
 mo_stage/st_norfair/st_norfair_function_100b0.cpp:
 	.text       start:0x000100B0 end:0x00010118
