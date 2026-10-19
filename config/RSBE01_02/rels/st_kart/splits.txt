@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_kart/st_kart_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_kart/st_kart_function_198.cpp:
 	.text       start:0x00000198 end:0x000001A0
 
@@ -130,6 +133,9 @@ mo_stage/st_kart/st_kart_function_11b0.cpp:
 
 mo_stage/st_kart/st_kart_function_11b8.cpp:
 	.text       start:0x000011B8 end:0x000011C0
+
+mo_stage/st_kart/st_kart_function_1298.cpp:
+	.text       start:0x00001298 end:0x000012CC
 
 mo_stage/st_kart/st_kart_function_12cc.cpp:
 	.text       start:0x000012CC end:0x000012D0

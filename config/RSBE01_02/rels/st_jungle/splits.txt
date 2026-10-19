@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_jungle/st_jungle_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_jungle/st_jungle_function_260.cpp:
 	.text       start:0x00000260 end:0x000002FC
 
@@ -199,6 +202,9 @@ mo_stage/st_jungle/st_jungle_function_2710.cpp:
 
 mo_stage/st_jungle/st_jungle_function_2718.cpp:
 	.text       start:0x00002718 end:0x00002720
+
+mo_stage/st_jungle/st_jungle_function_27f8.cpp:
+	.text       start:0x000027F8 end:0x0000282C
 
 mo_stage/st_jungle/st_jungle_function_282c.cpp:
 	.text       start:0x0000282C end:0x00002830
@@ -577,6 +583,12 @@ mo_stage/st_jungle/st_jungle_function_aee0.cpp:
 
 mo_stage/st_jungle/st_jungle_function_af28.cpp:
 	.text       start:0x0000AF28 end:0x0000AF30
+
+mo_stage/st_jungle/st_jungle_function_b010.cpp:
+	.text       start:0x0000B010 end:0x0000B044
+
+mo_stage/st_jungle/st_jungle_function_b044.cpp:
+	.text       start:0x0000B044 end:0x0000B078
 
 mo_stage/st_jungle/st_jungle_function_b0ac.cpp:
 	.text       start:0x0000B0AC end:0x0000B0B4

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_greenhill/st_greenhill_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_greenhill/st_greenhill_function_a4.cpp:
 	.text       start:0x000000A4 end:0x000001A0
 
@@ -136,6 +139,9 @@ mo_stage/st_greenhill/st_greenhill_function_1008.cpp:
 
 mo_stage/st_greenhill/st_greenhill_function_1010.cpp:
 	.text       start:0x00001010 end:0x00001018
+
+mo_stage/st_greenhill/st_greenhill_function_10f0.cpp:
+	.text       start:0x000010F0 end:0x00001124
 
 mo_stage/st_greenhill/st_greenhill_function_1124.cpp:
 	.text       start:0x00001124 end:0x00001128

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_gw/st_gw_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_gw/st_gw_function_31c.cpp:
 	.text       start:0x0000031C end:0x00000324
 
@@ -290,6 +293,9 @@ mo_stage/st_gw/st_gw_function_299c.cpp:
 mo_stage/st_gw/st_gw_function_29a4.cpp:
 	.text       start:0x000029A4 end:0x000029AC
 
+mo_stage/st_gw/st_gw_function_2a84.cpp:
+	.text       start:0x00002A84 end:0x00002AB8
+
 mo_stage/st_gw/st_gw_function_2ab8.cpp:
 	.text       start:0x00002AB8 end:0x00002ABC
 
@@ -355,6 +361,9 @@ mo_stage/st_gw/st_gw_function_3a94.cpp:
 
 mo_stage/st_gw/st_gw_function_3be4.cpp:
 	.text       start:0x00003BE4 end:0x00003C84
+
+mo_stage/st_gw/st_gw_function_3e24.cpp:
+	.text       start:0x00003E24 end:0x00003E58
 
 mo_stage/st_gw/st_gw_function_518c.cpp:
 	.text       start:0x0000518C end:0x00005190
