@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxgreens/st_dxgreens_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_dxgreens/st_dxgreens_function_178.cpp:
 	.text       start:0x00000178 end:0x00000198
 
@@ -133,6 +136,9 @@ mo_stage/st_dxgreens/st_dxgreens_function_1878.cpp:
 
 mo_stage/st_dxgreens/st_dxgreens_function_1880.cpp:
 	.text       start:0x00001880 end:0x00001888
+
+mo_stage/st_dxgreens/st_dxgreens_function_1960.cpp:
+	.text       start:0x00001960 end:0x00001994
 
 mo_stage/st_dxgreens/st_dxgreens_function_1994.cpp:
 	.text       start:0x00001994 end:0x00001998

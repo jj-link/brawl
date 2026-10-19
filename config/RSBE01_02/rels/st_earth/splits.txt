@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_earth/st_earth_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_earth/st_earth_function_26c.cpp:
 	.text       start:0x0000026C end:0x00000274
 
