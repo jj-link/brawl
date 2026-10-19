@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_orpheon/st_orpheon_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
+mo_stage/st_orpheon/st_orpheon_function_1e0.cpp:
+	.text       start:0x000001E0 end:0x00000238
+
+mo_stage/st_orpheon/st_orpheon_function_238.cpp:
+	.text       start:0x00000238 end:0x00000290
+
 mo_stage/st_orpheon/st_orpheon_function_364.cpp:
 	.text       start:0x00000364 end:0x0000036C
 
@@ -97,6 +106,9 @@ mo_stage/st_orpheon/st_orpheon_function_2398.cpp:
 
 mo_stage/st_orpheon/st_orpheon_function_23a0.cpp:
 	.text       start:0x000023A0 end:0x000023AC
+
+mo_stage/st_orpheon/st_orpheon_function_2484.cpp:
+	.text       start:0x00002484 end:0x000024B8
 
 mo_stage/st_orpheon/st_orpheon_function_24b8.cpp:
 	.text       start:0x000024B8 end:0x000024BC

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_madein/st_madein_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_madein/st_madein_function_414.cpp:
 	.text       start:0x00000414 end:0x0000041C
 
@@ -103,6 +106,12 @@ mo_stage/st_madein/st_madein_function_69e0.cpp:
 
 mo_stage/st_madein/st_madein_function_69e8.cpp:
 	.text       start:0x000069E8 end:0x000069F0
+
+mo_stage/st_madein/st_madein_function_6a78.cpp:
+	.text       start:0x00006A78 end:0x00006AEC
+
+mo_stage/st_madein/st_madein_function_6aec.cpp:
+	.text       start:0x00006AEC end:0x00006B20
 
 mo_stage/st_madein/st_madein_function_6b20.cpp:
 	.text       start:0x00006B20 end:0x00006B24

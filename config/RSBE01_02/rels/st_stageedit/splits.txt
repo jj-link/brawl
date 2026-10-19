@@ -11,11 +11,17 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_stageedit/st_stageedit_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_stageedit/st_stageedit_function_a4.cpp:
 	.text       start:0x000000A4 end:0x000001A4
 
 mo_stage/st_stageedit/st_stageedit_function_3fc.cpp:
 	.text       start:0x000003FC end:0x00000404
+
+mo_stage/st_stageedit/st_stageedit_function_3924.cpp:
+	.text       start:0x00003924 end:0x00003A24
 
 mo_stage/st_stageedit/st_stageedit_function_3f4c.cpp:
 	.text       start:0x00003F4C end:0x00003F54
@@ -26,11 +32,20 @@ mo_stage/st_stageedit/st_stageedit_function_41a8.cpp:
 mo_stage/st_stageedit/st_stageedit_function_44ac.cpp:
 	.text       start:0x000044AC end:0x000044B4
 
+mo_stage/st_stageedit/st_stageedit_function_44b4.cpp:
+	.text       start:0x000044B4 end:0x000044D8
+
+mo_stage/st_stageedit/st_stageedit_function_46b4.cpp:
+	.text       start:0x000046B4 end:0x00004704
+
 mo_stage/st_stageedit/st_stageedit_function_4704.cpp:
 	.text       start:0x00004704 end:0x00004708
 
 mo_stage/st_stageedit/st_stageedit_function_4708.cpp:
 	.text       start:0x00004708 end:0x0000470C
+
+mo_stage/st_stageedit/st_stageedit_function_5124.cpp:
+	.text       start:0x00005124 end:0x00005178
 
 mo_stage/st_stageedit/st_stageedit_function_5178.cpp:
 	.text       start:0x00005178 end:0x00005180
@@ -58,6 +73,9 @@ mo_stage/st_stageedit/st_stageedit_function_51f0.cpp:
 
 mo_stage/st_stageedit/st_stageedit_function_51f8.cpp:
 	.text       start:0x000051F8 end:0x00005200
+
+mo_stage/st_stageedit/st_stageedit_function_52d4.cpp:
+	.text       start:0x000052D4 end:0x0000532C
 
 mo_stage/st_stageedit/st_stageedit_function_532c.cpp:
 	.text       start:0x0000532C end:0x00005330
@@ -133,6 +151,9 @@ mo_stage/st_stageedit/st_stageedit_function_5438.cpp:
 
 mo_stage/st_stageedit/st_stageedit_function_5440.cpp:
 	.text       start:0x00005440 end:0x00005448
+
+mo_stage/st_stageedit/st_stageedit_function_5520.cpp:
+	.text       start:0x00005520 end:0x00005554
 
 mo_stage/st_stageedit/st_stageedit_function_5554.cpp:
 	.text       start:0x00005554 end:0x00005558

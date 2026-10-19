@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxzebes/st_dxzebes_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_dxzebes/st_dxzebes_function_540.cpp:
 	.text       start:0x00000540 end:0x00000548
 
@@ -100,6 +103,12 @@ mo_stage/st_dxzebes/st_dxzebes_function_3ed8.cpp:
 
 mo_stage/st_dxzebes/st_dxzebes_function_3ee0.cpp:
 	.text       start:0x00003EE0 end:0x00003EEC
+
+mo_stage/st_dxzebes/st_dxzebes_function_3f50.cpp:
+	.text       start:0x00003F50 end:0x00003FC4
+
+mo_stage/st_dxzebes/st_dxzebes_function_3fc4.cpp:
+	.text       start:0x00003FC4 end:0x00003FF8
 
 mo_stage/st_dxzebes/st_dxzebes_function_3ff8.cpp:
 	.text       start:0x00003FF8 end:0x00003FFC

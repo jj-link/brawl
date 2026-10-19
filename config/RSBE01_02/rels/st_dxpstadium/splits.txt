@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxpstadium/st_dxpstadium_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_dxpstadium/st_dxpstadium_function_318.cpp:
 	.text       start:0x00000318 end:0x00000320
 
@@ -103,6 +106,12 @@ mo_stage/st_dxpstadium/st_dxpstadium_function_2d04.cpp:
 
 mo_stage/st_dxpstadium/st_dxpstadium_function_2d0c.cpp:
 	.text       start:0x00002D0C end:0x00002D18
+
+mo_stage/st_dxpstadium/st_dxpstadium_function_2d7c.cpp:
+	.text       start:0x00002D7C end:0x00002DF0
+
+mo_stage/st_dxpstadium/st_dxpstadium_function_2df0.cpp:
+	.text       start:0x00002DF0 end:0x00002E24
 
 mo_stage/st_dxpstadium/st_dxpstadium_function_2e24.cpp:
 	.text       start:0x00002E24 end:0x00002E28

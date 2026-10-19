@@ -11,6 +11,12 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_heal/st_heal_function_70.cpp:
+	.text       start:0x00000070 end:0x000000E4
+
+mo_stage/st_heal/st_heal_function_e4.cpp:
+	.text       start:0x000000E4 end:0x00000150
+
 mo_stage/st_heal/st_heal_function_150.cpp:
 	.text       start:0x00000150 end:0x00000158
 
@@ -97,6 +103,9 @@ mo_stage/st_heal/st_heal_function_e14.cpp:
 
 mo_stage/st_heal/st_heal_function_e1c.cpp:
 	.text       start:0x00000E1C end:0x00000E24
+
+mo_stage/st_heal/st_heal_function_eac.cpp:
+	.text       start:0x00000EAC end:0x00000F20
 
 mo_stage/st_heal/st_heal_function_f98.cpp:
 	.text       start:0x00000F98 end:0x00000F9C

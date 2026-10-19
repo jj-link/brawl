@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_tbreak/st_tbreak_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_tbreak/st_tbreak_function_234.cpp:
 	.text       start:0x00000234 end:0x0000023C
 
@@ -46,6 +49,9 @@ mo_stage/st_tbreak/st_tbreak_function_1818.cpp:
 
 mo_stage/st_tbreak/st_tbreak_function_1820.cpp:
 	.text       start:0x00001820 end:0x00001828
+
+mo_stage/st_tbreak/st_tbreak_function_18c4.cpp:
+	.text       start:0x000018C4 end:0x0000191C
 
 mo_stage/st_tbreak/st_tbreak_function_191c.cpp:
 	.text       start:0x0000191C end:0x00001920
@@ -122,8 +128,14 @@ mo_stage/st_tbreak/st_tbreak_function_1a20.cpp:
 mo_stage/st_tbreak/st_tbreak_function_1a28.cpp:
 	.text       start:0x00001A28 end:0x00001A30
 
+mo_stage/st_tbreak/st_tbreak_function_1b2c.cpp:
+	.text       start:0x00001B2C end:0x00001B60
+
 mo_stage/st_tbreak/st_tbreak_function_1b60.cpp:
 	.text       start:0x00001B60 end:0x00001B64
+
+mo_stage/st_tbreak/st_tbreak_function_1c28.cpp:
+	.text       start:0x00001C28 end:0x00001C80
 
 mo_stage/st_tbreak/st_tbreak_function_1d10.cpp:
 	.text       start:0x00001D10 end:0x00001D18

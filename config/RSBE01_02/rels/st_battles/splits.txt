@@ -11,6 +11,12 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_battles/st_battles_function_70.cpp:
+	.text       start:0x00000070 end:0x000000CC
+
+mo_stage/st_battles/st_battles_function_cc.cpp:
+	.text       start:0x000000CC end:0x00000138
+
 mo_stage/st_battles/st_battles_function_138.cpp:
 	.text       start:0x00000138 end:0x00000140
 
@@ -104,11 +110,20 @@ mo_stage/st_battles/st_battles_function_4d0.cpp:
 mo_stage/st_battles/st_battles_function_4d8.cpp:
 	.text       start:0x000004D8 end:0x000004E0
 
+mo_stage/st_battles/st_battles_function_544.cpp:
+	.text       start:0x00000544 end:0x000005B8
+
+mo_stage/st_battles/st_battles_function_5b8.cpp:
+	.text       start:0x000005B8 end:0x00000614
+
 mo_stage/st_battles/st_battles_function_614.cpp:
 	.text       start:0x00000614 end:0x00000618
 
 mo_stage/st_battles/st_battles_function_6dc.cpp:
 	.text       start:0x000006DC end:0x000006E4
+
+mo_stage/st_battles/st_battles_function_6e4.cpp:
+	.text       start:0x000006E4 end:0x0000073C
 
 mo_stage/st_battles/st_battles_function_73c.cpp:
 	.text       start:0x0000073C end:0x00000744

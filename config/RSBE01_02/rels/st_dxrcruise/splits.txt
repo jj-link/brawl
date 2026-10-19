@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxrcruise/st_dxrcruise_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_dxrcruise/st_dxrcruise_function_27c.cpp:
 	.text       start:0x0000027C end:0x00000284
 
@@ -97,6 +100,12 @@ mo_stage/st_dxrcruise/st_dxrcruise_function_2a2c.cpp:
 
 mo_stage/st_dxrcruise/st_dxrcruise_function_2a34.cpp:
 	.text       start:0x00002A34 end:0x00002A3C
+
+mo_stage/st_dxrcruise/st_dxrcruise_function_2aa0.cpp:
+	.text       start:0x00002AA0 end:0x00002B14
+
+mo_stage/st_dxrcruise/st_dxrcruise_function_2b14.cpp:
+	.text       start:0x00002B14 end:0x00002B48
 
 mo_stage/st_dxrcruise/st_dxrcruise_function_2b48.cpp:
 	.text       start:0x00002B48 end:0x00002B4C

@@ -11,6 +11,15 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxbigblue/st_dxbigblue_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_4e8.cpp:
+	.text       start:0x000004E8 end:0x00000518
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_518.cpp:
+	.text       start:0x00000518 end:0x00000570
+
 mo_stage/st_dxbigblue/st_dxbigblue_function_618.cpp:
 	.text       start:0x00000618 end:0x00000620
 
@@ -164,6 +173,12 @@ mo_stage/st_dxbigblue/st_dxbigblue_function_4058.cpp:
 mo_stage/st_dxbigblue/st_dxbigblue_function_4060.cpp:
 	.text       start:0x00004060 end:0x00004068
 
+mo_stage/st_dxbigblue/st_dxbigblue_function_40cc.cpp:
+	.text       start:0x000040CC end:0x00004140
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_4140.cpp:
+	.text       start:0x00004140 end:0x00004174
+
 mo_stage/st_dxbigblue/st_dxbigblue_function_4174.cpp:
 	.text       start:0x00004174 end:0x00004178
 
@@ -172,14 +187,47 @@ mo_stage/st_dxbigblue/gr_dxbigblue.cpp:
 	.rodata     start:0x00000090 end:0x00000094
 	.data       start:0x000007A8 end:0x00000A20
 
+mo_stage/st_dxbigblue/st_dxbigblue_function_43d8.cpp:
+	.text       start:0x000043D8 end:0x00004430
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_47bc.cpp:
+	.text       start:0x000047BC end:0x00004814
+
 mo_stage/st_dxbigblue/st_dxbigblue_function_49f4.cpp:
 	.text       start:0x000049F4 end:0x000049F8
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_4f40.cpp:
+	.text       start:0x00004F40 end:0x00004F98
 
 mo_stage/st_dxbigblue/st_dxbigblue_function_5058.cpp:
 	.text       start:0x00005058 end:0x0000505C
 
+mo_stage/st_dxbigblue/st_dxbigblue_function_5130.cpp:
+	.text       start:0x00005130 end:0x00005184
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_5254.cpp:
+	.text       start:0x00005254 end:0x000052AC
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_587c.cpp:
+	.text       start:0x0000587C end:0x000058D8
+
 mo_stage/st_dxbigblue/st_dxbigblue_function_5998.cpp:
 	.text       start:0x00005998 end:0x00005B14
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_5ee4.cpp:
+	.text       start:0x00005EE4 end:0x00005F3C
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_6400.cpp:
+	.text       start:0x00006400 end:0x00006458
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_69c8.cpp:
+	.text       start:0x000069C8 end:0x00006A20
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_79e0.cpp:
+	.text       start:0x000079E0 end:0x00007A38
+
+mo_stage/st_dxbigblue/st_dxbigblue_function_8234.cpp:
+	.text       start:0x00008234 end:0x00008288
 
 mo_stage/mo_stage.cpp:
 	.text       start:0x00008288 end:0x00008324

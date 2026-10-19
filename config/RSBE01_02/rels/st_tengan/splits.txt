@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_tengan/st_tengan_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_tengan/st_tengan_function_438.cpp:
 	.text       start:0x00000438 end:0x00000440
 
@@ -113,14 +116,26 @@ mo_stage/st_tengan/st_tengan_function_621c.cpp:
 mo_stage/st_tengan/st_tengan_function_6224.cpp:
 	.text       start:0x00006224 end:0x0000622C
 
+mo_stage/st_tengan/st_tengan_function_6310.cpp:
+	.text       start:0x00006310 end:0x00006344
+
 mo_stage/st_tengan/st_tengan_function_6344.cpp:
 	.text       start:0x00006344 end:0x00006348
 
 mo_stage/st_tengan/st_tengan_function_641c.cpp:
 	.text       start:0x0000641C end:0x00006424
 
+mo_stage/st_tengan/st_tengan_function_6424.cpp:
+	.text       start:0x00006424 end:0x00006470
+
+mo_stage/st_tengan/st_tengan_function_6470.cpp:
+	.text       start:0x00006470 end:0x000064C8
+
 mo_stage/st_tengan/st_tengan_function_64c8.cpp:
 	.text       start:0x000064C8 end:0x000064CC
+
+mo_stage/st_tengan/st_tengan_function_64cc.cpp:
+	.text       start:0x000064CC end:0x00006528
 
 mo_stage/st_tengan/st_tengan_function_6528.cpp:
 	.text       start:0x00006528 end:0x00006530
@@ -155,8 +170,17 @@ mo_stage/st_tengan/st_tengan_function_65ac.cpp:
 mo_stage/st_tengan/st_tengan_function_65b4.cpp:
 	.text       start:0x000065B4 end:0x000065BC
 
+mo_stage/st_tengan/st_tengan_function_668c.cpp:
+	.text       start:0x0000668C end:0x000066E4
+
+mo_stage/st_tengan/st_tengan_function_68f0.cpp:
+	.text       start:0x000068F0 end:0x00006948
+
 mo_stage/st_tengan/st_tengan_function_6d28.cpp:
 	.text       start:0x00006D28 end:0x00006D2C
+
+mo_stage/st_tengan/st_tengan_function_72ec.cpp:
+	.text       start:0x000072EC end:0x00007344
 
 mo_stage/mo_stage.cpp:
 	.text       start:0x000077B4 end:0x00007850
