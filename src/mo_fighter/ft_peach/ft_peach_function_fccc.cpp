@@ -1,0 +1,44 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" void clear__23soArrayVectorCalculatorFR26soArrayVectorCalcInterface(void* calc);
+
+struct PeachArrayVector {
+    virtual void f0();
+    virtual void f1();
+    virtual void f2();
+    virtual void f3();
+    virtual void f4();
+    virtual void f5();
+    virtual void f6();
+    virtual void f7();
+    virtual void f8();
+    virtual void f9();
+    virtual void f10();
+    virtual void f11();
+    virtual void f12();
+    virtual void f13();
+    virtual void f14();
+    virtual void f15();
+    virtual void f16();
+    virtual void f17();
+    virtual void f18();
+    virtual void f19();
+    virtual void f20();
+    virtual void f21();
+    virtual void f22();
+    virtual void f23();
+    virtual void f24();
+    virtual void f25();
+    virtual void f26();
+    virtual void f27();
+    virtual void f28();
+    virtual void target(int);
+    u8 data[0x80];
+};
+
+extern "C" void fn_103_FCCC(PeachArrayVector* self) {
+    clear__23soArrayVectorCalculatorFR26soArrayVectorCalcInterface(
+        (u8*)self + 4);
+    self->target(0);
+}
