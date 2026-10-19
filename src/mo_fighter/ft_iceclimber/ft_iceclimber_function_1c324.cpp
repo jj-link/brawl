@@ -1,0 +1,6 @@
+#pragma force_active on
+extern "C" void fn_27_1DCCDC(void* context, void* state, void* accesser);
+
+extern "C" void fn_105_1C324(void* object, void* context, void* accesser) {
+    fn_27_1DCCDC(context, static_cast<char*>(object) + 4, accesser);
+}

@@ -1,0 +1,12 @@
+#include <new>
+#pragma force_active on
+
+extern "C" void* fn_27_C31CC(void*, short);
+
+extern "C" void* fn_98_3B58(void* object, int deleting) {
+    if (object) {
+        fn_27_C31CC(object, static_cast<short>(-1));
+        if (static_cast<short>(deleting) > 0) operator delete(object);
+    }
+    return object;
+}
