@@ -49,6 +49,9 @@ mo_stage/st_crayon/gr_crayon_yakumono.cpp:
 	.text       start:0x00002D6C end:0x00002E10
 	.data       start:0x00000F10 end:0x00001118
 
+mo_stage/st_crayon/st_crayon_function_2fd0.cpp:
+	.text       start:0x00002FD0 end:0x00003038
+
 mo_stage/st_crayon/st_crayon_function_36b4.cpp:
 	.text       start:0x000036B4 end:0x000036F4
 
@@ -223,6 +226,15 @@ mo_stage/st_crayon/st_crayon_function_5500.cpp:
 mo_stage/st_crayon/st_crayon_function_5660.cpp:
 	.text       start:0x00005660 end:0x000056A0
 
+mo_stage/st_crayon/st_crayon_function_56a0.cpp:
+	.text       start:0x000056A0 end:0x00005708
+
+mo_stage/st_crayon/st_crayon_function_5708.cpp:
+	.text       start:0x00005708 end:0x00005770
+
+mo_stage/st_crayon/st_crayon_function_57dc.cpp:
+	.text       start:0x000057DC end:0x00005844
+
 mo_stage/st_crayon/st_crayon_function_5844.cpp:
 	.text       start:0x00005844 end:0x00005850
 
@@ -234,6 +246,9 @@ mo_stage/st_crayon/st_crayon_function_5860.cpp:
 
 mo_stage/st_crayon/st_crayon_function_586c.cpp:
 	.text       start:0x0000586C end:0x00005874
+
+mo_stage/st_crayon/st_crayon_function_5900.cpp:
+	.text       start:0x00005900 end:0x00005968
 
 mo_stage/st_crayon/st_crayon_function_5968.cpp:
 	.text       start:0x00005968 end:0x00005974
@@ -247,11 +262,20 @@ mo_stage/st_crayon/st_crayon_function_5984.cpp:
 mo_stage/st_crayon/st_crayon_function_5990.cpp:
 	.text       start:0x00005990 end:0x00005998
 
+mo_stage/st_crayon/st_crayon_function_5998.cpp:
+	.text       start:0x00005998 end:0x00005A00
+
 mo_stage/st_crayon/st_crayon_function_5a00.cpp:
 	.text       start:0x00005A00 end:0x00005A10
 
 mo_stage/st_crayon/st_crayon_function_5a10.cpp:
 	.text       start:0x00005A10 end:0x00005A50
+
+mo_stage/st_crayon/st_crayon_function_5a50.cpp:
+	.text       start:0x00005A50 end:0x00005AB8
+
+mo_stage/st_crayon/st_crayon_function_5ab8.cpp:
+	.text       start:0x00005AB8 end:0x00005B20
 
 mo_stage/st_crayon/st_crayon_function_6120.cpp:
 	.text       start:0x00006120 end:0x00006154

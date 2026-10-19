@@ -1,0 +1,17 @@
+#pragma force_active on
+extern "C" void fn_27_262230(void*, int);
+extern "C" void __dt__10grYakumonoFv(void*, int);
+extern "C" void __dl__FPv(void*);
+
+extern "C" {
+void* fn_40_3C660(void* p, int flag) {
+    if (p != 0) {
+        fn_27_262230((char*)p + 0x190, -1);
+        __dt__10grYakumonoFv(p, 0);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}

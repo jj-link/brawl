@@ -1,0 +1,19 @@
+#pragma force_active on
+typedef int s32;
+typedef unsigned char u8;
+
+extern "C" {
+void __destroy_arr(void*, void (*)(void*, int), unsigned long, unsigned long);
+void* fn_27_37D3C(void* p, s32 n);
+void __dl__FPv(void*);
+
+void* fn_40_1DD98(void* p, s32 n) {
+    if (p != 0) {
+        __destroy_arr((u8*)p + 0x0c, (void (*)(void*, int))fn_27_37D3C, 0x78, 0x18);
+        if (n > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}
