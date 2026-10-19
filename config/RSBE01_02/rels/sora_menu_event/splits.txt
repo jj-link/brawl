@@ -9,6 +9,12 @@ Sections:
 mo_menu_event/sora_menu_event/sora_menu_event_function_0.cpp:
 	.text       start:0x00000000 end:0x00000080
 
+mo_menu_event/sora_menu_event/sora_menu_event_function_80.cpp:
+	.text       start:0x00000080 end:0x00000288
+
+mo_menu_event/sora_menu_event/sora_menu_event_function_288.cpp:
+	.text       start:0x00000288 end:0x000002BC
+
 mo_menu_event/sora_menu_event/sora_menu_event_function_2bc.cpp:
 	.text       start:0x000002BC end:0x000002FC
 

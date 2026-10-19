@@ -62,6 +62,9 @@ mo_stage/st_dxgarden/st_dxgarden_function_bdc.cpp:
 mo_stage/st_dxgarden/st_dxgarden_function_be8.cpp:
 	.text       start:0x00000BE8 end:0x00000BF4
 
+mo_stage/st_dxgarden/st_dxgarden_function_bf4.cpp:
+	.text       start:0x00000BF4 end:0x00000C04
+
 mo_stage/st_dxgarden/st_dxgarden_function_c18.cpp:
 	.text       start:0x00000C18 end:0x00000C20
 
@@ -130,6 +133,12 @@ mo_stage/st_dxgarden/st_dxgarden_function_fbc.cpp:
 
 mo_stage/st_dxgarden/st_dxgarden_function_fc0.cpp:
 	.text       start:0x00000FC0 end:0x00000FC4
+
+mo_stage/st_dxgarden/st_dxgarden_function_fc4.cpp:
+	.text       start:0x00000FC4 end:0x00000FD4
+
+mo_stage/st_dxgarden/st_dxgarden_function_fd4.cpp:
+	.text       start:0x00000FD4 end:0x00000FE4
 
 mo_stage/st_dxgarden/st_dxgarden_function_fe4.cpp:
 	.text       start:0x00000FE4 end:0x00000FF0

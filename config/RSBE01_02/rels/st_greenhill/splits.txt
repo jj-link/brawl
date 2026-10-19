@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_greenhill/st_greenhill_function_a4.cpp:
+	.text       start:0x000000A4 end:0x000001A0
+
 mo_stage/st_greenhill/st_greenhill_function_20c.cpp:
 	.text       start:0x0000020C end:0x00000214
 
@@ -80,6 +83,9 @@ mo_stage/st_greenhill/st_greenhill_function_f3c.cpp:
 mo_stage/st_greenhill/st_greenhill_function_f44.cpp:
 	.text       start:0x00000F44 end:0x00000F50
 
+mo_stage/st_greenhill/st_greenhill_function_f50.cpp:
+	.text       start:0x00000F50 end:0x00000F5C
+
 mo_stage/st_greenhill/st_greenhill_function_f80.cpp:
 	.text       start:0x00000F80 end:0x00000F88
 
@@ -109,6 +115,9 @@ mo_stage/st_greenhill/st_greenhill_function_fd8.cpp:
 
 mo_stage/st_greenhill/st_greenhill_function_fe0.cpp:
 	.text       start:0x00000FE0 end:0x00000FE8
+
+mo_stage/st_greenhill/st_greenhill_function_fe8.cpp:
+	.text       start:0x00000FE8 end:0x00000FF4
 
 mo_stage/st_greenhill/st_greenhill_function_ff4.cpp:
 	.text       start:0x00000FF4 end:0x00000FF8
@@ -142,6 +151,9 @@ mo_stage/st_greenhill/st_greenhill_function_1a50.cpp:
 
 mo_stage/st_greenhill/st_greenhill_function_1a54.cpp:
 	.text       start:0x00001A54 end:0x00001A58
+
+mo_stage/st_greenhill/st_greenhill_function_1a78.cpp:
+	.text       start:0x00001A78 end:0x00001A84
 
 mo_stage/st_greenhill/st_greenhill_function_1a84.cpp:
 	.text       start:0x00001A84 end:0x00001A8C
@@ -224,6 +236,15 @@ mo_stage/st_greenhill/st_greenhill_function_3fa8.cpp:
 mo_stage/st_greenhill/st_greenhill_function_3fac.cpp:
 	.text       start:0x00003FAC end:0x00003FB0
 
+mo_stage/st_greenhill/st_greenhill_function_3fb0.cpp:
+	.text       start:0x00003FB0 end:0x00003FBC
+
+mo_stage/st_greenhill/st_greenhill_function_3fbc.cpp:
+	.text       start:0x00003FBC end:0x00003FC8
+
+mo_stage/st_greenhill/st_greenhill_function_3fc8.cpp:
+	.text       start:0x00003FC8 end:0x00003FD4
+
 mo_stage/st_greenhill/st_greenhill_function_3fd4.cpp:
 	.text       start:0x00003FD4 end:0x00003FD8
 
@@ -271,6 +292,9 @@ mo_stage/st_greenhill/st_greenhill_function_401c.cpp:
 
 mo_stage/st_greenhill/st_greenhill_function_4024.cpp:
 	.text       start:0x00004024 end:0x0000402C
+
+mo_stage/st_greenhill/st_greenhill_function_402c.cpp:
+	.text       start:0x0000402C end:0x00004038
 
 mo_stage/st_greenhill/st_greenhill_function_4038.cpp:
 	.text       start:0x00004038 end:0x00004040
@@ -430,6 +454,9 @@ mo_stage/st_greenhill/st_greenhill_function_90f4.cpp:
 
 mo_stage/st_greenhill/st_greenhill_function_913c.cpp:
 	.text       start:0x0000913C end:0x00009144
+
+mo_stage/st_greenhill/st_greenhill_function_93fc.cpp:
+	.text       start:0x000093FC end:0x000094F8
 
 mo_stage/st_greenhill/st_greenhill_function_9a10.cpp:
 	.text       start:0x00009A10 end:0x00009A58
