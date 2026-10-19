@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_norfair/st_norfair_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_norfair/st_norfair_function_2f4.cpp:
 	.text       start:0x000002F4 end:0x000002FC
 
@@ -181,6 +184,9 @@ mo_stage/st_norfair/st_norfair_function_2af8.cpp:
 
 mo_stage/st_norfair/st_norfair_function_2b00.cpp:
 	.text       start:0x00002B00 end:0x00002B0C
+
+mo_stage/st_norfair/st_norfair_function_2c08.cpp:
+	.text       start:0x00002C08 end:0x00002C3C
 
 mo_stage/st_norfair/st_norfair_function_2c3c.cpp:
 	.text       start:0x00002C3C end:0x00002C40
