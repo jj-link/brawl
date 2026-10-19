@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_minigame/sora_minigame/sora_minigame_function_70.cpp:
+	.text       start:0x00000070 end:0x000000C8
+
 mo_minigame/sora_minigame/sora_minigame_function_c8.cpp:
 	.text       start:0x000000C8 end:0x00000120
 
