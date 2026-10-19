@@ -1,0 +1,103 @@
+#pragma force_active on
+typedef unsigned int u32;
+typedef unsigned short u16;
+typedef unsigned char u8;
+
+struct Vec3 { u32 words[3]; };
+struct Vec2 { u32 words[2]; };
+
+struct Data {
+    float f00, f04, f08, f0c;
+    Vec3 v10;
+    u32 n1c;
+    Vec3 v20;
+    u16 n2c, n2e;
+    u8 b30, b31, b32, b33, b34, b35, b36, b37, b38, b39, b3a;
+    u32 n3c;
+    Vec3 v40;
+    float f4c;
+    u32 n50, n54, n58, n5c;
+    float f60, f64, f68;
+    u32 n6c, n70, n74, n78;
+    float f7c;
+    Vec3 v80;
+    Vec2 v8c;
+    float f94;
+    u32 n98;
+    u8 b9c;
+};
+
+struct Array {
+    virtual void slot0() = 0;
+    virtual void slot1() = 0;
+    virtual void slot2() = 0;
+    virtual void slot3() = 0;
+    virtual void slot4() = 0;
+    virtual void slot5() = 0;
+    virtual void slot6() = 0;
+    virtual void slot7() = 0;
+    virtual void slot8() = 0;
+    virtual void slot9() = 0;
+    virtual void slot10() = 0;
+    virtual void slot11() = 0;
+    virtual void slot12() = 0;
+    virtual void slot13() = 0;
+    virtual void slot14() = 0;
+    virtual void slot15() = 0;
+    virtual void slot16() = 0;
+    virtual void slot17() = 0;
+    virtual void slot18() = 0;
+    virtual void slot19() = 0;
+    virtual void slot20() = 0;
+    virtual void slot21() = 0;
+    virtual void slot22() = 0;
+    virtual void slot23() = 0;
+    virtual void slot24() = 0;
+    virtual void slot25() = 0;
+    virtual Data* at(int) = 0;
+};
+
+extern "C" void fn_54_7684(Array* self, int from, int to) {
+    Data* src = self->at(from);
+    Data* dst = self->at(to);
+    dst->f00 = src->f00;
+    dst->f04 = src->f04;
+    dst->f08 = src->f08;
+    dst->f0c = src->f0c;
+    dst->v10 = src->v10;
+    dst->n1c = src->n1c;
+    dst->v20 = src->v20;
+    dst->n2c = src->n2c;
+    dst->n2e = src->n2e;
+    dst->b30 = src->b30;
+    dst->b31 = src->b31;
+    dst->b32 = src->b32;
+    dst->b33 = src->b33;
+    dst->b34 = src->b34;
+    dst->b35 = src->b35;
+    dst->b36 = src->b36;
+    dst->b37 = src->b37;
+    dst->b38 = src->b38;
+    dst->b39 = src->b39;
+    dst->b3a = src->b3a;
+    dst->n3c = src->n3c;
+    dst->v40 = src->v40;
+    dst->f4c = src->f4c;
+    dst->n50 = src->n50;
+    dst->n54 = src->n54;
+    dst->n58 = src->n58;
+    dst->n5c = src->n5c;
+    dst->f60 = src->f60;
+    dst->f64 = src->f64;
+    dst->f68 = src->f68;
+    dst->n6c = src->n6c;
+    dst->n70 = src->n70;
+    dst->n74 = src->n74;
+    dst->n78 = src->n78;
+    dst->f7c = src->f7c;
+    dst->v80 = src->v80;
+    dst->v8c = src->v8c;
+    dst->f94 = src->f94;
+    dst->n98 = src->n98;
+    dst->b9c = src->b9c;
+}
