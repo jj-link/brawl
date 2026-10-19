@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_halberd/st_halberd_function_a4.cpp:
+	.text       start:0x000000A4 end:0x00000298
+
 mo_stage/st_halberd/st_halberd_function_310.cpp:
 	.text       start:0x00000310 end:0x00000318
 
