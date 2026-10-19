@@ -1,0 +1,16 @@
+#pragma force_active on
+void operator delete(void*);
+extern "C" void* fn_27_6A3D8(void*, short);
+extern "C" void* fn_27_19A0BC(void*, short);
+
+extern "C" void* fn_101_8398(void* object, short deleting) {
+    if (object != 0) {
+        short memberDeleting = -1;
+        fn_27_6A3D8(static_cast<unsigned char*>(object) + 0x1AC, memberDeleting);
+        fn_27_19A0BC(object, memberDeleting);
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}

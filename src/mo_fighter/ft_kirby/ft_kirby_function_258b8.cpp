@@ -1,0 +1,15 @@
+#pragma force_active on
+extern "C" void* fn_96_25928(void*, short);
+extern "C" void* fn_96_25A10(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_96_258B8(void* object, short deleting) {
+    if (object != 0) {
+        fn_96_25928(static_cast<unsigned char*>(object) + 0x16A4, -1);
+        fn_96_25A10(object, 0);
+        if (deleting > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}

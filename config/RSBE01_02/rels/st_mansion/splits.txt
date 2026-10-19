@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_mansion/st_mansion_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_mansion/st_mansion_function_184.cpp:
+	.text       start:0x00000184 end:0x000001F0
+
 mo_stage/st_mansion/st_mansion_function_1f0.cpp:
 	.text       start:0x000001F0 end:0x000001F8
 
@@ -413,6 +416,18 @@ mo_stage/st_mansion/st_mansion_function_3d48.cpp:
 mo_stage/st_mansion/st_mansion_function_3ea8.cpp:
 	.text       start:0x00003EA8 end:0x00003EE8
 
+mo_stage/st_mansion/st_mansion_function_3ee8.cpp:
+	.text       start:0x00003EE8 end:0x00003F50
+
+mo_stage/st_mansion/st_mansion_function_3f50.cpp:
+	.text       start:0x00003F50 end:0x00003FB8
+
+mo_stage/st_mansion/st_mansion_function_3fb8.cpp:
+	.text       start:0x00003FB8 end:0x00004024
+
+mo_stage/st_mansion/st_mansion_function_4024.cpp:
+	.text       start:0x00004024 end:0x0000408C
+
 mo_stage/st_mansion/st_mansion_function_408c.cpp:
 	.text       start:0x0000408C end:0x00004098
 
@@ -421,6 +436,12 @@ mo_stage/st_mansion/st_mansion_function_40a8.cpp:
 
 mo_stage/st_mansion/st_mansion_function_40b4.cpp:
 	.text       start:0x000040B4 end:0x000040BC
+
+mo_stage/st_mansion/st_mansion_function_40bc.cpp:
+	.text       start:0x000040BC end:0x00004124
+
+mo_stage/st_mansion/st_mansion_function_41b0.cpp:
+	.text       start:0x000041B0 end:0x00004218
 
 mo_stage/st_mansion/st_mansion_function_4218.cpp:
 	.text       start:0x00004218 end:0x00004224
@@ -433,6 +454,12 @@ mo_stage/st_mansion/st_mansion_function_4240.cpp:
 
 mo_stage/st_mansion/st_mansion_function_4258.cpp:
 	.text       start:0x00004258 end:0x00004298
+
+mo_stage/st_mansion/st_mansion_function_4298.cpp:
+	.text       start:0x00004298 end:0x00004300
+
+mo_stage/st_mansion/st_mansion_function_4300.cpp:
+	.text       start:0x00004300 end:0x00004368
 
 mo_stage/st_mansion/st_mansion_function_4968.cpp:
 	.text       start:0x00004968 end:0x0000499C
@@ -734,6 +761,9 @@ mo_stage/st_mansion/st_mansion_function_9990.cpp:
 mo_stage/st_mansion/st_mansion_function_9998.cpp:
 	.text       start:0x00009998 end:0x000099A0
 
+mo_stage/st_mansion/st_mansion_function_9a74.cpp:
+	.text       start:0x00009A74 end:0x00009ADC
+
 mo_stage/st_mansion/st_mansion_function_9adc.cpp:
 	.text       start:0x00009ADC end:0x00009B30
 
@@ -748,6 +778,9 @@ mo_stage/st_mansion/st_mansion_function_a640.cpp:
 
 mo_stage/st_mansion/st_mansion_function_ab28.cpp:
 	.text       start:0x0000AB28 end:0x0000AB80
+
+mo_stage/st_mansion/st_mansion_function_ae48.cpp:
+	.text       start:0x0000AE48 end:0x0000AEB0
 
 mo_stage/st_mansion/st_mansion_function_ba84.cpp:
 	.text       start:0x0000BA84 end:0x0000BADC

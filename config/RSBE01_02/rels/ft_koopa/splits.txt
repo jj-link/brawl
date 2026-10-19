@@ -74,6 +74,9 @@ mo_fighter/ft_koopa/ft_koopa_function_2d6c.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_2dc8.cpp:
 	.text       start:0x00002DC8 end:0x00002E24
 
+mo_fighter/ft_koopa/ft_koopa_function_2e80.cpp:
+	.text       start:0x00002E80 end:0x00002EF4
+
 mo_fighter/ft_koopa/ft_koopa_function_2f8c.cpp:
 	.text       start:0x00002F8C end:0x00002FE8
 
@@ -137,6 +140,9 @@ mo_fighter/ft_koopa/ft_koopa_function_3e94.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_3ef0.cpp:
 	.text       start:0x00003EF0 end:0x00003F5C
 
+mo_fighter/ft_koopa/ft_koopa_function_3f5c.cpp:
+	.text       start:0x00003F5C end:0x00003FD0
+
 mo_fighter/ft_koopa/ft_koopa_function_3fd0.cpp:
 	.text       start:0x00003FD0 end:0x0000402C
 
@@ -191,6 +197,12 @@ mo_fighter/ft_koopa/ft_koopa_function_4fc0.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_5020.cpp:
 	.text       start:0x00005020 end:0x0000508C
 
+mo_fighter/ft_koopa/ft_koopa_function_508c.cpp:
+	.text       start:0x0000508C end:0x000050FC
+
+mo_fighter/ft_koopa/ft_koopa_function_50fc.cpp:
+	.text       start:0x000050FC end:0x00005170
+
 mo_fighter/ft_koopa/ft_koopa_function_5170.cpp:
 	.text       start:0x00005170 end:0x000051F0
 
@@ -209,6 +221,9 @@ mo_fighter/ft_koopa/ft_koopa_function_5314.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_5380.cpp:
 	.text       start:0x00005380 end:0x000053C0
 
+mo_fighter/ft_koopa/ft_koopa_function_53c0.cpp:
+	.text       start:0x000053C0 end:0x00005434
+
 mo_fighter/ft_koopa/ft_koopa_function_5434.cpp:
 	.text       start:0x00005434 end:0x00005490
 
@@ -220,6 +235,9 @@ mo_fighter/ft_koopa/ft_koopa_function_54ec.cpp:
 
 mo_fighter/ft_koopa/ft_koopa_function_5548.cpp:
 	.text       start:0x00005548 end:0x000055A4
+
+mo_fighter/ft_koopa/ft_koopa_function_55a4.cpp:
+	.text       start:0x000055A4 end:0x00005618
 
 mo_fighter/ft_koopa/ft_koopa_function_5618.cpp:
 	.text       start:0x00005618 end:0x00005684
@@ -284,6 +302,9 @@ mo_fighter/ft_koopa/ft_koopa_function_6cd0.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_6dbc.cpp:
 	.text       start:0x00006DBC end:0x00006E10
 
+mo_fighter/ft_koopa/ft_koopa_function_6e10.cpp:
+	.text       start:0x00006E10 end:0x00006E80
+
 mo_fighter/ft_koopa/ft_koopa_function_6e80.cpp:
 	.text       start:0x00006E80 end:0x00006EEC
 
@@ -305,6 +326,9 @@ mo_fighter/ft_koopa/ft_koopa_function_7bb8.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_7c34.cpp:
 	.text       start:0x00007C34 end:0x00007C50
 
+mo_fighter/ft_koopa/ft_koopa_function_7de0.cpp:
+	.text       start:0x00007DE0 end:0x00007E50
+
 mo_fighter/ft_koopa/ft_koopa_function_7f04.cpp:
 	.text       start:0x00007F04 end:0x00007F08
 
@@ -322,6 +346,9 @@ mo_fighter/ft_koopa/ft_koopa_function_8c1c.cpp:
 
 mo_fighter/ft_koopa/ft_koopa_function_8c7c.cpp:
 	.text       start:0x00008C7C end:0x00008CD8
+
+mo_fighter/ft_koopa/ft_koopa_function_8cd8.cpp:
+	.text       start:0x00008CD8 end:0x00008D4C
 
 mo_fighter/ft_koopa/ft_koopa_function_8d4c.cpp:
 	.text       start:0x00008D4C end:0x00008D60
@@ -554,6 +581,9 @@ mo_fighter/ft_koopa/ft_koopa_function_907c.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_90dc.cpp:
 	.text       start:0x000090DC end:0x000090E4
 
+mo_fighter/ft_koopa/ft_koopa_function_90e4.cpp:
+	.text       start:0x000090E4 end:0x00009158
+
 mo_fighter/ft_koopa/ft_koopa_function_9158.cpp:
 	.text       start:0x00009158 end:0x00009174
 
@@ -685,6 +715,9 @@ mo_fighter/ft_koopa/ft_koopa_function_a4d8.cpp:
 
 mo_fighter/ft_koopa/ft_koopa_function_a538.cpp:
 	.text       start:0x0000A538 end:0x0000A598
+
+mo_fighter/ft_koopa/ft_koopa_function_a598.cpp:
+	.text       start:0x0000A598 end:0x0000A608
 
 mo_fighter/ft_koopa/ft_koopa_function_a608.cpp:
 	.text       start:0x0000A608 end:0x0000A668
@@ -1130,11 +1163,17 @@ mo_fighter/ft_koopa/ft_koopa_function_11434.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_1183c.cpp:
 	.text       start:0x0001183C end:0x00011898
 
+mo_fighter/ft_koopa/ft_koopa_function_11898.cpp:
+	.text       start:0x00011898 end:0x00011908
+
 mo_fighter/ft_koopa/ft_koopa_function_11908.cpp:
 	.text       start:0x00011908 end:0x0001196C
 
 mo_fighter/ft_koopa/ft_koopa_function_1196c.cpp:
 	.text       start:0x0001196C end:0x000119CC
+
+mo_fighter/ft_koopa/ft_koopa_function_119cc.cpp:
+	.text       start:0x000119CC end:0x00011A3C
 
 mo_fighter/ft_koopa/ft_koopa_function_11a3c.cpp:
 	.text       start:0x00011A3C end:0x00011A9C
@@ -1177,6 +1216,9 @@ mo_fighter/ft_koopa/ft_koopa_function_1403c.cpp:
 
 mo_fighter/ft_koopa/ft_koopa_function_1409c.cpp:
 	.text       start:0x0001409C end:0x000140F8
+
+mo_fighter/ft_koopa/ft_koopa_function_140f8.cpp:
+	.text       start:0x000140F8 end:0x0001416C
 
 mo_fighter/ft_koopa/ft_koopa_function_1416c.cpp:
 	.text       start:0x0001416C end:0x00014174
@@ -1325,6 +1367,9 @@ mo_fighter/ft_koopa/ft_koopa_function_187a0.cpp:
 mo_fighter/ft_koopa/ft_koopa_function_19fcc.cpp:
 	.text       start:0x00019FCC end:0x0001A028
 
+mo_fighter/ft_koopa/ft_koopa_function_1a028.cpp:
+	.text       start:0x0001A028 end:0x0001A098
+
 mo_fighter/ft_koopa/ft_koopa_function_1a128.cpp:
 	.text       start:0x0001A128 end:0x0001A194
 
@@ -1348,6 +1393,9 @@ mo_fighter/ft_koopa/ft_koopa_function_1a7bc.cpp:
 
 mo_fighter/ft_koopa/ft_koopa_function_1a7fc.cpp:
 	.text       start:0x0001A7FC end:0x0001A85C
+
+mo_fighter/ft_koopa/ft_koopa_function_1a85c.cpp:
+	.text       start:0x0001A85C end:0x0001A8D0
 
 mo_fighter/ft_koopa/ft_koopa_function_1a8d0.cpp:
 	.text       start:0x0001A8D0 end:0x0001A96C

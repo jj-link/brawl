@@ -1,0 +1,18 @@
+#pragma force_active on
+void operator delete(void*);
+extern "C" {
+void fn_125_1F6C(void*, short);
+void fn_125_1FC8(void*, short);
+}
+
+extern "C" void* fn_125_3FB8(void* object, short deleting) {
+    if (object != 0) {
+        char* storage = static_cast<char*>(object);
+        fn_125_1F6C(storage + 0x14, 0);
+        fn_125_1FC8(storage + 0x8, 0);
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}
