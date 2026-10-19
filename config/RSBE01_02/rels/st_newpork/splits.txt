@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_newpork/st_newpork_function_204.cpp:
+	.text       start:0x00000204 end:0x0000027C
+
 mo_stage/st_newpork/st_newpork_function_27c.cpp:
 	.text       start:0x0000027C end:0x00000284
 
@@ -107,6 +110,9 @@ mo_stage/st_newpork/st_newpork_function_2600.cpp:
 mo_stage/st_newpork/st_newpork_function_2608.cpp:
 	.text       start:0x00002608 end:0x00002614
 
+mo_stage/st_newpork/st_newpork_function_2678.cpp:
+	.text       start:0x00002678 end:0x000026EC
+
 mo_stage/st_newpork/st_newpork_function_2720.cpp:
 	.text       start:0x00002720 end:0x00002724
 
@@ -166,6 +172,9 @@ mo_stage/st_newpork/st_newpork_function_2f28.cpp:
 
 mo_stage/st_newpork/st_newpork_function_2f2c.cpp:
 	.text       start:0x00002F2C end:0x00002F34
+
+mo_stage/st_newpork/st_newpork_function_2f34.cpp:
+	.text       start:0x00002F34 end:0x00002F50
 
 mo_stage/st_newpork/st_newpork_function_2f50.cpp:
 	.text       start:0x00002F50 end:0x00002F58

@@ -11,11 +11,17 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_minigame/sora_minigame/sora_minigame_function_4a0.cpp:
+	.text       start:0x000004A0 end:0x000004C8
+
 mo_minigame/sora_minigame/sora_minigame_function_928.cpp:
 	.text       start:0x00000928 end:0x0000092C
 
 mo_minigame/sora_minigame/sora_minigame_function_92c.cpp:
 	.text       start:0x0000092C end:0x00000930
+
+mo_minigame/sora_minigame/sora_minigame_function_9f8.cpp:
+	.text       start:0x000009F8 end:0x00000A70
 
 mo_minigame/sora_minigame/sora_minigame_function_a70.cpp:
 	.text       start:0x00000A70 end:0x00000AF0
@@ -61,6 +67,9 @@ mo_minigame/sora_minigame/sora_minigame_function_2ee8.cpp:
 
 mo_minigame/sora_minigame/sora_minigame_function_2ef0.cpp:
 	.text       start:0x00002EF0 end:0x00002EF8
+
+mo_minigame/sora_minigame/sora_minigame_function_4760.cpp:
+	.text       start:0x00004760 end:0x000047D4
 
 mo_minigame/sora_minigame/sora_minigame_function_5a18.cpp:
 	.text       start:0x00005A18 end:0x00005A5C
@@ -112,6 +121,9 @@ mo_minigame/sora_minigame/sora_minigame_function_8468.cpp:
 
 mo_minigame/sora_minigame/sora_minigame_function_8470.cpp:
 	.text       start:0x00008470 end:0x00008478
+
+mo_minigame/sora_minigame/sora_minigame_function_8d78.cpp:
+	.text       start:0x00008D78 end:0x00008E6C
 
 mo_minigame/sora_minigame/sora_minigame_function_90b0.cpp:
 	.text       start:0x000090B0 end:0x000090F0

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxonett/st_dxonett_function_a4.cpp:
+	.text       start:0x000000A4 end:0x000001A8
+
 mo_stage/st_dxonett/st_dxonett_function_1a8.cpp:
 	.text       start:0x000001A8 end:0x00000248
 
@@ -185,6 +188,9 @@ mo_stage/st_dxonett/st_dxonett_function_2698.cpp:
 mo_stage/st_dxonett/st_dxonett_function_26a0.cpp:
 	.text       start:0x000026A0 end:0x000026A4
 
+mo_stage/st_dxonett/st_dxonett_function_26a4.cpp:
+	.text       start:0x000026A4 end:0x000026C0
+
 mo_stage/st_dxonett/st_dxonett_function_26c0.cpp:
 	.text       start:0x000026C0 end:0x000026C8
 
@@ -196,6 +202,9 @@ mo_stage/st_dxonett/st_dxonett_function_26d0.cpp:
 
 mo_stage/st_dxonett/st_dxonett_function_2b54.cpp:
 	.text       start:0x00002B54 end:0x00002BF0
+
+mo_stage/st_dxonett/st_dxonett_function_38f4.cpp:
+	.text       start:0x000038F4 end:0x00003978
 
 mo_stage/st_dxonett/st_dxonett_function_4070.cpp:
 	.text       start:0x00004070 end:0x000040B0
@@ -211,6 +220,9 @@ mo_stage/st_dxonett/st_dxonett_function_4698.cpp:
 
 mo_stage/st_dxonett/st_dxonett_function_46a0.cpp:
 	.text       start:0x000046A0 end:0x000046A8
+
+mo_stage/st_dxonett/st_dxonett_function_46a8.cpp:
+	.text       start:0x000046A8 end:0x0000472C
 
 mo_stage/st_dxonett/st_dxonett_function_472c.cpp:
 	.text       start:0x0000472C end:0x0000476C
@@ -481,6 +493,9 @@ mo_stage/st_dxonett/st_dxonett_function_7b40.cpp:
 
 mo_stage/st_dxonett/st_dxonett_function_7b48.cpp:
 	.text       start:0x00007B48 end:0x00007B50
+
+mo_stage/st_dxonett/st_dxonett_function_7dc4.cpp:
+	.text       start:0x00007DC4 end:0x00007E48
 
 mo_stage/mo_stage.cpp:
 	.text       start:0x000089F0 end:0x00008A8C

@@ -6,8 +6,20 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_0.cpp:
+	.text       start:0x00000000 end:0x00000088
+
 mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_2ec.cpp:
 	.text       start:0x000002EC end:0x000002FC
+
+mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_5fc.cpp:
+	.text       start:0x000005FC end:0x00000630
+
+mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_e48.cpp:
+	.text       start:0x00000E48 end:0x00000ECC
+
+mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_ecc.cpp:
+	.text       start:0x00000ECC end:0x00000EF0
 
 mo_menu_simple_ending/sora_menu_simple_ending/sora_menu_simple_ending_function_f40.cpp:
 	.text       start:0x00000F40 end:0x000010B8
