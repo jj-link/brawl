@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_plankton/st_plankton_function_a18.cpp:
+	.text       start:0x00000A18 end:0x00000A5C
+
 mo_stage/st_plankton/st_plankton_function_a5c.cpp:
 	.text       start:0x00000A5C end:0x00000A64
 
@@ -347,6 +350,45 @@ mo_stage/st_plankton/st_plankton_function_6458.cpp:
 mo_stage/st_plankton/st_plankton_function_6498.cpp:
 	.text       start:0x00006498 end:0x000064D8
 
+mo_stage/st_plankton/st_plankton_function_64d8.cpp:
+	.text       start:0x000064D8 end:0x00006518
+
+mo_stage/st_plankton/st_plankton_function_6518.cpp:
+	.text       start:0x00006518 end:0x00006558
+
+mo_stage/st_plankton/st_plankton_function_6558.cpp:
+	.text       start:0x00006558 end:0x00006598
+
+mo_stage/st_plankton/st_plankton_function_6598.cpp:
+	.text       start:0x00006598 end:0x000065D8
+
+mo_stage/st_plankton/st_plankton_function_65d8.cpp:
+	.text       start:0x000065D8 end:0x00006618
+
+mo_stage/st_plankton/st_plankton_function_6618.cpp:
+	.text       start:0x00006618 end:0x00006658
+
+mo_stage/st_plankton/st_plankton_function_6658.cpp:
+	.text       start:0x00006658 end:0x00006698
+
+mo_stage/st_plankton/st_plankton_function_6698.cpp:
+	.text       start:0x00006698 end:0x000066D8
+
+mo_stage/st_plankton/st_plankton_function_66d8.cpp:
+	.text       start:0x000066D8 end:0x00006718
+
+mo_stage/st_plankton/st_plankton_function_6718.cpp:
+	.text       start:0x00006718 end:0x00006758
+
+mo_stage/st_plankton/st_plankton_function_678c.cpp:
+	.text       start:0x0000678C end:0x000067CC
+
+mo_stage/st_plankton/st_plankton_function_67cc.cpp:
+	.text       start:0x000067CC end:0x0000680C
+
+mo_stage/st_plankton/st_plankton_function_6830.cpp:
+	.text       start:0x00006830 end:0x00006870
+
 mo_stage/st_plankton/st_plankton_function_68e8.cpp:
 	.text       start:0x000068E8 end:0x000068F0
 
@@ -505,6 +547,12 @@ mo_stage/st_plankton/st_plankton_function_a650.cpp:
 
 mo_stage/st_plankton/st_plankton_function_b3e8.cpp:
 	.text       start:0x0000B3E8 end:0x0000B3F0
+
+mo_stage/st_plankton/st_plankton_function_cc00.cpp:
+	.text       start:0x0000CC00 end:0x0000CC40
+
+mo_stage/st_plankton/st_plankton_function_cc40.cpp:
+	.text       start:0x0000CC40 end:0x0000CC80
 
 mo_stage/st_plankton/st_plankton_function_cdbc.cpp:
 	.text       start:0x0000CDBC end:0x0000CDD4

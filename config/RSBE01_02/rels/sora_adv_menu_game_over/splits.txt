@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_0.cpp:
+	.text       start:0x00000000 end:0x00000044
+
 mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_528.cpp:
 	.text       start:0x00000528 end:0x000005E8
 
@@ -17,6 +20,9 @@ mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_e
 
 mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_2484.cpp:
 	.text       start:0x00002484 end:0x000024E4
+
+mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_2ae0.cpp:
+	.text       start:0x00002AE0 end:0x00002B24
 
 mo_adv_menu_game_over/sora_adv_menu_game_over/sora_adv_menu_game_over_function_2cc0.cpp:
 	.text       start:0x00002CC0 end:0x00002CC4
