@@ -14,8 +14,32 @@ global_destructor_chain.c:
 mo_fighter/ft_peach/ft_peach_function_194c.cpp:
 	.text       start:0x0000194C end:0x000019EC
 
+mo_fighter/ft_peach/ft_peach_function_1aa4.cpp:
+	.text       start:0x00001AA4 end:0x00001B00
+
+mo_fighter/ft_peach/ft_peach_function_1b64.cpp:
+	.text       start:0x00001B64 end:0x00001BC0
+
+mo_fighter/ft_peach/ft_peach_function_1bc0.cpp:
+	.text       start:0x00001BC0 end:0x00001C1C
+
+mo_fighter/ft_peach/ft_peach_function_1c1c.cpp:
+	.text       start:0x00001C1C end:0x00001C78
+
+mo_fighter/ft_peach/ft_peach_function_1c78.cpp:
+	.text       start:0x00001C78 end:0x00001CD4
+
+mo_fighter/ft_peach/ft_peach_function_1cd4.cpp:
+	.text       start:0x00001CD4 end:0x00001D30
+
+mo_fighter/ft_peach/ft_peach_function_1d30.cpp:
+	.text       start:0x00001D30 end:0x00001D8C
+
 mo_fighter/ft_peach/ft_peach_function_1d8c.cpp:
 	.text       start:0x00001D8C end:0x00001DCC
+
+mo_fighter/ft_peach/ft_peach_function_1dcc.cpp:
+	.text       start:0x00001DCC end:0x00001E28
 
 mo_fighter/ft_peach/ft_peach_function_1e28.cpp:
 	.text       start:0x00001E28 end:0x00001E68
@@ -23,14 +47,56 @@ mo_fighter/ft_peach/ft_peach_function_1e28.cpp:
 mo_fighter/ft_peach/ft_peach_function_1e68.cpp:
 	.text       start:0x00001E68 end:0x00001EE8
 
+mo_fighter/ft_peach/ft_peach_function_1ee8.cpp:
+	.text       start:0x00001EE8 end:0x00001F44
+
+mo_fighter/ft_peach/ft_peach_function_1f44.cpp:
+	.text       start:0x00001F44 end:0x00001FA0
+
+mo_fighter/ft_peach/ft_peach_function_2188.cpp:
+	.text       start:0x00002188 end:0x000021E4
+
 mo_fighter/ft_peach/ft_peach_function_21e4.cpp:
 	.text       start:0x000021E4 end:0x00002224
 
 mo_fighter/ft_peach/ft_peach_function_2224.cpp:
 	.text       start:0x00002224 end:0x00002264
 
+mo_fighter/ft_peach/ft_peach_function_2264.cpp:
+	.text       start:0x00002264 end:0x000022C0
+
+mo_fighter/ft_peach/ft_peach_function_232c.cpp:
+	.text       start:0x0000232C end:0x00002388
+
+mo_fighter/ft_peach/ft_peach_function_2880.cpp:
+	.text       start:0x00002880 end:0x000028DC
+
+mo_fighter/ft_peach/ft_peach_function_2b88.cpp:
+	.text       start:0x00002B88 end:0x00002BE4
+
+mo_fighter/ft_peach/ft_peach_function_2be4.cpp:
+	.text       start:0x00002BE4 end:0x00002C40
+
+mo_fighter/ft_peach/ft_peach_function_2c40.cpp:
+	.text       start:0x00002C40 end:0x00002C9C
+
+mo_fighter/ft_peach/ft_peach_function_2c9c.cpp:
+	.text       start:0x00002C9C end:0x00002CF8
+
+mo_fighter/ft_peach/ft_peach_function_2cf8.cpp:
+	.text       start:0x00002CF8 end:0x00002D54
+
 mo_fighter/ft_peach/ft_peach_function_2d54.cpp:
 	.text       start:0x00002D54 end:0x00002DD4
+
+mo_fighter/ft_peach/ft_peach_function_2dd4.cpp:
+	.text       start:0x00002DD4 end:0x00002E30
+
+mo_fighter/ft_peach/ft_peach_function_2e30.cpp:
+	.text       start:0x00002E30 end:0x00002E8C
+
+mo_fighter/ft_peach/ft_peach_function_2e8c.cpp:
+	.text       start:0x00002E8C end:0x00002EE8
 
 mo_fighter/ft_peach/ft_peach_function_33c4.cpp:
 	.text       start:0x000033C4 end:0x00003424
@@ -253,6 +319,9 @@ mo_fighter/ft_peach/ft_peach_function_9130.cpp:
 
 mo_fighter/ft_peach/ft_peach_function_92c8.cpp:
 	.text       start:0x000092C8 end:0x00009368
+
+mo_fighter/ft_peach/ft_peach_function_9420.cpp:
+	.text       start:0x00009420 end:0x00009478
 
 mo_fighter/ft_peach/ft_peach_vector_set.cpp:
 	.text       start:0x00009594 end:0x000095A4
@@ -556,6 +625,9 @@ mo_fighter/ft_peach/ft_peach_function_a2dc.cpp:
 
 mo_fighter/ft_peach/ft_peach_array_aggregate.cpp:
 	.text       start:0x0000A2E4 end:0x0000A54C
+
+mo_fighter/ft_peach/ft_peach_function_a54c.cpp:
+	.text       start:0x0000A54C end:0x0000A5A4
 
 mo_fighter/ft_peach/ft_peach_function_a5a4.cpp:
 	.text       start:0x0000A5A4 end:0x0000A5B0
@@ -1082,6 +1154,9 @@ mo_fighter/ft_peach/ft_peach_function_12dec.cpp:
 mo_fighter/ft_peach/ft_peach_function_12e2c.cpp:
 	.text       start:0x00012E2C end:0x00012E8C
 
+mo_fighter/ft_peach/ft_peach_function_12e8c.cpp:
+	.text       start:0x00012E8C end:0x00012EE4
+
 mo_fighter/ft_peach/ft_peach_function_12ee4.cpp:
 	.text       start:0x00012EE4 end:0x00012F24
 
@@ -1330,6 +1405,12 @@ mo_fighter/ft_peach/ft_peach_function_1341c.cpp:
 
 mo_fighter/ft_peach/ft_peach_function_13438.cpp:
 	.text       start:0x00013438 end:0x00013440
+
+mo_fighter/ft_peach/ft_peach_function_13440.cpp:
+	.text       start:0x00013440 end:0x00013464
+
+mo_fighter/ft_peach/ft_peach_function_13464.cpp:
+	.text       start:0x00013464 end:0x00013488
 
 mo_fighter/ft_peach/ft_peach_function_13488.cpp:
 	.text       start:0x00013488 end:0x0001348C

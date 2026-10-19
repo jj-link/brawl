@@ -225,6 +225,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_9540.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_9708.cpp:
 	.text       start:0x00009708 end:0x0000984C
 
+mo_fighter/ft_pikachu/ft_pikachu_function_984c.cpp:
+	.text       start:0x0000984C end:0x00009870
+
 mo_fighter/ft_pikachu/ft_pikachu_function_9870.cpp:
 	.text       start:0x00009870 end:0x00009890
 
@@ -531,6 +534,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_a2c8.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_a3f4.cpp:
 	.text       start:0x0000A3F4 end:0x0000A428
 
+mo_fighter/ft_pikachu/ft_pikachu_function_a428.cpp:
+	.text       start:0x0000A428 end:0x0000A480
+
 mo_fighter/ft_pikachu/ft_pikachu_function_a480.cpp:
 	.text       start:0x0000A480 end:0x0000A48C
 
@@ -786,6 +792,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_e208.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_e278.cpp:
 	.text       start:0x0000E278 end:0x0000E2C0
 
+mo_fighter/ft_pikachu/ft_pikachu_function_e2c0.cpp:
+	.text       start:0x0000E2C0 end:0x0000E318
+
 mo_fighter/ft_pikachu/ft_pikachu_function_e404.cpp:
 	.text       start:0x0000E404 end:0x0000E40C
 
@@ -933,6 +942,9 @@ mo_fighter/ft_pikachu/ft_pikachu_quick_attack_start.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_f034.cpp:
 	.text       start:0x0000F034 end:0x0000F040
 
+mo_fighter/ft_pikachu/ft_pikachu_function_f0b4.cpp:
+	.text       start:0x0000F0B4 end:0x0000F0D8
+
 mo_fighter/ft_pikachu/ft_pikachu_function_f0d8.cpp:
 	.text       start:0x0000F0D8 end:0x0000F0F4
 
@@ -1048,6 +1060,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_11020.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_11030.cpp:
 	.text       start:0x00011030 end:0x00011040
 
+mo_fighter/ft_pikachu/ft_pikachu_function_11040.cpp:
+	.text       start:0x00011040 end:0x00011064
+
 mo_fighter/ft_pikachu/ft_pikachu_function_11064.cpp:
 	.text       start:0x00011064 end:0x00011100
 
@@ -1117,6 +1132,9 @@ mo_fighter/ft_pikachu/ft_pikachu_function_138b0.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_13aa8.cpp:
 	.text       start:0x00013AA8 end:0x00013AE8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_13ae8.cpp:
+	.text       start:0x00013AE8 end:0x00013B40
+
 mo_fighter/ft_pikachu/ft_pikachu_function_13b40.cpp:
 	.text       start:0x00013B40 end:0x00013B80
 
@@ -1147,6 +1165,24 @@ mo_fighter/ft_pikachu/ft_pikachu_storage_vertical_range.cpp:
 
 mo_fighter/ft_pikachu/ft_pikachu_function_146e8.cpp:
 	.text       start:0x000146E8 end:0x0001472C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_1472c.cpp:
+	.text       start:0x0001472C end:0x00014750
+
+mo_fighter/ft_pikachu/ft_pikachu_function_14750.cpp:
+	.text       start:0x00014750 end:0x00014774
+
+mo_fighter/ft_pikachu/ft_pikachu_function_14854.cpp:
+	.text       start:0x00014854 end:0x00014878
+
+mo_fighter/ft_pikachu/ft_pikachu_function_14878.cpp:
+	.text       start:0x00014878 end:0x0001489C
+
+mo_fighter/ft_pikachu/ft_pikachu_function_1489c.cpp:
+	.text       start:0x0001489C end:0x000148C0
+
+mo_fighter/ft_pikachu/ft_pikachu_function_1492c.cpp:
+	.text       start:0x0001492C end:0x00014950
 
 mo_fighter/ft_pikachu/ft_pikachu_function_149b8.cpp:
 	.text       start:0x000149B8 end:0x00014A18
@@ -1388,6 +1424,12 @@ mo_fighter/ft_pikachu/ft_pikachu_function_14f10.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_14f2c.cpp:
 	.text       start:0x00014F2C end:0x00014F34
 
+mo_fighter/ft_pikachu/ft_pikachu_function_14f34.cpp:
+	.text       start:0x00014F34 end:0x00014F58
+
+mo_fighter/ft_pikachu/ft_pikachu_function_14f58.cpp:
+	.text       start:0x00014F58 end:0x00014F7C
+
 mo_fighter/ft_pikachu/ft_pikachu_function_14f7c.cpp:
 	.text       start:0x00014F7C end:0x00014F80
 
@@ -1607,6 +1649,9 @@ mo_fighter/ft_pikachu/wn_pikachu_storage_release.cpp:
 
 mo_fighter/ft_pikachu/wn_pikachu_collision_log_reference.cpp:
 	.text       start:0x0001834C end:0x000183FC
+
+mo_fighter/ft_pikachu/ft_pikachu_function_183fc.cpp:
+	.text       start:0x000183FC end:0x00018420
 
 mo_fighter/ft_pikachu/wn_pikachu_storage_position_dispatch.cpp:
 	.text       start:0x00018494 end:0x0001856C
