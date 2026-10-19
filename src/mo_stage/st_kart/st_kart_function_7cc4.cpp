@@ -1,0 +1,103 @@
+#pragma force_active on
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+
+struct Vec3 { float v[3]; };
+struct Vec2 { float v[2]; };
+
+struct KartData {
+    float f00, f04, f08, f0c;
+    Vec3 v10;
+    u32 u1c;
+    Vec3 v20;
+    u16 u2c, u2e;
+    u8 b30, b31, b32, b33, b34, b35, b36, b37, b38, b39, b3a;
+    u32 u3c;
+    Vec3 v40;
+    float f4c;
+    u32 u50, u54, u58, u5c;
+    float f60, f64, f68;
+    u32 u6c, u70, u74, u78;
+    float f7c;
+    Vec3 v80;
+    Vec2 v8c;
+    float f94;
+    u32 u98;
+    u8 b9c;
+};
+
+struct Kart {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void unused8();
+    virtual void unused9();
+    virtual void unused10();
+    virtual void unused11();
+    virtual void unused12();
+    virtual void unused13();
+    virtual void unused14();
+    virtual void unused15();
+    virtual void unused16();
+    virtual void unused17();
+    virtual void unused18();
+    virtual void unused19();
+    virtual void unused20();
+    virtual void unused21();
+    virtual void unused22();
+    virtual void unused23();
+    virtual void unused24();
+    virtual void unused25();
+    virtual KartData* get(int);
+};
+
+extern "C" void fn_49_7CC4(Kart* self, int from, int to) {
+    KartData* src = self->get(from);
+    KartData* dst = self->get(to);
+    dst->f00 = src->f00;
+    dst->f04 = src->f04;
+    dst->f08 = src->f08;
+    dst->f0c = src->f0c;
+    dst->v10 = src->v10;
+    dst->u1c = src->u1c;
+    dst->v20 = src->v20;
+    dst->u2c = src->u2c;
+    dst->u2e = src->u2e;
+    dst->b30 = src->b30;
+    dst->b31 = src->b31;
+    dst->b32 = src->b32;
+    dst->b33 = src->b33;
+    dst->b34 = src->b34;
+    dst->b35 = src->b35;
+    dst->b36 = src->b36;
+    dst->b37 = src->b37;
+    dst->b38 = src->b38;
+    dst->b39 = src->b39;
+    dst->b3a = src->b3a;
+    dst->u3c = src->u3c;
+    dst->v40 = src->v40;
+    dst->f4c = src->f4c;
+    dst->u50 = src->u50;
+    dst->u54 = src->u54;
+    dst->u58 = src->u58;
+    dst->u5c = src->u5c;
+    dst->f60 = src->f60;
+    dst->f64 = src->f64;
+    dst->f68 = src->f68;
+    dst->u6c = src->u6c;
+    dst->u70 = src->u70;
+    dst->u74 = src->u74;
+    dst->u78 = src->u78;
+    dst->f7c = src->f7c;
+    dst->v80 = src->v80;
+    dst->v8c = src->v8c;
+    dst->f94 = src->f94;
+    dst->u98 = src->u98;
+    dst->b9c = src->b9c;
+}
