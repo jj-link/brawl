@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_palutena/st_palutena_function_100.cpp:
+	.text       start:0x00000100 end:0x0000016C
+
 mo_stage/st_palutena/st_palutena_function_16c.cpp:
 	.text       start:0x0000016C end:0x00000174
 
@@ -341,6 +344,21 @@ mo_stage/st_palutena/st_palutena_function_4764.cpp:
 mo_stage/st_palutena/st_palutena_function_4788.cpp:
 	.text       start:0x00004788 end:0x0000478C
 
+mo_stage/st_palutena/st_palutena_function_48b0.cpp:
+	.text       start:0x000048B0 end:0x00004918
+
+mo_stage/st_palutena/st_palutena_function_4918.cpp:
+	.text       start:0x00004918 end:0x00004980
+
+mo_stage/st_palutena/st_palutena_function_4980.cpp:
+	.text       start:0x00004980 end:0x000049E8
+
+mo_stage/st_palutena/st_palutena_function_49e8.cpp:
+	.text       start:0x000049E8 end:0x00004A54
+
+mo_stage/st_palutena/st_palutena_function_4a54.cpp:
+	.text       start:0x00004A54 end:0x00004ABC
+
 mo_stage/st_palutena/st_palutena_function_4abc.cpp:
 	.text       start:0x00004ABC end:0x00004AC8
 
@@ -349,6 +367,9 @@ mo_stage/st_palutena/st_palutena_function_4ae4.cpp:
 
 mo_stage/st_palutena/st_palutena_function_4afc.cpp:
 	.text       start:0x00004AFC end:0x00004B3C
+
+mo_stage/st_palutena/st_palutena_function_4b3c.cpp:
+	.text       start:0x00004B3C end:0x00004BA4
 
 mo_stage/st_palutena/st_palutena_function_4e88.cpp:
 	.text       start:0x00004E88 end:0x00004EBC
@@ -571,6 +592,9 @@ mo_stage/st_palutena/st_palutena_function_a084.cpp:
 
 mo_stage/st_palutena/st_palutena_function_a18c.cpp:
 	.text       start:0x0000A18C end:0x0000A1E4
+
+mo_stage/st_palutena/st_palutena_function_a41c.cpp:
+	.text       start:0x0000A41C end:0x0000A484
 
 mo_stage/st_palutena/st_palutena_function_a484.cpp:
 	.text       start:0x0000A484 end:0x0000A4D8

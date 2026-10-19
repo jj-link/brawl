@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxyorster/st_dxyorster_function_100.cpp:
+	.text       start:0x00000100 end:0x0000016C
+
 mo_stage/st_dxyorster/st_dxyorster_function_16c.cpp:
 	.text       start:0x0000016C end:0x00000174
 
@@ -383,6 +386,21 @@ mo_stage/st_dxyorster/st_dxyorster_function_3024.cpp:
 mo_stage/st_dxyorster/st_dxyorster_function_3028.cpp:
 	.text       start:0x00003028 end:0x00003068
 
+mo_stage/st_dxyorster/st_dxyorster_function_3170.cpp:
+	.text       start:0x00003170 end:0x000031D8
+
+mo_stage/st_dxyorster/st_dxyorster_function_31d8.cpp:
+	.text       start:0x000031D8 end:0x00003240
+
+mo_stage/st_dxyorster/st_dxyorster_function_3240.cpp:
+	.text       start:0x00003240 end:0x000032A8
+
+mo_stage/st_dxyorster/st_dxyorster_function_32a8.cpp:
+	.text       start:0x000032A8 end:0x00003314
+
+mo_stage/st_dxyorster/st_dxyorster_function_3314.cpp:
+	.text       start:0x00003314 end:0x0000337C
+
 mo_stage/st_dxyorster/st_dxyorster_function_337c.cpp:
 	.text       start:0x0000337C end:0x00003388
 
@@ -394,6 +412,9 @@ mo_stage/st_dxyorster/st_dxyorster_function_33a4.cpp:
 
 mo_stage/st_dxyorster/st_dxyorster_function_33bc.cpp:
 	.text       start:0x000033BC end:0x000033FC
+
+mo_stage/st_dxyorster/st_dxyorster_function_33fc.cpp:
+	.text       start:0x000033FC end:0x00003464
 
 mo_stage/st_dxyorster/st_dxyorster_function_3464.cpp:
 	.text       start:0x00003464 end:0x000034A4

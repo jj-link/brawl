@@ -68,6 +68,9 @@ mo_fighter/ft_luigi/ft_luigi_function_217c.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_21bc.cpp:
 	.text       start:0x000021BC end:0x00002218
 
+mo_fighter/ft_luigi/ft_luigi_function_2218.cpp:
+	.text       start:0x00002218 end:0x00002284
+
 mo_fighter/ft_luigi/ft_luigi_function_2284.cpp:
 	.text       start:0x00002284 end:0x000022E0
 
@@ -119,6 +122,9 @@ mo_fighter/ft_luigi/ft_luigi_function_3170.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_323c.cpp:
 	.text       start:0x0000323C end:0x00003298
 
+mo_fighter/ft_luigi/ft_luigi_function_3308.cpp:
+	.text       start:0x00003308 end:0x00003374
+
 mo_fighter/ft_luigi/ft_luigi_function_3374.cpp:
 	.text       start:0x00003374 end:0x000033D4
 
@@ -164,6 +170,9 @@ mo_fighter/ft_luigi/ft_luigi_function_3eec.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_3f2c.cpp:
 	.text       start:0x00003F2C end:0x00003F6C
 
+mo_fighter/ft_luigi/ft_luigi_function_3f6c.cpp:
+	.text       start:0x00003F6C end:0x00003FD8
+
 mo_fighter/ft_luigi/ft_luigi_function_3fd8.cpp:
 	.text       start:0x00003FD8 end:0x00004034
 
@@ -182,6 +191,9 @@ mo_fighter/ft_luigi/ft_luigi_function_4184.cpp:
 mo_fighter/ft_luigi/ft_luigi_leaf_destructors.cpp:
 	.text       start:0x000041E0 end:0x00004300
 
+mo_fighter/ft_luigi/ft_luigi_function_43e8.cpp:
+	.text       start:0x000043E8 end:0x00004454
+
 mo_fighter/ft_luigi/ft_luigi_function_4454.cpp:
 	.text       start:0x00004454 end:0x000044F0
 
@@ -197,6 +209,9 @@ mo_fighter/ft_luigi/ft_luigi_function_4f04.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_4f64.cpp:
 	.text       start:0x00004F64 end:0x00004FC4
 
+mo_fighter/ft_luigi/ft_luigi_function_4fc4.cpp:
+	.text       start:0x00004FC4 end:0x00005030
+
 mo_fighter/ft_luigi/ft_luigi_function_5114.cpp:
 	.text       start:0x00005114 end:0x00005194
 
@@ -205,6 +220,12 @@ mo_fighter/ft_luigi/ft_luigi_function_5194.cpp:
 
 mo_fighter/ft_luigi/ft_luigi_function_51f0.cpp:
 	.text       start:0x000051F0 end:0x0000524C
+
+mo_fighter/ft_luigi/ft_luigi_function_524c.cpp:
+	.text       start:0x0000524C end:0x000052B8
+
+mo_fighter/ft_luigi/ft_luigi_function_52b8.cpp:
+	.text       start:0x000052B8 end:0x00005324
 
 mo_fighter/ft_luigi/ft_luigi_function_5324.cpp:
 	.text       start:0x00005324 end:0x00005364
@@ -221,14 +242,23 @@ mo_fighter/ft_luigi/ft_luigi_function_5490.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_54ec.cpp:
 	.text       start:0x000054EC end:0x00005548
 
+mo_fighter/ft_luigi/ft_luigi_function_55bc.cpp:
+	.text       start:0x000055BC end:0x00005628
+
 mo_fighter/ft_luigi/ft_luigi_function_58c8.cpp:
 	.text       start:0x000058C8 end:0x00005928
 
 mo_fighter/ft_luigi/ft_luigi_function_5928.cpp:
 	.text       start:0x00005928 end:0x00005984
 
+mo_fighter/ft_luigi/ft_luigi_function_5984.cpp:
+	.text       start:0x00005984 end:0x000059F0
+
 mo_fighter/ft_luigi/ft_luigi_function_59f0.cpp:
 	.text       start:0x000059F0 end:0x00005AA4
+
+mo_fighter/ft_luigi/ft_luigi_function_5aa4.cpp:
+	.text       start:0x00005AA4 end:0x00005B10
 
 mo_fighter/ft_luigi/ft_luigi_function_5b10.cpp:
 	.text       start:0x00005B10 end:0x00005B6C
@@ -287,11 +317,17 @@ mo_fighter/ft_luigi/ft_luigi_function_686c.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_6930.cpp:
 	.text       start:0x00006930 end:0x000069F4
 
+mo_fighter/ft_luigi/ft_luigi_function_6c34.cpp:
+	.text       start:0x00006C34 end:0x00006CA0
+
 mo_fighter/ft_luigi/ft_luigi_function_6ca0.cpp:
 	.text       start:0x00006CA0 end:0x00006CFC
 
 mo_fighter/ft_luigi/ft_luigi_function_6d8c.cpp:
 	.text       start:0x00006D8C end:0x00006DE0
+
+mo_fighter/ft_luigi/ft_luigi_function_6e50.cpp:
+	.text       start:0x00006E50 end:0x00006EBC
 
 mo_fighter/ft_luigi/ft_luigi_function_6ebc.cpp:
 	.text       start:0x00006EBC end:0x00006F00
@@ -501,6 +537,9 @@ mo_fighter/ft_luigi/ft_luigi_function_8824.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_8828.cpp:
 	.text       start:0x00008828 end:0x00008830
 
+mo_fighter/ft_luigi/ft_luigi_function_8830.cpp:
+	.text       start:0x00008830 end:0x00008840
+
 mo_fighter/ft_luigi/ft_luigi_function_8840.cpp:
 	.text       start:0x00008840 end:0x00008848
 
@@ -612,6 +651,9 @@ mo_fighter/ft_luigi/ft_luigi_function_8b28.cpp:
 mo_fighter/ft_luigi/ft_luigi_function_8b40.cpp:
 	.text       start:0x00008B40 end:0x00008B50
 
+mo_fighter/ft_luigi/ft_luigi_function_8b50.cpp:
+	.text       start:0x00008B50 end:0x00008B60
+
 mo_fighter/ft_luigi/ft_luigi_function_8b60.cpp:
 	.text       start:0x00008B60 end:0x00008B68
 
@@ -635,6 +677,9 @@ mo_fighter/ft_luigi/ft_luigi_function_8be8.cpp:
 
 mo_fighter/ft_luigi/ft_luigi_function_8c00.cpp:
 	.text       start:0x00008C00 end:0x00008C10
+
+mo_fighter/ft_luigi/ft_luigi_function_8c10.cpp:
+	.text       start:0x00008C10 end:0x00008C20
 
 mo_fighter/ft_luigi/ft_luigi_function_8c20.cpp:
 	.text       start:0x00008C20 end:0x00008C28
@@ -703,6 +748,9 @@ mo_fighter/ft_luigi/ft_luigi_function_9c64.cpp:
 
 mo_fighter/ft_luigi/ft_luigi_function_9c70.cpp:
 	.text       start:0x00009C70 end:0x00009CA4
+
+mo_fighter/ft_luigi/ft_luigi_function_9ca4.cpp:
+	.text       start:0x00009CA4 end:0x00009CB4
 
 mo_fighter/ft_luigi/ft_luigi_function_9cb4.cpp:
 	.text       start:0x00009CB4 end:0x00009CCC
