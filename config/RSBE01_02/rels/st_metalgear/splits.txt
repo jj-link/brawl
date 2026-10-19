@@ -497,6 +497,9 @@ mo_stage/st_metalgear/st_metalgear_function_9ef4.cpp:
 mo_stage/st_metalgear/st_metalgear_function_9f00.cpp:
 	.text       start:0x00009F00 end:0x00009F08
 
+mo_stage/st_metalgear/st_metalgear_function_9f18.cpp:
+	.text       start:0x00009F18 end:0x00009F40
+
 mo_stage/st_metalgear/st_metalgear_function_9f50.cpp:
 	.text       start:0x00009F50 end:0x00009F5C
 
@@ -505,6 +508,9 @@ mo_stage/st_metalgear/st_metalgear_function_9fbc.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_9fc8.cpp:
 	.text       start:0x00009FC8 end:0x00009FD0
+
+mo_stage/st_metalgear/st_metalgear_function_9fe0.cpp:
+	.text       start:0x00009FE0 end:0x0000A008
 
 mo_stage/st_metalgear/st_metalgear_function_a018.cpp:
 	.text       start:0x0000A018 end:0x0000A024
@@ -515,11 +521,20 @@ mo_stage/st_metalgear/st_metalgear_function_a084.cpp:
 mo_stage/st_metalgear/st_metalgear_function_a090.cpp:
 	.text       start:0x0000A090 end:0x0000A098
 
+mo_stage/st_metalgear/st_metalgear_function_a0a8.cpp:
+	.text       start:0x0000A0A8 end:0x0000A0D0
+
+mo_stage/st_metalgear/st_metalgear_function_a140.cpp:
+	.text       start:0x0000A140 end:0x0000A168
+
 mo_stage/st_metalgear/st_metalgear_function_a178.cpp:
 	.text       start:0x0000A178 end:0x0000A184
 
 mo_stage/st_metalgear/st_metalgear_function_a1f0.cpp:
 	.text       start:0x0000A1F0 end:0x0000A1F8
+
+mo_stage/st_metalgear/st_metalgear_function_a208.cpp:
+	.text       start:0x0000A208 end:0x0000A230
 
 mo_stage/st_metalgear/st_metalgear_function_ae54.cpp:
 	.text       start:0x0000AE54 end:0x0000AE9C
@@ -755,8 +770,14 @@ mo_stage/st_metalgear/st_metalgear_function_f698.cpp:
 mo_stage/st_metalgear/st_metalgear_function_f69c.cpp:
 	.text       start:0x0000F69C end:0x0000F6A4
 
+mo_stage/st_metalgear/st_metalgear_function_f704.cpp:
+	.text       start:0x0000F704 end:0x0000F72C
+
 mo_stage/st_metalgear/st_metalgear_function_f7b4.cpp:
 	.text       start:0x0000F7B4 end:0x0000F7BC
+
+mo_stage/st_metalgear/st_metalgear_function_f7cc.cpp:
+	.text       start:0x0000F7CC end:0x0000F7F4
 
 mo_stage/st_metalgear/st_metalgear_function_1039c.cpp:
 	.text       start:0x0001039C end:0x000103E4

@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_minigame/sora_minigame/sora_minigame_function_c8.cpp:
+	.text       start:0x000000C8 end:0x00000120
+
 mo_minigame/sora_minigame/sora_minigame_function_4a0.cpp:
 	.text       start:0x000004A0 end:0x000004C8
 
@@ -73,6 +76,12 @@ mo_minigame/sora_minigame/sora_minigame_function_2ee8.cpp:
 
 mo_minigame/sora_minigame/sora_minigame_function_2ef0.cpp:
 	.text       start:0x00002EF0 end:0x00002EF8
+
+mo_minigame/sora_minigame/sora_minigame_function_2f64.cpp:
+	.text       start:0x00002F64 end:0x00002FBC
+
+mo_minigame/sora_minigame/sora_minigame_function_3024.cpp:
+	.text       start:0x00003024 end:0x0000307C
 
 mo_minigame/sora_minigame/sora_minigame_function_3df0.cpp:
 	.text       start:0x00003DF0 end:0x00003E40
@@ -146,8 +155,14 @@ mo_minigame/sora_minigame/sora_minigame_function_90b0.cpp:
 mo_minigame/sora_minigame/sora_minigame_function_90f0.cpp:
 	.text       start:0x000090F0 end:0x00009130
 
+mo_minigame/sora_minigame/sora_minigame_function_b0a4.cpp:
+	.text       start:0x0000B0A4 end:0x0000B0FC
+
 mo_minigame/sora_minigame/sora_minigame_function_b358.cpp:
 	.text       start:0x0000B358 end:0x0000B3D8
+
+mo_minigame/sora_minigame/sora_minigame_function_b3d8.cpp:
+	.text       start:0x0000B3D8 end:0x0000B430
 
 mo_minigame/sora_minigame/sora_minigame_function_d2fc.cpp:
 	.text       start:0x0000D2FC end:0x0000D34C
@@ -176,8 +191,14 @@ mo_minigame/sora_minigame/sora_minigame_function_db9c.cpp:
 mo_minigame/sora_minigame/sora_minigame_function_dc18.cpp:
 	.text       start:0x0000DC18 end:0x0000DC30
 
+mo_minigame/sora_minigame/sora_minigame_function_dc30.cpp:
+	.text       start:0x0000DC30 end:0x0000DC84
+
 mo_minigame/sora_minigame/sora_minigame_function_ddd4.cpp:
 	.text       start:0x0000DDD4 end:0x0000DE20
+
+mo_minigame/sora_minigame/sora_minigame_function_de20.cpp:
+	.text       start:0x0000DE20 end:0x0000DE48
 
 mo_minigame/sora_minigame/sora_minigame_function_de48.cpp:
 	.text       start:0x0000DE48 end:0x0000DE50

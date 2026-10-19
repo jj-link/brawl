@@ -30,8 +30,17 @@ mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_functio
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_2ebc.cpp:
 	.text       start:0x00002EBC end:0x00002EC0
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_2fa0.cpp:
+	.text       start:0x00002FA0 end:0x00002FC8
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_38f8.cpp:
 	.text       start:0x000038F8 end:0x00003934
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_3b1c.cpp:
+	.text       start:0x00003B1C end:0x00003B70
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_52e8.cpp:
+	.text       start:0x000052E8 end:0x0000533C
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_533c.cpp:
 	.text       start:0x0000533C end:0x0000535C
@@ -72,6 +81,9 @@ mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_functio
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_6064.cpp:
 	.text       start:0x00006064 end:0x00006068
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_64c8.cpp:
+	.text       start:0x000064C8 end:0x00006520
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_683c.cpp:
 	.text       start:0x0000683C end:0x0000684C
 
@@ -87,6 +99,9 @@ mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_functio
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_8dd4.cpp:
 	.text       start:0x00008DD4 end:0x00008F50
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_95ec.cpp:
+	.text       start:0x000095EC end:0x00009640
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9640.cpp:
 	.text       start:0x00009640 end:0x000096A0
 
@@ -96,20 +111,38 @@ mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_functio
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_96dc.cpp:
 	.text       start:0x000096DC end:0x000096FC
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9770.cpp:
+	.text       start:0x00009770 end:0x000097C4
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_97c4.cpp:
 	.text       start:0x000097C4 end:0x00009808
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_98f4.cpp:
 	.text       start:0x000098F4 end:0x00009904
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9b70.cpp:
+	.text       start:0x00009B70 end:0x00009BC4
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9c38.cpp:
+	.text       start:0x00009C38 end:0x00009C8C
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9c8c.cpp:
 	.text       start:0x00009C8C end:0x00009CA8
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9ea8.cpp:
+	.text       start:0x00009EA8 end:0x00009EFC
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_9fdc.cpp:
 	.text       start:0x00009FDC end:0x0000A09C
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_a09c.cpp:
 	.text       start:0x0000A09C end:0x0000A0D8
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_a160.cpp:
+	.text       start:0x0000A160 end:0x0000A1B4
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_a2f0.cpp:
+	.text       start:0x0000A2F0 end:0x0000A344
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_a344.cpp:
 	.text       start:0x0000A344 end:0x0000A360
@@ -147,11 +180,20 @@ mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_functio
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_b70c.cpp:
 	.text       start:0x0000B70C end:0x0000B758
 
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_b7cc.cpp:
+	.text       start:0x0000B7CC end:0x0000B820
+
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_b910.cpp:
 	.text       start:0x0000B910 end:0x0000B954
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_bc2c.cpp:
 	.text       start:0x0000BC2C end:0x0000BCA8
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_bca8.cpp:
+	.text       start:0x0000BCA8 end:0x0000BCFC
+
+mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_bf0c.cpp:
+	.text       start:0x0000BF0C end:0x0000BF60
 
 mo_menu_collect_viewer/sora_menu_collect_viewer/sora_menu_collect_viewer_function_bf60.cpp:
 	.text       start:0x0000BF60 end:0x0000BF7C
