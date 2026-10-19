@@ -1382,6 +1382,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_125e0.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_12808.cpp:
 	.text       start:0x00012808 end:0x00012874
 
+mo_fighter/ft_pikmin/ft_pikmin_function_12954.cpp:
+	.text       start:0x00012954 end:0x000129F8
+
 mo_fighter/ft_pikmin/ft_pikmin_function_12c18.cpp:
 	.text       start:0x00012C18 end:0x00012C1C
 
@@ -1859,6 +1862,15 @@ mo_fighter/ft_pikmin/ft_pikmin_function_1bfdc.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_1bfe4.cpp:
 	.text       start:0x0001BFE4 end:0x0001BFF4
 
+mo_fighter/ft_pikmin/ft_pikmin_function_1bff4.cpp:
+	.text       start:0x0001BFF4 end:0x0001C004
+
+mo_fighter/ft_pikmin/ft_pikmin_function_1c004.cpp:
+	.text       start:0x0001C004 end:0x0001C014
+
+mo_fighter/ft_pikmin/ft_pikmin_function_1c014.cpp:
+	.text       start:0x0001C014 end:0x0001C024
+
 mo_fighter/ft_pikmin/ft_pikmin_function_1c024.cpp:
 	.text       start:0x0001C024 end:0x0001C02C
 
@@ -1894,6 +1906,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_1c074.cpp:
 
 mo_fighter/ft_pikmin/ft_pikmin_function_1c07c.cpp:
 	.text       start:0x0001C07C end:0x0001C084
+
+mo_fighter/ft_pikmin/ft_pikmin_function_1c084.cpp:
+	.text       start:0x0001C084 end:0x0001C094
 
 mo_fighter/ft_pikmin/ft_pikmin_function_1c094.cpp:
 	.text       start:0x0001C094 end:0x0001C098
@@ -1990,6 +2005,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_1cbe8.cpp:
 
 mo_fighter/ft_pikmin/ft_pikmin_function_1cfa4.cpp:
 	.text       start:0x0001CFA4 end:0x0001CFA8
+
+mo_fighter/ft_pikmin/ft_pikmin_function_1cfa8.cpp:
+	.text       start:0x0001CFA8 end:0x0001CFB8
 
 mo_fighter/ft_pikmin/ft_pikmin_function_1cfb8.cpp:
 	.text       start:0x0001CFB8 end:0x0001CFCC
@@ -2219,6 +2237,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_1d698.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_1da94.cpp:
 	.text       start:0x0001DA94 end:0x0001DAB8
 
+mo_fighter/ft_pikmin/ft_pikmin_function_1e164.cpp:
+	.text       start:0x0001E164 end:0x0001E208
+
 mo_fighter/ft_pikmin/ft_pikmin_function_1e208.cpp:
 	.text       start:0x0001E208 end:0x0001E224
 
@@ -2231,6 +2252,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_1e568.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_1e58c.cpp:
 	.text       start:0x0001E58C end:0x0001E5B8
 
+mo_fighter/ft_pikmin/ft_pikmin_function_1e5b8.cpp:
+	.text       start:0x0001E5B8 end:0x0001E5D4
+
 mo_fighter/ft_pikmin/ft_pikmin_function_1f054.cpp:
 	.text       start:0x0001F054 end:0x0001F154
 
@@ -2239,6 +2263,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_205ec.cpp:
 
 mo_fighter/ft_pikmin/ft_pikmin_function_20654.cpp:
 	.text       start:0x00020654 end:0x000206A8
+
+mo_fighter/ft_pikmin/ft_pikmin_function_22580.cpp:
+	.text       start:0x00022580 end:0x000225F4
 
 mo_fighter/ft_pikmin/ft_pikmin_function_225f4.cpp:
 	.text       start:0x000225F4 end:0x00022668
@@ -2263,6 +2290,12 @@ mo_fighter/ft_pikmin/ft_pikmin_function_22e94.cpp:
 
 mo_fighter/ft_pikmin/ft_pikmin_function_22ed4.cpp:
 	.text       start:0x00022ED4 end:0x00022EEC
+
+mo_fighter/ft_pikmin/ft_pikmin_function_22eec.cpp:
+	.text       start:0x00022EEC end:0x00022EFC
+
+mo_fighter/ft_pikmin/ft_pikmin_function_22efc.cpp:
+	.text       start:0x00022EFC end:0x00022F0C
 
 mo_fighter/ft_pikmin/ft_pikmin_function_23014.cpp:
 	.text       start:0x00023014 end:0x00023064
@@ -2345,11 +2378,20 @@ mo_fighter/ft_pikmin/ft_pikmin_function_241ec.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_24210.cpp:
 	.text       start:0x00024210 end:0x00024250
 
+mo_fighter/ft_pikmin/ft_pikmin_function_242ac.cpp:
+	.text       start:0x000242AC end:0x000242C8
+
 mo_fighter/ft_pikmin/ft_pikmin_function_24338.cpp:
 	.text       start:0x00024338 end:0x0002435C
 
 mo_fighter/ft_pikmin/ft_pikmin_function_2435c.cpp:
 	.text       start:0x0002435C end:0x000243BC
+
+mo_fighter/ft_pikmin/ft_pikmin_function_243bc.cpp:
+	.text       start:0x000243BC end:0x000243CC
+
+mo_fighter/ft_pikmin/ft_pikmin_function_243cc.cpp:
+	.text       start:0x000243CC end:0x000243DC
 
 mo_fighter/ft_pikmin/ft_pikmin_function_24550.cpp:
 	.text       start:0x00024550 end:0x00024558
@@ -2420,23 +2462,38 @@ mo_fighter/ft_pikmin/ft_pikmin_function_25698.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_25980.cpp:
 	.text       start:0x00025980 end:0x000259C0
 
+mo_fighter/ft_pikmin/ft_pikmin_function_25a08.cpp:
+	.text       start:0x00025A08 end:0x00025A18
+
 mo_fighter/ft_pikmin/ft_pikmin_function_25a18.cpp:
 	.text       start:0x00025A18 end:0x00025A3C
 
 mo_fighter/ft_pikmin/ft_pikmin_function_25ca8.cpp:
 	.text       start:0x00025CA8 end:0x00025CE8
 
+mo_fighter/ft_pikmin/ft_pikmin_function_25d30.cpp:
+	.text       start:0x00025D30 end:0x00025D40
+
 mo_fighter/ft_pikmin/ft_pikmin_function_25df4.cpp:
 	.text       start:0x00025DF4 end:0x00025E34
 
+mo_fighter/ft_pikmin/ft_pikmin_function_25e7c.cpp:
+	.text       start:0x00025E7C end:0x00025E8C
+
 mo_fighter/ft_pikmin/ft_pikmin_function_25f20.cpp:
 	.text       start:0x00025F20 end:0x00025F60
+
+mo_fighter/ft_pikmin/ft_pikmin_function_25fa8.cpp:
+	.text       start:0x00025FA8 end:0x00025FB8
 
 mo_fighter/ft_pikmin/ft_pikmin_function_25fb8.cpp:
 	.text       start:0x00025FB8 end:0x00026144
 
 mo_fighter/ft_pikmin/ft_pikmin_function_26144.cpp:
 	.text       start:0x00026144 end:0x00026184
+
+mo_fighter/ft_pikmin/ft_pikmin_function_261cc.cpp:
+	.text       start:0x000261CC end:0x000261DC
 
 mo_fighter/ft_pikmin/ft_pikmin_function_262c0.cpp:
 	.text       start:0x000262C0 end:0x000262C4
@@ -2468,11 +2525,20 @@ mo_fighter/ft_pikmin/ft_pikmin_function_267e4.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_26a4c.cpp:
 	.text       start:0x00026A4C end:0x00026A8C
 
+mo_fighter/ft_pikmin/ft_pikmin_function_26ad4.cpp:
+	.text       start:0x00026AD4 end:0x00026AE4
+
 mo_fighter/ft_pikmin/ft_pikmin_function_26d48.cpp:
 	.text       start:0x00026D48 end:0x00026D88
 
+mo_fighter/ft_pikmin/ft_pikmin_function_26dd0.cpp:
+	.text       start:0x00026DD0 end:0x00026DE0
+
 mo_fighter/ft_pikmin/ft_pikmin_function_27034.cpp:
 	.text       start:0x00027034 end:0x00027074
+
+mo_fighter/ft_pikmin/ft_pikmin_function_270bc.cpp:
+	.text       start:0x000270BC end:0x000270CC
 
 mo_fighter/ft_pikmin/ft_pikmin_function_28ac4.cpp:
 	.text       start:0x00028AC4 end:0x00028B34
@@ -2531,6 +2597,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_2a214.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_2a348.cpp:
 	.text       start:0x0002A348 end:0x0002A34C
 
+mo_fighter/ft_pikmin/ft_pikmin_function_2a34c.cpp:
+	.text       start:0x0002A34C end:0x0002A35C
+
 mo_fighter/ft_pikmin/ft_pikmin_function_2a35c.cpp:
 	.text       start:0x0002A35C end:0x0002A370
 
@@ -2584,6 +2653,9 @@ mo_fighter/ft_pikmin/ft_pikmin_function_2aa54.cpp:
 
 mo_fighter/ft_pikmin/ft_pikmin_function_2aa58.cpp:
 	.text       start:0x0002AA58 end:0x0002AA98
+
+mo_fighter/ft_pikmin/ft_pikmin_function_2aae0.cpp:
+	.text       start:0x0002AAE0 end:0x0002AAF0
 
 mo_fighter/ft_pikmin/ft_pikmin_function_2c4bc.cpp:
 	.text       start:0x0002C4BC end:0x0002C52C
@@ -2687,8 +2759,14 @@ mo_fighter/ft_pikmin/ft_pikmin_function_2d65c.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_2daec.cpp:
 	.text       start:0x0002DAEC end:0x0002DB2C
 
+mo_fighter/ft_pikmin/ft_pikmin_function_2db74.cpp:
+	.text       start:0x0002DB74 end:0x0002DB84
+
 mo_fighter/ft_pikmin/ft_pikmin_function_2dc4c.cpp:
 	.text       start:0x0002DC4C end:0x0002DC8C
+
+mo_fighter/ft_pikmin/ft_pikmin_function_2dcd4.cpp:
+	.text       start:0x0002DCD4 end:0x0002DCE4
 
 mo_fighter/mo_fighter.cpp:
 	.text       start:0x0002DDD8 end:0x0002DE74
