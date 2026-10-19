@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_44c.cpp:
 	.text       start:0x0000044C end:0x00000450
 
