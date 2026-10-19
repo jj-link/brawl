@@ -17,8 +17,20 @@ mo_fighter/ft_ike/ft_ike_function_1990.cpp:
 mo_fighter/ft_ike/ft_ike_function_1ae8.cpp:
 	.text       start:0x00001AE8 end:0x00001B44
 
+mo_fighter/ft_ike/ft_ike_function_1c04.cpp:
+	.text       start:0x00001C04 end:0x00001C60
+
+mo_fighter/ft_ike/ft_ike_function_1d18.cpp:
+	.text       start:0x00001D18 end:0x00001D74
+
+mo_fighter/ft_ike/ft_ike_function_1d74.cpp:
+	.text       start:0x00001D74 end:0x00001DD0
+
 mo_fighter/ft_ike/ft_ike_function_1dd0.cpp:
 	.text       start:0x00001DD0 end:0x00001E10
+
+mo_fighter/ft_ike/ft_ike_function_1e10.cpp:
+	.text       start:0x00001E10 end:0x00001E6C
 
 mo_fighter/ft_ike/ft_ike_function_1e6c.cpp:
 	.text       start:0x00001E6C end:0x00001EAC
@@ -26,14 +38,50 @@ mo_fighter/ft_ike/ft_ike_function_1e6c.cpp:
 mo_fighter/ft_ike/ft_ike_function_1eac.cpp:
 	.text       start:0x00001EAC end:0x00001F2C
 
+mo_fighter/ft_ike/ft_ike_function_1f88.cpp:
+	.text       start:0x00001F88 end:0x00001FE4
+
 mo_fighter/ft_ike/ft_ike_function_2228.cpp:
 	.text       start:0x00002228 end:0x00002268
 
 mo_fighter/ft_ike/ft_ike_function_2268.cpp:
 	.text       start:0x00002268 end:0x000022A8
 
+mo_fighter/ft_ike/ft_ike_function_22a8.cpp:
+	.text       start:0x000022A8 end:0x00002304
+
+mo_fighter/ft_ike/ft_ike_function_2370.cpp:
+	.text       start:0x00002370 end:0x000023CC
+
+mo_fighter/ft_ike/ft_ike_function_2bcc.cpp:
+	.text       start:0x00002BCC end:0x00002C28
+
+mo_fighter/ft_ike/ft_ike_function_2c84.cpp:
+	.text       start:0x00002C84 end:0x00002CE0
+
+mo_fighter/ft_ike/ft_ike_function_2ce0.cpp:
+	.text       start:0x00002CE0 end:0x00002D3C
+
+mo_fighter/ft_ike/ft_ike_function_2d3c.cpp:
+	.text       start:0x00002D3C end:0x00002D98
+
 mo_fighter/ft_ike/ft_ike_function_2d98.cpp:
 	.text       start:0x00002D98 end:0x00002E18
+
+mo_fighter/ft_ike/ft_ike_function_2e18.cpp:
+	.text       start:0x00002E18 end:0x00002E74
+
+mo_fighter/ft_ike/ft_ike_function_2e74.cpp:
+	.text       start:0x00002E74 end:0x00002ED0
+
+mo_fighter/ft_ike/ft_ike_function_2ed0.cpp:
+	.text       start:0x00002ED0 end:0x00002F2C
+
+mo_fighter/ft_ike/ft_ike_function_3038.cpp:
+	.text       start:0x00003038 end:0x00003094
+
+mo_fighter/ft_ike/ft_ike_function_312c.cpp:
+	.text       start:0x0000312C end:0x00003188
 
 mo_fighter/ft_ike/ft_ike_function_3398.cpp:
 	.text       start:0x00003398 end:0x000033F8
@@ -55,6 +103,9 @@ mo_fighter/ft_ike/ft_ike_function_3538.cpp:
 
 mo_fighter/ft_ike/ft_ike_function_3578.cpp:
 	.text       start:0x00003578 end:0x000035D8
+
+mo_fighter/ft_ike/ft_ike_function_35d8.cpp:
+	.text       start:0x000035D8 end:0x00003634
 
 mo_fighter/ft_ike/ft_ike_function_3634.cpp:
 	.text       start:0x00003634 end:0x00003674
@@ -86,20 +137,65 @@ mo_fighter/ft_ike/ft_ike_function_4454.cpp:
 mo_fighter/ft_ike/ft_ike_function_4520.cpp:
 	.text       start:0x00004520 end:0x00004580
 
+mo_fighter/ft_ike/ft_ike_function_45ec.cpp:
+	.text       start:0x000045EC end:0x00004648
+
 mo_fighter/ft_ike/ft_ike_function_46bc.cpp:
 	.text       start:0x000046BC end:0x0000473C
+
+mo_fighter/ft_ike/ft_ike_function_473c.cpp:
+	.text       start:0x0000473C end:0x00004798
+
+mo_fighter/ft_ike/ft_ike_function_4798.cpp:
+	.text       start:0x00004798 end:0x000047F4
 
 mo_fighter/ft_ike/ft_ike_function_48cc.cpp:
 	.text       start:0x000048CC end:0x0000490C
 
+mo_fighter/ft_ike/ft_ike_function_4980.cpp:
+	.text       start:0x00004980 end:0x000049DC
+
+mo_fighter/ft_ike/ft_ike_function_49dc.cpp:
+	.text       start:0x000049DC end:0x00004A38
+
+mo_fighter/ft_ike/ft_ike_function_4a38.cpp:
+	.text       start:0x00004A38 end:0x00004A94
+
+mo_fighter/ft_ike/ft_ike_function_4a94.cpp:
+	.text       start:0x00004A94 end:0x00004AF0
+
 mo_fighter/ft_ike/ft_ike_function_4f44.cpp:
 	.text       start:0x00004F44 end:0x00004F84
+
+mo_fighter/ft_ike/ft_ike_function_4f84.cpp:
+	.text       start:0x00004F84 end:0x00004FE0
+
+mo_fighter/ft_ike/ft_ike_function_51e0.cpp:
+	.text       start:0x000051E0 end:0x0000523C
+
+mo_fighter/ft_ike/ft_ike_function_523c.cpp:
+	.text       start:0x0000523C end:0x00005298
+
+mo_fighter/ft_ike/ft_ike_function_5298.cpp:
+	.text       start:0x00005298 end:0x000052F4
+
+mo_fighter/ft_ike/ft_ike_function_52f4.cpp:
+	.text       start:0x000052F4 end:0x00005350
 
 mo_fighter/ft_ike/ft_ike_function_5424.cpp:
 	.text       start:0x00005424 end:0x00005484
 
+mo_fighter/ft_ike/ft_ike_function_54fc.cpp:
+	.text       start:0x000054FC end:0x00005558
+
 mo_fighter/ft_ike/ft_ike_function_55d0.cpp:
 	.text       start:0x000055D0 end:0x00005610
+
+mo_fighter/ft_ike/ft_ike_function_5610.cpp:
+	.text       start:0x00005610 end:0x0000566C
+
+mo_fighter/ft_ike/ft_ike_function_566c.cpp:
+	.text       start:0x0000566C end:0x000056C8
 
 mo_fighter/ft_ike/ft_ike_function_580c.cpp:
 	.text       start:0x0000580C end:0x00005820
@@ -112,6 +208,9 @@ mo_fighter/ft_ike/ft_ike_function_5ecc.cpp:
 
 mo_fighter/ft_ike/ft_ike_function_63a0.cpp:
 	.text       start:0x000063A0 end:0x0000643C
+
+mo_fighter/ft_ike/ft_ike_function_64a8.cpp:
+	.text       start:0x000064A8 end:0x00006504
 
 mo_fighter/ft_ike/ft_ike_function_66c4.cpp:
 	.text       start:0x000066C4 end:0x00006708
@@ -139,6 +238,9 @@ mo_fighter/ft_ike/ft_ike_function_7c40.cpp:
 
 mo_fighter/ft_ike/ft_ike_function_7c5c.cpp:
 	.text       start:0x00007C5C end:0x00007C64
+
+mo_fighter/ft_ike/ft_ike_function_8958.cpp:
+	.text       start:0x00008958 end:0x0000897C
 
 mo_fighter/ft_ike/ft_ike_function_897c.cpp:
 	.text       start:0x0000897C end:0x000089FC
@@ -353,6 +455,9 @@ mo_fighter/ft_ike/ft_ike_function_9748.cpp:
 mo_fighter/ft_ike/ft_ike_function_974c.cpp:
 	.text       start:0x0000974C end:0x00009750
 
+mo_fighter/ft_ike/ft_ike_function_97b4.cpp:
+	.text       start:0x000097B4 end:0x00009810
+
 mo_fighter/ft_ike/ft_ike_function_9810.cpp:
 	.text       start:0x00009810 end:0x00009818
 
@@ -532,6 +637,9 @@ mo_fighter/ft_ike/ft_ike_function_b1d4.cpp:
 
 mo_fighter/ft_ike/ft_ike_function_b234.cpp:
 	.text       start:0x0000B234 end:0x0000B294
+
+mo_fighter/ft_ike/ft_ike_function_b30c.cpp:
+	.text       start:0x0000B30C end:0x0000B368
 
 mo_fighter/ft_ike/ft_ike_function_b368.cpp:
 	.text       start:0x0000B368 end:0x0000B3C8
