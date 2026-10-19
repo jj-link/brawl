@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_pictchat/st_pictchat_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_pictchat/st_pictchat_function_2c0.cpp:
 	.text       start:0x000002C0 end:0x000002C8
 
@@ -251,6 +254,9 @@ mo_stage/st_pictchat/st_pictchat_function_33c4.cpp:
 mo_stage/st_pictchat/st_pictchat_function_33c8.cpp:
 	.text       start:0x000033C8 end:0x000033D0
 
+mo_stage/st_pictchat/st_pictchat_function_33d0.cpp:
+	.text       start:0x000033D0 end:0x000033EC
+
 mo_stage/st_pictchat/st_pictchat_function_33ec.cpp:
 	.text       start:0x000033EC end:0x000033F4
 
@@ -388,6 +394,12 @@ mo_stage/st_pictchat/st_pictchat_function_9954.cpp:
 
 mo_stage/st_pictchat/st_pictchat_function_9960.cpp:
 	.text       start:0x00009960 end:0x0000996C
+
+mo_stage/st_pictchat/st_pictchat_function_9a3c.cpp:
+	.text       start:0x00009A3C end:0x00009A48
+
+mo_stage/st_pictchat/st_pictchat_function_9a48.cpp:
+	.text       start:0x00009A48 end:0x00009A54
 
 mo_stage/st_pictchat/st_pictchat_function_9c44.cpp:
 	.text       start:0x00009C44 end:0x00009C84

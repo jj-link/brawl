@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_metalgear/st_metalgear_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_metalgear/st_metalgear_function_27c.cpp:
 	.text       start:0x0000027C end:0x00000284
 
@@ -205,6 +208,9 @@ mo_stage/st_metalgear/st_metalgear_function_2b80.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_2b84.cpp:
 	.text       start:0x00002B84 end:0x00002B8C
+
+mo_stage/st_metalgear/st_metalgear_function_2b8c.cpp:
+	.text       start:0x00002B8C end:0x00002BA8
 
 mo_stage/st_metalgear/st_metalgear_function_2ba8.cpp:
 	.text       start:0x00002BA8 end:0x00002BB0
@@ -488,11 +494,23 @@ mo_stage/st_metalgear/st_metalgear_function_9f00.cpp:
 mo_stage/st_metalgear/st_metalgear_function_9f50.cpp:
 	.text       start:0x00009F50 end:0x00009F5C
 
+mo_stage/st_metalgear/st_metalgear_function_9fbc.cpp:
+	.text       start:0x00009FBC end:0x00009FC8
+
 mo_stage/st_metalgear/st_metalgear_function_9fc8.cpp:
 	.text       start:0x00009FC8 end:0x00009FD0
 
+mo_stage/st_metalgear/st_metalgear_function_a018.cpp:
+	.text       start:0x0000A018 end:0x0000A024
+
+mo_stage/st_metalgear/st_metalgear_function_a084.cpp:
+	.text       start:0x0000A084 end:0x0000A090
+
 mo_stage/st_metalgear/st_metalgear_function_a090.cpp:
 	.text       start:0x0000A090 end:0x0000A098
+
+mo_stage/st_metalgear/st_metalgear_function_a178.cpp:
+	.text       start:0x0000A178 end:0x0000A184
 
 mo_stage/st_metalgear/st_metalgear_function_a1f0.cpp:
 	.text       start:0x0000A1F0 end:0x0000A1F8

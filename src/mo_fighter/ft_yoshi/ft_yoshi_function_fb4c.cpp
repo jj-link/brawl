@@ -1,0 +1,11 @@
+#pragma force_active on
+extern "C" unsigned char lbl_95_data_7E70[];
+
+struct MemberStorage {
+    void* vtable;
+};
+
+extern "C" void* fn_95_FB4C(MemberStorage* object) {
+    object->vtable = lbl_95_data_7E70;
+    return object;
+}

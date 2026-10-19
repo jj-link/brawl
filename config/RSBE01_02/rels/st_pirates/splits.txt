@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_pirates/st_pirates_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_pirates/st_pirates_function_a4.cpp:
 	.text       start:0x000000A4 end:0x00000218
 
@@ -188,6 +191,9 @@ mo_stage/st_pirates/st_pirates_function_2bc4.cpp:
 mo_stage/st_pirates/st_pirates_function_32d8.cpp:
 	.text       start:0x000032D8 end:0x000032F4
 
+mo_stage/st_pirates/st_pirates_function_32f4.cpp:
+	.text       start:0x000032F4 end:0x00003310
+
 mo_stage/st_pirates/st_pirates_function_3310.cpp:
 	.text       start:0x00003310 end:0x000033AC
 
@@ -299,6 +305,9 @@ mo_stage/st_pirates/st_pirates_function_36e0.cpp:
 mo_stage/st_pirates/st_pirates_function_36e4.cpp:
 	.text       start:0x000036E4 end:0x000036EC
 
+mo_stage/st_pirates/st_pirates_function_36ec.cpp:
+	.text       start:0x000036EC end:0x00003708
+
 mo_stage/st_pirates/st_pirates_function_3708.cpp:
 	.text       start:0x00003708 end:0x00003710
 
@@ -376,6 +385,9 @@ mo_stage/st_pirates/st_pirates_function_6d78.cpp:
 
 mo_stage/st_pirates/st_pirates_function_6da4.cpp:
 	.text       start:0x00006DA4 end:0x00006DE4
+
+mo_stage/st_pirates/st_pirates_function_6f40.cpp:
+	.text       start:0x00006F40 end:0x00006F4C
 
 mo_stage/st_pirates/st_pirates_function_6f68.cpp:
 	.text       start:0x00006F68 end:0x00006F70

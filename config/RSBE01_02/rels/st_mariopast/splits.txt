@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_mariopast/st_mariopast_function_70.cpp:
+	.text       start:0x00000070 end:0x000000A4
+
 mo_stage/st_mariopast/st_mariopast_function_204.cpp:
 	.text       start:0x00000204 end:0x00000304
 
@@ -473,11 +476,23 @@ mo_stage/st_mariopast/st_mariopast_function_82e4.cpp:
 mo_stage/st_mariopast/st_mariopast_function_ae5c.cpp:
 	.text       start:0x0000AE5C end:0x0000AE68
 
+mo_stage/st_mariopast/st_mariopast_function_ae78.cpp:
+	.text       start:0x0000AE78 end:0x0000AE84
+
 mo_stage/st_mariopast/st_mariopast_function_ae84.cpp:
 	.text       start:0x0000AE84 end:0x0000AE8C
 
+mo_stage/st_mariopast/st_mariopast_function_b02c.cpp:
+	.text       start:0x0000B02C end:0x0000B038
+
+mo_stage/st_mariopast/st_mariopast_function_b048.cpp:
+	.text       start:0x0000B048 end:0x0000B054
+
 mo_stage/st_mariopast/st_mariopast_function_b054.cpp:
 	.text       start:0x0000B054 end:0x0000B05C
+
+mo_stage/st_mariopast/st_mariopast_function_b1fc.cpp:
+	.text       start:0x0000B1FC end:0x0000B208
 
 mo_stage/st_mariopast/st_mariopast_function_b224.cpp:
 	.text       start:0x0000B224 end:0x0000B22C
