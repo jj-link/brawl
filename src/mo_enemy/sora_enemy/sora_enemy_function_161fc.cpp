@@ -1,0 +1,9 @@
+#pragma force_active on
+extern "C" int fn_41_15FD4(int, int);
+extern "C" float fn_41_1EF50(void*);
+extern float lbl_41_rodata_C3C;
+
+extern "C" float fn_41_161FC(void* a, int b) {
+    if (b == -1) return lbl_41_rodata_C3C;
+    return fn_41_1EF50((void*)fn_41_15FD4((int)a, b));
+}
