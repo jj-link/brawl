@@ -1,0 +1,12 @@
+#pragma force_active on
+typedef struct {
+    unsigned int pad[2];
+    unsigned int a : 4;
+    unsigned int b : 2;
+    unsigned int c : 26;
+} Bits;
+
+extern "C" void fn_54_65C0(Bits *p, unsigned int v)
+{
+    p->b = v;
+}
