@@ -1,0 +1,16 @@
+#pragma force_active on
+typedef unsigned int u32;
+typedef int s32;
+
+struct FooData {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+};
+
+extern "C" {
+s32 fn_27_FEE78(FooData* p) {
+    u32 x = p->unk8;
+    return (s32)(((x >> 21) & 0x3F) << 26) >> 27;
+}
+}
