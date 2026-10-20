@@ -1,0 +1,10 @@
+#pragma force_active on
+typedef int s32;
+typedef unsigned int u32;
+
+extern "C" {
+s32 fn_27_CBBC0(void *p) {
+    u32 x = *(u32 *)((char *)p + 8);
+    return (s32)((x << 8) & 0xF8000000) >> 28;
+}
+}
