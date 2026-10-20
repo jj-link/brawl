@@ -1,0 +1,20 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" {
+extern signed char lbl_27_bss_16D0;
+extern u8 lbl_27_bss_16D4[];
+extern u8 lbl_27_bss_FD4[];
+void fn_27_9FA44(void*);
+void fn_27_9FA50(void*, int);
+void __register_global_object(void*, void*, void*);
+
+void* fn_27_85BA8() {
+    if (!lbl_27_bss_16D0) {
+        fn_27_9FA44(lbl_27_bss_16D4);
+        __register_global_object(lbl_27_bss_16D4, (void*)fn_27_9FA50, lbl_27_bss_FD4);
+        lbl_27_bss_16D0 = 1;
+    }
+    return lbl_27_bss_16D4;
+}
+}
