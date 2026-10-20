@@ -95,6 +95,9 @@ mo_stage/st_village/st_village_function_1d98.cpp:
 mo_stage/st_village/st_village_function_1da4.cpp:
 	.text       start:0x00001DA4 end:0x00001DB0
 
+mo_stage/st_village/st_village_function_1db0.cpp:
+	.text       start:0x00001DB0 end:0x00001DC0
+
 mo_stage/st_village/st_village_function_1dc0.cpp:
 	.text       start:0x00001DC0 end:0x00001DD4
 
@@ -193,6 +196,12 @@ mo_stage/st_village/st_village_function_2260.cpp:
 
 mo_stage/st_village/st_village_function_2264.cpp:
 	.text       start:0x00002264 end:0x00002268
+
+mo_stage/st_village/st_village_function_2268.cpp:
+	.text       start:0x00002268 end:0x00002278
+
+mo_stage/st_village/st_village_function_2278.cpp:
+	.text       start:0x00002278 end:0x00002288
 
 mo_stage/st_village/st_village_function_2288.cpp:
 	.text       start:0x00002288 end:0x00002294
@@ -476,6 +485,9 @@ mo_stage/st_village/st_village_function_8ae0.cpp:
 mo_stage/st_village/st_village_function_8ae8.cpp:
 	.text       start:0x00008AE8 end:0x00008B50
 
+mo_stage/st_village/st_village_function_8b50.cpp:
+	.text       start:0x00008B50 end:0x00008B60
+
 mo_stage/st_village/st_village_function_8b60.cpp:
 	.text       start:0x00008B60 end:0x00008BA0
 
@@ -494,17 +506,56 @@ mo_stage/st_village/st_village_function_8f44.cpp:
 mo_stage/st_village/st_village_function_8f84.cpp:
 	.text       start:0x00008F84 end:0x00008F90
 
+mo_stage/st_village/st_village_function_8f90.cpp:
+	.text       start:0x00008F90 end:0x00008FA0
+
+mo_stage/st_village/st_village_function_8fa0.cpp:
+	.text       start:0x00008FA0 end:0x00008FB0
+
+mo_stage/st_village/st_village_function_8fc0.cpp:
+	.text       start:0x00008FC0 end:0x00008FD0
+
+mo_stage/st_village/st_village_function_8fd0.cpp:
+	.text       start:0x00008FD0 end:0x00008FE0
+
+mo_stage/st_village/st_village_function_8fe0.cpp:
+	.text       start:0x00008FE0 end:0x00008FF0
+
 mo_stage/st_village/st_village_function_8ff0.cpp:
 	.text       start:0x00008FF0 end:0x00008FFC
 
 mo_stage/st_village/st_village_function_8ffc.cpp:
 	.text       start:0x00008FFC end:0x00009004
 
+mo_stage/st_village/st_village_function_9004.cpp:
+	.text       start:0x00009004 end:0x00009014
+
 mo_stage/st_village/st_village_function_9014.cpp:
 	.text       start:0x00009014 end:0x0000903C
 
+mo_stage/st_village/st_village_function_903c.cpp:
+	.text       start:0x0000903C end:0x0000904C
+
 mo_stage/st_village/st_village_function_904c.cpp:
 	.text       start:0x0000904C end:0x00009058
+
+mo_stage/st_village/st_village_function_9058.cpp:
+	.text       start:0x00009058 end:0x00009068
+
+mo_stage/st_village/st_village_function_9068.cpp:
+	.text       start:0x00009068 end:0x00009078
+
+mo_stage/st_village/st_village_function_9078.cpp:
+	.text       start:0x00009078 end:0x00009088
+
+mo_stage/st_village/st_village_function_9088.cpp:
+	.text       start:0x00009088 end:0x00009098
+
+mo_stage/st_village/st_village_function_9098.cpp:
+	.text       start:0x00009098 end:0x000090A8
+
+mo_stage/st_village/st_village_function_90a8.cpp:
+	.text       start:0x000090A8 end:0x000090B8
 
 mo_stage/st_village/st_village_function_90b8.cpp:
 	.text       start:0x000090B8 end:0x000090C4
@@ -512,14 +563,59 @@ mo_stage/st_village/st_village_function_90b8.cpp:
 mo_stage/st_village/st_village_function_90c4.cpp:
 	.text       start:0x000090C4 end:0x000090CC
 
+mo_stage/st_village/st_village_function_90cc.cpp:
+	.text       start:0x000090CC end:0x000090DC
+
 mo_stage/st_village/st_village_function_90dc.cpp:
 	.text       start:0x000090DC end:0x00009104
+
+mo_stage/st_village/st_village_function_9104.cpp:
+	.text       start:0x00009104 end:0x00009114
+
+mo_stage/st_village/st_village_function_9114.cpp:
+	.text       start:0x00009114 end:0x00009124
+
+mo_stage/st_village/st_village_function_9124.cpp:
+	.text       start:0x00009124 end:0x00009134
+
+mo_stage/st_village/st_village_function_9134.cpp:
+	.text       start:0x00009134 end:0x00009144
+
+mo_stage/st_village/st_village_function_9144.cpp:
+	.text       start:0x00009144 end:0x00009154
+
+mo_stage/st_village/st_village_function_9154.cpp:
+	.text       start:0x00009154 end:0x00009164
+
+mo_stage/st_village/st_village_function_9164.cpp:
+	.text       start:0x00009164 end:0x00009174
 
 mo_stage/st_village/st_village_function_9174.cpp:
 	.text       start:0x00009174 end:0x0000919C
 
+mo_stage/st_village/st_village_function_919c.cpp:
+	.text       start:0x0000919C end:0x000091AC
+
 mo_stage/st_village/st_village_function_91ac.cpp:
 	.text       start:0x000091AC end:0x000091B8
+
+mo_stage/st_village/st_village_function_91b8.cpp:
+	.text       start:0x000091B8 end:0x000091C8
+
+mo_stage/st_village/st_village_function_91c8.cpp:
+	.text       start:0x000091C8 end:0x000091D8
+
+mo_stage/st_village/st_village_function_91d8.cpp:
+	.text       start:0x000091D8 end:0x000091E8
+
+mo_stage/st_village/st_village_function_91e8.cpp:
+	.text       start:0x000091E8 end:0x000091F8
+
+mo_stage/st_village/st_village_function_91f8.cpp:
+	.text       start:0x000091F8 end:0x00009208
+
+mo_stage/st_village/st_village_function_9208.cpp:
+	.text       start:0x00009208 end:0x00009218
 
 mo_stage/st_village/st_village_function_9218.cpp:
 	.text       start:0x00009218 end:0x00009224
@@ -533,14 +629,35 @@ mo_stage/st_village/st_village_function_923c.cpp:
 mo_stage/st_village/st_village_function_9274.cpp:
 	.text       start:0x00009274 end:0x00009280
 
+mo_stage/st_village/st_village_function_9280.cpp:
+	.text       start:0x00009280 end:0x00009290
+
+mo_stage/st_village/st_village_function_9290.cpp:
+	.text       start:0x00009290 end:0x000092A0
+
+mo_stage/st_village/st_village_function_92c0.cpp:
+	.text       start:0x000092C0 end:0x000092D0
+
+mo_stage/st_village/st_village_function_92d0.cpp:
+	.text       start:0x000092D0 end:0x000092E0
+
 mo_stage/st_village/st_village_function_92e0.cpp:
 	.text       start:0x000092E0 end:0x000092EC
 
 mo_stage/st_village/st_village_function_92ec.cpp:
 	.text       start:0x000092EC end:0x000092F4
 
+mo_stage/st_village/st_village_function_92f4.cpp:
+	.text       start:0x000092F4 end:0x00009304
+
 mo_stage/st_village/st_village_function_9304.cpp:
 	.text       start:0x00009304 end:0x0000932C
+
+mo_stage/st_village/st_village_function_933c.cpp:
+	.text       start:0x0000933C end:0x0000934C
+
+mo_stage/st_village/st_village_function_934c.cpp:
+	.text       start:0x0000934C end:0x0000935C
 
 mo_stage/st_village/st_village_function_9f50.cpp:
 	.text       start:0x00009F50 end:0x00009F98
@@ -550,6 +667,12 @@ mo_stage/st_village/st_village_function_9f98.cpp:
 
 mo_stage/st_village/st_village_function_9fa0.cpp:
 	.text       start:0x00009FA0 end:0x0000A190
+
+mo_stage/st_village/st_village_function_a190.cpp:
+	.text       start:0x0000A190 end:0x0000A1A0
+
+mo_stage/st_village/st_village_function_a1a0.cpp:
+	.text       start:0x0000A1A0 end:0x0000A1B0
 
 mo_stage/st_village/st_village_function_a1b0.cpp:
 	.text       start:0x0000A1B0 end:0x0000A32C
@@ -563,11 +686,20 @@ mo_stage/st_village/st_village_function_a9c4.cpp:
 mo_stage/st_village/st_village_function_aa0c.cpp:
 	.text       start:0x0000AA0C end:0x0000AA14
 
+mo_stage/st_village/st_village_function_ab0c.cpp:
+	.text       start:0x0000AB0C end:0x0000AB1C
+
+mo_stage/st_village/st_village_function_ab1c.cpp:
+	.text       start:0x0000AB1C end:0x0000AB2C
+
 mo_stage/st_village/st_village_function_b5fc.cpp:
 	.text       start:0x0000B5FC end:0x0000B644
 
 mo_stage/st_village/st_village_function_b644.cpp:
 	.text       start:0x0000B644 end:0x0000B64C
+
+mo_stage/st_village/st_village_function_b8bc.cpp:
+	.text       start:0x0000B8BC end:0x0000B8CC
 
 mo_stage/st_village/st_village_function_c2a0.cpp:
 	.text       start:0x0000C2A0 end:0x0000C2E8

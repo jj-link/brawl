@@ -107,6 +107,9 @@ mo_stage/st_plankton/st_plankton_function_2454.cpp:
 mo_stage/st_plankton/st_plankton_function_2460.cpp:
 	.text       start:0x00002460 end:0x0000246C
 
+mo_stage/st_plankton/st_plankton_function_246c.cpp:
+	.text       start:0x0000246C end:0x0000247C
+
 mo_stage/st_plankton/st_plankton_function_247c.cpp:
 	.text       start:0x0000247C end:0x00002490
 
@@ -211,6 +214,9 @@ mo_stage/st_plankton/st_plankton_function_2f3c.cpp:
 
 mo_stage/st_plankton/st_plankton_function_2f40.cpp:
 	.text       start:0x00002F40 end:0x00002F44
+
+mo_stage/st_plankton/st_plankton_function_2f54.cpp:
+	.text       start:0x00002F54 end:0x00002F64
 
 mo_stage/st_plankton/st_plankton_function_2f64.cpp:
 	.text       start:0x00002F64 end:0x00002F70
@@ -452,11 +458,17 @@ mo_stage/st_plankton/st_plankton_function_5ea4.cpp:
 mo_stage/st_plankton/st_plankton_function_5f0c.cpp:
 	.text       start:0x00005F0C end:0x00005F18
 
+mo_stage/st_plankton/st_plankton_function_5f18.cpp:
+	.text       start:0x00005F18 end:0x00005F28
+
 mo_stage/st_plankton/st_plankton_function_5f28.cpp:
 	.text       start:0x00005F28 end:0x00005F34
 
 mo_stage/st_plankton/st_plankton_function_5f34.cpp:
 	.text       start:0x00005F34 end:0x00005F3C
+
+mo_stage/st_plankton/st_plankton_function_5f3c.cpp:
+	.text       start:0x00005F3C end:0x00005F4C
 
 mo_stage/st_plankton/st_plankton_function_5f4c.cpp:
 	.text       start:0x00005F4C end:0x00005F8C
@@ -536,17 +548,53 @@ mo_stage/st_plankton/st_plankton_function_6830.cpp:
 mo_stage/st_plankton/st_plankton_function_6870.cpp:
 	.text       start:0x00006870 end:0x0000687C
 
+mo_stage/st_plankton/st_plankton_function_688c.cpp:
+	.text       start:0x0000688C end:0x0000689C
+
+mo_stage/st_plankton/st_plankton_function_68ac.cpp:
+	.text       start:0x000068AC end:0x000068BC
+
+mo_stage/st_plankton/st_plankton_function_68bc.cpp:
+	.text       start:0x000068BC end:0x000068CC
+
+mo_stage/st_plankton/st_plankton_function_68cc.cpp:
+	.text       start:0x000068CC end:0x000068DC
+
 mo_stage/st_plankton/st_plankton_function_68dc.cpp:
 	.text       start:0x000068DC end:0x000068E8
 
 mo_stage/st_plankton/st_plankton_function_68e8.cpp:
 	.text       start:0x000068E8 end:0x000068F0
 
+mo_stage/st_plankton/st_plankton_function_68f0.cpp:
+	.text       start:0x000068F0 end:0x00006900
+
 mo_stage/st_plankton/st_plankton_function_6900.cpp:
 	.text       start:0x00006900 end:0x00006928
 
+mo_stage/st_plankton/st_plankton_function_6928.cpp:
+	.text       start:0x00006928 end:0x00006938
+
 mo_stage/st_plankton/st_plankton_function_6938.cpp:
 	.text       start:0x00006938 end:0x00006944
+
+mo_stage/st_plankton/st_plankton_function_6944.cpp:
+	.text       start:0x00006944 end:0x00006954
+
+mo_stage/st_plankton/st_plankton_function_6954.cpp:
+	.text       start:0x00006954 end:0x00006964
+
+mo_stage/st_plankton/st_plankton_function_6964.cpp:
+	.text       start:0x00006964 end:0x00006974
+
+mo_stage/st_plankton/st_plankton_function_6974.cpp:
+	.text       start:0x00006974 end:0x00006984
+
+mo_stage/st_plankton/st_plankton_function_6984.cpp:
+	.text       start:0x00006984 end:0x00006994
+
+mo_stage/st_plankton/st_plankton_function_6994.cpp:
+	.text       start:0x00006994 end:0x000069A4
 
 mo_stage/st_plankton/st_plankton_function_69a4.cpp:
 	.text       start:0x000069A4 end:0x000069B0
@@ -557,8 +605,29 @@ mo_stage/st_plankton/st_plankton_function_69b0.cpp:
 mo_stage/st_plankton/st_plankton_function_69c8.cpp:
 	.text       start:0x000069C8 end:0x000069F0
 
+mo_stage/st_plankton/st_plankton_function_69f0.cpp:
+	.text       start:0x000069F0 end:0x00006A00
+
 mo_stage/st_plankton/st_plankton_function_6a00.cpp:
 	.text       start:0x00006A00 end:0x00006A0C
+
+mo_stage/st_plankton/st_plankton_function_6a0c.cpp:
+	.text       start:0x00006A0C end:0x00006A1C
+
+mo_stage/st_plankton/st_plankton_function_6a1c.cpp:
+	.text       start:0x00006A1C end:0x00006A2C
+
+mo_stage/st_plankton/st_plankton_function_6a2c.cpp:
+	.text       start:0x00006A2C end:0x00006A3C
+
+mo_stage/st_plankton/st_plankton_function_6a3c.cpp:
+	.text       start:0x00006A3C end:0x00006A4C
+
+mo_stage/st_plankton/st_plankton_function_6a4c.cpp:
+	.text       start:0x00006A4C end:0x00006A5C
+
+mo_stage/st_plankton/st_plankton_function_6a5c.cpp:
+	.text       start:0x00006A5C end:0x00006A6C
 
 mo_stage/st_plankton/st_plankton_function_6a78.cpp:
 	.text       start:0x00006A78 end:0x00006A80
@@ -566,11 +635,47 @@ mo_stage/st_plankton/st_plankton_function_6a78.cpp:
 mo_stage/st_plankton/st_plankton_function_6a90.cpp:
 	.text       start:0x00006A90 end:0x00006AB8
 
+mo_stage/st_plankton/st_plankton_function_6ac8.cpp:
+	.text       start:0x00006AC8 end:0x00006AD8
+
+mo_stage/st_plankton/st_plankton_function_6ad8.cpp:
+	.text       start:0x00006AD8 end:0x00006AE8
+
+mo_stage/st_plankton/st_plankton_function_6ae8.cpp:
+	.text       start:0x00006AE8 end:0x00006AF8
+
+mo_stage/st_plankton/st_plankton_function_6af8.cpp:
+	.text       start:0x00006AF8 end:0x00006B08
+
+mo_stage/st_plankton/st_plankton_function_6b08.cpp:
+	.text       start:0x00006B08 end:0x00006B18
+
+mo_stage/st_plankton/st_plankton_function_6b18.cpp:
+	.text       start:0x00006B18 end:0x00006B28
+
 mo_stage/st_plankton/st_plankton_function_6b28.cpp:
 	.text       start:0x00006B28 end:0x00006B50
 
+mo_stage/st_plankton/st_plankton_function_6b50.cpp:
+	.text       start:0x00006B50 end:0x00006B60
+
 mo_stage/st_plankton/st_plankton_function_6b60.cpp:
 	.text       start:0x00006B60 end:0x00006B6C
+
+mo_stage/st_plankton/st_plankton_function_6b6c.cpp:
+	.text       start:0x00006B6C end:0x00006B7C
+
+mo_stage/st_plankton/st_plankton_function_6b7c.cpp:
+	.text       start:0x00006B7C end:0x00006B8C
+
+mo_stage/st_plankton/st_plankton_function_6b8c.cpp:
+	.text       start:0x00006B8C end:0x00006B9C
+
+mo_stage/st_plankton/st_plankton_function_6b9c.cpp:
+	.text       start:0x00006B9C end:0x00006BAC
+
+mo_stage/st_plankton/st_plankton_function_6bac.cpp:
+	.text       start:0x00006BAC end:0x00006BBC
 
 mo_stage/st_plankton/st_plankton_function_6bcc.cpp:
 	.text       start:0x00006BCC end:0x00006BD8
@@ -578,8 +683,20 @@ mo_stage/st_plankton/st_plankton_function_6bcc.cpp:
 mo_stage/st_plankton/st_plankton_function_6bd8.cpp:
 	.text       start:0x00006BD8 end:0x00006BE0
 
+mo_stage/st_plankton/st_plankton_function_6be0.cpp:
+	.text       start:0x00006BE0 end:0x00006BF0
+
 mo_stage/st_plankton/st_plankton_function_6bf0.cpp:
 	.text       start:0x00006BF0 end:0x00006C18
+
+mo_stage/st_plankton/st_plankton_function_6c18.cpp:
+	.text       start:0x00006C18 end:0x00006C28
+
+mo_stage/st_plankton/st_plankton_function_6c28.cpp:
+	.text       start:0x00006C28 end:0x00006C38
+
+mo_stage/st_plankton/st_plankton_function_6c38.cpp:
+	.text       start:0x00006C38 end:0x00006C48
 
 mo_stage/st_plankton/st_plankton_function_783c.cpp:
 	.text       start:0x0000783C end:0x00007884
@@ -589,6 +706,12 @@ mo_stage/st_plankton/st_plankton_function_7884.cpp:
 
 mo_stage/st_plankton/st_plankton_function_788c.cpp:
 	.text       start:0x0000788C end:0x00007A7C
+
+mo_stage/st_plankton/st_plankton_function_7a7c.cpp:
+	.text       start:0x00007A7C end:0x00007A8C
+
+mo_stage/st_plankton/st_plankton_function_7a8c.cpp:
+	.text       start:0x00007A8C end:0x00007A9C
 
 mo_stage/st_plankton/st_plankton_function_7a9c.cpp:
 	.text       start:0x00007A9C end:0x00007C18
@@ -602,17 +725,32 @@ mo_stage/st_plankton/st_plankton_function_82b0.cpp:
 mo_stage/st_plankton/st_plankton_function_82f8.cpp:
 	.text       start:0x000082F8 end:0x00008300
 
+mo_stage/st_plankton/st_plankton_function_83f8.cpp:
+	.text       start:0x000083F8 end:0x00008408
+
+mo_stage/st_plankton/st_plankton_function_8408.cpp:
+	.text       start:0x00008408 end:0x00008418
+
 mo_stage/st_plankton/st_plankton_function_8dec.cpp:
 	.text       start:0x00008DEC end:0x00008E34
 
 mo_stage/st_plankton/st_plankton_function_8e34.cpp:
 	.text       start:0x00008E34 end:0x00008E3C
 
+mo_stage/st_plankton/st_plankton_function_8fa4.cpp:
+	.text       start:0x00008FA4 end:0x00008FB4
+
+mo_stage/st_plankton/st_plankton_function_8fb4.cpp:
+	.text       start:0x00008FB4 end:0x00008FC4
+
 mo_stage/st_plankton/st_plankton_function_9a94.cpp:
 	.text       start:0x00009A94 end:0x00009ADC
 
 mo_stage/st_plankton/st_plankton_function_9adc.cpp:
 	.text       start:0x00009ADC end:0x00009AE4
+
+mo_stage/st_plankton/st_plankton_function_9d54.cpp:
+	.text       start:0x00009D54 end:0x00009D64
 
 mo_stage/st_plankton/st_plankton_function_9d64.cpp:
 	.text       start:0x00009D64 end:0x00009E60
