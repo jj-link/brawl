@@ -137,6 +137,9 @@ mo_stage/st_mansion/st_mansion_function_1480.cpp:
 mo_stage/st_mansion/st_mansion_function_148c.cpp:
 	.text       start:0x0000148C end:0x00001498
 
+mo_stage/st_mansion/st_mansion_function_1498.cpp:
+	.text       start:0x00001498 end:0x000014A8
+
 mo_stage/st_mansion/st_mansion_function_14a8.cpp:
 	.text       start:0x000014A8 end:0x000014BC
 
@@ -226,6 +229,12 @@ mo_stage/st_mansion/st_mansion_function_19e0.cpp:
 
 mo_stage/st_mansion/st_mansion_function_19e4.cpp:
 	.text       start:0x000019E4 end:0x000019E8
+
+mo_stage/st_mansion/st_mansion_function_19e8.cpp:
+	.text       start:0x000019E8 end:0x000019F8
+
+mo_stage/st_mansion/st_mansion_function_19f8.cpp:
+	.text       start:0x000019F8 end:0x00001A08
 
 mo_stage/st_mansion/st_mansion_function_1a08.cpp:
 	.text       start:0x00001A08 end:0x00001A14
@@ -446,6 +455,9 @@ mo_stage/st_mansion/st_mansion_function_4024.cpp:
 mo_stage/st_mansion/st_mansion_function_408c.cpp:
 	.text       start:0x0000408C end:0x00004098
 
+mo_stage/st_mansion/st_mansion_function_4098.cpp:
+	.text       start:0x00004098 end:0x000040A8
+
 mo_stage/st_mansion/st_mansion_function_40a8.cpp:
 	.text       start:0x000040A8 end:0x000040B4
 
@@ -461,11 +473,17 @@ mo_stage/st_mansion/st_mansion_function_41b0.cpp:
 mo_stage/st_mansion/st_mansion_function_4218.cpp:
 	.text       start:0x00004218 end:0x00004224
 
+mo_stage/st_mansion/st_mansion_function_4224.cpp:
+	.text       start:0x00004224 end:0x00004234
+
 mo_stage/st_mansion/st_mansion_function_4234.cpp:
 	.text       start:0x00004234 end:0x00004240
 
 mo_stage/st_mansion/st_mansion_function_4240.cpp:
 	.text       start:0x00004240 end:0x00004248
+
+mo_stage/st_mansion/st_mansion_function_4248.cpp:
+	.text       start:0x00004248 end:0x00004258
 
 mo_stage/st_mansion/st_mansion_function_4258.cpp:
 	.text       start:0x00004258 end:0x00004298
@@ -533,17 +551,56 @@ mo_stage/st_mansion/st_mansion_function_4b6c.cpp:
 mo_stage/st_mansion/st_mansion_function_4b74.cpp:
 	.text       start:0x00004B74 end:0x00004B80
 
+mo_stage/st_mansion/st_mansion_function_4b80.cpp:
+	.text       start:0x00004B80 end:0x00004B90
+
+mo_stage/st_mansion/st_mansion_function_4b90.cpp:
+	.text       start:0x00004B90 end:0x00004BA0
+
+mo_stage/st_mansion/st_mansion_function_4bb0.cpp:
+	.text       start:0x00004BB0 end:0x00004BC0
+
+mo_stage/st_mansion/st_mansion_function_4bc0.cpp:
+	.text       start:0x00004BC0 end:0x00004BD0
+
+mo_stage/st_mansion/st_mansion_function_4bd0.cpp:
+	.text       start:0x00004BD0 end:0x00004BE0
+
 mo_stage/st_mansion/st_mansion_function_4be0.cpp:
 	.text       start:0x00004BE0 end:0x00004BEC
 
 mo_stage/st_mansion/st_mansion_function_4bec.cpp:
 	.text       start:0x00004BEC end:0x00004BF4
 
+mo_stage/st_mansion/st_mansion_function_4bf4.cpp:
+	.text       start:0x00004BF4 end:0x00004C04
+
 mo_stage/st_mansion/st_mansion_function_4c04.cpp:
 	.text       start:0x00004C04 end:0x00004C2C
 
+mo_stage/st_mansion/st_mansion_function_4c2c.cpp:
+	.text       start:0x00004C2C end:0x00004C3C
+
 mo_stage/st_mansion/st_mansion_function_4c3c.cpp:
 	.text       start:0x00004C3C end:0x00004C48
+
+mo_stage/st_mansion/st_mansion_function_4c48.cpp:
+	.text       start:0x00004C48 end:0x00004C58
+
+mo_stage/st_mansion/st_mansion_function_4c58.cpp:
+	.text       start:0x00004C58 end:0x00004C68
+
+mo_stage/st_mansion/st_mansion_function_4c68.cpp:
+	.text       start:0x00004C68 end:0x00004C78
+
+mo_stage/st_mansion/st_mansion_function_4c78.cpp:
+	.text       start:0x00004C78 end:0x00004C88
+
+mo_stage/st_mansion/st_mansion_function_4c88.cpp:
+	.text       start:0x00004C88 end:0x00004C98
+
+mo_stage/st_mansion/st_mansion_function_4c98.cpp:
+	.text       start:0x00004C98 end:0x00004CA8
 
 mo_stage/st_mansion/st_mansion_function_4ca8.cpp:
 	.text       start:0x00004CA8 end:0x00004CB4
@@ -551,8 +608,32 @@ mo_stage/st_mansion/st_mansion_function_4ca8.cpp:
 mo_stage/st_mansion/st_mansion_function_4cb4.cpp:
 	.text       start:0x00004CB4 end:0x00004CBC
 
+mo_stage/st_mansion/st_mansion_function_4cbc.cpp:
+	.text       start:0x00004CBC end:0x00004CCC
+
 mo_stage/st_mansion/st_mansion_function_4ccc.cpp:
 	.text       start:0x00004CCC end:0x00004CF4
+
+mo_stage/st_mansion/st_mansion_function_4cf4.cpp:
+	.text       start:0x00004CF4 end:0x00004D04
+
+mo_stage/st_mansion/st_mansion_function_4d04.cpp:
+	.text       start:0x00004D04 end:0x00004D14
+
+mo_stage/st_mansion/st_mansion_function_4d14.cpp:
+	.text       start:0x00004D14 end:0x00004D24
+
+mo_stage/st_mansion/st_mansion_function_4d24.cpp:
+	.text       start:0x00004D24 end:0x00004D34
+
+mo_stage/st_mansion/st_mansion_function_4d34.cpp:
+	.text       start:0x00004D34 end:0x00004D44
+
+mo_stage/st_mansion/st_mansion_function_4d44.cpp:
+	.text       start:0x00004D44 end:0x00004D54
+
+mo_stage/st_mansion/st_mansion_function_4d54.cpp:
+	.text       start:0x00004D54 end:0x00004D64
 
 mo_stage/st_mansion/st_mansion_function_4d64.cpp:
 	.text       start:0x00004D64 end:0x00004D8C
@@ -560,17 +641,71 @@ mo_stage/st_mansion/st_mansion_function_4d64.cpp:
 mo_stage/st_mansion/st_mansion_function_4d9c.cpp:
 	.text       start:0x00004D9C end:0x00004DA8
 
+mo_stage/st_mansion/st_mansion_function_4da8.cpp:
+	.text       start:0x00004DA8 end:0x00004DB8
+
+mo_stage/st_mansion/st_mansion_function_4db8.cpp:
+	.text       start:0x00004DB8 end:0x00004DC8
+
+mo_stage/st_mansion/st_mansion_function_4dd8.cpp:
+	.text       start:0x00004DD8 end:0x00004DE8
+
+mo_stage/st_mansion/st_mansion_function_4de8.cpp:
+	.text       start:0x00004DE8 end:0x00004DF8
+
+mo_stage/st_mansion/st_mansion_function_4df8.cpp:
+	.text       start:0x00004DF8 end:0x00004E08
+
 mo_stage/st_mansion/st_mansion_function_4e14.cpp:
 	.text       start:0x00004E14 end:0x00004E1C
 
+mo_stage/st_mansion/st_mansion_function_4e1c.cpp:
+	.text       start:0x00004E1C end:0x00004E2C
+
 mo_stage/st_mansion/st_mansion_function_4e2c.cpp:
 	.text       start:0x00004E2C end:0x00004E54
+
+mo_stage/st_mansion/st_mansion_function_4e54.cpp:
+	.text       start:0x00004E54 end:0x00004E64
+
+mo_stage/st_mansion/st_mansion_function_4e64.cpp:
+	.text       start:0x00004E64 end:0x00004E74
+
+mo_stage/st_mansion/st_mansion_function_4e74.cpp:
+	.text       start:0x00004E74 end:0x00004E84
+
+mo_stage/st_mansion/st_mansion_function_4e84.cpp:
+	.text       start:0x00004E84 end:0x00004E94
+
+mo_stage/st_mansion/st_mansion_function_4e94.cpp:
+	.text       start:0x00004E94 end:0x00004EA4
+
+mo_stage/st_mansion/st_mansion_function_4ea4.cpp:
+	.text       start:0x00004EA4 end:0x00004EB4
+
+mo_stage/st_mansion/st_mansion_function_4eb4.cpp:
+	.text       start:0x00004EB4 end:0x00004EC4
 
 mo_stage/st_mansion/st_mansion_function_4ec4.cpp:
 	.text       start:0x00004EC4 end:0x00004EEC
 
 mo_stage/st_mansion/st_mansion_function_4efc.cpp:
 	.text       start:0x00004EFC end:0x00004F08
+
+mo_stage/st_mansion/st_mansion_function_4f18.cpp:
+	.text       start:0x00004F18 end:0x00004F28
+
+mo_stage/st_mansion/st_mansion_function_4f28.cpp:
+	.text       start:0x00004F28 end:0x00004F38
+
+mo_stage/st_mansion/st_mansion_function_4f38.cpp:
+	.text       start:0x00004F38 end:0x00004F48
+
+mo_stage/st_mansion/st_mansion_function_4f48.cpp:
+	.text       start:0x00004F48 end:0x00004F58
+
+mo_stage/st_mansion/st_mansion_function_4f58.cpp:
+	.text       start:0x00004F58 end:0x00004F68
 
 mo_stage/st_mansion/st_mansion_function_4f68.cpp:
 	.text       start:0x00004F68 end:0x00004F74
@@ -584,14 +719,44 @@ mo_stage/st_mansion/st_mansion_function_4f8c.cpp:
 mo_stage/st_mansion/st_mansion_function_4fc4.cpp:
 	.text       start:0x00004FC4 end:0x00004FD0
 
+mo_stage/st_mansion/st_mansion_function_4fd0.cpp:
+	.text       start:0x00004FD0 end:0x00004FE0
+
+mo_stage/st_mansion/st_mansion_function_4fe0.cpp:
+	.text       start:0x00004FE0 end:0x00004FF0
+
+mo_stage/st_mansion/st_mansion_function_4ff0.cpp:
+	.text       start:0x00004FF0 end:0x00005000
+
+mo_stage/st_mansion/st_mansion_function_5000.cpp:
+	.text       start:0x00005000 end:0x00005010
+
+mo_stage/st_mansion/st_mansion_function_5010.cpp:
+	.text       start:0x00005010 end:0x00005020
+
+mo_stage/st_mansion/st_mansion_function_5020.cpp:
+	.text       start:0x00005020 end:0x00005030
+
 mo_stage/st_mansion/st_mansion_function_5030.cpp:
 	.text       start:0x00005030 end:0x0000503C
 
 mo_stage/st_mansion/st_mansion_function_503c.cpp:
 	.text       start:0x0000503C end:0x00005044
 
+mo_stage/st_mansion/st_mansion_function_5044.cpp:
+	.text       start:0x00005044 end:0x00005054
+
 mo_stage/st_mansion/st_mansion_function_5054.cpp:
 	.text       start:0x00005054 end:0x0000507C
+
+mo_stage/st_mansion/st_mansion_function_507c.cpp:
+	.text       start:0x0000507C end:0x0000508C
+
+mo_stage/st_mansion/st_mansion_function_508c.cpp:
+	.text       start:0x0000508C end:0x0000509C
+
+mo_stage/st_mansion/st_mansion_function_509c.cpp:
+	.text       start:0x0000509C end:0x000050AC
 
 mo_stage/st_mansion/st_mansion_function_5ca0.cpp:
 	.text       start:0x00005CA0 end:0x00005CE8
@@ -601,6 +766,9 @@ mo_stage/st_mansion/st_mansion_function_5ce8.cpp:
 
 mo_stage/st_mansion/st_mansion_function_5cf0.cpp:
 	.text       start:0x00005CF0 end:0x00005EE0
+
+mo_stage/st_mansion/st_mansion_function_5ee0.cpp:
+	.text       start:0x00005EE0 end:0x00005EF0
 
 mo_stage/st_mansion/st_mansion_function_5f00.cpp:
 	.text       start:0x00005F00 end:0x0000607C
@@ -620,11 +788,23 @@ mo_stage/st_mansion/st_mansion_function_734c.cpp:
 mo_stage/st_mansion/st_mansion_function_7394.cpp:
 	.text       start:0x00007394 end:0x0000739C
 
+mo_stage/st_mansion/st_mansion_function_75fc.cpp:
+	.text       start:0x000075FC end:0x0000760C
+
+mo_stage/st_mansion/st_mansion_function_760c.cpp:
+	.text       start:0x0000760C end:0x0000761C
+
 mo_stage/st_mansion/st_mansion_function_7ff0.cpp:
 	.text       start:0x00007FF0 end:0x00008038
 
 mo_stage/st_mansion/st_mansion_function_8038.cpp:
 	.text       start:0x00008038 end:0x00008040
+
+mo_stage/st_mansion/st_mansion_function_81a8.cpp:
+	.text       start:0x000081A8 end:0x000081B8
+
+mo_stage/st_mansion/st_mansion_function_81b8.cpp:
+	.text       start:0x000081B8 end:0x000081C8
 
 mo_stage/st_mansion/st_mansion_function_8d40.cpp:
 	.text       start:0x00008D40 end:0x00008D88

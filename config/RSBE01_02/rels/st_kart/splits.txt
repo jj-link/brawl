@@ -95,6 +95,9 @@ mo_stage/st_kart/st_kart_function_10ec.cpp:
 mo_stage/st_kart/st_kart_function_10f8.cpp:
 	.text       start:0x000010F8 end:0x00001104
 
+mo_stage/st_kart/st_kart_function_1104.cpp:
+	.text       start:0x00001104 end:0x00001114
+
 mo_stage/st_kart/st_kart_function_1114.cpp:
 	.text       start:0x00001114 end:0x00001128
 
@@ -182,6 +185,12 @@ mo_stage/st_kart/st_kart_function_18b8.cpp:
 mo_stage/st_kart/st_kart_function_18bc.cpp:
 	.text       start:0x000018BC end:0x000018C0
 
+mo_stage/st_kart/st_kart_function_18c0.cpp:
+	.text       start:0x000018C0 end:0x000018D0
+
+mo_stage/st_kart/st_kart_function_18d0.cpp:
+	.text       start:0x000018D0 end:0x000018E0
+
 mo_stage/st_kart/st_kart_function_18e0.cpp:
 	.text       start:0x000018E0 end:0x000018EC
 
@@ -214,6 +223,12 @@ mo_stage/st_kart/st_kart_function_1974.cpp:
 
 mo_stage/st_kart/st_kart_function_2ccc.cpp:
 	.text       start:0x00002CCC end:0x00002CD4
+
+mo_stage/st_kart/st_kart_function_39a0.cpp:
+	.text       start:0x000039A0 end:0x000039B0
+
+mo_stage/st_kart/st_kart_function_39b0.cpp:
+	.text       start:0x000039B0 end:0x000039C0
 
 mo_stage/st_kart/st_kart_function_422c.cpp:
 	.text       start:0x0000422C end:0x00004248
@@ -434,6 +449,9 @@ mo_stage/st_kart/st_kart_function_5ff8.cpp:
 mo_stage/st_kart/st_kart_function_6060.cpp:
 	.text       start:0x00006060 end:0x0000606C
 
+mo_stage/st_kart/st_kart_function_606c.cpp:
+	.text       start:0x0000606C end:0x0000607C
+
 mo_stage/st_kart/st_kart_function_607c.cpp:
 	.text       start:0x0000607C end:0x00006088
 
@@ -449,11 +467,17 @@ mo_stage/st_kart/st_kart_function_6184.cpp:
 mo_stage/st_kart/st_kart_function_61ec.cpp:
 	.text       start:0x000061EC end:0x000061F8
 
+mo_stage/st_kart/st_kart_function_61f8.cpp:
+	.text       start:0x000061F8 end:0x00006208
+
 mo_stage/st_kart/st_kart_function_6208.cpp:
 	.text       start:0x00006208 end:0x00006214
 
 mo_stage/st_kart/st_kart_function_6214.cpp:
 	.text       start:0x00006214 end:0x0000621C
+
+mo_stage/st_kart/st_kart_function_621c.cpp:
+	.text       start:0x0000621C end:0x0000622C
 
 mo_stage/st_kart/st_kart_function_622c.cpp:
 	.text       start:0x0000622C end:0x0000626C
@@ -521,17 +545,50 @@ mo_stage/st_kart/st_kart_function_6b40.cpp:
 mo_stage/st_kart/st_kart_function_6b48.cpp:
 	.text       start:0x00006B48 end:0x00006B54
 
+mo_stage/st_kart/st_kart_function_6b54.cpp:
+	.text       start:0x00006B54 end:0x00006B64
+
+mo_stage/st_kart/st_kart_function_6b64.cpp:
+	.text       start:0x00006B64 end:0x00006B74
+
+mo_stage/st_kart/st_kart_function_6b84.cpp:
+	.text       start:0x00006B84 end:0x00006B94
+
+mo_stage/st_kart/st_kart_function_6b94.cpp:
+	.text       start:0x00006B94 end:0x00006BA4
+
+mo_stage/st_kart/st_kart_function_6ba4.cpp:
+	.text       start:0x00006BA4 end:0x00006BB4
+
 mo_stage/st_kart/st_kart_function_6bb4.cpp:
 	.text       start:0x00006BB4 end:0x00006BC0
 
 mo_stage/st_kart/st_kart_function_6bc0.cpp:
 	.text       start:0x00006BC0 end:0x00006BC8
 
+mo_stage/st_kart/st_kart_function_6bc8.cpp:
+	.text       start:0x00006BC8 end:0x00006BD8
+
 mo_stage/st_kart/st_kart_function_6bd8.cpp:
 	.text       start:0x00006BD8 end:0x00006C00
 
+mo_stage/st_kart/st_kart_function_6c00.cpp:
+	.text       start:0x00006C00 end:0x00006C10
+
 mo_stage/st_kart/st_kart_function_6c10.cpp:
 	.text       start:0x00006C10 end:0x00006C1C
+
+mo_stage/st_kart/st_kart_function_6c2c.cpp:
+	.text       start:0x00006C2C end:0x00006C3C
+
+mo_stage/st_kart/st_kart_function_6c4c.cpp:
+	.text       start:0x00006C4C end:0x00006C5C
+
+mo_stage/st_kart/st_kart_function_6c5c.cpp:
+	.text       start:0x00006C5C end:0x00006C6C
+
+mo_stage/st_kart/st_kart_function_6c6c.cpp:
+	.text       start:0x00006C6C end:0x00006C7C
 
 mo_stage/st_kart/st_kart_function_6c7c.cpp:
 	.text       start:0x00006C7C end:0x00006C88
@@ -539,14 +596,56 @@ mo_stage/st_kart/st_kart_function_6c7c.cpp:
 mo_stage/st_kart/st_kart_function_6c88.cpp:
 	.text       start:0x00006C88 end:0x00006C90
 
+mo_stage/st_kart/st_kart_function_6c90.cpp:
+	.text       start:0x00006C90 end:0x00006CA0
+
 mo_stage/st_kart/st_kart_function_6ca0.cpp:
 	.text       start:0x00006CA0 end:0x00006CC8
+
+mo_stage/st_kart/st_kart_function_6cd8.cpp:
+	.text       start:0x00006CD8 end:0x00006CE8
+
+mo_stage/st_kart/st_kart_function_6ce8.cpp:
+	.text       start:0x00006CE8 end:0x00006CF8
+
+mo_stage/st_kart/st_kart_function_6cf8.cpp:
+	.text       start:0x00006CF8 end:0x00006D08
+
+mo_stage/st_kart/st_kart_function_6d08.cpp:
+	.text       start:0x00006D08 end:0x00006D18
+
+mo_stage/st_kart/st_kart_function_6d18.cpp:
+	.text       start:0x00006D18 end:0x00006D28
+
+mo_stage/st_kart/st_kart_function_6d28.cpp:
+	.text       start:0x00006D28 end:0x00006D38
 
 mo_stage/st_kart/st_kart_function_6d38.cpp:
 	.text       start:0x00006D38 end:0x00006D60
 
+mo_stage/st_kart/st_kart_function_6d60.cpp:
+	.text       start:0x00006D60 end:0x00006D70
+
 mo_stage/st_kart/st_kart_function_6d70.cpp:
 	.text       start:0x00006D70 end:0x00006D7C
+
+mo_stage/st_kart/st_kart_function_6d7c.cpp:
+	.text       start:0x00006D7C end:0x00006D8C
+
+mo_stage/st_kart/st_kart_function_6d8c.cpp:
+	.text       start:0x00006D8C end:0x00006D9C
+
+mo_stage/st_kart/st_kart_function_6d9c.cpp:
+	.text       start:0x00006D9C end:0x00006DAC
+
+mo_stage/st_kart/st_kart_function_6dac.cpp:
+	.text       start:0x00006DAC end:0x00006DBC
+
+mo_stage/st_kart/st_kart_function_6dbc.cpp:
+	.text       start:0x00006DBC end:0x00006DCC
+
+mo_stage/st_kart/st_kart_function_6dcc.cpp:
+	.text       start:0x00006DCC end:0x00006DDC
 
 mo_stage/st_kart/st_kart_function_6ddc.cpp:
 	.text       start:0x00006DDC end:0x00006DE8
@@ -554,14 +653,56 @@ mo_stage/st_kart/st_kart_function_6ddc.cpp:
 mo_stage/st_kart/st_kart_function_6de8.cpp:
 	.text       start:0x00006DE8 end:0x00006DF0
 
+mo_stage/st_kart/st_kart_function_6df0.cpp:
+	.text       start:0x00006DF0 end:0x00006E00
+
 mo_stage/st_kart/st_kart_function_6e00.cpp:
 	.text       start:0x00006E00 end:0x00006E28
+
+mo_stage/st_kart/st_kart_function_6e28.cpp:
+	.text       start:0x00006E28 end:0x00006E38
+
+mo_stage/st_kart/st_kart_function_6e48.cpp:
+	.text       start:0x00006E48 end:0x00006E58
+
+mo_stage/st_kart/st_kart_function_6e58.cpp:
+	.text       start:0x00006E58 end:0x00006E68
+
+mo_stage/st_kart/st_kart_function_6e68.cpp:
+	.text       start:0x00006E68 end:0x00006E78
+
+mo_stage/st_kart/st_kart_function_6e78.cpp:
+	.text       start:0x00006E78 end:0x00006E88
+
+mo_stage/st_kart/st_kart_function_6e88.cpp:
+	.text       start:0x00006E88 end:0x00006E98
 
 mo_stage/st_kart/st_kart_function_6e98.cpp:
 	.text       start:0x00006E98 end:0x00006EC0
 
+mo_stage/st_kart/st_kart_function_6ec0.cpp:
+	.text       start:0x00006EC0 end:0x00006ED0
+
 mo_stage/st_kart/st_kart_function_6ed0.cpp:
 	.text       start:0x00006ED0 end:0x00006EDC
+
+mo_stage/st_kart/st_kart_function_6edc.cpp:
+	.text       start:0x00006EDC end:0x00006EEC
+
+mo_stage/st_kart/st_kart_function_6eec.cpp:
+	.text       start:0x00006EEC end:0x00006EFC
+
+mo_stage/st_kart/st_kart_function_6efc.cpp:
+	.text       start:0x00006EFC end:0x00006F0C
+
+mo_stage/st_kart/st_kart_function_6f0c.cpp:
+	.text       start:0x00006F0C end:0x00006F1C
+
+mo_stage/st_kart/st_kart_function_6f1c.cpp:
+	.text       start:0x00006F1C end:0x00006F2C
+
+mo_stage/st_kart/st_kart_function_6f2c.cpp:
+	.text       start:0x00006F2C end:0x00006F3C
 
 mo_stage/st_kart/st_kart_function_6f3c.cpp:
 	.text       start:0x00006F3C end:0x00006F48
@@ -569,11 +710,26 @@ mo_stage/st_kart/st_kart_function_6f3c.cpp:
 mo_stage/st_kart/st_kart_function_6f48.cpp:
 	.text       start:0x00006F48 end:0x00006F50
 
+mo_stage/st_kart/st_kart_function_6f50.cpp:
+	.text       start:0x00006F50 end:0x00006F60
+
 mo_stage/st_kart/st_kart_function_6f60.cpp:
 	.text       start:0x00006F60 end:0x00006F88
 
 mo_stage/st_kart/st_kart_function_6f98.cpp:
 	.text       start:0x00006F98 end:0x00006FA4
+
+mo_stage/st_kart/st_kart_function_6fb4.cpp:
+	.text       start:0x00006FB4 end:0x00006FC4
+
+mo_stage/st_kart/st_kart_function_6fd4.cpp:
+	.text       start:0x00006FD4 end:0x00006FE4
+
+mo_stage/st_kart/st_kart_function_6fe4.cpp:
+	.text       start:0x00006FE4 end:0x00006FF4
+
+mo_stage/st_kart/st_kart_function_6ff4.cpp:
+	.text       start:0x00006FF4 end:0x00007004
 
 mo_stage/st_kart/st_kart_function_7004.cpp:
 	.text       start:0x00007004 end:0x00007010
@@ -581,8 +737,20 @@ mo_stage/st_kart/st_kart_function_7004.cpp:
 mo_stage/st_kart/st_kart_function_7010.cpp:
 	.text       start:0x00007010 end:0x00007018
 
+mo_stage/st_kart/st_kart_function_7018.cpp:
+	.text       start:0x00007018 end:0x00007028
+
 mo_stage/st_kart/st_kart_function_7028.cpp:
 	.text       start:0x00007028 end:0x00007050
+
+mo_stage/st_kart/st_kart_function_7050.cpp:
+	.text       start:0x00007050 end:0x00007060
+
+mo_stage/st_kart/st_kart_function_7060.cpp:
+	.text       start:0x00007060 end:0x00007070
+
+mo_stage/st_kart/st_kart_function_7070.cpp:
+	.text       start:0x00007070 end:0x00007080
 
 mo_stage/st_kart/st_kart_function_7c74.cpp:
 	.text       start:0x00007C74 end:0x00007CBC
@@ -592,6 +760,9 @@ mo_stage/st_kart/st_kart_function_7cbc.cpp:
 
 mo_stage/st_kart/st_kart_function_7cc4.cpp:
 	.text       start:0x00007CC4 end:0x00007EB4
+
+mo_stage/st_kart/st_kart_function_7eb4.cpp:
+	.text       start:0x00007EB4 end:0x00007EC4
 
 mo_stage/st_kart/st_kart_function_7ed4.cpp:
 	.text       start:0x00007ED4 end:0x00008050
@@ -605,11 +776,23 @@ mo_stage/st_kart/st_kart_function_86e8.cpp:
 mo_stage/st_kart/st_kart_function_8730.cpp:
 	.text       start:0x00008730 end:0x00008738
 
+mo_stage/st_kart/st_kart_function_8830.cpp:
+	.text       start:0x00008830 end:0x00008840
+
+mo_stage/st_kart/st_kart_function_8840.cpp:
+	.text       start:0x00008840 end:0x00008850
+
 mo_stage/st_kart/st_kart_function_9320.cpp:
 	.text       start:0x00009320 end:0x00009368
 
 mo_stage/st_kart/st_kart_function_9368.cpp:
 	.text       start:0x00009368 end:0x00009370
+
+mo_stage/st_kart/st_kart_function_95d0.cpp:
+	.text       start:0x000095D0 end:0x000095E0
+
+mo_stage/st_kart/st_kart_function_95e0.cpp:
+	.text       start:0x000095E0 end:0x000095F0
 
 mo_stage/st_kart/st_kart_function_9b40.cpp:
 	.text       start:0x00009B40 end:0x00009D50
@@ -620,11 +803,23 @@ mo_stage/st_kart/st_kart_function_9fc4.cpp:
 mo_stage/st_kart/st_kart_function_a00c.cpp:
 	.text       start:0x0000A00C end:0x0000A014
 
+mo_stage/st_kart/st_kart_function_a17c.cpp:
+	.text       start:0x0000A17C end:0x0000A18C
+
+mo_stage/st_kart/st_kart_function_a18c.cpp:
+	.text       start:0x0000A18C end:0x0000A19C
+
 mo_stage/st_kart/st_kart_function_ad14.cpp:
 	.text       start:0x0000AD14 end:0x0000AD5C
 
 mo_stage/st_kart/st_kart_function_ad5c.cpp:
 	.text       start:0x0000AD5C end:0x0000AD64
+
+mo_stage/st_kart/st_kart_function_affc.cpp:
+	.text       start:0x0000AFFC end:0x0000B00C
+
+mo_stage/st_kart/st_kart_function_b00c.cpp:
+	.text       start:0x0000B00C end:0x0000B01C
 
 mo_stage/st_kart/st_kart_function_b01c.cpp:
 	.text       start:0x0000B01C end:0x0000B118
