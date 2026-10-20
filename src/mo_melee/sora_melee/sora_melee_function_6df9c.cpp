@@ -1,0 +1,63 @@
+#pragma force_active on
+struct Provider {
+    virtual void unused();
+    virtual char* get();
+};
+
+struct Module {
+    char pad[8];
+
+#define UNUSED_SLOT(n) virtual void unused##n();
+    UNUSED_SLOT(0)  UNUSED_SLOT(1)  UNUSED_SLOT(2)  UNUSED_SLOT(3)
+    UNUSED_SLOT(4)  UNUSED_SLOT(5)  UNUSED_SLOT(6)  UNUSED_SLOT(7)
+    UNUSED_SLOT(8)  UNUSED_SLOT(9)  UNUSED_SLOT(10) UNUSED_SLOT(11)
+    UNUSED_SLOT(12) UNUSED_SLOT(13) UNUSED_SLOT(14) UNUSED_SLOT(15)
+    UNUSED_SLOT(16) UNUSED_SLOT(17) UNUSED_SLOT(18) UNUSED_SLOT(19)
+    UNUSED_SLOT(20) UNUSED_SLOT(21) UNUSED_SLOT(22) UNUSED_SLOT(23)
+    UNUSED_SLOT(24) UNUSED_SLOT(25) UNUSED_SLOT(26) UNUSED_SLOT(27)
+    UNUSED_SLOT(28) UNUSED_SLOT(29) UNUSED_SLOT(30) UNUSED_SLOT(31)
+    UNUSED_SLOT(32) UNUSED_SLOT(33) UNUSED_SLOT(34) UNUSED_SLOT(35)
+    UNUSED_SLOT(36) UNUSED_SLOT(37) UNUSED_SLOT(38) UNUSED_SLOT(39)
+    UNUSED_SLOT(40) UNUSED_SLOT(41) UNUSED_SLOT(42) UNUSED_SLOT(43)
+    UNUSED_SLOT(44) UNUSED_SLOT(45) UNUSED_SLOT(46) UNUSED_SLOT(47)
+    UNUSED_SLOT(48) UNUSED_SLOT(49) UNUSED_SLOT(50) UNUSED_SLOT(51)
+    UNUSED_SLOT(52) UNUSED_SLOT(53) UNUSED_SLOT(54) UNUSED_SLOT(55)
+    UNUSED_SLOT(56) UNUSED_SLOT(57) UNUSED_SLOT(58) UNUSED_SLOT(59)
+    UNUSED_SLOT(60) UNUSED_SLOT(61) UNUSED_SLOT(62) UNUSED_SLOT(63)
+    UNUSED_SLOT(64) UNUSED_SLOT(65) UNUSED_SLOT(66) UNUSED_SLOT(67)
+    UNUSED_SLOT(68) UNUSED_SLOT(69) UNUSED_SLOT(70) UNUSED_SLOT(71)
+    UNUSED_SLOT(72) UNUSED_SLOT(73) UNUSED_SLOT(74) UNUSED_SLOT(75)
+    UNUSED_SLOT(76) UNUSED_SLOT(77) UNUSED_SLOT(78) UNUSED_SLOT(79)
+    UNUSED_SLOT(80) UNUSED_SLOT(81) UNUSED_SLOT(82) UNUSED_SLOT(83)
+    UNUSED_SLOT(84) UNUSED_SLOT(85)
+#undef UNUSED_SLOT
+
+    virtual void set(int);
+};
+
+struct Modules {
+    char pad[0x10];
+    Module* module;
+};
+
+struct Data {
+    char pad[0xD8];
+    Modules* modules;
+};
+
+struct Accessor {
+    char pad[0x44];
+    Data* data;
+};
+
+struct Object {
+    char pad[0x48];
+    Provider* provider;
+};
+
+extern "C" Accessor* fn_27_6F30C(void*);
+
+extern "C" void fn_27_6DF9C(Object* object) {
+    char* result = object->provider->get();
+    fn_27_6F30C(result + 0x1C)->data->modules->module->set(0);
+}
