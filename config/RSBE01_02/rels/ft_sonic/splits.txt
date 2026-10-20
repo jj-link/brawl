@@ -209,6 +209,9 @@ mo_fighter/ft_sonic/ft_sonic_function_452c.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_4628.cpp:
 	.text       start:0x00004628 end:0x00004694
 
+mo_fighter/ft_sonic/ft_sonic_function_4694.cpp:
+	.text       start:0x00004694 end:0x0000470C
+
 mo_fighter/ft_sonic/ft_sonic_function_470c.cpp:
 	.text       start:0x0000470C end:0x0000474C
 
@@ -254,14 +257,71 @@ mo_fighter/ft_sonic/ft_sonic_function_5114.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_5154.cpp:
 	.text       start:0x00005154 end:0x000051B4
 
+mo_fighter/ft_sonic/ft_sonic_function_51b4.cpp:
+	.text       start:0x000051B4 end:0x0000522C
+
 mo_fighter/ft_sonic/ft_sonic_function_522c.cpp:
 	.text       start:0x0000522C end:0x000052C8
 
 mo_fighter/ft_sonic/ft_sonic_function_52c8.cpp:
 	.text       start:0x000052C8 end:0x00005324
 
+mo_fighter/ft_sonic/ft_sonic_function_5324.cpp:
+	.text       start:0x00005324 end:0x0000539C
+
 mo_fighter/ft_sonic/ft_sonic_function_539c.cpp:
 	.text       start:0x0000539C end:0x000053FC
+
+mo_fighter/ft_sonic/ft_sonic_function_53fc.cpp:
+	.text       start:0x000053FC end:0x00005474
+
+mo_fighter/ft_sonic/ft_sonic_function_5474.cpp:
+	.text       start:0x00005474 end:0x000054EC
+
+mo_fighter/ft_sonic/ft_sonic_function_54ec.cpp:
+	.text       start:0x000054EC end:0x00005564
+
+mo_fighter/ft_sonic/ft_sonic_function_5564.cpp:
+	.text       start:0x00005564 end:0x000055DC
+
+mo_fighter/ft_sonic/ft_sonic_function_55dc.cpp:
+	.text       start:0x000055DC end:0x00005654
+
+mo_fighter/ft_sonic/ft_sonic_function_5654.cpp:
+	.text       start:0x00005654 end:0x000056CC
+
+mo_fighter/ft_sonic/ft_sonic_function_56cc.cpp:
+	.text       start:0x000056CC end:0x00005744
+
+mo_fighter/ft_sonic/ft_sonic_function_5744.cpp:
+	.text       start:0x00005744 end:0x000057BC
+
+mo_fighter/ft_sonic/ft_sonic_function_5834.cpp:
+	.text       start:0x00005834 end:0x000058AC
+
+mo_fighter/ft_sonic/ft_sonic_function_58ac.cpp:
+	.text       start:0x000058AC end:0x00005924
+
+mo_fighter/ft_sonic/ft_sonic_function_5924.cpp:
+	.text       start:0x00005924 end:0x0000599C
+
+mo_fighter/ft_sonic/ft_sonic_function_599c.cpp:
+	.text       start:0x0000599C end:0x00005A14
+
+mo_fighter/ft_sonic/ft_sonic_function_5a14.cpp:
+	.text       start:0x00005A14 end:0x00005A8C
+
+mo_fighter/ft_sonic/ft_sonic_function_5a8c.cpp:
+	.text       start:0x00005A8C end:0x00005B04
+
+mo_fighter/ft_sonic/ft_sonic_function_5b04.cpp:
+	.text       start:0x00005B04 end:0x00005B7C
+
+mo_fighter/ft_sonic/ft_sonic_function_5b7c.cpp:
+	.text       start:0x00005B7C end:0x00005BF4
+
+mo_fighter/ft_sonic/ft_sonic_function_5bf4.cpp:
+	.text       start:0x00005BF4 end:0x00005C6C
 
 mo_fighter/ft_sonic/ft_sonic_function_5c6c.cpp:
 	.text       start:0x00005C6C end:0x00005CDC
@@ -314,8 +374,14 @@ mo_fighter/ft_sonic/ft_sonic_function_6250.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_62ac.cpp:
 	.text       start:0x000062AC end:0x00006320
 
+mo_fighter/ft_sonic/ft_sonic_function_6320.cpp:
+	.text       start:0x00006320 end:0x00006398
+
 mo_fighter/ft_sonic/ft_sonic_function_6398.cpp:
 	.text       start:0x00006398 end:0x00006404
+
+mo_fighter/ft_sonic/ft_sonic_function_65a8.cpp:
+	.text       start:0x000065A8 end:0x00006620
 
 mo_fighter/ft_sonic/ft_sonic_function_6620.cpp:
 	.text       start:0x00006620 end:0x00006680
@@ -335,14 +401,23 @@ mo_fighter/ft_sonic/ft_sonic_function_6858.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_68b4.cpp:
 	.text       start:0x000068B4 end:0x00006910
 
+mo_fighter/ft_sonic/ft_sonic_function_6910.cpp:
+	.text       start:0x00006910 end:0x00006988
+
 mo_fighter/ft_sonic/ft_sonic_function_6988.cpp:
 	.text       start:0x00006988 end:0x000069E4
 
 mo_fighter/ft_sonic/ft_sonic_function_69e4.cpp:
 	.text       start:0x000069E4 end:0x00006A44
 
+mo_fighter/ft_sonic/ft_sonic_function_6a44.cpp:
+	.text       start:0x00006A44 end:0x00006ABC
+
 mo_fighter/ft_sonic/ft_sonic_function_6abc.cpp:
 	.text       start:0x00006ABC end:0x00006B18
+
+mo_fighter/ft_sonic/ft_sonic_function_6b18.cpp:
+	.text       start:0x00006B18 end:0x00006B90
 
 mo_fighter/ft_sonic/ft_sonic_function_6b90.cpp:
 	.text       start:0x00006B90 end:0x00006BEC
@@ -818,6 +893,9 @@ mo_fighter/ft_sonic/ft_sonic_function_b9d4.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_ba34.cpp:
 	.text       start:0x0000BA34 end:0x0000BA94
 
+mo_fighter/ft_sonic/ft_sonic_function_ba94.cpp:
+	.text       start:0x0000BA94 end:0x0000BB0C
+
 mo_fighter/ft_sonic/ft_sonic_function_bb0c.cpp:
 	.text       start:0x0000BB0C end:0x0000BB6C
 
@@ -826,6 +904,9 @@ mo_fighter/ft_sonic/ft_sonic_function_bb6c.cpp:
 
 mo_fighter/ft_sonic/ft_sonic_function_bbcc.cpp:
 	.text       start:0x0000BBCC end:0x0000BC2C
+
+mo_fighter/ft_sonic/ft_sonic_function_bc2c.cpp:
+	.text       start:0x0000BC2C end:0x0000BCA4
 
 mo_fighter/ft_sonic/ft_sonic_function_bca4.cpp:
 	.text       start:0x0000BCA4 end:0x0000BD00
@@ -836,6 +917,9 @@ mo_fighter/ft_sonic/ft_sonic_function_bd00.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_bd60.cpp:
 	.text       start:0x0000BD60 end:0x0000BDC0
 
+mo_fighter/ft_sonic/ft_sonic_function_bdc0.cpp:
+	.text       start:0x0000BDC0 end:0x0000BE38
+
 mo_fighter/ft_sonic/ft_sonic_function_be38.cpp:
 	.text       start:0x0000BE38 end:0x0000BE98
 
@@ -845,11 +929,17 @@ mo_fighter/ft_sonic/ft_sonic_function_be98.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_bef8.cpp:
 	.text       start:0x0000BEF8 end:0x0000BF58
 
+mo_fighter/ft_sonic/ft_sonic_function_bf58.cpp:
+	.text       start:0x0000BF58 end:0x0000BFD0
+
 mo_fighter/ft_sonic/ft_sonic_function_bfd0.cpp:
 	.text       start:0x0000BFD0 end:0x0000C030
 
 mo_fighter/ft_sonic/ft_sonic_function_c030.cpp:
 	.text       start:0x0000C030 end:0x0000C090
+
+mo_fighter/ft_sonic/ft_sonic_function_c090.cpp:
+	.text       start:0x0000C090 end:0x0000C108
 
 mo_fighter/ft_sonic/ft_sonic_function_c108.cpp:
 	.text       start:0x0000C108 end:0x0000C164
@@ -859,6 +949,9 @@ mo_fighter/ft_sonic/ft_sonic_function_c164.cpp:
 
 mo_fighter/ft_sonic/ft_sonic_function_c1c4.cpp:
 	.text       start:0x0000C1C4 end:0x0000C224
+
+mo_fighter/ft_sonic/ft_sonic_function_c224.cpp:
+	.text       start:0x0000C224 end:0x0000C29C
 
 mo_fighter/ft_sonic/ft_sonic_function_c29c.cpp:
 	.text       start:0x0000C29C end:0x0000C2F8
@@ -1166,6 +1259,9 @@ mo_fighter/ft_sonic/ft_sonic_function_fda8.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_fdb8.cpp:
 	.text       start:0x0000FDB8 end:0x0000FDC8
 
+mo_fighter/ft_sonic/ft_sonic_function_fe58.cpp:
+	.text       start:0x0000FE58 end:0x0000FED0
+
 mo_fighter/ft_sonic/ft_sonic_function_fed0.cpp:
 	.text       start:0x0000FED0 end:0x0000FF20
 
@@ -1214,6 +1310,9 @@ mo_fighter/ft_sonic/ft_sonic_function_12544.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_12980.cpp:
 	.text       start:0x00012980 end:0x000129DC
 
+mo_fighter/ft_sonic/ft_sonic_function_12aec.cpp:
+	.text       start:0x00012AEC end:0x00012B64
+
 mo_fighter/ft_sonic/ft_sonic_function_12b64.cpp:
 	.text       start:0x00012B64 end:0x00012BA4
 
@@ -1225,6 +1324,9 @@ mo_fighter/ft_sonic/ft_sonic_function_12c04.cpp:
 
 mo_fighter/ft_sonic/ft_sonic_function_12c78.cpp:
 	.text       start:0x00012C78 end:0x00012CD4
+
+mo_fighter/ft_sonic/ft_sonic_function_12cd4.cpp:
+	.text       start:0x00012CD4 end:0x00012D4C
 
 mo_fighter/ft_sonic/ft_sonic_function_12d4c.cpp:
 	.text       start:0x00012D4C end:0x00012DA8
@@ -1687,6 +1789,9 @@ mo_fighter/ft_sonic/ft_sonic_function_146a0.cpp:
 
 mo_fighter/ft_sonic/ft_sonic_function_14b28.cpp:
 	.text       start:0x00014B28 end:0x00014B84
+
+mo_fighter/ft_sonic/ft_sonic_function_14c10.cpp:
+	.text       start:0x00014C10 end:0x00014C88
 
 mo_fighter/ft_sonic/ft_sonic_function_14c88.cpp:
 	.text       start:0x00014C88 end:0x00014CE8

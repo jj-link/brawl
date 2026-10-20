@@ -1,0 +1,24 @@
+#include <sr/sr_common.h>
+#include <types.h>
+#pragma force_active on
+
+extern "C" {
+void* __dt__20soResourceModuleImplFv(void* self, s16 deleteFlag);
+void* fn_103_4684(void* base, s16 deleteFlag);
+
+void* fn_103_460C(void* object, s16 deleteFlag) {
+    if (object != nullptr) {
+        s16 memberDeleteFlag = -1;
+        __dt__20soResourceModuleImplFv(static_cast<u8*>(object) + 0x18, memberDeleteFlag);
+        void* base = object;
+        if (base != nullptr) {
+            s16 baseDeleteFlag = 0;
+            fn_103_4684(base, baseDeleteFlag);
+        }
+        if (static_cast<s16>(deleteFlag) > 0) {
+            ::operator delete(object);
+        }
+    }
+    return object;
+}
+}
