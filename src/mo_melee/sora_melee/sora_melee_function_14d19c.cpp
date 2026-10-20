@@ -1,0 +1,65 @@
+#pragma force_active on
+struct Vec3 {
+    float x, y, z;
+};
+
+struct Fighter;
+
+struct ModelModule {
+    char padding[8];
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void slot5();
+    virtual void slot6();
+    virtual void slot7();
+    virtual void slot8();
+    virtual void slot9();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual void slot13();
+    virtual void slot14();
+    virtual void slot15();
+    virtual void slot16();
+    virtual void slot17();
+    virtual void slot18();
+    virtual void slot19();
+    virtual void slot20();
+    virtual void slot21();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void slot24();
+    virtual void slot25();
+    virtual void slot26();
+    virtual void slot27();
+    virtual void slot28();
+    virtual void slot29();
+    virtual void slot30();
+    virtual void slot31();
+    virtual void slot32();
+    virtual int getNodeId(int);
+    virtual void slot34();
+    virtual void slot35();
+    virtual Vec3 getGlobalPosition(int, bool);
+};
+
+struct Modules {
+    char padding[4];
+    ModelModule* model;
+};
+
+struct Access {
+    char padding[0xd8];
+    Modules* modules;
+};
+
+extern "C" Access* getModuleAccesser__23soExternalValueAccesserFP11StageObject(Fighter*);
+
+extern "C" Vec3 getHipPos__23ftExternalValueAccesserFP7Fighter(Fighter* fighter) {
+    Access* access = getModuleAccesser__23soExternalValueAccesserFP11StageObject(fighter);
+    int node = access->modules->model->getNodeId(0x12d);
+    return access->modules->model->getGlobalPosition(node, false);
+}

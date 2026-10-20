@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_boot/sora_menu_boot/sora_menu_boot_function_0.cpp:
+	.text       start:0x00000000 end:0x0000008C
+
 mo_menu_boot/sora_menu_boot/sora_menu_boot_function_8c.cpp:
 	.text       start:0x0000008C end:0x000000E4
 
@@ -14,6 +17,9 @@ mo_menu_boot/sora_menu_boot/sora_menu_boot_function_1454.cpp:
 
 mo_menu_boot/sora_menu_boot/sora_menu_boot_function_14c0.cpp:
 	.text       start:0x000014C0 end:0x00001564
+
+mo_menu_boot/sora_menu_boot/sora_menu_boot_function_1688.cpp:
+	.text       start:0x00001688 end:0x00001714
 
 mo_menu_boot/sora_menu_boot/sora_menu_boot_function_1714.cpp:
 	.text       start:0x00001714 end:0x0000176C
