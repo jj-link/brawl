@@ -1,0 +1,10 @@
+#pragma force_active on
+typedef unsigned int u32;
+typedef int s32;
+
+extern "C" {
+s32 fn_27_19DD44(u32 *p)
+{
+    return (s32)((p[2] << 5) & 0xFC000000) >> 27;
+}
+}
