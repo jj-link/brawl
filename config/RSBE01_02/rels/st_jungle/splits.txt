@@ -161,6 +161,9 @@ mo_stage/st_jungle/st_jungle_function_2668.cpp:
 mo_stage/st_jungle/st_jungle_function_2674.cpp:
 	.text       start:0x00002674 end:0x00002680
 
+mo_stage/st_jungle/st_jungle_function_2680.cpp:
+	.text       start:0x00002680 end:0x00002690
+
 mo_stage/st_jungle/st_jungle_function_2690.cpp:
 	.text       start:0x00002690 end:0x000026A4
 
@@ -250,6 +253,12 @@ mo_stage/st_jungle/st_jungle_function_336c.cpp:
 
 mo_stage/st_jungle/st_jungle_function_3370.cpp:
 	.text       start:0x00003370 end:0x00003374
+
+mo_stage/st_jungle/st_jungle_function_3374.cpp:
+	.text       start:0x00003374 end:0x00003384
+
+mo_stage/st_jungle/st_jungle_function_3384.cpp:
+	.text       start:0x00003384 end:0x00003394
 
 mo_stage/st_jungle/st_jungle_function_3394.cpp:
 	.text       start:0x00003394 end:0x000033A0
@@ -512,6 +521,9 @@ mo_stage/st_jungle/st_jungle_function_58a8.cpp:
 mo_stage/st_jungle/st_jungle_function_5910.cpp:
 	.text       start:0x00005910 end:0x0000591C
 
+mo_stage/st_jungle/st_jungle_function_591c.cpp:
+	.text       start:0x0000591C end:0x0000592C
+
 mo_stage/st_jungle/st_jungle_function_592c.cpp:
 	.text       start:0x0000592C end:0x00005938
 
@@ -527,11 +539,17 @@ mo_stage/st_jungle/st_jungle_function_5a34.cpp:
 mo_stage/st_jungle/st_jungle_function_5a9c.cpp:
 	.text       start:0x00005A9C end:0x00005AA8
 
+mo_stage/st_jungle/st_jungle_function_5aa8.cpp:
+	.text       start:0x00005AA8 end:0x00005AB8
+
 mo_stage/st_jungle/st_jungle_function_5ab8.cpp:
 	.text       start:0x00005AB8 end:0x00005AC4
 
 mo_stage/st_jungle/st_jungle_function_5ac4.cpp:
 	.text       start:0x00005AC4 end:0x00005ACC
+
+mo_stage/st_jungle/st_jungle_function_5acc.cpp:
+	.text       start:0x00005ACC end:0x00005ADC
 
 mo_stage/st_jungle/st_jungle_function_5adc.cpp:
 	.text       start:0x00005ADC end:0x00005B1C
@@ -599,17 +617,53 @@ mo_stage/st_jungle/st_jungle_function_63f0.cpp:
 mo_stage/st_jungle/st_jungle_function_63f8.cpp:
 	.text       start:0x000063F8 end:0x00006404
 
+mo_stage/st_jungle/st_jungle_function_6404.cpp:
+	.text       start:0x00006404 end:0x00006414
+
+mo_stage/st_jungle/st_jungle_function_6414.cpp:
+	.text       start:0x00006414 end:0x00006424
+
+mo_stage/st_jungle/st_jungle_function_6424.cpp:
+	.text       start:0x00006424 end:0x00006434
+
+mo_stage/st_jungle/st_jungle_function_6434.cpp:
+	.text       start:0x00006434 end:0x00006444
+
+mo_stage/st_jungle/st_jungle_function_6444.cpp:
+	.text       start:0x00006444 end:0x00006454
+
 mo_stage/st_jungle/st_jungle_function_6464.cpp:
 	.text       start:0x00006464 end:0x00006470
 
 mo_stage/st_jungle/st_jungle_function_6470.cpp:
 	.text       start:0x00006470 end:0x00006478
 
+mo_stage/st_jungle/st_jungle_function_6478.cpp:
+	.text       start:0x00006478 end:0x00006488
+
 mo_stage/st_jungle/st_jungle_function_6488.cpp:
 	.text       start:0x00006488 end:0x000064B0
 
+mo_stage/st_jungle/st_jungle_function_64b0.cpp:
+	.text       start:0x000064B0 end:0x000064C0
+
 mo_stage/st_jungle/st_jungle_function_64c0.cpp:
 	.text       start:0x000064C0 end:0x000064CC
+
+mo_stage/st_jungle/st_jungle_function_64cc.cpp:
+	.text       start:0x000064CC end:0x000064DC
+
+mo_stage/st_jungle/st_jungle_function_64dc.cpp:
+	.text       start:0x000064DC end:0x000064EC
+
+mo_stage/st_jungle/st_jungle_function_64ec.cpp:
+	.text       start:0x000064EC end:0x000064FC
+
+mo_stage/st_jungle/st_jungle_function_64fc.cpp:
+	.text       start:0x000064FC end:0x0000650C
+
+mo_stage/st_jungle/st_jungle_function_650c.cpp:
+	.text       start:0x0000650C end:0x0000651C
 
 mo_stage/st_jungle/st_jungle_function_652c.cpp:
 	.text       start:0x0000652C end:0x00006538
@@ -617,14 +671,53 @@ mo_stage/st_jungle/st_jungle_function_652c.cpp:
 mo_stage/st_jungle/st_jungle_function_6538.cpp:
 	.text       start:0x00006538 end:0x00006540
 
+mo_stage/st_jungle/st_jungle_function_6540.cpp:
+	.text       start:0x00006540 end:0x00006550
+
 mo_stage/st_jungle/st_jungle_function_6550.cpp:
 	.text       start:0x00006550 end:0x00006578
+
+mo_stage/st_jungle/st_jungle_function_6578.cpp:
+	.text       start:0x00006578 end:0x00006588
+
+mo_stage/st_jungle/st_jungle_function_6588.cpp:
+	.text       start:0x00006588 end:0x00006598
+
+mo_stage/st_jungle/st_jungle_function_6598.cpp:
+	.text       start:0x00006598 end:0x000065A8
+
+mo_stage/st_jungle/st_jungle_function_65a8.cpp:
+	.text       start:0x000065A8 end:0x000065B8
+
+mo_stage/st_jungle/st_jungle_function_65b8.cpp:
+	.text       start:0x000065B8 end:0x000065C8
+
+mo_stage/st_jungle/st_jungle_function_65c8.cpp:
+	.text       start:0x000065C8 end:0x000065D8
+
+mo_stage/st_jungle/st_jungle_function_65d8.cpp:
+	.text       start:0x000065D8 end:0x000065E8
 
 mo_stage/st_jungle/st_jungle_function_65e8.cpp:
 	.text       start:0x000065E8 end:0x00006610
 
+mo_stage/st_jungle/st_jungle_function_6610.cpp:
+	.text       start:0x00006610 end:0x00006620
+
 mo_stage/st_jungle/st_jungle_function_6620.cpp:
 	.text       start:0x00006620 end:0x0000662C
+
+mo_stage/st_jungle/st_jungle_function_663c.cpp:
+	.text       start:0x0000663C end:0x0000664C
+
+mo_stage/st_jungle/st_jungle_function_665c.cpp:
+	.text       start:0x0000665C end:0x0000666C
+
+mo_stage/st_jungle/st_jungle_function_666c.cpp:
+	.text       start:0x0000666C end:0x0000667C
+
+mo_stage/st_jungle/st_jungle_function_667c.cpp:
+	.text       start:0x0000667C end:0x0000668C
 
 mo_stage/st_jungle/st_jungle_function_668c.cpp:
 	.text       start:0x0000668C end:0x00006698
@@ -632,17 +725,62 @@ mo_stage/st_jungle/st_jungle_function_668c.cpp:
 mo_stage/st_jungle/st_jungle_function_6698.cpp:
 	.text       start:0x00006698 end:0x000066A0
 
+mo_stage/st_jungle/st_jungle_function_66a0.cpp:
+	.text       start:0x000066A0 end:0x000066B0
+
 mo_stage/st_jungle/st_jungle_function_66b0.cpp:
 	.text       start:0x000066B0 end:0x000066D8
+
+mo_stage/st_jungle/st_jungle_function_66d8.cpp:
+	.text       start:0x000066D8 end:0x000066E8
+
+mo_stage/st_jungle/st_jungle_function_66e8.cpp:
+	.text       start:0x000066E8 end:0x000066F8
+
+mo_stage/st_jungle/st_jungle_function_6708.cpp:
+	.text       start:0x00006708 end:0x00006718
+
+mo_stage/st_jungle/st_jungle_function_6718.cpp:
+	.text       start:0x00006718 end:0x00006728
+
+mo_stage/st_jungle/st_jungle_function_6728.cpp:
+	.text       start:0x00006728 end:0x00006738
+
+mo_stage/st_jungle/st_jungle_function_6738.cpp:
+	.text       start:0x00006738 end:0x00006748
 
 mo_stage/st_jungle/st_jungle_function_6748.cpp:
 	.text       start:0x00006748 end:0x00006770
 
+mo_stage/st_jungle/st_jungle_function_6770.cpp:
+	.text       start:0x00006770 end:0x00006780
+
 mo_stage/st_jungle/st_jungle_function_6780.cpp:
 	.text       start:0x00006780 end:0x0000678C
 
+mo_stage/st_jungle/st_jungle_function_678c.cpp:
+	.text       start:0x0000678C end:0x0000679C
+
+mo_stage/st_jungle/st_jungle_function_679c.cpp:
+	.text       start:0x0000679C end:0x000067AC
+
+mo_stage/st_jungle/st_jungle_function_67ac.cpp:
+	.text       start:0x000067AC end:0x000067BC
+
+mo_stage/st_jungle/st_jungle_function_67bc.cpp:
+	.text       start:0x000067BC end:0x000067CC
+
+mo_stage/st_jungle/st_jungle_function_67cc.cpp:
+	.text       start:0x000067CC end:0x000067DC
+
+mo_stage/st_jungle/st_jungle_function_67dc.cpp:
+	.text       start:0x000067DC end:0x000067EC
+
 mo_stage/st_jungle/st_jungle_function_67f8.cpp:
 	.text       start:0x000067F8 end:0x00006800
+
+mo_stage/st_jungle/st_jungle_function_6800.cpp:
+	.text       start:0x00006800 end:0x00006810
 
 mo_stage/st_jungle/st_jungle_function_6810.cpp:
 	.text       start:0x00006810 end:0x00006838
@@ -650,14 +788,38 @@ mo_stage/st_jungle/st_jungle_function_6810.cpp:
 mo_stage/st_jungle/st_jungle_function_6848.cpp:
 	.text       start:0x00006848 end:0x00006854
 
+mo_stage/st_jungle/st_jungle_function_6854.cpp:
+	.text       start:0x00006854 end:0x00006864
+
+mo_stage/st_jungle/st_jungle_function_6864.cpp:
+	.text       start:0x00006864 end:0x00006874
+
+mo_stage/st_jungle/st_jungle_function_6884.cpp:
+	.text       start:0x00006884 end:0x00006894
+
+mo_stage/st_jungle/st_jungle_function_6894.cpp:
+	.text       start:0x00006894 end:0x000068A4
+
+mo_stage/st_jungle/st_jungle_function_68a4.cpp:
+	.text       start:0x000068A4 end:0x000068B4
+
 mo_stage/st_jungle/st_jungle_function_68b4.cpp:
 	.text       start:0x000068B4 end:0x000068C0
 
 mo_stage/st_jungle/st_jungle_function_68c0.cpp:
 	.text       start:0x000068C0 end:0x000068C8
 
+mo_stage/st_jungle/st_jungle_function_68c8.cpp:
+	.text       start:0x000068C8 end:0x000068D8
+
 mo_stage/st_jungle/st_jungle_function_68d8.cpp:
 	.text       start:0x000068D8 end:0x00006900
+
+mo_stage/st_jungle/st_jungle_function_6900.cpp:
+	.text       start:0x00006900 end:0x00006910
+
+mo_stage/st_jungle/st_jungle_function_6910.cpp:
+	.text       start:0x00006910 end:0x00006920
 
 mo_stage/st_jungle/st_jungle_function_7524.cpp:
 	.text       start:0x00007524 end:0x0000756C
@@ -667,6 +829,12 @@ mo_stage/st_jungle/st_jungle_function_756c.cpp:
 
 mo_stage/st_jungle/st_jungle_function_7574.cpp:
 	.text       start:0x00007574 end:0x00007764
+
+mo_stage/st_jungle/st_jungle_function_7764.cpp:
+	.text       start:0x00007764 end:0x00007774
+
+mo_stage/st_jungle/st_jungle_function_7774.cpp:
+	.text       start:0x00007774 end:0x00007784
 
 mo_stage/st_jungle/st_jungle_function_7784.cpp:
 	.text       start:0x00007784 end:0x00007900
@@ -680,11 +848,20 @@ mo_stage/st_jungle/st_jungle_function_7f98.cpp:
 mo_stage/st_jungle/st_jungle_function_7fe0.cpp:
 	.text       start:0x00007FE0 end:0x00007FE8
 
+mo_stage/st_jungle/st_jungle_function_80e0.cpp:
+	.text       start:0x000080E0 end:0x000080F0
+
+mo_stage/st_jungle/st_jungle_function_80f0.cpp:
+	.text       start:0x000080F0 end:0x00008100
+
 mo_stage/st_jungle/st_jungle_function_8bd0.cpp:
 	.text       start:0x00008BD0 end:0x00008C18
 
 mo_stage/st_jungle/st_jungle_function_8c18.cpp:
 	.text       start:0x00008C18 end:0x00008C20
+
+mo_stage/st_jungle/st_jungle_function_8e90.cpp:
+	.text       start:0x00008E90 end:0x00008EA0
 
 mo_stage/st_jungle/st_jungle_function_9874.cpp:
 	.text       start:0x00009874 end:0x000098BC
@@ -697,6 +874,12 @@ mo_stage/st_jungle/st_jungle_function_a5c4.cpp:
 
 mo_stage/st_jungle/st_jungle_function_a60c.cpp:
 	.text       start:0x0000A60C end:0x0000A614
+
+mo_stage/st_jungle/st_jungle_function_a8ac.cpp:
+	.text       start:0x0000A8AC end:0x0000A8BC
+
+mo_stage/st_jungle/st_jungle_function_a8bc.cpp:
+	.text       start:0x0000A8BC end:0x0000A8CC
 
 mo_stage/st_jungle/st_jungle_function_a8cc.cpp:
 	.text       start:0x0000A8CC end:0x0000A9C8
@@ -932,6 +1115,9 @@ mo_stage/st_jungle/st_jungle_function_d724.cpp:
 mo_stage/st_jungle/st_jungle_function_d78c.cpp:
 	.text       start:0x0000D78C end:0x0000D798
 
+mo_stage/st_jungle/st_jungle_function_d798.cpp:
+	.text       start:0x0000D798 end:0x0000D7A8
+
 mo_stage/st_jungle/st_jungle_function_d7a8.cpp:
 	.text       start:0x0000D7A8 end:0x0000D7B4
 
@@ -940,6 +1126,24 @@ mo_stage/st_jungle/st_jungle_function_d7b4.cpp:
 
 mo_stage/st_jungle/st_jungle_function_d7bc.cpp:
 	.text       start:0x0000D7BC end:0x0000D7C8
+
+mo_stage/st_jungle/st_jungle_function_d7c8.cpp:
+	.text       start:0x0000D7C8 end:0x0000D7D8
+
+mo_stage/st_jungle/st_jungle_function_d7d8.cpp:
+	.text       start:0x0000D7D8 end:0x0000D7E8
+
+mo_stage/st_jungle/st_jungle_function_d7e8.cpp:
+	.text       start:0x0000D7E8 end:0x0000D7F8
+
+mo_stage/st_jungle/st_jungle_function_d7f8.cpp:
+	.text       start:0x0000D7F8 end:0x0000D808
+
+mo_stage/st_jungle/st_jungle_function_d808.cpp:
+	.text       start:0x0000D808 end:0x0000D818
+
+mo_stage/st_jungle/st_jungle_function_d818.cpp:
+	.text       start:0x0000D818 end:0x0000D828
 
 mo_stage/st_jungle/st_jungle_function_d828.cpp:
 	.text       start:0x0000D828 end:0x0000D834
