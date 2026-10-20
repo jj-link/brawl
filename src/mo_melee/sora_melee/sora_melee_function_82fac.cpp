@@ -1,0 +1,4 @@
+#pragma force_active on
+extern "C" void fn_27_82FAC(short *p) {
+    *p = 0;
+}
