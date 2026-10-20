@@ -17,6 +17,9 @@ mo_stage/st_halberd/st_halberd_function_70.cpp:
 mo_stage/st_halberd/st_halberd_function_a4.cpp:
 	.text       start:0x000000A4 end:0x00000298
 
+mo_stage/st_halberd/st_halberd_function_298.cpp:
+	.text       start:0x00000298 end:0x00000310
+
 mo_stage/st_halberd/st_halberd_function_310.cpp:
 	.text       start:0x00000310 end:0x00000318
 
@@ -227,6 +230,9 @@ mo_stage/st_halberd/st_halberd_function_3a90.cpp:
 mo_stage/st_halberd/st_halberd_function_3a94.cpp:
 	.text       start:0x00003A94 end:0x00003A9C
 
+mo_stage/st_halberd/st_halberd_function_3a9c.cpp:
+	.text       start:0x00003A9C end:0x00003AB8
+
 mo_stage/st_halberd/st_halberd_function_3ab8.cpp:
 	.text       start:0x00003AB8 end:0x00003AC0
 
@@ -238,6 +244,9 @@ mo_stage/st_halberd/st_halberd_function_3ac8.cpp:
 
 mo_stage/st_halberd/st_halberd_function_3e7c.cpp:
 	.text       start:0x00003E7C end:0x00003ED4
+
+mo_stage/st_halberd/st_halberd_function_3ed4.cpp:
+	.text       start:0x00003ED4 end:0x00003F4C
 
 mo_stage/st_halberd/st_halberd_function_3f4c.cpp:
 	.text       start:0x00003F4C end:0x00003F50
@@ -251,14 +260,23 @@ mo_stage/st_halberd/st_halberd_function_5614.cpp:
 mo_stage/st_halberd/st_halberd_function_583c.cpp:
 	.text       start:0x0000583C end:0x00005894
 
+mo_stage/st_halberd/st_halberd_function_5894.cpp:
+	.text       start:0x00005894 end:0x0000590C
+
 mo_stage/st_halberd/st_halberd_function_5968.cpp:
 	.text       start:0x00005968 end:0x00005AF4
 
 mo_stage/st_halberd/st_halberd_function_6a50.cpp:
 	.text       start:0x00006A50 end:0x00006AA8
 
+mo_stage/st_halberd/st_halberd_function_6aa8.cpp:
+	.text       start:0x00006AA8 end:0x00006B20
+
 mo_stage/st_halberd/st_halberd_function_76e8.cpp:
 	.text       start:0x000076E8 end:0x00007740
+
+mo_stage/st_halberd/st_halberd_function_7740.cpp:
+	.text       start:0x00007740 end:0x000077B8
 
 mo_stage/st_halberd/st_halberd_function_77b8.cpp:
 	.text       start:0x000077B8 end:0x000077BC
@@ -410,6 +428,9 @@ mo_stage/st_halberd/st_halberd_function_acb8.cpp:
 mo_stage/st_halberd/st_halberd_function_acc0.cpp:
 	.text       start:0x0000ACC0 end:0x0000ACCC
 
+mo_stage/st_halberd/st_halberd_function_ad2c.cpp:
+	.text       start:0x0000AD2C end:0x0000AD38
+
 mo_stage/st_halberd/st_halberd_function_ad38.cpp:
 	.text       start:0x0000AD38 end:0x0000AD40
 
@@ -422,11 +443,17 @@ mo_stage/st_halberd/st_halberd_function_ade8.cpp:
 mo_stage/st_halberd/st_halberd_function_ae20.cpp:
 	.text       start:0x0000AE20 end:0x0000AE2C
 
+mo_stage/st_halberd/st_halberd_function_ae8c.cpp:
+	.text       start:0x0000AE8C end:0x0000AE98
+
 mo_stage/st_halberd/st_halberd_function_ae98.cpp:
 	.text       start:0x0000AE98 end:0x0000AEA0
 
 mo_stage/st_halberd/st_halberd_function_aeb0.cpp:
 	.text       start:0x0000AEB0 end:0x0000AED8
+
+mo_stage/st_halberd/st_halberd_function_b458.cpp:
+	.text       start:0x0000B458 end:0x0000B668
 
 mo_stage/st_halberd/st_halberd_function_b8dc.cpp:
 	.text       start:0x0000B8DC end:0x0000B924
@@ -451,6 +478,9 @@ mo_stage/st_halberd/st_halberd_function_cf48.cpp:
 
 mo_stage/st_halberd/st_halberd_function_cf90.cpp:
 	.text       start:0x0000CF90 end:0x0000CF98
+
+mo_stage/st_halberd/st_halberd_function_cf98.cpp:
+	.text       start:0x0000CF98 end:0x0000D010
 
 mo_stage/st_halberd/st_halberd_function_d010.cpp:
 	.text       start:0x0000D010 end:0x0000D044
@@ -541,6 +571,9 @@ mo_stage/st_halberd/st_halberd_function_dcec.cpp:
 
 mo_stage/st_halberd/st_halberd_function_edec.cpp:
 	.text       start:0x0000EDEC end:0x0000EE88
+
+mo_stage/st_halberd/st_halberd_function_1156c.cpp:
+	.text       start:0x0001156C end:0x000115E4
 
 mo_stage/mo_stage.cpp:
 	.text       start:0x00011F90 end:0x0001202C

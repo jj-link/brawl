@@ -11,11 +11,17 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_dxgarden/st_dxgarden_function_70.cpp:
+	.text       start:0x00000070 end:0x000000E8
+
 mo_stage/st_dxgarden/st_dxgarden_function_16c.cpp:
 	.text       start:0x0000016C end:0x00000174
 
 mo_stage/st_dxgarden/st_dxgarden_function_478.cpp:
 	.text       start:0x00000478 end:0x00000480
+
+mo_stage/st_dxgarden/st_dxgarden_function_5d8.cpp:
+	.text       start:0x000005D8 end:0x000006D0
 
 mo_stage/st_dxgarden/st_dxgarden_function_6d0.cpp:
 	.text       start:0x000006D0 end:0x000006D8
@@ -118,6 +124,9 @@ mo_stage/st_dxgarden/st_dxgarden_function_cb0.cpp:
 
 mo_stage/st_dxgarden/st_dxgarden_function_d20.cpp:
 	.text       start:0x00000D20 end:0x00000D94
+
+mo_stage/st_dxgarden/st_dxgarden_function_d94.cpp:
+	.text       start:0x00000D94 end:0x00000E0C
 
 mo_stage/st_dxgarden/st_dxgarden_function_e0c.cpp:
 	.text       start:0x00000E0C end:0x00000E10
@@ -362,6 +371,9 @@ mo_stage/st_dxgarden/st_dxgarden_function_3d88.cpp:
 mo_stage/st_dxgarden/st_dxgarden_function_3da0.cpp:
 	.text       start:0x00003DA0 end:0x00003DC8
 
+mo_stage/st_dxgarden/st_dxgarden_function_4348.cpp:
+	.text       start:0x00004348 end:0x00004558
+
 mo_stage/st_dxgarden/st_dxgarden_function_47cc.cpp:
 	.text       start:0x000047CC end:0x00004814
 
@@ -382,6 +394,9 @@ mo_stage/st_dxgarden/st_dxgarden_function_5e38.cpp:
 
 mo_stage/st_dxgarden/st_dxgarden_function_5e80.cpp:
 	.text       start:0x00005E80 end:0x00005E88
+
+mo_stage/st_dxgarden/st_dxgarden_function_5e88.cpp:
+	.text       start:0x00005E88 end:0x00005F00
 
 mo_stage/st_dxgarden/st_dxgarden_function_5f00.cpp:
 	.text       start:0x00005F00 end:0x00005F34
