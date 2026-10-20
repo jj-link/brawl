@@ -1067,6 +1067,9 @@ mo_stage/st_gw/st_gw_function_bed8.cpp:
 mo_stage/st_gw/st_gw_function_c0c8.cpp:
 	.text       start:0x0000C0C8 end:0x0000C0D8
 
+mo_stage/st_gw/st_gw_function_c0d8.cpp:
+	.text       start:0x0000C0D8 end:0x0000C0E8
+
 mo_stage/st_gw/st_gw_function_c0e8.cpp:
 	.text       start:0x0000C0E8 end:0x0000C264
 
@@ -1079,11 +1082,23 @@ mo_stage/st_gw/st_gw_function_c8fc.cpp:
 mo_stage/st_gw/st_gw_function_c944.cpp:
 	.text       start:0x0000C944 end:0x0000C94C
 
+mo_stage/st_gw/st_gw_function_ca44.cpp:
+	.text       start:0x0000CA44 end:0x0000CA54
+
+mo_stage/st_gw/st_gw_function_ca54.cpp:
+	.text       start:0x0000CA54 end:0x0000CA64
+
 mo_stage/st_gw/st_gw_function_d534.cpp:
 	.text       start:0x0000D534 end:0x0000D57C
 
 mo_stage/st_gw/st_gw_function_d57c.cpp:
 	.text       start:0x0000D57C end:0x0000D584
+
+mo_stage/st_gw/st_gw_function_d7e4.cpp:
+	.text       start:0x0000D7E4 end:0x0000D7F4
+
+mo_stage/st_gw/st_gw_function_d7f4.cpp:
+	.text       start:0x0000D7F4 end:0x0000D804
 
 mo_stage/st_gw/st_gw_function_e1d8.cpp:
 	.text       start:0x0000E1D8 end:0x0000E220
@@ -1091,11 +1106,23 @@ mo_stage/st_gw/st_gw_function_e1d8.cpp:
 mo_stage/st_gw/st_gw_function_e220.cpp:
 	.text       start:0x0000E220 end:0x0000E228
 
+mo_stage/st_gw/st_gw_function_e390.cpp:
+	.text       start:0x0000E390 end:0x0000E3A0
+
+mo_stage/st_gw/st_gw_function_e3a0.cpp:
+	.text       start:0x0000E3A0 end:0x0000E3B0
+
 mo_stage/st_gw/st_gw_function_ef28.cpp:
 	.text       start:0x0000EF28 end:0x0000EF70
 
 mo_stage/st_gw/st_gw_function_ef70.cpp:
 	.text       start:0x0000EF70 end:0x0000EF78
+
+mo_stage/st_gw/st_gw_function_f210.cpp:
+	.text       start:0x0000F210 end:0x0000F220
+
+mo_stage/st_gw/st_gw_function_f220.cpp:
+	.text       start:0x0000F220 end:0x0000F230
 
 mo_stage/st_gw/st_gw_function_f230.cpp:
 	.text       start:0x0000F230 end:0x0000F32C
@@ -1298,6 +1325,12 @@ mo_stage/st_gw/st_gw_function_10a1c.cpp:
 mo_stage/st_gw/st_gw_function_10a28.cpp:
 	.text       start:0x00010A28 end:0x00010A34
 
+mo_stage/st_gw/st_gw_function_10a34.cpp:
+	.text       start:0x00010A34 end:0x00010A44
+
+mo_stage/st_gw/st_gw_function_10a44.cpp:
+	.text       start:0x00010A44 end:0x00010A54
+
 mo_stage/st_gw/st_gw_function_10a54.cpp:
 	.text       start:0x00010A54 end:0x00010ABC
 
@@ -1310,8 +1343,26 @@ mo_stage/st_gw/st_gw_function_10ad8.cpp:
 mo_stage/st_gw/st_gw_function_10ae4.cpp:
 	.text       start:0x00010AE4 end:0x00010AEC
 
+mo_stage/st_gw/st_gw_function_10afc.cpp:
+	.text       start:0x00010AFC end:0x00010B0C
+
+mo_stage/st_gw/st_gw_function_10b0c.cpp:
+	.text       start:0x00010B0C end:0x00010B1C
+
+mo_stage/st_gw/st_gw_function_10b1c.cpp:
+	.text       start:0x00010B1C end:0x00010B2C
+
+mo_stage/st_gw/st_gw_function_10b2c.cpp:
+	.text       start:0x00010B2C end:0x00010B3C
+
+mo_stage/st_gw/st_gw_function_10b3c.cpp:
+	.text       start:0x00010B3C end:0x00010B4C
+
 mo_stage/st_gw/st_gw_function_10b4c.cpp:
 	.text       start:0x00010B4C end:0x00010B74
+
+mo_stage/st_gw/st_gw_function_10b74.cpp:
+	.text       start:0x00010B74 end:0x00010B84
 
 mo_stage/st_gw/st_gw_function_10b84.cpp:
 	.text       start:0x00010B84 end:0x00010B8C
@@ -1340,11 +1391,29 @@ mo_stage/st_gw/st_gw_function_11ecc.cpp:
 mo_stage/st_gw/st_gw_function_11f34.cpp:
 	.text       start:0x00011F34 end:0x00011F40
 
+mo_stage/st_gw/st_gw_function_11f40.cpp:
+	.text       start:0x00011F40 end:0x00011F50
+
 mo_stage/st_gw/st_gw_function_11f50.cpp:
 	.text       start:0x00011F50 end:0x00011F5C
 
 mo_stage/st_gw/st_gw_function_11f5c.cpp:
 	.text       start:0x00011F5C end:0x00011F64
+
+mo_stage/st_gw/st_gw_function_11f64.cpp:
+	.text       start:0x00011F64 end:0x00011F74
+
+mo_stage/st_gw/st_gw_function_11f74.cpp:
+	.text       start:0x00011F74 end:0x00011F84
+
+mo_stage/st_gw/st_gw_function_11f84.cpp:
+	.text       start:0x00011F84 end:0x00011F94
+
+mo_stage/st_gw/st_gw_function_11f94.cpp:
+	.text       start:0x00011F94 end:0x00011FA4
+
+mo_stage/st_gw/st_gw_function_11fb4.cpp:
+	.text       start:0x00011FB4 end:0x00011FC4
 
 mo_stage/st_gw/st_gw_function_11fc4.cpp:
 	.text       start:0x00011FC4 end:0x00011FEC
