@@ -59,6 +59,9 @@ mo_fighter/ft_poke/ft_poke_function_1f20.cpp:
 mo_fighter/ft_poke/ft_poke_function_1f7c.cpp:
 	.text       start:0x00001F7C end:0x00002000
 
+mo_fighter/ft_poke/ft_poke_function_20d8.cpp:
+	.text       start:0x000020D8 end:0x00002164
+
 mo_fighter/ft_poke/ft_poke_function_2164.cpp:
 	.text       start:0x00002164 end:0x000021C0
 
@@ -76,6 +79,30 @@ mo_fighter/ft_poke/ft_poke_function_229c.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_2308.cpp:
 	.text       start:0x00002308 end:0x00002364
+
+mo_fighter/ft_poke/ft_poke_function_2364.cpp:
+	.text       start:0x00002364 end:0x000023F0
+
+mo_fighter/ft_poke/ft_poke_function_23f0.cpp:
+	.text       start:0x000023F0 end:0x0000247C
+
+mo_fighter/ft_poke/ft_poke_function_247c.cpp:
+	.text       start:0x0000247C end:0x00002508
+
+mo_fighter/ft_poke/ft_poke_function_2508.cpp:
+	.text       start:0x00002508 end:0x00002594
+
+mo_fighter/ft_poke/ft_poke_function_2594.cpp:
+	.text       start:0x00002594 end:0x00002620
+
+mo_fighter/ft_poke/ft_poke_function_2620.cpp:
+	.text       start:0x00002620 end:0x000026AC
+
+mo_fighter/ft_poke/ft_poke_function_26ac.cpp:
+	.text       start:0x000026AC end:0x00002738
+
+mo_fighter/ft_poke/ft_poke_function_2738.cpp:
+	.text       start:0x00002738 end:0x000027C4
 
 mo_fighter/ft_poke/ft_poke_function_285c.cpp:
 	.text       start:0x0000285C end:0x000028B8
@@ -208,6 +235,9 @@ mo_fighter/ft_poke/ft_poke_function_3fe4.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_4040.cpp:
 	.text       start:0x00004040 end:0x000040C4
+
+mo_fighter/ft_poke/ft_poke_function_40c4.cpp:
+	.text       start:0x000040C4 end:0x00004150
 
 mo_fighter/ft_poke/ft_poke_function_4150.cpp:
 	.text       start:0x00004150 end:0x00004190
@@ -1406,6 +1436,18 @@ mo_fighter/ft_poke/ft_poke_function_f7d8.cpp:
 mo_fighter/ft_poke/ft_poke_function_f844.cpp:
 	.text       start:0x0000F844 end:0x0000F8A0
 
+mo_fighter/ft_poke/ft_poke_function_f8a0.cpp:
+	.text       start:0x0000F8A0 end:0x0000F92C
+
+mo_fighter/ft_poke/ft_poke_function_f92c.cpp:
+	.text       start:0x0000F92C end:0x0000F9B8
+
+mo_fighter/ft_poke/ft_poke_function_f9b8.cpp:
+	.text       start:0x0000F9B8 end:0x0000FA44
+
+mo_fighter/ft_poke/ft_poke_function_fa44.cpp:
+	.text       start:0x0000FA44 end:0x0000FAD0
+
 mo_fighter/ft_poke/ft_poke_function_fad0.cpp:
 	.text       start:0x0000FAD0 end:0x0000FB2C
 
@@ -1477,6 +1519,9 @@ mo_fighter/ft_poke/ft_poke_function_110e8.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_11104.cpp:
 	.text       start:0x00011104 end:0x00011138
+
+mo_fighter/ft_poke/ft_poke_function_11138.cpp:
+	.text       start:0x00011138 end:0x000111C4
 
 mo_fighter/ft_poke/ft_poke_function_111c4.cpp:
 	.text       start:0x000111C4 end:0x000111CC
@@ -1886,6 +1931,15 @@ mo_fighter/ft_poke/ft_poke_function_12d84.cpp:
 mo_fighter/ft_poke/ft_poke_function_12e0c.cpp:
 	.text       start:0x00012E0C end:0x00012E7C
 
+mo_fighter/ft_poke/ft_poke_function_12f0c.cpp:
+	.text       start:0x00012F0C end:0x00012F98
+
+mo_fighter/ft_poke/ft_poke_function_12f98.cpp:
+	.text       start:0x00012F98 end:0x00013024
+
+mo_fighter/ft_poke/ft_poke_function_13024.cpp:
+	.text       start:0x00013024 end:0x000130B0
+
 mo_fighter/ft_poke/ft_poke_function_130b0.cpp:
 	.text       start:0x000130B0 end:0x00013130
 
@@ -1948,6 +2002,30 @@ mo_fighter/ft_poke/ft_poke_function_156b8.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_15758.cpp:
 	.text       start:0x00015758 end:0x000157DC
+
+mo_fighter/ft_poke/ft_poke_function_158b4.cpp:
+	.text       start:0x000158B4 end:0x00015940
+
+mo_fighter/ft_poke/ft_poke_function_15940.cpp:
+	.text       start:0x00015940 end:0x000159CC
+
+mo_fighter/ft_poke/ft_poke_function_159cc.cpp:
+	.text       start:0x000159CC end:0x00015A58
+
+mo_fighter/ft_poke/ft_poke_function_15a58.cpp:
+	.text       start:0x00015A58 end:0x00015AE4
+
+mo_fighter/ft_poke/ft_poke_function_15ae4.cpp:
+	.text       start:0x00015AE4 end:0x00015B70
+
+mo_fighter/ft_poke/ft_poke_function_15b70.cpp:
+	.text       start:0x00015B70 end:0x00015BFC
+
+mo_fighter/ft_poke/ft_poke_function_15bfc.cpp:
+	.text       start:0x00015BFC end:0x00015C88
+
+mo_fighter/ft_poke/ft_poke_function_15c88.cpp:
+	.text       start:0x00015C88 end:0x00015D14
 
 mo_fighter/ft_poke/ft_poke_function_15dac.cpp:
 	.text       start:0x00015DAC end:0x00015E08
@@ -2459,6 +2537,9 @@ mo_fighter/ft_poke/ft_poke_function_22d18.cpp:
 mo_fighter/ft_poke/ft_poke_function_22da0.cpp:
 	.text       start:0x00022DA0 end:0x00022E10
 
+mo_fighter/ft_poke/ft_poke_function_22ea0.cpp:
+	.text       start:0x00022EA0 end:0x00022F2C
+
 mo_fighter/ft_poke/ft_poke_function_22f2c.cpp:
 	.text       start:0x00022F2C end:0x000230AC
 
@@ -2534,6 +2615,18 @@ mo_fighter/ft_poke/ft_poke_function_256a8.cpp:
 mo_fighter/ft_poke/ft_poke_function_257a8.cpp:
 	.text       start:0x000257A8 end:0x00025814
 
+mo_fighter/ft_poke/ft_poke_function_25814.cpp:
+	.text       start:0x00025814 end:0x000258A0
+
+mo_fighter/ft_poke/ft_poke_function_258a0.cpp:
+	.text       start:0x000258A0 end:0x0002592C
+
+mo_fighter/ft_poke/ft_poke_function_2592c.cpp:
+	.text       start:0x0002592C end:0x000259B8
+
+mo_fighter/ft_poke/ft_poke_function_259b8.cpp:
+	.text       start:0x000259B8 end:0x00025A44
+
 mo_fighter/ft_poke/ft_poke_function_25a44.cpp:
 	.text       start:0x00025A44 end:0x00025BB8
 
@@ -2542,6 +2635,9 @@ mo_fighter/ft_poke/ft_poke_function_25bb8.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_25c14.cpp:
 	.text       start:0x00025C14 end:0x00025C74
+
+mo_fighter/ft_poke/ft_poke_function_25c74.cpp:
+	.text       start:0x00025C74 end:0x00025D00
 
 mo_fighter/ft_poke/ft_poke_function_25d00.cpp:
 	.text       start:0x00025D00 end:0x00025D60

@@ -1,0 +1,23 @@
+#pragma force_active on
+extern "C" void* fn_116_2164(void*, short);
+extern "C" void* fn_116_2200(void*, short);
+extern "C" void* fn_116_2240(void*, short);
+extern "C" void* fn_27_C7770(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_116_15AE4(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* members = static_cast<unsigned char*>(object);
+        short memberDeleting = -1;
+        fn_116_2164(members + 0xdc, memberDeleting);
+        fn_116_2200(members + 0xc0, memberDeleting);
+        fn_116_2240(members + 0x14, memberDeleting);
+        if (object != 0) {
+            fn_27_C7770(object, memberDeleting);
+        }
+        if (deleting > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
