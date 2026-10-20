@@ -410,6 +410,12 @@ mo_fighter/ft_ganon/ft_ganon_function_5d18.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_5d8c.cpp:
 	.text       start:0x00005D8C end:0x00005DF8
 
+mo_fighter/ft_ganon/ft_ganon_function_5df8.cpp:
+	.text       start:0x00005DF8 end:0x00005E88
+
+mo_fighter/ft_ganon/ft_ganon_function_5e88.cpp:
+	.text       start:0x00005E88 end:0x00005F18
+
 mo_fighter/ft_ganon/ft_ganon_function_5f18.cpp:
 	.text       start:0x00005F18 end:0x00005F9C
 
@@ -481,6 +487,9 @@ mo_fighter/ft_ganon/ft_ganon_function_7324.cpp:
 
 mo_fighter/ft_ganon/ft_ganon_function_7390.cpp:
 	.text       start:0x00007390 end:0x000073EC
+
+mo_fighter/ft_ganon/ft_ganon_function_73ec.cpp:
+	.text       start:0x000073EC end:0x0000747C
 
 mo_fighter/ft_ganon/ft_ganon_function_747c.cpp:
 	.text       start:0x0000747C end:0x000074D0
@@ -857,6 +866,9 @@ mo_fighter/ft_ganon/ft_ganon_function_9658.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_96b4.cpp:
 	.text       start:0x000096B4 end:0x00009714
 
+mo_fighter/ft_ganon/ft_ganon_function_a2a8.cpp:
+	.text       start:0x0000A2A8 end:0x0000A338
+
 mo_fighter/ft_ganon/ft_ganon_function_a338.cpp:
 	.text       start:0x0000A338 end:0x0000A340
 
@@ -1034,6 +1046,9 @@ mo_fighter/ft_ganon/ft_ganon_function_b8d4.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_b8d8.cpp:
 	.text       start:0x0000B8D8 end:0x0000B8F0
 
+mo_fighter/ft_ganon/ft_ganon_function_b8f0.cpp:
+	.text       start:0x0000B8F0 end:0x0000B980
+
 mo_fighter/ft_ganon/ft_ganon_function_b980.cpp:
 	.text       start:0x0000B980 end:0x0000B988
 
@@ -1043,11 +1058,17 @@ mo_fighter/ft_ganon/ft_ganon_function_b9bc.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_b9c0.cpp:
 	.text       start:0x0000B9C0 end:0x0000B9D8
 
+mo_fighter/ft_ganon/ft_ganon_function_b9d8.cpp:
+	.text       start:0x0000B9D8 end:0x0000BA68
+
 mo_fighter/ft_ganon/ft_ganon_function_ba68.cpp:
 	.text       start:0x0000BA68 end:0x0000BA70
 
 mo_fighter/ft_ganon/ft_ganon_function_ba70.cpp:
 	.text       start:0x0000BA70 end:0x0000BA88
+
+mo_fighter/ft_ganon/ft_ganon_function_ba88.cpp:
+	.text       start:0x0000BA88 end:0x0000BB18
 
 mo_fighter/ft_ganon/ft_ganon_function_bb18.cpp:
 	.text       start:0x0000BB18 end:0x0000BB20
@@ -1058,6 +1079,9 @@ mo_fighter/ft_ganon/ft_ganon_function_bb54.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_bb58.cpp:
 	.text       start:0x0000BB58 end:0x0000BB70
 
+mo_fighter/ft_ganon/ft_ganon_function_bb70.cpp:
+	.text       start:0x0000BB70 end:0x0000BC00
+
 mo_fighter/ft_ganon/ft_ganon_function_bc00.cpp:
 	.text       start:0x0000BC00 end:0x0000BC08
 
@@ -1066,6 +1090,9 @@ mo_fighter/ft_ganon/ft_ganon_function_bc3c.cpp:
 
 mo_fighter/ft_ganon/ft_ganon_function_bc40.cpp:
 	.text       start:0x0000BC40 end:0x0000BC58
+
+mo_fighter/ft_ganon/ft_ganon_function_bc58.cpp:
+	.text       start:0x0000BC58 end:0x0000BCE8
 
 mo_fighter/ft_ganon/ft_ganon_function_bce8.cpp:
 	.text       start:0x0000BCE8 end:0x0000BCF0
@@ -1076,6 +1103,9 @@ mo_fighter/ft_ganon/ft_ganon_function_bd24.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_bd28.cpp:
 	.text       start:0x0000BD28 end:0x0000BD40
 
+mo_fighter/ft_ganon/ft_ganon_function_bd40.cpp:
+	.text       start:0x0000BD40 end:0x0000BDD0
+
 mo_fighter/ft_ganon/ft_ganon_function_bdd0.cpp:
 	.text       start:0x0000BDD0 end:0x0000BDD8
 
@@ -1085,6 +1115,9 @@ mo_fighter/ft_ganon/ft_ganon_function_be0c.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_be10.cpp:
 	.text       start:0x0000BE10 end:0x0000BE28
 
+mo_fighter/ft_ganon/ft_ganon_function_be28.cpp:
+	.text       start:0x0000BE28 end:0x0000BEB8
+
 mo_fighter/ft_ganon/ft_ganon_function_beb8.cpp:
 	.text       start:0x0000BEB8 end:0x0000BEC0
 
@@ -1093,6 +1126,9 @@ mo_fighter/ft_ganon/ft_ganon_function_bef4.cpp:
 
 mo_fighter/ft_ganon/ft_ganon_function_bef8.cpp:
 	.text       start:0x0000BEF8 end:0x0000BF10
+
+mo_fighter/ft_ganon/ft_ganon_function_bf10.cpp:
+	.text       start:0x0000BF10 end:0x0000BFA0
 
 mo_fighter/ft_ganon/ft_ganon_function_bfa0.cpp:
 	.text       start:0x0000BFA0 end:0x0000BFA8
@@ -1438,6 +1474,9 @@ mo_fighter/ft_ganon/ft_ganon_function_100bc.cpp:
 
 mo_fighter/ft_ganon/ft_ganon_function_10118.cpp:
 	.text       start:0x00010118 end:0x00010188
+
+mo_fighter/ft_ganon/ft_ganon_function_10188.cpp:
+	.text       start:0x00010188 end:0x00010218
 
 mo_fighter/ft_ganon/ft_ganon_function_10218.cpp:
 	.text       start:0x00010218 end:0x00010284
