@@ -1,0 +1,139 @@
+#include <types.h>
+
+extern "C" void update__9grGimmickFf(void* self, float deltaFrame);
+
+struct Base0 {
+    char data[0x3C];
+};
+
+struct stJungleGimmick : Base0 {
+    virtual void vf00() = 0;
+    virtual void vf01() = 0;
+    virtual void vf02() = 0;
+    virtual void vf03() = 0;
+    virtual void vf04() = 0;
+    virtual void vf05() = 0;
+    virtual void vf06() = 0;
+    virtual void vf07() = 0;
+    virtual void vf08() = 0;
+    virtual void vf09() = 0;
+    virtual void vf10() = 0;
+    virtual void vf11() = 0;
+    virtual void vf12() = 0;
+    virtual void vf13() = 0;
+    virtual void vf14() = 0;
+    virtual void vf15() = 0;
+    virtual void vf16() = 0;
+    virtual void vf17() = 0;
+    virtual void vf18() = 0;
+    virtual void vf19() = 0;
+    virtual void vf20() = 0;
+    virtual void vf21() = 0;
+    virtual void vf22() = 0;
+    virtual void vf23() = 0;
+    virtual void vf24() = 0;
+    virtual void vf25() = 0;
+    virtual void vf26() = 0;
+    virtual void vf27() = 0;
+    virtual void vf28() = 0;
+    virtual void vf29() = 0;
+    virtual void vf30() = 0;
+    virtual void vf31() = 0;
+    virtual void vf32() = 0;
+    virtual void vf33() = 0;
+    virtual void vf34() = 0;
+    virtual void vf35() = 0;
+    virtual void vf36() = 0;
+    virtual void vf37() = 0;
+    virtual void vf38() = 0;
+    virtual void vf39() = 0;
+    virtual void vf40() = 0;
+    virtual void vf41() = 0;
+    virtual void vf42() = 0;
+    virtual void vf43() = 0;
+    virtual void vf44() = 0;
+    virtual void vf45() = 0;
+    virtual void vf46() = 0;
+    virtual void vf47() = 0;
+    virtual void vf48() = 0;
+    virtual void vf49() = 0;
+    virtual void vf50() = 0;
+    virtual void vf51() = 0;
+    virtual void vf52() = 0;
+    virtual void vf53() = 0;
+    virtual void vf54() = 0;
+    virtual void vf55() = 0;
+    virtual void vf56() = 0;
+    virtual void vf57() = 0;
+    virtual void vf58() = 0;
+    virtual void vf59() = 0;
+    virtual void vf60() = 0;
+    virtual void vf61() = 0;
+    virtual void vf62() = 0;
+    virtual void vf63() = 0;
+    virtual void vf64() = 0;
+    virtual void vf65() = 0;
+    virtual void vf66() = 0;
+    virtual void vf67() = 0;
+    virtual void vf68() = 0;
+    virtual void vf69() = 0;
+    virtual void vf70() = 0;
+    virtual void vf71() = 0;
+    virtual void vf72() = 0;
+    virtual void vf73() = 0;
+    virtual void vf74() = 0;
+    virtual void vf75() = 0;
+    virtual void vf76() = 0;
+    virtual void vf77() = 0;
+    virtual void vf78() = 0;
+    virtual void vf79() = 0;
+    virtual void vf80() = 0;
+    virtual void vf81() = 0;
+    virtual void vf82() = 0;
+    virtual void vf83() = 0;
+    virtual void vf84() = 0;
+    virtual void vf85() = 0;
+    virtual void vf86() = 0;
+    virtual void vf87() = 0;
+    virtual void vf88() = 0;
+    virtual void vf89() = 0;
+    virtual void vf90() = 0;
+    virtual void vf91() = 0;
+    virtual void vf92() = 0;
+    virtual void vf93() = 0;
+    virtual void vf94() = 0;
+    virtual void vf95() = 0;
+    virtual void vf96() = 0;
+    virtual void vf97() = 0;
+    virtual void vf98() = 0;
+    virtual void vf99() = 0;
+    virtual void vf100() = 0;
+    virtual void vf101() = 0;
+    virtual void vf102() = 0;
+    virtual void vf103() = 0;
+    virtual void vf104() = 0;
+    virtual void vf105() = 0;
+    virtual void vf106() = 0;
+    virtual void vf107() = 0;
+    virtual void vf108() = 0;
+    virtual void vf109() = 0;
+    virtual void vf110() = 0;
+    virtual void vf111() = 0;
+    virtual void vf112() = 0;
+    virtual void vf113() = 0;
+    virtual void vf114(float) = 0;
+    virtual void vf115(float) = 0;
+
+    char pad[0x88];
+    unsigned char field_8C;
+};
+
+#pragma force_active on
+extern "C" void fn_51_1574C(stJungleGimmick* self, float deltaFrame) {
+    update__9grGimmickFf(self, deltaFrame);
+    self->vf38();
+    if (self->field_8C) {
+        self->vf114(deltaFrame);
+        self->vf115(deltaFrame);
+    }
+}
