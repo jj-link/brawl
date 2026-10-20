@@ -1,0 +1,4 @@
+#pragma force_active on
+extern "C" void fn_27_83D6C(short* arg) {
+    *arg = 0;
+}
