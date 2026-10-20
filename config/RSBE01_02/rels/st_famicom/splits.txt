@@ -59,8 +59,14 @@ mo_stage/st_famicom/st_famicom_function_b40.cpp:
 mo_stage/st_famicom/st_famicom_function_b48.cpp:
 	.text       start:0x00000B48 end:0x00000B50
 
+mo_stage/st_famicom/st_famicom_function_b60.cpp:
+	.text       start:0x00000B60 end:0x00000D58
+
 mo_stage/st_famicom/st_famicom_function_d58.cpp:
 	.text       start:0x00000D58 end:0x00000D60
+
+mo_stage/st_famicom/st_famicom_function_d60.cpp:
+	.text       start:0x00000D60 end:0x00000F58
 
 mo_stage/st_famicom/st_famicom_function_f58.cpp:
 	.text       start:0x00000F58 end:0x00001150
