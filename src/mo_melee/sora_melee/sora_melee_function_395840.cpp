@@ -1,0 +1,9 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" {
+s32 fn_27_395840(u32 *p)
+{
+    return (s32)((p[2] << 4) & 0xF8000000) >> 28;
+}
+}
