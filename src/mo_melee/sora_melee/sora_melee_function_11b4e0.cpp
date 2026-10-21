@@ -1,0 +1,27 @@
+#pragma force_active on
+class Interface {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void invoke();
+};
+
+struct Object {
+    char padding[0x10];
+    Interface interface;
+};
+
+extern "C" void fn_27_11B4E0(Object* object) {
+    object->interface.invoke();
+}

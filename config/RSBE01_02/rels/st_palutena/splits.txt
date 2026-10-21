@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_stage/st_palutena/st_palutena_function_70.cpp:
+	.text       start:0x00000070 end:0x00000100
+
 mo_stage/st_palutena/st_palutena_function_100.cpp:
 	.text       start:0x00000100 end:0x0000016C
 
@@ -152,6 +155,9 @@ mo_stage/st_palutena/st_palutena_function_1e04.cpp:
 mo_stage/st_palutena/st_palutena_function_1e70.cpp:
 	.text       start:0x00001E70 end:0x00001EE4
 
+mo_stage/st_palutena/st_palutena_function_1ee4.cpp:
+	.text       start:0x00001EE4 end:0x00001F74
+
 mo_stage/st_palutena/st_palutena_function_1f74.cpp:
 	.text       start:0x00001F74 end:0x00001F78
 
@@ -205,6 +211,9 @@ mo_stage/st_palutena/st_palutena_function_223c.cpp:
 
 mo_stage/st_palutena/st_palutena_function_3678.cpp:
 	.text       start:0x00003678 end:0x000036B8
+
+mo_stage/st_palutena/st_palutena_function_36b8.cpp:
+	.text       start:0x000036B8 end:0x00003778
 
 mo_stage/st_palutena/st_palutena_function_3dac.cpp:
 	.text       start:0x00003DAC end:0x00003E1C

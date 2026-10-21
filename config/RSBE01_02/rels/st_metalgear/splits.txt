@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_metalgear/st_metalgear_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_metalgear/st_metalgear_function_1ec.cpp:
+	.text       start:0x000001EC end:0x0000027C
+
 mo_stage/st_metalgear/st_metalgear_function_27c.cpp:
 	.text       start:0x0000027C end:0x00000284
 
@@ -70,6 +73,9 @@ mo_stage/st_metalgear/st_metalgear_function_efc.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_f04.cpp:
 	.text       start:0x00000F04 end:0x00000F14
+
+mo_stage/st_metalgear/st_metalgear_function_f14.cpp:
+	.text       start:0x00000F14 end:0x00000FD4
 
 mo_stage/st_metalgear/st_metalgear_function_121c.cpp:
 	.text       start:0x0000121C end:0x00001224
