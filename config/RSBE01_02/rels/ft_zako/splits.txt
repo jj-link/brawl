@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_zako/ft_zako_function_17d4.cpp:
+	.text       start:0x000017D4 end:0x0000186C
+
 mo_fighter/ft_zako/ft_zako_function_1924.cpp:
 	.text       start:0x00001924 end:0x00001980
 
@@ -101,6 +104,9 @@ mo_fighter/ft_zako/ft_zako_function_2548.cpp:
 mo_fighter/ft_zako/ft_zako_function_25d4.cpp:
 	.text       start:0x000025D4 end:0x00002660
 
+mo_fighter/ft_zako/ft_zako_function_2660.cpp:
+	.text       start:0x00002660 end:0x000026F8
+
 mo_fighter/ft_zako/ft_zako_function_26f8.cpp:
 	.text       start:0x000026F8 end:0x00002754
 
@@ -133,6 +139,9 @@ mo_fighter/ft_zako/ft_zako_function_2ca4.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_2d28.cpp:
 	.text       start:0x00002D28 end:0x00002D84
+
+mo_fighter/ft_zako/ft_zako_function_2d84.cpp:
+	.text       start:0x00002D84 end:0x00002E1C
 
 mo_fighter/ft_zako/ft_zako_function_2e1c.cpp:
 	.text       start:0x00002E1C end:0x00002E78
@@ -902,6 +911,9 @@ mo_fighter/ft_zako/ft_zako_function_87f0.cpp:
 mo_fighter/ft_zako/ft_zako_function_8828.cpp:
 	.text       start:0x00008828 end:0x0000883C
 
+mo_fighter/ft_zako/ft_zako_function_883c.cpp:
+	.text       start:0x0000883C end:0x000088D4
+
 mo_fighter/ft_zako/ft_zako_function_88d4.cpp:
 	.text       start:0x000088D4 end:0x000088E0
 
@@ -1154,6 +1166,9 @@ mo_fighter/ft_zako/ft_zako_function_99a8.cpp:
 mo_fighter/ft_zako/ft_zako_function_99b0.cpp:
 	.text       start:0x000099B0 end:0x000099B8
 
+mo_fighter/ft_zako/ft_zako_function_b11c.cpp:
+	.text       start:0x0000B11C end:0x0000B1B4
+
 mo_fighter/ft_zako/ft_zako_function_b1b4.cpp:
 	.text       start:0x0000B1B4 end:0x0000B230
 
@@ -1205,6 +1220,9 @@ mo_fighter/ft_zako/ft_zako_function_b91c.cpp:
 mo_fighter/ft_zako/ft_zako_function_b924.cpp:
 	.text       start:0x0000B924 end:0x0000B92C
 
+mo_fighter/ft_zako/ft_zako_function_d090.cpp:
+	.text       start:0x0000D090 end:0x0000D128
+
 mo_fighter/ft_zako/ft_zako_function_d128.cpp:
 	.text       start:0x0000D128 end:0x0000D1A4
 
@@ -1255,6 +1273,9 @@ mo_fighter/ft_zako/ft_zako_function_d890.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_d898.cpp:
 	.text       start:0x0000D898 end:0x0000D8A0
+
+mo_fighter/ft_zako/ft_zako_function_f004.cpp:
+	.text       start:0x0000F004 end:0x0000F09C
 
 mo_fighter/ft_zako/ft_zako_function_f09c.cpp:
 	.text       start:0x0000F09C end:0x0000F118
