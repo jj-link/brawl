@@ -323,6 +323,10 @@ mo_stage/st_gw/st_gw_function_299c.cpp:
 mo_stage/st_gw/st_gw_function_29a4.cpp:
 	.text       start:0x000029A4 end:0x000029AC
 
+mo_stage/st_gw/st_gw_function_29ac.cpp:
+	.text       start:0x000029AC end:0x00002A10
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_gw/st_gw_function_2a10.cpp:
 	.text       start:0x00002A10 end:0x00002A84
 
@@ -436,6 +440,10 @@ mo_stage/st_gw/st_gw_function_4dd8.cpp:
 
 mo_stage/st_gw/st_gw_function_4e24.cpp:
 	.text       start:0x00004E24 end:0x00004F2C
+
+mo_stage/st_gw/st_gw_function_4f2c.cpp:
+	.text       start:0x00004F2C end:0x00004F5C
+	.ctors      start:0x00000004 end:0x00000008
 
 mo_stage/st_gw/st_gw_function_4f5c.cpp:
 	.text       start:0x00004F5C end:0x00005018

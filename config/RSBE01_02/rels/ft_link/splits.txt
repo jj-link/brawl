@@ -1493,6 +1493,10 @@ mo_fighter/ft_link/ft_link_function_f2ac.cpp:
 mo_fighter/ft_link/ft_link_function_f2ec.cpp:
 	.text       start:0x0000F2EC end:0x0000F2F0
 
+mo_fighter/ft_link/ft_link_function_f2f0.cpp:
+	.text       start:0x0000F2F0 end:0x0000F338
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_link/ft_link_function_f338.cpp:
 	.text       start:0x0000F338 end:0x0000F348
 
@@ -1501,6 +1505,10 @@ mo_fighter/ft_link/ft_link_function_f420.cpp:
 
 mo_fighter/ft_link/ft_link_function_f424.cpp:
 	.text       start:0x0000F424 end:0x0000F464
+
+mo_fighter/ft_link/ft_link_function_f464.cpp:
+	.text       start:0x0000F464 end:0x0000F4AC
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_fighter/ft_link/ft_link_function_f4ac.cpp:
 	.text       start:0x0000F4AC end:0x0000F4BC
@@ -1514,6 +1522,10 @@ mo_fighter/ft_link/ft_link_function_f630.cpp:
 mo_fighter/ft_link/ft_link_function_f6b4.cpp:
 	.text       start:0x0000F6B4 end:0x0000F6F4
 
+mo_fighter/ft_link/ft_link_function_f6f4.cpp:
+	.text       start:0x0000F6F4 end:0x0000F73C
+	.ctors      start:0x0000000C end:0x00000010
+
 mo_fighter/ft_link/ft_link_function_f73c.cpp:
 	.text       start:0x0000F73C end:0x0000F74C
 
@@ -1522,6 +1534,10 @@ mo_fighter/ft_link/ft_link_function_f74c.cpp:
 
 mo_fighter/ft_link/ft_link_function_f900.cpp:
 	.text       start:0x0000F900 end:0x0000F940
+
+mo_fighter/ft_link/ft_link_function_f940.cpp:
+	.text       start:0x0000F940 end:0x0000F988
+	.ctors      start:0x00000010 end:0x00000014
 
 mo_fighter/ft_link/ft_link_function_f988.cpp:
 	.text       start:0x0000F988 end:0x0000F998
@@ -1594,6 +1610,10 @@ mo_fighter/ft_link/ft_link_function_10fe8.cpp:
 
 mo_fighter/ft_link/ft_link_function_10fec.cpp:
 	.text       start:0x00010FEC end:0x0001102C
+
+mo_fighter/ft_link/ft_link_function_1102c.cpp:
+	.text       start:0x0001102C end:0x00011074
+	.ctors      start:0x00000018 end:0x0000001C
 
 mo_fighter/ft_link/ft_link_function_11074.cpp:
 	.text       start:0x00011074 end:0x00011084
@@ -2126,6 +2146,10 @@ mo_fighter/ft_link/ft_link_function_14b34.cpp:
 mo_fighter/ft_link/ft_link_function_14b84.cpp:
 	.text       start:0x00014B84 end:0x00014BC4
 
+mo_fighter/ft_link/ft_link_function_14bc4.cpp:
+	.text       start:0x00014BC4 end:0x00014C0C
+	.ctors      start:0x0000001C end:0x00000020
+
 mo_fighter/ft_link/ft_link_function_14c0c.cpp:
 	.text       start:0x00014C0C end:0x00014C1C
 
@@ -2134,6 +2158,10 @@ mo_fighter/ft_link/ft_link_function_14c1c.cpp:
 
 mo_fighter/ft_link/ft_link_function_152bc.cpp:
 	.text       start:0x000152BC end:0x000152FC
+
+mo_fighter/ft_link/ft_link_function_152fc.cpp:
+	.text       start:0x000152FC end:0x00015344
+	.ctors      start:0x00000020 end:0x00000024
 
 mo_fighter/ft_link/ft_link_function_15344.cpp:
 	.text       start:0x00015344 end:0x00015354

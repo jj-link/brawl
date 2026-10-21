@@ -173,6 +173,10 @@ mo_stage/st_village/st_village_function_1e74.cpp:
 mo_stage/st_village/st_village_function_1e7c.cpp:
 	.text       start:0x00001E7C end:0x00001E88
 
+mo_stage/st_village/st_village_function_1e88.cpp:
+	.text       start:0x00001E88 end:0x00001EEC
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_village/st_village_function_1eec.cpp:
 	.text       start:0x00001EEC end:0x00001F60
 
@@ -859,6 +863,10 @@ mo_stage/st_village/st_village_function_cbbc.cpp:
 
 mo_stage/st_village/st_village_function_cbf0.cpp:
 	.text       start:0x0000CBF0 end:0x0000CC24
+
+mo_stage/st_village/st_village_function_cc24.cpp:
+	.text       start:0x0000CC24 end:0x0000CC54
+	.ctors      start:0x00000004 end:0x00000008
 
 mo_stage/st_village/st_village_function_cc54.cpp:
 	.text       start:0x0000CC54 end:0x0000CC5C

@@ -260,6 +260,10 @@ mo_stage/st_fzero/st_fzero_function_21f4.cpp:
 mo_stage/st_fzero/st_fzero_function_21fc.cpp:
 	.text       start:0x000021FC end:0x00002208
 
+mo_stage/st_fzero/st_fzero_function_2208.cpp:
+	.text       start:0x00002208 end:0x0000226C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_fzero/st_fzero_function_226c.cpp:
 	.text       start:0x0000226C end:0x000022E0
 

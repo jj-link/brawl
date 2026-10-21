@@ -1496,6 +1496,10 @@ mo_fighter/ft_mario/ft_mario_function_e150.cpp:
 mo_fighter/ft_mario/ft_mario_function_e154.cpp:
 	.text       start:0x0000E154 end:0x0000E158
 
+mo_fighter/ft_mario/ft_mario_function_e158.cpp:
+	.text       start:0x0000E158 end:0x0000E1A0
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_mario/ft_mario_function_e1a0.cpp:
 	.text       start:0x0000E1A0 end:0x0000E1B0
 
@@ -1843,6 +1847,10 @@ mo_fighter/ft_mario/ft_mario_article_third_ground_effect.cpp:
 
 mo_fighter/ft_mario/ft_mario_function_19444.cpp:
 	.text       start:0x00019444 end:0x00019484
+
+mo_fighter/ft_mario/ft_mario_function_19484.cpp:
+	.text       start:0x00019484 end:0x000194CC
+	.ctors      start:0x00000018 end:0x0000001C
 
 mo_fighter/ft_mario/ft_mario_function_194cc.cpp:
 	.text       start:0x000194CC end:0x000194DC

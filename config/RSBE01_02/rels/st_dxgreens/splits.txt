@@ -173,6 +173,10 @@ mo_stage/st_dxgreens/st_dxgreens_function_1878.cpp:
 mo_stage/st_dxgreens/st_dxgreens_function_1880.cpp:
 	.text       start:0x00001880 end:0x00001888
 
+mo_stage/st_dxgreens/st_dxgreens_function_1888.cpp:
+	.text       start:0x00001888 end:0x000018EC
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_dxgreens/st_dxgreens_function_18ec.cpp:
 	.text       start:0x000018EC end:0x00001960
 
@@ -1300,6 +1304,10 @@ mo_stage/st_dxgreens/st_dxgreens_function_adb4.cpp:
 
 mo_stage/st_dxgreens/st_dxgreens_function_ae0c.cpp:
 	.text       start:0x0000AE0C end:0x0000AE68
+
+mo_stage/st_dxgreens/st_dxgreens_function_c1ac.cpp:
+	.text       start:0x0000C1AC end:0x0000C1DC
+	.ctors      start:0x00000004 end:0x00000008
 
 mo_stage/mo_stage.cpp:
 	.text       start:0x0000C1DC end:0x0000C278

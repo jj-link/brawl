@@ -152,6 +152,10 @@ mo_stage/st_palutena/st_palutena_function_1dfc.cpp:
 mo_stage/st_palutena/st_palutena_function_1e04.cpp:
 	.text       start:0x00001E04 end:0x00001E0C
 
+mo_stage/st_palutena/st_palutena_function_1e0c.cpp:
+	.text       start:0x00001E0C end:0x00001E70
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_palutena/st_palutena_function_1e70.cpp:
 	.text       start:0x00001E70 end:0x00001EE4
 

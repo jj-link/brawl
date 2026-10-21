@@ -480,6 +480,10 @@ mo_fighter/ft_purin/ft_purin_function_b994.cpp:
 mo_fighter/ft_purin/ft_purin_function_b998.cpp:
 	.text       start:0x0000B998 end:0x0000B9D8
 
+mo_fighter/ft_purin/ft_purin_function_b9d8.cpp:
+	.text       start:0x0000B9D8 end:0x0000BA20
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_purin/ft_purin_function_ba20.cpp:
 	.text       start:0x0000BA20 end:0x0000BA30
 
@@ -498,6 +502,10 @@ mo_fighter/ft_purin/ft_purin_function_bbb4.cpp:
 mo_fighter/ft_purin/ft_purin_function_bbb8.cpp:
 	.text       start:0x0000BBB8 end:0x0000BBF8
 
+mo_fighter/ft_purin/ft_purin_function_bbf8.cpp:
+	.text       start:0x0000BBF8 end:0x0000BC40
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_fighter/ft_purin/ft_purin_function_bc40.cpp:
 	.text       start:0x0000BC40 end:0x0000BC50
 
@@ -513,6 +521,10 @@ mo_fighter/ft_purin/ft_purin_function_bc58.cpp:
 mo_fighter/ft_purin/ft_purin_function_bc5c.cpp:
 	.text       start:0x0000BC5C end:0x0000BC9C
 
+mo_fighter/ft_purin/ft_purin_function_bc9c.cpp:
+	.text       start:0x0000BC9C end:0x0000BCE4
+	.ctors      start:0x0000000C end:0x00000010
+
 mo_fighter/ft_purin/ft_purin_function_bce4.cpp:
 	.text       start:0x0000BCE4 end:0x0000BCF4
 
@@ -527,6 +539,10 @@ mo_fighter/ft_purin/ft_purin_function_c38c.cpp:
 
 mo_fighter/ft_purin/ft_purin_function_c408.cpp:
 	.text       start:0x0000C408 end:0x0000C448
+
+mo_fighter/ft_purin/ft_purin_function_c448.cpp:
+	.text       start:0x0000C448 end:0x0000C490
+	.ctors      start:0x00000010 end:0x00000014
 
 mo_fighter/ft_purin/ft_purin_function_c490.cpp:
 	.text       start:0x0000C490 end:0x0000C4A0

@@ -215,6 +215,10 @@ mo_stage/st_metalgear/st_metalgear_function_2504.cpp:
 mo_stage/st_metalgear/st_metalgear_function_2510.cpp:
 	.text       start:0x00002510 end:0x00002518
 
+mo_stage/st_metalgear/st_metalgear_function_2518.cpp:
+	.text       start:0x00002518 end:0x0000257C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_metalgear/st_metalgear_function_257c.cpp:
 	.text       start:0x0000257C end:0x000025F0
 

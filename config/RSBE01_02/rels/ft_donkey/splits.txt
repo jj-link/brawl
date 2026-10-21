@@ -1418,6 +1418,10 @@ mo_fighter/ft_donkey/ft_donkey_function_cf60.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_cf64.cpp:
 	.text       start:0x0000CF64 end:0x0000CF68
 
+mo_fighter/ft_donkey/ft_donkey_function_cf68.cpp:
+	.text       start:0x0000CF68 end:0x0000CFB0
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_donkey/ft_donkey_function_cfb0.cpp:
 	.text       start:0x0000CFB0 end:0x0000CFC0
 
@@ -1433,11 +1437,19 @@ mo_fighter/ft_donkey/ft_donkey_function_d574.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_d59c.cpp:
 	.text       start:0x0000D59C end:0x0000D5DC
 
+mo_fighter/ft_donkey/ft_donkey_function_d5dc.cpp:
+	.text       start:0x0000D5DC end:0x0000D624
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_fighter/ft_donkey/ft_donkey_function_d624.cpp:
 	.text       start:0x0000D624 end:0x0000D634
 
 mo_fighter/ft_donkey/ft_donkey_function_d8ac.cpp:
 	.text       start:0x0000D8AC end:0x0000D8EC
+
+mo_fighter/ft_donkey/ft_donkey_function_d8ec.cpp:
+	.text       start:0x0000D8EC end:0x0000D934
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_donkey/ft_donkey_function_d934.cpp:
 	.text       start:0x0000D934 end:0x0000D944
@@ -1450,6 +1462,10 @@ mo_fighter/ft_donkey/ft_donkey_function_da18.cpp:
 
 mo_fighter/ft_donkey/ft_donkey_function_da90.cpp:
 	.text       start:0x0000DA90 end:0x0000DAD0
+
+mo_fighter/ft_donkey/ft_donkey_function_dad0.cpp:
+	.text       start:0x0000DAD0 end:0x0000DB18
+	.ctors      start:0x00000010 end:0x00000014
 
 mo_fighter/ft_donkey/ft_donkey_function_db18.cpp:
 	.text       start:0x0000DB18 end:0x0000DB28
@@ -1466,6 +1482,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f100.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_f1c0.cpp:
 	.text       start:0x0000F1C0 end:0x0000F200
 
+mo_fighter/ft_donkey/ft_donkey_function_f200.cpp:
+	.text       start:0x0000F200 end:0x0000F248
+	.ctors      start:0x00000014 end:0x00000018
+
 mo_fighter/ft_donkey/ft_donkey_function_f248.cpp:
 	.text       start:0x0000F248 end:0x0000F258
 
@@ -1478,6 +1498,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f2b4.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_f36c.cpp:
 	.text       start:0x0000F36C end:0x0000F3AC
 
+mo_fighter/ft_donkey/ft_donkey_function_f3ac.cpp:
+	.text       start:0x0000F3AC end:0x0000F3F4
+	.ctors      start:0x00000018 end:0x0000001C
+
 mo_fighter/ft_donkey/ft_donkey_function_f3f4.cpp:
 	.text       start:0x0000F3F4 end:0x0000F404
 
@@ -1486,6 +1510,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f4cc.cpp:
 
 mo_fighter/ft_donkey/ft_donkey_function_f564.cpp:
 	.text       start:0x0000F564 end:0x0000F5A4
+
+mo_fighter/ft_donkey/ft_donkey_function_f5a4.cpp:
+	.text       start:0x0000F5A4 end:0x0000F5EC
+	.ctors      start:0x0000001C end:0x00000020
 
 mo_fighter/ft_donkey/ft_donkey_function_f5ec.cpp:
 	.text       start:0x0000F5EC end:0x0000F5FC
@@ -1499,6 +1527,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f60c.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_f668.cpp:
 	.text       start:0x0000F668 end:0x0000F6A8
 
+mo_fighter/ft_donkey/ft_donkey_function_f6a8.cpp:
+	.text       start:0x0000F6A8 end:0x0000F6F0
+	.ctors      start:0x00000020 end:0x00000024
+
 mo_fighter/ft_donkey/ft_donkey_function_f6f0.cpp:
 	.text       start:0x0000F6F0 end:0x0000F700
 
@@ -1507,6 +1539,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f7a8.cpp:
 
 mo_fighter/ft_donkey/ft_donkey_function_f860.cpp:
 	.text       start:0x0000F860 end:0x0000F8A0
+
+mo_fighter/ft_donkey/ft_donkey_function_f8a0.cpp:
+	.text       start:0x0000F8A0 end:0x0000F8E8
+	.ctors      start:0x00000024 end:0x00000028
 
 mo_fighter/ft_donkey/ft_donkey_function_f8e8.cpp:
 	.text       start:0x0000F8E8 end:0x0000F8F8
@@ -1520,6 +1556,10 @@ mo_fighter/ft_donkey/ft_donkey_function_f988.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_fa84.cpp:
 	.text       start:0x0000FA84 end:0x0000FAC4
 
+mo_fighter/ft_donkey/ft_donkey_function_fac4.cpp:
+	.text       start:0x0000FAC4 end:0x0000FB0C
+	.ctors      start:0x00000028 end:0x0000002C
+
 mo_fighter/ft_donkey/ft_donkey_function_fb0c.cpp:
 	.text       start:0x0000FB0C end:0x0000FB1C
 
@@ -1529,6 +1569,10 @@ mo_fighter/ft_donkey/ft_donkey_function_fb1c.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_fd34.cpp:
 	.text       start:0x0000FD34 end:0x0000FD74
 
+mo_fighter/ft_donkey/ft_donkey_function_fd74.cpp:
+	.text       start:0x0000FD74 end:0x0000FDBC
+	.ctors      start:0x0000002C end:0x00000030
+
 mo_fighter/ft_donkey/ft_donkey_function_fdbc.cpp:
 	.text       start:0x0000FDBC end:0x0000FDCC
 
@@ -1537,6 +1581,10 @@ mo_fighter/ft_donkey/ft_donkey_function_fdcc.cpp:
 
 mo_fighter/ft_donkey/ft_donkey_function_fe84.cpp:
 	.text       start:0x0000FE84 end:0x0000FEC4
+
+mo_fighter/ft_donkey/ft_donkey_function_fec4.cpp:
+	.text       start:0x0000FEC4 end:0x0000FF0C
+	.ctors      start:0x00000030 end:0x00000034
 
 mo_fighter/ft_donkey/ft_donkey_function_ff0c.cpp:
 	.text       start:0x0000FF0C end:0x0000FF1C
@@ -1550,6 +1598,10 @@ mo_fighter/ft_donkey/ft_donkey_function_ffac.cpp:
 mo_fighter/ft_donkey/ft_donkey_function_100a8.cpp:
 	.text       start:0x000100A8 end:0x000100E8
 
+mo_fighter/ft_donkey/ft_donkey_function_100e8.cpp:
+	.text       start:0x000100E8 end:0x00010130
+	.ctors      start:0x00000034 end:0x00000038
+
 mo_fighter/ft_donkey/ft_donkey_function_10130.cpp:
 	.text       start:0x00010130 end:0x00010140
 
@@ -1558,6 +1610,10 @@ mo_fighter/ft_donkey/ft_donkey_function_1026c.cpp:
 
 mo_fighter/ft_donkey/ft_donkey_function_1028c.cpp:
 	.text       start:0x0001028C end:0x000102CC
+
+mo_fighter/ft_donkey/ft_donkey_function_102cc.cpp:
+	.text       start:0x000102CC end:0x00010314
+	.ctors      start:0x00000038 end:0x0000003C
 
 mo_fighter/ft_donkey/ft_donkey_function_10314.cpp:
 	.text       start:0x00010314 end:0x00010324

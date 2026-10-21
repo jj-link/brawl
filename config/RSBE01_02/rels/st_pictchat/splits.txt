@@ -233,6 +233,10 @@ mo_stage/st_pictchat/st_pictchat_function_2b3c.cpp:
 mo_stage/st_pictchat/st_pictchat_function_2b44.cpp:
 	.text       start:0x00002B44 end:0x00002B4C
 
+mo_stage/st_pictchat/st_pictchat_function_2b4c.cpp:
+	.text       start:0x00002B4C end:0x00002BB0
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_pictchat/st_pictchat_function_2bb0.cpp:
 	.text       start:0x00002BB0 end:0x00002C24
 

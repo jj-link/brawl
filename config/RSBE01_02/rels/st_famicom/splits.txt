@@ -230,6 +230,10 @@ mo_stage/st_famicom/st_famicom_function_226c.cpp:
 mo_stage/st_famicom/st_famicom_function_2274.cpp:
 	.text       start:0x00002274 end:0x00002280
 
+mo_stage/st_famicom/st_famicom_function_2280.cpp:
+	.text       start:0x00002280 end:0x000022E4
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_famicom/st_famicom_function_22e4.cpp:
 	.text       start:0x000022E4 end:0x00002358
 
@@ -1187,6 +1191,10 @@ mo_stage/st_famicom/st_famicom_function_e3f0.cpp:
 mo_stage/st_famicom/st_famicom_function_e690.cpp:
 	.text       start:0x0000E690 end:0x0000E6C4
 
+mo_stage/st_famicom/st_famicom_function_e6c4.cpp:
+	.text       start:0x0000E6C4 end:0x0000E6F4
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_stage/st_famicom/st_famicom_function_e6f4.cpp:
 	.text       start:0x0000E6F4 end:0x0000E6FC
 
@@ -1235,6 +1243,10 @@ mo_stage/st_famicom/st_famicom_function_ff9c.cpp:
 mo_stage/st_famicom/st_famicom_function_ffb4.cpp:
 	.text       start:0x0000FFB4 end:0x0000FFCC
 
+mo_stage/st_famicom/st_famicom_function_ffcc.cpp:
+	.text       start:0x0000FFCC end:0x0000FFFC
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_stage/st_famicom/st_famicom_function_fffc.cpp:
 	.text       start:0x0000FFFC end:0x000100BC
 
@@ -1255,6 +1267,10 @@ mo_stage/st_famicom/st_famicom_function_11828.cpp:
 
 mo_stage/st_famicom/st_famicom_function_11840.cpp:
 	.text       start:0x00011840 end:0x00011858
+
+mo_stage/st_famicom/st_famicom_function_11858.cpp:
+	.text       start:0x00011858 end:0x00011888
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_stage/st_famicom/st_famicom_function_11930.cpp:
 	.text       start:0x00011930 end:0x00011A00

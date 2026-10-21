@@ -677,6 +677,10 @@ mo_fighter/ft_metaknight/ft_metaknight_posture_exit.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_null_callbacks.cpp:
 	.text       start:0x0000C8E4 end:0x0000C960
 
+mo_fighter/ft_metaknight/ft_metaknight_function_c960.cpp:
+	.text       start:0x0000C960 end:0x0000C9A8
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_metaknight/ft_metaknight_function_c9a8.cpp:
 	.text       start:0x0000C9A8 end:0x0000C9B8
 
@@ -688,6 +692,10 @@ mo_fighter/ft_metaknight/ft_metaknight_function_cb48.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_function_cbcc.cpp:
 	.text       start:0x0000CBCC end:0x0000CC0C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_cc0c.cpp:
+	.text       start:0x0000CC0C end:0x0000CC54
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_fighter/ft_metaknight/ft_metaknight_function_cc54.cpp:
 	.text       start:0x0000CC54 end:0x0000CC64
@@ -706,6 +714,10 @@ mo_fighter/ft_metaknight/ft_metaknight_function_d010.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_function_d184.cpp:
 	.text       start:0x0000D184 end:0x0000D1C4
+
+mo_fighter/ft_metaknight/ft_metaknight_function_d1c4.cpp:
+	.text       start:0x0000D1C4 end:0x0000D20C
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_metaknight/ft_metaknight_function_d20c.cpp:
 	.text       start:0x0000D20C end:0x0000D21C
@@ -731,6 +743,10 @@ mo_fighter/ft_metaknight/ft_metaknight_function_d5e0.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_function_d654.cpp:
 	.text       start:0x0000D654 end:0x0000D694
 
+mo_fighter/ft_metaknight/ft_metaknight_function_d694.cpp:
+	.text       start:0x0000D694 end:0x0000D6DC
+	.ctors      start:0x00000010 end:0x00000014
+
 mo_fighter/ft_metaknight/ft_metaknight_function_d6dc.cpp:
 	.text       start:0x0000D6DC end:0x0000D6EC
 
@@ -754,6 +770,10 @@ mo_fighter/ft_metaknight/ft_metaknight_function_dc30.cpp:
 
 mo_fighter/ft_metaknight/ft_metaknight_function_dccc.cpp:
 	.text       start:0x0000DCCC end:0x0000DD0C
+
+mo_fighter/ft_metaknight/ft_metaknight_function_dd0c.cpp:
+	.text       start:0x0000DD0C end:0x0000DD54
+	.ctors      start:0x00000014 end:0x00000018
 
 mo_fighter/ft_metaknight/ft_metaknight_function_dd54.cpp:
 	.text       start:0x0000DD54 end:0x0000DD64

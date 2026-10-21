@@ -36,6 +36,10 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_4164.cpp:
 mo_menu_main/sora_menu_main/sora_menu_main_function_4168.cpp:
 	.text       start:0x00004168 end:0x0000416C
 
+mo_menu_main/sora_menu_main/sora_menu_main_function_416c.cpp:
+	.text       start:0x0000416C end:0x0000419C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_menu_main/sora_menu_main/sora_menu_main_function_507c.cpp:
 	.text       start:0x0000507C end:0x00005178
 
@@ -53,6 +57,10 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_647c.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_668c.cpp:
 	.text       start:0x0000668C end:0x0000678C
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_801c.cpp:
+	.text       start:0x0000801C end:0x0000804C
+	.ctors      start:0x00000004 end:0x00000008
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_804c.cpp:
 	.text       start:0x0000804C end:0x00008148
@@ -128,6 +136,10 @@ mo_menu_main/sora_menu_main/sora_menu_main_function_ecf4.cpp:
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_ed6c.cpp:
 	.text       start:0x0000ED6C end:0x0000EDE0
+
+mo_menu_main/sora_menu_main/sora_menu_main_function_ee8c.cpp:
+	.text       start:0x0000EE8C end:0x0000EEBC
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_menu_main/sora_menu_main/sora_menu_main_function_12c6c.cpp:
 	.text       start:0x00012C6C end:0x00012E60

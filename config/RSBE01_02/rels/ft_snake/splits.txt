@@ -1751,6 +1751,10 @@ mo_fighter/ft_snake/ft_snake_function_142b4.cpp:
 mo_fighter/ft_snake/ft_snake_function_142b8.cpp:
 	.text       start:0x000142B8 end:0x000142BC
 
+mo_fighter/ft_snake/ft_snake_function_142bc.cpp:
+	.text       start:0x000142BC end:0x00014304
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_snake/ft_snake_function_14304.cpp:
 	.text       start:0x00014304 end:0x00014314
 
@@ -1759,6 +1763,10 @@ mo_fighter/ft_snake/ft_snake_function_145ac.cpp:
 
 mo_fighter/ft_snake/ft_snake_function_145b8.cpp:
 	.text       start:0x000145B8 end:0x000145F8
+
+mo_fighter/ft_snake/ft_snake_function_145f8.cpp:
+	.text       start:0x000145F8 end:0x00014640
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_fighter/ft_snake/ft_snake_function_14640.cpp:
 	.text       start:0x00014640 end:0x00014650
@@ -1772,6 +1780,10 @@ mo_fighter/ft_snake/ft_snake_function_14ae4.cpp:
 mo_fighter/ft_snake/ft_snake_function_14af0.cpp:
 	.text       start:0x00014AF0 end:0x00014B30
 
+mo_fighter/ft_snake/ft_snake_function_14b30.cpp:
+	.text       start:0x00014B30 end:0x00014B78
+	.ctors      start:0x0000000C end:0x00000010
+
 mo_fighter/ft_snake/ft_snake_function_14b78.cpp:
 	.text       start:0x00014B78 end:0x00014B88
 
@@ -1780,6 +1792,10 @@ mo_fighter/ft_snake/ft_snake_function_14f30.cpp:
 
 mo_fighter/ft_snake/ft_snake_function_14f3c.cpp:
 	.text       start:0x00014F3C end:0x00014F7C
+
+mo_fighter/ft_snake/ft_snake_function_14f7c.cpp:
+	.text       start:0x00014F7C end:0x00014FC4
+	.ctors      start:0x00000010 end:0x00000014
 
 mo_fighter/ft_snake/ft_snake_function_14fc4.cpp:
 	.text       start:0x00014FC4 end:0x00014FD4
@@ -1792,6 +1808,10 @@ mo_fighter/ft_snake/ft_snake_function_15030.cpp:
 
 mo_fighter/ft_snake/ft_snake_function_152b0.cpp:
 	.text       start:0x000152B0 end:0x000152F0
+
+mo_fighter/ft_snake/ft_snake_function_152f0.cpp:
+	.text       start:0x000152F0 end:0x00015338
+	.ctors      start:0x00000014 end:0x00000018
 
 mo_fighter/ft_snake/ft_snake_function_15338.cpp:
 	.text       start:0x00015338 end:0x00015348
@@ -2318,11 +2338,19 @@ mo_fighter/ft_snake/ft_snake_function_1a5d4.cpp:
 mo_fighter/ft_snake/ft_snake_function_1a99c.cpp:
 	.text       start:0x0001A99C end:0x0001A9DC
 
+mo_fighter/ft_snake/ft_snake_function_1a9dc.cpp:
+	.text       start:0x0001A9DC end:0x0001AA24
+	.ctors      start:0x00000018 end:0x0000001C
+
 mo_fighter/ft_snake/ft_snake_function_1aa24.cpp:
 	.text       start:0x0001AA24 end:0x0001AA34
 
 mo_fighter/ft_snake/ft_snake_function_1ae6c.cpp:
 	.text       start:0x0001AE6C end:0x0001AEAC
+
+mo_fighter/ft_snake/ft_snake_function_1aeac.cpp:
+	.text       start:0x0001AEAC end:0x0001AEF4
+	.ctors      start:0x0000001C end:0x00000020
 
 mo_fighter/ft_snake/ft_snake_function_1aef4.cpp:
 	.text       start:0x0001AEF4 end:0x0001AF04
@@ -2818,6 +2846,10 @@ mo_fighter/ft_snake/ft_snake_function_27980.cpp:
 
 mo_fighter/ft_snake/ft_snake_function_27a8c.cpp:
 	.text       start:0x00027A8C end:0x00027ACC
+
+mo_fighter/ft_snake/ft_snake_function_27acc.cpp:
+	.text       start:0x00027ACC end:0x00027B14
+	.ctors      start:0x00000020 end:0x00000024
 
 mo_fighter/ft_snake/ft_snake_function_27b14.cpp:
 	.text       start:0x00027B14 end:0x00027B24

@@ -119,6 +119,10 @@ mo_stage/st_newpork/st_newpork_function_2600.cpp:
 mo_stage/st_newpork/st_newpork_function_2608.cpp:
 	.text       start:0x00002608 end:0x00002614
 
+mo_stage/st_newpork/st_newpork_function_2614.cpp:
+	.text       start:0x00002614 end:0x00002678
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_newpork/st_newpork_function_2678.cpp:
 	.text       start:0x00002678 end:0x000026EC
 

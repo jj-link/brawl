@@ -1463,6 +1463,10 @@ mo_fighter/ft_pit/ft_pit_function_e0e8.cpp:
 mo_fighter/ft_pit/ft_pit_function_e0ec.cpp:
 	.text       start:0x0000E0EC end:0x0000E0F0
 
+mo_fighter/ft_pit/ft_pit_function_e0f0.cpp:
+	.text       start:0x0000E0F0 end:0x0000E138
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_pit/ft_pit_function_e138.cpp:
 	.text       start:0x0000E138 end:0x0000E148
 
@@ -1471,6 +1475,10 @@ mo_fighter/ft_pit/ft_pit_function_e148.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_e1dc.cpp:
 	.text       start:0x0000E1DC end:0x0000E21C
+
+mo_fighter/ft_pit/ft_pit_function_e21c.cpp:
+	.text       start:0x0000E21C end:0x0000E264
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_fighter/ft_pit/ft_pit_function_e264.cpp:
 	.text       start:0x0000E264 end:0x0000E274
@@ -1486,6 +1494,10 @@ mo_fighter/ft_pit/ft_pit_function_e438.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_e43c.cpp:
 	.text       start:0x0000E43C end:0x0000E47C
+
+mo_fighter/ft_pit/ft_pit_function_e47c.cpp:
+	.text       start:0x0000E47C end:0x0000E4C4
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_pit/ft_pit_function_e4c4.cpp:
 	.text       start:0x0000E4C4 end:0x0000E4D4
@@ -2258,6 +2270,10 @@ mo_fighter/ft_pit/ft_pit_function_12990.cpp:
 mo_fighter/ft_pit/ft_pit_function_12f2c.cpp:
 	.text       start:0x00012F2C end:0x00012F6C
 
+mo_fighter/ft_pit/ft_pit_function_12f6c.cpp:
+	.text       start:0x00012F6C end:0x00012FB4
+	.ctors      start:0x00000010 end:0x00000014
+
 mo_fighter/ft_pit/ft_pit_function_12fb4.cpp:
 	.text       start:0x00012FB4 end:0x00012FC4
 
@@ -2266,6 +2282,10 @@ mo_fighter/ft_pit/ft_pit_function_12fc4.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_13058.cpp:
 	.text       start:0x00013058 end:0x00013098
+
+mo_fighter/ft_pit/ft_pit_function_13098.cpp:
+	.text       start:0x00013098 end:0x000130E0
+	.ctors      start:0x00000014 end:0x00000018
 
 mo_fighter/ft_pit/ft_pit_function_130e0.cpp:
 	.text       start:0x000130E0 end:0x000130F0
@@ -2278,6 +2298,10 @@ mo_fighter/ft_pit/ft_pit_function_132f4.cpp:
 
 mo_fighter/ft_pit/ft_pit_function_13318.cpp:
 	.text       start:0x00013318 end:0x00013358
+
+mo_fighter/ft_pit/ft_pit_function_13358.cpp:
+	.text       start:0x00013358 end:0x000133A0
+	.ctors      start:0x00000018 end:0x0000001C
 
 mo_fighter/ft_pit/ft_pit_function_133a0.cpp:
 	.text       start:0x000133A0 end:0x000133B0

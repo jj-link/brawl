@@ -188,6 +188,10 @@ mo_stage/st_plankton/st_plankton_function_2520.cpp:
 mo_stage/st_plankton/st_plankton_function_2528.cpp:
 	.text       start:0x00002528 end:0x00002534
 
+mo_stage/st_plankton/st_plankton_function_2534.cpp:
+	.text       start:0x00002534 end:0x00002598
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_plankton/st_plankton_function_2598.cpp:
 	.text       start:0x00002598 end:0x0000260C
 

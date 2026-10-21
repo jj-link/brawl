@@ -119,6 +119,10 @@ mo_stage/st_dxpstadium/st_dxpstadium_function_2d04.cpp:
 mo_stage/st_dxpstadium/st_dxpstadium_function_2d0c.cpp:
 	.text       start:0x00002D0C end:0x00002D18
 
+mo_stage/st_dxpstadium/st_dxpstadium_function_2d18.cpp:
+	.text       start:0x00002D18 end:0x00002D7C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_stage/st_dxpstadium/st_dxpstadium_function_2d7c.cpp:
 	.text       start:0x00002D7C end:0x00002DF0
 

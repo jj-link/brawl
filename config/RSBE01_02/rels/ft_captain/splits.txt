@@ -1253,6 +1253,10 @@ mo_fighter/ft_captain/ft_captain_function_c640.cpp:
 mo_fighter/ft_captain/ft_captain_function_c648.cpp:
 	.text       start:0x0000C648 end:0x0000C654
 
+mo_fighter/ft_captain/ft_captain_function_c654.cpp:
+	.text       start:0x0000C654 end:0x0000C6B8
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_captain/ft_captain_function_c6b8.cpp:
 	.text       start:0x0000C6B8 end:0x0000C700
 
@@ -1469,6 +1473,10 @@ mo_fighter/ft_captain/ft_captain_function_d428.cpp:
 mo_fighter/ft_captain/ft_captain_function_d42c.cpp:
 	.text       start:0x0000D42C end:0x0000D430
 
+mo_fighter/ft_captain/ft_captain_function_d430.cpp:
+	.text       start:0x0000D430 end:0x0000D478
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_captain/ft_captain_function_d478.cpp:
 	.text       start:0x0000D478 end:0x0000D488
 
@@ -1499,6 +1507,10 @@ mo_fighter/ft_captain/ft_captain_function_daf4.cpp:
 mo_fighter/ft_captain/ft_captain_function_dbe0.cpp:
 	.text       start:0x0000DBE0 end:0x0000DC20
 
+mo_fighter/ft_captain/ft_captain_function_dc20.cpp:
+	.text       start:0x0000DC20 end:0x0000DC68
+	.ctors      start:0x0000000C end:0x00000010
+
 mo_fighter/ft_captain/ft_captain_function_dc68.cpp:
 	.text       start:0x0000DC68 end:0x0000DC78
 
@@ -1517,6 +1529,10 @@ mo_fighter/ft_captain/ft_captain_function_dcdc.cpp:
 mo_fighter/ft_captain/ft_captain_function_dd18.cpp:
 	.text       start:0x0000DD18 end:0x0000DD58
 
+mo_fighter/ft_captain/ft_captain_function_dd58.cpp:
+	.text       start:0x0000DD58 end:0x0000DDA0
+	.ctors      start:0x00000010 end:0x00000014
+
 mo_fighter/ft_captain/ft_captain_function_dda0.cpp:
 	.text       start:0x0000DDA0 end:0x0000DDB0
 
@@ -1525,6 +1541,10 @@ mo_fighter/ft_captain/ft_captain_function_ddb0.cpp:
 
 mo_fighter/ft_captain/ft_captain_function_debc.cpp:
 	.text       start:0x0000DEBC end:0x0000DEFC
+
+mo_fighter/ft_captain/ft_captain_function_defc.cpp:
+	.text       start:0x0000DEFC end:0x0000DF44
+	.ctors      start:0x00000014 end:0x00000018
 
 mo_fighter/ft_captain/ft_captain_function_df44.cpp:
 	.text       start:0x0000DF44 end:0x0000DF54

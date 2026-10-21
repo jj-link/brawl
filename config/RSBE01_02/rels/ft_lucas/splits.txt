@@ -1166,6 +1166,10 @@ mo_fighter/ft_lucas/ft_lucas_function_10a04.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_10a08.cpp:
 	.text       start:0x00010A08 end:0x00010A0C
 
+mo_fighter/ft_lucas/ft_lucas_function_10a0c.cpp:
+	.text       start:0x00010A0C end:0x00010A54
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_lucas/ft_lucas_function_10a54.cpp:
 	.text       start:0x00010A54 end:0x00010A64
 
@@ -1175,6 +1179,10 @@ mo_fighter/ft_lucas/ft_lucas_function_10bb8.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_10c40.cpp:
 	.text       start:0x00010C40 end:0x00010C80
 
+mo_fighter/ft_lucas/ft_lucas_function_10c80.cpp:
+	.text       start:0x00010C80 end:0x00010CC8
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_fighter/ft_lucas/ft_lucas_function_10cc8.cpp:
 	.text       start:0x00010CC8 end:0x00010CD8
 
@@ -1183,6 +1191,10 @@ mo_fighter/ft_lucas/ft_lucas_function_10cd8.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_10d4c.cpp:
 	.text       start:0x00010D4C end:0x00010D8C
+
+mo_fighter/ft_lucas/ft_lucas_function_10d8c.cpp:
+	.text       start:0x00010D8C end:0x00010DD4
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_lucas/ft_lucas_function_10dd4.cpp:
 	.text       start:0x00010DD4 end:0x00010DE4
@@ -1195,6 +1207,10 @@ mo_fighter/ft_lucas/ft_lucas_function_11260.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_1130c.cpp:
 	.text       start:0x0001130C end:0x0001134C
+
+mo_fighter/ft_lucas/ft_lucas_function_1134c.cpp:
+	.text       start:0x0001134C end:0x00011394
+	.ctors      start:0x00000010 end:0x00000014
 
 mo_fighter/ft_lucas/ft_lucas_function_11394.cpp:
 	.text       start:0x00011394 end:0x000113A4
@@ -1214,6 +1230,10 @@ mo_fighter/ft_lucas/ft_lucas_function_12034.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_122e0.cpp:
 	.text       start:0x000122E0 end:0x00012320
 
+mo_fighter/ft_lucas/ft_lucas_function_12320.cpp:
+	.text       start:0x00012320 end:0x00012368
+	.ctors      start:0x00000014 end:0x00000018
+
 mo_fighter/ft_lucas/ft_lucas_function_12368.cpp:
 	.text       start:0x00012368 end:0x00012378
 
@@ -1226,6 +1246,10 @@ mo_fighter/ft_lucas/ft_lucas_function_125b8.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_1265c.cpp:
 	.text       start:0x0001265C end:0x0001269C
 
+mo_fighter/ft_lucas/ft_lucas_function_1269c.cpp:
+	.text       start:0x0001269C end:0x000126E4
+	.ctors      start:0x00000018 end:0x0000001C
+
 mo_fighter/ft_lucas/ft_lucas_function_126e4.cpp:
 	.text       start:0x000126E4 end:0x000126F4
 
@@ -1235,6 +1259,10 @@ mo_fighter/ft_lucas/ft_lucas_function_126f4.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_12768.cpp:
 	.text       start:0x00012768 end:0x000127A8
 
+mo_fighter/ft_lucas/ft_lucas_function_127a8.cpp:
+	.text       start:0x000127A8 end:0x000127F0
+	.ctors      start:0x0000001C end:0x00000020
+
 mo_fighter/ft_lucas/ft_lucas_function_127f0.cpp:
 	.text       start:0x000127F0 end:0x00012800
 
@@ -1243,6 +1271,10 @@ mo_fighter/ft_lucas/ft_lucas_function_12800.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_12974.cpp:
 	.text       start:0x00012974 end:0x000129B4
+
+mo_fighter/ft_lucas/ft_lucas_function_129b4.cpp:
+	.text       start:0x000129B4 end:0x000129FC
+	.ctors      start:0x00000020 end:0x00000024
 
 mo_fighter/ft_lucas/ft_lucas_function_129fc.cpp:
 	.text       start:0x000129FC end:0x00012A0C
@@ -1255,6 +1287,10 @@ mo_fighter/ft_lucas/ft_lucas_function_12b94.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_12cbc.cpp:
 	.text       start:0x00012CBC end:0x00012CFC
+
+mo_fighter/ft_lucas/ft_lucas_function_12cfc.cpp:
+	.text       start:0x00012CFC end:0x00012D44
+	.ctors      start:0x00000024 end:0x00000028
 
 mo_fighter/ft_lucas/ft_lucas_function_12d44.cpp:
 	.text       start:0x00012D44 end:0x00012D54
@@ -1883,11 +1919,19 @@ mo_fighter/ft_lucas/ft_lucas_function_15fc4.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_1610c.cpp:
 	.text       start:0x0001610C end:0x0001614C
 
+mo_fighter/ft_lucas/ft_lucas_function_1614c.cpp:
+	.text       start:0x0001614C end:0x00016194
+	.ctors      start:0x00000028 end:0x0000002C
+
 mo_fighter/ft_lucas/ft_lucas_function_16194.cpp:
 	.text       start:0x00016194 end:0x000161A4
 
 mo_fighter/ft_lucas/ft_lucas_function_16370.cpp:
 	.text       start:0x00016370 end:0x000163B0
+
+mo_fighter/ft_lucas/ft_lucas_function_163b0.cpp:
+	.text       start:0x000163B0 end:0x000163F8
+	.ctors      start:0x0000002C end:0x00000030
 
 mo_fighter/ft_lucas/ft_lucas_function_163f8.cpp:
 	.text       start:0x000163F8 end:0x00016408
@@ -2009,6 +2053,10 @@ mo_fighter/ft_lucas/ft_lucas_function_19f40.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_1a104.cpp:
 	.text       start:0x0001A104 end:0x0001A144
 
+mo_fighter/ft_lucas/ft_lucas_function_1a144.cpp:
+	.text       start:0x0001A144 end:0x0001A18C
+	.ctors      start:0x00000030 end:0x00000034
+
 mo_fighter/ft_lucas/ft_lucas_function_1a18c.cpp:
 	.text       start:0x0001A18C end:0x0001A19C
 
@@ -2080,6 +2128,10 @@ mo_fighter/ft_lucas/ft_lucas_function_1c364.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_1c558.cpp:
 	.text       start:0x0001C558 end:0x0001C598
+
+mo_fighter/ft_lucas/ft_lucas_function_1c598.cpp:
+	.text       start:0x0001C598 end:0x0001C5E0
+	.ctors      start:0x00000034 end:0x00000038
 
 mo_fighter/ft_lucas/ft_lucas_function_1c5e0.cpp:
 	.text       start:0x0001C5E0 end:0x0001C5F0
@@ -2227,6 +2279,10 @@ mo_fighter/ft_lucas/ft_lucas_function_20d3c.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_20e0c.cpp:
 	.text       start:0x00020E0C end:0x00020E4C
+
+mo_fighter/ft_lucas/ft_lucas_function_20e4c.cpp:
+	.text       start:0x00020E4C end:0x00020E94
+	.ctors      start:0x00000038 end:0x0000003C
 
 mo_fighter/ft_lucas/ft_lucas_function_20e94.cpp:
 	.text       start:0x00020E94 end:0x00020EA4

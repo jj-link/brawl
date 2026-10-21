@@ -1412,6 +1412,10 @@ mo_fighter/ft_diddy/ft_diddy_function_dd1c.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_dd20.cpp:
 	.text       start:0x0000DD20 end:0x0000DD24
 
+mo_fighter/ft_diddy/ft_diddy_function_dd24.cpp:
+	.text       start:0x0000DD24 end:0x0000DD6C
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_diddy/ft_diddy_function_dd6c.cpp:
 	.text       start:0x0000DD6C end:0x0000DD7C
 
@@ -1429,6 +1433,10 @@ mo_fighter/ft_diddy/ft_diddy_function_dd88.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_dd8c.cpp:
 	.text       start:0x0000DD8C end:0x0000DDCC
+
+mo_fighter/ft_diddy/ft_diddy_function_ddcc.cpp:
+	.text       start:0x0000DDCC end:0x0000DE14
+	.ctors      start:0x00000008 end:0x0000000C
 
 mo_fighter/ft_diddy/ft_diddy_function_de14.cpp:
 	.text       start:0x0000DE14 end:0x0000DE24
@@ -1487,6 +1495,10 @@ mo_fighter/ft_diddy/ft_diddy_function_f0a8.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_f2a0.cpp:
 	.text       start:0x0000F2A0 end:0x0000F2E0
 
+mo_fighter/ft_diddy/ft_diddy_function_f2e0.cpp:
+	.text       start:0x0000F2E0 end:0x0000F328
+	.ctors      start:0x00000014 end:0x00000018
+
 mo_fighter/ft_diddy/ft_diddy_function_f328.cpp:
 	.text       start:0x0000F328 end:0x0000F338
 
@@ -1505,6 +1517,10 @@ mo_fighter/ft_diddy/ft_diddy_function_f940.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_f958.cpp:
 	.text       start:0x0000F958 end:0x0000F998
 
+mo_fighter/ft_diddy/ft_diddy_function_f998.cpp:
+	.text       start:0x0000F998 end:0x0000F9E0
+	.ctors      start:0x00000018 end:0x0000001C
+
 mo_fighter/ft_diddy/ft_diddy_function_f9e0.cpp:
 	.text       start:0x0000F9E0 end:0x0000F9F0
 
@@ -1519,6 +1535,10 @@ mo_fighter/ft_diddy/ft_diddy_function_10624.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_106a4.cpp:
 	.text       start:0x000106A4 end:0x000106E4
+
+mo_fighter/ft_diddy/ft_diddy_function_106e4.cpp:
+	.text       start:0x000106E4 end:0x0001072C
+	.ctors      start:0x0000001C end:0x00000020
 
 mo_fighter/ft_diddy/ft_diddy_function_1072c.cpp:
 	.text       start:0x0001072C end:0x0001073C
@@ -1535,6 +1555,10 @@ mo_fighter/ft_diddy/ft_diddy_function_10bac.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_10bb0.cpp:
 	.text       start:0x00010BB0 end:0x00010BF0
 
+mo_fighter/ft_diddy/ft_diddy_function_10bf0.cpp:
+	.text       start:0x00010BF0 end:0x00010C38
+	.ctors      start:0x00000020 end:0x00000024
+
 mo_fighter/ft_diddy/ft_diddy_function_10c38.cpp:
 	.text       start:0x00010C38 end:0x00010C48
 
@@ -1549,6 +1573,10 @@ mo_fighter/ft_diddy/ft_diddy_function_10ca0.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_10cb8.cpp:
 	.text       start:0x00010CB8 end:0x00010CF8
+
+mo_fighter/ft_diddy/ft_diddy_function_10cf8.cpp:
+	.text       start:0x00010CF8 end:0x00010D40
+	.ctors      start:0x00000024 end:0x00000028
 
 mo_fighter/ft_diddy/ft_diddy_function_10d40.cpp:
 	.text       start:0x00010D40 end:0x00010D50
@@ -1574,6 +1602,10 @@ mo_fighter/ft_diddy/ft_diddy_function_11138.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_1113c.cpp:
 	.text       start:0x0001113C end:0x0001117C
 
+mo_fighter/ft_diddy/ft_diddy_function_1117c.cpp:
+	.text       start:0x0001117C end:0x000111C4
+	.ctors      start:0x00000028 end:0x0000002C
+
 mo_fighter/ft_diddy/ft_diddy_function_111c4.cpp:
 	.text       start:0x000111C4 end:0x000111D4
 
@@ -1591,6 +1623,10 @@ mo_fighter/ft_diddy/ft_diddy_function_113fc.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_11408.cpp:
 	.text       start:0x00011408 end:0x00011410
+
+mo_fighter/ft_diddy/ft_diddy_function_11410.cpp:
+	.text       start:0x00011410 end:0x00011458
+	.ctors      start:0x0000002C end:0x00000030
 
 mo_fighter/ft_diddy/ft_diddy_function_11458.cpp:
 	.text       start:0x00011458 end:0x00011468
@@ -1612,6 +1648,10 @@ mo_fighter/ft_diddy/ft_diddy_function_12fd0.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_13068.cpp:
 	.text       start:0x00013068 end:0x000130A8
+
+mo_fighter/ft_diddy/ft_diddy_function_130a8.cpp:
+	.text       start:0x000130A8 end:0x000130F0
+	.ctors      start:0x00000030 end:0x00000034
 
 mo_fighter/ft_diddy/ft_diddy_function_130f0.cpp:
 	.text       start:0x000130F0 end:0x00013100
@@ -2357,6 +2397,10 @@ mo_fighter/ft_diddy/ft_diddy_function_191c0.cpp:
 mo_fighter/ft_diddy/ft_diddy_function_191c4.cpp:
 	.text       start:0x000191C4 end:0x00019204
 
+mo_fighter/ft_diddy/ft_diddy_function_19204.cpp:
+	.text       start:0x00019204 end:0x0001924C
+	.ctors      start:0x00000034 end:0x00000038
+
 mo_fighter/ft_diddy/ft_diddy_function_1924c.cpp:
 	.text       start:0x0001924C end:0x0001925C
 
@@ -2548,6 +2592,10 @@ mo_fighter/ft_diddy/ft_diddy_function_1b8f8.cpp:
 
 mo_fighter/ft_diddy/ft_diddy_function_1b904.cpp:
 	.text       start:0x0001B904 end:0x0001B944
+
+mo_fighter/ft_diddy/ft_diddy_function_1b944.cpp:
+	.text       start:0x0001B944 end:0x0001B98C
+	.ctors      start:0x00000038 end:0x0000003C
 
 mo_fighter/ft_diddy/ft_diddy_function_1b98c.cpp:
 	.text       start:0x0001B98C end:0x0001B99C
