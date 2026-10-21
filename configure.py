@@ -3480,9 +3480,16 @@ def _add_orchestrated_units():
         return
     libs = {lib["lib"]: lib for lib in config.libs}
     for unit in _json.loads(units_file.read_text(encoding="utf-8")):
-        options = {"cflags": globals()[unit["cflags"]]}
+        cflags = globals()[unit["cflags"]] if unit["cflags"] in globals() else unit["flags"]
+        options = {"cflags": cflags}
         if unit["extra_cflags"]:
             options["extra_cflags"] = unit["extra_cflags"]
+        if unit.get("mw_version"):
+            options["mw_version"] = unit["mw_version"]
+        if unit["lib"] not in libs:  # a DOL library configure.py does not list yet
+            libs[unit["lib"]] = {"lib": unit["lib"], "mw_version": config.linker_version, "cflags": cflags,
+                                 "host": False, "objects": []}
+            config.libs.append(libs[unit["lib"]])
         libs[unit["lib"]]["objects"].append(Object(Matching, unit["path"], **options))
 
 
