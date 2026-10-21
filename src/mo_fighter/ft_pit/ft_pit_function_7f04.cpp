@@ -1,0 +1,77 @@
+#include <new>
+#pragma force_active on
+#pragma use_simple_stdpnew on
+
+// Declaration-only ABI views; the implementations live in sora_melee (module 27).
+class soModuleAccesser;
+class soEventObserverRegistrationDesc;
+template <class T> class soArray;
+
+class soCollision {
+public:
+    enum Category { Category_Fighter = 0 };
+};
+
+class gfTask {
+public:
+    enum Category { CategoryDefault = 0 };
+};
+
+class soCollisionHitPart {
+public:
+    soCollisionHitPart(soCollision::Category selfCategory, unsigned long opponentCategory);
+    ~soCollisionHitPart();
+    unsigned char m_storage[0x68];
+};
+
+class soCollisionGroup;
+class soCollisionHitGroup;
+
+class soCollisionHitModuleImpl {
+public:
+    soCollisionHitModuleImpl(soModuleAccesser* moduleAccesser, int taskId,
+                             gfTask::Category taskCategory,
+                             soArray<soCollisionHitPart>* hitPartArray,
+                             soArray<soCollisionGroup>* collisionGroupArray,
+                             soArray<soCollisionHitGroup>* collisionHitGroupArray,
+                             soEventObserverRegistrationDesc* registrationDesc, bool param8);
+};
+
+// Layout of the ft_pit collision-hit build config embedded in the fighter:
+// 11 hit parts (11 * 0x68 = 0x484), one collision group (0x84), one collision
+// hit group (0x44), then the soCollisionHitModuleImpl at 0x54C.
+struct PitCollisionHitBuildConfig {
+    unsigned char m_hitPartVector[0x484];
+    unsigned char m_collisionGroupVector[0x84];
+    unsigned char m_collisionHitGroupVector[0x44];
+    unsigned char m_hitModule[0x68];
+};
+
+extern "C" {
+// soArrayVector<soCollisionHitPart, 11>(int size, const soCollisionHitPart&, int)
+void fn_27_19ACA4(void* hitPartVector, int size, const soCollisionHitPart* element, int param3);
+// soArrayVector<soCollisionGroup, 1>(int size, int)
+void fn_27_CB6E0(void* collisionGroupVector, int size, int param2);
+// soArrayVector<soCollisionHitGroup, 1>(int size, int)
+void fn_27_CC8F4(void* collisionHitGroupVector, int size, int param2);
+}
+
+// Constructs the collision-hit module build config in place and returns it.
+extern "C" PitCollisionHitBuildConfig* fn_112_7F04(
+    PitCollisionHitBuildConfig* config, soModuleAccesser* moduleAccesser, int taskId,
+    unsigned char taskCategory, soEventObserverRegistrationDesc* registrationDesc) {
+    {
+        soCollisionHitPart hitPart(soCollision::Category_Fighter, 0x3FF);
+        fn_27_19ACA4(config->m_hitPartVector, 11, &hitPart, 0);
+    }
+    fn_27_CB6E0(config->m_collisionGroupVector, 1, 0);
+    fn_27_CC8F4(config->m_collisionHitGroupVector, 1, 0);
+    new (reinterpret_cast<soCollisionHitModuleImpl*>(config->m_hitModule))
+        soCollisionHitModuleImpl(
+            moduleAccesser, taskId, static_cast<gfTask::Category>(taskCategory),
+            reinterpret_cast<soArray<soCollisionHitPart>*>(config->m_hitPartVector),
+            reinterpret_cast<soArray<soCollisionGroup>*>(config->m_collisionGroupVector),
+            reinterpret_cast<soArray<soCollisionHitGroup>*>(config->m_collisionHitGroupVector),
+            registrationDesc, true);
+    return config;
+}

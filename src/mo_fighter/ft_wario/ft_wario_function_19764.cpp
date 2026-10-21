@@ -1,0 +1,22 @@
+#include <so/so_module_accesser.h>
+#pragma force_active on
+
+extern "C" const float lbl_110_rodata_184;
+
+#pragma always_inline on
+#pragma inline_depth(8)
+
+extern "C" void fn_110_19764(void*, soModuleAccesser* accesser) {
+    soWorkManageModule& work = *accesser->m_enumerationStart->m_workManageModule;
+    soGroundModule& ground = *accesser->m_enumerationStart->m_groundModule;
+
+    if (ground.isTouch(static_cast<grCollStatus::TouchMask>(8), 0)) {
+        float lr = accesser->m_enumerationStart->m_postureModule->getLr();
+        Vec2f normal;
+        Vec2f::copy(normal, ground.getTouchNormal(static_cast<grCollStatus::TouchMask>(8), 0));
+
+        float y = normal.m_y;
+        float x = -(normal.m_x * lr);
+        work.setFloat(lbl_110_rodata_184 * static_cast<float>(atan2(x, y)), 0x21000000);
+    }
+}
