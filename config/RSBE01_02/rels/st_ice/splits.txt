@@ -44,8 +44,14 @@ mo_stage/st_ice/st_ice_function_b80.cpp:
 mo_stage/st_ice/st_ice_function_b88.cpp:
 	.text       start:0x00000B88 end:0x00000B90
 
+mo_stage/st_ice/st_ice_function_b90.cpp:
+	.text       start:0x00000B90 end:0x00000C54
+
 mo_stage/st_ice/st_ice_function_c54.cpp:
 	.text       start:0x00000C54 end:0x00000C5C
+
+mo_stage/st_ice/st_ice_function_c5c.cpp:
+	.text       start:0x00000C5C end:0x00000D20
 
 mo_stage/st_ice/st_ice_function_d20.cpp:
 	.text       start:0x00000D20 end:0x00000D28
@@ -109,6 +115,9 @@ mo_stage/st_ice/st_ice_function_13a8.cpp:
 
 mo_stage/st_ice/st_ice_function_13b0.cpp:
 	.text       start:0x000013B0 end:0x000013B8
+
+mo_stage/st_ice/st_ice_function_14f0.cpp:
+	.text       start:0x000014F0 end:0x000015B4
 
 mo_stage/st_ice/st_ice_function_15b4.cpp:
 	.text       start:0x000015B4 end:0x000015BC
