@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_fighter/ft_wario/ft_wario_function_1a2c.cpp:
 	.text       start:0x00001A2C end:0x00001ACC
 
+mo_fighter/ft_wario/ft_wario_function_1acc.cpp:
+	.text       start:0x00001ACC end:0x00001B84
+
 mo_fighter/ft_wario/ft_wario_function_1b84.cpp:
 	.text       start:0x00001B84 end:0x00001BE0
 
@@ -2519,8 +2522,14 @@ mo_fighter/ft_wario/ft_wario_function_1ef88.cpp:
 mo_fighter/ft_wario/ft_wario_function_1efb0.cpp:
 	.text       start:0x0001EFB0 end:0x0001EFCC
 
+mo_fighter/ft_wario/ft_wario_function_1efcc.cpp:
+	.text       start:0x0001EFCC end:0x0001F084
+
 mo_fighter/ft_wario/ft_wario_function_1f084.cpp:
 	.text       start:0x0001F084 end:0x0001F0D8
+
+mo_fighter/ft_wario/ft_wario_function_1f164.cpp:
+	.text       start:0x0001F164 end:0x0001F21C
 
 mo_fighter/ft_wario/ft_wario_function_1f21c.cpp:
 	.text       start:0x0001F21C end:0x0001F278
