@@ -1,0 +1,48 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" void fn_27_FE0C8(void* r3, void* r4);
+
+class Member {
+public:
+    virtual void v0();
+    virtual void* getItem(s32 index);
+    virtual void v2();
+    virtual s32 getCount();
+};
+
+class Owner {
+public:
+    virtual void v0();
+    u8 m_pad[0xC];
+    Member m_mem;
+};
+
+class Visitor {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void visit(void** p);
+};
+
+extern "C" {
+void fn_27_1CDBB0(Owner* self, s16* flags, Visitor* visitor) {
+    s32 n = self->m_mem.getCount();
+    for (s32 i = 0; i < n; i++) {
+        s16 sp8;
+        fn_27_FE0C8(&sp8, self->m_mem.getItem(i));
+        if (sp8 & *flags) {
+            void* p = self->m_mem.getItem(i);
+            visitor->visit(&p);
+        }
+    }
+}
+}
