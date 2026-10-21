@@ -1,0 +1,150 @@
+#pragma force_active on
+
+extern "C" void update__9grGimmickFf(void*, float);
+extern "C" char lbl_66_data_2F08[];
+
+struct EarthBase {
+    unsigned char pad[0x3C];
+};
+
+struct Earth : EarthBase {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void unused8();
+    virtual void unused9();
+    virtual void unused10();
+    virtual void unused11();
+    virtual void unused12();
+    virtual void unused13();
+    virtual void unused14();
+    virtual void unused15();
+    virtual void unused16();
+    virtual void unused17();
+    virtual void unused18();
+    virtual void unused19();
+    virtual void unused20();
+    virtual void unused21();
+    virtual void unused22();
+    virtual void unused23();
+    virtual void unused24();
+    virtual void unused25();
+    virtual void unused26();
+    virtual void unused27();
+    virtual void unused28();
+    virtual void unused29();
+    virtual void unused30();
+    virtual void unused31();
+    virtual void unused32();
+    virtual void unused33();
+    virtual void unused34();
+    virtual void unused35();
+    virtual void unused36();
+    virtual void unused37();
+    virtual void unused38();
+    virtual void unused39();
+    virtual void unused40();
+    virtual void unused41();
+    virtual void unused42();
+    virtual void unused43();
+    virtual void unused44();
+    virtual void unused45();
+    virtual void unused46();
+    virtual void unused47();
+    virtual void unused48();
+    virtual void unused49();
+    virtual void unused50();
+    virtual void attach(void*, int, const char*);
+    virtual void unused52();
+    virtual void unused53();
+    virtual void unused54();
+    virtual void unused55();
+    virtual void unused56();
+    virtual void unused57();
+    virtual void unused58();
+    virtual void unused59();
+    virtual void unused60();
+    virtual void unused61();
+    virtual void unused62();
+    virtual void unused63();
+    virtual void unused64();
+    virtual void unused65();
+    virtual void unused66();
+    virtual void unused67();
+    virtual void unused68();
+    virtual void unused69();
+    virtual void unused70();
+    virtual void finish();
+    virtual void unused72();
+    virtual void unused73();
+    virtual void unused74();
+    virtual void unused75();
+    virtual void unused76();
+    virtual void unused77();
+    virtual void unused78();
+    virtual void unused79();
+    virtual void unused80();
+    virtual void unused81();
+    virtual void unused82();
+    virtual void unused83();
+    virtual void unused84();
+    virtual void unused85();
+    virtual void unused86();
+    virtual void unused87();
+    virtual void unused88();
+    virtual void unused89();
+    virtual void unused90();
+    virtual void unused91();
+    virtual void unused92();
+    virtual void unused93();
+    virtual void unused94();
+    virtual void unused95();
+    virtual void unused96();
+    virtual void unused97();
+    virtual void unused98();
+    virtual void unused99();
+    virtual void unused100();
+    virtual void unused101();
+    virtual void unused102();
+    virtual void unused103();
+    virtual void unused104();
+    virtual void unused105();
+    virtual void unused106();
+    virtual void unused107();
+    virtual void unused108();
+    virtual void unused109();
+    virtual void unused110();
+    virtual void unused111();
+    virtual void update1(float);
+    virtual void update2(float);
+    virtual void update3(float);
+    virtual void update4(float);
+
+    unsigned char pad40[0x2C];
+    unsigned char flags;
+    unsigned char pad6D[0x5B];
+    unsigned char active;
+    unsigned char padC9[0x9B];
+    char* parameter;
+};
+
+extern "C" void fn_66_FDCC(Earth* self, float deltaFrame) {
+    update__9grGimmickFf(self, deltaFrame);
+    if (self->active) {
+        self->update1(deltaFrame);
+        self->update2(deltaFrame);
+        self->update3(deltaFrame);
+        self->update4(deltaFrame);
+        self->finish();
+        self->flags &= ~2;
+        char* parameter = self->parameter;
+        if (parameter) {
+            self->attach(parameter + 0x28, 0, lbl_66_data_2F08);
+        }
+    }
+}
