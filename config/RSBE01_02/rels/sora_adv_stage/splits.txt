@@ -110,6 +110,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_50a0.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_50bc.cpp:
 	.text       start:0x000050BC end:0x000050DC
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_54f0.cpp:
+	.text       start:0x000054F0 end:0x000055BC
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_55bc.cpp:
 	.text       start:0x000055BC end:0x00005628
 
@@ -257,8 +260,14 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_8b30.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_8c40.cpp:
 	.text       start:0x00008C40 end:0x00008C84
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_8c84.cpp:
+	.text       start:0x00008C84 end:0x00008D50
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_8d50.cpp:
 	.text       start:0x00008D50 end:0x00008D94
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_8d94.cpp:
+	.text       start:0x00008D94 end:0x00008E60
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_94c4.cpp:
 	.text       start:0x000094C4 end:0x0000964C
@@ -395,6 +404,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_e0e4.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_e554.cpp:
 	.text       start:0x0000E554 end:0x0000E56C
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_ec34.cpp:
+	.text       start:0x0000EC34 end:0x0000ED00
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_ed00.cpp:
 	.text       start:0x0000ED00 end:0x0000ED98
 
@@ -448,6 +460,36 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10a38.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10a6c.cpp:
 	.text       start:0x00010A6C end:0x00010B70
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10c3c.cpp:
+	.text       start:0x00010C3C end:0x00010D08
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10d08.cpp:
+	.text       start:0x00010D08 end:0x00010DD4
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10dd4.cpp:
+	.text       start:0x00010DD4 end:0x00010EA0
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10ea0.cpp:
+	.text       start:0x00010EA0 end:0x00010F6C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_10f6c.cpp:
+	.text       start:0x00010F6C end:0x00011038
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11038.cpp:
+	.text       start:0x00011038 end:0x00011104
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11104.cpp:
+	.text       start:0x00011104 end:0x000111D0
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_111d0.cpp:
+	.text       start:0x000111D0 end:0x0001129C
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_1129c.cpp:
+	.text       start:0x0001129C end:0x00011368
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11368.cpp:
+	.text       start:0x00011368 end:0x00011434
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_11500.cpp:
 	.text       start:0x00011500 end:0x00011540
@@ -595,6 +637,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_15518.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_15694.cpp:
 	.text       start:0x00015694 end:0x000156DC
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_15978.cpp:
+	.text       start:0x00015978 end:0x00015A44
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_15a44.cpp:
 	.text       start:0x00015A44 end:0x00015B48
@@ -2099,6 +2144,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2c62c.cpp:
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2c634.cpp:
 	.text       start:0x0002C634 end:0x0002C63C
 
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2c63c.cpp:
+	.text       start:0x0002C63C end:0x0002C708
+
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_2c708.cpp:
 	.text       start:0x0002C708 end:0x0002C760
 
@@ -2653,6 +2701,9 @@ mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3b0a4.cpp:
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3b10c.cpp:
 	.text       start:0x0003B10C end:0x0003B110
+
+mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3b110.cpp:
+	.text       start:0x0003B110 end:0x0003B1DC
 
 mo_adv_stage/sora_adv_stage/sora_adv_stage_function_3b4c8.cpp:
 	.text       start:0x0003B4C8 end:0x0003B4D0
