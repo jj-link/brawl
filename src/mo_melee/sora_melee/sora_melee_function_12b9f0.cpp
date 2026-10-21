@@ -1,0 +1,270 @@
+#pragma force_active on
+
+typedef unsigned int u32;
+
+struct Owner;
+
+struct EventModule {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void unused8();
+    virtual void unused9();
+    virtual void unused10();
+    virtual void unused11();
+    virtual void unused12();
+    virtual void unused13();
+    virtual void unused14();
+    virtual void unused15();
+    virtual void unused16();
+    virtual void unused17();
+    virtual void unused18();
+    virtual void unused19();
+    virtual void unused20();
+    virtual void unused21();
+    virtual void unused22();
+    virtual void unused23();
+    virtual void unused24();
+    virtual void unused25();
+    virtual void unused26();
+    virtual void unused27();
+    virtual void unused28();
+    virtual void unused29();
+    virtual void unused30();
+    virtual void unused31();
+    virtual void unused32();
+    virtual void unused33();
+    virtual void notify(int, Owner*);
+};
+
+struct PostureModule {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void reset();
+};
+
+struct MotionHeader {
+    char pad[8];
+};
+
+struct MotionModule : MotionHeader {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void setFrame(float);
+};
+
+struct Modules {
+    char pad0[0x0c];
+    PostureModule* posture;
+    char pad1[0x38 - 0x10];
+    MotionModule* motion;
+    char pad2[0x70 - 0x3c];
+    EventModule* event;
+};
+
+struct Owner {
+    char pad[0xd8];
+    Modules* modules;
+};
+
+struct ObjectHeader {
+    char pad[0x3c];
+};
+
+struct Object : ObjectHeader {
+    virtual void unused0();
+    virtual void unused1();
+    virtual void unused2();
+    virtual void unused3();
+    virtual void unused4();
+    virtual void unused5();
+    virtual void unused6();
+    virtual void unused7();
+    virtual void unused8();
+    virtual void unused9();
+    virtual void unused10();
+    virtual void unused11();
+    virtual void unused12();
+    virtual void unused13();
+    virtual void unused14();
+    virtual void unused15();
+    virtual void unused16();
+    virtual void unused17();
+    virtual void unused18();
+    virtual void unused19();
+    virtual void unused20();
+    virtual void unused21();
+    virtual void unused22();
+    virtual void unused23();
+    virtual void unused24();
+    virtual void unused25();
+    virtual void unused26();
+    virtual void unused27();
+    virtual void unused28();
+    virtual void unused29();
+    virtual void unused30();
+    virtual void unused31();
+    virtual void unused32();
+    virtual void unused33();
+    virtual void unused34();
+    virtual void unused35();
+    virtual void unused36();
+    virtual void unused37();
+    virtual void unused38();
+    virtual void unused39();
+    virtual void unused40();
+    virtual void unused41();
+    virtual void unused42();
+    virtual void update();
+    virtual void unused44();
+    virtual void unused45();
+    virtual void unused46();
+    virtual void unused47();
+    virtual void unused48();
+    virtual void unused49();
+    virtual void unused50();
+    virtual void unused51();
+    virtual void unused52();
+    virtual void unused53();
+    virtual void unused54();
+    virtual void unused55();
+    virtual void unused56();
+    virtual void unused57();
+    virtual void unused58();
+    virtual void unused59();
+    virtual void unused60();
+    virtual void unused61();
+    virtual void unused62();
+    virtual void unused63();
+    virtual void unused64();
+    virtual void unused65();
+    virtual void unused66();
+    virtual void unused67();
+    virtual void unused68();
+    virtual void unused69();
+    virtual void unused70();
+    virtual void unused71();
+    virtual void unused72();
+    virtual void unused73();
+    virtual void unused74();
+    virtual void unused75();
+    virtual void unused76();
+    virtual void unused77();
+    virtual void unused78();
+    virtual void unused79();
+    virtual void unused80();
+    virtual void unused81();
+    virtual void unused82();
+    virtual void unused83();
+    virtual void unused84();
+    virtual void unused85();
+    virtual void unused86();
+    virtual void unused87();
+    virtual void unused88();
+    virtual void unused89();
+    virtual void unused90();
+    virtual void unused91();
+    virtual void unused92();
+    virtual void unused93();
+    virtual void unused94();
+    virtual void unused95();
+    virtual void unused96();
+    virtual void unused97();
+    virtual void unused98();
+    virtual void unused99();
+    virtual void unused100();
+    virtual void unused101();
+    virtual void unused102();
+    virtual void unused103();
+    virtual void unused104();
+    virtual void unused105();
+    virtual void unused106();
+    virtual void unused107();
+    virtual void unused108();
+    virtual void unused109();
+    virtual void unused110();
+    virtual void unused111();
+    virtual void unused112();
+    virtual void unused113();
+    virtual void unused114();
+    virtual void unused115();
+    virtual void unused116();
+    virtual void unused117();
+    virtual void unused118();
+    virtual void unused119();
+    virtual void unused120();
+    virtual void unused121();
+    virtual void unused122();
+    virtual void unused123();
+    virtual void unused124();
+    virtual void unused125();
+    virtual void unused126();
+    virtual void unused127();
+    virtual void unused128();
+    virtual void unused129();
+    virtual void unused130();
+    virtual void unused131();
+    virtual void unused132();
+    virtual void unused133();
+    virtual void unused134();
+    virtual void unused135();
+    virtual void unused136();
+    virtual void unused137();
+    virtual void unused138();
+    virtual void unused139();
+    virtual void unused140();
+    virtual void unused141();
+    virtual void unused142();
+    virtual void unused143();
+    virtual void unused144();
+    virtual void unused145();
+    virtual void unused146();
+    virtual void unused147();
+    virtual void unused148();
+    virtual void unused149();
+    virtual void unused150();
+    virtual void unused151();
+    virtual void unused152();
+    virtual void unused153();
+    virtual void unused154();
+    virtual void unused155();
+    virtual void unused156();
+    virtual void unused157();
+    virtual void unused158();
+    virtual void unused159();
+    virtual void unused160();
+    virtual void unused161();
+    virtual void unused162();
+    virtual void unused163();
+    virtual void unused164();
+    virtual void enable(int);
+    virtual void disable(int, int);
+
+    char pad[0x60 - 0x40];
+    Owner* owner;
+};
+
+extern "C" void fn_27_12B9F0(Object* self, void*, u32 mode, float, float frame) {
+    Owner* owner = self->owner;
+    if (mode == 1U) {
+        owner->modules->event->notify(0xf6, owner);
+    } else {
+        owner->modules->posture->reset();
+        self->enable(8);
+        self->update();
+        owner->modules->event->notify(0xbe, owner);
+        self->disable(8, 0);
+    }
+    owner->modules->motion->setFrame(frame);
+}
