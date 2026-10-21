@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_name/sora_menu_name/sora_menu_name_function_3b4.cpp:
+	.text       start:0x000003B4 end:0x0000044C
+
 mo_menu_name/sora_menu_name/sora_menu_name_function_1568.cpp:
 	.text       start:0x00001568 end:0x00001670
 
@@ -29,6 +32,9 @@ mo_menu_name/sora_menu_name/sora_menu_name_function_2fd4.cpp:
 
 mo_menu_name/sora_menu_name/sora_menu_name_function_35e0.cpp:
 	.text       start:0x000035E0 end:0x00003638
+
+mo_menu_name/sora_menu_name/sora_menu_name_function_3638.cpp:
+	.text       start:0x00003638 end:0x000036D0
 
 mo_menu_name/sora_menu_name/sora_menu_name_function_36d0.cpp:
 	.text       start:0x000036D0 end:0x00003728
