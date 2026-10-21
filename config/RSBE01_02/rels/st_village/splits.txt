@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_village/st_village_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_village/st_village_function_184.cpp:
+	.text       start:0x00000184 end:0x00000250
+
 mo_stage/st_village/st_village_function_250.cpp:
 	.text       start:0x00000250 end:0x00000258
 
@@ -335,11 +338,17 @@ mo_stage/st_village/st_village_function_620c.cpp:
 mo_stage/st_village/st_village_function_64e8.cpp:
 	.text       start:0x000064E8 end:0x000064EC
 
+mo_stage/st_village/st_village_function_6934.cpp:
+	.text       start:0x00006934 end:0x00006A00
+
 mo_stage/st_village/st_village_function_6a00.cpp:
 	.text       start:0x00006A00 end:0x00006A58
 
 mo_stage/st_village/st_village_function_6a58.cpp:
 	.text       start:0x00006A58 end:0x00006AB4
+
+mo_stage/st_village/st_village_function_7718.cpp:
+	.text       start:0x00007718 end:0x000077E4
 
 mo_stage/st_village/st_village_function_77e4.cpp:
 	.text       start:0x000077E4 end:0x00007838
