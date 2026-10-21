@@ -1612,6 +1612,10 @@ mo_fighter/ft_pikachu/ft_pikachu_function_10eb8.cpp:
 mo_fighter/ft_pikachu/ft_pikachu_function_10ef8.cpp:
 	.text       start:0x00010EF8 end:0x00010F38
 
+mo_fighter/ft_pikachu/ft_pikachu_function_10f38.cpp:
+	.text       start:0x00010F38 end:0x00010FF0
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_fighter/ft_pikachu/ft_pikachu_function_10ff0.cpp:
 	.text       start:0x00010FF0 end:0x00011000
 

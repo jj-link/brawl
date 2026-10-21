@@ -1292,6 +1292,9 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_f910.cpp:
 mo_fighter/ft_gamewatch/ft_gamewatch_function_f914.cpp:
 	.text       start:0x0000F914 end:0x0000F92C
 
+mo_fighter/ft_gamewatch/ft_gamewatch_function_f92c.cpp:
+	.text       start:0x0000F92C end:0x0000F9BC
+
 mo_fighter/ft_gamewatch/ft_gamewatch_function_f9bc.cpp:
 	.text       start:0x0000F9BC end:0x0000F9C4
 
@@ -1345,6 +1348,10 @@ mo_fighter/ft_gamewatch/ft_gamewatch_function_fd5c.cpp:
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_fd64.cpp:
 	.text       start:0x0000FD64 end:0x0000FD70
+
+mo_fighter/ft_gamewatch/ft_gamewatch_function_fd70.cpp:
+	.text       start:0x0000FD70 end:0x0000FDF4
+	.ctors      start:0x00000000 end:0x00000004
 
 mo_fighter/ft_gamewatch/ft_gamewatch_function_fdf4.cpp:
 	.text       start:0x0000FDF4 end:0x0000FE3C

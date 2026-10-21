@@ -1,0 +1,44 @@
+#pragma force_active on
+extern int lbl_805A0AD8;
+extern int lbl_805A0ADC;
+extern int lbl_805A0AE0;
+extern int lbl_805A0AE4;
+extern int lbl_805A0AE8;
+extern int lbl_805A0AEC;
+extern int lbl_805A0AF0;
+extern int lbl_805A0AF4;
+extern int lbl_805A0AF8;
+extern int lbl_805A0AFC;
+extern int lbl_805A0B00;
+extern int lbl_805A0B04;
+extern int lbl_805A0B08;
+extern int lbl_805A0B0C;
+extern int lbl_805A0B10;
+extern int lbl_805A0B14;
+extern int lbl_805A0B18;
+extern int lbl_805A0B1C;
+extern int lbl_805A0B20;
+extern int lbl_805A0B24;
+
+void fn_802014C0(void) {
+    lbl_805A0AD8 = 0;
+    lbl_805A0ADC = 0;
+    lbl_805A0AE0 = 0;
+    lbl_805A0AE4 = 0;
+    lbl_805A0AE8 = 0;
+    lbl_805A0AEC = 0;
+    lbl_805A0AF0 = 0;
+    lbl_805A0AF4 = 0;
+    lbl_805A0AF8 = 0;
+    lbl_805A0AFC = 0;
+    lbl_805A0B00 = 0;
+    lbl_805A0B04 = 0;
+    lbl_805A0B08 = 0;
+    lbl_805A0B0C = 0;
+    lbl_805A0B10 = 0;
+    lbl_805A0B14 = 0;
+    lbl_805A0B18 = 0;
+    lbl_805A0B1C = 0;
+    lbl_805A0B20 = 0;
+    lbl_805A0B24 = 0;
+}

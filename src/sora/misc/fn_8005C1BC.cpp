@@ -1,0 +1,13 @@
+#include <types.h>
+#pragma force_active on
+
+extern "C" void fn_8015C144(void* p);
+extern "C" void fn_8015BFB4(void* p, void* q);
+
+extern "C" void fn_8005C1BC(void* self, void* arg) {
+    char* obj = *(char**)((char*)self + 0xc);
+    if (obj != 0) {
+        fn_8015C144(obj + 0x10);
+        fn_8015BFB4(obj + 0x4, arg);
+    }
+}
