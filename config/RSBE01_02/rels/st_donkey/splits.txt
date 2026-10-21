@@ -14,11 +14,17 @@ global_destructor_chain.c:
 mo_stage/st_donkey/st_donkey_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_donkey/st_donkey_function_a4.cpp:
+	.text       start:0x000000A4 end:0x00000168
+
 mo_stage/st_donkey/st_donkey_function_168.cpp:
 	.text       start:0x00000168 end:0x000001EC
 
 mo_stage/st_donkey/st_donkey_function_1ec.cpp:
 	.text       start:0x000001EC end:0x000001F4
+
+mo_stage/st_donkey/st_donkey_function_5cc.cpp:
+	.text       start:0x000005CC end:0x00000690
 
 mo_stage/st_donkey/st_donkey_function_690.cpp:
 	.text       start:0x00000690 end:0x00000698
