@@ -56,6 +56,9 @@ mo_stage/st_metalgear/st_metalgear_function_c68.cpp:
 mo_stage/st_metalgear/st_metalgear_function_c70.cpp:
 	.text       start:0x00000C70 end:0x00000C78
 
+mo_stage/st_metalgear/st_metalgear_function_c78.cpp:
+	.text       start:0x00000C78 end:0x00000D34
+
 mo_stage/st_metalgear/st_metalgear_function_edc.cpp:
 	.text       start:0x00000EDC end:0x00000EE4
 
@@ -322,6 +325,9 @@ mo_stage/st_metalgear/st_metalgear_function_6254.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_6a94.cpp:
 	.text       start:0x00006A94 end:0x00006A98
+
+mo_stage/st_metalgear/st_metalgear_function_6e50.cpp:
+	.text       start:0x00006E50 end:0x00006F0C
 
 mo_stage/st_metalgear/st_metalgear_function_6f0c.cpp:
 	.text       start:0x00006F0C end:0x00006F64
@@ -776,6 +782,9 @@ mo_stage/st_metalgear/st_metalgear_function_a240.cpp:
 mo_stage/st_metalgear/st_metalgear_function_a250.cpp:
 	.text       start:0x0000A250 end:0x0000A260
 
+mo_stage/st_metalgear/st_metalgear_function_a804.cpp:
+	.text       start:0x0000A804 end:0x0000A8C0
+
 mo_stage/st_metalgear/st_metalgear_function_ae54.cpp:
 	.text       start:0x0000AE54 end:0x0000AE9C
 
@@ -794,8 +803,14 @@ mo_stage/st_metalgear/st_metalgear_function_b0a4.cpp:
 mo_stage/st_metalgear/st_metalgear_function_b0b4.cpp:
 	.text       start:0x0000B0B4 end:0x0000B230
 
+mo_stage/st_metalgear/st_metalgear_function_b230.cpp:
+	.text       start:0x0000B230 end:0x0000B2EC
+
 mo_stage/st_metalgear/st_metalgear_function_b2ec.cpp:
 	.text       start:0x0000B2EC end:0x0000B468
+
+mo_stage/st_metalgear/st_metalgear_function_b468.cpp:
+	.text       start:0x0000B468 end:0x0000B524
 
 mo_stage/st_metalgear/st_metalgear_function_b8c8.cpp:
 	.text       start:0x0000B8C8 end:0x0000B910
@@ -812,6 +827,9 @@ mo_stage/st_metalgear/st_metalgear_function_ba10.cpp:
 mo_stage/st_metalgear/st_metalgear_function_ba20.cpp:
 	.text       start:0x0000BA20 end:0x0000BA30
 
+mo_stage/st_metalgear/st_metalgear_function_bc1c.cpp:
+	.text       start:0x0000BC1C end:0x0000BCD8
+
 mo_stage/st_metalgear/st_metalgear_function_bf80.cpp:
 	.text       start:0x0000BF80 end:0x0000C190
 
@@ -826,6 +844,9 @@ mo_stage/st_metalgear/st_metalgear_function_c5bc.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_c5cc.cpp:
 	.text       start:0x0000C5CC end:0x0000C5DC
+
+mo_stage/st_metalgear/st_metalgear_function_c97c.cpp:
+	.text       start:0x0000C97C end:0x0000CA38
 
 mo_stage/st_metalgear/st_metalgear_function_d0ac.cpp:
 	.text       start:0x0000D0AC end:0x0000D0F4
@@ -842,8 +863,14 @@ mo_stage/st_metalgear/st_metalgear_function_d36c.cpp:
 mo_stage/st_metalgear/st_metalgear_function_d37c.cpp:
 	.text       start:0x0000D37C end:0x0000D478
 
+mo_stage/st_metalgear/st_metalgear_function_d478.cpp:
+	.text       start:0x0000D478 end:0x0000D534
+
 mo_stage/st_metalgear/st_metalgear_function_d534.cpp:
 	.text       start:0x0000D534 end:0x0000D630
+
+mo_stage/st_metalgear/st_metalgear_function_d630.cpp:
+	.text       start:0x0000D630 end:0x0000D6EC
 
 mo_stage/st_metalgear/st_metalgear_function_d8e4.cpp:
 	.text       start:0x0000D8E4 end:0x0000D990
@@ -1159,6 +1186,9 @@ mo_stage/st_metalgear/st_metalgear_function_f7f4.cpp:
 
 mo_stage/st_metalgear/st_metalgear_function_f814.cpp:
 	.text       start:0x0000F814 end:0x0000F824
+
+mo_stage/st_metalgear/st_metalgear_function_fb40.cpp:
+	.text       start:0x0000FB40 end:0x0000FBFC
 
 mo_stage/st_metalgear/st_metalgear_function_1039c.cpp:
 	.text       start:0x0001039C end:0x000103E4
