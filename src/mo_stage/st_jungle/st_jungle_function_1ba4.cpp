@@ -1,0 +1,56 @@
+#pragma force_active on
+struct Pad {
+    char pad[0x3c];
+};
+
+struct Iface : Pad {
+    virtual void v0(float);   virtual void v1(float);   virtual void v2(float);   virtual void v3(float);
+    virtual void v4(float);   virtual void v5(float);   virtual void v6(float);   virtual void v7(float);
+    virtual void v8(float);   virtual void v9(float);   virtual void v10(float);  virtual void v11(float);
+    virtual void v12(float);  virtual void v13(float);  virtual void v14(float);  virtual void v15(float);
+    virtual void v16(float);  virtual void v17(float);  virtual void v18(float);  virtual void v19(float);
+    virtual void v20(float);  virtual void v21(float);  virtual void v22(float);  virtual void v23(float);
+    virtual void v24(float);  virtual void v25(float);  virtual void v26(float);  virtual void v27(float);
+    virtual void v28(float);  virtual void v29(float);  virtual void v30(float);  virtual void v31(float);
+    virtual void v32(float);  virtual void v33(float);  virtual void v34(float);  virtual void v35(float);
+    virtual void v36(float);  virtual void v37(float);  virtual void v38(float);  virtual void v39(float);
+    virtual void v40(float);  virtual void v41(float);  virtual void v42(float);  virtual void v43(float);
+    virtual void v44(float);  virtual void v45(float);  virtual void v46(float);  virtual void v47(float);
+    virtual void v48(float);  virtual void v49(float);  virtual void v50(float);  virtual void v51(float);
+    virtual void v52(float);  virtual void v53(float);  virtual void v54(float);  virtual void v55(float);
+    virtual void v56(float);  virtual void v57(float);  virtual void v58(float);  virtual void v59(float);
+    virtual void v60(float);  virtual void v61(float);  virtual void v62(float);  virtual void v63(float);
+    virtual void v64(float);  virtual void v65(float);  virtual void v66(float);  virtual void v67(float);
+    virtual void v68(float);  virtual void v69(float);  virtual void v70(float);  virtual void v71(float);
+    virtual void v72(float);  virtual void v73(float);  virtual void v74(float);  virtual void v75(float);
+    virtual void v76(float);  virtual void v77(float);  virtual void v78(float);  virtual void v79(float);
+    virtual void v80(float);  virtual void v81(float);  virtual void v82(float);  virtual void v83(float);
+    virtual void v84(float);  virtual void v85(float);  virtual void v86(float);  virtual void v87(float);
+    virtual void v88(float);  virtual void v89(float);  virtual void v90(float);  virtual void v91(float);
+    virtual void v92(float);  virtual void v93(float);  virtual void v94(float);  virtual void v95(float);
+    virtual void v96(float);  virtual void v97(float);  virtual void v98(float);  virtual void v99(float);
+    virtual void v100(float); virtual void v101(float); virtual void v102(float); virtual void v103(float);
+    virtual void v104(float); virtual void v105(float); virtual void v106(float); virtual void v107(float);
+    virtual void v108(float); virtual void v109(float); virtual void v110(float); virtual void v111(float);
+    virtual void v112(float); virtual void v113(float); virtual void v114(float); virtual void v115(float);
+    virtual void v116(float); virtual void v117(float); virtual void v118(float); virtual void v119(float);
+    virtual void v120(float); virtual void v121(float); virtual void v122(float); virtual void v123(float);
+    virtual void v124(float); virtual void v125(float); virtual void v126(float); virtual void v127(float);
+    virtual void v128(float); virtual void v129(float); virtual void v130(float); virtual void v131(float);
+    virtual void v132(float); virtual void v133(float); virtual void v134(float); virtual void v135(float);
+    virtual void v136(float); virtual void v137(float); virtual void v138(float); virtual void v139(float);
+    virtual void v140(float); virtual void v141(float); virtual void v142(float); virtual void v143(float);
+    virtual void v144(float); virtual void v145(float); virtual void v146(float); virtual void v147(float);
+    virtual void v148(float); virtual void v149(float);
+};
+
+extern "C" {
+void fn_51_1BA4(Iface* ths, float f) {
+    ths->v144(f);
+    ths->v145(f);
+    ths->v146(f);
+    ths->v147(f);
+    ths->v148(f);
+    ths->v149(f);
+}
+}
