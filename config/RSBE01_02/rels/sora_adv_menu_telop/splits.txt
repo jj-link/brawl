@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_adv_menu_telop/sora_adv_menu_telop/sora_adv_menu_telop_function_d4.cpp:
+	.text       start:0x000000D4 end:0x0000016C
+
 mo_adv_menu_telop/sora_adv_menu_telop/sora_adv_menu_telop_function_49c.cpp:
 	.text       start:0x0000049C end:0x000004B8
 
