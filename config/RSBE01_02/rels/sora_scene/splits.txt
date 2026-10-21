@@ -52,6 +52,9 @@ mo_scene/sora_scene/sora_scene_function_406c.cpp:
 mo_scene/sora_scene/sora_scene_function_40d8.cpp:
 	.text       start:0x000040D8 end:0x000040E0
 
+mo_scene/sora_scene/sora_scene_function_40e0.cpp:
+	.text       start:0x000040E0 end:0x000041AC
+
 mo_scene/sora_scene/sora_scene_function_4eb4.cpp:
 	.text       start:0x00004EB4 end:0x00004EE8
 
@@ -92,8 +95,14 @@ mo_scene/sora_scene/sc_staffroll.cpp:
 	.text       start:0x000061A4 end:0x0000624C
 	.data       start:0x00001400 end:0x00001448
 
+mo_scene/sora_scene/sora_scene_function_6358.cpp:
+	.text       start:0x00006358 end:0x00006424
+
 mo_scene/sora_scene/sora_scene_function_6424.cpp:
 	.text       start:0x00006424 end:0x00006434
+
+mo_scene/sora_scene/sora_scene_function_64dc.cpp:
+	.text       start:0x000064DC end:0x000065A8
 
 mo_scene/sora_scene/sora_scene_function_65a8.cpp:
 	.text       start:0x000065A8 end:0x000065B8
@@ -618,6 +627,9 @@ mo_scene/sora_scene/sora_scene_function_10598.cpp:
 mo_scene/sora_scene/sora_scene_function_105a0.cpp:
 	.text       start:0x000105A0 end:0x000105B0
 
+mo_scene/sora_scene/sora_scene_function_105b0.cpp:
+	.text       start:0x000105B0 end:0x0001067C
+
 mo_scene/sora_scene/sora_scene_function_1067c.cpp:
 	.text       start:0x0001067C end:0x00010684
 
@@ -662,6 +674,9 @@ mo_scene/sora_scene/sora_scene_function_192e8.cpp:
 
 mo_scene/sora_scene/sora_scene_function_1a5a0.cpp:
 	.text       start:0x0001A5A0 end:0x0001A644
+
+mo_scene/sora_scene/sora_scene_function_1a644.cpp:
+	.text       start:0x0001A644 end:0x0001A710
 
 mo_scene/sora_scene/sora_scene_function_1afe4.cpp:
 	.text       start:0x0001AFE4 end:0x0001B004
@@ -875,6 +890,9 @@ mo_scene/sora_scene/sora_scene_function_2679c.cpp:
 
 mo_scene/sora_scene/sora_scene_function_26890.cpp:
 	.text       start:0x00026890 end:0x0002693C
+
+mo_scene/sora_scene/sora_scene_function_2693c.cpp:
+	.text       start:0x0002693C end:0x00026A08
 
 mo_scene/sora_scene/sora_scene_function_271a8.cpp:
 	.text       start:0x000271A8 end:0x0002739C
