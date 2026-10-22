@@ -1,0 +1,47 @@
+#pragma force_active on
+extern char lbl_804FD448[];
+
+void fn_8022FDBC(void) {
+    *(int*)&lbl_804FD448[0x28838] = 0;
+    *(int*)&lbl_804FD448[0x2883C] = 0;
+    *(int*)&lbl_804FD448[0x28840] = 0;
+    *(int*)&lbl_804FD448[0x28860] = 0;
+    *(int*)&lbl_804FD448[0x28880] = 0;
+    *(int*)&lbl_804FD448[0x288A0] = 0;
+    *(int*)&lbl_804FD448[0x288C0] = 0;
+    *(int*)&lbl_804FD448[0x28844] = 0;
+    *(int*)&lbl_804FD448[0x28864] = 0;
+    *(int*)&lbl_804FD448[0x28884] = 0;
+    *(int*)&lbl_804FD448[0x288A4] = 0;
+    *(int*)&lbl_804FD448[0x288C4] = 0;
+    *(int*)&lbl_804FD448[0x28848] = 0;
+    *(int*)&lbl_804FD448[0x28868] = 0;
+    *(int*)&lbl_804FD448[0x28888] = 0;
+    *(int*)&lbl_804FD448[0x288A8] = 0;
+    *(int*)&lbl_804FD448[0x288C8] = 0;
+    *(int*)&lbl_804FD448[0x2884C] = 0;
+    *(int*)&lbl_804FD448[0x2886C] = 0;
+    *(int*)&lbl_804FD448[0x2888C] = 0;
+    *(int*)&lbl_804FD448[0x288AC] = 0;
+    *(int*)&lbl_804FD448[0x288CC] = 0;
+    *(int*)&lbl_804FD448[0x28850] = 0;
+    *(int*)&lbl_804FD448[0x28870] = 0;
+    *(int*)&lbl_804FD448[0x28890] = 0;
+    *(int*)&lbl_804FD448[0x288B0] = 0;
+    *(int*)&lbl_804FD448[0x288D0] = 0;
+    *(int*)&lbl_804FD448[0x28854] = 0;
+    *(int*)&lbl_804FD448[0x28874] = 0;
+    *(int*)&lbl_804FD448[0x28894] = 0;
+    *(int*)&lbl_804FD448[0x288B4] = 0;
+    *(int*)&lbl_804FD448[0x288D4] = 0;
+    *(int*)&lbl_804FD448[0x28858] = 0;
+    *(int*)&lbl_804FD448[0x28878] = 0;
+    *(int*)&lbl_804FD448[0x28898] = 0;
+    *(int*)&lbl_804FD448[0x288B8] = 0;
+    *(int*)&lbl_804FD448[0x288D8] = 0;
+    *(int*)&lbl_804FD448[0x2885C] = 0;
+    *(int*)&lbl_804FD448[0x2887C] = 0;
+    *(int*)&lbl_804FD448[0x2889C] = 0;
+    *(int*)&lbl_804FD448[0x288BC] = 0;
+    *(int*)&lbl_804FD448[0x288DC] = 0;
+}
