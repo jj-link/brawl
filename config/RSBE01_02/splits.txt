@@ -744,6 +744,9 @@ sora/misc/fn_800388D0.cpp:
 sora/misc/fn_800392C0.cpp:
 	.text       start:0x800392C0 end:0x800393C0
 
+sora/misc/fn_80039654.cpp:
+	.text       start:0x80039654 end:0x800397B0
+
 sora/misc/fn_80039A04.cpp:
 	.text       start:0x80039A04 end:0x80039B04
 
@@ -3240,6 +3243,9 @@ sora/misc/fn_800DE850.cpp:
 sora/misc/fn_800DE9B4.cpp:
 	.text       start:0x800DE9B4 end:0x800DEA68
 
+sora/misc/fn_800DEAE4.cpp:
+	.text       start:0x800DEAE4 end:0x800DEB98
+
 sora/misc/fn_800DED0C.cpp:
 	.text       start:0x800DED0C end:0x800DEDC8
 
@@ -5298,6 +5304,9 @@ nw4r/fn_80184AE4.cpp:
 	.text       start:0x80184AE4 end:0x80184AF0
 	.ctors      start:0x804065AC end:0x804065B0
 
+nw4r/fn_80184AF0.cpp:
+	.text       start:0x80184AF0 end:0x80184BA4
+
 nw4r/fn_80185000.cpp:
 	.text       start:0x80185000 end:0x80185048
 
@@ -7349,6 +7358,9 @@ nw4r/fn_801D3C8C.cpp:
 nw4r/fn_801D4040.cpp:
 	.text       start:0x801D4040 end:0x801D40E8
 
+nw4r/fn_801D441C.cpp:
+	.text       start:0x801D441C end:0x801D44D0
+
 nw4r/fn_801D4F5C.cpp:
 	.text       start:0x801D4F5C end:0x801D4F6C
 
@@ -9349,6 +9361,9 @@ RVL_SDK/fn_80247A5C.c:
 
 RVL_SDK/fn_80247AA0.c:
 	.text       start:0x80247AA0 end:0x80247B1C
+
+RVL_SDK/fn_802482C4.c:
+	.text       start:0x802482C4 end:0x8024841C
 
 RVL_SDK/fn_8024841C.c:
 	.text       start:0x8024841C end:0x802484C0
@@ -11787,6 +11802,11 @@ havok/fn_802FB2E8.cpp:
 havok/fn_802FB418.cpp:
 	.text       start:0x802FB418 end:0x802FB45C
 
+havok/fn_802FB894.cpp:
+	extab       start:0x80008684 end:0x8000868C
+	extabindex  start:0x8000B518 end:0x8000B524
+	.text       start:0x802FB894 end:0x802FB948
+
 havok/fn_802FBEF8.cpp:
 	.text       start:0x802FBEF8 end:0x802FBF38
 
@@ -11988,6 +12008,11 @@ havok/fn_8031F3C8.cpp:
 	extab       start:0x80008CF4 end:0x80008CFC
 	extabindex  start:0x8000BC74 end:0x8000BC80
 	.text       start:0x8031F3C8 end:0x8031F458
+
+havok/fn_803201D8.cpp:
+	extab       start:0x80008D1C end:0x80008D24
+	extabindex  start:0x8000BCB0 end:0x8000BCBC
+	.text       start:0x803201D8 end:0x80320288
 
 havok/fn_803227E8.cpp:
 	.text       start:0x803227E8 end:0x803227F4
