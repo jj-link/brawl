@@ -806,6 +806,9 @@ sora/misc/fn_8003EA50.cpp:
 sora/misc/fn_8003F074.cpp:
 	.text       start:0x8003F074 end:0x8003F0FC
 
+sora/misc/fn_8003F8FC.cpp:
+	.text       start:0x8003F8FC end:0x8003F9A8
+
 sora/mt/mt_prng.cpp:
 	.text       start:0x8003FABC end:0x8003FD5C
 	.ctors      start:0x80406510 end:0x80406514
@@ -10131,6 +10134,9 @@ RVL_SDK/fn_802870E4.c:
 RVL_SDK/fn_802870F8.c:
 	.text       start:0x802870F8 end:0x802871F4
 
+RVL_SDK/fn_802871F4.c:
+	.text       start:0x802871F4 end:0x80287274
+
 RVL_SDK/fn_80287274.c:
 	.text       start:0x80287274 end:0x802872F4
 
@@ -10496,6 +10502,11 @@ havok/fn_802AA8C0.cpp:
 	extab       start:0x80006F14 end:0x80006F1C
 	extabindex  start:0x8000A0D8 end:0x8000A0E4
 	.text       start:0x802AA8C0 end:0x802AA9B8
+
+havok/fn_802AA9B8.cpp:
+	extab       start:0x80006F1C end:0x80006F24
+	extabindex  start:0x8000A0E4 end:0x8000A0F0
+	.text       start:0x802AA9B8 end:0x802AAA38
 
 havok/fn_802ABC70.cpp:
 	.text       start:0x802ABC70 end:0x802ABC84
@@ -11649,6 +11660,9 @@ havok/fn_802E5C28.cpp:
 havok/fn_802E5C78.cpp:
 	.text       start:0x802E5C78 end:0x802E5CB4
 
+havok/fn_802E5F3C.cpp:
+	.text       start:0x802E5F3C end:0x802E5FBC
+
 havok/fn_802E609C.cpp:
 	.text       start:0x802E609C end:0x802E60EC
 	.ctors      start:0x80406720 end:0x80406724
@@ -12347,6 +12361,9 @@ havok/fn_80331E64.cpp:
 
 havok/fn_8033249C.cpp:
 	.text       start:0x8033249C end:0x8033251C
+
+havok/fn_8033251C.cpp:
+	.text       start:0x8033251C end:0x8033259C
 
 havok/fn_803326D4.cpp:
 	.text       start:0x803326D4 end:0x803326E4
@@ -13372,6 +13389,9 @@ network/fn_8038987C.c:
 network/fn_803898B0.c:
 	.text       start:0x803898B0 end:0x803898F0
 
+network/fn_80389944.c:
+	.text       start:0x80389944 end:0x803899C4
+
 network/fn_80389F84.c:
 	.text       start:0x80389F84 end:0x8038A00C
 
@@ -13518,6 +13538,9 @@ network/fn_803928F4.c:
 
 network/fn_80392AB8.c:
 	.text       start:0x80392AB8 end:0x80392B58
+
+network/fn_80392CD4.c:
+	.text       start:0x80392CD4 end:0x80392D88
 
 network/fn_803930A0.c:
 	.text       start:0x803930A0 end:0x803930AC
