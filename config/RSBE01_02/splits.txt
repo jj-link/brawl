@@ -677,6 +677,9 @@ sora/misc/fn_80037DAC.cpp:
 sora/misc/fn_80037DD0.cpp:
 	.text       start:0x80037DD0 end:0x80037E64
 
+sora/misc/fn_80037E64.cpp:
+	.text       start:0x80037E64 end:0x80037F04
+
 sora/misc/fn_80037F04.cpp:
 	.text       start:0x80037F04 end:0x80037F74
 
@@ -728,6 +731,9 @@ sora/misc/fn_8003CD6C.cpp:
 
 sora/misc/fn_8003CFD0.cpp:
 	.text       start:0x8003CFD0 end:0x8003D054
+
+sora/misc/fn_8003D054.cpp:
+	.text       start:0x8003D054 end:0x8003D0F4
 
 sora/gf/gf_monitor.cpp:
 	.text       start:0x8003D794 end:0x8003D864
@@ -12080,6 +12086,9 @@ network/fn_8038563C.c:
 network/fn_80385CC4.c:
 	.text       start:0x80385CC4 end:0x80385CF8
 
+network/fn_80385CF8.c:
+	.text       start:0x80385CF8 end:0x80385D94
+
 network/fn_80386238.c:
 	.text       start:0x80386238 end:0x8038633C
 
@@ -12794,6 +12803,9 @@ network/fn_803C2AD4.c:
 network/fn_803C2AF8.c:
 	.text       start:0x803C2AF8 end:0x803C2B1C
 
+network/fn_803C2B1C.c:
+	.text       start:0x803C2B1C end:0x803C2BB8
+
 network/fn_803C2BB8.c:
 	.text       start:0x803C2BB8 end:0x803C2BE0
 
@@ -12835,6 +12847,9 @@ network/fn_803C30C0.c:
 
 network/fn_803C3894.c:
 	.text       start:0x803C3894 end:0x803C3920
+
+network/fn_803C3920.c:
+	.text       start:0x803C3920 end:0x803C39BC
 
 network/fn_803C39BC.c:
 	.text       start:0x803C39BC end:0x803C3A48
@@ -13123,6 +13138,11 @@ network/fn_803D577C.c:
 network/fn_803D5870.c:
 	.text       start:0x803D5870 end:0x803D5878
 
+network/fn_803D5924.c:
+	extab       start:0x80009494 end:0x8000949C
+	extabindex  start:0x8000C478 end:0x8000C484
+	.text       start:0x803D5924 end:0x803D59C0
+
 network/fn_803D59C0.c:
 	extab       start:0x8000949C end:0x800094A4
 	extabindex  start:0x8000C484 end:0x8000C490
@@ -13351,6 +13371,9 @@ network/fn_803E722C.c:
 network/fn_803E7234.c:
 	.text       start:0x803E7234 end:0x803E72B4
 
+network/fn_803E7BB4.c:
+	.text       start:0x803E7BB4 end:0x803E7C50
+
 network/fn_803E8860.c:
 	.text       start:0x803E8860 end:0x803E88BC
 
@@ -13389,6 +13412,9 @@ network/fn_803EB5FC.c:
 
 network/fn_803EB620.c:
 	.text       start:0x803EB620 end:0x803EB644
+
+network/fn_803EB644.c:
+	.text       start:0x803EB644 end:0x803EB6E0
 
 network/fn_803EB6E0.c:
 	.text       start:0x803EB6E0 end:0x803EB708
