@@ -750,6 +750,9 @@ sora/misc/fn_80039A04.cpp:
 sora/misc/fn_80039C40.cpp:
 	.text       start:0x80039C40 end:0x80039D40
 
+sora/misc/fn_80039FA8.cpp:
+	.text       start:0x80039FA8 end:0x8003A0F8
+
 sora/misc/fn_8003A210.cpp:
 	.text       start:0x8003A210 end:0x8003A224
 
@@ -2774,6 +2777,9 @@ sora/misc/fn_800B9678.cpp:
 sora/misc/fn_800B98DC.cpp:
 	.text       start:0x800B98DC end:0x800B9984
 
+sora/misc/fn_800B9F90.cpp:
+	.text       start:0x800B9F90 end:0x800BA0E0
+
 sora/misc/fn_800BA2E0.cpp:
 	.text       start:0x800BA2E0 end:0x800BA2E8
 
@@ -4032,6 +4038,9 @@ sora/misc/fn_80134440.cpp:
 
 sora/misc/fn_80134524.cpp:
 	.text       start:0x80134524 end:0x80134534
+
+sora/misc/fn_80134534.cpp:
+	.text       start:0x80134534 end:0x801345E0
 
 sora/misc/fn_80134C54.cpp:
 	.text       start:0x80134C54 end:0x80134C88
@@ -6246,6 +6255,9 @@ nw4r/fn_801AC334.cpp:
 nw4r/fn_801AC364.cpp:
 	.text       start:0x801AC364 end:0x801AC370
 
+nw4r/fn_801AC4A8.cpp:
+	.text       start:0x801AC4A8 end:0x801AC554
+
 nw4r/fn_801AC554.cpp:
 	.text       start:0x801AC554 end:0x801AC5B0
 
@@ -7028,6 +7040,9 @@ nw4r/fn_801C8E68.cpp:
 nw4r/fn_801C96A8.cpp:
 	.text       start:0x801C96A8 end:0x801C96B8
 
+nw4r/fn_801C96B8.cpp:
+	.text       start:0x801C96B8 end:0x801C9804
+
 nw4r/fn_801CA3DC.cpp:
 	.text       start:0x801CA3DC end:0x801CA430
 
@@ -7327,6 +7342,9 @@ nw4r/fn_801D3C54.cpp:
 
 nw4r/fn_801D3C8C.cpp:
 	.text       start:0x801D3C8C end:0x801D3D08
+
+nw4r/fn_801D4040.cpp:
+	.text       start:0x801D4040 end:0x801D40E8
 
 nw4r/fn_801D4F5C.cpp:
 	.text       start:0x801D4F5C end:0x801D4F6C
@@ -13978,6 +13996,9 @@ network/fn_803C4C70.c:
 network/fn_803C4C7C.c:
 	.text       start:0x803C4C7C end:0x803C4CB8
 
+network/fn_803C51F8.c:
+	.text       start:0x803C51F8 end:0x803C5348
+
 network/fn_803C5868.c:
 	.text       start:0x803C5868 end:0x803C5970
 
@@ -14088,6 +14109,9 @@ network/fn_803CAAD8.c:
 
 network/fn_803CABD4.c:
 	.text       start:0x803CABD4 end:0x803CAC0C
+
+network/fn_803CAC0C.c:
+	.text       start:0x803CAC0C end:0x803CACB4
 
 network/fn_803CACB4.c:
 	.text       start:0x803CACB4 end:0x803CACCC
