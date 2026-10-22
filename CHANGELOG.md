@@ -7,6 +7,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Matched 2 functions in `sora_melee` with decomp-orchestrator: glm 1, qwen27b 1.
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
+## sora_melee: 2 functions
+
+- Matched 2 functions in `sora_melee` with decomp-orchestrator: glm 1, qwen27b 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## sora_melee: 5 functions
 
 - Matched 5 functions in `sora_melee` with decomp-orchestrator: glm 4, qwen27b 1.
