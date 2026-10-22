@@ -23902,8 +23902,14 @@ mo_melee/sora_melee/sora_melee_function_ed26c.cpp:
 mo_melee/sora_melee/sora_melee_function_ed27c.cpp:
 	.text       start:0x000ED27C end:0x000ED28C
 
+mo_melee/sora_melee/sora_melee_function_ed28c.cpp:
+	.text       start:0x000ED28C end:0x000ED3D0
+
 mo_melee/sora_melee/sora_melee_function_ed3d0.cpp:
 	.text       start:0x000ED3D0 end:0x000ED48C
+
+mo_melee/sora_melee/sora_melee_function_ed48c.cpp:
+	.text       start:0x000ED48C end:0x000ED5D0
 
 mo_melee/sora_melee/sora_melee_function_ed5d0.cpp:
 	.text       start:0x000ED5D0 end:0x000ED68C
@@ -35960,6 +35966,9 @@ mo_melee/sora_melee/sora_melee_function_19c0b4.cpp:
 mo_melee/sora_melee/sora_melee_function_19c0c4.cpp:
 	.text       start:0x0019C0C4 end:0x0019C0D4
 
+mo_melee/sora_melee/sora_melee_function_19c0d4.cpp:
+	.text       start:0x0019C0D4 end:0x0019C214
+
 mo_melee/sora_melee/sora_melee_function_19c214.cpp:
 	.text       start:0x0019C214 end:0x0019C27C
 
@@ -36289,6 +36298,9 @@ mo_melee/sora_melee/sora_melee_function_19d488.cpp:
 
 mo_melee/sora_melee/sora_melee_function_19d498.cpp:
 	.text       start:0x0019D498 end:0x0019D4A8
+
+mo_melee/sora_melee/sora_melee_function_19d4a8.cpp:
+	.text       start:0x0019D4A8 end:0x0019D5E8
 
 mo_melee/sora_melee/sora_melee_function_19d5e8.cpp:
 	.text       start:0x0019D5E8 end:0x0019D650
@@ -54496,6 +54508,10 @@ mo_melee/sora_melee/sora_melee_function_27bee8.cpp:
 mo_melee/sora_melee/sora_melee_function_27bf40.cpp:
 	.text       start:0x0027BF40 end:0x0027BF44
 
+mo_melee/sora_melee/sora_melee_function_27bf44.cpp:
+	.text       start:0x0027BF44 end:0x0027C000
+	.rodata     start:0x000045A0 end:0x000045A8
+
 mo_melee/sora_melee/sora_melee_function_27c000.cpp:
 	.text       start:0x0027C000 end:0x0027C070
 
@@ -55203,6 +55219,9 @@ mo_melee/sora_melee/sora_melee_function_28f66c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_28f6bc.cpp:
 	.text       start:0x0028F6BC end:0x0028F6D4
+
+mo_melee/sora_melee/sora_melee_function_28f6d4.cpp:
+	.text       start:0x0028F6D4 end:0x0028F814
 
 mo_melee/sora_melee/sora_melee_function_28f8fc.cpp:
 	.text       start:0x0028F8FC end:0x0028F96C
