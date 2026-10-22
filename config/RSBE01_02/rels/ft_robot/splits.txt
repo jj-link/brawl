@@ -1205,6 +1205,10 @@ mo_fighter/ft_robot/ft_robot_function_cc14.cpp:
 mo_fighter/ft_robot/ft_robot_function_cc1c.cpp:
 	.text       start:0x0000CC1C end:0x0000CC28
 
+mo_fighter/ft_robot/ft_robot_function_cc28.cpp:
+	.text       start:0x0000CC28 end:0x0000CCAC
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_robot/ft_robot_function_ccac.cpp:
 	.text       start:0x0000CCAC end:0x0000CCF4
 

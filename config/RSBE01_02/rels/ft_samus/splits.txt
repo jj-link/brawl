@@ -1866,6 +1866,10 @@ mo_fighter/ft_samus/ft_samus_function_19acc.cpp:
 mo_fighter/ft_samus/ft_samus_function_19af4.cpp:
 	.text       start:0x00019AF4 end:0x00019B0C
 
+mo_fighter/ft_samus/ft_samus_function_19b0c.cpp:
+	.text       start:0x00019B0C end:0x00019B90
+	.ctors      start:0x00000014 end:0x00000018
+
 mo_fighter/ft_samus/ft_samus_function_19b90.cpp:
 	.text       start:0x00019B90 end:0x00019BD8
 
