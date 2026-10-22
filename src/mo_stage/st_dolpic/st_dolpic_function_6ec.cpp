@@ -1,0 +1,182 @@
+#pragma force_active on
+
+struct ObjClass {
+    virtual void f0();
+    virtual void f1(int, int, int);
+};
+
+struct Ground {
+    char pad[0x3c];
+    virtual void f0();
+    virtual void f1();
+    virtual void f2();
+    virtual void f3();
+    virtual void f4();
+    virtual void f5();
+    virtual void f6();
+    virtual void f7();
+    virtual void f8();
+    virtual void f9();
+    virtual void f10();
+    virtual void f11();
+    virtual void f12();
+    virtual void f13();
+    virtual void f14();
+    virtual void f15();
+    virtual void f16();
+    virtual void f17();
+    virtual void f18();
+    virtual void f19();
+    virtual void f20();
+    virtual void f21();
+    virtual void f22();
+    virtual void f23();
+    virtual void f24();
+    virtual void f25();
+    virtual void f26();
+    virtual void f27();
+    virtual void f28();
+    virtual void f29();
+    virtual void f30();
+    virtual void f31();
+    virtual void f32();
+    virtual void f33();
+    virtual void f34();
+    virtual void f35();
+    virtual void f36();
+    virtual void f37(void*, int, int);
+    virtual void f38();
+    virtual void f39(void*);
+    virtual void f40();
+    virtual void f41();
+    virtual void f42();
+    virtual void f43();
+    virtual void f44();
+    virtual void f45();
+    virtual void f46();
+    virtual void f47();
+    virtual void f48();
+    virtual void f49();
+    virtual void f50();
+    virtual void f51();
+    virtual void f52();
+    virtual void f53();
+    virtual void f54();
+    virtual void f55();
+    virtual void f56();
+    virtual void f57();
+    virtual void f58();
+    virtual void f59();
+    virtual void f60();
+    virtual void f61();
+    virtual void f62();
+    virtual void f63();
+    virtual void f64();
+    virtual void f65();
+    virtual void f66();
+    virtual void f67();
+    virtual void f68();
+    virtual void f69();
+    virtual void f70();
+    virtual void f71();
+    virtual void f72();
+    virtual void f73();
+    virtual void f74();
+    virtual void f75();
+    virtual void f76();
+    virtual void f77();
+    virtual void f78();
+    virtual void f79();
+    virtual void f80();
+    virtual void f81();
+    virtual void f82();
+    virtual void f83();
+    virtual void f84();
+    virtual void f85();
+    virtual void f86();
+    virtual void f87();
+    virtual void f88();
+    virtual void f89();
+    virtual void f90();
+    virtual void f91();
+    virtual void f92();
+    virtual void f93();
+    virtual void f94();
+    virtual void f95();
+    virtual void f96();
+    virtual void f97();
+    virtual void f98();
+    virtual void f99();
+    virtual void f100();
+    virtual void f101();
+    virtual void f102();
+    virtual void f103();
+    virtual void f104();
+    virtual void f105();
+    virtual void f106();
+    virtual void f107();
+    virtual void f108();
+    virtual void f109();
+    virtual void f110();
+    virtual void f111();
+    virtual void f112();
+    virtual void f113();
+    virtual void f114();
+    virtual void f115();
+    virtual void f116(void*);
+    virtual void f117(void*);
+    virtual void f118(void*);
+    virtual void f119();
+    virtual void f120();
+    char pad40[4];
+    ObjClass** at44;
+};
+
+struct Stage {
+    char pad0[0x9c];
+    void* at9c;
+    char padA0[0x100];
+    void* at1a0;
+    char pad1A4[0x54C];
+    int at6f0;
+    int at6f4;
+    int at6f8;
+    int at6fc;
+    int at700;
+    int at704;
+    int at708;
+    int at70c;
+    int at710;
+};
+
+extern "C" {
+extern const char lbl_46_data_C[];
+extern const char lbl_46_data_20[];
+Ground* fn_46_4894(int, const char*, const char*);
+void addGround__5StageFP6Ground(Stage*, Ground*);
+int createCollision__5StageFP9gfArchiveiP6Ground(Stage*, void*, int, Ground*);
+
+void fn_46_6EC(Stage* stage) {
+    Ground* ground = fn_46_4894(0, lbl_46_data_C, lbl_46_data_20);
+    if (ground) {
+        addGround__5StageFP6Ground(stage, ground);
+        ground->f37(stage->at1a0, 0, 0);
+        ground->f39(stage->at9c);
+        ground->f116((char*)stage + 0x250);
+        ground->f117((char*)stage + 0x41c);
+        ground->f118((char*)stage + 0x74c);
+        if (ground->at44[0]) {
+            ground->at44[0]->f1(1, 0, 0);
+        }
+        stage->at6f0 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x32, ground);
+        stage->at6f4 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x33, ground);
+        stage->at6f8 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x34, ground);
+        stage->at6fc = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x35, ground);
+        stage->at700 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x36, ground);
+        stage->at704 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x37, ground);
+        stage->at708 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x38, ground);
+        stage->at70c = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x39, ground);
+        stage->at710 = createCollision__5StageFP9gfArchiveiP6Ground(stage, stage->at1a0, 0x3A, ground);
+    }
+}
+}
