@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_mario and main: 17 functions
+
+- Matched 17 functions in `ft_mario and main` with decomp-orchestrator: haiku 10, opus 2, qwen-flash 1, qwen27b 2, sonnet 2.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main and sora_melee: 18 functions
 
 - Matched 18 functions in `main and sora_melee` with decomp-orchestrator: haiku 16, qwen27b 2.
