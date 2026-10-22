@@ -1465,6 +1465,10 @@ mo_fighter/ft_ganon/ft_ganon_function_d1fc.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_d23c.cpp:
 	.text       start:0x0000D23C end:0x0000D27C
 
+mo_fighter/ft_ganon/ft_ganon_function_d27c.cpp:
+	.text       start:0x0000D27C end:0x0000D334
+	.ctors      start:0x0000000C end:0x00000010
+
 mo_fighter/ft_ganon/ft_ganon_function_d334.cpp:
 	.text       start:0x0000D334 end:0x0000D344
 
