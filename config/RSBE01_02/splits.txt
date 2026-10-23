@@ -222,6 +222,9 @@ sora/gf/gf_callback.cpp:
 sora/gf/gf_decomp.cpp:
 	.text       start:0x8001A48C end:0x8001A5C0
 
+sora/misc/fn_8001A5C0.cpp:
+	.text       start:0x8001A5C0 end:0x8001A7AC
+
 sora/misc/fn_8001A980.cpp:
 	.text       start:0x8001A980 end:0x8001AA88
 
@@ -12884,6 +12887,9 @@ network/fn_80350908.c:
 
 network/fn_80350BBC.c:
 	.text       start:0x80350BBC end:0x80350C0C
+
+network/fn_80350C0C.c:
+	.text       start:0x80350C0C end:0x80350C1C
 
 network/fn_80350C24.c:
 	.text       start:0x80350C24 end:0x80350C44
