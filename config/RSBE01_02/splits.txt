@@ -11272,6 +11272,11 @@ havok/fn_802B6060.cpp:
 havok/fn_802B60A0.cpp:
 	.text       start:0x802B60A0 end:0x802B60B8
 
+havok/fn_802B6C1C.cpp:
+	extab       start:0x8000755C end:0x80007574
+	extabindex  start:0x8000A54C end:0x8000A558
+	.text       start:0x802B6C1C end:0x802B6C64
+
 havok/fn_802B87B8.cpp:
 	extab       start:0x8000769C end:0x800076C4
 	extabindex  start:0x8000A5F4 end:0x8000A600
@@ -13092,6 +13097,9 @@ havok/fn_803314B8.cpp:
 havok/fn_803315A4.cpp:
 	.text       start:0x803315A4 end:0x803315C0
 
+havok/fn_803316E8.cpp:
+	.text       start:0x803316E8 end:0x80331770
+
 havok/fn_803317DC.cpp:
 	.text       start:0x803317DC end:0x80331884
 
@@ -13771,6 +13779,9 @@ network/fn_803683A0.c:
 network/fn_80368538.c:
 	.text       start:0x80368538 end:0x803685D0
 
+network/fn_80368648.c:
+	.text       start:0x80368648 end:0x803686D0
+
 network/fn_803688F8.c:
 	.text       start:0x803688F8 end:0x80368990
 
@@ -13857,6 +13868,9 @@ network/fn_80370938.c:
 
 network/fn_80370944.c:
 	.text       start:0x80370944 end:0x803709D0
+
+network/fn_803709D0.c:
+	.text       start:0x803709D0 end:0x80370A58
 
 network/fn_80370A58.c:
 	.text       start:0x80370A58 end:0x80370A78
@@ -15084,6 +15098,9 @@ network/fn_803C4C70.c:
 
 network/fn_803C4C7C.c:
 	.text       start:0x803C4C7C end:0x803C4CB8
+
+network/fn_803C4DEC.c:
+	.text       start:0x803C4DEC end:0x803C4E74
 
 network/fn_803C51F8.c:
 	.text       start:0x803C51F8 end:0x803C5348
