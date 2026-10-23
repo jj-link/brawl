@@ -1,0 +1,56 @@
+#pragma force_active on
+
+struct Element {
+    unsigned int a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18;
+    float f0, f1, f2;
+    unsigned int b0, b1, b2, b3, b4, b5;
+    short s;
+    unsigned char c0, c1, c2;
+};
+
+struct soArrayVectorCalcInterface {};
+
+class Array {
+public:
+    virtual void v08();
+    virtual void v0c();
+    virtual void v10();
+    virtual int size();
+    virtual void v18();
+    virtual void v1c();
+    virtual void v20();
+    virtual void v24();
+    virtual void v28();
+    virtual void v2c();
+    virtual void v30();
+    virtual void v34();
+    virtual void v38();
+    virtual int v3c();
+    virtual bool v40();
+    virtual void v44();
+    virtual void v48();
+    virtual void v4c();
+    virtual void v50();
+    virtual void v54();
+    virtual void v58();
+    virtual void v5c();
+    virtual void v60();
+    virtual void v64();
+    virtual void v68();
+    virtual void v6c();
+    virtual Element* at(int);
+    virtual int v74();
+    virtual int v78();
+    virtual void setSize(int);
+
+    soArrayVectorCalcInterface calc;
+};
+
+extern "C" int unshift__23soArrayVectorCalculatorFR26soArrayVectorCalcInterfaceblll(
+    soArrayVectorCalcInterface&, bool, long, long, long);
+
+extern "C" void fn_56_9C54(Array* self, const Element* value) {
+    *self->at(unshift__23soArrayVectorCalculatorFR26soArrayVectorCalcInterfaceblll(
+        self->calc, self->v40(), self->v3c(), self->v74(), self->v78())) = *value;
+    self->setSize(self->size() + 1);
+}
