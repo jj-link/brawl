@@ -11,6 +11,18 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_marth/ft_marth_function_53c4.cpp:
+	.text       start:0x000053C4 end:0x000053D8
+
+mo_fighter/ft_marth/ft_marth_function_77f4.cpp:
+	.text       start:0x000077F4 end:0x00007804
+
+mo_fighter/ft_marth/ft_marth_function_7dd4.cpp:
+	.text       start:0x00007DD4 end:0x00007DE8
+
+mo_fighter/ft_marth/ft_marth_function_7fec.cpp:
+	.text       start:0x00007FEC end:0x00007FFC
+
 mo_fighter/ft_marth/ft_marth_general_work.cpp:
 	.text       start:0x00008218 end:0x000083D8
 
