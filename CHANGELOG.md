@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main, st_palutena and 4 more: 10 functions
+
+- Matched 10 functions in `main, st_palutena and 4 more` with decomp-orchestrator: haiku 5, sol 5.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## st_earth, st_gw and 2 more: 4 functions
 
 - Matched 4 functions in `st_earth, st_gw and 2 more` with decomp-orchestrator: haiku 3, qwen-flash 1.
