@@ -4318,6 +4318,10 @@ sora/misc/fn_80137684.cpp:
 sora/misc/fn_801376A0.cpp:
 	.text       start:0x801376A0 end:0x801376B4
 
+sora/misc/fn_80137FB8.cpp:
+	.text       start:0x80137FB8 end:0x80137FF0
+	.ctors      start:0x80406550 end:0x80406554
+
 sora/misc/fn_80137FF0.cpp:
 	.text       start:0x80137FF0 end:0x8013804C
 
