@@ -3960,6 +3960,9 @@ sora/if/if_wifipr_task.cpp:
 sora/misc/fn_800FD1F8.cpp:
 	.text       start:0x800FD1F8 end:0x800FD220
 
+sora/misc/fn_800FD220.cpp:
+	.text       start:0x800FD220 end:0x800FD2D0
+
 sora/misc/fn_800FD44C.cpp:
 	.text       start:0x800FD44C end:0x800FD470
 
@@ -11051,6 +11054,9 @@ RVL_SDK/fn_8027E188.c:
 
 RVL_SDK/fn_8027E1C4.c:
 	.text       start:0x8027E1C4 end:0x8027E20C
+
+RVL_SDK/fn_8027E20C.c:
+	.text       start:0x8027E20C end:0x8027E264
 
 RVL_SDK/fn_8027E264.c:
 	.text       start:0x8027E264 end:0x8027E27C
