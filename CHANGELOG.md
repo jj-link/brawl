@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main and st_gw: 76 functions
+
+- Matched 76 functions in `main and st_gw` with decomp-orchestrator: glm 75, qwen27b 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main: 6 functions removed
 
 - Removed 6 functions that decomp-orchestrator had matched by writing their machine code as a data array in `.text` instead of C code: `PPCMfmsr`, `PPCMfhid0`, `fn_801D5080`, `PPCMfl2cr`, `PPCMtl2cr`, `fn_801D50A0`.
