@@ -25,7 +25,7 @@ struct Obj {
 };
 
 extern "C" {
-Obj* dtor_80326098(Obj* self, int flag) {
+Obj* __dt__14Class_80326098Fv(Obj* self, int flag) {
     if (self) {
         if (self->isOwned()) {
             fn_8027EABC(lbl_805A0EC8, self->data, self->raw << 6, 0x15);

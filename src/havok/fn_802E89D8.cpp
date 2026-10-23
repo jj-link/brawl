@@ -29,7 +29,7 @@ struct Obj {
 };
 
 extern "C" {
-void* dtor_802E89D8(Obj* self, int flag) {
+void* __dt__14Class_802E89D8Fv(Obj* self, int flag) {
     if (self) {
         if (self->isOwned())
             self->dealloc();

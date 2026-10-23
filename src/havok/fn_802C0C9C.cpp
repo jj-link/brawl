@@ -30,7 +30,7 @@ struct Array {
     }
 };
 
-extern "C" void* dtor_802C0C9C(void* arg0, int arg1) {
+extern "C" void* __dt__14Class_802C0C9CFv(void* arg0, int arg1) {
     if (arg0) {
         if (arg0) {
             Array* self = (Array*)arg0;

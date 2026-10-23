@@ -9,7 +9,7 @@ struct ArrayHeader {
 };
 extern void __dl__FPv(void*);
 
-struct ArrayHeader* dtor_803F0B20(struct ArrayHeader* array, int release) {
+struct ArrayHeader* __dt__14Class_803F0B20Fv(struct ArrayHeader* array, int release) {
     if (array != 0) {
         if (array->count < array->capacity && array->destroy != 0) {
             char* cursor = array->elements + array->stride * array->count;

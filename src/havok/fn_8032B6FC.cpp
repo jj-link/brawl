@@ -44,7 +44,7 @@ struct Array {
     }
 };
 
-extern "C" Array* dtor_8032B6FC(Array* self, int flag) {
+extern "C" Array* __dt__14Class_8032B6FCFv(Array* self, int flag) {
     if (self) {
         unsigned int v = self->f0c;
         Heap* h = lbl_805A0EC8;

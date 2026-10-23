@@ -29,7 +29,7 @@ struct Array {
     }
 };
 
-extern "C" void* dtor_802A4DA4(void* arg0, int arg1) {
+extern "C" void* __dt__14Class_802A4DA4Fv(void* arg0, int arg1) {
     Array* self = (Array*)arg0;
     if (arg0 != 0) {
         if (arg0 != 0 && self->isOwned()) {

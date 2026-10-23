@@ -19,7 +19,7 @@ struct SoBlockHeader {
 };
 
 extern "C" {
-void dtor_8030A6BC(void* p) {
+void __dl__14Class_8030A6BCFPv(void* p) {
     SoBlockHeader* h = (SoBlockHeader*)p;
     lbl_805A0EB8->free(p, h->size, 0x1f);
 }

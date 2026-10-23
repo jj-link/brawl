@@ -21,7 +21,7 @@ struct Obj {
     int field24;
 };
 
-extern "C" void fn_802F0BA8(Obj* self, int arg1) {
+extern "C" void __ct__14Class_802F0BECFi(Obj* self, int arg1) {
     self->field6 = 1;
     self->vtable = lbl_80488630;
     self->field8 = arg1;

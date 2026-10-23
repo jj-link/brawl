@@ -5,7 +5,7 @@ void __dl__FPv(void*);
 }
 
 extern "C" {
-void* dtor_802B6060(void* block, int destroy) {
+void* __dt__14Class_802B6060Fv(void* block, int destroy) {
     if (block != 0 && destroy > 0) {
         __dl__FPv(block);
     }

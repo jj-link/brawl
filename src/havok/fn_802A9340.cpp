@@ -5,10 +5,10 @@
 // __dl__FPv before handing the original pointer back to the caller.
 extern "C" {
 void __dl__FPv(void*);
-void* dtor_802A9340(void*, int);
+void* __dt__14Class_802A9340Fv(void*, int);
 }
 
-extern "C" void* dtor_802A9340(void* allocation, int destroy) {
+extern "C" void* __dt__14Class_802A9340Fv(void* allocation, int destroy) {
     if (allocation != 0 && destroy > 0) {
         __dl__FPv(allocation);
     }

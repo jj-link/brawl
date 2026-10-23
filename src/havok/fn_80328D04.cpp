@@ -49,7 +49,7 @@ struct Arg {
 };
 
 extern "C" {
-void* dtor_80328D04(Arg* arg0, int arg1) {
+void* __dt__14Class_80328D04Fv(Arg* arg0, int arg1) {
     if (arg0) {
         arg0->destroy();
         if (arg1 > 0) {

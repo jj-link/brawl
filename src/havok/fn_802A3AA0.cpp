@@ -28,7 +28,7 @@ struct Array {
     }
 };
 
-extern "C" Array* dtor_802A3AA0(Array* self, int flag) {
+extern "C" Array* __dt__14Class_802A3AA0Fv(Array* self, int flag) {
     if (self) {
         if (self->isOwned()) {
             self->dealloc();

@@ -13,6 +13,6 @@ public:
 
 extern SoHeapAllocator* lbl_805A0EB8;
 
-extern "C" void dtor_80326078(void* self) {
+extern "C" void __dl__14Class_80326078FPv(void* self) {
     lbl_805A0EB8->vf5(self, *(u16*)((u8*)self + 4), 0x13);
 }

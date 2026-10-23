@@ -25,7 +25,7 @@ struct Obj {
     }
 };
 
-extern "C" void* dtor_8032B668(Obj* self, int flag) {
+extern "C" void* __dt__14Class_8032B668Fv(Obj* self, int flag) {
     if (self) {
         if (self) {
             if (self->isOwned()) {

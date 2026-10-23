@@ -27,7 +27,7 @@ struct Array {
     }
 };
 
-extern "C" void* dtor_8030A490(void* self, int flag) {
+extern "C" void* __dt__14Class_8030A490Fv(void* self, int flag) {
     if (self) {
         Array* a = (Array*)self;
         if (a->isOwned())

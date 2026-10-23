@@ -29,7 +29,7 @@ struct Arr {
 };
 
 extern "C" {
-Arr* dtor_802B90D8(Arr* self, int flag) {
+Arr* __dt__14Class_802B90D8Fv(Arr* self, int flag) {
     if (self) {
         if (self) {
             if (self->isOwned()) {

@@ -19,6 +19,6 @@ struct Foo {
     u16 m_06;
 };
 
-extern "C" void dtor_802A1FD4(Foo* self) {
+extern "C" void __dl__14Class_802A1FD4FPv(Foo* self) {
     lbl_805A0EB8->free(self, self->m_04, 0x1d);
 }

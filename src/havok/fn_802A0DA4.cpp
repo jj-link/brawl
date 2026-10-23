@@ -20,7 +20,7 @@ struct DtorObj {
     u16 type;
 };
 
-void dtor_802A0DA4(DtorObj* self) {
+void __dl__14Class_802A0DA4FPv(DtorObj* self) {
     lbl_805A0EB8->free(self, self->type, 0x1d);
 }
 

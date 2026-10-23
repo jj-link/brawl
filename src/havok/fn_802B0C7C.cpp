@@ -33,7 +33,7 @@ public:
 extern SoObjEC8* lbl_805A0EC8;
 extern SoHeapAllocator* lbl_805A0EB8;
 
-extern "C" void* dtor_802B0C7C(void* arg0, s32 arg1) {
+extern "C" void* __dt__14Class_802B0C7CFv(void* arg0, s32 arg1) {
     if (arg0) {
         u32 val = *(u32*)arg0;
         SoObjEC8* obj = lbl_805A0EC8;

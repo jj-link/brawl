@@ -29,7 +29,7 @@ struct Array {
     }
 };
 
-extern "C" Array* dtor_802A9A5C(Array* self, int arg1) {
+extern "C" Array* __dt__14Class_802A9A5CFv(Array* self, int arg1) {
     if (self) {
         if (self) {
             if (self) {

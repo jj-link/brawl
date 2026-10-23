@@ -27,7 +27,7 @@ public:
 extern Foo* lbl_805A0EC8;
 extern Bar* lbl_805A0EB8;
 
-extern "C" void* dtor_8031163C(void* arg0, int arg1) {
+extern "C" void* __dt__14Class_8031163CFv(void* arg0, int arg1) {
     if (arg0) {
         void* v = *(void**)arg0;
         Foo* p = lbl_805A0EC8;

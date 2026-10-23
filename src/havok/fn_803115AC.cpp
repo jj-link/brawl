@@ -29,7 +29,7 @@ extern EcMgr* lbl_805A0EC8;
 extern Alloc* lbl_805A0EB8;
 
 extern "C" {
-u32* dtor_803115AC(u32* arg0, s32 arg1) {
+u32* __dt__14Class_803115ACFv(u32* arg0, s32 arg1) {
     if (arg0 != 0) {
         u32 temp = *arg0;
         EcMgr* mgr = lbl_805A0EC8;

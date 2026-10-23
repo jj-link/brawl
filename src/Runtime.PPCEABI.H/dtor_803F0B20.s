@@ -12,7 +12,7 @@
 .balign 4
 
 .obj Leti, local
-	.4byte dtor_803F0B20
+	.4byte __dt__14Class_803F0B20Fv
 	.4byte 0x000000BC
 	.4byte Letb
 .endobj Leti
@@ -20,7 +20,7 @@
 .text
 .balign 4
 
-.fn dtor_803F0B20, global
+.fn __dt__14Class_803F0B20Fv, global
 	stwu r1, -0x20(r1)
 	mflr r0
 	cmpwi r3, 0x0
@@ -72,4 +72,4 @@
 	mtlr r0
 	addi r1, r1, 0x20
 	blr
-.endfn dtor_803F0B20
+.endfn __dt__14Class_803F0B20Fv

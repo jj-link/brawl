@@ -19,6 +19,6 @@ struct MyObj {
     u16 m_06;
 };
 
-extern "C" void dtor_80302A88(MyObj* self) {
+extern "C" void __dl__14Class_80302A88FPv(MyObj* self) {
     lbl_805A0EB8->vf5(self, self->m_04, 0x25);
 }

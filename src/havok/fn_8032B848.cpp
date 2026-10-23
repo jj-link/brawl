@@ -29,7 +29,7 @@ struct Obj {
     }
 };
 
-extern "C" void* dtor_8032B848(Obj* arg0, int arg1) {
+extern "C" void* __dt__14Class_8032B848Fv(Obj* arg0, int arg1) {
     if (arg0) {
         if (arg0) {
             if (arg0->isOwned())

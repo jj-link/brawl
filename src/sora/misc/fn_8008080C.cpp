@@ -20,7 +20,7 @@ struct DtorObj {
     u16 type;
 };
 
-void* dtor_8008080C(DtorObj* self, s32 destroy) {
+void* __dt__14Class_8008080CFv(DtorObj* self, s32 destroy) {
     if (self != 0 && destroy > 0) {
         lbl_805A0EB8->free(self, self->type, 0x13);
     }

@@ -29,7 +29,7 @@ struct Array {
     }
 };
 
-extern "C" void* dtor_802BAE28(void* arg0, int arg1) {
+extern "C" void* __dt__14Class_802BAE28Fv(void* arg0, int arg1) {
     if (arg0) {
         if (arg0) {
             Array* a = (Array*)arg0;

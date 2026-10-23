@@ -35,7 +35,7 @@ public:
 extern GlobalAlloc* lbl_805A0EC8;
 extern HeapAlloc* lbl_805A0EB8;
 
-DtorObj* dtor_8031F3C8(DtorObj* self, s32 flag) {
+DtorObj* __dt__14Class_8031F3C8Fv(DtorObj* self, s32 flag) {
     if (self) {
         u32 vt = self->m_00;
         GlobalAlloc* g = lbl_805A0EC8;

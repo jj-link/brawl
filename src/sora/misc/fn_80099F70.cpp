@@ -15,7 +15,7 @@ extern "C" {
 
 extern SoHeapAllocator* lbl_805A0EB8;
 
-void* dtor_80099F70(void* obj, s32 flag) {
+void* __dt__14Class_80099F70Fv(void* obj, s32 flag) {
     if (obj != 0 && flag > 0) {
         lbl_805A0EB8->free(obj, *(u16*)((char*)obj + 4), 0x25);
     }

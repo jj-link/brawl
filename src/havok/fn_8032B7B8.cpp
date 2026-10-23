@@ -25,7 +25,7 @@ struct Array {
     }
 };
 
-extern "C" void* dtor_8032B7B8(void* arg0, int arg1) {
+extern "C" void* __dt__14Class_8032B7B8Fv(void* arg0, int arg1) {
     if (arg0) {
         if (arg0) {
             if (((Array*)arg0)->isOwned()) {

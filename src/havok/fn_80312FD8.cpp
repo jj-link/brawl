@@ -21,7 +21,7 @@ struct Obj {
 };
 
 extern "C" {
-Obj* dtor_80312FD8(Obj* self, int flag) {
+Obj* __dt__14Class_80312FD8Fv(Obj* self, int flag) {
     if (self != 0) {
         self->vtable = lbl_80488988;
         if (self->m_10 != 0) {

@@ -5,7 +5,7 @@ struct Object {
     char padding[0x5C];
 };
 
-extern "C" void fn_802D279C(Object*, int*);
+extern "C" void __ct__14Class_802D279CFv(Object*, int*);
 
 extern "C" int fn_802D26CC() {
     Object a __attribute__((aligned(16)));
@@ -13,7 +13,7 @@ extern "C" int fn_802D26CC() {
     int zero = 0;
     if (&a != 0) {
         b = zero;
-        fn_802D279C(&a, &b);
+        __ct__14Class_802D279CFv(&a, &b);
     }
     return a.value;
 }
