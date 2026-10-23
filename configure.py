@@ -2038,7 +2038,6 @@ config.libs = [
         "cflags": cflags_rel,
         "host": False,
         "objects": [
-            Object(NonMatching, "mo_fighter/ft_marth/ft_marth.cpp"),
             Object(Matching, "mo_fighter/ft_marth/ft_marth_general_work.cpp",
                    cflags=["-O4,s" if flag == "-O4,p" else flag for flag in cflags_rel],
                    extra_cflags=["-schedule off"]),
