@@ -11670,6 +11670,11 @@ havok/fn_802CE61C.cpp:
 havok/fn_802CE6A0.cpp:
 	.text       start:0x802CE6A0 end:0x802CE6B4
 
+havok/fn_802CE7C0.cpp:
+	extab       start:0x80008330 end:0x80008338
+	extabindex  start:0x8000B050 end:0x8000B05C
+	.text       start:0x802CE7C0 end:0x802CE808
+
 havok/fn_802CE808.cpp:
 	.text       start:0x802CE808 end:0x802CE81C
 
