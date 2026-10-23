@@ -2,6 +2,10 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main: 6 functions removed
+
+- Removed 6 functions that decomp-orchestrator had matched by writing their machine code as a data array in `.text` instead of C code: `PPCMfmsr`, `PPCMfhid0`, `fn_801D5080`, `PPCMfl2cr`, `PPCMtl2cr`, `fn_801D50A0`.
+
 ## main: 2 functions
 
 - Matched 2 functions in `main` with decomp-orchestrator: glm 2.
