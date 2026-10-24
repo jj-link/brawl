@@ -971,6 +971,10 @@ mo_fighter/ft_wario/ft_wario_function_9cd4.cpp:
 mo_fighter/ft_wario/ft_wario_function_9d30.cpp:
 	.text       start:0x00009D30 end:0x00009D90
 
+mo_fighter/ft_wario/ft_wario_function_a5ac.cpp:
+	.text       start:0x0000A5AC end:0x0000A730
+	.data       start:0x00002300 end:0x00002344
+
 mo_fighter/ft_wario/ft_wario_function_a92c.cpp:
 	.text       start:0x0000A92C end:0x0000A9BC
 
@@ -2760,6 +2764,10 @@ mo_fighter/ft_wario/ft_wario_function_1fc34.cpp:
 mo_fighter/ft_wario/ft_wario_function_1ff48.cpp:
 	.text       start:0x0001FF48 end:0x00020138
 	.data       start:0x00009ACC end:0x00009B10
+
+mo_fighter/ft_wario/ft_wario_function_20348.cpp:
+	.text       start:0x00020348 end:0x000204CC
+	.data       start:0x00009B54 end:0x00009B98
 
 mo_fighter/ft_wario/ft_wario_function_206a4.cpp:
 	.text       start:0x000206A4 end:0x00020704
