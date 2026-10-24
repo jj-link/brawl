@@ -13897,6 +13897,11 @@ havok/fn_80315738.cpp:
 havok/fn_8031574C.cpp:
 	.text       start:0x8031574C end:0x8031577C
 
+havok/fn_8031830C.cpp:
+	extab       start:0x80008BE4 end:0x80008BEC
+	extabindex  start:0x8000BB0C end:0x8000BB18
+	.text       start:0x8031830C end:0x803183A0
+
 havok/fn_80318BB4.cpp:
 	.text       start:0x80318BB4 end:0x80318BD0
 
