@@ -1470,6 +1470,10 @@ mo_fighter/ft_pikmin/ft_pikmin_function_fd7c.cpp:
 mo_fighter/ft_pikmin/ft_pikmin_function_fd84.cpp:
 	.text       start:0x0000FD84 end:0x0000FD90
 
+mo_fighter/ft_pikmin/ft_pikmin_function_fd90.cpp:
+	.text       start:0x0000FD90 end:0x0000FDF4
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_pikmin/ft_pikmin_function_fdf4.cpp:
 	.text       start:0x0000FDF4 end:0x0000FE3C
 

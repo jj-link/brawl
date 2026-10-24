@@ -1235,6 +1235,10 @@ mo_fighter/ft_peach/ft_peach_function_cf24.cpp:
 mo_fighter/ft_peach/ft_peach_short_copy.cpp:
 	.text       start:0x0000CF2C end:0x0000CF38
 
+mo_fighter/ft_peach/ft_peach_function_cf38.cpp:
+	.text       start:0x0000CF38 end:0x0000CF9C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_peach/ft_peach_extend_param_construct.cpp:
 	.text       start:0x0000CF9C end:0x0000CFE4
 

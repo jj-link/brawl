@@ -1218,6 +1218,10 @@ mo_fighter/ft_sonic/ft_sonic_function_ed2c.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_ed34.cpp:
 	.text       start:0x0000ED34 end:0x0000ED40
 
+mo_fighter/ft_sonic/ft_sonic_function_ed40.cpp:
+	.text       start:0x0000ED40 end:0x0000EDA4
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_sonic/ft_sonic_function_eda4.cpp:
 	.text       start:0x0000EDA4 end:0x0000EDEC
 
