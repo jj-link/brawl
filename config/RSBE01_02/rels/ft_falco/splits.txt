@@ -1307,6 +1307,10 @@ mo_fighter/ft_falco/ft_falco_function_e488.cpp:
 mo_fighter/ft_falco/ft_falco_function_e490.cpp:
 	.text       start:0x0000E490 end:0x0000E49C
 
+mo_fighter/ft_falco/ft_falco_function_e49c.cpp:
+	.text       start:0x0000E49C end:0x0000E500
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_falco/ft_falco_function_e500.cpp:
 	.text       start:0x0000E500 end:0x0000E548
 
