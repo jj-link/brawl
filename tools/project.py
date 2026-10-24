@@ -57,6 +57,7 @@ class Object:
             "asflags": None,
             "asm_dir": None,
             "cflags": None,
+            "data_align4": None,
             "extab_padding": None,
             "extra_asflags": [],
             "extra_cflags": [],
@@ -93,6 +94,7 @@ class Object:
         set_default("add_to_all", True)
         set_default("asflags", config.asflags)
         set_default("asm_dir", config.asm_dir)
+        set_default("data_align4", False)
         set_default("extab_padding", None)
         set_default("mw_version", config.linker_version)
         set_default("scratch_preset_id", config.scratch_preset_id)
@@ -689,6 +691,15 @@ def generate_build_ninja(
     mwcc_sjis_extab_cmd = f'{CHAIN}{mwcc_sjis_cmd} && {dtk} extab clean --padding "$extab_padding" $out $out'
     mwcc_sjis_extab_implicit: List[Optional[Path]] = [*mwcc_sjis_implicit, dtk]
 
+    # MWCC with .data re-aligned to 4 (decomp-orchestrator units whose jump table the original keeps at an
+    # address aligned to 4 but not 8; the compiler marks .data as aligned to 8)
+    objcopy = binutils / f"powerpc-eabi-objcopy{EXE}"
+    objcopy_cmd = f"{objcopy} --set-section-alignment .data=4 $out"
+    mwcc_align4_cmd = f"{CHAIN}{mwcc_cmd} && {objcopy_cmd}"
+    mwcc_align4_implicit: List[Optional[Path]] = [*mwcc_implicit, binutils_implicit or objcopy]
+    mwcc_sjis_align4_cmd = f"{CHAIN}{mwcc_sjis_cmd} && {objcopy_cmd}"
+    mwcc_sjis_align4_implicit: List[Optional[Path]] = [*mwcc_sjis_implicit, binutils_implicit or objcopy]
+
     # MWLD
     mwld = compiler_path / "mwldeppc.exe"
     mwld_cmd = f"{wrapper_cmd}{mwld} $ldflags -o $out @$out.rsp"
@@ -712,12 +723,16 @@ def generate_build_ninja(
         mwcc_pch_sjis_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
         mwcc_extab_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
         mwcc_sjis_extab_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
+        mwcc_align4_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
+        mwcc_sjis_align4_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
         mwcc_implicit.append(transform_dep)
         mwcc_sjis_implicit.append(transform_dep)
         mwcc_pch_implicit.append(transform_dep)
         mwcc_pch_sjis_implicit.append(transform_dep)
         mwcc_extab_implicit.append(transform_dep)
         mwcc_sjis_extab_implicit.append(transform_dep)
+        mwcc_align4_implicit.append(transform_dep)
+        mwcc_sjis_align4_implicit.append(transform_dep)
 
     n.comment("Link ELF file")
     n.rule(
@@ -771,6 +786,26 @@ def generate_build_ninja(
     n.rule(
         name="mwcc_sjis_extab",
         command=mwcc_sjis_extab_cmd,
+        description="MWCC $out",
+        depfile="$basefile.d",
+        deps="gcc",
+    )
+    n.newline()
+
+    n.comment("MWCC build (with .data re-aligned to 4)")
+    n.rule(
+        name="mwcc_align4",
+        command=mwcc_align4_cmd,
+        description="MWCC $out",
+        depfile="$basefile.d",
+        deps="gcc",
+    )
+    n.newline()
+
+    n.comment("MWCC build (with UTF-8 to Shift JIS wrapper and .data re-aligned to 4)")
+    n.rule(
+        name="mwcc_sjis_align4",
+        command=mwcc_sjis_align4_cmd,
         description="MWCC $out",
         depfile="$basefile.d",
         deps="gcc",
@@ -1028,7 +1063,13 @@ def generate_build_ninja(
                 "basefile": obj.src_obj_path.with_suffix(""),
             }
 
-            if obj.options["shift_jis"] and obj.options["extab_padding"] is not None:
+            if obj.options["data_align4"] and obj.options["shift_jis"]:
+                build_rule = "mwcc_sjis_align4"
+                build_implcit = mwcc_sjis_align4_implicit
+            elif obj.options["data_align4"]:
+                build_rule = "mwcc_align4"
+                build_implcit = mwcc_align4_implicit
+            elif obj.options["shift_jis"] and obj.options["extab_padding"] is not None:
                 build_rule = "mwcc_sjis_extab"
                 build_implcit = mwcc_sjis_extab_implicit
                 variables["extab_padding"] = "".join(
