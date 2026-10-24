@@ -810,6 +810,10 @@ mo_fighter/ft_lucas/ft_lucas_parameter_int.cpp:
 mo_fighter/ft_lucas/ft_lucas_nested_destructor.cpp:
 	.text       start:0x0000D288 end:0x0000D2E8
 
+mo_fighter/ft_lucas/ft_lucas_function_e1b4.cpp:
+	.text       start:0x0000E1B4 end:0x0000E338
+	.data       start:0x00003E50 end:0x00003E94
+
 mo_fighter/ft_lucas/ft_lucas_subobject_traversal.cpp:
 	.text       start:0x0000E5BC end:0x0000E6E8
 
@@ -2022,6 +2026,10 @@ mo_fighter/ft_lucas/ft_lucas_function_18d8c.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_194e4.cpp:
 	.text       start:0x000194E4 end:0x000196F4
 	.data       start:0x0000A038 end:0x0000A07C
+
+mo_fighter/ft_lucas/ft_lucas_function_196f4.cpp:
+	.text       start:0x000196F4 end:0x00019878
+	.data       start:0x0000A07C end:0x0000A0C0
 
 mo_fighter/ft_lucas/ft_lucas_function_19a50.cpp:
 	.text       start:0x00019A50 end:0x00019AB0
