@@ -9109,6 +9109,9 @@ RVL_SDK/fn_801FF1F4.c:
 RVL_SDK/fn_801FF1FC.c:
 	.text       start:0x801FF1FC end:0x801FF210
 
+RVL_SDK/fn_801FF210.c:
+	.text       start:0x801FF210 end:0x801FF2BC
+
 RVL_SDK/fn_801FF2BC.c:
 	.text       start:0x801FF2BC end:0x801FF36C
 
@@ -14098,6 +14101,9 @@ havok/fn_803338E4.cpp:
 
 havok/fn_80333974.cpp:
 	.text       start:0x80333974 end:0x80333A68
+
+havok/fn_80333D24.cpp:
+	.text       start:0x80333D24 end:0x80333DA8
 
 havok/fn_803340A8.cpp:
 	.text       start:0x803340A8 end:0x803340B8
