@@ -108,6 +108,9 @@ sora/misc/fn_80010F20.cpp:
 sora/misc/fn_80011150.cpp:
 	.text       start:0x80011150 end:0x80011170
 
+sora/misc/fn_80011170.cpp:
+	.text       start:0x80011170 end:0x800111CC
+
 sora/misc/fn_8001133C.cpp:
 	.text       start:0x8001133C end:0x800113C0
 
@@ -7896,6 +7899,9 @@ nw4r/fn_801CF61C.cpp:
 
 nw4r/fn_801CF664.cpp:
 	.text       start:0x801CF664 end:0x801CF6C0
+
+nw4r/fn_801CF6C0.cpp:
+	.text       start:0x801CF6C0 end:0x801CF774
 
 nw4r/fn_801CF774.cpp:
 	.text       start:0x801CF774 end:0x801CF810
