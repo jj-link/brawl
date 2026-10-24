@@ -1745,6 +1745,10 @@ mo_fighter/ft_kirby/ft_kirby_function_13dc4.cpp:
 mo_fighter/ft_kirby/ft_kirby_function_13e04.cpp:
 	.text       start:0x00013E04 end:0x00013E44
 
+mo_fighter/ft_kirby/ft_kirby_function_13e44.cpp:
+	.text       start:0x00013E44 end:0x00013EE0
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_kirby/ft_kirby_function_13ee0.cpp:
 	.text       start:0x00013EE0 end:0x00013EF0
 
