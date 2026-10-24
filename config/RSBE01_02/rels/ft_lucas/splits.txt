@@ -740,6 +740,10 @@ mo_fighter/ft_lucas/ft_lucas_function_b8c4.cpp:
 mo_fighter/ft_lucas/ft_lucas_function_b994.cpp:
 	.text       start:0x0000B994 end:0x0000BA10
 
+mo_fighter/ft_lucas/ft_lucas_function_ba10.cpp:
+	.text       start:0x0000BA10 end:0x0000BE0C
+	.data       start:0x00000008 end:0x00000024
+
 mo_fighter/ft_lucas/ft_lucas_function_be0c.cpp:
 	.text       start:0x0000BE0C end:0x0000BE7C
 
@@ -2010,6 +2014,10 @@ mo_fighter/ft_lucas/ft_lucas_function_18c84.cpp:
 
 mo_fighter/ft_lucas/ft_lucas_function_18d8c.cpp:
 	.text       start:0x00018D8C end:0x00018D90
+
+mo_fighter/ft_lucas/ft_lucas_function_194e4.cpp:
+	.text       start:0x000194E4 end:0x000196F4
+	.data       start:0x0000A038 end:0x0000A07C
 
 mo_fighter/ft_lucas/ft_lucas_function_19a50.cpp:
 	.text       start:0x00019A50 end:0x00019AB0

@@ -2326,6 +2326,10 @@ mo_fighter/ft_pikachu/ft_pikachu_function_188a8.cpp:
 	.text       start:0x000188A8 end:0x00018A98
 	.data       start:0x00009114 end:0x00009158 align:4 rename:.data$pikachu188A8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_18a98.cpp:
+	.text       start:0x00018A98 end:0x00018CA8
+	.data       start:0x00009158 end:0x0000919C
+
 mo_fighter/ft_pikachu/wn_pikachu_vortex_parameter_size.cpp:
 	.text       start:0x00018CA8 end:0x00018E2C
 	.data       start:0x0000919C end:0x000091E0 align:4 rename:.data$pikachu18CA8

@@ -581,6 +581,10 @@ mo_fighter/ft_metaknight/ft_metaknight_param_lookup.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_embedded_destructor.cpp:
 	.text       start:0x00008D30 end:0x00008D90
 
+mo_fighter/ft_metaknight/ft_metaknight_function_903c.cpp:
+	.text       start:0x0000903C end:0x0000922C
+	.data       start:0x00001E90 end:0x00001ED4
+
 mo_fighter/ft_metaknight/ft_metaknight_controller_poll.cpp:
 	.text       start:0x00009798 end:0x000097F8
 
