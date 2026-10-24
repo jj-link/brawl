@@ -1271,6 +1271,10 @@ mo_fighter/ft_pit/ft_pit_function_da5c.cpp:
 mo_fighter/ft_pit/ft_pit_function_da64.cpp:
 	.text       start:0x0000DA64 end:0x0000DA70
 
+mo_fighter/ft_pit/ft_pit_function_da70.cpp:
+	.text       start:0x0000DA70 end:0x0000DAD4
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_pit/ft_pit_function_dad4.cpp:
 	.text       start:0x0000DAD4 end:0x0000DB1C
 
