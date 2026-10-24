@@ -126,6 +126,9 @@ sora/misc/fn_80011528.cpp:
 sora/misc/fn_80011758.cpp:
 	.text       start:0x80011758 end:0x800117FC
 
+sora/misc/fn_800117FC.cpp:
+	.text       start:0x800117FC end:0x800118B4
+
 sora/misc/fn_80011B20.cpp:
 	.text       start:0x80011B20 end:0x80011C2C
 
@@ -660,6 +663,9 @@ sora/misc/fn_8002D3F4.cpp:
 sora/misc/fn_8002D474.cpp:
 	.text       start:0x8002D474 end:0x8002D4F4
 
+sora/misc/fn_8002D4F4.cpp:
+	.text       start:0x8002D4F4 end:0x8002D5AC
+
 sora/misc/fn_8002D5AC.cpp:
 	.text       start:0x8002D5AC end:0x8002D640
 
@@ -815,6 +821,9 @@ sora/misc/fn_80038890.cpp:
 
 sora/misc/fn_800388D0.cpp:
 	.text       start:0x800388D0 end:0x80038984
+
+sora/misc/fn_800390C8.cpp:
+	.text       start:0x800390C8 end:0x80039180
 
 sora/misc/fn_800392C0.cpp:
 	.text       start:0x800392C0 end:0x800393C0
@@ -15255,6 +15264,9 @@ network/fn_8039B1B0.c:
 network/fn_8039B1C0.c:
 	.text       start:0x8039B1C0 end:0x8039B244
 
+network/fn_8039BA88.c:
+	.text       start:0x8039BA88 end:0x8039BB3C
+
 network/fn_8039D440.c:
 	.text       start:0x8039D440 end:0x8039D45C
 
@@ -17077,6 +17089,9 @@ Runtime.PPCEABI.H/fn_80400E90.c:
 
 Runtime.PPCEABI.H/fn_80400EB4.c:
 	.text       start:0x80400EB4 end:0x80400ECC
+
+Runtime.PPCEABI.H/fn_80400FAC.c:
+	.text       start:0x80400FAC end:0x80401060
 
 Runtime.PPCEABI.H/fn_80401060.c:
 	.text       start:0x80401060 end:0x804010B8
