@@ -12398,6 +12398,11 @@ havok/fn_802D00F0.cpp:
 havok/fn_802D0818.cpp:
 	.text       start:0x802D0818 end:0x802D0828
 
+havok/fn_802D0890.cpp:
+	extab       start:0x800083D8 end:0x800083E0
+	extabindex  start:0x8000B134 end:0x8000B140
+	.text       start:0x802D0890 end:0x802D0914
+
 havok/fn_802D0A2C.cpp:
 	extab       start:0x800083E8 end:0x800083F0
 	extabindex  start:0x8000B14C end:0x8000B158
