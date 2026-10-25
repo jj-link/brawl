@@ -7,6 +7,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Matched 1 functions in `sora_enemy` with decomp-orchestrator: qwen27b 1.
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
+## sora_enemy: 1 functions
+
+- Matched 1 functions in `sora_enemy` with decomp-orchestrator: qwen27b 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## sora_menu_sel_char: 1 functions
 
 - Matched 1 functions in `sora_menu_sel_char` with decomp-orchestrator: sol 1.
