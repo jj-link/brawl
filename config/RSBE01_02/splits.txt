@@ -12631,6 +12631,11 @@ havok/fn_802C09F4.cpp:
 havok/fn_802C0A08.cpp:
 	.text       start:0x802C0A08 end:0x802C0A28
 
+havok/fn_802C0B80.cpp:
+	extab       start:0x80007BF0 end:0x80007C08
+	extabindex  start:0x8000A978 end:0x8000A984
+	.text       start:0x802C0B80 end:0x802C0C04
+
 havok/fn_802C0C04.cpp:
 	extab       start:0x80007C08 end:0x80007C10
 	extabindex  start:0x8000A984 end:0x8000A990
