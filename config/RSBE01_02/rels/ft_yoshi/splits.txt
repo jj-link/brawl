@@ -1353,6 +1353,10 @@ mo_fighter/ft_yoshi/ft_yoshi_function_ed60.cpp:
 mo_fighter/ft_yoshi/ft_yoshi_function_ed68.cpp:
 	.text       start:0x0000ED68 end:0x0000ED74
 
+mo_fighter/ft_yoshi/ft_yoshi_function_ed74.cpp:
+	.text       start:0x0000ED74 end:0x0000EDD8
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_yoshi/ft_yoshi_function_edd8.cpp:
 	.text       start:0x0000EDD8 end:0x0000EE20
 

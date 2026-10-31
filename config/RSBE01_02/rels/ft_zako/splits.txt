@@ -1248,6 +1248,10 @@ mo_fighter/ft_zako/ft_zako_function_b718.cpp:
 mo_fighter/ft_zako/ft_zako_function_b720.cpp:
 	.text       start:0x0000B720 end:0x0000B72C
 
+mo_fighter/ft_zako/ft_zako_function_b72c.cpp:
+	.text       start:0x0000B72C end:0x0000B790
+	.ctors      start:0x00000004 end:0x00000008
+
 mo_fighter/ft_zako/ft_zako_function_b790.cpp:
 	.text       start:0x0000B790 end:0x0000B7D8
 
@@ -1305,6 +1309,10 @@ mo_fighter/ft_zako/ft_zako_function_d68c.cpp:
 mo_fighter/ft_zako/ft_zako_function_d694.cpp:
 	.text       start:0x0000D694 end:0x0000D6A0
 
+mo_fighter/ft_zako/ft_zako_function_d6a0.cpp:
+	.text       start:0x0000D6A0 end:0x0000D704
+	.ctors      start:0x00000008 end:0x0000000C
+
 mo_fighter/ft_zako/ft_zako_function_d704.cpp:
 	.text       start:0x0000D704 end:0x0000D74C
 
@@ -1361,6 +1369,10 @@ mo_fighter/ft_zako/ft_zako_function_f600.cpp:
 
 mo_fighter/ft_zako/ft_zako_function_f608.cpp:
 	.text       start:0x0000F608 end:0x0000F614
+
+mo_fighter/ft_zako/ft_zako_function_f614.cpp:
+	.text       start:0x0000F614 end:0x0000F678
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_zako/ft_zako_function_f678.cpp:
 	.text       start:0x0000F678 end:0x0000F6C0
