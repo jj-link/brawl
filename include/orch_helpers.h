@@ -23,6 +23,44 @@ inline f32 FInv_va28c12(register f32 x) {
     return work0;
 }
 
+// Vec3fSub as built into the game: variant Vec3fSub_v04f903
+inline void Vec3fSub_v04f903(register Vec3f* pOut, register const Vec3f* lhs,
+                     register const Vec3f* rhs) {
+        register f32 fr3, fr2, fr1, fr0;
+
+        // clang-format off
+        asm {
+            psq_l  fr0, Vec3f.m_x(lhs),   0, 0
+            psq_l  fr1, Vec3f.m_x(rhs),   0, 0
+            psq_l  fr2, Vec3f.m_z(lhs),   1, 0
+            psq_l  fr0, Vec3f.m_z(rhs),   1, 0
+            ps_sub fr0, fr0, fr1
+            ps_sub fr2, fr2, fr3
+            psq_st fr0, Vec3f.m_x(pOut), 0, 0
+            psq_st fr2, Vec3f.m_z(pOut), 1, 0
+        }
+        // clang-format on
+    }
+
+// Vec3fSub as built into the game: variant Vec3fSub_v1c87e2
+inline void Vec3fSub_v1c87e2(register Vec3f* pOut, register const Vec3f* lhs,
+                     register const Vec3f* rhs) {
+        register f32 fr3, fr2, fr1, fr0;
+
+        // clang-format off
+        asm {
+            psq_l  fr0, Vec3f.m_x(lhs),   0, 0
+            psq_l  fr1, Vec3f.m_x(rhs),   0, 0
+            psq_l  fr2, Vec3f.m_z(lhs),   1, 0
+            psq_l  fr0, Vec3f.m_z(rhs),   1, 0
+            ps_sub fr0, fr0, fr1
+            ps_sub fr2, fr2, fr3
+            psq_st fr0, Vec3f.m_x(pOut), 0, 0
+            psq_st fr1, Vec3f.m_z(pOut), 1, 0
+        }
+        // clang-format on
+    }
+
 // Vec3fSub as built into the game: variant Vec3fSub_v464519
 inline void Vec3fSub_v464519(register Vec3f* pOut, register const Vec3f* lhs,
                      register const Vec3f* rhs) {
