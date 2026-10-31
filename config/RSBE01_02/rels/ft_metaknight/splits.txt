@@ -647,6 +647,10 @@ mo_fighter/ft_metaknight/ft_metaknight_energy_array.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_energy_array_b360.cpp:
 	.text       start:0x0000B360 end:0x0000B410
 
+mo_fighter/ft_metaknight/ft_metaknight_function_b410.cpp:
+	.text       start:0x0000B410 end:0x0000B5F0
+	.data       start:0x00005C14 end:0x00005C34
+
 mo_fighter/ft_metaknight/ft_metaknight_energy_array_b5f0.cpp:
 	.text       start:0x0000B5F0 end:0x0000B6A0
 
