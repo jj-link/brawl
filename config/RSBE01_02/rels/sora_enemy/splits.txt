@@ -281,6 +281,12 @@ mo_enemy/sora_enemy/sora_enemy_function_a27c.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_a3c4.cpp:
 	.text       start:0x0000A3C4 end:0x0000A418
 
+mo_enemy/sora_enemy/sora_enemy_function_a418.cpp:
+	.text       start:0x0000A418 end:0x0000A440
+
+mo_enemy/sora_enemy/sora_enemy_function_a440.cpp:
+	.text       start:0x0000A440 end:0x0000A468
+
 mo_enemy/sora_enemy/sora_enemy_function_a490.cpp:
 	.text       start:0x0000A490 end:0x0000A494
 
@@ -2332,6 +2338,9 @@ mo_enemy/sora_enemy/sora_enemy_function_2d39c.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_2d3c0.cpp:
 	.text       start:0x0002D3C0 end:0x0002D3E8
 
+mo_enemy/sora_enemy/sora_enemy_function_2d3e8.cpp:
+	.text       start:0x0002D3E8 end:0x0002D40C
+
 mo_enemy/sora_enemy/sora_enemy_function_2d430.cpp:
 	.text       start:0x0002D430 end:0x0002D434
 
@@ -2643,6 +2652,9 @@ mo_enemy/sora_enemy/sora_enemy_function_32fac.cpp:
 
 mo_enemy/sora_enemy/sora_enemy_function_33048.cpp:
 	.text       start:0x00033048 end:0x000330D8
+
+mo_enemy/sora_enemy/sora_enemy_function_33544.cpp:
+	.text       start:0x00033544 end:0x00033578
 
 mo_enemy/sora_enemy/sora_enemy_function_33578.cpp:
 	.text       start:0x00033578 end:0x00033580
@@ -3941,6 +3953,9 @@ mo_enemy/sora_enemy/sora_enemy_function_44e90.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_456d8.cpp:
 	.text       start:0x000456D8 end:0x000456F4
 
+mo_enemy/sora_enemy/sora_enemy_function_46dcc.cpp:
+	.text       start:0x00046DCC end:0x00046DF4
+
 mo_enemy/sora_enemy/sora_enemy_function_46df4.cpp:
 	.text       start:0x00046DF4 end:0x00046FF0
 
@@ -4499,6 +4514,10 @@ mo_enemy/sora_enemy/sora_enemy_function_538bc.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_53ac8.cpp:
 	.text       start:0x00053AC8 end:0x00053C4C
 	.data       start:0x00014A80 end:0x00014AC4
+
+mo_enemy/sora_enemy/sora_enemy_function_53c4c.cpp:
+	.text       start:0x00053C4C end:0x00053E24
+	.data       start:0x00014AC4 end:0x00014B08
 
 mo_enemy/sora_enemy/sora_enemy_function_53e24.cpp:
 	.text       start:0x00053E24 end:0x00053E80
