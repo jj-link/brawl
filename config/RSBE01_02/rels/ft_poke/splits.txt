@@ -1314,6 +1314,10 @@ mo_fighter/ft_poke/ft_poke_function_d994.cpp:
 mo_fighter/ft_poke/ft_poke_function_d99c.cpp:
 	.text       start:0x0000D99C end:0x0000D9A8
 
+mo_fighter/ft_poke/ft_poke_function_d9a8.cpp:
+	.text       start:0x0000D9A8 end:0x0000DA0C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_poke/ft_poke_function_da0c.cpp:
 	.text       start:0x0000DA0C end:0x0000DA54
 
@@ -2444,6 +2448,10 @@ mo_fighter/ft_poke/ft_poke_function_1a344.cpp:
 
 mo_fighter/ft_poke/ft_poke_function_1a34c.cpp:
 	.text       start:0x0001A34C end:0x0001A358
+
+mo_fighter/ft_poke/ft_poke_function_1a358.cpp:
+	.text       start:0x0001A358 end:0x0001A3BC
+	.ctors      start:0x0000000C end:0x00000010
 
 mo_fighter/ft_poke/ft_poke_function_1a3bc.cpp:
 	.text       start:0x0001A3BC end:0x0001A404

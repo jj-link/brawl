@@ -1520,6 +1520,10 @@ mo_fighter/ft_ganon/ft_ganon_function_d95c.cpp:
 mo_fighter/ft_ganon/ft_ganon_function_d99c.cpp:
 	.text       start:0x0000D99C end:0x0000D9DC
 
+mo_fighter/ft_ganon/ft_ganon_function_d9dc.cpp:
+	.text       start:0x0000D9DC end:0x0000DA40
+	.ctors      start:0x00000010 end:0x00000014
+
 mo_fighter/ft_ganon/ft_ganon_function_da40.cpp:
 	.text       start:0x0000DA40 end:0x0000DA50
 
@@ -2267,6 +2271,10 @@ mo_fighter/ft_ganon/ft_ganon_function_11e68.cpp:
 
 mo_fighter/ft_ganon/ft_ganon_function_11ea8.cpp:
 	.text       start:0x00011EA8 end:0x00011EE8
+
+mo_fighter/ft_ganon/ft_ganon_function_11ee8.cpp:
+	.text       start:0x00011EE8 end:0x00011F4C
+	.ctors      start:0x00000018 end:0x0000001C
 
 mo_fighter/ft_ganon/ft_ganon_function_11f4c.cpp:
 	.text       start:0x00011F4C end:0x00011F5C
