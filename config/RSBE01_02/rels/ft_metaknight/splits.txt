@@ -675,6 +675,10 @@ mo_fighter/ft_metaknight/ft_metaknight_energy_event.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_leaf_callbacks.cpp:
 	.text       start:0x0000C3A4 end:0x0000C3B8
 
+mo_fighter/ft_metaknight/ft_metaknight_function_c3b8.cpp:
+	.text       start:0x0000C3B8 end:0x0000C41C
+	.ctors      start:0x00000000 end:0x00000004
+
 mo_fighter/ft_metaknight/ft_metaknight_metadata.cpp:
 	.text       start:0x0000C41C end:0x0000C540
 
