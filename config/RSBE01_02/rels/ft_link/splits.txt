@@ -1551,6 +1551,10 @@ mo_fighter/ft_link/ft_link_function_f464.cpp:
 mo_fighter/ft_link/ft_link_function_f4ac.cpp:
 	.text       start:0x0000F4AC end:0x0000F4BC
 
+mo_fighter/ft_link/ft_link_function_f4bc.cpp:
+	.text       start:0x0000F4BC end:0x0000F62C
+	.rodata     start:0x00000050 end:0x00000060
+
 mo_fighter/ft_link/ft_link_function_f62c.cpp:
 	.text       start:0x0000F62C end:0x0000F630
 
