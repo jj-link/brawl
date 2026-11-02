@@ -714,11 +714,9 @@ mo_fighter/ft_metaknight/ft_metaknight_function_c960.cpp:
 mo_fighter/ft_metaknight/ft_metaknight_function_c9a8.cpp:
 	.text       start:0x0000C9A8 end:0x0000C9B8
 
-mo_fighter/ft_metaknight/ft_metaknight_function_cb38.cpp:
-	.text       start:0x0000CB38 end:0x0000CB48
-
-mo_fighter/ft_metaknight/ft_metaknight_function_cb48.cpp:
-	.text       start:0x0000CB48 end:0x0000CBCC
+mo_fighter/ft_metaknight/ft_metaknight_function_c9b8.cpp:
+	.text       start:0x0000C9B8 end:0x0000CBCC
+	.rodata     start:0x00000020 end:0x00000030
 
 mo_fighter/ft_metaknight/ft_metaknight_function_cbcc.cpp:
 	.text       start:0x0000CBCC end:0x0000CC0C
