@@ -208,3 +208,14 @@ extern "C" void* fn_124_65A0(void* self, int a, int b, unsigned char c, void* d)
 }
 }  // namespace decomp_orch_fn_124_65A0
 // decomp-orchestrator: end fn_124_65A0
+
+// decomp-orchestrator: begin fn_124_80C4
+#pragma force_active on
+namespace decomp_orch_fn_124_80C4 {
+extern "C" void fn_27_D3E88(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_80C4(void* receiver, short id, int argument) {
+    fn_27_D3E88(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_80C4
+// decomp-orchestrator: end fn_124_80C4
