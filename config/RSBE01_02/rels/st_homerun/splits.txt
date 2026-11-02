@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_homerun/st_homerun_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_homerun/st_homerun_function_a4.cpp:
+	.text       start:0x000000A4 end:0x00000320
+
 mo_stage/st_homerun/st_homerun_function_320.cpp:
 	.text       start:0x00000320 end:0x000003E0
 
@@ -370,6 +373,9 @@ mo_stage/st_homerun/st_homerun_function_4dbc.cpp:
 
 mo_stage/st_homerun/st_homerun_function_4dcc.cpp:
 	.text       start:0x00004DCC end:0x00004DD0
+
+mo_stage/st_homerun/st_homerun_function_4dd0.cpp:
+	.text       start:0x00004DD0 end:0x00004E78
 
 mo_stage/st_homerun/st_homerun_function_4e78.cpp:
 	.text       start:0x00004E78 end:0x00004F78
