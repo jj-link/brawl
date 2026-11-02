@@ -3083,6 +3083,9 @@ sora/misc/fn_800B21C4.cpp:
 sora/misc/fn_800B46F0.cpp:
 	.text       start:0x800B46F0 end:0x800B4844
 
+sora/misc/fn_800B4F98.cpp:
+	.text       start:0x800B4F98 end:0x800B50CC
+
 sora/misc/fn_800B5328.cpp:
 	.text       start:0x800B5328 end:0x800B534C
 
@@ -12299,6 +12302,11 @@ havok/fn_802A1E8C.cpp:
 havok/fn_802A1FD4.cpp:
 	.text       start:0x802A1FD4 end:0x802A1FF4
 
+havok/fn_802A20C0.cpp:
+	extab       start:0x80006868 end:0x80006880
+	extabindex  start:0x80009C64 end:0x80009C70
+	.text       start:0x802A20C0 end:0x802A213C
+
 havok/fn_802A213C.cpp:
 	extab       start:0x80006880 end:0x80006898
 	extabindex  start:0x80009C70 end:0x80009C7C
@@ -12471,6 +12479,11 @@ havok/fn_802A9DD8.cpp:
 	extab       start:0x80006E54 end:0x80006E5C
 	extabindex  start:0x8000A054 end:0x8000A060
 	.text       start:0x802A9DD8 end:0x802A9E74
+
+havok/fn_802A9E74.cpp:
+	extab       start:0x80006E5C end:0x80006E74
+	extabindex  start:0x8000A060 end:0x8000A06C
+	.text       start:0x802A9E74 end:0x802A9EF0
 
 havok/fn_802A9EF0.cpp:
 	.text       start:0x802A9EF0 end:0x802A9F04
@@ -12710,6 +12723,11 @@ havok/fn_802B4774.cpp:
 	extabindex  start:0x8000A4B0 end:0x8000A4BC
 	.text       start:0x802B4774 end:0x802B4800
 
+havok/fn_802B48CC.cpp:
+	extab       start:0x800074B4 end:0x800074CC
+	extabindex  start:0x8000A4C8 end:0x8000A4D4
+	.text       start:0x802B48CC end:0x802B4948
+
 havok/fn_802B4948.cpp:
 	extab       start:0x800074CC end:0x800074E4
 	extabindex  start:0x8000A4D4 end:0x8000A4E0
@@ -12768,6 +12786,11 @@ havok/fn_802B86B8.cpp:
 	extab       start:0x8000766C end:0x80007684
 	extabindex  start:0x8000A5DC end:0x8000A5E8
 	.text       start:0x802B86B8 end:0x802B873C
+
+havok/fn_802B873C.cpp:
+	extab       start:0x80007684 end:0x8000769C
+	extabindex  start:0x8000A5E8 end:0x8000A5F4
+	.text       start:0x802B873C end:0x802B87B8
 
 havok/fn_802B87B8.cpp:
 	extab       start:0x8000769C end:0x800076C4
@@ -14885,6 +14908,12 @@ havok/fn_8032EF00.cpp:
 
 havok/fn_8032EF34.cpp:
 	.text       start:0x8032EF34 end:0x8032F030
+
+havok/fn_8032F454.cpp:
+	extab       start:0x8000921C end:0x80009224
+	extabindex  start:0x8000C0C4 end:0x8000C0D0
+	.text       start:0x8032F454 end:0x8032F514
+	.ctors      start:0x8040679C end:0x804067A0
 
 havok/fn_8032F984.cpp:
 	.text       start:0x8032F984 end:0x8032FA40
