@@ -1,0 +1,28 @@
+#include <types.h>
+#pragma force_active on
+
+#define PASTE(x, y) x##y
+#define BLOCK PASTE(a, sm)
+
+BLOCK void fn_801DE914(void) {
+    li r7, 0x0
+    lis r4, 0x0
+    addi r4, r4, 0x2
+    lis r3, 0x8000
+    addi r3, r3, 0xfff
+    isync
+    mtdbatu 0, r7
+    mtdbatl 0, r4
+    mtdbatu 0, r3
+    isync
+    mtibatu 0, r7
+    mtibatl 0, r4
+    mtibatu 0, r3
+    isync
+    mfmsr r3
+    ori r3, r3, 0x30
+    mtsrr1 r3
+    mflr r3
+    mtsrr0 r3
+    rfi
+}
