@@ -151,6 +151,9 @@ sora/misc/fn_80012470.cpp:
 sora/misc/fn_80012504.cpp:
 	.text       start:0x80012504 end:0x8001258C
 
+sora/misc/fn_80012E18.cpp:
+	.text       start:0x80012E18 end:0x800130A8
+
 sora/misc/fn_800133BC.cpp:
 	.text       start:0x800133BC end:0x800134C0
 
@@ -8002,6 +8005,9 @@ nw4r/fn_801C00DC.cpp:
 nw4r/fn_801C0118.cpp:
 	.text       start:0x801C0118 end:0x801C01D4
 
+nw4r/fn_801C01D4.cpp:
+	.text       start:0x801C01D4 end:0x801C0234
+
 nw4r/fn_801C0398.cpp:
 	.text       start:0x801C0398 end:0x801C03DC
 
@@ -11152,6 +11158,9 @@ RVL_SDK/fn_80241CF0.c:
 
 RVL_SDK/fn_8024231C.c:
 	.text       start:0x8024231C end:0x80242350
+
+RVL_SDK/fn_80242A94.c:
+	.text       start:0x80242A94 end:0x80242B70
 
 RVL_SDK/fn_80242B70.c:
 	.text       start:0x80242B70 end:0x80242BFC
@@ -18764,6 +18773,9 @@ Runtime.PPCEABI.H/fn_80405520.c:
 
 Runtime.PPCEABI.H/fn_804055DC.c:
 	.text       start:0x804055DC end:0x80405698
+
+Runtime.PPCEABI.H/fn_80405698.c:
+	.text       start:0x80405698 end:0x8040572C
 
 Runtime.PPCEABI.H/fn_804057C4.c:
 	.text       start:0x804057C4 end:0x80405810
