@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main: runtime array construction
+
+- Matched `__construct_array` and `__construct_new_array` with the isolated GLM trial.
+- Registered these two functions as C++ with exceptions enabled; the runtime library's C defaults remain unchanged.
+- Both matched in the full build and passed the game's binary hash gate.
+
 ## ft_purin, main and 1 more: 31 functions
 
 - Matched 31 functions in `ft_purin, main and 1 more` with decomp-orchestrator: luna 12, qwen27b 16, sol 2, terra 1.

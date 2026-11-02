@@ -17922,10 +17922,20 @@ Runtime.PPCEABI.H/fn_803F07D4.c:
 Runtime.PPCEABI.H/fn_803F07E0.c:
 	.text       start:0x803F07E0 end:0x803F0A1C
 
+Runtime.PPCEABI.H/fn_803F0A1C.cpp:
+	extab       start:0x800094CC end:0x800094E4
+	extabindex  start:0x8000C4CC end:0x8000C4D8
+	.text       start:0x803F0A1C end:0x803F0B20
+
 Runtime.PPCEABI.H/dtor_803F0B20.c:
 	extab       start:0x800094E4 end:0x800094EC
 	extabindex  start:0x8000C4D8 end:0x8000C4E4
 	.text       start:0x803F0B20 end:0x803F0BDC
+
+Runtime.PPCEABI.H/fn_803F0BDC.cpp:
+	extab       start:0x800094EC end:0x80009504
+	extabindex  start:0x8000C4E4 end:0x8000C4F0
+	.text       start:0x803F0BDC end:0x803F0CD4
 
 Runtime.PPCEABI.H/fn_803F0CD4.c:
 	extab       start:0x80009504 end:0x8000950C
