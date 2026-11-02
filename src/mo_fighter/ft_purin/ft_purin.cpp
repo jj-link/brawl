@@ -219,3 +219,28 @@ extern "C" void fn_124_80C4(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_80C4
 // decomp-orchestrator: end fn_124_80C4
+
+// decomp-orchestrator: begin fn_124_393C
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_393C {
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_393C(void* p, s16 size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_393C
+// decomp-orchestrator: end fn_124_393C
+
+// decomp-orchestrator: begin fn_124_8578
+#pragma force_active on
+namespace decomp_orch_fn_124_8578 {
+extern "C" void fn_124_8578(void* self, int index, float value) {
+    float* arr = *reinterpret_cast<float**>(static_cast<char*>(self) + 0x14);
+    arr[index] -= value;
+}
+}  // namespace decomp_orch_fn_124_8578
+// decomp-orchestrator: end fn_124_8578
