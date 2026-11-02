@@ -14300,6 +14300,11 @@ havok/fn_80303D1C.cpp:
 havok/fn_80303F78.cpp:
 	.text       start:0x80303F78 end:0x80303F84
 
+havok/fn_80303F84.cpp:
+	extab       start:0x800087F4 end:0x800087FC
+	extabindex  start:0x8000B728 end:0x8000B734
+	.text       start:0x80303F84 end:0x80304A14
+
 havok/fn_80304BC4.cpp:
 	.text       start:0x80304BC4 end:0x80304C08
 
