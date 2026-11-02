@@ -283,3 +283,22 @@ extern "C" void* fn_124_2BB8(void* ptr, short flag) {
 }
 }  // namespace decomp_orch_fn_124_2BB8
 // decomp-orchestrator: end fn_124_2BB8
+
+// decomp-orchestrator: begin fn_124_304C
+#pragma force_active on
+namespace decomp_orch_fn_124_304C {
+extern "C" void* fn_27_19874C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_304C(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_27_19874C(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_304C
+// decomp-orchestrator: end fn_124_304C
