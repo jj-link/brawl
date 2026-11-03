@@ -1495,3 +1495,19 @@ extern "C" void* fn_124_420C(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_420C
 // decomp-orchestrator: end fn_124_420C
+
+// decomp-orchestrator: begin fn_124_3834
+#pragma force_active on
+namespace decomp_orch_fn_124_3834 {
+extern "C" {
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_3834(void* p, short size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3834
+// decomp-orchestrator: end fn_124_3834
