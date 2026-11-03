@@ -691,10 +691,12 @@ def generate_build_ninja(
     mwcc_sjis_extab_cmd = f'{CHAIN}{mwcc_sjis_cmd} && {dtk} extab clean --padding "$extab_padding" $out $out'
     mwcc_sjis_extab_implicit: List[Optional[Path]] = [*mwcc_sjis_implicit, dtk]
 
-    # MWCC with .data re-aligned to 4 (decomp-orchestrator units whose jump table the original keeps at an
-    # address aligned to 4 but not 8; the compiler marks .data as aligned to 8)
+    # MWCC with its data sections re-aligned to 4 (decomp-orchestrator units whose jump table or constants the
+    # original keeps at an address aligned to 4 but not 8; the compiler marks .data, .rodata and .sdata2 as aligned
+    # to 8, and a .rodata left at 8 landed 4 bytes late)
     objcopy = binutils / f"powerpc-eabi-objcopy{EXE}"
-    objcopy_cmd = f"{objcopy} --set-section-alignment .data=4 $out"
+    objcopy_cmd = (f"{objcopy} --set-section-alignment .data=4 --set-section-alignment .rodata=4 "
+                   f"--set-section-alignment .sdata2=4 $out")
     mwcc_align4_cmd = f"{CHAIN}{mwcc_cmd} && {objcopy_cmd}"
     mwcc_align4_implicit: List[Optional[Path]] = [*mwcc_implicit, binutils_implicit or objcopy]
     mwcc_sjis_align4_cmd = f"{CHAIN}{mwcc_sjis_cmd} && {objcopy_cmd}"
