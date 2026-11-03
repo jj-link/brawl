@@ -1511,3 +1511,50 @@ extern "C" void* fn_124_3834(void* p, short size) {
 }
 }  // namespace decomp_orch_fn_124_3834
 // decomp-orchestrator: end fn_124_3834
+
+// decomp-orchestrator: begin fn_124_32BC
+#pragma force_active on
+namespace decomp_orch_fn_124_32BC {
+extern "C" void fn_124_331C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_32BC(void* p, int flag) {
+    if (p != 0) {
+        fn_124_331C((char*)p + 8, -1);
+        if ((short)flag > 0)
+            __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_32BC
+// decomp-orchestrator: end fn_124_32BC
+
+// decomp-orchestrator: begin fn_124_74F8
+#pragma force_active on
+namespace decomp_orch_fn_124_74F8 {
+struct FtCommandResources {
+    unsigned char calcArea[0x48];
+    unsigned char workCalc[0x5C];
+    unsigned char mediator[0x6C];
+};
+
+extern "C" {
+void fn_27_197FD4(void* calculator, int kind, int param);
+void fn_27_198148(void* calculator, int param);
+void fn_27_B7E20(void* mediator, void* context, void* owner, void* workCalc,
+                 int index, void* singletons, void* pickTransactor);
+
+extern unsigned char lbl_27_bss_2BA4[0xC];
+extern unsigned char lbl_27_bss_2BCC[0xC];
+}
+
+extern "C" FtCommandResources* fn_124_74F8(FtCommandResources* resources,
+                                           void* context, int index) {
+    fn_27_197FD4(resources, 3, 0);
+    fn_27_198148(&resources->workCalc, 0);
+    fn_27_B7E20(&resources->mediator, context, resources, &resources->workCalc,
+                index, lbl_27_bss_2BA4, lbl_27_bss_2BCC);
+    return resources;
+}
+}  // namespace decomp_orch_fn_124_74F8
+// decomp-orchestrator: end fn_124_74F8
