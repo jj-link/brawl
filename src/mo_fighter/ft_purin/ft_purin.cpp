@@ -1670,3 +1670,14 @@ extern "C" void* fn_124_4CF4(void* self, short flag) {
 }
 }  // namespace decomp_orch_fn_124_4CF4
 // decomp-orchestrator: end fn_124_4CF4
+
+// decomp-orchestrator: begin fn_124_8678
+#pragma force_active on
+namespace decomp_orch_fn_124_8678 {
+extern "C" void *fn_124_8678(void *self, unsigned int idx)
+{
+    void **table = *(void ***)((char *)self + 0xC);
+    return table[idx];
+}
+}  // namespace decomp_orch_fn_124_8678
+// decomp-orchestrator: end fn_124_8678
