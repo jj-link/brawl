@@ -38,6 +38,9 @@ mo_stage/st_palutena/st_palutena_function_d24.cpp:
 mo_stage/st_palutena/st_palutena_function_e10.cpp:
 	.text       start:0x00000E10 end:0x00000E18
 
+mo_stage/st_palutena/st_palutena_function_fb0.cpp:
+	.text       start:0x00000FB0 end:0x000010EC
+
 mo_stage/st_palutena/st_palutena_function_10ec.cpp:
 	.text       start:0x000010EC end:0x000010F4
 
@@ -884,6 +887,9 @@ mo_stage/st_palutena/st_palutena_function_8cd0.cpp:
 
 mo_stage/st_palutena/st_palutena_function_8cd8.cpp:
 	.text       start:0x00008CD8 end:0x00008CE0
+
+mo_stage/st_palutena/st_palutena_function_8ce0.cpp:
+	.text       start:0x00008CE0 end:0x00008DD0
 
 mo_stage/st_palutena/st_palutena_function_8dd0.cpp:
 	.text       start:0x00008DD0 end:0x00008E28
