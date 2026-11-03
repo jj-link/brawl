@@ -1038,6 +1038,10 @@ mo_fighter/ft_samus/ft_samus_function_b3a4.cpp:
 mo_fighter/ft_samus/ft_samus_function_b400.cpp:
 	.text       start:0x0000B400 end:0x0000B460
 
+mo_fighter/ft_samus/ft_samus_function_b460.cpp:
+	.text       start:0x0000B460 end:0x0000BDB0
+	.data       start:0x00005118 end:0x0000515C
+
 mo_fighter/ft_samus/ft_samus_function_bdb0.cpp:
 	.text       start:0x0000BDB0 end:0x0000C1A8
 	.data       start:0x0000515C end:0x000051A0
