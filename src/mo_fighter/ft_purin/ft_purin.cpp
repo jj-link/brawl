@@ -1286,3 +1286,31 @@ extern "C" u32 fn_124_85C8(void* self) {
 }
 }  // namespace decomp_orch_fn_124_85C8
 // decomp-orchestrator: end fn_124_85C8
+
+// decomp-orchestrator: begin fn_124_23F8
+#pragma force_active on
+namespace decomp_orch_fn_124_23F8 {
+extern "C" {
+void* fn_124_20E0(void*, short);
+void __dt__33soAnimCmdAddressPackArraySeparateFv(void*, short);
+void* fn_124_21BC(void*, short);
+void* fn_27_C7770(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_23F8(void* object, short deleting) {
+    if (object != 0) {
+        char* members = static_cast<char*>(object);
+        short memberDeleting = -1;
+        fn_124_20E0(members + 0xDC, memberDeleting);
+        __dt__33soAnimCmdAddressPackArraySeparateFv(members + 0xC0, memberDeleting);
+        fn_124_21BC(members + 0x14, memberDeleting);
+        if (object != 0)
+            fn_27_C7770(object, memberDeleting);
+        if (deleting > 0)
+            __dl__FPv(object);
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_23F8
+// decomp-orchestrator: end fn_124_23F8

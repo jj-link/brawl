@@ -1011,6 +1011,9 @@ sora/misc/fn_8003CD14.cpp:
 sora/misc/fn_8003CD6C.cpp:
 	.text       start:0x8003CD6C end:0x8003CD94
 
+sora/misc/fn_8003CD94.cpp:
+	.text       start:0x8003CD94 end:0x8003CE04
+
 sora/misc/fn_8003CEE4.cpp:
 	.text       start:0x8003CEE4 end:0x8003CEEC
 
@@ -2282,6 +2285,9 @@ sora/misc/fn_8006A750.cpp:
 
 sora/misc/fn_8006AB20.cpp:
 	.text       start:0x8006AB20 end:0x8006AB48
+
+sora/misc/fn_8006B0C8.cpp:
+	.text       start:0x8006B0C8 end:0x8006B134
 
 sora/misc/fn_8006B134.cpp:
 	.text       start:0x8006B134 end:0x8006B15C
@@ -5163,6 +5169,9 @@ sora/misc/fn_80108B70.cpp:
 
 sora/misc/fn_80108D1C.cpp:
 	.text       start:0x80108D1C end:0x80108DE4
+
+sora/misc/fn_80108DE4.cpp:
+	.text       start:0x80108DE4 end:0x80108E44
 
 sora/misc/fn_80108E44.cpp:
 	.text       start:0x80108E44 end:0x80108E5C
@@ -8222,6 +8231,9 @@ nw4r/fn_8019B194.cpp:
 
 nw4r/fn_8019B26C.cpp:
 	.text       start:0x8019B26C end:0x8019B370
+
+nw4r/fn_8019B370.cpp:
+	.text       start:0x8019B370 end:0x8019B568
 
 nw4r/fn_8019B734.cpp:
 	.text       start:0x8019B734 end:0x8019B74C
@@ -11549,6 +11561,10 @@ RVL_SDK/fn_8020365C.c:
 RVL_SDK/fn_80203980.c:
 	.text       start:0x80203980 end:0x80203A10
 
+RVL_SDK/fn_80203B90.c:
+	.text       start:0x80203B90 end:0x80203CD4
+	.sdata2     start:0x805A3958 end:0x805A3968
+
 RVL_SDK/fn_80203CD4.c:
 	.text       start:0x80203CD4 end:0x80203CE0
 
@@ -11587,6 +11603,9 @@ RVL_SDK/fn_80204E30.c:
 
 RVL_SDK/fn_80204E48.c:
 	.text       start:0x80204E48 end:0x80204E58
+
+RVL_SDK/fn_80204E58.c:
+	.text       start:0x80204E58 end:0x80204E5C
 
 RVL_SDK/fn_80204E5C.c:
 	.text       start:0x80204E5C end:0x80204E6C
@@ -11998,6 +12017,9 @@ RVL_SDK/fn_80213ED4.c:
 
 RVL_SDK/fn_80213FC8.c:
 	.text       start:0x80213FC8 end:0x802140BC
+
+RVL_SDK/fn_802140BC.c:
+	.text       start:0x802140BC end:0x80214210
 
 RVL_SDK/fn_80214358.c:
 	.text       start:0x80214358 end:0x8021445C
@@ -12644,6 +12666,9 @@ RVL_SDK/fn_80237230.c:
 
 RVL_SDK/fn_802372B8.c:
 	.text       start:0x802372B8 end:0x802372F0
+
+RVL_SDK/fn_802372F0.c:
+	.text       start:0x802372F0 end:0x80237354
 
 RVL_SDK/fn_80237354.c:
 	.text       start:0x80237354 end:0x80237408
@@ -13521,6 +13546,9 @@ RVL_SDK/fn_8027331C.c:
 RVL_SDK/fn_802781F0.c:
 	.text       start:0x802781F0 end:0x802782A0
 
+RVL_SDK/fn_80278AEC.c:
+	.text       start:0x80278AEC end:0x80278AF0
+
 RVL_SDK/fn_80278AF0.c:
 	.text       start:0x80278AF0 end:0x80278B0C
 
@@ -13867,6 +13895,9 @@ RVL_SDK/fn_80283CD0.c:
 RVL_SDK/fn_80283D7C.c:
 	.text       start:0x80283D7C end:0x80283E28
 
+RVL_SDK/fn_80283E28.c:
+	.text       start:0x80283E28 end:0x80283EB4
+
 RVL_SDK/fn_80285A48.c:
 	.text       start:0x80285A48 end:0x80285A6C
 	.ctors      start:0x8040660C end:0x80406610
@@ -13935,6 +13966,9 @@ RVL_SDK/fn_8028D8A4.c:
 
 RVL_SDK/fn_8028D8AC.c:
 	.text       start:0x8028D8AC end:0x8028D8B4
+
+RVL_SDK/fn_8028D8BC.c:
+	.text       start:0x8028D8BC end:0x8028D8C0
 
 RVL_SDK/fn_8028F960.c:
 	.text       start:0x8028F960 end:0x8028F9AC
@@ -16294,6 +16328,9 @@ havok/fn_802DBFD0.cpp:
 havok/fn_802DC6F8.cpp:
 	.text       start:0x802DC6F8 end:0x802DC764
 
+havok/fn_802DCA2C.cpp:
+	.text       start:0x802DCA2C end:0x802DCBD8
+
 havok/fn_802DD4F4.cpp:
 	.text       start:0x802DD4F4 end:0x802DD4F8
 
@@ -17761,6 +17798,12 @@ havok/fn_8032D99C.cpp:
 	extabindex  start:0x8000BFE0 end:0x8000BFEC
 	.text       start:0x8032D99C end:0x8032DA40
 
+havok/fn_8032E8EC.cpp:
+	extab       start:0x80009198 end:0x800091A0
+	extabindex  start:0x8000C034 end:0x8000C040
+	.text       start:0x8032E8EC end:0x8032E950
+	.ctors      start:0x8040678C end:0x80406790
+
 havok/fn_8032E950.cpp:
 	extab       start:0x800091A0 end:0x800091A8
 	extabindex  start:0x8000C040 end:0x8000C04C
@@ -18321,6 +18364,9 @@ network/fn_80358740.c:
 
 network/fn_8035874C.c:
 	.text       start:0x8035874C end:0x80358764
+
+network/fn_80358890.c:
+	.text       start:0x80358890 end:0x80358960
 
 network/fn_80358960.c:
 	.text       start:0x80358960 end:0x80358A0C
@@ -19093,6 +19139,9 @@ network/fn_803895D0.c:
 network/fn_80389754.c:
 	.text       start:0x80389754 end:0x80389760
 
+network/fn_803897C8.c:
+	.text       start:0x803897C8 end:0x80389838
+
 network/fn_80389838.c:
 	.text       start:0x80389838 end:0x8038987C
 
@@ -19633,6 +19682,9 @@ network/fn_803A3058.c:
 network/fn_803A3CB4.c:
 	.text       start:0x803A3CB4 end:0x803A3D64
 
+network/fn_803A3FA0.c:
+	.text       start:0x803A3FA0 end:0x803A4110
+
 network/fn_803A5A8C.c:
 	.text       start:0x803A5A8C end:0x803A5B84
 
@@ -19695,6 +19747,9 @@ network/fn_803A7AF8.c:
 
 network/fn_803A7B04.c:
 	.text       start:0x803A7B04 end:0x803A7B0C
+
+network/fn_803A7FF0.c:
+	.text       start:0x803A7FF0 end:0x803A8068
 
 network/fn_803A84F0.c:
 	.text       start:0x803A84F0 end:0x803A85F4
@@ -20843,6 +20898,9 @@ network/fn_803E8860.c:
 
 network/fn_803E9178.c:
 	.text       start:0x803E9178 end:0x803E9260
+
+network/fn_803E9D60.c:
+	.text       start:0x803E9D60 end:0x803E9F5C
 
 network/fn_803EA100.c:
 	.text       start:0x803EA100 end:0x803EA188
