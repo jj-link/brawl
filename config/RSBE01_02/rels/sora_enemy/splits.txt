@@ -3580,6 +3580,10 @@ mo_enemy/sora_enemy/sora_enemy_function_3b580.cpp:
 	.text       start:0x0003B580 end:0x0003B704
 	.data       start:0x0000A454 end:0x0000A498
 
+mo_enemy/sora_enemy/sora_enemy_function_3b704.cpp:
+	.text       start:0x0003B704 end:0x0003B8DC
+	.data       start:0x0000A498 end:0x0000A4DC
+
 mo_enemy/sora_enemy/sora_enemy_function_3b8dc.cpp:
 	.text       start:0x0003B8DC end:0x0003B938
 
@@ -4296,6 +4300,9 @@ mo_enemy/sora_enemy/hammerbros/em_hammerbros_param_accesser.cpp:
 	.rodata     start:0x00001078 end:0x00001080
 	.data       start:0x00011100 end:0x00011180
 	.bss        start:0x000005C8 end:0x000005E0
+
+mo_enemy/sora_enemy/sora_enemy_function_4c934.cpp:
+	.text       start:0x0004C934 end:0x0004CA90
 
 mo_enemy/sora_enemy/sora_enemy_function_4ca90.cpp:
 	.text       start:0x0004CA90 end:0x0004CC80
