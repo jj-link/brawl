@@ -1700,3 +1700,41 @@ extern "C" void* fn_124_55CC(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_55CC
 // decomp-orchestrator: end fn_124_55CC
+
+// decomp-orchestrator: begin fn_124_5684
+#pragma force_active on
+namespace decomp_orch_fn_124_5684 {
+extern "C" void* fn_124_39D8(void*, short);
+extern "C" void* fn_124_56FC(void*, short);
+extern "C" void* fn_27_CD934(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5684(void* p, short flag) {
+    if (p) {
+        fn_124_39D8((char*)p + 0xAC, -1);
+        fn_124_56FC((char*)p + 0x20, -1);
+        fn_27_CD934(p, -1);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_5684
+// decomp-orchestrator: end fn_124_5684
+
+// decomp-orchestrator: begin fn_124_8600
+#pragma force_active on
+namespace decomp_orch_fn_124_8600 {
+struct FnWork {
+    char pad[0xc];
+    int *intWorks;
+};
+
+extern "C" void fn_124_8600(FnWork *self, int value, unsigned int index) {
+    if (value != 0) {
+        self->intWorks[index] /= value;
+    }
+}
+}  // namespace decomp_orch_fn_124_8600
+// decomp-orchestrator: end fn_124_8600
