@@ -1419,3 +1419,25 @@ extern "C" bool fn_124_7FFC(void*, signed char value)
 }
 }  // namespace decomp_orch_fn_124_7FFC
 // decomp-orchestrator: end fn_124_7FFC
+
+// decomp-orchestrator: begin fn_124_4284
+#pragma force_active on
+namespace decomp_orch_fn_124_4284 {
+extern "C" void* fn_27_1A15B8(void*, short);
+extern "C" void fn_124_42FC(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4284(void* p, short flag) {
+    if (p != 0) {
+        fn_27_1A15B8((char*)p + 0x2fc, -1);
+        if (p != 0) {
+            fn_124_42FC(p, 0);
+        }
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_4284
+// decomp-orchestrator: end fn_124_4284
