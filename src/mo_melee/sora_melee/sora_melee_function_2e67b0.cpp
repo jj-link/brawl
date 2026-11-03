@@ -1,0 +1,66 @@
+#define soEventUnitWrapper HeaderEventUnitWrapper
+#define soInstanceUnitFullProperty HeaderInstanceUnitFullProperty
+#include <so/event/so_event_system.h>
+#undef soEventUnitWrapper
+#undef soInstanceUnitFullProperty
+#include <so/event/so_event_manage_module_impl.h>
+#pragma force_active on
+extern "C" {
+void __destroy_arr(void*, void (*)(void*, int), unsigned long, unsigned long);
+void __dl__FPv(void*);
+void* fn_27_840D8(void*,int); void* fn_27_84218(void*,int);
+void* fn_27_84358(void*,int); void* fn_27_844D8(void*,int);
+void* fn_27_84198(void*,int); void* fn_27_845D8(void*,int);
+void* fn_27_84458(void*,int); void* fn_27_84398(void*,int);
+void* fn_27_50588(void*,int);
+
+extern char lbl_27_data_25F60[], lbl_27_data_21D78[], lbl_27_data_260C8[], lbl_27_data_25948[], lbl_27_data_25F88[], lbl_27_data_26028[], lbl_27_data_26050[];
+}
+template <class T> struct soEventUnitWrapper { static char __vt[]; };
+template <class T> struct soInstanceUnitFullProperty { void* data[3]; ~soInstanceUnitFullProperty(); };
+class soTurnEventObserver;
+class soLinkEventObserver;
+struct LinkArray { char pad[12]; soInstanceUnitFullProperty<soLinkEventObserver*> arr[1]; };
+#define PART(O,F,N,V) \
+ if (p + O) { \
+  if (p + O + 12 && p + O + 28) __destroy_arr(p + O + 40,(void (*)(void*,int))F,12,N); \
+  if (p + O && p + O) { \
+   short id = *(short*)(p + O + 4); \
+   *(void**)(p + O) = V; \
+   if (id != -1) soEventSystem::getInstance()->getManager(*(short*)(p + O + 4))->eraseUnit(*(short*)(p + O + 6)); \
+  } \
+ }
+#define SPECIAL(O,F,N,T) \
+ if (p + O) { \
+  if (p + O + 12 && p + O + 28) __destroy_arr(p + O + 40,(void (*)(void*,int))F,12,N); \
+  if (p + O && p + O) { \
+   short id = *(short*)(p + O + 4); \
+   *(void**)(p + O) = soEventUnitWrapper<T>::__vt; \
+   if (id != -1) soEventSystem::getInstance()->getManager(*(short*)(p + O + 4))->eraseUnit(*(short*)(p + O + 6)); \
+  } \
+ }
+extern "C" void* fn_27_2E67B0(void* obj, int flag) {
+ char* p = (char*)obj;
+ if (obj) {
+  SPECIAL(0x468,fn_27_840D8,6,soTurnEventObserver)
+  PART(0x414,fn_27_84218,3,lbl_27_data_25F60)
+  PART(0x3d8,fn_27_84358,1,lbl_27_data_21D78)
+  PART(0x39c,fn_27_844D8,1,lbl_27_data_260C8)
+  PART(0x340,fn_27_84198,4,lbl_27_data_25948)
+  PART(0x2e4,fn_27_845D8,4,lbl_27_data_25F88)
+  if (p + 0x2a8) {
+ if (p + 0x2b4) ((LinkArray*)(p+0x2c4))->~LinkArray();
+ if (p + 0x2a8 && p + 0x2a8) {
+ short id = *(short*)(p+0x2ac);
+ *(void**)(p+0x2a8) = soEventUnitWrapper<soLinkEventObserver>::__vt;
+ if (id != -1) soEventSystem::getInstance()->getManager(*(short*)(p+0x2ac))->eraseUnit(*(short*)(p+0x2ae));
+ }
+ }
+  PART(0x188,fn_27_84458,20,lbl_27_data_26028)
+  PART(0xcc,fn_27_84398,12,lbl_27_data_26050)
+  ((soEventManageModuleImpl*)(p+0xb8))->~soEventManageModuleImpl();
+  if (p && p+0x14) __destroy_arr(p+0x20,(void (*)(void*,int))fn_27_50588,8,19);
+  if (flag > 0) __dl__FPv(obj);
+ }
+ return obj;
+}
