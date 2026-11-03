@@ -91,7 +91,8 @@ mo_menu_rule/sora_menu_rule/sora_menu_rule_function_1a9c.cpp:
 	.text       start:0x00001A9C end:0x00001AE0
 
 mo_menu_rule/sora_menu_rule/sora_menu_rule_function_1c4c.cpp:
-	.text       start:0x00001C4C end:0x00001D48
+	.text       start:0x00001C4C end:0x00001F34
+	.rodata     start:0x0000003C end:0x00000040
 
 mo_menu_rule/sora_menu_rule/sora_menu_rule_function_1f34.cpp:
 	.text       start:0x00001F34 end:0x00002030
