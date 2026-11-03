@@ -1,0 +1,63 @@
+#include <revolution/GX/GXHardware.h>
+#pragma force_active on
+
+void __GXSetTmemConfig(int arg0)
+{
+    switch (arg0) {
+    case 2:
+        GX_BP_LOAD_REG(0x8C0D8000);
+        GX_BP_LOAD_REG(0x900DC000);
+        GX_BP_LOAD_REG(0x8D0D8800);
+        GX_BP_LOAD_REG(0x910DC800);
+        GX_BP_LOAD_REG(0x8E0D9000);
+        GX_BP_LOAD_REG(0x920DD000);
+        GX_BP_LOAD_REG(0x8F0D9800);
+        GX_BP_LOAD_REG(0x930DD800);
+        GX_BP_LOAD_REG(0xAC0DA000);
+        GX_BP_LOAD_REG(0xB00DC400);
+        GX_BP_LOAD_REG(0xAD0DA800);
+        GX_BP_LOAD_REG(0xB10DCC00);
+        GX_BP_LOAD_REG(0xAE0DB000);
+        GX_BP_LOAD_REG(0xB20DD400);
+        GX_BP_LOAD_REG(0xAF0DB800);
+        GX_BP_LOAD_REG(0xB30DDC00);
+        break;
+    case 1:
+        GX_BP_LOAD_REG(0x8C0D8000);
+        GX_BP_LOAD_REG(0x900DC000);
+        GX_BP_LOAD_REG(0x8D0D8800);
+        GX_BP_LOAD_REG(0x910DC800);
+        GX_BP_LOAD_REG(0x8E0D9000);
+        GX_BP_LOAD_REG(0x920DD000);
+        GX_BP_LOAD_REG(0x8F0D9800);
+        GX_BP_LOAD_REG(0x930DD800);
+        GX_BP_LOAD_REG(0xAC0DA000);
+        GX_BP_LOAD_REG(0xB00DE000);
+        GX_BP_LOAD_REG(0xAD0DA800);
+        GX_BP_LOAD_REG(0xB10DE800);
+        GX_BP_LOAD_REG(0xAE0DB000);
+        GX_BP_LOAD_REG(0xB20DF000);
+        GX_BP_LOAD_REG(0xAF0DB800);
+        GX_BP_LOAD_REG(0xB30DF800);
+        break;
+    case 0:
+    default:
+        GX_BP_LOAD_REG(0x8C0D8000);
+        GX_BP_LOAD_REG(0x900DC000);
+        GX_BP_LOAD_REG(0x8D0D8400);
+        GX_BP_LOAD_REG(0x910DC400);
+        GX_BP_LOAD_REG(0x8E0D8800);
+        GX_BP_LOAD_REG(0x920DC800);
+        GX_BP_LOAD_REG(0x8F0D8C00);
+        GX_BP_LOAD_REG(0x930DCC00);
+        GX_BP_LOAD_REG(0xAC0D9000);
+        GX_BP_LOAD_REG(0xB00DD000);
+        GX_BP_LOAD_REG(0xAD0D9400);
+        GX_BP_LOAD_REG(0xB10DD400);
+        GX_BP_LOAD_REG(0xAE0D9800);
+        GX_BP_LOAD_REG(0xB20DD800);
+        GX_BP_LOAD_REG(0xAF0D9C00);
+        GX_BP_LOAD_REG(0xB30DDC00);
+        break;
+    }
+}
