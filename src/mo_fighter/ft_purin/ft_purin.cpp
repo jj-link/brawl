@@ -1409,3 +1409,13 @@ extern "C" void* fn_124_2E64(void* object, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_2E64
 // decomp-orchestrator: end fn_124_2E64
+
+// decomp-orchestrator: begin fn_124_7FFC
+#pragma force_active on
+namespace decomp_orch_fn_124_7FFC {
+extern "C" bool fn_124_7FFC(void*, signed char value)
+{
+    return value == static_cast<signed char>(0xC);
+}
+}  // namespace decomp_orch_fn_124_7FFC
+// decomp-orchestrator: end fn_124_7FFC
