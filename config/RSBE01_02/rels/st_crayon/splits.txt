@@ -18,6 +18,9 @@ mo_stage/st_crayon/st_crayon.cpp:
 	.data       start:0x00000000 end:0x000003F0
 	.bss        start:0x00000008 end:0x00000018
 
+mo_stage/st_crayon/st_crayon_function_f88.cpp:
+	.text       start:0x00000F88 end:0x00000F90
+
 mo_stage/st_crayon/st_crayon_function_f90.cpp:
 	.text       start:0x00000F90 end:0x00001014
 
@@ -27,11 +30,26 @@ mo_stage/st_crayon/st_crayon_function_1014.cpp:
 mo_stage/st_crayon/st_crayon_function_106c.cpp:
 	.text       start:0x0000106C end:0x000011C4
 
+mo_stage/st_crayon/st_crayon_function_11c4.cpp:
+	.text       start:0x000011C4 end:0x000011CC
+
 mo_stage/st_crayon/st_crayon_function_12e8.cpp:
 	.text       start:0x000012E8 end:0x00001354
 
 mo_stage/st_crayon/st_crayon_function_1354.cpp:
 	.text       start:0x00001354 end:0x000013C4
+
+mo_stage/st_crayon/st_crayon_function_13c4.cpp:
+	.text       start:0x000013C4 end:0x000013CC
+
+mo_stage/st_crayon/st_crayon_function_13cc.cpp:
+	.text       start:0x000013CC end:0x000013D4
+
+mo_stage/st_crayon/st_crayon_function_13d4.cpp:
+	.text       start:0x000013D4 end:0x000013D8
+
+mo_stage/st_crayon/st_crayon_function_13d8.cpp:
+	.text       start:0x000013D8 end:0x000013DC
 
 mo_stage/st_crayon/st_crayon_function_13dc.cpp:
 	.text       start:0x000013DC end:0x000013EC
@@ -42,8 +60,23 @@ mo_stage/st_crayon/st_crayon_function_13ec.cpp:
 mo_stage/st_crayon/st_crayon_function_13fc.cpp:
 	.text       start:0x000013FC end:0x00001408
 
+mo_stage/st_crayon/st_crayon_function_1408.cpp:
+	.text       start:0x00001408 end:0x00001410
+
+mo_stage/st_crayon/st_crayon_function_1410.cpp:
+	.text       start:0x00001410 end:0x00001414
+
 mo_stage/st_crayon/st_crayon_function_1414.cpp:
 	.text       start:0x00001414 end:0x00001430
+
+mo_stage/st_crayon/st_crayon_function_1430.cpp:
+	.text       start:0x00001430 end:0x00001438
+
+mo_stage/st_crayon/st_crayon_function_1438.cpp:
+	.text       start:0x00001438 end:0x00001440
+
+mo_stage/st_crayon/st_crayon_function_1440.cpp:
+	.text       start:0x00001440 end:0x00001448
 
 mo_stage/st_crayon/st_crayon_function_1448.cpp:
 	.text       start:0x00001448 end:0x000014D4

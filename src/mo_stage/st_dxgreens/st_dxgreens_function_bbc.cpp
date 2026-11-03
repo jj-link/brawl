@@ -1,0 +1,232 @@
+#pragma force_active on
+#include <types.h>
+
+extern "C" float randf__Fv();
+extern "C" const float lbl_79_rodata_0;
+
+struct Stage_base { char pad[0x3c]; };
+class Stage : public Stage_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_79_1F0();
+    virtual void fn_79_2E4();
+    virtual void createObjPokeTrainer();
+    virtual void fn_79_1868();
+    virtual void fn_79_1864();
+    virtual void fn_79_1858();
+    virtual void fn_79_1850();
+    virtual void fn_79_1848();
+    virtual void fn_79_1584();
+    virtual void getItemGenPac();
+    virtual void getItemPacEnemyFigure();
+    virtual void getEnemyPac();
+    virtual void getAdvRadarData();
+    virtual void initializeStage();
+    virtual void closeStage();
+    virtual void renderDebugPositions();
+    virtual void fn_79_2DC();
+    virtual void process();
+    virtual void updateStagePositions();
+    virtual void debugCollision();
+    virtual void fn_79_1840();
+    virtual void fn_79_1838();
+    virtual void getZoneLightSetIndex();
+    virtual void fn_79_181C();
+    virtual void clearCameraParam();
+    virtual void initCameraParam();
+    virtual void startLoadLocalData();
+    virtual void isLoadLocalData();
+    virtual void entryLocalData();
+    virtual void removeLocalData();
+    virtual void fn_79_1818();
+    virtual void getFighterStartPos();
+    virtual void getFighterReStartPos();
+    virtual void fn_79_1870();
+    virtual void getPokeTrainerStartPos();
+    virtual void getItemPosCount();
+    virtual void getItemPos();
+    virtual void getRandItemPos();
+    virtual void getKirifudaPos();
+    virtual void getKirifudaAngle();
+    virtual void getKirifudaScale();
+    virtual void getKirifudaModelType();
+    virtual void getPokeTrainerPosCount();
+    virtual void getPokeTrainerPos();
+    virtual void getFighterDeadEffectSizeRate();
+    virtual void getEnemyDeadEffectSizeRate();
+    virtual void getEnableZ();
+    virtual void fn_79_1808();
+    virtual void fn_79_1810();
+    virtual void fn_79_1800();
+    virtual void fn_79_17F8();
+    virtual void fn_79_17F0();
+    virtual void fn_79_17DC();
+    virtual void fn_79_17CC();
+    virtual void fn_79_17C0();
+    virtual void fn_79_17B4();
+    virtual void fn_79_17AC();
+    virtual void fn_79_17A4();
+    virtual void fn_79_179C();
+    virtual void fn_79_1798();
+    virtual void isEnd();
+    virtual void isEventEnd();
+    virtual void enableDevil();
+    virtual void disableDevil();
+    virtual void isDevil();
+    virtual void setDevilScrool();
+    virtual void getLucarioFinalTechniquePosition();
+    virtual void startAppear();
+    virtual void setAppearKind();
+    virtual void endAppear();
+    virtual void getAppearTask();
+    virtual void forceStopAppear();
+    virtual void getFinalTechniqColor();
+    virtual void setMotionRatio();
+    virtual void saveMotionRatio();
+    virtual void restoreMotionRatio();
+    virtual void setMotionSubRatio();
+    virtual void saveMotionSubRatio();
+    virtual void restoreMotionSubRatio();
+    virtual void fn_79_1790();
+    virtual void fn_79_1788();
+    virtual void fn_79_1780();
+    virtual void isAppear();
+    virtual void isStartAppearTimming();
+    virtual void getMadeinAiData();
+    virtual void fn_79_1880();
+    virtual void getBamperVector();
+    virtual void notifyEventInfoReady();
+    virtual void notifyEventInfoGo();
+    virtual void getDestroyBossParamCommon();
+    virtual void stAdventureEventGetItem();
+    virtual void setStageOutEffectInit();
+    virtual void setStageInEffectInit();
+    virtual void fn_79_1778();
+    virtual void fn_79_1770();
+    virtual void fn_79_176C();
+    virtual void getZoneState();
+    virtual void getZonePos();
+    virtual void getMagmaHeight();
+    virtual void getAcidHeight();
+    virtual void getIteamDropStatus();
+    virtual void createWind2ndOnly();
+    virtual void fn_79_1878();
+    virtual void updateWind2ndOnly();
+    virtual void setVision();
+    virtual void fn_79_ABC();
+    virtual void setCameraLimitRange();
+    virtual void resetCameraLimitRange();
+    virtual void checkChangeScene();
+    virtual void resetChangeScene();
+    virtual void setChangeSceneNumber();
+    virtual void fn_79_554();
+    virtual void fn_79_62C();
+    virtual void fn_79_704();
+    virtual void fn_79_7DC();
+    virtual void fn_79_8A8();
+    virtual void fn_79_A00();
+    virtual void fn_79_B60();
+    virtual void fn_79_BBC();
+    virtual void fn_79_F08();
+    virtual void fn_79_11AC();
+    virtual void fn_79_133C();
+    virtual void fn_79_14D4();
+    virtual void fn_79_15A0(u8 kind, char* list);
+};
+
+extern "C" void fn_79_BBC(Stage* self) {
+    char* base = (char*)self;
+    char* grp;
+    char* sb;
+    char* tbl;
+    char* e;
+    u8 i;
+    u8 j;
+    if (*(u8*)(base + 0x6ec) == 0) {
+        return;
+    }
+    if (lbl_79_rodata_0 == *(float*)(base + 0x53c)) {
+        return;
+    }
+    tbl = *(char**)(base + 0x9c);
+    if (tbl == 0) {
+        return;
+    }
+    for (i = 0; i < 6; i++) {
+        grp = base + 0x1f4 + i * 0x8c;
+        sb = base + i * 0x3c;
+        for (j = 0; j < 5; j++) {
+            e = grp + j * 0x1c;
+            *(float*)(e + 0x0) = *(float*)(sb + j * 0xc + 0x53c);
+            *(float*)(e + 0x4) = *(float*)(sb + j * 0xc + 0x540);
+            *(float*)(e + 0x8) = *(float*)(sb + j * 0xc + 0x544);
+            *(float*)(e + 0xc) = *(float*)(sb + j * 0xc + 0x53c);
+            *(float*)(e + 0x10) = *(float*)(sb + j * 0xc + 0x540);
+            *(float*)(e + 0x14) = *(float*)(sb + j * 0xc + 0x544);
+            *(u8*)(e + 0x18) = j;
+            if (randf__Fv() < *(float*)(tbl + 0x1c)) {
+                *(u8*)(e + 0x1a) = 1;
+            } else {
+                *(u8*)(e + 0x1a) = 0;
+            }
+        }
+    }
+    *(u8*)(base + 0x20d) = 1;
+    *(u8*)(base + 0x229) = 1;
+    *(u8*)(base + 0x245) = 1;
+    *(u8*)(base + 0x261) = 1;
+    self->fn_79_15A0(0, base + 0x6a4);
+    self->fn_79_15A0(1, base + 0x6a4);
+    self->fn_79_15A0(2, base + 0x6a4);
+    self->fn_79_15A0(3, base + 0x6a4);
+    *(u8*)(base + 0x299) = 1;
+    *(u8*)(base + 0x2b5) = 1;
+    *(u8*)(base + 0x2d1) = 1;
+    self->fn_79_15A0(0, base + 0x6b0);
+    self->fn_79_15A0(1, base + 0x6b0);
+    self->fn_79_15A0(2, base + 0x6b0);
+    *(u8*)(base + 0x325) = 1;
+    *(u8*)(base + 0x341) = 1;
+    self->fn_79_15A0(0, base + 0x6bc);
+    self->fn_79_15A0(1, base + 0x6bc);
+    *(u8*)(base + 0x3b1) = 1;
+    *(u8*)(base + 0x3cd) = 1;
+    self->fn_79_15A0(0, base + 0x6c8);
+    self->fn_79_15A0(1, base + 0x6c8);
+    *(u8*)(base + 0x43d) = 1;
+    *(u8*)(base + 0x459) = 1;
+    *(u8*)(base + 0x475) = 1;
+    self->fn_79_15A0(0, base + 0x6d4);
+    self->fn_79_15A0(1, base + 0x6d4);
+    self->fn_79_15A0(2, base + 0x6d4);
+    *(u8*)(base + 0x4c9) = 1;
+    *(u8*)(base + 0x4e5) = 1;
+    *(u8*)(base + 0x501) = 1;
+    *(u8*)(base + 0x51d) = 1;
+    self->fn_79_15A0(0, base + 0x6e0);
+    self->fn_79_15A0(1, base + 0x6e0);
+    self->fn_79_15A0(2, base + 0x6e0);
+    self->fn_79_15A0(3, base + 0x6e0);
+    *(u8*)(base + 0x6ec) = 0;
+}

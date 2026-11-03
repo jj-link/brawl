@@ -80,6 +80,10 @@ mo_stage/st_donkey/st_donkey_function_e04.cpp:
 mo_stage/st_donkey/st_donkey_function_e0c.cpp:
 	.text       start:0x00000E0C end:0x00000E14
 
+mo_stage/st_donkey/st_donkey_function_e14.cpp:
+	.text       start:0x00000E14 end:0x000010B8
+	.data       start:0x000002A0 end:0x000002D0
+
 mo_stage/st_donkey/st_donkey_function_10b8.cpp:
 	.text       start:0x000010B8 end:0x000010C0
 

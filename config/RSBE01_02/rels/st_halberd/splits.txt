@@ -38,6 +38,9 @@ mo_stage/st_halberd/st_halberd_function_650.cpp:
 mo_stage/st_halberd/st_halberd_function_658.cpp:
 	.text       start:0x00000658 end:0x00000660
 
+mo_stage/st_halberd/st_halberd_function_660.cpp:
+	.text       start:0x00000660 end:0x00000784
+
 mo_stage/st_halberd/st_halberd_function_784.cpp:
 	.text       start:0x00000784 end:0x0000078C
 
@@ -785,6 +788,10 @@ mo_stage/st_halberd/st_halberd_function_d28c.cpp:
 
 mo_stage/st_halberd/st_halberd_function_d2f4.cpp:
 	.text       start:0x0000D2F4 end:0x0000D368
+
+mo_stage/st_halberd/st_halberd_function_d368.cpp:
+	.text       start:0x0000D368 end:0x0000D668
+	.data       start:0x000027B0 end:0x000027D4
 
 mo_stage/st_halberd/st_halberd_function_dc00.cpp:
 	.text       start:0x0000DC00 end:0x0000DCEC

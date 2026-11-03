@@ -353,6 +353,9 @@ mo_fighter/ft_marth/ft_marth_function_53c4.cpp:
 mo_fighter/ft_marth/ft_marth_function_53d8.cpp:
 	.text       start:0x000053D8 end:0x0000549C
 
+mo_fighter/ft_marth/ft_marth_function_549c.cpp:
+	.text       start:0x0000549C end:0x000054A4
+
 mo_fighter/ft_marth/ft_marth_function_57f8.cpp:
 	.text       start:0x000057F8 end:0x00005860
 
@@ -440,6 +443,9 @@ mo_fighter/ft_marth/ft_marth_function_6fe4.cpp:
 mo_fighter/ft_marth/ft_marth_function_7020.cpp:
 	.text       start:0x00007020 end:0x000070D0
 
+mo_fighter/ft_marth/ft_marth_function_70d0.cpp:
+	.text       start:0x000070D0 end:0x000070D4
+
 mo_fighter/ft_marth/ft_marth_function_77f4.cpp:
 	.text       start:0x000077F4 end:0x00007804
 
@@ -448,6 +454,12 @@ mo_fighter/ft_marth/ft_marth_function_792c.cpp:
 
 mo_fighter/ft_marth/ft_marth_function_7a10.cpp:
 	.text       start:0x00007A10 end:0x00007AF4
+
+mo_fighter/ft_marth/ft_marth_function_7af4.cpp:
+	.text       start:0x00007AF4 end:0x00007AFC
+
+mo_fighter/ft_marth/ft_marth_function_7c74.cpp:
+	.text       start:0x00007C74 end:0x00007C78
 
 mo_fighter/ft_marth/ft_marth_function_7c78.cpp:
 	.text       start:0x00007C78 end:0x00007CD8
@@ -466,6 +478,21 @@ mo_fighter/ft_marth/ft_marth_function_7dd4.cpp:
 
 mo_fighter/ft_marth/ft_marth_function_7de8.cpp:
 	.text       start:0x00007DE8 end:0x00007DFC
+
+mo_fighter/ft_marth/ft_marth_function_7dfc.cpp:
+	.text       start:0x00007DFC end:0x00007E00
+
+mo_fighter/ft_marth/ft_marth_function_7e00.cpp:
+	.text       start:0x00007E00 end:0x00007E08
+
+mo_fighter/ft_marth/ft_marth_function_7e08.cpp:
+	.text       start:0x00007E08 end:0x00007E0C
+
+mo_fighter/ft_marth/ft_marth_function_7e48.cpp:
+	.text       start:0x00007E48 end:0x00007E4C
+
+mo_fighter/ft_marth/ft_marth_function_7e4c.cpp:
+	.text       start:0x00007E4C end:0x00007E50
 
 mo_fighter/ft_marth/ft_marth_function_7e50.cpp:
 	.text       start:0x00007E50 end:0x00007E64
@@ -488,14 +515,131 @@ mo_fighter/ft_marth/ft_marth_function_7eb4.cpp:
 mo_fighter/ft_marth/ft_marth_function_7ec8.cpp:
 	.text       start:0x00007EC8 end:0x00007EDC
 
+mo_fighter/ft_marth/ft_marth_function_7edc.cpp:
+	.text       start:0x00007EDC end:0x00007EE0
+
 mo_fighter/ft_marth/ft_marth_function_7ee0.cpp:
 	.text       start:0x00007EE0 end:0x00007EF4
 
 mo_fighter/ft_marth/ft_marth_function_7ef4.cpp:
 	.text       start:0x00007EF4 end:0x00007F08
 
+mo_fighter/ft_marth/ft_marth_function_7f08.cpp:
+	.text       start:0x00007F08 end:0x00007F0C
+
+mo_fighter/ft_marth/ft_marth_function_7f0c.cpp:
+	.text       start:0x00007F0C end:0x00007F10
+
+mo_fighter/ft_marth/ft_marth_function_7f10.cpp:
+	.text       start:0x00007F10 end:0x00007F14
+
+mo_fighter/ft_marth/ft_marth_function_7f14.cpp:
+	.text       start:0x00007F14 end:0x00007F18
+
+mo_fighter/ft_marth/ft_marth_function_7f18.cpp:
+	.text       start:0x00007F18 end:0x00007F1C
+
+mo_fighter/ft_marth/ft_marth_function_7f1c.cpp:
+	.text       start:0x00007F1C end:0x00007F20
+
+mo_fighter/ft_marth/ft_marth_function_7f20.cpp:
+	.text       start:0x00007F20 end:0x00007F24
+
+mo_fighter/ft_marth/ft_marth_function_7f24.cpp:
+	.text       start:0x00007F24 end:0x00007F28
+
+mo_fighter/ft_marth/ft_marth_function_7f28.cpp:
+	.text       start:0x00007F28 end:0x00007F2C
+
+mo_fighter/ft_marth/ft_marth_function_7f2c.cpp:
+	.text       start:0x00007F2C end:0x00007F30
+
+mo_fighter/ft_marth/ft_marth_function_7f30.cpp:
+	.text       start:0x00007F30 end:0x00007F34
+
+mo_fighter/ft_marth/ft_marth_function_7f34.cpp:
+	.text       start:0x00007F34 end:0x00007F38
+
+mo_fighter/ft_marth/ft_marth_function_7f38.cpp:
+	.text       start:0x00007F38 end:0x00007F3C
+
+mo_fighter/ft_marth/ft_marth_function_7f3c.cpp:
+	.text       start:0x00007F3C end:0x00007F40
+
+mo_fighter/ft_marth/ft_marth_function_7f40.cpp:
+	.text       start:0x00007F40 end:0x00007F44
+
+mo_fighter/ft_marth/ft_marth_function_7f44.cpp:
+	.text       start:0x00007F44 end:0x00007F4C
+
+mo_fighter/ft_marth/ft_marth_function_7f4c.cpp:
+	.text       start:0x00007F4C end:0x00007F50
+
+mo_fighter/ft_marth/ft_marth_function_7f50.cpp:
+	.text       start:0x00007F50 end:0x00007F54
+
+mo_fighter/ft_marth/ft_marth_function_7f54.cpp:
+	.text       start:0x00007F54 end:0x00007F58
+
+mo_fighter/ft_marth/ft_marth_function_7f58.cpp:
+	.text       start:0x00007F58 end:0x00007F5C
+
 mo_fighter/ft_marth/ft_marth_function_7f5c.cpp:
 	.text       start:0x00007F5C end:0x00007F70
+
+mo_fighter/ft_marth/ft_marth_function_7f84.cpp:
+	.text       start:0x00007F84 end:0x00007F88
+
+mo_fighter/ft_marth/ft_marth_function_7f88.cpp:
+	.text       start:0x00007F88 end:0x00007F8C
+
+mo_fighter/ft_marth/ft_marth_function_7f8c.cpp:
+	.text       start:0x00007F8C end:0x00007F90
+
+mo_fighter/ft_marth/ft_marth_function_7f90.cpp:
+	.text       start:0x00007F90 end:0x00007F94
+
+mo_fighter/ft_marth/ft_marth_function_7f94.cpp:
+	.text       start:0x00007F94 end:0x00007F98
+
+mo_fighter/ft_marth/ft_marth_function_7f98.cpp:
+	.text       start:0x00007F98 end:0x00007FA0
+
+mo_fighter/ft_marth/ft_marth_function_7fb0.cpp:
+	.text       start:0x00007FB0 end:0x00007FB8
+
+mo_fighter/ft_marth/ft_marth_function_7fb8.cpp:
+	.text       start:0x00007FB8 end:0x00007FBC
+
+mo_fighter/ft_marth/ft_marth_function_7fbc.cpp:
+	.text       start:0x00007FBC end:0x00007FC0
+
+mo_fighter/ft_marth/ft_marth_function_7fc0.cpp:
+	.text       start:0x00007FC0 end:0x00007FC4
+
+mo_fighter/ft_marth/ft_marth_function_7fc4.cpp:
+	.text       start:0x00007FC4 end:0x00007FCC
+
+mo_fighter/ft_marth/ft_marth_function_7fcc.cpp:
+	.text       start:0x00007FCC end:0x00007FD4
+
+mo_fighter/ft_marth/ft_marth_function_7fd4.cpp:
+	.text       start:0x00007FD4 end:0x00007FD8
+
+mo_fighter/ft_marth/ft_marth_function_7fd8.cpp:
+	.text       start:0x00007FD8 end:0x00007FDC
+
+mo_fighter/ft_marth/ft_marth_function_7fdc.cpp:
+	.text       start:0x00007FDC end:0x00007FE0
+
+mo_fighter/ft_marth/ft_marth_function_7fe0.cpp:
+	.text       start:0x00007FE0 end:0x00007FE4
+
+mo_fighter/ft_marth/ft_marth_function_7fe4.cpp:
+	.text       start:0x00007FE4 end:0x00007FE8
+
+mo_fighter/ft_marth/ft_marth_function_7fe8.cpp:
+	.text       start:0x00007FE8 end:0x00007FEC
 
 mo_fighter/ft_marth/ft_marth_function_7fec.cpp:
 	.text       start:0x00007FEC end:0x00007FFC
@@ -506,11 +650,44 @@ mo_fighter/ft_marth/ft_marth_function_7ffc.cpp:
 mo_fighter/ft_marth/ft_marth_function_8050.cpp:
 	.text       start:0x00008050 end:0x000080AC
 
+mo_fighter/ft_marth/ft_marth_function_80ac.cpp:
+	.text       start:0x000080AC end:0x000080B4
+
+mo_fighter/ft_marth/ft_marth_function_80b4.cpp:
+	.text       start:0x000080B4 end:0x000080BC
+
+mo_fighter/ft_marth/ft_marth_function_80bc.cpp:
+	.text       start:0x000080BC end:0x000080C4
+
+mo_fighter/ft_marth/ft_marth_function_80c4.cpp:
+	.text       start:0x000080C4 end:0x000080CC
+
+mo_fighter/ft_marth/ft_marth_function_80cc.cpp:
+	.text       start:0x000080CC end:0x000080D4
+
+mo_fighter/ft_marth/ft_marth_function_80d4.cpp:
+	.text       start:0x000080D4 end:0x000080DC
+
+mo_fighter/ft_marth/ft_marth_function_80dc.cpp:
+	.text       start:0x000080DC end:0x000080E4
+
+mo_fighter/ft_marth/ft_marth_function_80e4.cpp:
+	.text       start:0x000080E4 end:0x000080EC
+
+mo_fighter/ft_marth/ft_marth_function_80ec.cpp:
+	.text       start:0x000080EC end:0x000080F4
+
+mo_fighter/ft_marth/ft_marth_function_80f4.cpp:
+	.text       start:0x000080F4 end:0x000080FC
+
 mo_fighter/ft_marth/ft_marth_function_80fc.cpp:
 	.text       start:0x000080FC end:0x0000815C
 
 mo_fighter/ft_marth/ft_marth_function_815c.cpp:
 	.text       start:0x0000815C end:0x0000819C
+
+mo_fighter/ft_marth/ft_marth_function_819c.cpp:
+	.text       start:0x0000819C end:0x000081A4
 
 mo_fighter/ft_marth/ft_marth_function_81a4.cpp:
 	.text       start:0x000081A4 end:0x00008218
