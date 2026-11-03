@@ -1760,3 +1760,85 @@ extern "C" void* fn_124_42FC(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_42FC
 // decomp-orchestrator: end fn_124_42FC
+
+// decomp-orchestrator: begin fn_124_18AC
+#pragma force_active on
+namespace decomp_orch_fn_124_18AC {
+extern "C" {
+void* fn_124_194C(char*, short);
+void* fn_124_1D2C(char*, short);
+void* fn_124_1DC8(char*, short);
+void* fn_124_1F00(char*, short);
+void* fn_27_125E20(void*, short);
+void __dl__FPv(void*);
+
+void* fn_124_18AC(void* object, short deleting) {
+    if (object != 0) {
+        char* storage = static_cast<char*>(object);
+        short destroy = -1;
+        fn_124_194C(storage + 0x99A0, destroy);
+        fn_124_1D2C(storage + 0x94E8, destroy);
+        fn_124_1DC8(storage + 0x94AC, destroy);
+        fn_124_1F00(storage + 0x194, destroy);
+        fn_27_125E20(object, 0);
+        if (deleting > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}
+}  // namespace decomp_orch_fn_124_18AC
+// decomp-orchestrator: end fn_124_18AC
+
+// decomp-orchestrator: begin fn_124_3E20
+#pragma force_active on
+namespace decomp_orch_fn_124_3E20 {
+extern "C" void fn_27_1A2B08(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3E20(void* p, int flag) {
+    if (p != 0) {
+        fn_27_1A2B08((char*)p + 4, -1);
+        if ((short)flag > 0)
+            __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3E20
+// decomp-orchestrator: end fn_124_3E20
+
+// decomp-orchestrator: begin fn_124_7720
+#pragma force_active on
+namespace decomp_orch_fn_124_7720 {
+extern "C" {
+extern signed char lbl_124_bss_214;
+extern unsigned char lbl_124_bss_218[];
+extern unsigned char lbl_124_bss_200[];
+void fn_27_197E44(void*);
+void fn_27_197E54(void*, int);
+void __register_global_object(void*, void*, void*);
+}
+
+extern "C" void* fn_124_7720() {
+    if (lbl_124_bss_214 == 0) {
+        fn_27_197E44(lbl_124_bss_218);
+        __register_global_object(lbl_124_bss_218,
+            reinterpret_cast<void*>(fn_27_197E54), lbl_124_bss_200);
+        lbl_124_bss_214 = 1;
+    }
+    return lbl_124_bss_218;
+}
+}  // namespace decomp_orch_fn_124_7720
+// decomp-orchestrator: end fn_124_7720
+
+// decomp-orchestrator: begin fn_124_8144
+#pragma force_active on
+namespace decomp_orch_fn_124_8144 {
+extern "C" void fn_27_D512C(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_8144(void* receiver, short id, signed char argument) {
+    fn_27_D512C(receiver, id, receiver, argument);
+}
+}  // namespace decomp_orch_fn_124_8144
+// decomp-orchestrator: end fn_124_8144
