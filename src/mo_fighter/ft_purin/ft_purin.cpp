@@ -1558,3 +1558,20 @@ extern "C" FtCommandResources* fn_124_74F8(FtCommandResources* resources,
 }
 }  // namespace decomp_orch_fn_124_74F8
 // decomp-orchestrator: end fn_124_74F8
+
+// decomp-orchestrator: begin fn_124_4E20
+#pragma force_active on
+namespace decomp_orch_fn_124_4E20 {
+extern "C" void fn_27_66114(void*, short);
+extern "C" void __dl__FPv(void*);
+extern "C" void* fn_124_4E20(void* ptr, short flag) {
+    if (ptr) {
+        fn_27_66114(ptr, static_cast<short>(-1));
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_4E20
+// decomp-orchestrator: end fn_124_4E20
