@@ -1423,6 +1423,10 @@ mo_stage/st_famicom/st_famicom_function_131d8.cpp:
 mo_stage/st_famicom/st_famicom_function_13234.cpp:
 	.text       start:0x00013234 end:0x000136FC
 
+mo_stage/st_famicom/st_famicom_function_136fc.cpp:
+	.text       start:0x000136FC end:0x00013888
+	.data       start:0x00003270 end:0x00003388
+
 mo_stage/st_famicom/st_famicom_function_13888.cpp:
 	.text       start:0x00013888 end:0x0001390C
 
