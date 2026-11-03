@@ -1314,3 +1314,30 @@ extern "C" void* fn_124_23F8(void* object, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_23F8
 // decomp-orchestrator: end fn_124_23F8
+
+// decomp-orchestrator: begin fn_124_30A8
+#pragma force_active on
+namespace decomp_orch_fn_124_30A8 {
+extern "C" {
+void* fn_27_93100(void*, short);
+void* fn_124_312C(void*, short);
+void* fn_27_19EFFC(void*, short);
+void* fn_27_1A51A0(void*, short);
+void __dl__FPv(void*);
+
+void* fn_124_30A8(void* self, short arg1) {
+    if (self) {
+        short destroy = -1;
+        fn_27_93100((char*)self + 0x1724, destroy);
+        fn_124_312C((char*)self + 0x40, destroy);
+        fn_27_19EFFC((char*)self + 0x14, destroy);
+        fn_27_1A51A0(self, destroy);
+        if (arg1 > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}
+}  // namespace decomp_orch_fn_124_30A8
+// decomp-orchestrator: end fn_124_30A8

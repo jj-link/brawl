@@ -1506,6 +1506,10 @@ mo_stage/st_jungle/st_jungle_function_e29c.cpp:
 mo_stage/st_jungle/st_jungle_function_e34c.cpp:
 	.text       start:0x0000E34C end:0x0000E3A4
 
+mo_stage/st_jungle/st_jungle_function_e3a4.cpp:
+	.text       start:0x0000E3A4 end:0x0000E454
+	.data       start:0x00004D78 end:0x00004DA0
+
 mo_stage/st_jungle/st_jungle_function_e454.cpp:
 	.text       start:0x0000E454 end:0x0000E558
 
@@ -1541,6 +1545,10 @@ mo_stage/st_jungle/st_jungle_function_f4ac.cpp:
 
 mo_stage/st_jungle/st_jungle_function_f55c.cpp:
 	.text       start:0x0000F55C end:0x0000F5B4
+
+mo_stage/st_jungle/st_jungle_function_f5b4.cpp:
+	.text       start:0x0000F5B4 end:0x0000F664
+	.data       start:0x00005370 end:0x00005398
 
 mo_stage/st_jungle/st_jungle_function_f664.cpp:
 	.text       start:0x0000F664 end:0x0000F720
