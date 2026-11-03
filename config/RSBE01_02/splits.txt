@@ -3955,6 +3955,9 @@ sora/misc/fn_800C02C8.cpp:
 sora/misc/fn_800C02D8.cpp:
 	.text       start:0x800C02D8 end:0x800C0330
 
+sora/misc/fn_800C0580.cpp:
+	.text       start:0x800C0580 end:0x800C0670
+
 sora/misc/fn_800C0670.cpp:
 	.text       start:0x800C0670 end:0x800C07D0
 
@@ -4547,6 +4550,9 @@ sora/misc/fn_800DE78C.cpp:
 
 sora/misc/fn_800DE850.cpp:
 	.text       start:0x800DE850 end:0x800DE8E4
+
+sora/misc/fn_800DE8E4.cpp:
+	.text       start:0x800DE8E4 end:0x800DE94C
 
 sora/misc/fn_800DE9B4.cpp:
 	.text       start:0x800DE9B4 end:0x800DEA68
@@ -7806,6 +7812,9 @@ nw4r/fn_8018D174.cpp:
 nw4r/fn_8018D20C.cpp:
 	.text       start:0x8018D20C end:0x8018D2A4
 
+nw4r/fn_8018D45C.cpp:
+	.text       start:0x8018D45C end:0x8018D4D0
+
 nw4r/fn_8018D4D0.cpp:
 	.text       start:0x8018D4D0 end:0x8018D568
 
@@ -8741,6 +8750,9 @@ nw4r/fn_801A0DD0.cpp:
 
 nw4r/fn_801A0DD8.cpp:
 	.text       start:0x801A0DD8 end:0x801A0E7C
+
+nw4r/fn_801A0E7C.cpp:
+	.text       start:0x801A0E7C end:0x801A0F3C
 
 nw4r/fn_801A0F3C.cpp:
 	.text       start:0x801A0F3C end:0x801A0F4C
@@ -12621,6 +12633,9 @@ RVL_SDK/fn_802288DC.c:
 RVL_SDK/fn_80228988.c:
 	.text       start:0x80228988 end:0x80228A80
 
+RVL_SDK/fn_802291D4.c:
+	.text       start:0x802291D4 end:0x80229248
+
 RVL_SDK/fn_802292BC.c:
 	.text       start:0x802292BC end:0x80229330
 
@@ -14465,6 +14480,9 @@ RVL_SDK/fn_80283D7C.c:
 
 RVL_SDK/fn_80283E28.c:
 	.text       start:0x80283E28 end:0x80283EB4
+
+RVL_SDK/fn_80284240.c:
+	.text       start:0x80284240 end:0x802843A8
 
 RVL_SDK/fn_80285A48.c:
 	.text       start:0x80285A48 end:0x80285A6C
@@ -18003,6 +18021,11 @@ havok/fn_80302904.cpp:
 	extabindex  start:0x8000B6D4 end:0x8000B6E0
 	.text       start:0x80302904 end:0x80302950
 
+havok/fn_80302950.cpp:
+	extab       start:0x800087B4 end:0x800087CC
+	extabindex  start:0x8000B6E0 end:0x8000B6EC
+	.text       start:0x80302950 end:0x80302A88
+
 havok/fn_80302A88.cpp:
 	.text       start:0x80302A88 end:0x80302AA8
 
@@ -20746,6 +20769,9 @@ network/fn_803AC40C.c:
 network/fn_803AC908.c:
 	.text       start:0x803AC908 end:0x803ACA68
 
+network/fn_803ACB44.c:
+	.text       start:0x803ACB44 end:0x803ACCC8
+
 network/fn_803ACDE4.c:
 	.text       start:0x803ACDE4 end:0x803ACFC0
 
@@ -21993,6 +22019,9 @@ network/fn_803EBE8C.c:
 
 network/fn_803EBEB8.c:
 	.text       start:0x803EBEB8 end:0x803EBEE4
+
+network/fn_803EBEE4.c:
+	.text       start:0x803EBEE4 end:0x803EBEE8
 
 network/fn_803EBEE8.c:
 	.text       start:0x803EBEE8 end:0x803EBF14
