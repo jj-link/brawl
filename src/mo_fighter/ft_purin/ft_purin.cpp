@@ -1738,3 +1738,25 @@ extern "C" void fn_124_8600(FnWork *self, int value, unsigned int index) {
 }
 }  // namespace decomp_orch_fn_124_8600
 // decomp-orchestrator: end fn_124_8600
+
+// decomp-orchestrator: begin fn_124_42FC
+#pragma force_active on
+namespace decomp_orch_fn_124_42FC {
+extern "C" void* fn_27_1A1B88(void*, short);
+extern "C" void fn_124_4374(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_42FC(void* p, short flag) {
+    if (p != 0) {
+        fn_27_1A1B88((char*)p + 0x2d0, (short)-1);
+        if (p != 0) {
+            fn_124_4374(p, (short)0);
+        }
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_42FC
+// decomp-orchestrator: end fn_124_42FC
