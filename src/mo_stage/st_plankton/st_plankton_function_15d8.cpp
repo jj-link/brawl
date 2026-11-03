@@ -1,0 +1,178 @@
+#include <ec/ec_mgr.h>
+#include <snd/snd_system.h>
+#pragma force_active on
+
+extern "C" {
+extern const float lbl_74_rodata_0;
+extern const float lbl_74_rodata_44;
+}
+
+struct Stage_base { char pad[0x3c]; };
+class Stage : public Stage_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_74_3B4();
+    virtual void fn_74_A6C();
+    virtual void createObjPokeTrainer();
+    virtual void fn_74_2508();
+    virtual void fn_74_2504();
+    virtual void fn_74_24F8();
+    virtual void fn_74_24F0();
+    virtual void fn_74_24E8();
+    virtual void getItemPac();
+    virtual void getItemGenPac();
+    virtual void getItemPacEnemyFigure();
+    virtual void getEnemyPac();
+    virtual void getAdvRadarData();
+    virtual void initializeStage();
+    virtual void closeStage();
+    virtual void renderDebugPositions();
+    virtual void fn_74_A64();
+    virtual void process();
+    virtual void updateStagePositions();
+    virtual void debugCollision();
+    virtual void fn_74_24E0();
+    virtual void fn_74_24D8();
+    virtual void getZoneLightSetIndex();
+    virtual void fn_74_24BC();
+    virtual void clearCameraParam();
+    virtual void initCameraParam();
+    virtual void startLoadLocalData();
+    virtual void isLoadLocalData();
+    virtual void entryLocalData();
+    virtual void removeLocalData();
+    virtual void fn_74_24B8();
+    virtual void getFighterStartPos();
+    virtual void getFighterReStartPos();
+    virtual void fn_74_2510();
+    virtual void getPokeTrainerStartPos();
+    virtual void getItemPosCount();
+    virtual void getItemPos();
+    virtual void getRandItemPos();
+    virtual void getKirifudaPos();
+    virtual void getKirifudaAngle();
+    virtual void getKirifudaScale();
+    virtual void getKirifudaModelType();
+    virtual void getPokeTrainerPosCount();
+    virtual void getPokeTrainerPos();
+    virtual void getFighterDeadEffectSizeRate();
+    virtual void getEnemyDeadEffectSizeRate();
+    virtual void getEnableZ();
+    virtual void fn_74_24A8();
+    virtual void fn_74_24B0();
+    virtual void fn_74_24A0();
+    virtual void fn_74_2498();
+    virtual void fn_74_2490();
+    virtual void fn_74_247C();
+    virtual void fn_74_246C();
+    virtual void fn_74_2460();
+    virtual void fn_74_2454();
+    virtual void fn_74_244C();
+    virtual void fn_74_2444();
+    virtual void fn_74_243C();
+    virtual void fn_74_2438();
+    virtual void isEnd();
+    virtual void fn_74_2320();
+    virtual void enableDevil();
+    virtual void disableDevil();
+    virtual void isDevil();
+    virtual void setDevilScrool();
+    virtual void getLucarioFinalTechniquePosition();
+    virtual void startAppear();
+    virtual void setAppearKind();
+    virtual void endAppear();
+    virtual void getAppearTask();
+    virtual void forceStopAppear();
+    virtual void fn_74_2528();
+    virtual void setMotionRatio();
+    virtual void saveMotionRatio();
+    virtual void restoreMotionRatio();
+    virtual void setMotionSubRatio();
+    virtual void saveMotionSubRatio();
+    virtual void restoreMotionSubRatio();
+    virtual void fn_74_2430();
+    virtual void fn_74_2428();
+    virtual void fn_74_2420();
+    virtual void isAppear();
+    virtual void isStartAppearTimming();
+    virtual void getMadeinAiData();
+    virtual void fn_74_2520();
+    virtual void getBamperVector();
+    virtual void fn_74_1E14();
+    virtual void fn_74_1E18();
+    virtual void getDestroyBossParamCommon();
+    virtual void stAdventureEventGetItem();
+    virtual void setStageOutEffectInit();
+    virtual void setStageInEffectInit();
+    virtual void fn_74_2418();
+    virtual void fn_74_2410();
+    virtual void fn_74_240C();
+    virtual void getZoneState();
+    virtual void getZonePos();
+    virtual void getMagmaHeight();
+    virtual void getAcidHeight();
+    virtual void getIteamDropStatus();
+    virtual void createWind2ndOnly();
+    virtual void fn_74_2518();
+    virtual void updateWind2ndOnly();
+    virtual void setVision();
+    virtual void fn_74_15D8();
+    virtual void setCameraLimitRange();
+    virtual void resetCameraLimitRange();
+    virtual void checkChangeScene();
+    virtual void resetChangeScene();
+    virtual void setChangeSceneNumber();
+    virtual void fn_74_E08();
+    virtual void fn_74_F1C();
+    virtual void fn_74_FD4();
+    virtual void fn_74_1318();
+    virtual void fn_74_13F0();
+    virtual void fn_74_1500();
+    virtual void fn_74_15D4();
+    virtual void fn_74_170C(float);
+    virtual void fn_74_1754(float);
+    virtual void fn_74_17DC(float);
+    virtual void fn_74_1B20(float);
+    unsigned char pad40[0x1e0 - 0x40];
+    unsigned char state;
+};
+
+extern "C" void fn_74_15D8(Stage* self, float delta) {
+    switch ((int)self->state) {
+    case 1:
+        break;
+    case 0:
+        g_ecMgr->setDrawPrio(1);
+        Vec3f pos(lbl_74_rodata_0, lbl_74_rodata_0, lbl_74_rodata_44);
+        g_ecMgr->setEffect((EfID)0x560001, &pos);
+        g_ecMgr->setDrawPrio(-1);
+        g_sndSystem->playSE((SndID)0x1d2b, 0, 0, 0, -1);
+        self->state = 1;
+        break;
+    }
+    self->fn_74_170C(delta);
+    self->fn_74_1754(delta);
+    self->fn_74_17DC(delta);
+    self->fn_74_1B20(delta);
+}
