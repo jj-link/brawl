@@ -1,0 +1,185 @@
+#pragma force_active on
+#include <sr/sr_common.h>
+
+struct Stage_base { char pad[0x3c]; };
+class Stage : public Stage_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_54_1EC();
+    virtual void fn_54_2FC();
+    virtual void createObjPokeTrainer();
+    virtual void fn_54_2AE0();
+    virtual void fn_54_2ADC();
+    virtual void fn_54_2AD0();
+    virtual void fn_54_2AC8();
+    virtual void fn_54_2AC0();
+    virtual void getItemPac();
+    virtual void getItemGenPac();
+    virtual void getItemPacEnemyFigure();
+    virtual void getEnemyPac();
+    virtual void getAdvRadarData();
+    virtual void initializeStage();
+    virtual void closeStage();
+    virtual void renderDebugPositions();
+    virtual void fn_54_2F4();
+    virtual void process();
+    virtual void updateStagePositions();
+    virtual void debugCollision();
+    virtual void fn_54_2AB8();
+    virtual void fn_54_2AB0();
+    virtual void getZoneLightSetIndex();
+    virtual void fn_54_2A94();
+    virtual void clearCameraParam();
+    virtual void initCameraParam();
+    virtual void startLoadLocalData();
+    virtual void isLoadLocalData();
+    virtual void entryLocalData();
+    virtual void removeLocalData();
+    virtual void fn_54_2A90();
+    virtual void getFighterStartPos();
+    virtual void getFighterReStartPos();
+    virtual void fn_54_2AE8();
+    virtual void getPokeTrainerStartPos();
+    virtual void getItemPosCount();
+    virtual void getItemPos();
+    virtual void getRandItemPos();
+    virtual void getKirifudaPos();
+    virtual void getKirifudaAngle();
+    virtual void getKirifudaScale();
+    virtual void getKirifudaModelType();
+    virtual void getPokeTrainerPosCount();
+    virtual void getPokeTrainerPos();
+    virtual void getFighterDeadEffectSizeRate();
+    virtual void getEnemyDeadEffectSizeRate();
+    virtual void getEnableZ();
+    virtual void fn_54_2A80();
+    virtual void fn_54_2A88();
+    virtual void fn_54_2A78();
+    virtual void fn_54_2A70();
+    virtual void fn_54_2A68();
+    virtual void fn_54_2A54();
+    virtual void fn_54_2A44();
+    virtual void fn_54_2A38();
+    virtual void fn_54_2A2C();
+    virtual void fn_54_2A24();
+};
+
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void slot2();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void receiveCollMsg_Landing();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_54_338C();
+    virtual void startup();
+    virtual void slot38();
+    virtual void fn_54_1310();
+    virtual void fn_54_3150();
+    virtual void fn_54_3388();
+    virtual void fn_54_2C40(void*);
+    virtual void fn_54_3380();
+    virtual void fn_54_3374();
+    virtual void fn_54_3364();
+    virtual void fn_54_3354();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility();
+    virtual void setNodeVisibility_2();
+    virtual void setNodeVisibilityAll();
+    virtual void isNodeVisible();
+    virtual void setNodeCollision();
+    virtual void setNodeCollision_2();
+    virtual void getNodeScale();
+    virtual void getNodeScale_2();
+    virtual void setValid();
+    virtual void setValidAttachedEffect();
+    virtual void fn_54_3350();
+    virtual void fn_54_334C();
+    virtual void fn_54_3344();
+    virtual void setMotionRatio();
+    virtual void slot66();
+    virtual void getMotionFrame();
+    virtual void setMotionLoop();
+    virtual void setMatAlphaMul();
+    virtual void setMatAlpha();
+    virtual void updateG3dProcCalcWorld();
+    virtual void preExit();
+    virtual void fn_54_333C();
+    virtual void invalidatedByCameraClipping();
+    virtual void setTransparencyFlag();
+    virtual void updateCallback();
+    virtual void fixedPosition();
+    virtual void setTgtNode(void*);
+};
+
+extern "C" Ground* fn_54_CA00(Ground*, void*);
+
+extern "C" void* fn_54_C958(void* a, void* b, void* c)
+{
+    Ground* obj = (Ground*)operator new(0x180, Heaps::StageInstance);
+    if (obj != 0) {
+        obj = fn_54_CA00(obj, c);
+    }
+    if (obj != 0) {
+        obj->fn_54_2C40(a);
+        obj->setTgtNode(b);
+    }
+    return obj;
+}
