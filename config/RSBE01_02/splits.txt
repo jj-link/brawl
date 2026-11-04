@@ -1966,6 +1966,9 @@ sora/misc/fn_80055998.cpp:
 	.text       start:0x80055998 end:0x80055C2C
 	.data       start:0x8042D0A8 end:0x8042D180
 
+sora/misc/fn_80056184.cpp:
+	.text       start:0x80056184 end:0x80056298
+
 sora/misc/fn_80056298.cpp:
 	.text       start:0x80056298 end:0x800562A4
 
@@ -9870,6 +9873,9 @@ nw4r/fn_801B00FC.cpp:
 nw4r/fn_801B027C.cpp:
 	.text       start:0x801B027C end:0x801B02DC
 
+nw4r/fn_801B03C8.cpp:
+	.text       start:0x801B03C8 end:0x801B0440
+
 nw4r/fn_801B0440.cpp:
 	.text       start:0x801B0440 end:0x801B04B8
 
@@ -12000,6 +12006,9 @@ RVL_SDK/fn_801E369C.c:
 
 RVL_SDK/fn_801E41A8.c:
 	.text       start:0x801E41A8 end:0x801E41F4
+
+RVL_SDK/fn_801E41F4.c:
+	.text       start:0x801E41F4 end:0x801E42E4
 
 RVL_SDK/fn_801E4560.c:
 	.text       start:0x801E4560 end:0x801E4604
@@ -14457,6 +14466,9 @@ RVL_SDK/fn_80240674.c:
 
 RVL_SDK/fn_80240728.c:
 	.text       start:0x80240728 end:0x80240A10
+
+RVL_SDK/fn_80240A10.c:
+	.text       start:0x80240A10 end:0x80240D54
 
 RVL_SDK/fn_80240D54.c:
 	.text       start:0x80240D54 end:0x80240E50
@@ -17453,6 +17465,11 @@ havok/fn_802CA304.cpp:
 
 havok/fn_802CA318.cpp:
 	.text       start:0x802CA318 end:0x802CA32C
+
+havok/fn_802CA32C.cpp:
+	extab       start:0x800080E0 end:0x80008108
+	extabindex  start:0x8000ADE0 end:0x8000ADEC
+	.text       start:0x802CA32C end:0x802CA48C
 
 havok/fn_802CA48C.cpp:
 	extab       start:0x80008108 end:0x80008120
@@ -20570,6 +20587,9 @@ network/fn_80339410.c:
 network/fn_8033949C.c:
 	.text       start:0x8033949C end:0x8033972C
 
+network/fn_8033A200.c:
+	.text       start:0x8033A200 end:0x8033A50C
+
 network/fn_8033A50C.c:
 	.text       start:0x8033A50C end:0x8033A534
 
@@ -20822,6 +20842,9 @@ network/fn_80352C20.c:
 
 network/fn_803540BC.c:
 	.text       start:0x803540BC end:0x80354114
+
+network/fn_80354760.c:
+	.text       start:0x80354760 end:0x80354764
 
 network/fn_80355388.c:
 	.text       start:0x80355388 end:0x803553C8
@@ -23499,6 +23522,9 @@ network/fn_803CC1B0.c:
 
 network/fn_803CC7A8.c:
 	.text       start:0x803CC7A8 end:0x803CC930
+
+network/fn_803CC930.c:
+	.text       start:0x803CC930 end:0x803CC9F4
 
 network/fn_803CC9F4.c:
 	.text       start:0x803CC9F4 end:0x803CCAA4
