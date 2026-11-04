@@ -1,0 +1,50 @@
+#pragma force_active on
+class stTriggerMng;
+class stTriggerData;
+
+struct ObjHead {
+    char pad[0x3C];
+};
+
+class Obj : public ObjHead {
+public:
+#define S(n) virtual void s##n();
+    S(0)S(1)S(2)S(3)S(4)S(5)S(6)S(7)S(8)S(9)
+    S(10)S(11)S(12)S(13)S(14)S(15)S(16)S(17)S(18)S(19)
+    S(20)S(21)S(22)S(23)S(24)S(25)S(26)S(27)S(28)S(29)
+    S(30)S(31)S(32)S(33)S(34)S(35)S(36)S(37)S(38)S(39)
+    S(40)S(41)S(42)S(43)S(44)S(45)S(46)S(47)S(48)S(49)
+    S(50)S(51)S(52)S(53)S(54)S(55)S(56)S(57)S(58)S(59)
+    virtual void call(int);
+    S(61)S(62)S(63)S(64)S(65)S(66)S(67)S(68)S(69)
+    S(70)S(71)S(72)S(73)S(74)S(75)S(76)S(77)S(78)S(79)
+    S(80)S(81)S(82)S(83)S(84)S(85)S(86)S(87)S(88)S(89)
+    S(90)S(91)
+    virtual void restart();
+};
+
+extern "C" {
+extern stTriggerMng* g_stTriggerMng;
+bool getTriggerFlag__12stTriggerMngFP13stTriggerDatab(stTriggerMng*, stTriggerData*, bool);
+void setFrame__19grGimmickMotionPathFf(void*, float);
+void* fn_27_2332C0(stTriggerMng*, void*);
+
+void fn_40_36630(void* self) {
+    char* s = (char*)self;
+    Obj* o = (Obj*)self;
+    if (!getTriggerFlag__12stTriggerMngFP13stTriggerDatab(g_stTriggerMng, (stTriggerData*)(*(char**)(s + 0x160) + 0xA4), true)) {
+        if ((*(unsigned char*)(*(char**)(s + 0x160) + 0xA6) & 1U) == 1U) {
+            o->call(0);
+        }
+    } else {
+        if (!(*(unsigned char*)(*(char**)(s + 0x160) + 0xA6) & 1)) {
+            o->call(0);
+        }
+    }
+    if (getTriggerFlag__12stTriggerMngFP13stTriggerDatab(g_stTriggerMng, (stTriggerData*)(*(char**)(s + 0x160) + 0xA8), false) == 1U) {
+        setFrame__19grGimmickMotionPathFf(*(void**)(s + 0xCC), (float)*(unsigned int*)(*(char**)(s + 0xCC) + 0x160));
+        ((Obj*)*(void**)(s + 0xCC))->restart();
+    }
+    *(void**)(s + 0x174) = fn_27_2332C0(g_stTriggerMng, *(char**)(s + 0x160) + 0xA0);
+}
+}

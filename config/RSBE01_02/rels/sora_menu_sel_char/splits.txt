@@ -141,6 +141,9 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_99b8.cpp:
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_a880.cpp:
 	.text       start:0x0000A880 end:0x0000AA74
 
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_aea0.cpp:
+	.text       start:0x0000AEA0 end:0x0000B010
+
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_b2a4.cpp:
 	.text       start:0x0000B2A4 end:0x0000B398
 
@@ -255,6 +258,9 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_f4e0.cpp:
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_f76c.cpp:
 	.text       start:0x0000F76C end:0x0000F784
 
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_f8a0.cpp:
+	.text       start:0x0000F8A0 end:0x0000F964
+
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_f964.cpp:
 	.text       start:0x0000F964 end:0x0000F9D4
 
@@ -266,6 +272,9 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_fa10.cpp:
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_fa74.cpp:
 	.text       start:0x0000FA74 end:0x0000FAE4
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_fd00.cpp:
+	.text       start:0x0000FD00 end:0x0000FDDC
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_fddc.cpp:
 	.text       start:0x0000FDDC end:0x0000FEDC
@@ -385,8 +394,17 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_14618.cpp:
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_14620.cpp:
 	.text       start:0x00014620 end:0x0001469C
 
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_1469c.cpp:
+	.text       start:0x0001469C end:0x00014858
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_14858.cpp:
+	.text       start:0x00014858 end:0x000148E8
+
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_14e5c.cpp:
 	.text       start:0x00014E5C end:0x00014EE8
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_14ee8.cpp:
+	.text       start:0x00014EE8 end:0x00014F38
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_15168.cpp:
 	.text       start:0x00015168 end:0x00015238
@@ -429,6 +447,9 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_17e18.cpp:
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_17ed8.cpp:
 	.text       start:0x00017ED8 end:0x00017F98
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_17f98.cpp:
+	.text       start:0x00017F98 end:0x00018080
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_18080.cpp:
 	.text       start:0x00018080 end:0x00018140
@@ -478,11 +499,17 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_1915c.cpp:
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_191a0.cpp:
 	.text       start:0x000191A0 end:0x00019250
 
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19250.cpp:
+	.text       start:0x00019250 end:0x00019298
+
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19298.cpp:
 	.text       start:0x00019298 end:0x00019324
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19324.cpp:
 	.text       start:0x00019324 end:0x00019374
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19374.cpp:
+	.text       start:0x00019374 end:0x00019508
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19508.cpp:
 	.text       start:0x00019508 end:0x00019604
@@ -492,6 +519,12 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19604.cpp:
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19d68.cpp:
 	.text       start:0x00019D68 end:0x00019D74
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19d74.cpp:
+	.text       start:0x00019D74 end:0x00019DD4
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19dd4.cpp:
+	.text       start:0x00019DD4 end:0x00019E3C
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19e3c.cpp:
 	.text       start:0x00019E3C end:0x00019EF0
@@ -504,6 +537,12 @@ mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19f74.cpp:
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_19ff4.cpp:
 	.text       start:0x00019FF4 end:0x0001A0EC
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_1a0ec.cpp:
+	.text       start:0x0001A0EC end:0x0001A1A0
+
+mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_1a1a0.cpp:
+	.text       start:0x0001A1A0 end:0x0001A254
 
 mo_menu_sel_char/sora_menu_sel_char/sora_menu_sel_char_function_1a254.cpp:
 	.text       start:0x0001A254 end:0x0001A348
