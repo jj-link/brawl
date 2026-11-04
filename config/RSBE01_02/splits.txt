@@ -10212,6 +10212,9 @@ nw4r/fn_801C2458.cpp:
 nw4r/fn_801C2968.cpp:
 	.text       start:0x801C2968 end:0x801C2A50
 
+nw4r/fn_801C2A50.cpp:
+	.text       start:0x801C2A50 end:0x801C2B38
+
 nw4r/fn_801C2B38.cpp:
 	.text       start:0x801C2B38 end:0x801C2B90
 
@@ -16595,6 +16598,11 @@ havok/fn_802C2484.cpp:
 	extab       start:0x80007D08 end:0x80007D10
 	extabindex  start:0x8000AA74 end:0x8000AA80
 	.text       start:0x802C2484 end:0x802C24FC
+
+havok/fn_802C24FC.cpp:
+	extab       start:0x80007D10 end:0x80007D18
+	extabindex  start:0x8000AA80 end:0x8000AA8C
+	.text       start:0x802C24FC end:0x802C2558
 
 havok/fn_802C3A54.cpp:
 	.text       start:0x802C3A54 end:0x802C3A68
