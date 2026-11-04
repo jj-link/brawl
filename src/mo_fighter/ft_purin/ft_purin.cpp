@@ -2497,3 +2497,25 @@ extern "C" void fn_124_8180(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_8180
 // decomp-orchestrator: end fn_124_8180
+
+// decomp-orchestrator: begin fn_124_808C
+#include <types.h>
+#pragma dont_inline on
+#pragma force_active on
+namespace decomp_orch_fn_124_808C {
+#ifndef STATIC_CHECK
+class soAnimCmdEventObserver;
+template <class T>
+class soEventObserver {
+public:
+    void addObserverSub(s32 manageId, T* obsvr, s8 p3);
+};
+#endif
+
+
+
+extern "C" void fn_124_808C(soAnimCmdEventObserver* self, short id, int argument) {
+    reinterpret_cast<soEventObserver<soAnimCmdEventObserver>*>(self)->addObserverSub(id, self, static_cast<s8>(argument));
+}
+}  // namespace decomp_orch_fn_124_808C
+// decomp-orchestrator: end fn_124_808C
