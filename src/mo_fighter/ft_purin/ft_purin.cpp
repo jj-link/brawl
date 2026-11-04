@@ -2590,3 +2590,18 @@ extern "C" void* fn_124_6700(void* self, void* a, void* b, void* c)
 }
 }  // namespace decomp_orch_fn_124_6700
 // decomp-orchestrator: end fn_124_6700
+
+// decomp-orchestrator: begin fn_124_37F4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_37F4 {
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_37F4(void* p, s16 size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_37F4
+// decomp-orchestrator: end fn_124_37F4
