@@ -13151,6 +13151,9 @@ RVL_SDK/fn_80212E70.c:
 RVL_SDK/fn_80212FAC.c:
 	.text       start:0x80212FAC end:0x80213090
 
+RVL_SDK/fn_80213090.c:
+	.text       start:0x80213090 end:0x8021316C
+
 RVL_SDK/fn_8021316C.c:
 	.text       start:0x8021316C end:0x80213468
 
@@ -18247,6 +18250,10 @@ havok/fn_802DE240.cpp:
 havok/fn_802DE25C.cpp:
 	.text       start:0x802DE25C end:0x802DE264
 
+havok/fn_802DE690.cpp:
+	.text       start:0x802DE690 end:0x802DE6F4
+	.ctors      start:0x804066D4 end:0x804066D8
+
 havok/fn_802DE6F4.cpp:
 	.text       start:0x802DE6F4 end:0x802DE714
 
@@ -18775,6 +18782,10 @@ havok/fn_802E8B20.cpp:
 
 havok/fn_802E8D8C.cpp:
 	.text       start:0x802E8D8C end:0x802E8E40
+
+havok/fn_802E90B4.cpp:
+	.text       start:0x802E90B4 end:0x802E911C
+	.ctors      start:0x8040672C end:0x80406730
 
 havok/fn_802E95E4.cpp:
 	.text       start:0x802E95E4 end:0x802E9690
