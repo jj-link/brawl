@@ -9385,6 +9385,10 @@ nw4r/fn_801AAB18.cpp:
 nw4r/fn_801AAC18.cpp:
 	.text       start:0x801AAC18 end:0x801AAC9C
 
+nw4r/fn_801AAE34.cpp:
+	.text       start:0x801AAE34 end:0x801AAF04
+	.data       start:0x80466248 end:0x80466270
+
 nw4r/fn_801AAF04.cpp:
 	.text       start:0x801AAF04 end:0x801AAF90
 
@@ -15287,6 +15291,9 @@ RVL_SDK/fn_80281A5C.c:
 RVL_SDK/fn_80281AEC.c:
 	.text       start:0x80281AEC end:0x80281BB8
 
+RVL_SDK/fn_80281D60.c:
+	.text       start:0x80281D60 end:0x80281D64
+
 RVL_SDK/fn_80281DF8.c:
 	.text       start:0x80281DF8 end:0x80281E48
 
@@ -16882,6 +16889,11 @@ havok/fn_802C3E88.cpp:
 	extab       start:0x80007DD8 end:0x80007DE0
 	extabindex  start:0x8000AB1C end:0x8000AB28
 	.text       start:0x802C3E88 end:0x802C3EE4
+
+havok/fn_802C3FB0.cpp:
+	extab       start:0x80007DE8 end:0x80007DF0
+	extabindex  start:0x8000AB34 end:0x8000AB40
+	.text       start:0x802C3FB0 end:0x802C4028
 
 havok/fn_802C5280.cpp:
 	.text       start:0x802C5280 end:0x802C5294
@@ -24104,6 +24116,9 @@ Runtime.PPCEABI.H/fn_8040012C.c:
 
 Runtime.PPCEABI.H/fn_804004AC.c:
 	.text       start:0x804004AC end:0x804005AC
+
+Runtime.PPCEABI.H/fn_804005AC.c:
+	.text       start:0x804005AC end:0x804006F0
 
 Runtime.PPCEABI.H/fn_804006F0.c:
 	.text       start:0x804006F0 end:0x804008E4
