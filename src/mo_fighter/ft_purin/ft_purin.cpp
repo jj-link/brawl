@@ -2669,3 +2669,73 @@ extern "C" void* fn_124_2628(void* object, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_2628
 // decomp-orchestrator: end fn_124_2628
+
+// decomp-orchestrator: begin fn_124_3D00
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_3D00 {
+extern "C" {
+void* fn_124_3D9C(void*, short);
+void* fn_124_3E20(void*, short);
+void* fn_124_3E80(void*, short);
+void* fn_124_3EDC(void*, short);
+void* fn_124_48F4(void*, short);
+void* fn_27_C74E8(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_3D00(void* self, short del) {
+    if (self != 0) {
+        fn_124_3D9C(static_cast<char*>(self) + 0xDE4, -1);
+        fn_124_3E20(static_cast<char*>(self) + 0xDD0, -1);
+        fn_124_3E80(static_cast<char*>(self) + 0x944, -1);
+        fn_124_3EDC(static_cast<char*>(self) + 0xD0, -1);
+        fn_124_48F4(static_cast<char*>(self) + 0x10, -1);
+        fn_27_C74E8(self, -1);
+        if (del > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_3D00
+// decomp-orchestrator: end fn_124_3D00
+
+// decomp-orchestrator: begin fn_124_3E80
+#pragma force_active on
+namespace decomp_orch_fn_124_3E80 {
+extern "C" void fn_27_1A3940(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3E80(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_27_1A3940(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_3E80
+// decomp-orchestrator: end fn_124_3E80
+
+// decomp-orchestrator: begin fn_124_5628
+#pragma force_active on
+namespace decomp_orch_fn_124_5628 {
+namespace decomp_orch_fn_124_5628 {
+extern "C" void fn_27_C9EDC(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5628(void* p, short flag) {
+    if (p != 0) {
+        fn_27_C9EDC(p, -1);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_5628
+}  // namespace decomp_orch_fn_124_5628
+// decomp-orchestrator: end fn_124_5628

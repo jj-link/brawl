@@ -1,0 +1,318 @@
+#include <nw4r/snd/snd_SoundArchive.h>
+#pragma force_active on
+
+#define DECLARE_SOUND_CLASS(C, A, B, D, E, F) \
+class C {                                   \
+public:                                     \
+    virtual void A();                       \
+    virtual void B();                       \
+    virtual void D();                       \
+    virtual void E();                       \
+    virtual void F();                       \
+};
+
+DECLARE_SOUND_CLASS(Class_8042B6D0, fn_8004805C, fn_8004781C, fn_80046A28, fn_8004810C, fn_800480DC)
+DECLARE_SOUND_CLASS(Class_8042EA48, fn_8005C534, fn_8005C2B0, fn_8005C20C, fn_8005C1BC, fn_8005C198)
+DECLARE_SOUND_CLASS(Class_80453E48, fn_800651CC, fn_8004755C, fn_80065454, fn_80065300, fn_80065450)
+DECLARE_SOUND_CLASS(Class_80454368, fn_8006CE5C, fn_8006D438, fn_8006DF68, fn_8006E7B0, fn_8006E7C8)
+DECLARE_SOUND_CLASS(Class_804543C0, fn_8006E7F0, fn_8006E830, fn_8006E98C, fn_8006EBC4, fn_8006EBC8)
+DECLARE_SOUND_CLASS(Class_80454860, fn_80080AE4, fn_80080A64, fn_80080A68, fn_80080A7C, fn_80280C20)
+DECLARE_SOUND_CLASS(Class_80455D20, fn_800B8608, fn_800B858C, fn_800B807C, fn_800B8350, fn_800B805C)
+DECLARE_SOUND_CLASS(Class_8045C314, fn_800FBAA0, fn_8004755C, fn_80065454, fn_80047FC8, fn_800FB75C)
+DECLARE_SOUND_CLASS(Class_804645B0, fn_8015D358, fn_8015CF94, fn_8015D00C, fn_8015D05C, fn_8015D0E4)
+DECLARE_SOUND_CLASS(Class_80464618, fn_8015D718, fn_8015D474, fn_8015D4CC, fn_8015D500, fn_8015D710)
+DECLARE_SOUND_CLASS(Class_804647D8, fn_8015E628, fn_8015E044, fn_8015E050, fn_8015E05C, fn_8015E068)
+DECLARE_SOUND_CLASS(Class_804654B0, fn_80174618, fn_80176480, fn_80176004, fn_80176028, fn_80177D40)
+DECLARE_SOUND_CLASS(Class_804654EC, fn_80174658, fn_80178734, fn_80176004, fn_80176028, fn_8017A3F8)
+DECLARE_SOUND_CLASS(Class_804655D0, fn_80174758, fn_8017D03C, fn_80176004, fn_80176028, fn_8017D7B0)
+DECLARE_SOUND_CLASS(Class_80465670, fn_80174798, fn_801813F4, fn_80176004, fn_80176028, fn_80181CC4)
+DECLARE_SOUND_CLASS(Class_80465690, fn_80182894, fn_80183620, fn_80182CA4, fn_80182F9C, fn_80183020)
+DECLARE_SOUND_CLASS(Class_80465708, fn_80183B38, fn_80183C54, fn_80183F54, fn_801840D8, fn_801840FC)
+DECLARE_SOUND_CLASS(Class_80465740, fn_801846F8, fn_80184ADC, fn_80182CA4, fn_80182F9C, fn_80184A00)
+DECLARE_SOUND_CLASS(Class_804657A8, fn_80184E48, fn_801856B4, fn_80182CA4, fn_80182F9C, fn_801850A4)
+DECLARE_SOUND_CLASS(Class_8046585C, fn_801858D0, fn_80187CEC, fn_80182CA4, fn_80182F9C, fn_80185CD4)
+DECLARE_SOUND_CLASS(Class_804658D8, fn_80187D3C, fn_80187D98, fn_80182CA4, fn_80182F9C, fn_80187D94)
+DECLARE_SOUND_CLASS(Class_80465980, fn_801890EC, fn_80189C9C, fn_8018AB3C, fn_8018AB58, fn_8018ABD8)
+DECLARE_SOUND_CLASS(Class_804659B8, fn_8018B3F4, fn_8018B478, fn_8018B5B8, fn_8018B6B8, fn_8018B774)
+DECLARE_SOUND_CLASS(Class_80465CCC, fn_80197BF0, fn_80197638, fn_80197688, fn_80197CF0, fn_80197CC0)
+DECLARE_SOUND_CLASS(Class_80465F18, fn_8019B94C, fn_8019A670, fn_8019BA6C, fn_8019BA60, fn_8019BA30)
+DECLARE_SOUND_CLASS(Class_80465F70, fn_8019B9C8, fn_8019A670, fn_80199D94, fn_8019BB04, fn_8019BAD4)
+DECLARE_SOUND_CLASS(Class_80466278, fn_801AC270, fn_801AB9D8, fn_801AC1AC, fn_801AC328, fn_801AC2F8)
+DECLARE_SOUND_CLASS(Class_804662F0, fn_801ADE14, fn_801AD0E0, fn_801ADE04, fn_801AD200, fn_801ADAE0)
+DECLARE_SOUND_CLASS(Class_80466320, fn_801ADE54, fn_801AC4A8, fn_801AD064, fn_801ADEEC, fn_801ADEBC)
+DECLARE_SOUND_CLASS(Class_80466388, fn_801AFEB4, fn_801AE668, fn_801AFD90, fn_8007FDF4, fn_801AFF1C)
+DECLARE_SOUND_CLASS(Class_804663D0, fn_8004805C, fn_801B21E8, fn_801B33D8, fn_8004810C, fn_800480DC)
+DECLARE_SOUND_CLASS(Class_80466418, fn_801B3BDC, fn_801B35D0, fn_801B3C80, fn_801B3C74, fn_801B3C44)
+DECLARE_SOUND_CLASS(Class_80466458, fn_801B49F8, fn_801AD0E0, fn_801ADE04, fn_801AD200, fn_801ADAE0)
+DECLARE_SOUND_CLASS(Class_804664C0, fn_801B4A50, fn_801B45A0, fn_801B4918, fn_801B4AE8, fn_801B4AB8)
+DECLARE_SOUND_CLASS(Class_80466500, fn_801B5520, fn_801B51BC, fn_801B54A4, fn_801B55B8, fn_801B5588)
+DECLARE_SOUND_CLASS(Class_80466588, fn_801B5CDC, fn_801B5BD4, fn_801B5D80, fn_801B5D74, fn_801B5D44)
+DECLARE_SOUND_CLASS(Class_804665E8, fn_801BD68C, fn_801BD64C, fn_801BCBFC, fn_801BC66C, fn_801BC684)
+DECLARE_SOUND_CLASS(Class_80466658, fn_8015D718, fn_801BF0A4, fn_8015D4CC, fn_801BEFC8, fn_8015D710)
+DECLARE_SOUND_CLASS(Class_804666C0, fn_801BEB98, fn_801BF09C, fn_801BF094, fn_801BEF38, fn_801BEDB8)
+DECLARE_SOUND_CLASS(Class_804666E0, fn_800730A4, fn_801C0118, fn_801C01D4, fn_801C0398, fn_801C0108)
+DECLARE_SOUND_CLASS(Class_80466700, fn_80073028, fn_801C04A4, fn_801C0560, fn_801C07B4, fn_801C0494)
+DECLARE_SOUND_CLASS(Class_80466720, fn_8015CD40, fn_801C108C, fn_801C0F98, fn_801C0FAC, fn_8015CBF8)
+DECLARE_SOUND_CLASS(Class_80466780, fn_801C0CEC, fn_801C0DC8, fn_801C0E78, fn_801C0F90, fn_801C0F28)
+DECLARE_SOUND_CLASS(Class_804669F8, fn_801C3040, fn_801C35BC, fn_801C362C, fn_801C377C, fn_801C10F8)
+
+class Class_80466A60 {
+public:
+    virtual void fn_801C49AC();
+    virtual void fn_801C46C4();
+    virtual void fn_801BCBFC();
+    virtual void fn_801BC66C();
+    virtual void fn_801BC684(int);
+};
+
+DECLARE_SOUND_CLASS(Class_80466C38, fn_801CD370, fn_801CD6B8, fn_801CD9C4, fn_801CDADC, fn_801CF63C)
+DECLARE_SOUND_CLASS(Class_80466CB0, fn_801CF988, fn_801CF810, fn_801BCBFC, fn_801BC66C, fn_801BC684)
+DECLARE_SOUND_CLASS(Class_80466D68, fn_801D3C40, fn_801D3AD4, fn_801BCBFC, fn_801BC66C, fn_801BC684)
+DECLARE_SOUND_CLASS(Class_80485F60, fn_80278AEC, fn_80279274, fn_802795DC, fn_80278ADC, fn_80279644)
+DECLARE_SOUND_CLASS(Class_80485FB4, fn_80278AEC, fn_80279274, fn_802795DC, fn_80278ADC, fn_80279644)
+DECLARE_SOUND_CLASS(Class_804860A0, fn_8027C6C8, fn_80080A64, fn_8027C0FC, fn_8027C104, fn_8027C0F8)
+DECLARE_SOUND_CLASS(Class_804860C8, fn_8027C298, fn_80080A64, fn_8027C270, fn_8027C1B8, fn_80280C20)
+DECLARE_SOUND_CLASS(Class_80486128, fn_8027C624, fn_80080A64, fn_8027C39C, fn_8027C5FC, fn_8027C5C4)
+DECLARE_SOUND_CLASS(Class_80486390, fn_8027EC30, fn_8027E8DC, fn_8027E970, fn_8027EB54, fn_8027EBF4)
+DECLARE_SOUND_CLASS(Class_804863B0, fn_8027F128, fn_8027F188, fn_8027F1C0, fn_8027F24C, fn_8027F28C)
+DECLARE_SOUND_CLASS(Class_80486468, fn_80280E3C, fn_80080A64, fn_80281234, fn_802810D0, fn_80281198)
+DECLARE_SOUND_CLASS(Class_804864A0, fn_802814B8, fn_80080A64, fn_80281744, fn_80281640, fn_802816FC)
+DECLARE_SOUND_CLASS(Class_80486748, fn_802A0F0C, fn_80080A64, fn_802A1D64, fn_802A1844, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486788, fn_802A39F0, fn_80080A64, fn_802A34B0, fn_802A3540, fn_802A3350)
+DECLARE_SOUND_CLASS(Class_80486800, fn_802A8D68, fn_802A86E4, fn_802A893C, fn_802A89CC, fn_802A87DC)
+DECLARE_SOUND_CLASS(Class_8048683C, fn_802A3CA0, fn_802A86E4, fn_802A8204, fn_802A7D54, fn_802A7714)
+DECLARE_SOUND_CLASS(Class_80486878, fn_802A990C, fn_802A86E4, fn_802A94E0, fn_802A9570, fn_802A9380)
+DECLARE_SOUND_CLASS(Class_804868B4, fn_802A9024, fn_802A86E4, fn_802A8204, fn_802A7D54, fn_802A7714)
+DECLARE_SOUND_CLASS(Class_804868F0, fn_802AA81C, fn_802AA3D8, fn_802AA5E0, fn_802AA628, fn_802AA480)
+DECLARE_SOUND_CLASS(Class_8048692C, fn_802A9DD8, fn_802AA3D8, fn_802A9EF0, fn_802A9F04, fn_802A9F18)
+DECLARE_SOUND_CLASS(Class_80486968, fn_802AAB30, fn_80080A64, fn_802ABC70, fn_802AAB8C, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_804869B0, fn_802AEE00, fn_80080A64, fn_802AE3D8, fn_802AE468, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_804869EC, fn_802AC498, fn_80080A64, fn_802AD278, fn_802AC634, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486A38, fn_802B1894, fn_80080A64, fn_802B11D0, fn_802B1218, fn_802B0D20)
+DECLARE_SOUND_CLASS(Class_80486A74, fn_802B1838, fn_80080A64, fn_802B140C, fn_802B149C, fn_802B0E80)
+DECLARE_SOUND_CLASS(Class_80486AF0, fn_802AF5A0, fn_80080A64, fn_802AFD30, fn_802AFB60, fn_802AFF2C)
+DECLARE_SOUND_CLASS(Class_80486B30, fn_802B1AAC, fn_80080A64, fn_802B2140, fn_802B26C8, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486B70, fn_802AF2DC, fn_80080A64, fn_802B2140, fn_802B26C8, fn_802B7A14)
+
+class Class_802AF338 {
+public:
+    virtual ~Class_802AF338();
+    virtual void fn_80080A64();
+    virtual void fn_802B2140();
+    virtual void fn_802B26C8();
+    virtual void fn_802B7A14();
+};
+
+DECLARE_SOUND_CLASS(Class_80486C00, fn_802B7898, fn_80080A64, fn_802B6C1C, fn_802B6CAC, fn_802B6ABC)
+DECLARE_SOUND_CLASS(Class_80486D30, fn_802BAB24, fn_80080A64, fn_802BA364, fn_802BA3F4, fn_802BA204)
+DECLARE_SOUND_CLASS(Class_80486DB8, fn_802BD698, fn_80080A64, fn_802BD278, fn_802BD308, fn_802BD118)
+DECLARE_SOUND_CLASS(Class_80486E30, fn_802C0534, fn_80080A64, fn_802BFA30, fn_802BFAC0, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486E6C, fn_802BD8D8, fn_80080A64, fn_802BE7C4, fn_802BDA88, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486EC0, fn_802C05E8, fn_80080A64, fn_802C05E4, fn_802C05E0, fn_802C05DC)
+DECLARE_SOUND_CLASS(Class_80486F00, fn_802C0994, fn_80080A64, fn_802C09F4, fn_802C0A28, fn_802C0A30)
+DECLARE_SOUND_CLASS(Class_80486F40, fn_802C2318, fn_80080A64, fn_802C20DC, fn_802C2124, fn_802C1F7C)
+DECLARE_SOUND_CLASS(Class_80486FB8, fn_802C3E88, fn_80080A64, fn_802C3A68, fn_802C3AF8, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80486FF4, fn_802C24FC, fn_80080A64, fn_802C3A54, fn_802C2C38, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80487030, fn_802C6434, fn_80080A64, fn_802C597C, fn_802C5A0C, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_8048706C, fn_802C4028, fn_80080A64, fn_802C5280, fn_802C4164, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_804870B8, fn_802C65E4, fn_80080A64, fn_802C6E20, fn_802C6930, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_804870F8, fn_802C8C3C, fn_80080A64, fn_802C8394, fn_802C8424, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_80487134, fn_802C711C, fn_80080A64, fn_802C7B54, fn_802C7288, fn_802B7A14)
+DECLARE_SOUND_CLASS(Class_804871B0, fn_802CA8B8, fn_80080A64, fn_802CA48C, fn_802CA51C, fn_802CA32C)
+DECLARE_SOUND_CLASS(Class_804871EC, fn_802C96B8, fn_80080A64, fn_802CA48C, fn_802CA51C, fn_802C9A8C)
+DECLARE_SOUND_CLASS(Class_80487228, fn_802C8FC4, fn_80080A64, fn_802C9FAC, fn_802C9D24, fn_802C9A8C)
+DECLARE_SOUND_CLASS(Class_80487388, fn_802CD8B8, fn_802CD950, fn_802CD9B0, fn_802CD9DC, fn_802D0890)
+DECLARE_SOUND_CLASS(Class_804873C8, fn_802CE6B4, fn_802CEA00, fn_802CE81C, fn_802CE808, fn_802D4AB4)
+DECLARE_SOUND_CLASS(Class_80487410, fn_802CEB48, fn_802D008C, fn_802D0084, fn_802CEED8, fn_802D0890)
+DECLARE_SOUND_CLASS(Class_80487490, fn_802D0AD4, fn_802D1434, fn_802D0BDC, fn_802D0BE4, fn_802D0D10)
+DECLARE_SOUND_CLASS(Class_80487510, fn_802D15BC, fn_802D2424, fn_802D16BC, fn_802D18CC, fn_802D0890)
+DECLARE_SOUND_CLASS(Class_80487550, fn_802D2670, fn_802D45D0, fn_802D45C8, fn_802D3478, fn_802D0890)
+DECLARE_SOUND_CLASS(Class_80487590, fn_802D47F4, fn_802D5BA4, fn_802D52F4, fn_802D5890, fn_802D0440)
+DECLARE_SOUND_CLASS(Class_80487690, fn_802D4748, fn_802D5BA4, fn_802D52F4, fn_802D5890, fn_802D0440)
+
+class Class_802BB34C {
+public:
+    virtual ~Class_802BB34C();
+    virtual void fn_802D639C();
+    virtual void fn_802D5E1C();
+    virtual void fn_802D5F28();
+    virtual void fn_802D0890();
+};
+
+DECLARE_SOUND_CLASS(Class_80487830, fn_802D6540, fn_802D71A8, fn_802D65D8, fn_802D6804, fn_802D0890)
+DECLARE_SOUND_CLASS(Class_80487870, fn_802D7744, fn_80080A64, fn_802D77A0, fn_802D8000, fn_802D7C78)
+DECLARE_SOUND_CLASS(Class_804878D0, fn_802D8204, fn_802D9350, fn_802D873C, fn_802D830C, fn_802D8CDC)
+DECLARE_SOUND_CLASS(Class_80487A10, fn_802DA584, fn_80080A64, fn_802DAB00, fn_802DA618, fn_802DA684)
+DECLARE_SOUND_CLASS(Class_80487A40, fn_802DAC40, fn_80080A64, fn_802DBC28, fn_802DAD74, fn_802DAE14)
+DECLARE_SOUND_CLASS(Class_80487AEC, fn_802DBD68, fn_80080A64, fn_802DD510, fn_802DD518, fn_802DBF54)
+DECLARE_SOUND_CLASS(Class_80487B18, fn_802D8148, fn_80080A64, fn_802DE230, fn_802DE238, fn_802DDAE4)
+DECLARE_SOUND_CLASS(Class_80487BC0, fn_802DE7E0, fn_80080A64, fn_802DE7B4, fn_802DE7BC, fn_802DE7B8)
+DECLARE_SOUND_CLASS(Class_80487CD8, fn_802E1F28, fn_80080A64, fn_802E4BC8, fn_802E4400, fn_802E48F0)
+DECLARE_SOUND_CLASS(Class_80487D40, fn_802E1ED8, fn_80080A64, fn_802E4BC8, fn_802E4400, fn_802E48F0)
+DECLARE_SOUND_CLASS(Class_80487DA8, fn_802E1E88, fn_80080A64, fn_802E43B8, fn_802E4400, fn_802E5B50)
+DECLARE_SOUND_CLASS(Class_80487E10, fn_802E1558, fn_802E13DC, fn_802F0568, fn_802E1E80, fn_802E1B10)
+DECLARE_SOUND_CLASS(Class_80487E30, fn_802E1120, fn_80080A64, fn_802E5758, fn_802E575C, fn_802E5760)
+DECLARE_SOUND_CLASS(Class_80487EA0, fn_802E2180, fn_80080A64, fn_802E2220, fn_802E2228, fn_802E2218)
+DECLARE_SOUND_CLASS(Class_80487F18, fn_802E2A9C, fn_802E13DC, fn_802E3058, fn_802E2CA8, fn_802E1B10)
+DECLARE_SOUND_CLASS(Class_80487F38, fn_802E3814, fn_80080A64, fn_802E3958, fn_802E3A90, fn_802E3950)
+DECLARE_SOUND_CLASS(Class_80488028, fn_802E138C, fn_80080A64, fn_802E4BC8, fn_802E4400, fn_802E48F0)
+DECLARE_SOUND_CLASS(Class_80488090, fn_802E528C, fn_80080A64, fn_802E5758, fn_802E575C, fn_802E5760)
+DECLARE_SOUND_CLASS(Class_80488108, fn_802E56A8, fn_80080A64, fn_802E5758, fn_802E575C, fn_802E5760)
+DECLARE_SOUND_CLASS(Class_80488178, fn_802E133C, fn_80080A64, fn_802E43B8, fn_802E4400, fn_802E5B50)
+DECLARE_SOUND_CLASS(Class_80488228, fn_802E7A60, fn_802E8284, fn_802F0568, fn_802E83C0, fn_802E7B00)
+DECLARE_SOUND_CLASS(Class_80488308, fn_802E9CF8, fn_802E9EDC, fn_802EA80C, fn_802EA818, fn_802EA888)
+
+class Class_802F0BEC {
+public:
+    virtual ~Class_802F0BEC();
+    virtual void fn_80080A64();
+    virtual void fn_802F12D8();
+    virtual void fn_802F0C48();
+    virtual void fn_802F0DAC();
+};
+
+DECLARE_SOUND_CLASS(Class_804888F8, fn_8030A578, fn_80312920, fn_8030B884, fn_8030C454, fn_8030BFB8)
+DECLARE_SOUND_CLASS(Class_80488CC0, fn_80325E9C, fn_80080A64, fn_80325C48, fn_80325F84, fn_80325C34)
+DECLARE_SOUND_CLASS(Class_80488CFC, fn_80326124, fn_80080A64, fn_802F12D8, fn_802F0C48, fn_802F0DAC)
+DECLARE_SOUND_CLASS(Class_80488D40, fn_8032BD00, fn_80080A64, fn_8032BC08, fn_8032BD6C, fn_8032BD64)
+DECLARE_SOUND_CLASS(Class_80488E98, fn_8032FBA0, fn_80080A64, fn_80331770, fn_803316E8, fn_803301B0)
+DECLARE_SOUND_CLASS(Class_80488EC0, fn_80331AF8, fn_80080A64, fn_8033063C, fn_8032D494, fn_80331884)
+DECLARE_SOUND_CLASS(Class_80488EE0, fn_8032FA40, fn_80080A64, fn_8032FCB4, fn_80330928, fn_8033259C)
+DECLARE_SOUND_CLASS(Class_80488F1C, fn_80331A88, fn_80080A64, fn_803318E4, fn_80331E64, fn_8033213C)
+DECLARE_SOUND_CLASS(Class_80488F38, fn_80331F60, fn_80080A64, fn_803318E4, fn_80331E64, fn_8033213C)
+DECLARE_SOUND_CLASS(Class_80488F58, fn_803328D4, fn_80080A64, fn_803328CC, fn_803328C4, fn_803328BC)
+DECLARE_SOUND_CLASS(Class_80488F90, fn_80332AB4, fn_80080A64, fn_803326D4, fn_803313A0, fn_80332A0C)
+
+#undef DECLARE_SOUND_CLASS
+
+struct Entry {
+    Class_80466A60* sound;
+    int handle;
+    int group;
+    unsigned int id;
+    int type;
+    int priority;
+    int currentPriority;
+    unsigned short flags;
+    short index;
+};
+
+struct System {
+    char pad[0x2d4];
+    Entry entries[32];
+    unsigned int cursor;
+    char pad6d8[0x15];
+    unsigned char active;
+    unsigned char pad6ee;
+    unsigned char enabled;
+};
+
+extern "C" int fn_80078068(System*, unsigned int, int);
+extern "C" int fn_801C6BCC(System*, unsigned int);
+extern "C" int fn_801C6BDC(
+    System*, unsigned int, nw4r::snd::SoundArchive::SoundInfo*);
+extern "C" void fn_801CA7E8(Entry*);
+extern "C" int fn_801CC01C(void*, Entry*, unsigned int, int, int, int);
+extern int lbl_805A01D4;
+
+inline bool pending(Entry* entry) {
+    return entry->id != 0xffffffff && entry->flags != 0;
+}
+
+inline bool occupied(Entry* entry) {
+    return pending(entry) ? true : entry->sound != 0;
+}
+
+inline unsigned int allocate(System* self) {
+    unsigned int start = self->cursor;
+    unsigned int i = start;
+
+    do {
+        i = (i + 1) & 31;
+        Entry* e = &self->entries[i];
+        if (!occupied(e)) {
+            self->cursor = i;
+            e->handle = lbl_805A01D4 + e->index;
+            lbl_805A01D4 = (lbl_805A01D4 + 0x100) & 0x7fffff00;
+            return i;
+        }
+    } while (i != start);
+
+    return 0xffffffff;
+}
+
+inline int priority(System* self, unsigned int id) {
+    if (!self->enabled)
+        return 64;
+
+    nw4r::snd::SoundArchive::SoundInfo info;
+    if (fn_801C6BDC(self, id, &info))
+        return info.playerPriority;
+
+    return 64;
+}
+
+extern "C" int fn_800754E8(
+    System* self, unsigned int id, int group, int arg) {
+    if (id == 0xffffffff)
+        return -1;
+    if (!self->active)
+        return -1;
+    if (!fn_80078068(self, id, arg))
+        return -1;
+
+    unsigned int slot = allocate(self);
+    if (slot == 0xffffffff) {
+        slot = 0xffffffff;
+        unsigned int i;
+        int p = 127;
+        if (id != 0xffffffff)
+            p = priority(self, id);
+
+        System* current = self;
+        for (i = 0; i < 32;
+             current = (System*)((char*)current + 32), ++i) {
+            if (current->entries[0].flags == 0 &&
+                current->entries[0].currentPriority <= p) {
+                p = current->entries[0].currentPriority;
+                slot = i;
+            }
+        }
+
+        if (slot != 0xffffffff) {
+            Class_80466A60* sound = self->entries[slot].sound;
+            Entry* e = &self->entries[slot];
+            if (sound)
+                sound->fn_801BC684(0);
+
+            fn_801CA7E8(e);
+            self->entries[slot].handle = -1;
+            self->entries[slot].group = -1;
+            self->entries[slot].id = -1;
+            self->entries[slot].type = 0;
+            self->entries[slot].priority = 64;
+            self->entries[slot].currentPriority = 0;
+            self->entries[slot].flags = 0;
+            self->entries[slot].handle =
+                lbl_805A01D4 + self->entries[slot].index;
+            lbl_805A01D4 = (lbl_805A01D4 + 0x100) & 0x7fffff00;
+        }
+    }
+
+    if (slot < 32) {
+        self->entries[slot].flags = 0;
+        Entry* e = &self->entries[slot];
+        if (fn_801CC01C((char*)self + 0x198, e, id, 0, 0, 0) == 0) {
+            self->entries[slot].id = id;
+            self->entries[slot].type = fn_801C6BCC(self, id);
+            self->entries[slot].group = group;
+
+            int p = priority(self, id);
+            self->entries[slot].priority = p;
+            self->entries[slot].currentPriority = p;
+            return self->entries[slot].handle;
+        }
+    }
+
+    return -1;
+}
