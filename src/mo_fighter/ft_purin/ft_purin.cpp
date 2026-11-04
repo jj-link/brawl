@@ -2540,3 +2540,31 @@ extern "C" void* fn_124_1AC4(void* ptr, short flag)
 }  // namespace decomp_orch_fn_124_1AC4
 }  // namespace decomp_orch_fn_124_1AC4
 // decomp-orchestrator: end fn_124_1AC4
+
+// decomp-orchestrator: begin fn_124_1F00
+#pragma force_active on
+namespace decomp_orch_fn_124_1F00 {
+namespace decomp_orch_fn_124_1F00 {
+extern "C" {
+void* fn_124_1F7C(void*, short);
+void* fn_124_2834(void*, short);
+void* fn_27_C74E8(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_1F00(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* members = static_cast<unsigned char*>(object);
+        short memberDeleting = -1;
+        fn_124_1F7C(members + 0x7D34, memberDeleting);
+        fn_27_C74E8(members + 0x7D24, memberDeleting);
+        fn_124_2834(object, static_cast<short>(0));
+        if (deleting > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_1F00
+}  // namespace decomp_orch_fn_124_1F00
+// decomp-orchestrator: end fn_124_1F00
