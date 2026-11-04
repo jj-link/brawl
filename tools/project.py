@@ -813,6 +813,20 @@ def generate_build_ninja(
         deps="gcc",
     )
 
+    # decomp-orchestrator exception symbol contracts
+    contract_script = config.tools_dir / "orch_object.py"
+    contract_objdump = binutils / f"powerpc-eabi-objdump{EXE}"
+    for rule, command in (("mwcc", mwcc_cmd), ("mwcc_sjis", mwcc_sjis_cmd),
+                          ("mwcc_extab", mwcc_extab_cmd), ("mwcc_sjis_extab", mwcc_sjis_extab_cmd),
+                          ("mwcc_align4", mwcc_align4_cmd), ("mwcc_sjis_align4", mwcc_sjis_align4_cmd)):
+        command = command if command.startswith(CHAIN) else CHAIN + command
+        n.rule(name=rule + "_contract",
+               command=command + f' && $python "{contract_script}" "$out" "$orch_contract" '
+                                 f'"{contract_objdump}" "{objcopy}"',
+               description="MWCC $out", depfile="$basefile.d", deps="gcc")
+    n.newline()
+    # end decomp-orchestrator exception symbol contracts
+
     n.comment("Assemble asm")
     n.rule(
         name="as",
@@ -1086,6 +1100,20 @@ def generate_build_ninja(
                 variables["extab_padding"] = "".join(
                     f"{i:02x}" for i in obj.options["extab_padding"]
                 )
+            # decomp-orchestrator exception object
+            if obj.options.get("orch_contract"):
+                from hashlib import sha256 as _orch_sha256
+                from json import dumps as _orch_dumps
+                contract = _orch_dumps(obj.options["orch_contract"], sort_keys=True).encode("utf-8")
+                contract_file = build_path / "orch-contracts" / (_orch_sha256(contract).hexdigest() + ".json")
+                if not contract_file.is_file():
+                    contract_file.parent.mkdir(parents=True, exist_ok=True)
+                    contract_file.write_bytes(contract)
+                build_rule += "_contract"
+                build_implcit = [*build_implcit, contract_script, contract_file,
+                                  binutils_implicit or contract_objdump, binutils_implicit or objcopy]
+                variables["orch_contract"] = contract_file
+            # end decomp-orchestrator exception object
             n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
             n.build(
                 outputs=obj.src_obj_path,

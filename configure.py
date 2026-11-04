@@ -3487,6 +3487,8 @@ def _add_orchestrated_units():
             options["mw_version"] = unit["mw_version"]
         if unit.get("data_align4"):  # its jump table sits at an address aligned to 4 but not 8
             options["data_align4"] = True
+        if unit.get("exception_symbols"):
+            options["orch_contract"] = unit["exception_symbols"]
         if unit["lib"] not in libs:  # a DOL library configure.py does not list yet
             libs[unit["lib"]] = {"lib": unit["lib"], "mw_version": config.linker_version, "cflags": cflags,
                                  "host": False, "objects": []}
