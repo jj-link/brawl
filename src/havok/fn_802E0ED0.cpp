@@ -1,0 +1,41 @@
+#pragma force_active on
+extern char lbl_80487E08[];
+extern char lbl_80487E28[];
+extern "C" void *fn_802F04AC(void *p, void *q, char r);
+extern "C" void *fn_802E0ED0(void *arg0, void *arg1) {
+    char *self = (char *)arg0;
+    fn_802F04AC(arg0, arg1, 1);
+    *(void **)(self + 0x0) = lbl_80487E08;
+    *(float *)(self + 0x60) = 0.5f;
+    *(float *)(self + 0x64) = 0.4f;
+    *(int *)(self + 0x6C) = 0;
+    *(int *)(self + 0x70) = 0;
+    *(unsigned int *)(self + 0x74) = 0x80000000;
+    *(int *)(self + 0x78) = 0;
+    *(int *)(self + 0x7C) = 0;
+    *(unsigned int *)(self + 0x80) = 0x80000000;
+    *(int *)(self + 0x84) = 0;
+    *(int *)(self + 0x88) = 0;
+    *(unsigned int *)(self + 0x8C) = 0x80000000;
+    *(short *)(self + 0xA6) = 1;
+    *(int *)(self + 0x1A0) = 0;
+    *(void **)(self + 0xA0) = lbl_80487E28;
+    *(int *)(self + 0x1B4) = 0;
+    *(int *)(self + 0x1B8) = 0;
+    *(unsigned int *)(self + 0x1BC) = 0x80000000;
+    *(int *)(self + 0x1C0) = 0;
+    *(int *)(self + 0x1C4) = 0;
+    *(unsigned int *)(self + 0x1C8) = 0x80000000;
+    *(int *)(self + 0x1CC) = 0;
+    *(int *)(self + 0x1D0) = 0;
+    *(unsigned int *)(self + 0x1D4) = 0x80000000;
+    *(int *)(self + 0x1D8) = 0;
+    *(int *)(self + 0x1DC) = 0;
+    *(unsigned int *)(self + 0x1E0) = 0x80000000;
+    *(unsigned short *)(self + 0x90) = 0xFFFF;
+    *(int *)(self + 0x58) = 0;
+    *(int *)(self + 0x68) = 0;
+    *(int *)(self + 0x1E4) = -1;
+    *(int *)(self + 0x1B0) = 0;
+    return arg0;
+}
