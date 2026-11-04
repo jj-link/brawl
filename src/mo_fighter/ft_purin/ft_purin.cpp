@@ -2125,3 +2125,24 @@ extern "C" void* fn_124_3A38(void* p, short size) {
 }
 }  // namespace decomp_orch_fn_124_3A38
 // decomp-orchestrator: end fn_124_3A38
+
+// decomp-orchestrator: begin fn_124_5ED8
+#pragma force_active on
+namespace decomp_orch_fn_124_5ED8 {
+extern "C" {
+void fn_124_5AA4(void*, int);
+extern unsigned char lbl_27_data_2C030[];
+void __ct__20soResourceModuleImplFUlP20soResourceIdAccesserUc(
+    void*, unsigned long, void*, unsigned char);
+}
+
+extern "C" void* fn_124_5ED8(void* object, void* arg1, void* arg2, int kind, void* resource) {
+    fn_124_5AA4(object, 0);
+    *reinterpret_cast<unsigned char**>(object) = lbl_27_data_2C030;
+    *reinterpret_cast<void**>(static_cast<unsigned char*>(object) + 8) = resource;
+    __ct__20soResourceModuleImplFUlP20soResourceIdAccesserUc(
+        static_cast<unsigned char*>(object) + 0xC, 0, object, static_cast<unsigned char>(kind));
+    return object;
+}
+}  // namespace decomp_orch_fn_124_5ED8
+// decomp-orchestrator: end fn_124_5ED8
