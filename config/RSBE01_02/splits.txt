@@ -4297,6 +4297,9 @@ sora/misc/fn_800C11A4.cpp:
 sora/misc/fn_800C11F0.cpp:
 	.text       start:0x800C11F0 end:0x800C11F4
 
+sora/misc/fn_800C11F4.cpp:
+	.text       start:0x800C11F4 end:0x800C137C
+
 sora/misc/fn_800C137C.cpp:
 	.text       start:0x800C137C end:0x800C1380
 
@@ -22998,6 +23001,9 @@ network/fn_803B29A0.c:
 
 network/fn_803B3268.c:
 	.text       start:0x803B3268 end:0x803B3290
+
+network/fn_803B3290.c:
+	.text       start:0x803B3290 end:0x803B35AC
 
 network/fn_803B35AC.c:
 	.text       start:0x803B35AC end:0x803B35D0
