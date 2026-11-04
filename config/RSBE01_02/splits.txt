@@ -2086,6 +2086,9 @@ sora/misc/fn_8005B44C.cpp:
 sora/misc/fn_8005B46C.cpp:
 	.text       start:0x8005B46C end:0x8005B4C4
 
+sora/misc/fn_8005B4C4.cpp:
+	.text       start:0x8005B4C4 end:0x8005B584
+
 sora/misc/fn_8005B830.cpp:
 	.text       start:0x8005B830 end:0x8005B834
 
@@ -7946,6 +7949,9 @@ nw4r/fn_80174758.cpp:
 
 nw4r/fn_80174798.cpp:
 	.text       start:0x80174798 end:0x801747D8
+
+nw4r/fn_801755C0.cpp:
+	.text       start:0x801755C0 end:0x8017592C
 
 nw4r/fn_80176004.cpp:
 	.text       start:0x80176004 end:0x80176028
@@ -22942,6 +22948,9 @@ network/fn_803ABA30.c:
 
 network/fn_803ABC88.c:
 	.text       start:0x803ABC88 end:0x803ABD7C
+
+network/fn_803ABF18.c:
+	.text       start:0x803ABF18 end:0x803AC0F0
 
 network/fn_803AC40C.c:
 	.text       start:0x803AC40C end:0x803AC504
