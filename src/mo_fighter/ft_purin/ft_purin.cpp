@@ -2464,3 +2464,36 @@ extern "C" void fn_124_8590(void* obj, int index, float value) {
 }
 }  // namespace decomp_orch_fn_124_8590
 // decomp-orchestrator: end fn_124_8590
+
+// decomp-orchestrator: begin fn_124_4A30
+#pragma force_active on
+namespace decomp_orch_fn_124_4A30 {
+extern "C" void fn_27_B21D0(void*, short);
+extern "C" void fn_27_CB4A0(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4A30(void* self, short flag) {
+    if (self != 0) {
+        fn_27_B21D0(static_cast<char*>(self) + 0x50, -1);
+        if (self != 0) {
+            fn_27_CB4A0(self, -1);
+        }
+        if (flag > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_4A30
+// decomp-orchestrator: end fn_124_4A30
+
+// decomp-orchestrator: begin fn_124_8180
+#pragma force_active on
+namespace decomp_orch_fn_124_8180 {
+extern "C" void fn_27_1A8014(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_8180(void* receiver, short id, int argument) {
+    fn_27_1A8014(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_8180
+// decomp-orchestrator: end fn_124_8180
