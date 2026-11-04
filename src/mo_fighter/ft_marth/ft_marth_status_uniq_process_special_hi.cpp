@@ -208,3 +208,16 @@ namespace decomp_orch_fn_106_BE3C {
 extern "C" void fn_106_BE3C(void) {}
 }  // namespace decomp_orch_fn_106_BE3C
 // decomp-orchestrator: end fn_106_BE3C
+
+// decomp-orchestrator: begin fn_106_BFE0
+#pragma force_active on
+namespace decomp_orch_fn_106_BFE0 {
+extern "C" {
+extern char lbl_106_data_5584[];
+
+void fn_106_BFE0(void* self) {
+    *(void**)self = lbl_106_data_5584;
+}
+}
+}  // namespace decomp_orch_fn_106_BFE0
+// decomp-orchestrator: end fn_106_BFE0

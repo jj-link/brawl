@@ -725,6 +725,9 @@ mo_fighter/ft_yoshi/ft_yoshi_function_a11c.cpp:
 mo_fighter/ft_yoshi/ft_yoshi_function_a1a8.cpp:
 	.text       start:0x0000A1A8 end:0x0000A278
 
+mo_fighter/ft_yoshi/ft_yoshi_function_a278.cpp:
+	.text       start:0x0000A278 end:0x0000A368
+
 mo_fighter/ft_yoshi/ft_yoshi_function_a368.cpp:
 	.text       start:0x0000A368 end:0x0000A3C4
 
@@ -1752,6 +1755,9 @@ mo_fighter/ft_yoshi/ft_yoshi_function_11c4c.cpp:
 mo_fighter/ft_yoshi/ft_yoshi_function_11c94.cpp:
 	.text       start:0x00011C94 end:0x00011CA4
 
+mo_fighter/ft_yoshi/ft_yoshi_function_11ca4.cpp:
+	.text       start:0x00011CA4 end:0x00011F78
+
 mo_fighter/ft_yoshi/ft_yoshi_function_11f78.cpp:
 	.text       start:0x00011F78 end:0x00011FB0
 
@@ -1808,6 +1814,10 @@ mo_fighter/ft_yoshi/ft_yoshi_function_1357c.cpp:
 
 mo_fighter/ft_yoshi/ft_yoshi_function_135c4.cpp:
 	.text       start:0x000135C4 end:0x000135D4
+
+mo_fighter/ft_yoshi/ft_yoshi_function_135d4.cpp:
+	.text       start:0x000135D4 end:0x00013824
+	.rodata     start:0x000000F8 end:0x00000108
 
 mo_fighter/ft_yoshi/ft_yoshi_function_13824.cpp:
 	.text       start:0x00013824 end:0x00013864

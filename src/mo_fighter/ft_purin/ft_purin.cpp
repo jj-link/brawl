@@ -1918,3 +1918,78 @@ extern "C" void* fn_124_73CC(void* self, unsigned arg2, unsigned arg3, unsigned 
 }
 }  // namespace decomp_orch_fn_124_73CC
 // decomp-orchestrator: end fn_124_73CC
+
+// decomp-orchestrator: begin fn_124_1F7C
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_1F7C {
+extern "C" {
+void* fn_124_2054(void*, short);
+void* fn_124_2218(void*, short);
+void* fn_124_22E0(void*, short);
+void* fn_124_236C(void*, short);
+void* fn_124_23F8(void*, short);
+void* fn_124_2484(void*, short);
+void* fn_124_2510(void*, short);
+void* fn_124_259C(void*, short);
+void* fn_124_2628(void*, short);
+void* fn_124_26B4(void*, short);
+void* fn_124_2740(void*, short);
+void __dl__FPv(void*);
+
+void* fn_124_1F7C(void* self, short del) {
+    if (self) {
+        fn_124_2054((char*)self + 0x14B8, -1);
+        fn_124_2218((char*)self + 0x1394, -1);
+        fn_124_22E0((char*)self + 0x1268, -1);
+        fn_124_236C((char*)self + 0x113C, -1);
+        fn_124_23F8((char*)self + 0x1010, -1);
+        fn_124_2484((char*)self + 0xEE4, -1);
+        fn_124_2510((char*)self + 0xDB8, -1);
+        fn_124_259C((char*)self + 0xC8C, -1);
+        fn_124_2628((char*)self + 0xB60, -1);
+        fn_124_26B4((char*)self + 0xA34, -1);
+        fn_124_2740(self, -1);
+        if (del > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}
+}  // namespace decomp_orch_fn_124_1F7C
+// decomp-orchestrator: end fn_124_1F7C
+
+// decomp-orchestrator: begin fn_124_5830
+#pragma force_active on
+namespace decomp_orch_fn_124_5830 {
+extern "C" void* fn_27_CC7EC(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5830(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_27_CC7EC(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_5830
+// decomp-orchestrator: end fn_124_5830
+
+// decomp-orchestrator: begin fn_124_85E8
+#pragma force_active on
+namespace decomp_orch_fn_124_85E8 {
+struct Fn12485E8Owner {
+    unsigned char pad[0xc];
+    int* counts;
+};
+
+extern "C" void fn_124_85E8(Fn12485E8Owner* owner, int index) {
+    int* counts = owner->counts;
+    counts[index] = counts[index] + 1;
+}
+}  // namespace decomp_orch_fn_124_85E8
+// decomp-orchestrator: end fn_124_85E8
