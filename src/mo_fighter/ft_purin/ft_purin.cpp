@@ -2519,3 +2519,24 @@ extern "C" void fn_124_808C(soAnimCmdEventObserver* self, short id, int argument
 }
 }  // namespace decomp_orch_fn_124_808C
 // decomp-orchestrator: end fn_124_808C
+
+// decomp-orchestrator: begin fn_124_1AC4
+#pragma force_active on
+namespace decomp_orch_fn_124_1AC4 {
+namespace decomp_orch_fn_124_1AC4 {
+extern "C" void fn_124_1A60(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_1AC4(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_124_1A60(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_1AC4
+}  // namespace decomp_orch_fn_124_1AC4
+// decomp-orchestrator: end fn_124_1AC4
