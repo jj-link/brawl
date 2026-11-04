@@ -2146,3 +2146,85 @@ extern "C" void* fn_124_5ED8(void* object, void* arg1, void* arg2, int kind, voi
 }
 }  // namespace decomp_orch_fn_124_5ED8
 // decomp-orchestrator: end fn_124_5ED8
+
+// decomp-orchestrator: begin fn_124_1D88
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_1D88 {
+extern "C" void __dl__FPv(void*);
+extern "C" void* fn_124_1D88(void* p, s16 size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_1D88
+// decomp-orchestrator: end fn_124_1D88
+
+// decomp-orchestrator: begin fn_124_3C8C
+#pragma force_active on
+void operator delete(void*);
+namespace decomp_orch_fn_124_3C8C {
+extern "C" {
+void fn_124_1EA4(void*, short);
+void fn_124_1E48(void*, short);
+}
+
+extern "C" void* fn_124_3C8C(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* storage = static_cast<unsigned char*>(object);
+        fn_124_1EA4(storage + 0x20, 0);
+        if (object != 0) {
+            fn_124_1E48(storage + 0x8, 0);
+        }
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_3C8C
+// decomp-orchestrator: end fn_124_3C8C
+
+// decomp-orchestrator: begin fn_124_3EDC
+#pragma force_active on
+namespace decomp_orch_fn_124_3EDC {
+extern "C" void* fn_124_39D8(void*, short);
+extern "C" void* fn_124_3F54(void*, short);
+extern "C" void* fn_27_19E99C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3EDC(void* p, short flag) {
+    if (p) {
+        fn_124_39D8((char*)p + 0x85C, -1);
+        fn_124_3F54((char*)p + 0x19C, -1);
+        fn_27_19E99C(p, -1);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3EDC
+// decomp-orchestrator: end fn_124_3EDC
+
+// decomp-orchestrator: begin fn_124_5258
+#pragma force_active on
+namespace decomp_orch_fn_124_5258 {
+extern "C" void* fn_124_393C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5258(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        if (ptr != 0) {
+            fn_124_393C(ptr, 0);
+        }
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_5258
+// decomp-orchestrator: end fn_124_5258

@@ -164,21 +164,45 @@ void gfTaskScheduler::process(bool p1) {
 }
 
 // NONMATCHING regswaps
+// decomp-orchestrator: begin renderPre__15gfTaskSchedulerFv
+// decomp-orchestrator: it replaces the file's own definition:
+//| void gfTaskScheduler::renderPre() {
+//|     gfTask* next;
+//|     gfTask* r3;
+//|     unk0_1 = 2;
+//|     for (s32 i = 0; i < unkF8Size; i++) {
+//|         r3 = unkF8[i];
+//|         unk6 = i;
+//|         for (gfTask* task = r3; task; task = next) {
+//|             next = task->m_0x18;
+//|             if (task->m_alive && task->unk2C_b2) {
+//|                 task->renderPre();
+//|             }
+//|         }
+//|     }
+//| }
+#include <gf/gf_task_scheduler.h>
+#pragma force_active on
 void gfTaskScheduler::renderPre() {
     gfTask* next;
-    gfTask* r3;
+    gfTaskScheduler* p = this;
+    int i = 0;
     unk0_1 = 2;
-    for (s32 i = 0; i < unkF8Size; i++) {
-        r3 = unkF8[i];
+    do {
+        gfTask* task = p->unkF8[0];
         unk6 = i;
-        for (gfTask* task = r3; task; task = next) {
+        while (task != 0) {
+            unsigned char flags = *((unsigned char*)task + 0x2c);
             next = task->m_0x18;
-            if (task->m_alive && task->unk2C_b2) {
+            if (((flags >> 6) & 1) && ((flags >> 2) & 1))
                 task->renderPre();
-            }
+            task = next;
         }
-    }
+        ++i;
+        p = (gfTaskScheduler*)((char*)p + 4);
+    } while (i < 14);
 }
+// decomp-orchestrator: end renderPre__15gfTaskSchedulerFv
 
 // NONMATCHING regswaps
 // decomp-orchestrator: begin render__15gfTaskSchedulerFv
