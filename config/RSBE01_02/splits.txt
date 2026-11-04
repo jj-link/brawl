@@ -2053,6 +2053,9 @@ sora/misc/fn_8005A6E8.cpp:
 sora/misc/fn_8005A744.cpp:
 	.text       start:0x8005A744 end:0x8005A74C
 
+sora/misc/fn_8005A820.cpp:
+	.text       start:0x8005A820 end:0x8005A898
+
 sora/misc/fn_8005A988.cpp:
 	.text       start:0x8005A988 end:0x8005A98C
 
@@ -2437,6 +2440,9 @@ sora/misc/fn_80063F40.cpp:
 
 sora/misc/fn_80064278.cpp:
 	.text       start:0x80064278 end:0x80064284
+
+sora/misc/fn_80064284.cpp:
+	.text       start:0x80064284 end:0x80064398
 
 sora/misc/fn_800651CC.cpp:
 	.text       start:0x800651CC end:0x8006526C
@@ -7830,6 +7836,9 @@ nw4r/fn_8016E744.cpp:
 nw4r/fn_8016E7D8.cpp:
 	.text       start:0x8016E7D8 end:0x8016E864
 
+nw4r/fn_8016E864.cpp:
+	.text       start:0x8016E864 end:0x8016E950
+
 nw4r/fn_8016E950.cpp:
 	.text       start:0x8016E950 end:0x8016E9CC
 
@@ -9827,6 +9836,9 @@ nw4r/fn_801AEEF8.cpp:
 
 nw4r/fn_801AEF40.cpp:
 	.text       start:0x801AEF40 end:0x801AEF80
+
+nw4r/fn_801AF98C.cpp:
+	.text       start:0x801AF98C end:0x801AF9F4
 
 nw4r/fn_801AF9F4.cpp:
 	.text       start:0x801AF9F4 end:0x801AFAAC
@@ -13425,6 +13437,9 @@ RVL_SDK/fn_80213FC8.c:
 RVL_SDK/fn_802140BC.c:
 	.text       start:0x802140BC end:0x80214210
 
+RVL_SDK/fn_80214210.c:
+	.text       start:0x80214210 end:0x80214358
+
 RVL_SDK/fn_80214358.c:
 	.text       start:0x80214358 end:0x8021445C
 
@@ -14338,6 +14353,9 @@ RVL_SDK/fn_8023BA84.c:
 RVL_SDK/fn_8023BC78.c:
 	.text       start:0x8023BC78 end:0x8023BC98
 
+RVL_SDK/fn_8023BC98.c:
+	.text       start:0x8023BC98 end:0x8023BD10
+
 RVL_SDK/fn_8023BD10.c:
 	.text       start:0x8023BD10 end:0x8023BDC8
 
@@ -15077,6 +15095,10 @@ RVL_SDK/fn_8025AEE4.c:
 
 RVL_SDK/fn_8025AFE8.c:
 	.text       start:0x8025AFE8 end:0x8025B020
+
+RVL_SDK/fn_8025B1F0.c:
+	.text       start:0x8025B1F0 end:0x8025B344
+	.data       start:0x80485180 end:0x804851C4
 
 RVL_SDK/fn_8025B7D0.c:
 	.text       start:0x8025B7D0 end:0x8025BA20
@@ -24710,6 +24732,11 @@ Runtime.PPCEABI.H/fn_803F86E4.c:
 	extab       start:0x8000968C end:0x80009694
 	extabindex  start:0x8000C718 end:0x8000C724
 	.text       start:0x803F86E4 end:0x803F87A8
+
+Runtime.PPCEABI.H/fn_803F87A8.c:
+	extab       start:0x80009694 end:0x8000969C
+	extabindex  start:0x8000C724 end:0x8000C730
+	.text       start:0x803F87A8 end:0x803F8820
 
 Runtime.PPCEABI.H/fn_803F8820.c:
 	extab       start:0x8000969C end:0x800096A4
