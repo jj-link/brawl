@@ -1,0 +1,125 @@
+#include <types.h>
+#pragma force_active on
+
+struct Stage_base { char pad[0x3c]; };
+class Stage : public Stage_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void fn_88_2D10();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_88_320();
+    virtual void fn_88_3E8();
+    virtual void createObjPokeTrainer();
+    virtual void fn_88_41E4();
+    virtual void fn_88_41E0();
+    virtual void fn_88_41D4();
+    virtual void fn_88_41CC();
+    virtual void fn_88_41C4();
+    virtual void fn_88_3CB8();
+    virtual void getItemGenPac();
+    virtual void getItemPacEnemyFigure();
+    virtual void getEnemyPac();
+    virtual void getAdvRadarData();
+    virtual void initializeStage();
+    virtual void closeStage();
+    virtual void renderDebugPositions();
+    virtual void fn_88_3E0();
+    virtual void process();
+    virtual void updateStagePositions();
+    virtual void debugCollision();
+    virtual void fn_88_41BC();
+    virtual void fn_88_41B4();
+    virtual void getZoneLightSetIndex();
+    virtual void fn_88_4198();
+    virtual void clearCameraParam();
+    virtual void initCameraParam();
+    virtual void startLoadLocalData();
+    virtual void isLoadLocalData();
+    virtual void entryLocalData();
+    virtual void removeLocalData();
+    virtual void fn_88_4194(int, int, u32, int, int);
+};
+
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_88_6D58();
+    virtual void fn_88_6DB0();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void receiveCollMsg_Landing();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_88_447C();
+    virtual void startup();
+    virtual void fn_88_71DC();
+    virtual void fn_88_B1C();
+    virtual void fn_88_4474();
+    virtual void fn_88_4470();
+    virtual void fn_88_4360();
+    virtual void fn_88_4468();
+    virtual void fn_88_445C();
+    virtual void fn_88_444C();
+    virtual void fn_88_443C();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility(int, int, u32, int, int);
+    char pad40[0x128];
+    u32 nodes[1];
+};
+
+extern "C" void fn_88_72F0(Ground* ground, unsigned long index) {
+    index = ground->nodes[index];
+    ground->setNodeVisibility(1, 0, index, 1, 0);
+}
