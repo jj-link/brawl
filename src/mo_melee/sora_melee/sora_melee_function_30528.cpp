@@ -1,0 +1,73 @@
+#include <types.h>
+#pragma force_active on
+struct Context;
+class Result {
+public:
+ virtual void isNull();
+ virtual u32 slot1(Context*);
+};
+struct DispatchBase { char pad[8]; };
+#define S(n) virtual void slot##n();
+class Dispatch : public DispatchBase {
+public:
+ S(0) S(1) S(2) S(3) S(4) S(5) S(6) S(7) S(8) S(9)
+ S(10) S(11) S(12) S(13) S(14) S(15) S(16) S(17) S(18) S(19)
+ S(20) S(21) S(22) S(23) S(24) S(25) S(26) S(27) S(28) S(29)
+ S(30) S(31) S(32) S(33) S(34) S(35) S(36) S(37) S(38) S(39)
+ S(40) S(41) S(42) S(43) S(44) S(45) S(46) S(47) S(48) S(49)
+ S(50) S(51) S(52) S(53) S(54) S(55) S(56) S(57) S(58) S(59)
+ S(60) S(61) S(62) S(63) S(64) S(65) S(66) S(67) S(68) S(69)
+ S(70) S(71) S(72) S(73) S(74) S(75) S(76) S(77) S(78) S(79)
+ S(80) S(81) S(82) S(83) S(84) S(85) S(86) S(87) S(88) S(89)
+ S(90) S(91) S(92) S(93) S(94) S(95) S(96) S(97) S(98) S(99)
+ S(100) S(101) S(102) S(103) S(104) S(105) S(106) S(107) S(108) S(109)
+ S(110) S(111) S(112) S(113) S(114) S(115) S(116) S(117) S(118) S(119)
+ S(120) S(121) S(122) S(123) S(124) S(125) S(126) S(127) S(128) S(129)
+ S(130) S(131) S(132) S(133) S(134) S(135) S(136) S(137) S(138) S(139)
+ S(140) S(141) S(142) S(143) S(144) S(145) S(146) S(147) S(148) S(149) S(150)
+ virtual Result* slot151();
+};
+#undef S
+class Class_1250 {
+public:
+ virtual void fn_27_13C90();
+ virtual void fn_27_14068();
+ virtual void fn_27_140C0();
+ virtual void fn_27_1412C();
+ virtual void fn_27_14134();
+ virtual void fn_27_14370();
+ virtual void fn_27_14A28();
+ virtual void fn_27_14A30();
+ virtual void fn_27_14A38();
+ virtual float fn_27_14A48();
+};
+struct Modules { char pad[0xc]; Class_1250* module; Dispatch* dispatch; };
+struct Context { char pad[0xd8]; Modules* modules; };
+struct State {
+ char pad[8]; s32 flags;
+ u32 valueHigh : 8; u32 value : 8; u32 valueLow : 16;
+ char pad2[0x61]; u8 a; u8 b;
+};
+struct Holder { char pad[4]; State* state; };
+extern "C" void fn_27_2F00C(void*, u32, u32);
+extern "C" void fn_80133F64(void*);
+extern float lbl_27_rodata_430;
+extern float lbl_27_rodata_434;
+extern "C" void fn_27_30528(void*, Holder* holder, Context* context) {
+ State* state = holder->state;
+ state->a &= ~8;
+ state->b &= ~0x20;
+ fn_27_2F00C(holder, 0, 1);
+ if (state->flags >> 24) fn_80133F64(state);
+ state = holder->state;
+ if (context->modules->dispatch->slot151()->slot1(context) == 1) {
+  state->b &= ~0x20;
+  state->value = 2;
+ } else {
+  state->b |= 0x20;
+  float f = context->modules->module->fn_27_14A48();
+  if (lbl_27_rodata_430 == f) state->value = 1;
+  else if (lbl_27_rodata_434 == f) state->value = 0;
+  else state->value = 2;
+ }
+}
