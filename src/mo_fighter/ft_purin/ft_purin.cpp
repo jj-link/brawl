@@ -2228,3 +2228,21 @@ extern "C" void* fn_124_5258(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_5258
 // decomp-orchestrator: end fn_124_5258
+
+// decomp-orchestrator: begin fn_124_3AB8
+#pragma force_active on
+namespace decomp_orch_fn_124_3AB8 {
+extern "C" void* __dt__16soHeapModuleImplFv(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3AB8(void* object, short shouldDelete) {
+    if (object != 0) {
+        __dt__16soHeapModuleImplFv(object, -1);
+        if (shouldDelete > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_3AB8
+// decomp-orchestrator: end fn_124_3AB8
