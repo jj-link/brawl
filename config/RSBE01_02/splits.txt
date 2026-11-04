@@ -4132,6 +4132,9 @@ sora/misc/fn_800BD510.cpp:
 sora/misc/fn_800BD6C8.cpp:
 	.text       start:0x800BD6C8 end:0x800BD860
 
+sora/misc/fn_800BF204.cpp:
+	.text       start:0x800BF204 end:0x800BF2CC
+
 sora/misc/fn_800BF2CC.cpp:
 	.text       start:0x800BF2CC end:0x800BF380
 
@@ -11469,6 +11472,9 @@ RVL_SDK/fn_801D8028.c:
 RVL_SDK/fn_801D8034.c:
 	.text       start:0x801D8034 end:0x801D80B4
 
+RVL_SDK/fn_801D80B4.c:
+	.text       start:0x801D80B4 end:0x801D818C
+
 RVL_SDK/fn_801D818C.c:
 	.text       start:0x801D818C end:0x801D8194
 
@@ -12939,6 +12945,9 @@ RVL_SDK/fn_8020E48C.c:
 
 RVL_SDK/fn_8020E574.c:
 	.text       start:0x8020E574 end:0x8020E600
+
+RVL_SDK/fn_8020E73C.c:
+	.text       start:0x8020E73C end:0x8020E740
 
 RVL_SDK/fn_8020E740.c:
 	.text       start:0x8020E740 end:0x8020E98C
@@ -16969,6 +16978,11 @@ havok/fn_802C24FC.cpp:
 	extabindex  start:0x8000AA80 end:0x8000AA8C
 	.text       start:0x802C24FC end:0x802C2558
 
+havok/fn_802C25D0.cpp:
+	extab       start:0x80007D20 end:0x80007D28
+	extabindex  start:0x8000AA98 end:0x8000AAA4
+	.text       start:0x802C25D0 end:0x802C2638
+
 havok/fn_802C3A54.cpp:
 	.text       start:0x802C3A54 end:0x802C3A68
 
@@ -17510,6 +17524,12 @@ havok/fn_802D14CC.cpp:
 	extabindex  start:0x8000B1E8 end:0x8000B1F4
 	.text       start:0x802D14CC end:0x802D1520
 	.ctors      start:0x80406668 end:0x8040666C
+
+havok/fn_802D1520.cpp:
+	extab       start:0x80008458 end:0x80008460
+	extabindex  start:0x8000B1F4 end:0x8000B200
+	.text       start:0x802D1520 end:0x802D1588
+	.ctors      start:0x8040666C end:0x80406670
 
 havok/fn_802D1588.cpp:
 	.text       start:0x802D1588 end:0x802D15A8
@@ -18911,6 +18931,9 @@ havok/fn_802F0AE0.cpp:
 
 havok/fn_802F0BA8.cpp:
 	.text       start:0x802F0BA8 end:0x802F0BEC
+
+havok/fn_802F0BEC.cpp:
+	.text       start:0x802F0BEC end:0x802F0C48
 
 havok/fn_802F0C48.cpp:
 	.text       start:0x802F0C48 end:0x802F0DAC
@@ -20722,6 +20745,9 @@ network/fn_80362E4C.c:
 
 network/fn_80362F54.c:
 	.text       start:0x80362F54 end:0x80362F5C
+
+network/fn_80364034.c:
+	.text       start:0x80364034 end:0x80364340
 
 network/fn_80365C7C.c:
 	.text       start:0x80365C7C end:0x803663AC
@@ -23022,6 +23048,9 @@ network/fn_803CD484.c:
 	extab       start:0x80009274 end:0x8000927C
 	extabindex  start:0x8000C148 end:0x8000C154
 	.text       start:0x803CD484 end:0x803CD598
+
+network/fn_803CD830.c:
+	.text       start:0x803CD830 end:0x803CD834
 
 network/fn_803CD920.c:
 	extab       start:0x80009294 end:0x8000929C
