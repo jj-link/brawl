@@ -181,32 +181,75 @@ void gfTaskScheduler::renderPre() {
 }
 
 // NONMATCHING regswaps
+// decomp-orchestrator: begin render__15gfTaskSchedulerFv
+// decomp-orchestrator: it replaces the file's own definition:
+//| void gfTaskScheduler::render() {
+//|     unk0_1 = 2;
+//|     gfTask* r31;
+//|     gfTask* r3;
+//|     for (s32 i = 0; i < unkF8Size; i++) {
+//|         r3 = unkF8[i];
+//|         unk6 = i;
+//|         for (gfTask* task = r3; task; task = r31) {
+//|             r31 = task->m_0x18;
+//|             if (task->m_alive && task->unk2C_b2) {
+//|                 task->render(gfTask::Render_Opa);
+//|             }
+//|         }
+//|     }
+//|     for (s32 i = 0; i < unkF8Size; i++) {
+//|         r3 = unkF8[i];
+//|         unk6 = i;
+//|         for (gfTask* task = r3; task; task = r31) {
+//|             r31 = task->m_0x18;
+//|             if (task->m_alive && task->unk2C_b2) {
+//|                 task->render(gfTask::Render_Xlu);
+//|             }
+//|         }
+//|     }
+//|     unk0_1 = 0;
+//| }
+#include <gf/gf_task_scheduler.h>
+#pragma force_active on
+namespace decomp_orch_render__15gfTaskSchedulerFv {
 void gfTaskScheduler::render() {
+    gfTask* next;
+    gfTaskScheduler* p;
+    int i;
+    int j;
+    gfTaskScheduler* q;
+
     unk0_1 = 2;
-    gfTask* r31;
-    gfTask* r3;
-    for (s32 i = 0; i < unkF8Size; i++) {
-        r3 = unkF8[i];
+    p = this;
+    for (i = 0; i < 14; i++) {
+        gfTask* task = p->unkF8[0];
         unk6 = i;
-        for (gfTask* task = r3; task; task = r31) {
-            r31 = task->m_0x18;
-            if (task->m_alive && task->unk2C_b2) {
+        while (task) {
+            next = task->m_0x18;
+            if (task->m_alive && task->unk2C_b2)
                 task->render(gfTask::Render_Opa);
-            }
+            task = next;
         }
+        p = (gfTaskScheduler*)((char*)p + 4);
     }
-    for (s32 i = 0; i < unkF8Size; i++) {
-        r3 = unkF8[i];
-        unk6 = i;
-        for (gfTask* task = r3; task; task = r31) {
-            r31 = task->m_0x18;
-            if (task->m_alive && task->unk2C_b2) {
+
+    q = this;
+    for (j = 0; j < 14; j++) {
+        gfTask* task = q->unkF8[0];
+        unk6 = j;
+        while (task) {
+            next = task->m_0x18;
+            if (task->m_alive && task->unk2C_b2)
                 task->render(gfTask::Render_Xlu);
-            }
+            task = next;
         }
+        q = (gfTaskScheduler*)((char*)q + 4);
     }
+
     unk0_1 = 0;
 }
+}  // namespace decomp_orch_render__15gfTaskSchedulerFv
+// decomp-orchestrator: end render__15gfTaskSchedulerFv
 
 // NONMATCHING regswaps
 void gfTaskScheduler::updateStatus() {
