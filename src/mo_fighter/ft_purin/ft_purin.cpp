@@ -2268,3 +2268,57 @@ extern "C" void* fn_124_43EC(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_43EC
 // decomp-orchestrator: end fn_124_43EC
+
+// decomp-orchestrator: begin fn_124_397C
+#pragma force_active on
+namespace decomp_orch_fn_124_397C {
+extern "C" void fn_27_C96C0(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_397C(void* arg0, short arg1) {
+    if (arg0 != 0) {
+        fn_27_C96C0(arg0, -1);
+        if (arg1 > 0) {
+            __dl__FPv(arg0);
+        }
+    }
+    return arg0;
+}
+}  // namespace decomp_orch_fn_124_397C
+// decomp-orchestrator: end fn_124_397C
+
+// decomp-orchestrator: begin fn_124_6334
+#include <so/collision/so_collision_attack_module_impl.h>
+#include <so/collision/so_collision_hit_part.h>
+#include <so/collision/so_collision_hit_module_impl.h>
+#include <so/so_array.h>
+#include <new>
+#pragma force_active on
+#pragma use_simple_stdpnew on
+namespace decomp_orch_fn_124_6334 {
+extern "C" {
+void fn_27_19B5C4(void* hitPartVector, int size, const soCollisionHitPart* element, int param3);
+void fn_27_CB6E0(void* collisionGroupVector, int size, int param2);
+void fn_27_CC8F4(void* collisionHitGroupVector, int size, int param2);
+}
+
+extern "C" void* fn_124_6334(void* config, soModuleAccesser* moduleAccesser, int taskId,
+                             unsigned char taskCategory,
+                             soEventObserverRegistrationDesc* registrationDesc) {
+    unsigned char* storage = static_cast<unsigned char*>(config);
+    {
+        soCollisionHitPart hitPart(soCollision::Category_Fighter, 0x3FF);
+        fn_27_19B5C4(storage, 20, &hitPart, 0);
+    }
+    fn_27_CB6E0(storage + 0x82C, 1, 0);
+    fn_27_CC8F4(storage + 0x8B0, 1, 0);
+    new (storage + 0x8F4) soCollisionHitModuleImpl(
+        moduleAccesser, taskId, static_cast<gfTask::Category>(taskCategory),
+        reinterpret_cast<soArray<soCollisionHitPart>*>(storage),
+        reinterpret_cast<soArray<soCollisionGroup>*>(storage + 0x82C),
+        reinterpret_cast<soArray<soCollisionHitGroup>*>(storage + 0x8B0),
+        registrationDesc, true);
+    return config;
+}
+}  // namespace decomp_orch_fn_124_6334
+// decomp-orchestrator: end fn_124_6334
