@@ -2322,3 +2322,51 @@ extern "C" void* fn_124_6334(void* config, soModuleAccesser* moduleAccesser, int
 }
 }  // namespace decomp_orch_fn_124_6334
 // decomp-orchestrator: end fn_124_6334
+
+// decomp-orchestrator: begin fn_124_40A4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_40A4 {
+namespace decomp_orch_fn_124_40A4 {
+extern "C" void* fn_27_1A1B88(void*, short);
+extern "C" void* fn_124_411C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_40A4(void* p, short flag) {
+    if (p != 0) {
+        short neg = -1;
+        fn_27_1A1B88((char*)p + 0x48c, neg);
+        if (p != 0) {
+            short zero = 0;
+            fn_124_411C(p, zero);
+        }
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_40A4
+}  // namespace decomp_orch_fn_124_40A4
+// decomp-orchestrator: end fn_124_40A4
+
+// decomp-orchestrator: begin fn_124_67E4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_67E4 {
+namespace decomp_orch_fn_124_67E4 {
+extern "C" {
+void fn_27_1999C4(void*, int, int);
+void fn_27_19BF3C(void*, int, int);
+void fn_27_150320(void*, void*, short, void*, void*);
+}
+
+extern "C" void* fn_124_67E4(char* self, void* arg, short arg2) {
+    fn_27_1999C4(self, 10, 0);
+    fn_27_19BF3C(self + 0x584, 2, 0);
+    fn_27_150320(self + 0x5b8, arg, arg2, self, self + 0x584);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_67E4
+}  // namespace decomp_orch_fn_124_67E4
+// decomp-orchestrator: end fn_124_67E4
