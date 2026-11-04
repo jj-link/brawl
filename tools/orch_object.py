@@ -1,13 +1,14 @@
-"""Preserve original exception-table names without changing compiled code or table bytes.
+"""Preserve original exception names and reuse verified original numeric-conversion storage.
 
 This module is also installed in the target's tools directory and run after compilation.
-Only registered units with exception bindings use the additional Ninja rule.
+Only registered units with explicit symbol bindings use the additional Ninja rule.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
+import struct
 import subprocess
 from pathlib import Path
 
@@ -41,6 +42,8 @@ def exception_bindings(cfg, unit) -> list[dict]:
 
 
 def preserve_symbols(obj: Path, bindings: list[dict], objdump: Path, objcopy: Path) -> None:
+    if not bindings:
+        return
     listing = subprocess.run([str(objdump), "-t", str(obj)], check=True, capture_output=True,
                              text=True, encoding="utf-8", errors="replace").stdout
     symbols = [(name, section, int(offset, 16), int(size, 16))
@@ -48,6 +51,7 @@ def preserve_symbols(obj: Path, bindings: list[dict], objdump: Path, objcopy: Pa
                if flags[5] != "d"]
     args = []
     selected = set()
+    renames = {}
     for binding in bindings:
         name = binding["name"]
         location = (binding["section"], binding["offset"], binding["size"])
@@ -59,11 +63,176 @@ def preserve_symbols(obj: Path, bindings: list[dict], objdump: Path, objcopy: Pa
             raise ValueError(f"cannot uniquely bind {name} to {location} in {obj}")
         old = candidates[0][0]
         selected.add(old)
+        renames[old] = name
         if old != name:
             args.extend(["--redefine-sym", f"{old}={name}"])
         args.extend(["--globalize-symbol", name])
     if args:
+        metadata = _comment_snapshot(obj.read_bytes(), renames=renames)
         subprocess.run([str(objcopy), *args, str(obj)], check=True)
+        _restore_comment(obj, metadata)
+
+
+def _elf_tables(data):
+    """Read the target's ELF32 big-endian relocatable object; reject other formats."""
+    if len(data) < 52 or data[:7] != b"\x7fELF\x01\x02\x01" or struct.unpack_from(">HH", data, 16) != (1, 20):
+        raise ValueError("constant contracts require an ELF32 big-endian PowerPC relocatable object")
+    start = struct.unpack_from(">I", data, 32)[0]
+    width, count, names = struct.unpack_from(">HHH", data, 46)
+    if width != 40 or not count or names >= count or start + count * width > len(data):
+        raise ValueError("invalid ELF section table")
+    sections = [struct.unpack_from(">10I", data, start + i * width) for i in range(count)]
+    if any(s[1] != 8 and s[4] + s[5] > len(data) for s in sections):
+        raise ValueError("ELF section exceeds object bounds")
+    strings = data[sections[names][4]:sections[names][4] + sections[names][5]]
+    def name(table, offset):
+        end = table.find(b"\0", offset)
+        if offset < 0 or end < offset:
+            raise ValueError("invalid ELF string offset")
+        return bytes(table[offset:end]).decode("ascii")
+    section_names = [name(strings, s[0]) for s in sections]
+    tables = [s for s in sections if s[1] == 2]
+    if len(tables) != 1 or tables[0][9] != 16 or tables[0][5] % 16 or tables[0][6] >= count:
+        raise ValueError("invalid ELF symbol table")
+    table = tables[0]
+    string_section = sections[table[6]]
+    strings = data[string_section[4]:string_section[4] + string_section[5]]
+    symbols = []
+    for offset in range(table[4], table[4] + table[5], 16):
+        fields = struct.unpack_from(">IIIBBH", data, offset)
+        symbols.append((offset, name(strings, fields[0]), fields))
+    return sections, section_names, symbols
+
+
+def _metadata_key(name, fields, sections):
+    section = sections[fields[5]] if 0 < fields[5] < len(sections) else fields[5]
+    return (section if fields[3] & 15 == 3 else name, section, fields[1], fields[2], fields[3] & 15)
+
+
+def _comment_snapshot(data, *, renames=None, external=None):
+    """CodeWarrior stores an alignment/visibility/activation record for every ELF symbol, in symbol-table order."""
+    sections, names, symbols = _elf_tables(data)
+    if ".comment" not in names:
+        return None
+    section = sections[names.index(".comment")]
+    comment = data[section[4]:section[4] + section[5]]
+    if not comment.startswith(b"CodeWarrior"):
+        return None
+    if len(comment) != 0x2c + 8 * len(symbols) or comment[0x14] != 0x2c:
+        raise ValueError("unsupported CodeWarrior symbol metadata")
+    records = {}
+    for i, (_, name, fields) in enumerate(symbols):
+        if external and name in external:
+            continue
+        key = _metadata_key((renames or {}).get(name, name), fields, names)
+        entry = comment[0x2c + 8 * i:0x34 + 8 * i]
+        if key in records and records[key] != entry:
+            raise ValueError(f"ambiguous CodeWarrior metadata for {name}")
+        records[key] = entry
+    for original in (external or {}).values():
+        records.setdefault((original, 0, 0, 0, 0), bytes(8))  # an extern has no owned alignment or activation
+    return comment[:0x2c], records
+
+
+def _restore_comment(obj, snapshot):
+    """Keep all surviving symbols' compiler attributes after objcopy reorders or removes symbols."""
+    if snapshot is None:
+        return
+    data = bytearray(obj.read_bytes())
+    sections, names, symbols = _elf_tables(data)
+    if ".comment" not in names:
+        raise ValueError("objcopy removed CodeWarrior metadata")
+    header, records = snapshot
+    entries = []
+    for _, name, fields in symbols:
+        key = _metadata_key(name, fields, names)
+        if key not in records:
+            raise ValueError(f"objcopy introduced unaccounted symbol metadata: {name}")
+        entries.append(records[key])
+    comment = header + b"".join(entries)
+    table = struct.unpack_from(">I", data, 32)[0]
+    position = table + 40 * names.index(".comment")
+    struct.pack_into(">II", data, position + 16, len(data), len(comment))
+    data.extend(comment)
+    obj.write_bytes(data)
+
+
+def externalize_constants(obj: Path, bindings: list[dict], objcopy: Path) -> None:
+    """Turn proven local conversion constants into externs, retaining relocation sites and removing only their pool."""
+    if not bindings:
+        return
+    data = obj.read_bytes()
+    sections, names, symbols = _elf_tables(data)
+    by_name = {b["name"]: b for b in bindings}
+    if len(by_name) != len(bindings) or len({b["original"] for b in bindings}) != len(bindings):
+        raise ValueError("ambiguous conversion constant contract")
+    discard = {i for i, name in enumerate(names) if name in {b["section"] for b in bindings}}
+    if not discard or any(names[i] not in {".rodata", ".sdata2"} for i in discard):
+        raise ValueError("invalid conversion constant section")
+    seen, selected = set(), set()
+    for index, (_, name, fields) in enumerate(symbols):
+        _, value, size, info, _, section = fields
+        if section not in discard or info & 15 == 3:  # section symbols are checked at every relocation below
+            continue
+        binding = by_name.get(name)
+        if (binding is None or name in seen or info != 1 or size != 8
+                or (names[section], value, size) != (binding["section"], binding["offset"], binding["size"])):
+            raise ValueError(f"unexpected definition in conversion pool: {name}")
+        payload = bytes.fromhex(binding["bytes"])
+        start = sections[section][4] + value
+        if (payload not in {bytes.fromhex("4330000080000000"), bytes.fromhex("4330000000000000")}
+                or data[start:start + size] != payload):
+            raise ValueError(f"changed conversion constant: {name}")
+        seen.add(name)
+        selected.add(index)
+    if seen != by_name.keys():
+        raise ValueError("missing conversion constant")
+    for section in discard:
+        cursor = 0
+        for binding in sorted((b for b in bindings if b["section"] == names[section]), key=lambda b: b["offset"]):
+            if binding["offset"] != cursor:
+                raise ValueError("unowned bytes in conversion pool")
+            cursor += binding["size"]
+        if cursor != sections[section][5]:
+            raise ValueError("unowned trailing bytes in conversion pool")
+    for section in sections:
+        if section[1] not in {4, 9}:
+            continue
+        width = 12 if section[1] == 4 else 8
+        if section[9] != width or section[5] % width or section[7] >= len(names):
+            raise ValueError("invalid ELF relocation section")
+        for at in range(section[4], section[4] + section[5], width):
+            _, info = struct.unpack_from(">II", data, at)
+            index, kind = info >> 8, info & 255
+            if index >= len(symbols):
+                raise ValueError("invalid ELF relocation symbol")
+            if symbols[index][2][5] in discard:
+                addend = struct.unpack_from(">i", data, at + 8)[0] if width == 12 else None
+                if index not in selected or names[section[7]] != ".text" or kind not in {4, 6, 109} or addend != 0:
+                    raise ValueError("unproven reference into conversion pool")
+    metadata = _comment_snapshot(data, external={b["name"]: b["original"] for b in bindings})
+    args = [arg for b in bindings for arg in ("--redefine-sym", f'{b["name"]}={b["original"]}',
+                                            "--globalize-symbol", b["original"])]
+    subprocess.run([str(objcopy), *args, str(obj)], check=True)
+    data = bytearray(obj.read_bytes())
+    _, names, symbols = _elf_tables(data)
+    originals = {b["original"]: b for b in bindings}
+    changed = set()
+    for at, name, fields in symbols:
+        if name not in originals or not fields[5]:
+            continue
+        binding = originals[name]
+        if fields[5] >= len(names) or (names[fields[5]], fields[1], fields[2]) != (
+                binding["section"], binding["offset"], binding["size"]):
+            raise ValueError(f"conversion symbol collides with another definition: {name}")
+        struct.pack_into(">IIIBBH", data, at, fields[0], 0, 0, 0x10, 0, 0)
+        changed.add(name)
+    if changed != originals.keys():
+        raise ValueError("objcopy lost conversion symbols")
+    obj.write_bytes(data)
+    subprocess.run([str(objcopy), *[f"--remove-section={s}" for s in sorted({b["section"] for b in bindings})],
+                    str(obj)], check=True)
+    _restore_comment(obj, metadata)
 
 
 _RULES = '''    # decomp-orchestrator exception symbol contracts
@@ -141,8 +310,9 @@ def main() -> None:
     args = parser.parse_args()
     bindings = json.loads(args.contract.read_text(encoding="utf-8"))
     if not bindings:
-        raise ValueError(f"empty exception symbol contract: {args.contract}")
-    preserve_symbols(args.object, bindings, args.objdump, args.objcopy)
+        raise ValueError(f"empty object symbol contract: {args.contract}")
+    preserve_symbols(args.object, [b for b in bindings if "original" not in b], args.objdump, args.objcopy)
+    externalize_constants(args.object, [b for b in bindings if "original" in b], args.objcopy)
 
 
 if __name__ == "__main__":
