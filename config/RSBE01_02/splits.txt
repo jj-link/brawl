@@ -15780,6 +15780,11 @@ RVL_SDK/fn_8029193C.c:
 havok/fn_80291DD8.cpp:
 	.text       start:0x80291DD8 end:0x80291DE8
 
+havok/fn_80291DE8.cpp:
+	extab       start:0x80006648 end:0x80006650
+	extabindex  start:0x8000997C end:0x80009988
+	.text       start:0x80291DE8 end:0x8029211C
+
 havok/fn_802921B0.cpp:
 	.text       start:0x802921B0 end:0x8029225C
 
@@ -21835,6 +21840,10 @@ network/fn_8038DC08.c:
 
 network/fn_8038DD48.c:
 	.text       start:0x8038DD48 end:0x8038DDDC
+
+network/fn_8038DEA0.c:
+	.text       start:0x8038DEA0 end:0x8038E1C0
+	.data       start:0x80490FF0 end:0x80491088
 
 network/fn_8038E268.c:
 	.text       start:0x8038E268 end:0x8038E2AC
