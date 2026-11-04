@@ -23,6 +23,25 @@ inline f32 FInv_va28c12(register f32 x) {
     return work0;
 }
 
+// FInv as built into the game: variant FInv_vf957ae
+inline f32 FInv_vf957ae(register f32 x) {
+    register f32 work0, work1, work2, work3;
+
+    // clang-format off
+    asm {
+        fmr  work1, x     // x
+        fres work0, work1 // 1/x
+
+        // Refine estimate
+        ps_add   work2, work0, work0        // 2/x
+        ps_mul   work0, work0, work0        // 1/x^2
+        ps_nmsub work0, work1, work0, work2 // -(x * 1/x^2 - 2/x)
+    }
+    // clang-format on
+
+    return work0;
+}
+
 // Vec3fSub as built into the game: variant Vec3fSub_v0420ad
 inline void Vec3fSub_v0420ad(register Vec3f* pOut, register const Vec3f* lhs,
                      register const Vec3f* rhs) {
