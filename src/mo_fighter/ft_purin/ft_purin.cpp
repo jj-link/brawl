@@ -1993,3 +1993,40 @@ extern "C" void fn_124_85E8(Fn12485E8Owner* owner, int index) {
 }
 }  // namespace decomp_orch_fn_124_85E8
 // decomp-orchestrator: end fn_124_85E8
+
+// decomp-orchestrator: begin fn_124_4894
+#pragma force_active on
+namespace decomp_orch_fn_124_4894 {
+extern "C" void* fn_27_1A15B8(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4894(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        if (ptr != 0) {
+            fn_27_1A15B8(ptr, -1);
+        }
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_4894
+// decomp-orchestrator: end fn_124_4894
+
+// decomp-orchestrator: begin fn_124_8518
+#pragma force_active on
+namespace decomp_orch_fn_124_8518 {
+struct FlagHolder {
+    char pad[0x1c];
+    unsigned int *table;
+};
+
+extern "C" {
+void fn_124_8518(FlagHolder *self, unsigned int flags, unsigned int index) {
+    self->table[index] |= flags;
+}
+}
+}  // namespace decomp_orch_fn_124_8518
+// decomp-orchestrator: end fn_124_8518
