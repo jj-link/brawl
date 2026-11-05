@@ -4511,6 +4511,9 @@ sora/misc/fn_800C6EC0.cpp:
 sora/misc/fn_800C6F40.cpp:
 	.text       start:0x800C6F40 end:0x800C6FDC
 
+sora/misc/fn_800C6FDC.cpp:
+	.text       start:0x800C6FDC end:0x800C70A4
+
 sora/misc/fn_800C7150.cpp:
 	.text       start:0x800C7150 end:0x800C71EC
 
@@ -10982,6 +10985,9 @@ nw4r/fn_801C362C.cpp:
 nw4r/fn_801C377C.cpp:
 	.text       start:0x801C377C end:0x801C380C
 
+nw4r/fn_801C380C.cpp:
+	.text       start:0x801C380C end:0x801C38D0
+
 nw4r/fn_801C38D0.cpp:
 	.text       start:0x801C38D0 end:0x801C38D8
 
@@ -13955,6 +13961,9 @@ RVL_SDK/fn_8021885C.c:
 RVL_SDK/fn_80218D00.c:
 	.text       start:0x80218D00 end:0x80218D54
 
+RVL_SDK/fn_80218D54.c:
+	.text       start:0x80218D54 end:0x80218D58
+
 RVL_SDK/fn_80218D58.c:
 	.text       start:0x80218D58 end:0x80218D5C
 
@@ -15989,6 +15998,9 @@ RVL_SDK/fn_8027A82C.c:
 
 RVL_SDK/fn_8027A83C.c:
 	.text       start:0x8027A83C end:0x8027A84C
+
+RVL_SDK/fn_8027A850.c:
+	.text       start:0x8027A850 end:0x8027A858
 
 RVL_SDK/fn_8027A858.c:
 	.text       start:0x8027A858 end:0x8027A8EC
@@ -21252,6 +21264,9 @@ network/fn_80335A80.c:
 network/fn_80335C14.c:
 	.text       start:0x80335C14 end:0x80335C44
 
+network/fn_80335C44.c:
+	.text       start:0x80335C44 end:0x80335CAC
+
 network/fn_80335E3C.c:
 	.text       start:0x80335E3C end:0x803360BC
 
@@ -21468,6 +21483,9 @@ network/fn_8034C674.c:
 
 network/fn_8034C984.c:
 	.text       start:0x8034C984 end:0x8034C99C
+
+network/fn_8034D938.c:
+	.text       start:0x8034D938 end:0x8034D940
 
 network/fn_8034E088.c:
 	.text       start:0x8034E088 end:0x8034E158
@@ -22481,6 +22499,9 @@ network/fn_8037C3E8.c:
 
 network/fn_8037C790.c:
 	.text       start:0x8037C790 end:0x8037C81C
+
+network/fn_8037C81C.c:
+	.text       start:0x8037C81C end:0x8037C960
 
 network/fn_8037C960.c:
 	.text       start:0x8037C960 end:0x8037CA28
@@ -25036,6 +25057,9 @@ network/fn_803E2458.c:
 
 network/fn_803E27B4.c:
 	.text       start:0x803E27B4 end:0x803E2A70
+
+network/fn_803E2CDC.c:
+	.text       start:0x803E2CDC end:0x803E2DF0
 
 network/fn_803E2EA8.c:
 	.text       start:0x803E2EA8 end:0x803E2FB0
