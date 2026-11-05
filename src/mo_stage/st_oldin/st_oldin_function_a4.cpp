@@ -1,0 +1,108 @@
+#pragma force_active on
+#include <st/st_melee.h>
+#include <snd/snd_3d_generator.h>
+#include <mt/mt_matrix.h>
+#include <new>
+extern "C" {
+void fn_8009ED40(void*, int, int);
+void __ct__14snd3DGeneratorFv(void*);
+void __ct__7stMeleeFPCcQ26Stages11srStageKind(void*, const char*, int);
+extern const char lbl_53_data_38[];
+extern char lbl_53_data_378[];
+extern int lbl_53_data_0;
+extern const float lbl_53_rodata_0;
+}
+extern "C" void* fn_53_A4(void* arg0) {
+    char* self = (char*)arg0;
+    __ct__7stMeleeFPCcQ26Stages11srStageKind(self, lbl_53_data_38, 0x33);
+    *(char**)(self + 0x3c) = lbl_53_data_378;
+    *(int*)(self + 0x22c) = lbl_53_data_0;
+    *(int*)(self + 0x230) = 0;
+    fn_8009ED40(self + 0x2e0, 0, 1);
+    *(int*)(self + 0x364) = lbl_53_data_0;
+    *(int*)(self + 0x368) = 0;
+    *(int*)(self + 0x38c) = lbl_53_data_0;
+    *(int*)(self + 0x390) = 0;
+    *(int*)(self + 0x418) = lbl_53_data_0;
+    *(int*)(self + 0x41c) = 0;
+    fn_8009ED40(self + 0x42c, 0, 1);
+    *(int*)(self + 0x4b4) = lbl_53_data_0;
+    *(int*)(self + 0x4b8) = 0;
+    fn_8009ED40(self + 0x4c0, 0, 1);
+    fn_8009ED40(self + 0x544, 0, 1);
+    __ct__14snd3DGeneratorFv(self + 0x5c8);
+    __ct__14snd3DGeneratorFv(self + 0x5e4);
+    __ct__14snd3DGeneratorFv(self + 0x5fc);
+    *(int*)(self + 0x1d8) = 0;
+    *(char*)(self + 0x604) = -1;
+    *(int*)(self + 0x1dc) = 0;
+    *(int*)(self + 0x1e0) = 0;
+    *(int*)(self + 0x1e4) = 0;
+    *(int*)(self + 0x1e8) = 0;
+    *(int*)(self + 0x1ec) = 0;
+    *(int*)(self + 0x1f0) = 0;
+    *(int*)(self + 0x1f4) = 0;
+    *(int*)(self + 0x1f8) = 0;
+    *(int*)(self + 0x1fc) = 0;
+    *(int*)(self + 0x200) = 0;
+    *(int*)(self + 0x204) = 0;
+    *(int*)(self + 0x208) = 0;
+    *(int*)(self + 0x20c) = 0;
+    *(int*)(self + 0x210) = 0;
+    *(int*)(self + 0x214) = 0;
+    *(int*)(self + 0x218) = 0;
+    *(int*)(self + 0x21c) = 0;
+    *(int*)(self + 0x220) = 0;
+    *(int*)(self + 0x224) = 0;
+    *(char*)(self + 0x228) = 0;
+    *(char*)(self + 0x229) = 0;
+    ((Matrix*)(self + 0x234))->setIdentity();
+    ((Matrix*)(self + 0x264))->setIdentity();
+    ((Matrix*)(self + 0x294))->setIdentity();
+    *(int*)(self + 0x2c4) = 0;
+    *(int*)(self + 0x2c8) = 0;
+    *(int*)(self + 0x2cc) = 0;
+    *(float*)(self + 0x2d0) = lbl_53_rodata_0;
+    *(float*)(self + 0x2d4) = lbl_53_rodata_0;
+    *(float*)(self + 0x2d8) = lbl_53_rodata_0;
+    *(float*)(self + 0x2dc) = lbl_53_rodata_0;
+    *(float*)(self + 0x36c) = lbl_53_rodata_0;
+    *(char*)(self + 0x370) = 0;
+    *(char*)(self + 0x371) = 0;
+    *(char*)(self + 0x372) = 0;
+    *(char*)(self + 0x373) = 0;
+    *(char*)(self + 0x374) = 0;
+    *(char*)(self + 0x375) = 0;
+    *(float*)(self + 0x378) = lbl_53_rodata_0;
+    *(float*)(self + 0x37c) = lbl_53_rodata_0;
+    *(float*)(self + 0x380) = lbl_53_rodata_0;
+    *(int*)(self + 0x384) = 0;
+    *(char*)(self + 0x388) = 0;
+    *(char*)(self + 0x389) = 0;
+    *(float*)(self + 0x394) = lbl_53_rodata_0;
+    ((Matrix*)(self + 0x398))->setIdentity();
+    ((Matrix*)(self + 0x3c8))->setIdentity();
+    *(int*)(self + 0x3f8) = 0;
+    *(float*)(self + 0x3fc) = lbl_53_rodata_0;
+    *(float*)(self + 0x400) = lbl_53_rodata_0;
+    *(float*)(self + 0x404) = lbl_53_rodata_0;
+    *(float*)(self + 0x408) = lbl_53_rodata_0;
+    *(int*)(self + 0x40c) = 0;
+    *(float*)(self + 0x410) = lbl_53_rodata_0;
+    *(char*)(self + 0x414) = 0;
+    *(float*)(self + 0x420) = lbl_53_rodata_0;
+    *(int*)(self + 0x424) = 0;
+    *(int*)(self + 0x428) = 0;
+    *(char*)(self + 0x4b0) = 0;
+    *(float*)(self + 0x4bc) = lbl_53_rodata_0;
+    *(int*)(self + 0x5d0) = 0;
+    *(int*)(self + 0x5d4) = 0;
+    *(float*)(self + 0x5d8) = lbl_53_rodata_0;
+    *(int*)(self + 0x5dc) = 0;
+    *(int*)(self + 0x5e0) = 0;
+    *(int*)(self + 0x5ec) = 0;
+    *(int*)(self + 0x5f0) = 0;
+    *(char*)(self + 0x5f4) = 0;
+    *(int*)(self + 0x5f8) = 0;
+    return arg0;
+}
