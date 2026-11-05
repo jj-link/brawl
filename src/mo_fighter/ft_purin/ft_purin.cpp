@@ -3282,3 +3282,22 @@ extern "C" void fn_124_80D8(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_80D8
 // decomp-orchestrator: end fn_124_80D8
+
+// decomp-orchestrator: begin fn_124_2EFC
+#pragma force_active on
+namespace decomp_orch_fn_124_2EFC {
+extern "C" void fn_27_14FCF4(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2EFC(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_27_14FCF4(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2EFC
+// decomp-orchestrator: end fn_124_2EFC
