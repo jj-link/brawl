@@ -3318,3 +3318,24 @@ extern "C" void* fn_124_325C(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_325C
 // decomp-orchestrator: end fn_124_325C
+
+// decomp-orchestrator: begin fn_124_2AA4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_2AA4 {
+namespace decomp_orch_fn_124_2AA4 {
+extern "C" void* fn_27_14CD30(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2AA4(void* ptr, short flag) {
+    if (ptr != 0) {
+        fn_27_14CD30(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2AA4
+}  // namespace decomp_orch_fn_124_2AA4
+// decomp-orchestrator: end fn_124_2AA4
