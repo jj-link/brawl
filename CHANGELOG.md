@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_diddy, ft_purin and 9 more: 37 functions
+
+- Matched 37 functions in `ft_diddy, ft_purin and 9 more` with decomp-orchestrator: haiku 18, luna 1, qwen-flash 1, qwen27b 12, sol 1, terra 4.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_purin: startup owner repair
 
 - Match `fn_124_B11C` using its retained matching source.
