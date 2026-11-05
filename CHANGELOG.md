@@ -11963,3 +11963,13 @@ Three parallel agents own investigation AND implementation per PLAN.md "Subagent
 - Existing Brawl headers: https://github.com/Sammi-Husky/BrawlHeaders
 - Functional module reimplementations: https://github.com/Sammi-Husky/BrawlModules
 - Object comparison tooling: https://github.com/encounter/objdiff
+
+## Switch-boundary correction (2026-11-05)
+
+- Corrected `sora_melee/fn_27_1DCC10` to include its thirty trailing switch-case
+  return blocks: 200 code bytes and a 128-byte, 32-entry jump table.
+- Removed the thirty obsolete empty-function sources and registrations for
+  `fn_27_1DCC60` through `fn_27_1DCCD4`. The following three functions are unchanged.
+- Verified the reconstructed layout with all 127 original file hashes. This
+  corrects metadata and ownership; it does not claim a matching C++ implementation
+  of the combined switch.
