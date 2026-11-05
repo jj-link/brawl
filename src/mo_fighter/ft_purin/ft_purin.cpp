@@ -3109,3 +3109,18 @@ extern "C" void* fn_124_515C(void* self, short del) {
 // decomp-orchestrator: end fn_124_515C
 }  // namespace decomp_orch_fn_124_515C
 // decomp-orchestrator: end fn_124_515C
+
+// decomp-orchestrator: begin fn_124_3B14
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_3B14 {
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3B14(void* p, s16 size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3B14
+// decomp-orchestrator: end fn_124_3B14
