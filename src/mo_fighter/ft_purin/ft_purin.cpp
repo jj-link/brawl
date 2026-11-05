@@ -3124,3 +3124,51 @@ extern "C" void* fn_124_3B14(void* p, s16 size) {
 }
 }  // namespace decomp_orch_fn_124_3B14
 // decomp-orchestrator: end fn_124_3B14
+
+// decomp-orchestrator: begin fn_124_4DC4
+#pragma force_active on
+namespace decomp_orch_fn_124_4DC4 {
+extern "C" void fn_27_1540CC(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4DC4(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_27_1540CC(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_4DC4
+// decomp-orchestrator: end fn_124_4DC4
+
+// decomp-orchestrator: begin fn_124_5F40
+#include <so/model/so_model_module_impl.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_5F40 {
+extern "C" void* fn_27_19A7DC(void*, int, int);
+extern "C" void* fn_27_CC75C(void*, int, int);
+
+extern "C" void* fn_124_5F40(
+    void* object,
+    soModuleAccesser* accesser,
+    float scale,
+    void* context,
+    soEventObserverRegistrationDesc* registration)
+{
+    unsigned char* storage = static_cast<unsigned char*>(object);
+    fn_27_19A7DC(object, 8, 0);
+    fn_27_CC75C(storage + 0x1AC, 3, 0);
+    reinterpret_cast<soModelModuleImpl*>(storage + 0x1F4)->__ct(
+        accesser,
+        reinterpret_cast<soArray<soModelNodeSetUp>*>(object),
+        scale,
+        context,
+        reinterpret_cast<soArray<soModelVirtualNode>*>(storage + 0x1AC),
+        registration);
+    return object;
+}
+}  // namespace decomp_orch_fn_124_5F40
+// decomp-orchestrator: end fn_124_5F40
