@@ -311,3 +311,15 @@ const float lbl_106_rodata_38[2] = { 0.0f, 0.0f };
 
 __declspec(section ".ctors") extern void (*const counterInitializer)() = fn_106_C944;
 
+// decomp-orchestrator: begin fn_106_C890
+#include <so/so_module_accesser.h>
+#pragma force_active on
+#pragma scheduling off
+namespace decomp_orch_fn_106_C890 {
+extern "C" void fn_106_C890(void*, soModuleAccesser* accesser) {
+    if (accesser->getWorkManageModule().isFlag(0x22000012)) {
+        accesser->getCollisionShieldModule().setStatus(0, 0, 1);
+    }
+}
+}  // namespace decomp_orch_fn_106_C890
+// decomp-orchestrator: end fn_106_C890
