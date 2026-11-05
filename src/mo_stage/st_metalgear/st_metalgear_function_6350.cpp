@@ -1,0 +1,174 @@
+#include <ec/ec_mgr.h>
+#pragma force_active on
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void fn_71_6108();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_71_60B0();
+    virtual void fn_71_61C8();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void receiveCollMsg_Landing();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_71_2B8C();
+    virtual void startup();
+    virtual void fn_71_6724();
+    virtual void fn_71_85C();
+    virtual void fn_71_2B84();
+    virtual void fn_71_2B80();
+    virtual void fn_71_2700();
+    virtual void fn_71_2B78();
+    virtual void fn_71_2B6C();
+    virtual void fn_71_2B5C();
+    virtual void fn_71_F04();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility(bool, unsigned long, unsigned long, bool, bool);
+    virtual void setNodeVisibility_2(bool, unsigned long, const char*, bool, bool);
+    virtual void setNodeVisibilityAll();
+    virtual void isNodeVisible();
+    virtual void setNodeCollision();
+    virtual void setNodeCollision_2();
+    virtual void getNodeScale();
+    virtual void getNodeScale_2();
+    virtual void setValid();
+    virtual void setValidAttachedEffect();
+    virtual void fn_71_2B58();
+    virtual void fn_71_2B54();
+    virtual void fn_71_2B4C();
+    virtual void setMotionRatio();
+    virtual void setMotionFrame(float, unsigned long);
+    virtual float fn_71_6A60(unsigned long);
+    virtual void setMotionLoop();
+    virtual void setMatAlphaMul();
+    virtual void setMatAlpha();
+    virtual void updateG3dProcCalcWorld();
+    virtual void preExit();
+    virtual void fn_71_2B44();
+    virtual void invalidatedByCameraClipping();
+    virtual void setTransparencyFlag();
+    virtual void updateCallback();
+    virtual void fixedPosition();
+    virtual void setTgtNode();
+    virtual void getTgtNode();
+    virtual void fn_71_2BB8();
+    virtual void fn_71_2BB0();
+    virtual void changeNodeAnim();
+    virtual void createFadeVisibleProduction();
+    virtual void createSoundEffectVisibleProductionForExcel();
+    virtual void createEffectVisibleProductionForExcel();
+    virtual void setSimpleEffectVisibleProduction();
+    virtual void dbDispInvalidatedByCameraClippingSphere();
+    virtual void setTransparency();
+    virtual void fn_71_2BA8();
+    virtual void onDamage();
+    virtual void onInflict();
+    virtual void onInflictEach();
+    virtual void onGimmickEvent();
+    virtual void enableYakumono();
+    virtual void disableYakumono();
+    virtual void enableHit();
+    virtual void disableHit();
+    virtual void disableAttack();
+    virtual void enableArea();
+    virtual void disableArea();
+    virtual void setSleepArea();
+    virtual void setTeamYakumonoOwnerId();
+    virtual void setTeamYakumono();
+    virtual void getTeamYakumono();
+    virtual void setOffsetAttack();
+    virtual void setAreaGimmick__10grYakumonoFP10soAreaDataP19soSet_10soAreaData_P10ykAreaDatab();
+    virtual void setAttackGimmick();
+    virtual void setSoCollisionAttackData();
+    virtual void setAttackGimmickDetails();
+    virtual void isEnableAttackPersonAttacked();
+    virtual void isEnableAttackAttribute();
+    virtual void fn_71_6254();
+    virtual void fn_71_6350();
+    virtual void fn_71_6668();
+    virtual void fn_71_67E8(int, int, int, float*);
+    char pad40[4];
+    nw4r::g3d::ScnMdl** model;
+    char pad48[0x108];
+    unsigned char state;
+    char pad151[0xb];
+    unsigned char* event;
+    char pad160[4];
+    float frame;
+    unsigned long node1;
+    unsigned long node2;
+};
+extern "C" char lbl_71_data_15A0[];
+extern const float lbl_71_rodata_168;
+extern "C" int fn_27_224DB8(int, float);
+extern "C" void fn_71_6350(Ground* self) {
+    const char* base = lbl_71_data_15A0;
+    switch (self->state) {
+    case 0:
+        self->fn_71_67E8(0, 0, 1, &self->frame);
+        self->setNodeVisibility(true, 0, self->node1, true, false);
+        self->setNodeVisibility(false, 0, self->node2, true, false);
+        self->state = 1;
+        break;
+    case 1:
+        if (*self->event == 0) {
+            self->fn_71_67E8(0, 0, 1, &self->frame);
+            self->setNodeVisibility(false, 0, self->node1, true, false);
+            self->setNodeVisibility(true, 0, self->node2, true, false);
+            fn_27_224DB8(0x1d11, lbl_71_rodata_168);
+            unsigned long effect = g_ecMgr->setEffect((EfID)0x530005);
+            g_ecMgr->setParent(effect, *self->model, base + 0x28, false);
+            effect = g_ecMgr->setEffect((EfID)0x530006);
+            g_ecMgr->setParent(effect, *self->model, base + 0x3c, false);
+            effect = g_ecMgr->setEffect((EfID)0x530006);
+            g_ecMgr->setParent(effect, *self->model, base + 0x4c, false);
+            effect = g_ecMgr->setEffect((EfID)0x530006);
+            g_ecMgr->setParent(effect, *self->model, base + 0x5c, false);
+            self->state = 2;
+        } else {
+            self->setMotionFrame(lbl_71_rodata_168, 0);
+        }
+        break;
+    case 2:
+        if (self->fn_71_6A60(0) >= self->frame) {
+            self->fn_71_67E8(1, 0, 1, 0);
+            self->setNodeVisibility(false, 0, self->node1, true, false);
+            self->setNodeVisibility(true, 0, self->node2, true, false);
+            self->setNodeVisibility_2(false, 0, base + 0x6c, true, false);
+            self->state = 3;
+        }
+        break;
+    }
+}
