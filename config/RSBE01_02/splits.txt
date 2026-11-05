@@ -17964,6 +17964,11 @@ havok/fn_802CEB14.cpp:
 havok/fn_802CEB34.cpp:
 	.text       start:0x802CEB34 end:0x802CEB48
 
+havok/fn_802CEB48.cpp:
+	extab       start:0x80008358 end:0x80008360
+	extabindex  start:0x8000B08C end:0x8000B098
+	.text       start:0x802CEB48 end:0x802CEBA4
+
 havok/fn_802CEBA4.cpp:
 	extab       start:0x80008360 end:0x80008368
 	extabindex  start:0x8000B098 end:0x8000B0A4
@@ -21244,6 +21249,9 @@ network/fn_8035D200.c:
 
 network/fn_8035D248.c:
 	.text       start:0x8035D248 end:0x8035D24C
+
+network/fn_8035D24C.c:
+	.text       start:0x8035D24C end:0x8035D250
 
 network/fn_8035D258.c:
 	.text       start:0x8035D258 end:0x8035D2A8
@@ -25351,3 +25359,6 @@ Runtime.PPCEABI.H/fn_80406478.c:
 
 Runtime.PPCEABI.H/fn_8040649C.c:
 	.text       start:0x8040649C end:0x804064CC
+
+Runtime.PPCEABI.H/fn_804064CC.c:
+	.text       start:0x804064CC end:0x804064D0
