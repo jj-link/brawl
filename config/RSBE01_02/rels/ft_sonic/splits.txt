@@ -1234,6 +1234,10 @@ mo_fighter/ft_sonic/ft_sonic_function_e090.cpp:
 mo_fighter/ft_sonic/ft_sonic_function_e120.cpp:
 	.text       start:0x0000E120 end:0x0000E128
 
+mo_fighter/ft_sonic/ft_sonic_function_e128.cpp:
+	.text       start:0x0000E128 end:0x0000E47C
+	.data       start:0x00006388 end:0x000063D0
+
 mo_fighter/ft_sonic/ft_sonic_function_e47c.cpp:
 	.text       start:0x0000E47C end:0x0000E494
 

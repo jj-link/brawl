@@ -3200,3 +3200,45 @@ extern "C" void* fn_124_2510(void* object, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_2510
 // decomp-orchestrator: end fn_124_2510
+
+// decomp-orchestrator: begin fn_124_2FF0
+#pragma force_active on
+namespace decomp_orch_fn_124_2FF0 {
+extern "C" void* fn_27_A0C34(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2FF0(void* ptr, short flag) {
+    if (ptr) {
+        fn_27_A0C34(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2FF0
+// decomp-orchestrator: end fn_124_2FF0
+
+// decomp-orchestrator: begin fn_124_4ED8
+#include <types.h>
+#include <sr/sr_common.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_4ED8 {
+extern "C" void fn_27_614C4(void*, short);
+extern "C" void* fn_27_D3080(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4ED8(void* self, short flag) {
+    if (self != 0) {
+        fn_27_614C4(static_cast<char*>(self) + 0xAC, -1);
+        if (self != 0) {
+            fn_27_D3080(self, -1);
+        }
+        if (flag > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_4ED8
+// decomp-orchestrator: end fn_124_4ED8
