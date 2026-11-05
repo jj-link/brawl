@@ -1,0 +1,80 @@
+#pragma force_active on
+extern "C" {
+int fn_96_1FA3C();
+int fn_96_1FAAC();
+int fn_96_1FB1C();
+int fn_96_1FB8C();
+int fn_96_1FBFC();
+int fn_96_1FC6C();
+int fn_96_1FCDC();
+int fn_96_1FD4C();
+int fn_96_1FDBC();
+int fn_96_1FE2C();
+int fn_96_1FE9C();
+int fn_96_1FF0C();
+int fn_96_1FF7C();
+int fn_96_1FFEC();
+int fn_96_2005C();
+int fn_96_200CC();
+int fn_96_2013C();
+int fn_96_201AC();
+int fn_96_2021C();
+int fn_96_2028C();
+int fn_96_202FC();
+int fn_96_2036C();
+int fn_96_203DC();
+int fn_96_2044C();
+int fn_96_204BC();
+int fn_96_2052C();
+int fn_96_2059C();
+int fn_96_2060C();
+int fn_96_2067C();
+int fn_96_206EC();
+int fn_96_2075C();
+int fn_96_207CC();
+int fn_96_2083C();
+int fn_96_208AC();
+int fn_96_2091C();
+extern int lbl_96_bss_D20[];
+
+void fn_96_1F8F0() {
+    lbl_96_bss_D20[0] = fn_96_1FA3C();
+    lbl_96_bss_D20[1] = fn_96_1FAAC();
+    lbl_96_bss_D20[2] = fn_96_1FB1C();
+    lbl_96_bss_D20[3] = fn_96_1FB8C();
+    lbl_96_bss_D20[4] = fn_96_1FBFC();
+    lbl_96_bss_D20[6] = fn_96_1FC6C();
+    lbl_96_bss_D20[7] = fn_96_1FCDC();
+    lbl_96_bss_D20[8] = fn_96_1FD4C();
+    lbl_96_bss_D20[10] = fn_96_1FDBC();
+    lbl_96_bss_D20[11] = fn_96_1FE2C();
+    lbl_96_bss_D20[12] = fn_96_1FE9C();
+    lbl_96_bss_D20[14] = fn_96_1FF0C();
+    lbl_96_bss_D20[15] = fn_96_1FF7C();
+    lbl_96_bss_D20[17] = fn_96_1FFEC();
+    lbl_96_bss_D20[18] = fn_96_2005C();
+    lbl_96_bss_D20[19] = fn_96_200CC();
+    lbl_96_bss_D20[21] = fn_96_2013C();
+    lbl_96_bss_D20[22] = fn_96_201AC();
+    lbl_96_bss_D20[23] = fn_96_2021C();
+    lbl_96_bss_D20[24] = fn_96_2028C();
+    lbl_96_bss_D20[25] = fn_96_202FC();
+    lbl_96_bss_D20[26] = fn_96_2036C();
+    lbl_96_bss_D20[27] = fn_96_203DC();
+    lbl_96_bss_D20[29] = fn_96_2044C();
+    lbl_96_bss_D20[30] = fn_96_204BC();
+    lbl_96_bss_D20[31] = fn_96_2052C();
+    lbl_96_bss_D20[32] = fn_96_2059C();
+    lbl_96_bss_D20[33] = fn_96_2060C();
+    lbl_96_bss_D20[34] = fn_96_2067C();
+    lbl_96_bss_D20[35] = fn_96_206EC();
+    lbl_96_bss_D20[37] = fn_96_2075C();
+    lbl_96_bss_D20[41] = fn_96_207CC();
+    lbl_96_bss_D20[44] = fn_96_2083C();
+    lbl_96_bss_D20[46] = fn_96_208AC();
+    lbl_96_bss_D20[47] = fn_96_2091C();
+    lbl_96_bss_D20[49] = fn_96_2013C();
+}
+}
+
+__declspec(section ".ctors") extern void* const fn_96_1F8F0_ctor = (void*)fn_96_1F8F0;
