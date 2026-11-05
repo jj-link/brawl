@@ -1,0 +1,12 @@
+#pragma force_active on
+extern "C" {
+void fn_800F57F0(void* self, int a, int b, int c, int d, int e);
+void fn_800F6DF4(void* self, int a, int b, int c, int d);
+}
+
+extern "C" void fn_800F6CA8(void* self) {
+    fn_800F57F0(self, -1, -1, 0, 0, 0);
+    if (*(int*)((char*)self + 0x428) != 2) {
+        fn_800F6DF4(self, 0, 2, *(int*)((char*)self + 0x42c), 0);
+    }
+}
