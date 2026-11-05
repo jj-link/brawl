@@ -2892,3 +2892,28 @@ namespace decomp_orch_getParamIndefinite__21ftExtendParamAccesserFP16soModuleAcc
 extern "C" void* getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll(void) { return 0; }
 }  // namespace decomp_orch_getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll
 // decomp-orchestrator: end getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll
+
+// decomp-orchestrator: begin fn_124_51E0
+#pragma force_active on
+namespace decomp_orch_fn_124_51E0 {
+namespace decomp_orch_fn_124_51E0 {
+extern "C" void* fn_27_B5324(void*, short);
+extern "C" void* fn_124_5258(void*, short);
+extern "C" void* fn_124_52B8(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_51E0(void* p, short flag) {
+    if (p != 0) {
+        short neg = -1;
+        fn_27_B5324((char*)p + 0x30, neg);
+        fn_124_5258((char*)p + 0x18, neg);
+        fn_124_52B8((char*)p + 0x4, neg);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_51E0
+}  // namespace decomp_orch_fn_124_51E0
+// decomp-orchestrator: end fn_124_51E0
