@@ -3261,3 +3261,13 @@ extern "C" void* fn_124_2B5C(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_2B5C
 // decomp-orchestrator: end fn_124_2B5C
+
+// decomp-orchestrator: begin fn_124_8228
+#pragma force_active on
+namespace decomp_orch_fn_124_8228 {
+extern "C" void fn_27_1A76C4(void* receiver, short id, void* owner, signed char argument);
+extern "C" void fn_124_8228(void* receiver, short id, int argument) {
+    fn_27_1A76C4(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_8228
+// decomp-orchestrator: end fn_124_8228
