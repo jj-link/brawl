@@ -3339,3 +3339,14 @@ extern "C" void* fn_124_2AA4(void* ptr, short flag) {
 }  // namespace decomp_orch_fn_124_2AA4
 }  // namespace decomp_orch_fn_124_2AA4
 // decomp-orchestrator: end fn_124_2AA4
+
+// decomp-orchestrator: begin fn_124_80EC
+#pragma force_active on
+namespace decomp_orch_fn_124_80EC {
+extern "C" void fn_27_D4B78(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_80EC(void* receiver, short id, int argument) {
+    fn_27_D4B78(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_80EC
+// decomp-orchestrator: end fn_124_80EC

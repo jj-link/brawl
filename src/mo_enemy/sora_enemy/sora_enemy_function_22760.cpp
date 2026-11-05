@@ -1,0 +1,185 @@
+#pragma force_active on
+extern "C" {
+int fn_27_8C064(void*, void*, int);
+void* __dynamic_cast(void*, long, const void*, const void*, short);
+extern const char __RTTI__20emResourceModuleImpl[], __RTTI__16soResourceModule[];
+}
+class Situation {
+public:
+ virtual void v0(); virtual void v1(); virtual void v2(); virtual int v3();
+};
+class GroundBase { char pad[8]; };
+class Ground : public GroundBase {
+public:
+ virtual void v0();
+ virtual void v1();
+ virtual void v2();
+ virtual void v3();
+ virtual void v4();
+ virtual void v5();
+ virtual void v6();
+ virtual void v7();
+ virtual void v8();
+ virtual void v9();
+ virtual void v10();
+ virtual void v11();
+ virtual void v12();
+ virtual void v13();
+ virtual void v14();
+ virtual void v15();
+ virtual void v16();
+ virtual void v17();
+ virtual void v18();
+ virtual void v19();
+ virtual void v20();
+ virtual void v21();
+ virtual void v22();
+ virtual void v23();
+ virtual void v24();
+ virtual void v25();
+ virtual void v26();
+ virtual void v27();
+ virtual void v28();
+ virtual void v29();
+ virtual void v30();
+ virtual void v31();
+ virtual void v32();
+ virtual void v33();
+ virtual void v34();
+ virtual void v35();
+ virtual void v36();
+ virtual void v37();
+ virtual void v38();
+ virtual void v39();
+ virtual void v40();
+ virtual void v41();
+ virtual void v42();
+ virtual void v43();
+ virtual void v44();
+ virtual void v45();
+ virtual void v46();
+ virtual void v47();
+ virtual void v48();
+ virtual void v49();
+ virtual void v50();
+ virtual void v51();
+ virtual void v52();
+ virtual void v53();
+ virtual void v54();
+ virtual void v55();
+ virtual void v56();
+ virtual void v57();
+ virtual void v58();
+ virtual void v59();
+ virtual void v60();
+ virtual void v61();
+ virtual void v62();
+ virtual void v63();
+ virtual void v64();
+ virtual void v65();
+ virtual void v66();
+ virtual void v67();
+ virtual void v68();
+ virtual void v69();
+ virtual void v70();
+ virtual void v71();
+ virtual void v72();
+ virtual void v73();
+ virtual void v74();
+ virtual void v75();
+ virtual void v76();
+ virtual void v77();
+ virtual void v78();
+ virtual void v79();
+ virtual void v80();
+ virtual void v81();
+ virtual void v82();
+ virtual void v83();
+ virtual void v84();
+ virtual void v85();
+ virtual void v86();
+ virtual void v87();
+ virtual void v88();
+ virtual void v89();
+ virtual void v90();
+ virtual void v91();
+ virtual void v92();
+ virtual void v93();
+ virtual void v94();
+ virtual void v95();
+ virtual void v96();
+ virtual void v97();
+ virtual void v98();
+ virtual void v99();
+ virtual void v100();
+ virtual void v101();
+ virtual void v102();
+ virtual void v103();
+ virtual void v104();
+ virtual void v105();
+ virtual void v106();
+ virtual void v107();
+ virtual void v108();
+ virtual unsigned int query(int);
+};
+struct Modules { void* resource; char pad[12]; Ground* ground; Situation* situation; };
+struct Accessor { char pad[0xd8]; Modules* modules; };
+#define W(p, o) (*(int*)((char*)(p)+(o)))
+#define B(p, o) (*(unsigned char*)((char*)(p)+(o)))
+extern "C" int fn_41_22760(void* self, Accessor* a, int id) {
+ if (id <= 0x59d7) return fn_27_8C064(self, a, id);
+ char* res = (char*)__dynamic_cast(a->modules->resource, 8, __RTTI__20emResourceModuleImpl, __RTTI__16soResourceModule, 1);
+ void* p = *(void**)(res+0x1c);
+ void* q = *(void**)(res+0x24);
+ void* r = *(void**)(res+0x28);
+ switch(id) {
+ case 23000: return W(p, 88);
+ case 23001: return W(p, 208);
+ case 23002: return W(p, 212);
+ case 23003: return W(p, 216);
+ case 23004: return W(p, 52);
+ case 23005: return W(p, 56);
+ case 23006: return W(p, 60);
+ case 23007: return W(p, 64);
+ case 23008: return W(p, 68);
+ case 23009: return W(p, 76);
+ case 23010: return W(p, 104);
+ case 23011: return W(p, 124);
+ case 23012: return W(p, 128);
+ case 23013: return W(q, 12);
+ case 23014: return W(q, 16);
+ case 23015: return B(q, 20);
+ case 23016: return B(q, 32);
+ case 23017: return W(q, 40);
+ case 23018: return B(q, 44);
+ case 23019: return W(q, 96);
+ case 23020: return W(q, 100);
+ case 23021: return W(q, 104);
+ case 23022: return B(q, 64);
+ case 23023: return W(q, 56);
+ case 23024: return W(q, 60);
+ case 23025: return W(q, 68);
+ case 23026: return B(q, 132);
+ case 23027: return W(q, 136);
+ case 23028: return W(q, 140);
+ case 23029: return W(q, 144);
+ case 23030: return W(q, 148);
+ case 23031: return B(q, 152);
+ case 23032: return B(q, 153);
+ case 23033: return W(q, 168);
+ case 0x59fa:
+  if (W(r,0x48) == -100) {
+   if (a->modules->situation->v3() == 0 && a->modules->ground->query(0) == 1) return 1;
+   return 0;
+  } else if (W(r,0x48) == -101) {
+   if (a->modules->situation->v3() == 0 && a->modules->ground->query(0) == 1) return 0;
+   return 1;
+  }
+  return W(r,0x48) != 0;
+ case 0x59fb: return B(r,0xb4);
+ case 0x59fc: return 0x104;
+ case 0x59fd: return 0x105;
+ case 0x59fe: return 0xfa;
+ default: return 0;
+ }
+}
