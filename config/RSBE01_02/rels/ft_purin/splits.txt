@@ -13,7 +13,6 @@ global_destructor_chain.c:
 
 mo_fighter/ft_purin/ft_purin.cpp:
 	.text       start:0x00000070 end:0x000088F8
-	.ctors      start:0x00000000 end:0x00000004
 	.rodata     start:0x00000000 end:0x00000010
 	.data       start:0x00000000 end:0x00005B10
 	.bss        start:0x00000008 end:0x00000218
@@ -305,6 +304,10 @@ mo_fighter/ft_purin/ft_purin_function_b108.cpp:
 
 mo_fighter/ft_purin/ft_purin_function_b110.cpp:
 	.text       start:0x0000B110 end:0x0000B11C
+
+mo_fighter/ft_purin/ft_purin_function_b11c.cpp:
+	.text       start:0x0000B11C end:0x0000B180
+	.ctors      start:0x00000000 end:0x00000004
 
 mo_fighter/ft_purin/ft_purin_function_b180.cpp:
 	.text       start:0x0000B180 end:0x0000B1C8

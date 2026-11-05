@@ -2,6 +2,13 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_purin: startup owner repair
+
+- Match `fn_124_B11C` using its retained matching source.
+- Transfer the existing `.ctors` entry at 0x0 from `ft_purin.cpp` to the function's dedicated source file; do not duplicate it.
+- Preserve the old owner source and every unrelated split range. The function matches 100% and all 127 original file hashes pass.
+
+
 ## ft_captain, ft_purin and 11 more: 32 functions
 
 - Matched 32 functions in `ft_captain, ft_purin and 11 more` with decomp-orchestrator: glm 4, haiku 3, luna 1, qwen-flash 2, qwen27b 13, sol 4, terra 5.
