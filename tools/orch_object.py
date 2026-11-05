@@ -1,4 +1,4 @@
-"""Preserve original exception names and reuse verified original numeric-conversion storage.
+"""Preserve original exception names and reuse verified original numeric constant storage.
 
 This module is also installed in the target's tools directory and run after compilation.
 Only registered units with explicit symbol bindings use the additional Ninja rule.
@@ -157,59 +157,91 @@ def _restore_comment(obj, snapshot):
     obj.write_bytes(data)
 
 
-def externalize_constants(obj: Path, bindings: list[dict], objcopy: Path) -> None:
-    """Turn proven local conversion constants into externs, retaining relocation sites and removing only their pool."""
-    if not bindings:
-        return
-    data = obj.read_bytes()
+def _constant_pool_plan(data, bindings, *, function=None):
+    """Validate complete immutable pools and every incoming reference before removing any bytes."""
     sections, names, symbols = _elf_tables(data)
     by_name = {b["name"]: b for b in bindings}
     if len(by_name) != len(bindings) or len({b["original"] for b in bindings}) != len(bindings):
-        raise ValueError("ambiguous conversion constant contract")
+        raise ValueError("ambiguous constant contract")
+    originals = {b["original"] for b in bindings}
+    if any(name in originals and fields[5] for _, name, fields in symbols):
+        raise ValueError("original storage symbol is already defined in this object")
     discard = {i for i, name in enumerate(names) if name in {b["section"] for b in bindings}}
-    if not discard or any(names[i] not in {".rodata", ".sdata2"} for i in discard):
-        raise ValueError("invalid conversion constant section")
+    # CodeWarrior marks ABI read-only .sdata2 literals SHF_WRITE; .rodata must not be writable.
+    if (not discard or {names[i] for i in discard} != {b["section"] for b in bindings}
+            or any(names[i] not in {".rodata", ".sdata2"} for i in discard)
+            or any(sections[i][1] != 1 or (names[i] == ".rodata" and sections[i][2] & 1)
+                   for i in discard)
+            or any(s[5] and name in {".rodata", ".sdata2"} and i not in discard
+                   for i, (name, s) in enumerate(zip(names, sections)))):
+        raise ValueError("incomplete constant pool sections")
+    functions = [(name, fields) for _, name, fields in symbols
+                 if fields[3] == 0x12 and fields[5] < len(names) and names[fields[5]] == ".text" and fields[2]]
+    if len(functions) != 1 or (function is not None and functions[0][0] != function):
+        raise ValueError("constant pool requires one owning function")
+    _, owner = functions[0]
     seen, selected = set(), set()
     for index, (_, name, fields) in enumerate(symbols):
         _, value, size, info, _, section = fields
         if section not in discard or info & 15 == 3:  # section symbols are checked at every relocation below
             continue
+        anchor = (info == 0 and not size and not value
+                  and re.fullmatch(r"\.\.\.(?:rodata|sdata2)\.\d+", name))
+        numeric = info == 1 and size > 0 and re.fullmatch(r"@\d+", name)
+        if not (anchor or numeric) or value + size > sections[section][5]:
+            raise ValueError(f"unexpected definition in constant pool: {name}")
         binding = by_name.get(name)
-        if (binding is None or name in seen or info != 1 or size != 8
-                or (names[section], value, size) != (binding["section"], binding["offset"], binding["size"])):
-            raise ValueError(f"unexpected definition in conversion pool: {name}")
+        if binding is None:
+            continue  # unused compiler labels disappear with the section; references are checked below
+        extent = sections[section][5] if not size and name.startswith("...") and not value else size
+        if (name in seen or (names[section], value, extent)
+                != (binding["section"], binding["offset"], binding["size"])):
+            raise ValueError(f"changed constant extent: {name}")
         payload = bytes.fromhex(binding["bytes"])
         start = sections[section][4] + value
-        if (payload not in {bytes.fromhex("4330000080000000"), bytes.fromhex("4330000000000000")}
-                or data[start:start + size] != payload):
-            raise ValueError(f"changed conversion constant: {name}")
+        if not extent or len(payload) != extent or data[start:start + extent] != payload:
+            raise ValueError(f"changed constant bytes: {name}")
         seen.add(name)
         selected.add(index)
     if seen != by_name.keys():
-        raise ValueError("missing conversion constant")
+        raise ValueError("missing constant")
     for section in discard:
         cursor = 0
         for binding in sorted((b for b in bindings if b["section"] == names[section]), key=lambda b: b["offset"]):
             if binding["offset"] != cursor:
-                raise ValueError("unowned bytes in conversion pool")
+                raise ValueError("unowned bytes in constant pool")
             cursor += binding["size"]
         if cursor != sections[section][5]:
-            raise ValueError("unowned trailing bytes in conversion pool")
+            raise ValueError("unowned trailing bytes in constant pool")
     for section in sections:
         if section[1] not in {4, 9}:
             continue
         width = 12 if section[1] == 4 else 8
         if section[9] != width or section[5] % width or section[7] >= len(names):
             raise ValueError("invalid ELF relocation section")
+        if section[7] in discard and section[5]:
+            raise ValueError("relocated data is not a numeric constant pool")
         for at in range(section[4], section[4] + section[5], width):
-            _, info = struct.unpack_from(">II", data, at)
+            site, info = struct.unpack_from(">II", data, at)
             index, kind = info >> 8, info & 255
             if index >= len(symbols):
                 raise ValueError("invalid ELF relocation symbol")
             if symbols[index][2][5] in discard:
                 addend = struct.unpack_from(">i", data, at + 8)[0] if width == 12 else None
-                if index not in selected or names[section[7]] != ".text" or kind not in {4, 6, 109} or addend != 0:
-                    raise ValueError("unproven reference into conversion pool")
+                if (index not in selected or section[7] != owner[5] or kind not in {4, 6, 109} or addend != 0
+                        or site % 4 != (0 if kind == 109 else 2)
+                        or not owner[1] <= site <= owner[1] + owner[2] - (4 if kind == 109 else 2)):
+                    raise ValueError("unproven reference into constant pool")
+    return {b["name"]: symbols[index][2][2] for b in bindings for index in selected
+            if symbols[index][1] == b["name"]}
+
+
+def externalize_constants(obj: Path, bindings: list[dict], objcopy: Path) -> None:
+    """Reuse verified original storage; retain instructions, relocations and compiler attributes."""
+    if not bindings:
+        return
+    data = obj.read_bytes()
+    symbol_sizes = _constant_pool_plan(data, bindings)
     metadata = _comment_snapshot(data, external={b["name"]: b["original"] for b in bindings})
     args = [arg for b in bindings for arg in ("--redefine-sym", f'{b["name"]}={b["original"]}',
                                             "--globalize-symbol", b["original"])]
@@ -223,12 +255,12 @@ def externalize_constants(obj: Path, bindings: list[dict], objcopy: Path) -> Non
             continue
         binding = originals[name]
         if fields[5] >= len(names) or (names[fields[5]], fields[1], fields[2]) != (
-                binding["section"], binding["offset"], binding["size"]):
-            raise ValueError(f"conversion symbol collides with another definition: {name}")
+                binding["section"], binding["offset"], symbol_sizes[binding["name"]]):
+            raise ValueError(f"constant symbol collides with another definition: {name}")
         struct.pack_into(">IIIBBH", data, at, fields[0], 0, 0, 0x10, 0, 0)
         changed.add(name)
     if changed != originals.keys():
-        raise ValueError("objcopy lost conversion symbols")
+        raise ValueError("objcopy lost constant symbols")
     obj.write_bytes(data)
     subprocess.run([str(objcopy), *[f"--remove-section={s}" for s in sorted({b["section"] for b in bindings})],
                     str(obj)], check=True)
