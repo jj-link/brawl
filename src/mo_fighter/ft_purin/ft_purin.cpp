@@ -2843,3 +2843,22 @@ extern "C" void* fn_124_4CB4(void* p, s16 size) {
 }
 }  // namespace decomp_orch_fn_124_4CB4
 // decomp-orchestrator: end fn_124_4CB4
+
+// decomp-orchestrator: begin fn_124_7A74
+#include <so/so_module_accesser.h>
+#include <so/status/so_status_module_impl.h>
+#include <so/work/so_work_manage_module_impl.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_7A74 {
+extern "C" void fn_124_7A74(void*, void* event, soModuleAccesser* accesser) {
+    if (*((unsigned char*)event + 0x21) == 1) {
+        switch (accesser->m_enumerationStart->m_statusModule->getStatusKind()) {
+        case 0x119:
+        case 0x11a:
+            accesser->m_enumerationStart->m_workManageModule->onFlag(0x22000012);
+            break;
+        }
+    }
+}
+}  // namespace decomp_orch_fn_124_7A74
+// decomp-orchestrator: end fn_124_7A74
