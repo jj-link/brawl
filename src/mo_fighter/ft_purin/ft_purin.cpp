@@ -2917,3 +2917,195 @@ extern "C" void* fn_124_51E0(void* p, short flag) {
 }  // namespace decomp_orch_fn_124_51E0
 }  // namespace decomp_orch_fn_124_51E0
 // decomp-orchestrator: end fn_124_51E0
+
+// decomp-orchestrator: begin fn_124_2D4C
+#pragma force_active on
+namespace decomp_orch_fn_124_2D4C {
+extern "C" void* fn_27_B64B8(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2D4C(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_27_B64B8(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2D4C
+// decomp-orchestrator: end fn_124_2D4C
+
+// decomp-orchestrator: begin fn_124_515C
+#include <so/anim/so_anim_cmd_event_presenter.h>
+#include <so/situation/so_situation_event_presenter.h>
+#include <so/so_heap_module_impl.h>
+#include <so/status/so_status_event_presenter.h>
+#include <so/so_null.h>
+#include <StaticAssert.h>
+#include <so/status/so_status_module_impl.h>
+#include <ft/fighter.h>
+#include <ft/ft_entry.h>
+#include <ft/ft_extend_param_accesser.h>
+#include <ft/ft_fighter_build_data.h>
+#include <ft/purin/ft_purin_extend_param_accesser.h>
+#include <so/so_array.h>
+#include <so/event/so_event_manage_module_impl.h>
+#include <so/event/so_event_system.h>
+#include <so/so_inside_event_manage_module_builder.h>
+#include <so/so_instance_unit.h>
+#include <so/so_module_accesser.h>
+#include <so/template_utils.h>
+#include <sr/sr_common.h>
+#include <types.h>
+#include <ft/ft_cancel_module.h>
+#include <ft/ft_param_customize_module_impl.h>
+#include <ft/ft_resource_id_accesser_impl.h>
+#include <ft/ft_status_uniq_process_gimmick.h>
+#include <ft/ft_virtual_node_matrix_pool.h>
+#include <so/so_module_accesser_builder.h>
+#include <ut/ut_uncopyable.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_515C {
+template <u32 P1, u32 P2>
+class ftAnimCmdModuleSubBuildConfig {
+    // TODO
+};
+
+template <typename BC>
+class ftAnimCmdModuleSubBuilder {
+    // TODO
+};
+
+template <class BC>
+class soModuleAccesserBuilder : public utUnCopyable {
+public:
+    soInsideEventManageModuleBuilder<typename BC::InsideEventManageModuleBuildConfig, ftInsideEventManageModuleTypes> unk194;
+    soModuleAccesser m_moduleAccsr; // +0x9D0 for ft_purin
+    soHeapModuleBuilder<typename BC::HeapModuleBuildConfig> m_heapModuleBuilder;
+    soParamCustomizeModuleBuilder<typename BC::ParamCustomizeModuleBuildConfig> m_paramCustomizeModuleBuilder;
+    soResourceModuleBuilder<typename BC::ResourceModuleBuildConfig> m_resourceModuleBuilder;
+    soModelModuleBuilder<typename BC::ModelModuleBuildConfig> m_modelModuleBuilder;
+
+    u8 unkC44[0x8DF4];
+    soModuleAccesserBuilder(const ftFighterBuildData& fbd) :
+        m_heapModuleBuilder(fbd),
+        m_paramCustomizeModuleBuilder(&m_moduleAccsr),
+        m_resourceModuleBuilder(
+            fbd.getMdlResId(),
+            fbd.getAnmResId(),
+            fbd.getResGroupNo(),
+            &m_moduleAccsr
+        ),
+        m_modelModuleBuilder(
+            &m_moduleAccsr,
+            fbd.getModelExtendNodeTable(),
+            &g_soEventObserverRegistrationDescNull,
+            fbd.getModelScale()
+        ) {
+    }
+
+    ~soModuleAccesserBuilder() { }
+    soModuleAccesser* getModuleAccesser() { return &m_moduleAccsr; }
+};
+
+template <typename BC>
+class ftModuleAccesserBuilder : public soModuleAccesserBuilder<BC> {
+public:
+    soArrayContractibleTable<const soStatusData> unkTable;
+    ftAnimCmdModuleSubBuilder<typename BC::AnimCmdModuleSubBuildConfig> unkAnimCmdModuleSubBuilder;
+
+    ftModuleAccesserBuilder(const ftFighterBuildData& fbd) : soModuleAccesserBuilder<BC>(fbd) {
+    }
+};
+
+template<typename BC>
+class ftFighterBuilder : public Fighter {
+    ftModuleAccesserBuilder<BC> m_moduleBuilder; // +0x194
+    ftCancelModuleImpl m_cancelModule;
+    ftVirtualNodeMatrixPoolImpl m_virtualNodeMtxPool;
+    ftStatusGimmickUniqProcessPoolImpl m_gimmickProcPool;
+    u32 unk9A38[2]; // cameraRangeSet TODO type
+    u32 unk9A40[2]; // cameraClipSphereSet TODO type
+public:
+    ftFighterBuilder(s32 entryId,
+                     ftKind kind,
+                     Heaps::HeapType instHeap,
+                     Heaps::HeapType nwModelInstHeap,
+                     Heaps::HeapType nwMotionInstHeap) :
+        Fighter(entryId, kind, instHeap, &m_moduleBuilder.m_moduleAccsr),
+        m_moduleBuilder(ftFighterBuildData(entryId,
+                               Fighter_Jigglypuff,
+                               instHeap,
+                               nwModelInstHeap,
+                               nwMotionInstHeap,
+                               0,
+                               m_moduleAccesser,
+                               -1,
+                               &unk9A38,
+                               &unk9A40)),
+        m_cancelModule(m_moduleAccesser),
+        m_virtualNodeMtxPool(),
+        m_gimmickProcPool(m_moduleAccesser) {
+    }
+};
+
+typedef soInsideEventManageModuleBuildConfig<
+    32, 40, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 1, 1, 0, 2, 1, ftInsideEventManageModuleTypes
+> ftPurinInsideEventManageModuleBuildConfig;
+typedef soHeapModuleBuildConfig<soHeapModuleImpl> ftPurinHeapModuleBuildConfig;
+typedef soParamCustomizeModuleBuildConfig<ftParamCustomizeModuleImpl> ftPurinParamCustomizeModuleBuildConfig;
+typedef soResourceModuleBuildConfigDynamic<0, ftResourceIdAccesserImpl, soResourceModuleImpl> ftPurinResourceModuleBuildConfig;
+typedef soModelModuleBuildConfig<8, 3, soModelModuleImpl> ftPurinModelModuleBuildConfig;
+
+typedef ftAnimCmdModuleSubBuildConfig<288, 501> ftPurinAnimCmdModuleSubBuildConfig;
+
+class ftPurinBuildConfig {
+public:
+    typedef ftPurinInsideEventManageModuleBuildConfig InsideEventManageModuleBuildConfig;
+    typedef ftPurinHeapModuleBuildConfig HeapModuleBuildConfig;
+    typedef ftPurinParamCustomizeModuleBuildConfig ParamCustomizeModuleBuildConfig;
+    typedef ftPurinResourceModuleBuildConfig ResourceModuleBuildConfig;
+    typedef ftPurinAnimCmdModuleSubBuildConfig AnimCmdModuleSubBuildConfig;
+    typedef ftPurinModelModuleBuildConfig ModelModuleBuildConfig;
+};
+
+class ftPurin : public ftFighterBuilder<ftPurinBuildConfig> {
+    soArrayContractibleTable<const soStatusData> unk9A48;
+    void* unk9A58; // TODO type
+public:
+    ftPurin(s32 entryId,
+            Heaps::HeapType instHeap,
+            Heaps::HeapType nwModelInstHeap,
+            Heaps::HeapType nwMotionInstHeap);
+};
+
+// decomp-orchestrator: begin fn_124_515C
+
+namespace decomp_orch_fn_124_515C {
+extern "C" {
+void __dt__27soCollisionAttackModuleImplFv(void*, short);
+void* fn_27_1A12AC(void*, short);
+void* fn_27_CB998(void*, short);
+void* fn_27_CD1F0(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_515C(void* self, short del) {
+    if (self != 0) {
+        short destroy = -1;
+        __dt__27soCollisionAttackModuleImplFv((char*)self + 0x61C, destroy);
+        fn_27_1A12AC((char*)self + 0x540, destroy);
+        fn_27_CB998((char*)self + 0x2DC, destroy);
+        fn_27_CD1F0(self, destroy);
+        if (del > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_515C
+// decomp-orchestrator: end fn_124_515C
+}  // namespace decomp_orch_fn_124_515C
+// decomp-orchestrator: end fn_124_515C
