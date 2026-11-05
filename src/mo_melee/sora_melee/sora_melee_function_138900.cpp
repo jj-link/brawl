@@ -1,0 +1,267 @@
+#include <so/so_value_accesser.h>
+#include <ft/ft_manager.h>
+#pragma force_active on
+struct Class_1768_base { char pad[0xc]; };
+class Class_1768 : public Class_1768_base {
+public:
+ virtual void fn_27_1DCD4(); virtual void fn_27_1D618(); virtual void fn_27_1D628();
+ virtual void fn_27_1D384(); virtual void fn_27_1B5E0(); virtual void fn_27_1CC24();
+ virtual float fn_27_1D744();
+};
+class SoundSlots {
+public:
+ virtual void slot0();
+ virtual void slot1();
+ virtual void slot2();
+ virtual void slot3();
+ virtual void slot4();
+ virtual void slot5();
+ virtual void slot6();
+ virtual void slot7();
+ virtual void slot8();
+ virtual void slot9();
+ virtual void slot10();
+ virtual void slot11();
+ virtual void slot12();
+ virtual void slot13();
+ virtual void slot14();
+ virtual void slot15();
+ virtual void slot16();
+ virtual void slot17();
+ virtual void slot18();
+ virtual void slot19();
+ virtual void stop(int, int);
+};
+struct SelfBase { char pad[0x3c]; };
+class Self : public SelfBase {
+public:
+ virtual void v0();
+ virtual void v1();
+ virtual void v2();
+ virtual void v3();
+ virtual void v4();
+ virtual void v5();
+ virtual void v6();
+ virtual void v7();
+ virtual void v8();
+ virtual void v9();
+ virtual void v10();
+ virtual void v11();
+ virtual void v12();
+ virtual void v13();
+ virtual void v14();
+ virtual void v15();
+ virtual void v16();
+ virtual void v17();
+ virtual void v18();
+ virtual void v19();
+ virtual void v20();
+ virtual void v21();
+ virtual void v22();
+ virtual void v23();
+ virtual void v24();
+ virtual void v25();
+ virtual void v26();
+ virtual void v27();
+ virtual void v28();
+ virtual void v29();
+ virtual void v30();
+ virtual void v31();
+ virtual void v32();
+ virtual void v33();
+ virtual void v34();
+ virtual void v35();
+ virtual void v36();
+ virtual void v37();
+ virtual void v38();
+ virtual void v39();
+ virtual void v40();
+ virtual void v41();
+ virtual void v42();
+ virtual void v43();
+ virtual void v44();
+ virtual void v45();
+ virtual void v46();
+ virtual void v47();
+ virtual void v48();
+ virtual void v49();
+ virtual void v50();
+ virtual void v51();
+ virtual void v52();
+ virtual void v53();
+ virtual void v54();
+ virtual void v55();
+ virtual void v56();
+ virtual void v57();
+ virtual void v58();
+ virtual void v59();
+ virtual void v60();
+ virtual void v61();
+ virtual void v62();
+ virtual void v63();
+ virtual void v64();
+ virtual void v65();
+ virtual void v66();
+ virtual void v67();
+ virtual void v68();
+ virtual void v69();
+ virtual void v70();
+ virtual void v71();
+ virtual void v72();
+ virtual void v73();
+ virtual void v74();
+ virtual void v75();
+ virtual void v76();
+ virtual void v77();
+ virtual void v78();
+ virtual void v79();
+ virtual void v80();
+ virtual void v81();
+ virtual void v82();
+ virtual void v83();
+ virtual void v84();
+ virtual void v85();
+ virtual void v86();
+ virtual void v87();
+ virtual void v88();
+ virtual void v89();
+ virtual void v90();
+ virtual void v91();
+ virtual void v92();
+ virtual void v93();
+ virtual void v94();
+ virtual void v95();
+ virtual void v96();
+ virtual void v97();
+ virtual void v98();
+ virtual void v99();
+ virtual void v100();
+ virtual void v101();
+ virtual void v102();
+ virtual void v103();
+ virtual void v104();
+ virtual void v105();
+ virtual void v106();
+ virtual void v107();
+ virtual void v108();
+ virtual void v109();
+ virtual void v110();
+ virtual void v111();
+ virtual void v112();
+ virtual void v113();
+ virtual void v114();
+ virtual void v115();
+ virtual void v116();
+ virtual void v117();
+ virtual void v118();
+ virtual void v119();
+ virtual void v120();
+ virtual void v121();
+ virtual void v122();
+ virtual void v123();
+ virtual void v124();
+ virtual void v125();
+ virtual void v126();
+ virtual void v127();
+ virtual void v128();
+ virtual void v129();
+ virtual void v130();
+ virtual void v131();
+ virtual void v132();
+ virtual void v133();
+ virtual void v134();
+ virtual void v135();
+ virtual void v136();
+ virtual void v137();
+ virtual void v138();
+ virtual void v139();
+ virtual void v140();
+ virtual void v141();
+ virtual void v142();
+ virtual void v143();
+ virtual void v144();
+ virtual void v145();
+ virtual void v146();
+ virtual void v147();
+ virtual void v148();
+ virtual void v149();
+ virtual void v150();
+ virtual void v151();
+ virtual void v152();
+ virtual void v153();
+ virtual void v154();
+ virtual void v155();
+ virtual void v156();
+ virtual void v157();
+ virtual void v158();
+ virtual void v159();
+ virtual void v160();
+ virtual void v161();
+ virtual void v162();
+ virtual void v163();
+ virtual void v164();
+ virtual void v165();
+ virtual void v166();
+ virtual void v167();
+ virtual void v168();
+ virtual void v169();
+ virtual void v170();
+ virtual void v171();
+ virtual void v172();
+ virtual void v173();
+ virtual void v174();
+ virtual void v175();
+ virtual void v176();
+ virtual void v177();
+ virtual void v178();
+ virtual void v179();
+ virtual void v180();
+ virtual void v181();
+ virtual void v182();
+ virtual void v183();
+ virtual void v184();
+ virtual Class_1768* v185();
+
+};
+extern "C" bool fn_27_111E60(Class_1768*);
+extern "C" const float lbl_27_rodata_104C;
+extern "C" void setCurry__7FighterFbi(Self* self, bool on, int frames) {
+    soModuleAccesser* accesser = *(soModuleAccesser**)((char*)self + 0x60);
+    if (on == 1) {
+        bool test;
+        if ((u32)(*((u8*)g_ftManager + 0x6d) != 0) == 1 && self->v185()->fn_27_1D744() < lbl_27_rodata_104C && !(*(soModuleAccesser**)((char*)self + 0x60))->m_enumerationStart->m_workManageModule->isFlag(0x12000018))
+            test = true;
+        else test = false;
+        if (test != 1) {
+            if (frames == -1)
+                frames = soValueAccesser::getConstantInt(accesser, 0x5a6c, 0);
+            accesser->m_enumerationStart->m_workManageModule->setInt(frames, 0x10000019);
+            if (!accesser->m_enumerationStart->m_workManageModule->isFlag(0x1200000a)) {
+                accesser->m_enumerationStart->m_workManageModule->setFloat(soValueAccesser::getConstantFloat(accesser, 0xd8b, 0), 0x11000007);
+                accesser->m_enumerationStart->m_workManageModule->setFloat(soValueAccesser::getConstantFloat(accesser, 0xd8c, 0), 0x11000008);
+                accesser->m_enumerationStart->m_workManageModule->setInt(0, 0x1000001a);
+                if (!fn_27_111E60(self->v185())) {
+                    accesser->m_enumerationStart->m_effectModule->removeAll(8);
+                    accesser->m_enumerationStart->m_effectModule->reqEmit((EfID)0x53, 8);
+                }
+                if (accesser->m_enumerationStart->m_workManageModule->getInt(0x1000002e) == -1) {
+                    int sound = accesser->m_enumerationStart->m_soundModule->playSENo3d((SndID)0x1f4d, true);
+                    accesser->m_enumerationStart->m_workManageModule->setInt(sound, 0x1000002e);
+                }
+                accesser->m_enumerationStart->m_workManageModule->onFlag(0x1200000a);
+            }
+        }
+    } else {
+        if (accesser->m_enumerationStart->m_workManageModule->isFlag(0x1200000a) == 1) {
+            accesser->m_enumerationStart->m_effectModule->removeAll(8);
+            if (accesser->m_enumerationStart->m_workManageModule->isFlag(0x12000008) == 1)
+                accesser->m_enumerationStart->m_effectModule->reqEmit((EfID)0x48, 8);
+            int sound = accesser->m_enumerationStart->m_workManageModule->getInt(0x1000002e);
+            if (sound != -1) {
+                ((SoundSlots*)accesser->m_enumerationStart->m_soundModule)->stop(sound, 0);
+                accesser->m_enumerationStart->m_workManageModule->setInt(-1, 0x1000002e);
+            }
+            accesser->m_enumerationStart->m_workManageModule->offFlag(0x1200000a);
+        }
+    }
+}
