@@ -1345,6 +1345,10 @@ mo_stage/st_famicom/st_famicom_function_e754.cpp:
 mo_stage/st_famicom/st_famicom_function_e80c.cpp:
 	.text       start:0x0000E80C end:0x0000E864
 
+mo_stage/st_famicom/st_famicom_function_e864.cpp:
+	.text       start:0x0000E864 end:0x0000E9BC
+	.data       start:0x000028B8 end:0x000028E8
+
 mo_stage/st_famicom/st_famicom_function_e9bc.cpp:
 	.text       start:0x0000E9BC end:0x0000EB58
 
