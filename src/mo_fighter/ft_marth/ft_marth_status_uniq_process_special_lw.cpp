@@ -135,10 +135,35 @@ extern "C" void fn_106_BFF0(CounterProcess*, soModuleAccesser* accesser) {
     }
 }
 
+#pragma push
+#pragma scheduling off
+// decomp-orchestrator: begin fn_106_C390
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_C390(CounterStopEnergy* energy, const Vec2f* brake) {
+//|     energy->brake.m_x = brake->m_x;
+//|     energy->brake.m_y = brake->m_y;
+//| }
+#include <so/so_module_accesser.h>
+#pragma force_active on
+#pragma scheduling off
+namespace decomp_orch_fn_106_C390 {
+struct CounterStopEnergy {
+    soKineticEnergy base;
+    Vec2f speed;
+    Vec2f acceleration;
+    Vec2f limit;
+    Vec2f brake;
+};
+
+
 extern "C" void fn_106_C390(CounterStopEnergy* energy, const Vec2f* brake) {
     energy->brake.m_x = brake->m_x;
     energy->brake.m_y = brake->m_y;
 }
+}  // namespace decomp_orch_fn_106_C390
+using decomp_orch_fn_106_C390::fn_106_C390;
+// decomp-orchestrator: end fn_106_C390
+#pragma pop
 
 extern "C" void fn_106_C3A4(CounterProcess*, soModuleAccesser* accesser) {
     switch (accesser->getStatusModule().getStatusKind()) {

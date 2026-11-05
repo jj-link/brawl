@@ -2885,3 +2885,10 @@ extern "C" void* fn_124_53DC(void* self, short flag) {
 }
 }  // namespace decomp_orch_fn_124_53DC
 // decomp-orchestrator: end fn_124_53DC
+
+// decomp-orchestrator: begin getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll
+#pragma force_active on
+namespace decomp_orch_getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll {
+extern "C" void* getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll(void) { return 0; }
+}  // namespace decomp_orch_getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll
+// decomp-orchestrator: end getParamIndefinite__21ftExtendParamAccesserFP16soModuleAccesserll

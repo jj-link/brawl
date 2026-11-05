@@ -16,7 +16,7 @@ public:
     virtual ~ftExtendParamAccesser();
     virtual float getParamFloat(soModuleAccesser* moduleAccesser, s32 p2, s32 p3 = 0) = 0;
     virtual s32 getParamInt(soModuleAccesser* moduleAccesser, s32 p2, s32 p3 = 0) = 0;
-    virtual void* getParamIndefinite(soModuleAccesser* moduleAccesser, s32 p2, s32 p3 = 0) { return nullptr; }
+    virtual void* getParamIndefinite(soModuleAccesser* moduleAccesser, s32 p2, s32 p3 = 0) { return 0; }
     virtual void setup(const u8* extData) = 0;
 };
 static_assert(sizeof(ftExtendParamAccesser) == 0x10, "Class is the wrong size!");

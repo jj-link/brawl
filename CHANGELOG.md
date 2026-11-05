@@ -2,6 +2,12 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## Purin and Marth: owning-file source repairs
+
+- Return a null pointer directly from ftExtendParamAccesser::getParamIndefinite, without the nullptr conversion helper.
+- Keep fn_106_C390's original alternating load/store sequence with function-local scheduling settings; register only its own candidate definition.
+- Both functions matched at 100% in their owning files; the native full-game gate verified all 127 file hashes.
+
 ## ft_diddy, ft_purin and 9 more: 37 functions
 
 - Matched 37 functions in `ft_diddy, ft_purin and 9 more` with decomp-orchestrator: haiku 18, luna 1, qwen-flash 1, qwen27b 12, sol 1, terra 4.
