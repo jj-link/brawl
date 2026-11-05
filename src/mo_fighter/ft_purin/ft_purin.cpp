@@ -3731,3 +3731,17 @@ extern "C" void fn_124_8258(Obj* obj) {
 }
 }  // namespace decomp_orch_fn_124_8258
 // decomp-orchestrator: end fn_124_8258
+
+// decomp-orchestrator: begin fn_124_68C0
+#pragma force_active on
+namespace decomp_orch_fn_124_68C0 {
+extern "C" void fn_27_711E4(void*, short, void*);
+extern "C" void* fn_27_1AB96C(void*, unsigned char);
+
+extern "C" void* fn_124_68C0(void* self, short id) {
+    fn_27_711E4(self, id, (void*)((unsigned int)self + 0x24));
+    fn_27_1AB96C((char*)self + 0x24, 0);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_68C0
+// decomp-orchestrator: end fn_124_68C0
