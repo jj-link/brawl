@@ -832,6 +832,9 @@ sora/misc/fn_8002B5C4.cpp:
 sora/misc/fn_8002B614.cpp:
 	.text       start:0x8002B614 end:0x8002B62C
 
+sora/misc/fn_8002B62C.cpp:
+	.text       start:0x8002B62C end:0x8002B700
+
 sora/gf/gf_pad_queue.cpp:
 	.text       start:0x8002B700 end:0x8002B9C4
 
@@ -6624,6 +6627,9 @@ sora/misc/fn_80138728.cpp:
 sora/misc/fn_80138730.cpp:
 	.text       start:0x80138730 end:0x80138738
 
+sora/misc/fn_80138CB4.cpp:
+	.text       start:0x80138CB4 end:0x80138ED8
+
 sora/misc/fn_80138ED8.cpp:
 	.text       start:0x80138ED8 end:0x80138F20
 
@@ -10541,6 +10547,9 @@ nw4r/fn_801BB2D8.cpp:
 
 nw4r/fn_801BB37C.cpp:
 	.text       start:0x801BB37C end:0x801BB610
+
+nw4r/fn_801BB8E0.cpp:
+	.text       start:0x801BB8E0 end:0x801BB9AC
 
 nw4r/fn_801BB9AC.cpp:
 	.text       start:0x801BB9AC end:0x801BBA40
@@ -22245,6 +22254,9 @@ network/fn_8036FDC8.c:
 network/fn_8036FE98.c:
 	.text       start:0x8036FE98 end:0x8036FF20
 
+network/fn_80370118.c:
+	.text       start:0x80370118 end:0x80370274
+
 network/fn_80370274.c:
 	.text       start:0x80370274 end:0x803702DC
 
@@ -23942,6 +23954,9 @@ network/fn_803B02D4.c:
 network/fn_803B0468.c:
 	.text       start:0x803B0468 end:0x803B053C
 
+network/fn_803B0778.c:
+	.text       start:0x803B0778 end:0x803B0920
+
 network/fn_803B19A0.c:
 	.text       start:0x803B19A0 end:0x803B1AA4
 
@@ -24091,6 +24106,9 @@ network/fn_803BC3F4.c:
 
 network/fn_803BC750.c:
 	.text       start:0x803BC750 end:0x803BC968
+
+network/fn_803BD624.c:
+	.text       start:0x803BD624 end:0x803BDB18
 
 network/fn_803BDE80.c:
 	.text       start:0x803BDE80 end:0x803BDEAC
@@ -24352,6 +24370,9 @@ network/fn_803C6084.c:
 
 network/fn_803C62DC.c:
 	.text       start:0x803C62DC end:0x803C63FC
+
+network/fn_803C64EC.c:
+	.text       start:0x803C64EC end:0x803C661C
 
 network/fn_803C661C.c:
 	.text       start:0x803C661C end:0x803C66F4
@@ -26047,6 +26068,9 @@ Runtime.PPCEABI.H/fn_80400E90.c:
 Runtime.PPCEABI.H/fn_80400EB4.c:
 	.text       start:0x80400EB4 end:0x80400ECC
 
+Runtime.PPCEABI.H/fn_80400ECC.c:
+	.text       start:0x80400ECC end:0x80400FAC
+
 Runtime.PPCEABI.H/fn_80400FAC.c:
 	.text       start:0x80400FAC end:0x80401060
 
@@ -26250,6 +26274,9 @@ Runtime.PPCEABI.H/fn_80405F18.c:
 
 Runtime.PPCEABI.H/fn_80405F40.c:
 	.text       start:0x80405F40 end:0x80405F48
+
+Runtime.PPCEABI.H/fn_80405F48.c:
+	.text       start:0x80405F48 end:0x80405F50
 
 Runtime.PPCEABI.H/fn_80405F50.c:
 	.text       start:0x80405F50 end:0x80405F74
