@@ -1034,6 +1034,9 @@ sora/misc/fn_80036754.cpp:
 sora/misc/fn_80036758.cpp:
 	.text       start:0x80036758 end:0x8003675C
 
+sora/misc/fn_8003675C.cpp:
+	.text       start:0x8003675C end:0x800367C8
+
 sora/misc/fn_8003682C.cpp:
 	.text       start:0x8003682C end:0x80036888
 
@@ -2422,6 +2425,9 @@ sora/misc/fn_80060E20.cpp:
 sora/misc/fn_80060F3C.cpp:
 	.text       start:0x80060F3C end:0x80060FC4
 
+sora/misc/fn_80060FC4.cpp:
+	.text       start:0x80060FC4 end:0x8006102C
+
 sora/misc/fn_8006102C.cpp:
 	.text       start:0x8006102C end:0x800610BC
 
@@ -3745,6 +3751,9 @@ sora/misc/fn_800A8BB0.cpp:
 
 sora/misc/fn_800A8DA8.cpp:
 	.text       start:0x800A8DA8 end:0x800A8DB4
+
+sora/misc/fn_800A944C.cpp:
+	.text       start:0x800A944C end:0x800A9600
 
 sora/misc/fn_800A9600.cpp:
 	.text       start:0x800A9600 end:0x800A9620
@@ -15147,6 +15156,9 @@ RVL_SDK/fn_8024FF10.c:
 RVL_SDK/fn_80250020.c:
 	.text       start:0x80250020 end:0x80250060
 
+RVL_SDK/fn_80250060.c:
+	.text       start:0x80250060 end:0x802500CC
+
 RVL_SDK/fn_802502B4.c:
 	.text       start:0x802502B4 end:0x80250344
 
@@ -15751,6 +15763,9 @@ RVL_SDK/fn_8027A194.c:
 
 RVL_SDK/fn_8027A1CC.c:
 	.text       start:0x8027A1CC end:0x8027A1D4
+
+RVL_SDK/fn_8027A3F8.c:
+	.text       start:0x8027A3F8 end:0x8027A464
 
 RVL_SDK/fn_8027A520.c:
 	.text       start:0x8027A520 end:0x8027A5AC
@@ -17737,6 +17752,11 @@ havok/fn_802C3B40.cpp:
 	extab       start:0x80007D90 end:0x80007DA8
 	extabindex  start:0x8000AAF8 end:0x8000AB04
 	.text       start:0x802C3B40 end:0x802C3B88
+
+havok/fn_802C3B88.cpp:
+	extab       start:0x80007DA8 end:0x80007DD0
+	extabindex  start:0x8000AB04 end:0x8000AB10
+	.text       start:0x802C3B88 end:0x802C3CE8
 
 havok/fn_802C3E84.cpp:
 	.text       start:0x802C3E84 end:0x802C3E88
@@ -20392,6 +20412,9 @@ havok/fn_80325C20.cpp:
 havok/fn_80325C34.cpp:
 	.text       start:0x80325C34 end:0x80325C48
 
+havok/fn_80325DD4.cpp:
+	.text       start:0x80325DD4 end:0x80325E38
+
 havok/fn_80325E38.cpp:
 	.text       start:0x80325E38 end:0x80325E9C
 
@@ -21153,6 +21176,9 @@ network/fn_8034C4E4.c:
 
 network/fn_8034C604.c:
 	.text       start:0x8034C604 end:0x8034C60C
+
+network/fn_8034C674.c:
+	.text       start:0x8034C674 end:0x8034C6E0
 
 network/fn_8034C984.c:
 	.text       start:0x8034C984 end:0x8034C99C
@@ -23504,6 +23530,9 @@ network/fn_803B3A44.c:
 network/fn_803B3BA8.c:
 	.text       start:0x803B3BA8 end:0x803B3C2C
 
+network/fn_803B3C2C.c:
+	.text       start:0x803B3C2C end:0x803B3DD8
+
 network/fn_803B4F28.c:
 	.text       start:0x803B4F28 end:0x803B502C
 
@@ -23942,6 +23971,9 @@ network/fn_803C7D64.c:
 network/fn_803C7DBC.c:
 	.text       start:0x803C7DBC end:0x803C7DE4
 
+network/fn_803C7DE4.c:
+	.text       start:0x803C7DE4 end:0x803C7DE8
+
 network/fn_803C7DE8.c:
 	.text       start:0x803C7DE8 end:0x803C7E40
 
@@ -24159,6 +24191,11 @@ network/fn_803CDAC8.c:
 	extabindex  start:0x8000C19C end:0x8000C1A8
 	.text       start:0x803CDAC8 end:0x803CDC4C
 
+network/fn_803CDC4C.c:
+	extab       start:0x800092B4 end:0x800092BC
+	extabindex  start:0x8000C1A8 end:0x8000C1B4
+	.text       start:0x803CDC4C end:0x803CDDB8
+
 network/fn_803CDEDC.c:
 	extab       start:0x800092C4 end:0x800092CC
 	extabindex  start:0x8000C1C0 end:0x8000C1CC
@@ -24233,6 +24270,11 @@ network/fn_803D0938.c:
 	extab       start:0x80009394 end:0x8000939C
 	extabindex  start:0x8000C2F8 end:0x8000C304
 	.text       start:0x803D0938 end:0x803D09F8
+
+network/fn_803D0F04.c:
+	extab       start:0x800093A4 end:0x800093AC
+	extabindex  start:0x8000C310 end:0x8000C31C
+	.text       start:0x803D0F04 end:0x803D1188
 
 network/fn_803D1E90.c:
 	extab       start:0x800093BC end:0x800093C4
@@ -25309,6 +25351,11 @@ Runtime.PPCEABI.H/fn_803F88A4.c:
 	extab       start:0x800096A4 end:0x800096AC
 	extabindex  start:0x8000C73C end:0x8000C748
 	.text       start:0x803F88A4 end:0x803F8924
+
+Runtime.PPCEABI.H/fn_803F8924.c:
+	extab       start:0x800096AC end:0x800096B4
+	extabindex  start:0x8000C748 end:0x8000C754
+	.text       start:0x803F8924 end:0x803F89FC
 
 Runtime.PPCEABI.H/fn_803F8ACC.s:
 	extab       start:0x800096BC end:0x800096C4
