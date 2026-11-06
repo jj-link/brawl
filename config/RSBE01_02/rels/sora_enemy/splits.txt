@@ -275,6 +275,9 @@ mo_enemy/sora_enemy/sora_enemy_function_6660.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_6724.cpp:
 	.text       start:0x00006724 end:0x000067C0
 
+mo_enemy/sora_enemy/sora_enemy_function_67c0.cpp:
+	.text       start:0x000067C0 end:0x000068EC
+
 mo_enemy/sora_enemy/sora_enemy_function_68ec.cpp:
 	.text       start:0x000068EC end:0x000069C8
 
@@ -4917,6 +4920,10 @@ mo_enemy/sora_enemy/sora_enemy_function_533dc.cpp:
 	.text       start:0x000533DC end:0x000536CC
 	.data       start:0x000149B4 end:0x000149F8
 
+mo_enemy/sora_enemy/sora_enemy_function_536cc.cpp:
+	.text       start:0x000536CC end:0x000538BC
+	.data       start:0x000149F8 end:0x00014A3C
+
 mo_enemy/sora_enemy/sora_enemy_function_538bc.cpp:
 	.text       start:0x000538BC end:0x00053AC8
 	.data       start:0x00014A3C end:0x00014A80
@@ -5163,6 +5170,10 @@ mo_enemy/sora_enemy/sora_enemy_function_576b4.cpp:
 
 mo_enemy/sora_enemy/sora_enemy_function_57768.cpp:
 	.text       start:0x00057768 end:0x0005785C
+
+mo_enemy/sora_enemy/sora_enemy_function_5785c.cpp:
+	.text       start:0x0005785C end:0x00057C40
+	.data       start:0x00016E48 end:0x00016E8C
 
 mo_enemy/sora_enemy/sora_enemy_function_57c40.cpp:
 	.text       start:0x00057C40 end:0x00057E78
