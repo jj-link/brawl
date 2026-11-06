@@ -1,0 +1,120 @@
+#pragma force_active on
+#include <gf/gf_scene.h>
+#include <sc/sc_scene_init.h>
+#include <sc/sc_staffroll.h>
+#include <sc/sc_seal_list.h>
+#include <sc/sc_seal_disp.h>
+#include <sc/sc_demo.h>
+#include <sc/sc_tutorial.h>
+#include <sc/sc_net_time_result.h>
+#include <sc/sc_adv_selchar.h>
+#include <sc/sc_adv_saveload.h>
+#include <sc/sc_adv_diff.h>
+#include <sc/sc_adv_result.h>
+#include <sc/sc_adv_gameover.h>
+
+extern "C" {
+int registScene__14gfSceneManagerFv(void* mgr, void* scene);
+void* fn_1_810();
+void* fn_1_52AC();
+void* fn_1_10720();
+void* fn_1_65B8();
+void* fn_1_67D8();
+void* fn_1_6B08();
+void* fn_1_74B4();
+void* fn_1_7AA8();
+void* fn_1_A8C4();
+void* fn_1_CBA0();
+void* fn_1_DEAC();
+void* fn_1_91AC();
+void* fn_1_948C();
+void* fn_1_AA7C();
+void* fn_1_AE80();
+void* fn_1_7FD4();
+void* fn_1_8340();
+void* fn_1_8514();
+void* fn_1_8BC8();
+void* fn_1_7834();
+void* fn_1_8E20();
+void* fn_1_D6C0();
+void* fn_1_624C();
+void* fn_1_4EB4();
+void* fn_1_B444();
+void* fn_1_CECC();
+void* fn_1_BC2C();
+void* fn_1_C9C4();
+void* fn_1_40C();
+void* fn_1_E530();
+void* fn_1_F5B8();
+void* fn_1_10008();
+void* fn_1_E9D8();
+void* fn_1_102BC();
+void* fn_1_13884();
+void* fn_1_1B144();
+void* fn_1_1B004();
+void* fn_1_1B750();
+void* fn_1_1BCB4();
+void* fn_1_1C668();
+void* fn_1_1CC48();
+void* fn_1_1E588();
+void* fn_1_2006C();
+}
+
+void scSystemRegisterScene() {
+    gfSceneManager* mgr = gfSceneManager::getInstance();
+    registScene__14gfSceneManagerFv(mgr, fn_1_810());
+    registScene__14gfSceneManagerFv(mgr, fn_1_52AC());
+    registScene__14gfSceneManagerFv(mgr, scStaffRoll::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_10720());
+    registScene__14gfSceneManagerFv(mgr, fn_1_65B8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_67D8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_6B08());
+    registScene__14gfSceneManagerFv(mgr, scSealList::create());
+    registScene__14gfSceneManagerFv(mgr, scSealDisp::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_74B4());
+    registScene__14gfSceneManagerFv(mgr, fn_1_7AA8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_A8C4());
+    registScene__14gfSceneManagerFv(mgr, scDemo::create());
+    registScene__14gfSceneManagerFv(mgr, scTutorial::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_CBA0());
+    registScene__14gfSceneManagerFv(mgr, fn_1_DEAC());
+    registScene__14gfSceneManagerFv(mgr, fn_1_91AC());
+    registScene__14gfSceneManagerFv(mgr, fn_1_948C());
+    registScene__14gfSceneManagerFv(mgr, fn_1_AA7C());
+    registScene__14gfSceneManagerFv(mgr, fn_1_AE80());
+    registScene__14gfSceneManagerFv(mgr, fn_1_7FD4());
+    registScene__14gfSceneManagerFv(mgr, fn_1_8340());
+    registScene__14gfSceneManagerFv(mgr, fn_1_8514());
+    registScene__14gfSceneManagerFv(mgr, fn_1_8BC8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_7834());
+    registScene__14gfSceneManagerFv(mgr, fn_1_8E20());
+    registScene__14gfSceneManagerFv(mgr, fn_1_D6C0());
+    registScene__14gfSceneManagerFv(mgr, fn_1_624C());
+    registScene__14gfSceneManagerFv(mgr, fn_1_4EB4());
+    registScene__14gfSceneManagerFv(mgr, fn_1_B444());
+    registScene__14gfSceneManagerFv(mgr, fn_1_CECC());
+    registScene__14gfSceneManagerFv(mgr, fn_1_BC2C());
+    registScene__14gfSceneManagerFv(mgr, scNetTimeResult::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_C9C4());
+    registScene__14gfSceneManagerFv(mgr, fn_1_40C());
+    registScene__14gfSceneManagerFv(mgr, fn_1_E530());
+    registScene__14gfSceneManagerFv(mgr, fn_1_F5B8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_10008());
+    registScene__14gfSceneManagerFv(mgr, fn_1_E9D8());
+    registScene__14gfSceneManagerFv(mgr, fn_1_102BC());
+    registScene__14gfSceneManagerFv(mgr, fn_1_13884());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1B144());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1B004());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1B750());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1BCB4());
+    registScene__14gfSceneManagerFv(mgr, scAdvSelChar::create());
+    registScene__14gfSceneManagerFv(mgr, scAdvSave::create());
+    registScene__14gfSceneManagerFv(mgr, scAdvLoad::create());
+    registScene__14gfSceneManagerFv(mgr, scAdvDiff::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1C668());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1CC48());
+    registScene__14gfSceneManagerFv(mgr, fn_1_1E588());
+    registScene__14gfSceneManagerFv(mgr, scAdvResult::create());
+    registScene__14gfSceneManagerFv(mgr, scAdvGameover::create());
+    registScene__14gfSceneManagerFv(mgr, fn_1_2006C());
+}
