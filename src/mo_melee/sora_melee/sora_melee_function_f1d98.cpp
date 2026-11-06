@@ -1,0 +1,44 @@
+#pragma force_active on
+
+struct Entry {
+    int unused;
+    int id;
+};
+
+class Class_Array {
+public:
+    virtual void fn_27_F1C44();
+    virtual void fn_27_F1D44();
+    virtual Entry& fn_27_F2090(int);
+    virtual void fn_27_D9D34();
+    virtual void fn_27_F2090b();
+};
+
+class soNullable {
+public:
+    virtual void isNull();
+    virtual void fn_27_F1C44();
+    virtual void fn_27_F1D44();
+    virtual void fn_27_F2090();
+    virtual int fn_27_D9D34();
+
+    char padding[12];
+    Class_Array array;
+
+    int find(int id) {
+        if (id <= -1)
+            return -1;
+
+        int count = fn_27_D9D34();
+        for (int i = 0; i < count; ++i) {
+            if (id == array.fn_27_F2090(i).id)
+                return i;
+        }
+        return -1;
+    }
+};
+
+extern "C" int fn_27_F1D98(soNullable* self, int id) {
+    int index = self->find(id);
+    return (static_cast<unsigned int>(index) >> 31) ^ 1;
+}

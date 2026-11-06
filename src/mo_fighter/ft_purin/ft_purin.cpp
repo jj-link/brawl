@@ -4001,3 +4001,20 @@ extern "C" void fn_124_811C(void* receiver, short id, int argument) {
 }  // namespace decomp_orch_fn_124_811C
 }  // namespace decomp_orch_fn_124_811C
 // decomp-orchestrator: end fn_124_811C
+
+// decomp-orchestrator: begin fn_124_2E04
+#pragma force_active on
+namespace decomp_orch_fn_124_2E04 {
+extern "C" void* fn_27_10424(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2E04(void* p, short flag) {
+    if (p != 0) {
+        fn_27_10424((char*)p + 4, -1);
+        if (flag > 0)
+            __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_2E04
+// decomp-orchestrator: end fn_124_2E04
