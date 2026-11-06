@@ -17083,6 +17083,9 @@ mo_melee/sora_melee/sora_melee_function_acabc.cpp:
 mo_melee/sora_melee/sora_melee_function_acc5c.cpp:
 	.text       start:0x000ACC5C end:0x000ACDAC
 
+mo_melee/sora_melee/sora_melee_function_acdac.cpp:
+	.text       start:0x000ACDAC end:0x000ACE5C
+
 mo_melee/sora_melee/sora_melee_function_ace5c.cpp:
 	.text       start:0x000ACE5C end:0x000ACE64
 
@@ -39225,6 +39228,9 @@ mo_melee/sora_melee/sora_melee_function_19d918.cpp:
 
 mo_melee/sora_melee/sora_melee_function_19d928.cpp:
 	.text       start:0x0019D928 end:0x0019D938
+
+mo_melee/sora_melee/sora_melee_function_19d938.cpp:
+	.text       start:0x0019D938 end:0x0019DA78
 
 mo_melee/sora_melee/sora_melee_function_19da78.cpp:
 	.text       start:0x0019DA78 end:0x0019DAE0
@@ -65533,6 +65539,10 @@ mo_melee/sora_melee/sora_melee_function_32e048.cpp:
 mo_melee/sora_melee/sora_melee_function_32e230.cpp:
 	.text       start:0x0032E230 end:0x0032E270
 
+mo_melee/sora_melee/sora_melee_function_32e270.cpp:
+	.text       start:0x0032E270 end:0x0032E298
+	.ctors      start:0x000003E8 end:0x000003EC
+
 mo_melee/sora_melee/sora_melee_function_32e298.cpp:
 	.text       start:0x0032E298 end:0x0032E2A8
 
@@ -65766,6 +65776,9 @@ mo_melee/sora_melee/sora_melee_function_337898.cpp:
 
 mo_melee/sora_melee/sora_melee_function_3378d8.cpp:
 	.text       start:0x003378D8 end:0x003378E0
+
+mo_melee/sora_melee/sora_melee_function_3378e0.cpp:
+	.text       start:0x003378E0 end:0x00338440
 
 mo_melee/sora_melee/sora_melee_function_338440.cpp:
 	.text       start:0x00338440 end:0x00338444
@@ -69044,6 +69057,10 @@ mo_melee/sora_melee/sora_melee_function_39b758.cpp:
 mo_melee/sora_melee/sora_melee_function_39bd40.cpp:
 	.text       start:0x0039BD40 end:0x0039BD80
 
+mo_melee/sora_melee/sora_melee_function_39bd80.cpp:
+	.text       start:0x0039BD80 end:0x0039BDA8
+	.ctors      start:0x000004CC end:0x000004D0
+
 mo_melee/sora_melee/sora_melee_function_39c200.cpp:
 	.text       start:0x0039C200 end:0x0039C4B8
 
@@ -69658,6 +69675,9 @@ mo_melee/sora_melee/sora_melee_function_3b383c.cpp:
 
 mo_melee/sora_melee/sora_melee_function_3b387c.cpp:
 	.text       start:0x003B387C end:0x003B3884
+
+mo_melee/sora_melee/sora_melee_function_3b43e4.cpp:
+	.text       start:0x003B43E4 end:0x003B455C
 
 mo_melee/sora_melee/sora_melee_function_3b455c.cpp:
 	.text       start:0x003B455C end:0x003B4560
