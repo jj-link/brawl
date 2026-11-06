@@ -4271,3 +4271,24 @@ extern "C" void fn_124_82B4(char* object) {
 }
 }  // namespace decomp_orch_fn_124_82B4
 // decomp-orchestrator: end fn_124_82B4
+
+// decomp-orchestrator: begin fn_124_5504
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_5504 {
+extern "C" void fn_27_22A38(void*, short);
+extern "C" void fn_27_1A2910(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5504(void* object, short flag) {
+    if (object) {
+        fn_27_22A38(static_cast<char*>(object) + 0x34, -1);
+        fn_27_1A2910(object, -1);
+        if (flag > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_5504
+// decomp-orchestrator: end fn_124_5504
