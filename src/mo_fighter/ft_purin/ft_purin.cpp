@@ -4040,3 +4040,74 @@ extern "C" void* fn_124_8018(void* self, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_8018
 // decomp-orchestrator: end fn_124_8018
+
+// decomp-orchestrator: begin fn_124_2054
+#pragma force_active on
+namespace decomp_orch_fn_124_2054 {
+extern "C" {
+void* fn_124_20E0(void*, short);
+void __dt__33soAnimCmdAddressPackArraySeparateFv(void*, short);
+void* fn_124_21BC(void*, short);
+void* fn_27_C7770(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_2054(void* object, short deleting) {
+    if (object != 0) {
+        char* members = static_cast<char*>(object);
+        short memberDeleting = -1;
+        fn_124_20E0(members + 0xDC, memberDeleting);
+        __dt__33soAnimCmdAddressPackArraySeparateFv(members + 0xC0, memberDeleting);
+        fn_124_21BC(members + 0x14, memberDeleting);
+        if (object != 0)
+            fn_27_C7770(object, memberDeleting);
+        if (deleting > 0)
+            __dl__FPv(object);
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_2054
+// decomp-orchestrator: end fn_124_2054
+
+// decomp-orchestrator: begin fn_124_3A78
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_3A78 {
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3A78(void* p, s16 flag) {
+    if (p != 0 && flag > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3A78
+// decomp-orchestrator: end fn_124_3A78
+
+// decomp-orchestrator: begin fn_124_6C8C
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_6C8C {
+extern "C" {
+void fn_124_5AA4(void*, int);
+extern unsigned char lbl_124_data_1290[];
+
+void* fn_124_6C8C(void* self, void* arg1, void* arg2, void* arg3,
+                  void* arg4, void* arg5, void* arg6) {
+    fn_124_5AA4(self, 0);
+
+    void* data = lbl_124_data_1290;
+    *(void**)((char*)self + 0x8) = data;
+    *(void**)self = (char*)data + 0x8;
+    *(void**)((char*)self + 0xc) = arg1;
+    *(void**)((char*)self + 0x10) = arg2;
+    *(void**)((char*)self + 0x14) = arg3;
+    *(void**)((char*)self + 0x18) = arg4;
+    *(void**)((char*)self + 0x1c) = arg5;
+    *(void**)((char*)self + 0x20) = arg6;
+
+    return self;
+}
+}
+}  // namespace decomp_orch_fn_124_6C8C
+// decomp-orchestrator: end fn_124_6C8C
