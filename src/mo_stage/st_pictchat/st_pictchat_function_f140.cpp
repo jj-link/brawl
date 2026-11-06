@@ -1,0 +1,146 @@
+#pragma force_active on
+struct Vec { float x,y,z; };
+struct Constants { float x[11]; };
+extern "C" const Constants lbl_73_rodata_128;
+struct Attack {
+ char pad[36]; Vec v; int a,b; unsigned upper:27; unsigned flags:5; int c;
+ Attack(const Constants* d) { v.x=d->x[5]; v.y=d->x[5]; v.z=d->x[5]; flags=0; }
+};
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+ virtual void processDefault();
+ virtual void processBegin();
+ virtual void processAnim();
+ virtual void processUpdate();
+ virtual void processPreMapCorrection();
+ virtual void processMapCorrection();
+ virtual void processFixPosition();
+ virtual void processPreCollision();
+ virtual void processCollision();
+ virtual void processCatch();
+ virtual void processHit();
+ virtual void processCamera();
+ virtual void processFixCamera();
+ virtual void processEffect();
+ virtual void processGameProc();
+ virtual void processEnd();
+ virtual void renderPre();
+ virtual void renderOpa();
+ virtual void renderXlu();
+ virtual void processDebug();
+ virtual void renderDebug();
+ virtual void init();
+ virtual void fn_73_F0B8();
+ virtual void fn_73_EA80();
+ virtual void loadGroundData();
+ virtual void bindData();
+ virtual void setupMelee();
+ virtual void setVisibility();
+ virtual void setVisibilityByClipping();
+ virtual void setVisibilityAttachedEffect();
+ virtual void receiveCollMsg();
+ virtual void receiveCollMsg_Landing();
+ virtual void receiveCollMsg_Heading();
+ virtual void receiveCollMsg_Wall();
+ virtual void receiveCollMsg_Attack();
+ virtual void unloadData();
+ virtual void fn_73_33D0();
+ virtual void startup();
+ virtual void setNode();
+ virtual void fn_73_8DC();
+ virtual void fn_73_33C8();
+ virtual void fn_73_33C4();
+ virtual void fn_73_2C5C();
+ virtual void fn_73_33BC();
+ virtual void fn_73_33B0();
+ virtual void fn_73_33A0();
+ virtual void fn_73_3390();
+ virtual void getNodeIndex();
+ virtual void getNodePosition();
+ virtual void getNodePosition_2();
+ virtual void getNodeMatrix();
+ virtual void getNodeMatrix_2();
+ virtual void setNodeVisibility();
+ virtual void setNodeVisibility_2();
+ virtual void setNodeVisibilityAll();
+ virtual void isNodeVisible();
+ virtual void setNodeCollision();
+ virtual void setNodeCollision_2();
+ virtual void getNodeScale();
+ virtual void getNodeScale_2();
+ virtual void setValid();
+ virtual void setValidAttachedEffect();
+ virtual void fn_73_338C();
+ virtual void fn_73_3388();
+ virtual void fn_73_3380();
+ virtual void setMotionRatio();
+ virtual void setMotionFrame();
+ virtual void getMotionFrame();
+ virtual void setMotionLoop();
+ virtual void setMatAlphaMul();
+ virtual void setMatAlpha();
+ virtual void updateG3dProcCalcWorld();
+ virtual void preExit();
+ virtual void fn_73_3378();
+ virtual void invalidatedByCameraClipping();
+ virtual void setTransparencyFlag();
+ virtual void updateCallback();
+ virtual void fixedPosition();
+ virtual void setTgtNode();
+ virtual void getTgtNode();
+ virtual void fn_73_1848();
+ virtual void fn_73_33F4();
+ virtual void changeNodeAnim();
+ virtual void createFadeVisibleProduction();
+ virtual void createSoundEffectVisibleProductionForExcel();
+ virtual void createEffectVisibleProductionForExcel();
+ virtual void setSimpleEffectVisibleProduction();
+ virtual void dbDispInvalidatedByCameraClippingSphere();
+ virtual void setTransparency();
+ virtual void fn_73_33EC();
+ virtual void onDamage();
+ virtual void onInflict();
+ virtual void onInflictEach();
+ virtual void onGimmickEvent();
+ virtual void enableYakumono();
+ virtual void disableYakumono();
+ virtual void enableHit();
+ virtual void disableHit();
+ virtual void disableAttack();
+ virtual void enableArea();
+ virtual void disableArea();
+ virtual void setSleepArea();
+ virtual void setTeamYakumonoOwnerId();
+ virtual void setTeamYakumono();
+ virtual void getTeamYakumono();
+ virtual void setOffsetAttack();
+ virtual void setAreaGimmick__10grYakumonoFP10soAreaDataP19soSet_10soAreaData_P10ykAreaDatab();
+ virtual void setAttackGimmick();
+ virtual void setSoCollisionAttackData();
+ virtual void setAttackGimmickDetails(Attack*, int, Vec*, int, int, int, int, float, float, float, float,
+ int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int);
+ char p[0xc4-0x40]; int id; char q[0x14c-0xc8]; void* module; char r[0x166-0x150]; unsigned char active; char t[5]; unsigned char state;
+};
+extern "C" void fn_27_2636F0(void*, int, int, Attack*);
+extern "C" void fn_73_F140(Ground* o) {
+ const Constants* d=&lbl_73_rodata_128;
+ if (o->module) {
+  Attack a(d);
+  Vec p;
+  int angle;
+  switch(o->state) {
+  case 0: angle=0; p.x=d->x[8]; p.y=d->x[7]; p.z=d->x[7]; break;
+  case 1: angle=0; p.x=d->x[8]; p.y=d->x[7]; p.z=d->x[7]; break;
+  case 2: angle=0; p.x=d->x[8]; p.y=d->x[7]; p.z=d->x[7]; break;
+  case 3: angle=180; p.x=d->x[9]; p.y=d->x[7]; p.z=d->x[7]; break;
+  case 4: angle=180; p.x=d->x[9]; p.y=d->x[7]; p.z=d->x[7]; break;
+  case 5: angle=180; p.x=d->x[9]; p.y=d->x[7]; p.z=d->x[7]; break;
+  default: angle=0; p.x=d->x[7]; p.y=d->x[7]; p.z=d->x[7]; break;
+  }
+  o->setAttackGimmickDetails(&a,20,&p,angle,100,70,70,d->x[10],d->x[5],d->x[5],d->x[5],
+    o->id,1023,7,0,15,2,0,3,0,0,0,1,0,0,0,60,0,0,0,3,0,0,0,0,0,0,1);
+  fn_27_2636F0(o->module,0,0,&a);
+  o->active=1;
+ }
+}
