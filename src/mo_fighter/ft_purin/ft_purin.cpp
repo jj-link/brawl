@@ -3787,3 +3787,45 @@ extern "C" int fn_124_84D0(void* self, int mask, int index) {
 }
 }  // namespace decomp_orch_fn_124_84D0
 // decomp-orchestrator: end fn_124_84D0
+
+// decomp-orchestrator: begin fn_124_21BC
+#pragma force_active on
+namespace decomp_orch_fn_124_21BC {
+extern "C" void* fn_27_A0C74(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_21BC(void* ptr, short flag) {
+    if (ptr) {
+        fn_27_A0C74(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_21BC
+// decomp-orchestrator: end fn_124_21BC
+
+// decomp-orchestrator: begin fn_124_7BC0
+#include <so/so_module_accesser.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_7BC0 {
+extern "C" void fn_27_3C7790(soModuleAccesser*);
+extern "C" void fn_27_13604C(void*, void*, int, soModuleAccesser*);
+extern "C" void fn_124_7BC0(void* self, void* arg, int value, soModuleAccesser* accesser) {
+    switch (accesser->m_enumerationStart->m_statusModule->getStatusKind()) {
+    case 0x117:
+    case 0x118:
+    case 0x119:
+    case 0x11a:
+    case 0x11b:
+    case 0x11c:
+    case 0x11d:
+        if ((*reinterpret_cast<unsigned int*>(static_cast<char*>(arg) + 0x6c) & 0x1f) == 7)
+            fn_27_3C7790(accesser);
+        break;
+    }
+    fn_27_13604C(self, arg, value, accesser);
+}
+}  // namespace decomp_orch_fn_124_7BC0
+// decomp-orchestrator: end fn_124_7BC0
