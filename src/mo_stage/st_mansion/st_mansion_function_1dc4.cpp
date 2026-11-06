@@ -1,0 +1,145 @@
+#include <gr/gr_gimmick.h>
+#pragma force_active on
+struct GroundBase { char pad[0x3c]; };
+class MansionGround : public GroundBase {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_47_1C1C();
+    virtual void fn_47_1D0C();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void receiveCollMsg_Landing();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_47_1A28();
+    virtual void startup();
+    virtual void setNode();
+    virtual void fn_47_5A0();
+    virtual int fn_47_1A20();
+    virtual void fn_47_1A1C();
+    virtual void fn_47_1748();
+    virtual void fn_47_1A14();
+    virtual void fn_47_1A08();
+    virtual void fn_47_19F8();
+    virtual void fn_47_19E8();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility();
+    virtual void setNodeVisibility_2();
+    virtual void setNodeVisibilityAll();
+    virtual void isNodeVisible();
+    virtual void setNodeCollision();
+    virtual void setNodeCollision_2();
+    virtual void getNodeScale();
+    virtual void getNodeScale_2();
+    virtual void setValid();
+    virtual void setValidAttachedEffect();
+    virtual void fn_47_19E4();
+    virtual void fn_47_19E0();
+    virtual void fn_47_19D8();
+    virtual void setMotionRatio();
+    virtual void setMotionFrame();
+    virtual void getMotionFrame();
+    virtual void setMotionLoop();
+    virtual void setMatAlphaMul();
+    virtual void setMatAlpha();
+    virtual void updateG3dProcCalcWorld();
+    virtual void preExit();
+    virtual void fn_47_19D0();
+    virtual void invalidatedByCameraClipping();
+    virtual void setTransparencyFlag();
+    virtual void updateCallback();
+    virtual void fixedPosition();
+    virtual void setTgtNode();
+    virtual void getTgtNode();
+    virtual void fn_47_1A54();
+    virtual void fn_47_1A4C();
+    virtual void changeNodeAnim();
+    virtual void createFadeVisibleProduction();
+    virtual void createSoundEffectVisibleProductionForExcel();
+    virtual void createEffectVisibleProductionForExcel();
+    virtual void setSimpleEffectVisibleProduction();
+    virtual void dbDispInvalidatedByCameraClippingSphere();
+    virtual void setTransparency();
+    virtual void fn_47_1A44();
+    virtual void fn_47_31D8();
+    virtual void onInflict();
+    virtual void onInflictEach();
+    virtual void onGimmickEvent();
+    virtual void enableYakumono();
+    virtual void disableYakumono();
+    virtual void enableHit();
+    virtual void disableHit(unsigned long, unsigned long);
+    virtual void disableAttack();
+    virtual void enableArea();
+    virtual void disableArea();
+    virtual void setSleepArea();
+    virtual void setTeamYakumonoOwnerId();
+    virtual void setTeamYakumono();
+    virtual void getTeamYakumono();
+    virtual void setOffsetAttack();
+    virtual void setAreaGimmick__10grYakumonoFP10soAreaDataP19soSet_10soAreaData_P10ykAreaDatab();
+    virtual void setAttackGimmick();
+    virtual void setSoCollisionAttackData();
+    virtual void setAttackGimmickDetails();
+    virtual void isEnableAttackPersonAttacked();
+    virtual void isEnableAttackAttribute();
+    virtual void fn_47_1DC4();
+    virtual void fn_47_1EA8();
+    virtual void fn_47_1FAC();
+    virtual void fn_47_22FC();
+    virtual void fn_47_245C();
+    virtual void fn_47_2C8C();
+    char pad1[0x14c - 0x40];
+    int field14c;
+    char pad2[8];
+    unsigned char field158;
+    char pad3[0xb];
+    float* pos;
+};
+extern "C" void fn_47_1DC4(MansionGround* self) {
+    if (self->pos && self->fn_47_1A20()) {
+        if (self->field158 == 1) {
+            ((grGimmick*)self)->setPos(self->pos[0], self->pos[1], self->pos[2]);
+        } else {
+            self->fn_47_245C();
+            if (self->field14c) {
+                ((grGimmick*)self)->setPos(self->pos[0], self->pos[1], self->pos[2]);
+                self->disableHit(0, 0);
+                self->fn_47_2C8C();
+                self->field158 = 1;
+            }
+        }
+    }
+}
