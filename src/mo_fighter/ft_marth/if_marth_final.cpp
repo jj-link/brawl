@@ -205,12 +205,56 @@ extern "C" void fn_106_D92C(MarthFinalInterface* interface) {
 }
 // Empty inherited hooks and callback phases in the original interface.
 extern "C" void fn_106_D9DC(MarthFinalInterface*) {}
+// decomp-orchestrator: begin fn_106_D9E0
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D9E0(MarthFinalInterface* interface) {
+//|     if (!interface->visible) {
+//|         fn_106_D720(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
+//|         interface->visible = 1;
+//|     }
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+#pragma force_active on
+#pragma scheduling off
+namespace decomp_orch_fn_106_D9E0 {
+struct MarthFinalInterface {
+    gfTask task;
+    nw4r::g3d::ResFileData* resource;
+    unsigned long resourceState;
+    nw4r::g3d::ScnGroup* scene;
+    MuObject* models[1];
+    nw4r::g3d::G3dObj* sceneObjects[1];
+    unsigned char initialized;
+    unsigned char interfaceState[0x1b];
+    void* connectedInterface;
+    struct {
+        void* vtable;
+        Vec3f position;
+        unsigned char applied;
+        unsigned char alignment[3];
+    } callback;
+    unsigned char visible;
+    unsigned char alignment[3];
+};
+
+extern "C" void fn_106_D720(void* manager, void* object);
+
 extern "C" void fn_106_D9E0(MarthFinalInterface* interface) {
+
     if (!interface->visible) {
-        fn_106_D720(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
+        fn_106_D720(g_IfMngr, interface->scene);
         interface->visible = 1;
     }
 }
+}  // namespace decomp_orch_fn_106_D9E0
+using decomp_orch_fn_106_D9E0::fn_106_D9E0;
+// decomp-orchestrator: end fn_106_D9E0
 extern "C" void fn_106_DA2C(MarthFinalInterface* interface, int) {
     if (interface->visible == 1) {
         fn_106_DA78(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
