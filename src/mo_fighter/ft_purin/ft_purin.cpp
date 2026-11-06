@@ -3829,3 +3829,23 @@ extern "C" void fn_124_7BC0(void* self, void* arg, int value, soModuleAccesser* 
 }
 }  // namespace decomp_orch_fn_124_7BC0
 // decomp-orchestrator: end fn_124_7BC0
+
+// decomp-orchestrator: begin fn_124_52B8
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_52B8 {
+extern "C" void* fn_124_393C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_52B8(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_124_393C(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_52B8
+// decomp-orchestrator: end fn_124_52B8
