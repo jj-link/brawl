@@ -3849,3 +3849,52 @@ extern "C" void* fn_124_52B8(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_52B8
 // decomp-orchestrator: end fn_124_52B8
+
+// decomp-orchestrator: begin fn_124_22E0
+#pragma force_active on
+namespace decomp_orch_fn_124_22E0 {
+extern "C" {
+void* fn_124_20E0(void*, short);
+void __dt__33soAnimCmdAddressPackArraySeparateFv(void*, short);
+void* fn_124_21BC(void*, short);
+void* fn_27_C7770(void*, short);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_22E0(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* members = static_cast<unsigned char*>(object);
+        short memberDeleting = -1;
+        fn_124_20E0(members + 0xDC, memberDeleting);
+        __dt__33soAnimCmdAddressPackArraySeparateFv(members + 0xC0, memberDeleting);
+        fn_124_21BC(members + 0x14, memberDeleting);
+        if (object != 0)
+            fn_27_C7770(object, memberDeleting);
+        if (deleting > 0)
+            __dl__FPv(object);
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_22E0
+// decomp-orchestrator: end fn_124_22E0
+
+// decomp-orchestrator: begin fn_124_6638
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_6638 {
+namespace decomp_orch_fn_124_6638 {
+extern "C" {
+void fn_27_D2FF0(void*, int, int);
+void fn_27_61454(void*, void*, void*, void*, void*, void*);
+extern unsigned char lbl_27_bss_4694[0xC];
+extern unsigned char lbl_27_bss_46AC[0x4];
+}
+
+extern "C" void* fn_124_6638(void* self, void* arg1, void* arg2) {
+    fn_27_D2FF0(self, 1, 0);
+    fn_27_61454(static_cast<unsigned char*>(self) + 0xAC, arg1, self, lbl_27_bss_4694, lbl_27_bss_46AC, arg2);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_6638
+}  // namespace decomp_orch_fn_124_6638
+// decomp-orchestrator: end fn_124_6638
