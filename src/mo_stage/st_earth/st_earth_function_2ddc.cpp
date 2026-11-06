@@ -1,0 +1,84 @@
+#pragma force_active on
+typedef unsigned int u32;
+struct Node {
+    u32 pad;
+    u32 flags;
+    char padding[0x78];
+};
+class Object_vptr_0 {
+public:
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4(int, int);
+    Node* data;
+    u32 state;
+};
+struct Object {
+    char pad0[0x3c];
+    void* vtable;
+    char pad40[0x90];
+    Object_vptr_0 sub;
+    char paddc[0x7c];
+    u32 f158;
+    float f15c;
+    float f160, f164, f168, f16c, f170, f174;
+    float f178, f17c, f180, f184, f188, f18c, f190, f194, f198;
+    float f19c, f1a0, f1a4, f1a8, f1ac, f1b0;
+    float f1b4, f1b8, f1bc, f1c0, f1c4, f1c8, f1cc;
+    u32 f1d0, f1d4, f1d8, f1dc, f1e0;
+};
+extern "C" void fn_66_2BFC(Object*, const char*);
+extern "C" char lbl_66_data_868[];
+extern "C" const float lbl_66_rodata_78;
+extern "C" const float lbl_66_rodata_7C;
+extern "C" Object* fn_66_2DDC(Object* self, const char* name) {
+    fn_66_2BFC(self, name);
+    self->f1d0 = 0;
+    self->vtable = lbl_66_data_868;
+    self->f178 = lbl_66_rodata_78;
+    self->f17c = lbl_66_rodata_78;
+    self->f180 = lbl_66_rodata_78;
+    self->f1b4 = lbl_66_rodata_78;
+    self->f1d4 = 0;
+    self->f184 = lbl_66_rodata_78;
+    self->f188 = lbl_66_rodata_78;
+    self->f18c = lbl_66_rodata_78;
+    self->f1b8 = lbl_66_rodata_78;
+    self->f1d8 = 0;
+    self->f190 = lbl_66_rodata_78;
+    self->f194 = lbl_66_rodata_78;
+    self->f198 = lbl_66_rodata_78;
+    self->f1bc = lbl_66_rodata_78;
+    self->f1dc = 0;
+    self->f19c = lbl_66_rodata_78;
+    self->f1a0 = lbl_66_rodata_78;
+    self->f1a4 = lbl_66_rodata_78;
+    self->f1c0 = lbl_66_rodata_78;
+    self->f1e0 = 0;
+    self->f1a8 = lbl_66_rodata_78;
+    self->f1ac = lbl_66_rodata_78;
+    self->f1b0 = lbl_66_rodata_78;
+    self->f1c4 = lbl_66_rodata_78;
+    self->f160 = lbl_66_rodata_78;
+    self->f164 = lbl_66_rodata_78;
+    self->f168 = lbl_66_rodata_78;
+    self->f16c = lbl_66_rodata_78;
+    self->f170 = lbl_66_rodata_78;
+    self->f174 = lbl_66_rodata_78;
+    self->f1c8 = lbl_66_rodata_78;
+    self->f1cc = lbl_66_rodata_7C;
+    self->f15c = lbl_66_rodata_78;
+    self->f158 = 0;
+    Object_vptr_0* sub = &self->sub;
+    if (!sub) return self;
+    sub->state = 5;
+    sub->slot4(0, 15);
+    sub->data[0].flags |= 0x10;
+    sub->data[1].flags |= 0x10;
+    sub->data[2].flags |= 0x10;
+    sub->data[3].flags |= 0x10;
+    sub->data[4].flags |= 0x10;
+    return self;
+}

@@ -4227,3 +4227,21 @@ extern "C" s32 fn_124_7AF4(void* self, s32 arg1) {
 }  // namespace decomp_orch_fn_124_7AF4
 }  // namespace decomp_orch_fn_124_7AF4
 // decomp-orchestrator: end fn_124_7AF4
+
+// decomp-orchestrator: begin fn_124_2CF0
+#pragma force_active on
+namespace decomp_orch_fn_124_2CF0 {
+extern "C" void* fn_27_19816C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2CF0(void* object, short deleteFlag) {
+    if (object != 0) {
+        fn_27_19816C(object, -1);
+        if (deleteFlag > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_2CF0
+// decomp-orchestrator: end fn_124_2CF0

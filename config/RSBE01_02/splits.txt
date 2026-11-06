@@ -9875,6 +9875,9 @@ nw4r/fn_8019BF10.cpp:
 nw4r/fn_8019BF18.cpp:
 	.text       start:0x8019BF18 end:0x8019BF20
 
+nw4r/fn_8019BF20.cpp:
+	.text       start:0x8019BF20 end:0x8019BFF4
+
 nw4r/fn_8019C1A8.cpp:
 	.text       start:0x8019C1A8 end:0x8019C220
 
@@ -20604,6 +20607,9 @@ havok/fn_802EA888.cpp:
 havok/fn_802EB0E8.cpp:
 	.text       start:0x802EB0E8 end:0x802EB144
 
+havok/fn_802EB1A0.cpp:
+	.text       start:0x802EB1A0 end:0x802EB3A0
+
 havok/fn_802EB3A0.cpp:
 	.text       start:0x802EB3A0 end:0x802EB3FC
 
@@ -23864,6 +23870,9 @@ network/fn_80393A04.c:
 network/fn_80393BFC.c:
 	.text       start:0x80393BFC end:0x80393CF4
 
+network/fn_803944E4.c:
+	.text       start:0x803944E4 end:0x80394664
+
 network/fn_80394664.c:
 	.text       start:0x80394664 end:0x8039471C
 
@@ -25505,6 +25514,11 @@ network/fn_803CF870.c:
 	extab       start:0x80009344 end:0x8000934C
 	extabindex  start:0x8000C280 end:0x8000C28C
 	.text       start:0x803CF870 end:0x803CFA44
+
+network/fn_803CFBE4.c:
+	extab       start:0x80009354 end:0x8000935C
+	extabindex  start:0x8000C298 end:0x8000C2A4
+	.text       start:0x803CFBE4 end:0x803CFDB8
 
 network/fn_803CFDB8.c:
 	extab       start:0x8000935C end:0x80009364
