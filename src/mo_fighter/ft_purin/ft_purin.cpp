@@ -4343,3 +4343,65 @@ extern "C" void* fn_124_259C(void* object, short deleting) {
 // decomp-orchestrator: end fn_124_259C
 }  // namespace decomp_orch_fn_124_259C
 // decomp-orchestrator: end fn_124_259C
+
+// decomp-orchestrator: begin fn_124_2740
+#include <so/anim/so_anim_cmd_module_impl.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_2740 {
+extern "C" {
+void* fn_124_20E0(void*, short);
+void __dt__33soAnimCmdAddressPackArraySeparateFv(void*, short);
+void* fn_124_21BC(void*, short);
+void* fn_124_27D8(void*, short);
+void fn_27_1A60DC(void*, short);
+void __dl__FPv(void*);
+}
+extern "C" void* fn_124_2740(void* object, short deleting) {
+    if (object != 0) {
+        char* members = static_cast<char*>(object);
+        short memberDeleting = -1;
+        fn_124_20E0(members + 0x9E4, memberDeleting);
+        __dt__33soAnimCmdAddressPackArraySeparateFv(members + 0x9C8, memberDeleting);
+        fn_124_21BC(members + 0x91C, memberDeleting);
+        fn_124_27D8(members + 0x48C, memberDeleting);
+        if (object != 0)
+            fn_27_1A60DC(object, memberDeleting);
+        if (deleting > 0)
+            __dl__FPv(object);
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_2740
+// decomp-orchestrator: end fn_124_2740
+
+// decomp-orchestrator: begin fn_124_6164
+#pragma force_active on
+namespace decomp_orch_fn_124_6164 {
+extern "C" {
+extern char lbl_27_data_8E80[];
+}
+
+struct PurinObj {
+    void *vtbl;
+    int field04;
+    int field08;
+    int field0C;
+    int field10;
+    int field14;
+};
+
+extern "C" void fn_124_6164(PurinObj *self, int arg)
+{
+    int buf[2];
+    int *p = buf;
+    int z = 0;
+    self->vtbl = lbl_27_data_8E80;
+    self->field04 = arg;
+    self->field08 = z;
+    p[0] = z;
+    self->field0C = -1;
+    self->field10 = -1;
+    self->field14 = p[0];
+}
+}  // namespace decomp_orch_fn_124_6164
+// decomp-orchestrator: end fn_124_6164
