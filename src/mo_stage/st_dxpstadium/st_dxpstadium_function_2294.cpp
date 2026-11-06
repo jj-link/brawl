@@ -1,0 +1,71 @@
+#pragma force_active on
+typedef unsigned char Byte;
+typedef unsigned short u16;
+struct Ground {
+    char pad[0x3c];
+    virtual void u0(); virtual void u1(); virtual void u2(); virtual void u3(); virtual void u4();
+    virtual void u5(); virtual void u6(); virtual void u7(); virtual void u8(); virtual void u9();
+    virtual void u10(); virtual void u11(); virtual void u12(); virtual void u13(); virtual void u14();
+    virtual void u15(); virtual void u16(); virtual void u17(); virtual void u18(); virtual void u19();
+    virtual void u20(); virtual void u21(); virtual void u22(); virtual void u23(); virtual void u24();
+    virtual void u25(); virtual void u26(); virtual void u27(); virtual void u28(); virtual void u29();
+    virtual void u30(); virtual void u31(); virtual void u32(); virtual void u33(); virtual void u34();
+    virtual void u35(); virtual void u36(); virtual void u37(); virtual void u38(); virtual void u39();
+    virtual void u40(); virtual void u41(); virtual void u42(); virtual void u43(); virtual void u44();
+    virtual void u45(); virtual void u46(); virtual void u47(); virtual void u48(); virtual void u49();
+    virtual void u50(); virtual void u51(); virtual void u52();
+    virtual void setAnimation(int, int, const char*, int, int);
+    char pad40[0x168-0x40];
+    Byte unk168;
+};
+struct grTenganEvent { char pad[0x20]; };
+struct Stage { char pad0[0x615]; Byte unk615; char pad616[6]; grTenganEvent unk61C; };
+extern "C" {
+extern u16 lbl_83_rodata_70[];
+extern char lbl_83_data_54[];
+extern char lbl_83_data_4C[];
+Ground* getGround__5StageFi(Stage*, int);
+void setDisplay__15grStadiumVisionFb(Ground*, bool);
+void end__13grTenganEventFv(grTenganEvent*);
+void set__13grTenganEventFff(grTenganEvent*, float, float);
+void start__13grTenganEventFv(grTenganEvent*);
+void setPhase__13grTenganEventFl(grTenganEvent*, long);
+}
+extern "C" void fn_83_2294(Stage* arg0, Byte arg1) {
+    u16* p = lbl_83_rodata_70;
+    u16 tbl[20];
+    Ground* g;
+    tbl[0] = *p++;
+    tbl[1] = *p++;
+    tbl[2] = *p++;
+    tbl[3] = *p++;
+    tbl[4] = *p++;
+    tbl[5] = *p++;
+    tbl[6] = *p++;
+    tbl[7] = *p++;
+    tbl[8] = *p++;
+    tbl[9] = *p++;
+    tbl[10] = *p++;
+    tbl[11] = *p++;
+    tbl[12] = *p++;
+    tbl[13] = *p++;
+    tbl[14] = *p++;
+    tbl[15] = *p++;
+    tbl[16] = *p++;
+    tbl[17] = *p++;
+    tbl[18] = *p++;
+    tbl[19] = *p++;
+    setDisplay__15grStadiumVisionFb(getGround__5StageFi(arg0, 0), 0);
+    arg0->unk615 = 0;
+    g = getGround__5StageFi(arg0, 0);
+    g->setAnimation(0, 0, lbl_83_data_54, 0, 0);
+    g = getGround__5StageFi(arg0, 0);
+    g->unk168 = arg1;
+    setDisplay__15grStadiumVisionFb(getGround__5StageFi(arg0, 0), 1);
+    end__13grTenganEventFv(&arg0->unk61C);
+    set__13grTenganEventFff(&arg0->unk61C, (float)(unsigned int)tbl[arg1], (float)(unsigned int)tbl[arg1]);
+    start__13grTenganEventFv(&arg0->unk61C);
+    setPhase__13grTenganEventFl(&arg0->unk61C, 1);
+    g = getGround__5StageFi(arg0, 0);
+    g->setAnimation(1, 0, lbl_83_data_4C, 0, 0);
+}
