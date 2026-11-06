@@ -790,6 +790,9 @@ sora/misc/fn_800293DC.cpp:
 sora/misc/fn_80029424.cpp:
 	.text       start:0x80029424 end:0x80029438
 
+sora/misc/fn_80029578.cpp:
+	.text       start:0x80029578 end:0x80029750
+
 sora/misc/fn_8002A4F8.cpp:
 	.text       start:0x8002A4F8 end:0x8002A89C
 
@@ -1057,6 +1060,9 @@ sora/misc/fn_8003462C.cpp:
 
 sora/misc/fn_8003478C.cpp:
 	.text       start:0x8003478C end:0x80034924
+
+sora/misc/fn_80034924.cpp:
+	.text       start:0x80034924 end:0x80034998
 
 sora/misc/fn_800360EC.cpp:
 	.text       start:0x800360EC end:0x8003623C
@@ -11778,6 +11784,9 @@ nw4r/fn_801CC9D8.cpp:
 nw4r/fn_801CCA58.cpp:
 	.text       start:0x801CCA58 end:0x801CCA9C
 
+nw4r/fn_801CCB80.cpp:
+	.text       start:0x801CCB80 end:0x801CCBF8
+
 nw4r/fn_801CCBF8.cpp:
 	.text       start:0x801CCBF8 end:0x801CCC08
 
@@ -13325,6 +13334,9 @@ RVL_SDK/fn_801FB560.c:
 RVL_SDK/fn_801FB6A0.c:
 	.text       start:0x801FB6A0 end:0x801FB6C0
 
+RVL_SDK/fn_801FB704.c:
+	.text       start:0x801FB704 end:0x801FB76C
+
 RVL_SDK/fn_801FB76C.c:
 	.text       start:0x801FB76C end:0x801FB80C
 
@@ -14449,6 +14461,9 @@ RVL_SDK/fn_80224CA8.c:
 
 RVL_SDK/fn_80224CE0.c:
 	.text       start:0x80224CE0 end:0x80224D18
+
+RVL_SDK/fn_80224D18.c:
+	.text       start:0x80224D18 end:0x802250C8
 
 RVL_SDK/fn_80225454.c:
 	.text       start:0x80225454 end:0x8022550C
@@ -16512,6 +16527,10 @@ RVL_SDK/fn_8027B510.c:
 	.text       start:0x8027B510 end:0x8027B568
 	.ctors      start:0x804065D4 end:0x804065D8
 
+RVL_SDK/fn_8027B568.c:
+	.text       start:0x8027B568 end:0x8027B5D0
+	.ctors      start:0x804065D8 end:0x804065DC
+
 RVL_SDK/fn_8027B89C.c:
 	.text       start:0x8027B89C end:0x8027B8D8
 
@@ -18293,6 +18312,11 @@ havok/fn_802BD698.cpp:
 	extab       start:0x80007A4C end:0x80007A54
 	extabindex  start:0x8000A834 end:0x8000A840
 	.text       start:0x802BD698 end:0x802BD738
+
+havok/fn_802BD738.cpp:
+	extab       start:0x80007A54 end:0x80007A5C
+	extabindex  start:0x8000A840 end:0x8000A84C
+	.text       start:0x802BD738 end:0x802BD804
 
 havok/fn_802BD8D8.cpp:
 	extab       start:0x80007A80 end:0x80007A88
