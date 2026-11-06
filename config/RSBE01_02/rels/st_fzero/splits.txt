@@ -822,6 +822,9 @@ mo_stage/st_fzero/st_fzero_function_adc4.cpp:
 mo_stage/st_fzero/st_fzero_function_afd4.cpp:
 	.text       start:0x0000AFD4 end:0x0000B0AC
 
+mo_stage/st_fzero/st_fzero_function_b0ac.cpp:
+	.text       start:0x0000B0AC end:0x0000B248
+
 mo_stage/st_fzero/st_fzero_function_b248.cpp:
 	.text       start:0x0000B248 end:0x0000B290
 
@@ -845,6 +848,9 @@ mo_stage/st_fzero/st_fzero_function_bf98.cpp:
 
 mo_stage/st_fzero/st_fzero_function_bfe0.cpp:
 	.text       start:0x0000BFE0 end:0x0000BFE8
+
+mo_stage/st_fzero/st_fzero_function_bfe8.cpp:
+	.text       start:0x0000BFE8 end:0x0000C280
 
 mo_stage/st_fzero/st_fzero_function_c280.cpp:
 	.text       start:0x0000C280 end:0x0000C290
