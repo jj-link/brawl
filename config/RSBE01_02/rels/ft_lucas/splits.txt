@@ -849,6 +849,10 @@ mo_fighter/ft_lucas/ft_lucas_parameter_int.cpp:
 mo_fighter/ft_lucas/ft_lucas_nested_destructor.cpp:
 	.text       start:0x0000D288 end:0x0000D2E8
 
+mo_fighter/ft_lucas/ft_lucas_function_d2e8.cpp:
+	.text       start:0x0000D2E8 end:0x0000DADC
+	.data       start:0x00003D84 end:0x00003DC8
+
 mo_fighter/ft_lucas/ft_lucas_function_ddf8.cpp:
 	.text       start:0x0000DDF8 end:0x0000E1B4
 	.data       start:0x00003E0C end:0x00003E50

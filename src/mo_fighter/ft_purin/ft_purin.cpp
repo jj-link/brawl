@@ -4425,3 +4425,17 @@ extern "C" void* fn_124_4B80(void* ptr, short flag) {
 }  // namespace decomp_orch_fn_124_4B80
 }  // namespace decomp_orch_fn_124_4B80
 // decomp-orchestrator: end fn_124_4B80
+
+// decomp-orchestrator: begin fn_124_845C
+#include <so/work/so_general_work.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_845C {
+extern "C" u32 fn_124_845C(soGeneralWork* work, u32 flag, u32 index) {
+    u32 result = work->isFlag(flag, index);
+    if (result == 1) {
+        work->offFlag(flag, index);
+    }
+    return result;
+}
+}  // namespace decomp_orch_fn_124_845C
+// decomp-orchestrator: end fn_124_845C
