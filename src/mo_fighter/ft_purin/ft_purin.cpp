@@ -4156,3 +4156,74 @@ extern "C" void* fn_124_620C(void* self, void* a, void* b) {
 }
 }  // namespace decomp_orch_fn_124_620C
 // decomp-orchestrator: end fn_124_620C
+
+// decomp-orchestrator: begin fn_124_7AF4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_7AF4 {
+namespace decomp_orch_fn_124_7AF4 {
+extern "C" {
+u32 fn_27_3C6F2C(void* accesser);
+s32 fn_27_135468(void* self, s32 arg1);
+}
+
+class PurinModule {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual s32 v16();
+    virtual s32 v17(u32 flags);
+    virtual void v18();
+    virtual void v19(u32 flags);
+};
+
+struct PurinModules {
+    char pad0[0x64];
+    PurinModule* m64;
+    char pad1[0x70 - 0x68];
+    PurinModule* m70;
+};
+
+struct PurinAccesser {
+    char pad0[0xD8];
+    PurinModules* unkD8;
+};
+
+struct PurinFighter {
+    char pad0[0x60];
+    PurinAccesser* accesser;
+};
+
+extern "C" s32 fn_124_7AF4(void* self, s32 arg1) {
+    PurinAccesser* acc = static_cast<PurinFighter*>(self)->accesser;
+    s32 status = acc->unkD8->m70->v16();
+    switch (status) {
+    case 0x119:
+    case 0x11A:
+        if (acc->unkD8->m64->v17(0x22000012) != 0) {
+            acc->unkD8->m64->v19(0x22000012);
+            if (fn_27_3C6F2C(acc) == 1) {
+                return 1;
+            }
+        }
+        break;
+    }
+    return fn_27_135468(self, arg1);
+}
+}  // namespace decomp_orch_fn_124_7AF4
+}  // namespace decomp_orch_fn_124_7AF4
+// decomp-orchestrator: end fn_124_7AF4
