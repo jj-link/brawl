@@ -3898,3 +3898,55 @@ extern "C" void* fn_124_6638(void* self, void* arg1, void* arg2) {
 }  // namespace decomp_orch_fn_124_6638
 }  // namespace decomp_orch_fn_124_6638
 // decomp-orchestrator: end fn_124_6638
+
+// decomp-orchestrator: begin fn_124_20E0
+#pragma force_active on
+namespace decomp_orch_fn_124_20E0 {
+extern "C" void* __dt__16acCmdInterpreterFv(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_20E0(void* object, short flag)
+{
+    if (object != 0) {
+        __dt__16acCmdInterpreterFv(object, 0);
+        if (flag > 0) {
+            __dl__FPv(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_20E0
+// decomp-orchestrator: end fn_124_20E0
+
+// decomp-orchestrator: begin fn_124_2284
+#pragma force_active on
+namespace decomp_orch_fn_124_2284 {
+extern "C" void fn_27_1A09B4(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2284(void* ptr, short flag) {
+    if (ptr) {
+        fn_27_1A09B4(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2284
+// decomp-orchestrator: end fn_124_2284
+
+// decomp-orchestrator: begin fn_124_8414
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_8414 {
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_8414(void* p, short size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_8414
+// decomp-orchestrator: end fn_124_8414
