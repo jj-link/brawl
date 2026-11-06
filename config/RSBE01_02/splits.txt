@@ -12013,6 +12013,9 @@ nw4r/fn_801CC550.cpp:
 nw4r/fn_801CC75C.cpp:
 	.text       start:0x801CC75C end:0x801CC7B0
 
+nw4r/fn_801CC7B0.cpp:
+	.text       start:0x801CC7B0 end:0x801CC818
+
 nw4r/fn_801CC818.cpp:
 	.text       start:0x801CC818 end:0x801CC874
 
@@ -16277,6 +16280,10 @@ RVL_SDK/fn_802535CC.c:
 RVL_SDK/fn_80253924.c:
 	.text       start:0x80253924 end:0x80253A74
 	.data       start:0x80484900 end:0x80484940
+
+RVL_SDK/fn_80253C60.c:
+	.text       start:0x80253C60 end:0x80253D7C
+	.data       start:0x804849CC end:0x80484A08
 
 RVL_SDK/fn_80253D7C.c:
 	.text       start:0x80253D7C end:0x80253E64
@@ -22862,6 +22869,9 @@ network/fn_8035661C.c:
 network/fn_803570D4.c:
 	.text       start:0x803570D4 end:0x80357170
 
+network/fn_80357378.c:
+	.text       start:0x80357378 end:0x80357438
+
 network/fn_80357D64.c:
 	.text       start:0x80357D64 end:0x80357E38
 
@@ -22903,6 +22913,9 @@ network/fn_80358F08.c:
 
 network/fn_8035905C.c:
 	.text       start:0x8035905C end:0x8035912C
+
+network/fn_8035912C.c:
+	.text       start:0x8035912C end:0x803596B8
 
 network/fn_80359A94.c:
 	.text       start:0x80359A94 end:0x80359B2C
