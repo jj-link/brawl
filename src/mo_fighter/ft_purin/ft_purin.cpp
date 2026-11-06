@@ -4245,3 +4245,15 @@ extern "C" void* fn_124_2CF0(void* object, short deleteFlag) {
 }
 }  // namespace decomp_orch_fn_124_2CF0
 // decomp-orchestrator: end fn_124_2CF0
+
+// decomp-orchestrator: begin fn_124_8638
+#include <types.h>
+#include <StaticAssert.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_8638 {
+extern "C" void fn_124_8638(char* self, s32 value, u32 index) {
+    int* arr = *reinterpret_cast<int**>(self + 0xc);
+    arr[index] -= value;
+}
+}  // namespace decomp_orch_fn_124_8638
+// decomp-orchestrator: end fn_124_8638
