@@ -1,0 +1,156 @@
+#pragma force_active on
+typedef unsigned char Byte;
+typedef unsigned long Word;
+
+struct ToonLinkObjHead {
+    void* secondary;
+    void* pad;
+};
+
+class ToonLinkObjWork : public ToonLinkObjHead {
+public:
+    virtual void v0() = 0;
+    virtual void v1() = 0;
+    virtual void v2() = 0;
+    virtual void v3() = 0;
+    virtual void v4() = 0;
+    virtual void v5() = 0;
+    virtual void v6() = 0;
+    virtual void v7() = 0;
+    virtual void v8() = 0;
+    virtual void v9() = 0;
+    virtual void v10() = 0;
+    virtual void v11() = 0;
+    virtual void v12() = 0;
+    virtual void v13() = 0;
+    virtual void v14() = 0;
+    virtual void v15() = 0;
+    virtual void v16() = 0;
+    virtual void v17() = 0;
+    virtual void v18() = 0;
+    virtual void v19() = 0;
+    virtual void v20() = 0;
+    virtual void v21() = 0;
+    virtual void v22() = 0;
+    virtual void v23() = 0;
+    virtual void v24() = 0;
+    virtual void v25() = 0;
+};
+
+class ModuleArray {
+public:
+    virtual void slot08() = 0;
+    virtual void slot0C() = 0;
+    virtual void slot10() = 0;
+    virtual void slot14() = 0;
+    virtual void slot18() = 0;
+    virtual void slot1C() = 0;
+    virtual void slot20() = 0;
+    virtual void slot24() = 0;
+    virtual void slot28() = 0;
+    virtual void slot2C() = 0;
+    virtual void append(void*) = 0;
+};
+
+class ObjectVirtual {
+public:
+    virtual void slot08() = 0;
+    virtual void slot0C() = 0;
+    virtual void slot10() = 0;
+    virtual void slot14() = 0;
+    virtual void slot18() = 0;
+    virtual void slot1C() = 0;
+    virtual void slot20() = 0;
+    virtual void slot24() = 0;
+    virtual void slot28() = 0;
+    virtual void slot2C() = 0;
+    virtual void slot30() = 0;
+    virtual void slot34() = 0;
+    virtual void slot38() = 0;
+    virtual void slot3C() = 0;
+};
+
+extern "C" {
+void fn_27_C74BC(void*, void*, int);
+void fn_121_47AC(void*, void*, int, void*, int, void*, int);
+void fn_27_19E930(void*, int);
+void fn_27_1A154C(void*, int);
+void fn_27_1A1E04(void*, int);
+void fn_27_1A1B1C(void*, int);
+void fn_27_D2898(void*, int);
+void fn_27_1A1F78(void*, int);
+void fn_27_1A1834(void*, int);
+void fn_27_1A1C90(void*, int);
+void fn_121_2C68(void*, void*);
+void fn_27_AB15C(void*, void*);
+void fn_27_AB18C(void*, short);
+void fn_27_1A350C(void*, int);
+void fn_27_1A29F0(void*, int, void*, int);
+void fn_27_73930(void*, void*, void*, void*, void*, void*, void*, void*, int, int);
+extern Byte lbl_121_data_0[];
+}
+
+extern "C" Byte* fn_121_4340(Byte* object, void* owner, void* resource, void* parameters) {
+    fn_27_C74BC(object, resource, 0x112);
+    Byte* work = object + 0x10;
+    fn_121_47AC(work + 0x88, work, 0x12, work + 0x48, 0xE, work + 0x80, 2);
+    reinterpret_cast<ToonLinkObjWork*>(work + 0x88)->v25();
+
+    Byte* array = object + 0xBC;
+    fn_27_19E930(array, 0);
+    Byte* entries = array + 0x19C;
+    fn_27_1A154C(entries, 0);
+    fn_27_1A1E04(entries + 0x1C, 0);
+    fn_27_1A1B1C(entries + 0x88, 0);
+    fn_27_D2898(entries + 0xB4, 0);
+    fn_27_1A1B1C(entries + 0xF0, 0);
+    fn_27_1A154C(entries + 0x11C, 0);
+    fn_27_1A154C(entries + 0x138, 0);
+    fn_27_D2898(entries + 0x154, 0);
+    fn_27_1A1E04(entries + 0x190, 0);
+    fn_27_1A154C(entries + 0x1FC, 0);
+    fn_27_1A1B1C(entries + 0x218, 0);
+    fn_27_1A1F78(entries + 0x244, 0);
+    fn_27_1A1B1C(entries + 0x2D0, 0);
+    fn_27_1A154C(entries + 0x2FC, 0);
+    fn_27_D2898(entries + 0x318, 0);
+    fn_27_1A1834(entries + 0x354, 0);
+    fn_27_1A154C(entries + 0x470, 0);
+    fn_27_1A1B1C(entries + 0x48C, 0);
+    fn_27_1A1E04(entries + 0x4B8, 0);
+    fn_27_1A1C90(entries + 0x524, 0);
+    fn_121_2C68(array + 0x85C, array);
+    for (int i = 0; i < 20; ++i) {
+        Word entry[5];
+        fn_27_AB15C(entry,
+            i == 0 ? array + 0x6C0 :
+            i == 1 ? array + 0x654 :
+            i == 2 ? array + 0x628 :
+            i == 3 ? array + 0x60C :
+            i == 4 ? array + 0x4F0 :
+            i == 5 ? array + 0x4B4 :
+            i == 6 ? array + 0x498 :
+            i == 7 ? array + 0x46C :
+            i == 8 ? array + 0x3E0 :
+            i == 9 ? array + 0x3B4 :
+            i == 10 ? array + 0x398 :
+            i == 11 ? array + 0x32C :
+            i == 12 ? array + 0x2F0 :
+            i == 13 ? array + 0x2D4 :
+            i == 14 ? array + 0x2B8 :
+            i == 15 ? array + 0x28C :
+            i == 16 ? array + 0x250 :
+            i == 17 ? array + 0x224 :
+            i == 18 ? array + 0x1B8 :
+            i == 19 ? array + 0x19C : 0);
+        reinterpret_cast<ModuleArray*>(array)->append(entry);
+        fn_27_AB18C(entry, -1);
+    }
+    fn_27_1A350C(object + 0x930, 0);
+    *reinterpret_cast<Byte**>(object + 0xDAC) = object + 0xDB0;
+    fn_27_1A29F0(object + 0xDB0, 1, lbl_121_data_0, 0);
+    reinterpret_cast<ObjectVirtual*>(object + 0xDB0)->slot3C();
+    fn_27_73930(object + 0xDC0, owner, object, object + 0x930,
+        object + 0x98, object + 0x918, object + 0xDAC, parameters, 0x11C, 1);
+    return object;
+}

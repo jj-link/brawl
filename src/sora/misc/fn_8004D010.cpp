@@ -1,0 +1,60 @@
+#include <gm/gm_global.h>
+#include <string.h>
+#pragma force_active on
+
+struct KindField { unsigned char : 3; unsigned char value : 3; };
+
+extern "C" void fn_8004D010(void) {
+    unsigned char* d = (unsigned char*)g_GameGlobal->m_selCharData;
+    memset(d, 0, 0x340);
+    d[0x0A] = 0x28;
+    *(unsigned short*)(d + 0x0C) = 0;
+    d[0xB9] = 3;
+    d[0xB8] = 0x3E;
+    d[0xD0] = 0x78;
+    *(unsigned short*)(d + 0xDC) = 0x96;
+    d[0xD7] = 2;
+    d[0x0E] = 0x28;
+    *(unsigned short*)(d + 0x10) = 0;
+    d[0x115] = 3;
+    d[0x114] = 0x3E;
+    d[0x12C] = 0x78;
+    *(unsigned short*)(d + 0x138) = 0x96;
+    d[0x133] = 2;
+    d[0x12] = 0x28;
+    *(unsigned short*)(d + 0x14) = 0;
+    d[0x171] = 3;
+    d[0x170] = 0x3E;
+    d[0x188] = 0x78;
+    *(unsigned short*)(d + 0x194) = 0x96;
+    d[0x18F] = 2;
+    d[0x16] = 0x28;
+    *(unsigned short*)(d + 0x18) = 0;
+    d[0x1CD] = 3;
+    d[0x1CC] = 0x3E;
+    d[0x1E4] = 0x78;
+    *(unsigned short*)(d + 0x1F0) = 0x96;
+    d[0x1EB] = 2;
+    d[0x1A] = 0x28;
+    *(unsigned short*)(d + 0x1C) = 0;
+    d[0x229] = 3;
+    d[0x228] = 0x3E;
+    d[0x240] = 0x78;
+    *(unsigned short*)(d + 0x24C) = 0x96;
+    d[0x247] = 2;
+    d[0x1E] = 0x28;
+    *(unsigned short*)(d + 0x20) = 0;
+    d[0x285] = 3;
+    d[0x284] = 0x3E;
+    d[0x29C] = 0x78;
+    *(unsigned short*)(d + 0x2A8) = 0x96;
+    d[0x2A3] = 2;
+    d[0x22] = 0x28;
+    *(unsigned short*)(d + 0x24) = 0;
+    d[0x2E1] = 3;
+    d[0x2E0] = 0x3E;
+    d[0x2F8] = 0x78;
+    *(unsigned short*)(d + 0x304) = 0x96;
+    d[0x2FF] = 2;
+    ((KindField*)(d + 0x2E))->value = 3;
+}

@@ -4018,3 +4018,25 @@ extern "C" void* fn_124_2E04(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_2E04
 // decomp-orchestrator: end fn_124_2E04
+
+// decomp-orchestrator: begin fn_124_8018
+#pragma force_active on
+namespace decomp_orch_fn_124_8018 {
+extern "C" {
+void* fn_27_C74E8(void*, short);
+void* fn_124_18AC(void* object, short deleting);
+void __dl__FPv(void*);
+}
+
+extern "C" void* fn_124_8018(void* self, short deleting) {
+    if (self != 0) {
+        fn_27_C74E8(reinterpret_cast<char*>(self) + 0x9A48, static_cast<short>(-1));
+        fn_124_18AC(self, static_cast<short>(0));
+        if (deleting > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_8018
+// decomp-orchestrator: end fn_124_8018

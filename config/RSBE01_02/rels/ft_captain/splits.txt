@@ -1672,6 +1672,10 @@ mo_fighter/ft_captain/ft_captain_function_f55c.cpp:
 mo_fighter/ft_captain/ft_captain_function_f59c.cpp:
 	.text       start:0x0000F59C end:0x0000F5DC
 
+mo_fighter/ft_captain/ft_captain_function_f5dc.cpp:
+	.text       start:0x0000F5DC end:0x0000F6CC
+	.ctors      start:0x00000018 end:0x0000001C
+
 mo_fighter/ft_captain/ft_captain_function_f6cc.cpp:
 	.text       start:0x0000F6CC end:0x0000F6DC
 
