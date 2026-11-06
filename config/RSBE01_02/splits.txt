@@ -4942,6 +4942,9 @@ sora/misc/fn_800D9CB0.cpp:
 sora/misc/fn_800D9D4C.cpp:
 	.text       start:0x800D9D4C end:0x800D9F58
 
+sora/misc/fn_800D9F58.cpp:
+	.text       start:0x800D9F58 end:0x800DA0B4
+
 sora/misc/fn_800DA0B4.cpp:
 	.text       start:0x800DA0B4 end:0x800DA0BC
 
@@ -6042,6 +6045,9 @@ sora/misc/fn_801063BC.cpp:
 
 sora/misc/fn_801063C4.cpp:
 	.text       start:0x801063C4 end:0x801063CC
+
+sora/misc/fn_801063CC.cpp:
+	.text       start:0x801063CC end:0x80106548
 
 sora/misc/fn_80106548.cpp:
 	.text       start:0x80106548 end:0x801065E0
@@ -14107,6 +14113,9 @@ RVL_SDK/fn_8021111C.c:
 RVL_SDK/fn_802111B0.c:
 	.text       start:0x802111B0 end:0x802112C8
 
+RVL_SDK/fn_802112C8.c:
+	.text       start:0x802112C8 end:0x802113E0
+
 RVL_SDK/fn_802113E0.c:
 	.text       start:0x802113E0 end:0x80211484
 
@@ -14316,6 +14325,9 @@ RVL_SDK/fn_80217EA4.c:
 
 RVL_SDK/fn_8021885C.c:
 	.text       start:0x8021885C end:0x8021887C
+
+RVL_SDK/fn_8021887C.c:
+	.text       start:0x8021887C end:0x80218AF0
 
 RVL_SDK/fn_80218D00.c:
 	.text       start:0x80218D00 end:0x80218D54
@@ -15731,6 +15743,9 @@ RVL_SDK/fn_8024E864.c:
 
 RVL_SDK/fn_8024E928.c:
 	.text       start:0x8024E928 end:0x8024EA24
+
+RVL_SDK/fn_8024EA24.c:
+	.text       start:0x8024EA24 end:0x8024EAE8
 
 RVL_SDK/fn_8024EC80.c:
 	.text       start:0x8024EC80 end:0x8024EF78
@@ -17910,6 +17925,11 @@ havok/fn_802B0FE0.cpp:
 	extabindex  start:0x8000A348 end:0x8000A354
 	.text       start:0x802B0FE0 end:0x802B1028
 
+havok/fn_802B1070.cpp:
+	extab       start:0x800072B0 end:0x800072D8
+	extabindex  start:0x8000A360 end:0x8000A36C
+	.text       start:0x802B1070 end:0x802B11D0
+
 havok/fn_802B11D0.cpp:
 	extab       start:0x800072D8 end:0x800072F0
 	extabindex  start:0x8000A36C end:0x8000A378
@@ -19813,6 +19833,9 @@ havok/fn_802DD520.cpp:
 havok/fn_802DD5D8.cpp:
 	.text       start:0x802DD5D8 end:0x802DD63C
 	.ctors      start:0x804066CC end:0x804066D0
+
+havok/fn_802DD888.cpp:
+	.text       start:0x802DD888 end:0x802DDA34
 
 havok/fn_802DDA34.cpp:
 	.text       start:0x802DDA34 end:0x802DDAD4
@@ -22438,6 +22461,9 @@ network/fn_8035C510.c:
 
 network/fn_8035C544.c:
 	.text       start:0x8035C544 end:0x8035C5C4
+
+network/fn_8035C5C4.c:
+	.text       start:0x8035C5C4 end:0x8035C620
 
 network/fn_8035C620.c:
 	.text       start:0x8035C620 end:0x8035C658
