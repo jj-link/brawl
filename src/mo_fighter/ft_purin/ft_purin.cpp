@@ -4257,3 +4257,17 @@ extern "C" void fn_124_8638(char* self, s32 value, u32 index) {
 }
 }  // namespace decomp_orch_fn_124_8638
 // decomp-orchestrator: end fn_124_8638
+
+// decomp-orchestrator: begin fn_124_82B4
+#include <types.h>
+#pragma force_active on
+namespace decomp_orch_fn_124_82B4 {
+extern "C" void fn_27_57F78(void* member);
+
+extern "C" void fn_124_82B4(char* object) {
+    for (int i = 0; i < 2; ++i) {
+        fn_27_57F78(object + (i << 3) + 4);
+    }
+}
+}  // namespace decomp_orch_fn_124_82B4
+// decomp-orchestrator: end fn_124_82B4
