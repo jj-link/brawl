@@ -1061,6 +1061,9 @@ sora/misc/fn_80033B44.cpp:
 sora/misc/fn_80034278.cpp:
 	.text       start:0x80034278 end:0x80034280
 
+sora/misc/fn_800343CC.cpp:
+	.text       start:0x800343CC end:0x800344A0
+
 sora/misc/fn_800344A0.cpp:
 	.text       start:0x800344A0 end:0x800344DC
 
@@ -13544,6 +13547,9 @@ RVL_SDK/fn_801FC82C.c:
 RVL_SDK/fn_801FC8E8.c:
 	.text       start:0x801FC8E8 end:0x801FC938
 
+RVL_SDK/fn_801FC938.c:
+	.text       start:0x801FC938 end:0x801FCB9C
+
 RVL_SDK/fn_801FDDF0.c:
 	.text       start:0x801FDDF0 end:0x801FDDFC
 
@@ -19554,6 +19560,12 @@ havok/fn_802D4AA4.cpp:
 
 havok/fn_802D4AAC.cpp:
 	.text       start:0x802D4AAC end:0x802D4AB4
+
+havok/fn_802D4C7C.cpp:
+	extab       start:0x80008554 end:0x8000855C
+	extabindex  start:0x8000B350 end:0x8000B35C
+	.text       start:0x802D4C7C end:0x802D4CE4
+	.ctors      start:0x80406684 end:0x80406688
 
 havok/fn_802D4CE4.cpp:
 	.text       start:0x802D4CE4 end:0x802D4CFC
@@ -27383,6 +27395,9 @@ Runtime.PPCEABI.H/fn_804059B4.c:
 
 Runtime.PPCEABI.H/fn_804059F8.c:
 	.text       start:0x804059F8 end:0x80405A80
+
+Runtime.PPCEABI.H/fn_80405A80.c:
+	.text       start:0x80405A80 end:0x80405A84
 
 Runtime.PPCEABI.H/fn_80405ADC.c:
 	.text       start:0x80405ADC end:0x80405B0C
