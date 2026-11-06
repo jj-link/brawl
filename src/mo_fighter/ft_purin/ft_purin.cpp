@@ -4139,3 +4139,20 @@ extern "C" void* fn_124_7300(Byte* fp, void* paramBlock, Word arg2, Word arg3,
 }
 }  // namespace decomp_orch_fn_124_7300
 // decomp-orchestrator: end fn_124_7300
+
+// decomp-orchestrator: begin fn_124_620C
+#pragma force_active on
+namespace decomp_orch_fn_124_620C {
+extern "C" {
+void fn_27_CC060(void*, int, int);
+void fn_27_2556C(void*, void*, void*, void*, void*);
+extern unsigned char lbl_27_bss_298[];
+}
+
+extern "C" void* fn_124_620C(void* self, void* a, void* b) {
+    fn_27_CC060(self, 1, 0);
+    fn_27_2556C((char*)self + 0x50, a, self, b, lbl_27_bss_298);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_620C
+// decomp-orchestrator: end fn_124_620C
