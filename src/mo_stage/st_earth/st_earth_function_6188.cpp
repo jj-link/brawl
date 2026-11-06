@@ -1,0 +1,156 @@
+#include <types.h>
+#pragma force_active on
+struct Data { char pad[0x3c]; u8 count; };
+struct Entry { char pad[9]; u8 kind; char pad2[0xa]; char position[0x10]; float value; char pad3[0x30]; };
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void processAnim();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void fn_66_5A34();
+    virtual void fn_66_5A9C();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void fn_66_6498();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_66_2D00();
+    virtual void startup();
+    virtual void setNode();
+    virtual void fn_66_6BC();
+    virtual Data* fn_66_2CF8();
+    virtual void fn_66_2CF4();
+    virtual void fn_66_2BF4();
+    virtual void fn_66_2CEC();
+    virtual void fn_66_2CE0();
+    virtual void fn_66_2CD0();
+    virtual void fn_66_BBC();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility();
+    virtual void setNodeVisibility_2();
+    virtual void setNodeVisibilityAll();
+    virtual void isNodeVisible();
+    virtual void setNodeCollision();
+    virtual void setNodeCollision_2();
+    virtual void getNodeScale();
+    virtual void getNodeScale_2();
+    virtual void setValid();
+    virtual void setValidAttachedEffect();
+    virtual void fn_66_2CCC();
+    virtual void fn_66_2CC8();
+    virtual void fn_66_2CC0();
+    virtual void setMotionRatio();
+    virtual void setMotionFrame();
+    virtual void getMotionFrame();
+    virtual void setMotionLoop();
+    virtual void setMatAlphaMul();
+    virtual void setMatAlpha();
+    virtual void updateG3dProcCalcWorld();
+    virtual void preExit();
+    virtual void fn_66_2CB8();
+    virtual void invalidatedByCameraClipping();
+    virtual void setTransparencyFlag();
+    virtual void updateCallback();
+    virtual void fixedPosition();
+    virtual void setTgtNode();
+    virtual void getTgtNode();
+    virtual void fn_66_2D2C();
+    virtual void fn_66_2D24();
+    virtual void changeNodeAnim();
+    virtual void createFadeVisibleProduction();
+    virtual void createSoundEffectVisibleProductionForExcel();
+    virtual void createEffectVisibleProductionForExcel();
+    virtual void setSimpleEffectVisibleProduction();
+    virtual void dbDispInvalidatedByCameraClippingSphere();
+    virtual void setTransparency();
+    virtual void fn_66_2D1C();
+    virtual void onDamage();
+    virtual void onInflict();
+    virtual void onInflictEach();
+    virtual void onGimmickEvent();
+    virtual void enableYakumono();
+    virtual void disableYakumono();
+    virtual void enableHit();
+    virtual void disableHit();
+    virtual void disableAttack();
+    virtual void enableArea();
+    virtual void disableArea();
+    virtual void setSleepArea();
+    virtual void setTeamYakumonoOwnerId();
+    virtual void setTeamYakumono();
+    virtual void getTeamYakumono();
+    virtual void setOffsetAttack();
+    virtual void setAreaGimmick__10grYakumonoFP10soAreaDataP19soSet();
+    virtual void setAttackGimmick();
+    virtual void setSoCollisionAttackData();
+    virtual void setAttackGimmickDetails();
+    virtual void isEnableAttackPersonAttacked();
+    virtual void isEnableAttackAttribute();
+    virtual void fn_66_5B40();
+    virtual void fn_66_5F08();
+    virtual void fn_66_6188();
+    virtual void fn_66_62B4();
+    virtual void fn_66_AA8();
+    virtual void fn_66_6828();
+    virtual void fn_66_6368();
+    virtual void fn_66_656C(void*, float);
+    char pad2[0x118];
+    u8 kind;
+    char pad3[0x3b];
+    Entry* entries;
+};
+extern "C" void fn_66_6188(Ground* self) {
+    Data* data = self->fn_66_2CF8();
+    if (data != 0) {
+        int off;
+        u32 i;
+        u8 count = data->count;
+        i = 0;
+        off = 0;
+        while (i != count) {
+            if (self->kind == 0 && ((Entry*)((char*)self->entries + off))->kind == 0) {
+                Entry* e = (Entry*)((char*)self->entries + off);
+                self->fn_66_656C(e->position, e->value);
+            } else if (self->kind == 1 && ((Entry*)((char*)self->entries + off))->kind == 1) {
+                Entry* e = (Entry*)((char*)self->entries + off);
+                self->fn_66_656C(e->position, e->value);
+            } else if (self->kind == 2 && ((Entry*)((char*)self->entries + off))->kind == 2) {
+                Entry* e = (Entry*)((char*)self->entries + off);
+                self->fn_66_656C(e->position, e->value);
+            }
+            off += 0x58;
+            ++i;
+        }
+    }
+}
