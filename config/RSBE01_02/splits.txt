@@ -7507,6 +7507,9 @@ sora/misc/fn_801542B0.cpp:
 sora/misc/fn_801542BC.cpp:
 	.text       start:0x801542BC end:0x801542C4
 
+sora/misc/fn_801542C4.cpp:
+	.text       start:0x801542C4 end:0x80154420
+
 sora/misc/fn_80154420.cpp:
 	.text       start:0x80154420 end:0x801544CC
 
@@ -18784,6 +18787,11 @@ havok/fn_802CD054.cpp:
 havok/fn_802CD0B0.cpp:
 	.text       start:0x802CD0B0 end:0x802CD174
 
+havok/fn_802CD174.cpp:
+	extab       start:0x80008290 end:0x80008298
+	extabindex  start:0x8000AF60 end:0x8000AF6C
+	.text       start:0x802CD174 end:0x802CD1D0
+
 havok/fn_802CD248.cpp:
 	.text       start:0x802CD248 end:0x802CD254
 
@@ -19427,6 +19435,9 @@ havok/fn_802D7FE0.cpp:
 
 havok/fn_802D8000.cpp:
 	.text       start:0x802D8000 end:0x802D8008
+
+havok/fn_802D8008.cpp:
+	.text       start:0x802D8008 end:0x802D8064
 
 havok/fn_802D8064.cpp:
 	.text       start:0x802D8064 end:0x802D806C
