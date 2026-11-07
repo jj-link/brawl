@@ -4452,6 +4452,9 @@ sora/misc/fn_800B6C30.cpp:
 sora/misc/fn_800B6C38.cpp:
 	.text       start:0x800B6C38 end:0x800B6CA4
 
+sora/misc/fn_800B6CA4.cpp:
+	.text       start:0x800B6CA4 end:0x800B6D10
+
 sora/misc/fn_800B6D10.cpp:
 	.text       start:0x800B6D10 end:0x800B6D68
 
@@ -7925,6 +7928,9 @@ sora/misc/fn_80154C60.cpp:
 
 sora/misc/fn_80154C8C.cpp:
 	.text       start:0x80154C8C end:0x80154CD8
+
+sora/misc/fn_80154CD8.cpp:
+	.text       start:0x80154CD8 end:0x80154DF8
 
 sora/misc/fn_80154DF8.cpp:
 	.text       start:0x80154DF8 end:0x80154DFC
@@ -13285,6 +13291,9 @@ RVL_SDK/fn_801E1F48.c:
 RVL_SDK/fn_801E21E8.c:
 	.text       start:0x801E21E8 end:0x801E22F8
 
+RVL_SDK/fn_801E2368.c:
+	.text       start:0x801E2368 end:0x801E23E0
+
 RVL_SDK/fn_801E23E0.c:
 	.text       start:0x801E23E0 end:0x801E2420
 
@@ -14441,6 +14450,9 @@ RVL_SDK/fn_80204EB4.c:
 
 RVL_SDK/fn_80204ECC.c:
 	.text       start:0x80204ECC end:0x80204F3C
+
+RVL_SDK/fn_80204F3C.c:
+	.text       start:0x80204F3C end:0x80204FA8
 
 RVL_SDK/fn_80204FA8.c:
 	.text       start:0x80204FA8 end:0x80204FC8
@@ -18714,6 +18726,11 @@ havok/fn_802A4DA4.cpp:
 	extabindex  start:0x80009E44 end:0x80009E50
 	.text       start:0x802A4DA4 end:0x802A4E34
 
+havok/fn_802A5860.cpp:
+	extab       start:0x80006B20 end:0x80006B28
+	extabindex  start:0x80009E68 end:0x80009E74
+	.text       start:0x802A5860 end:0x802A5920
+
 havok/fn_802A86E4.cpp:
 	extab       start:0x80006C0C end:0x80006C14
 	extabindex  start:0x80009EF8 end:0x80009F04
@@ -19793,6 +19810,11 @@ havok/fn_802C64F8.cpp:
 	extab       start:0x80007EC8 end:0x80007ED0
 	extabindex  start:0x8000ABF4 end:0x8000AC00
 	.text       start:0x802C64F8 end:0x802C6570
+
+havok/fn_802C6570.cpp:
+	extab       start:0x80007ED0 end:0x80007ED8
+	extabindex  start:0x8000AC00 end:0x8000AC0C
+	.text       start:0x802C6570 end:0x802C65E4
 
 havok/fn_802C65E4.cpp:
 	extab       start:0x80007ED8 end:0x80007EE0
@@ -23439,6 +23461,9 @@ network/fn_80342554.c:
 network/fn_8034296C.c:
 	.text       start:0x8034296C end:0x80342A90
 
+network/fn_80342A90.c:
+	.text       start:0x80342A90 end:0x80342BA8
+
 network/fn_80346D80.c:
 	.text       start:0x80346D80 end:0x8034708C
 
@@ -26393,6 +26418,9 @@ network/fn_803BA3D0.c:
 
 network/fn_803BB1E4.c:
 	.text       start:0x803BB1E4 end:0x803BB3B4
+
+network/fn_803BB3B4.c:
+	.text       start:0x803BB3B4 end:0x803BB6C8
 
 network/fn_803BBFF8.c:
 	.text       start:0x803BBFF8 end:0x803BC090

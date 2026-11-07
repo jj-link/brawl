@@ -6,6 +6,9 @@ Sections:
 	.data       type:data align:32
 	.bss        type:bss align:8
 
+mo_menu_sel_stage/sora_menu_sel_stage/sora_menu_sel_stage_function_bc.cpp:
+	.text       start:0x000000BC end:0x00000368
+
 mo_menu_sel_stage/sora_menu_sel_stage/sora_menu_sel_stage_function_4d8.cpp:
 	.text       start:0x000004D8 end:0x0000052C
 

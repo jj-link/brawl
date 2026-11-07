@@ -1,0 +1,81 @@
+#pragma force_active on
+#include <gf/gf_task.h>
+#include <string.h>
+extern "C" {
+extern const char lbl_11_data_0[];
+extern char lbl_11_data_5C8[];
+extern const float lbl_11_rodata_0;
+extern int lbl_11_bss_8;
+gfTask* __ct__6gfTaskFPCcQ26gfTask8Categoryiib(gfTask*, const char*, gfTask::Category, int, int, bool);
+void fn_800B96E8(void*, int);
+}
+struct Arr { char pad[0x54]; int arr[112]; };
+extern "C" gfTask* fn_11_BC(gfTask* obj) {
+__ct__6gfTaskFPCcQ26gfTask8Categoryiib(obj,lbl_11_data_0,gfTask::Category_Menu,15,8,true);
+char* self=(char*)obj;
+*(int*)(self+0x40)=0;
+*(char**)(self+0x3c)=lbl_11_data_5C8;
+*(char*)(self+0x44)=1;
+*(int*)(self+0x48)=0;
+*(int*)(self+0x4c)=0;
+*(int*)(self+0x50)=0;
+*(int*)(self+0x224)=0;
+*(int*)(self+0x228)=0;
+*(int*)(self+0x244)=0;
+*(int*)(self+0x248)=-1;
+*(int*)(self+0x24c)=-1;
+*(int*)(self+0x250)=0;
+*(int*)(self+0x260)=0;
+*(int*)(self+0x264)=0;
+*(int*)(self+0x268)=0;
+*(int*)(self+0x274)=0;
+*(int*)(self+0x288)=0;
+*(int*)(self+0x604c)=0;
+*(float*)(self+0x6050)=lbl_11_rodata_0;
+*(int*)(self+0x6054)=0;
+*(char*)(self+0x6058)=0;
+*(char*)(self+0x6059)=0;
+*(int*)(self+0x605c)=-1;
+*(int*)(self+0x6060)=-1;
+*(int*)(self+0x6064)=0;
+*(int*)(self+0x6068)=0;
+*(int*)(self+0x606c)=0;
+*(int*)(self+0x6070)=0;
+*(int*)(self+0x6078)=0;
+*(int*)(self+0x607c)=0;
+*(int*)(self+0x6080)=0;
+*(char*)(self+0x6084)=0;
+*(char*)(self+0x6085)=0;
+*(float*)(self+0x6088)=lbl_11_rodata_0;
+*(int*)(self+0x608c)=0;
+*(float*)(self+0x6090)=lbl_11_rodata_0;
+*(char*)(self+0x6094)=0;
+fn_800B96E8(self+0x6098,255);
+*(int*)(self+0x6140)=0;
+*(char*)(self+0x6144)=0;
+*(int*)(self+0x6148)=0;
+*(int*)(self+0x614c)=1;
+*(char*)(self+0x6150)=1;
+*(int*)(self+0x6160)=0;
+*(int*)(self+0x6164)=0;
+*(char*)(self+0x6168)=0;
+*(char*)(self+0x6169)=1;
+*(u8*)(self+0x2c) &= ~2;
+lbl_11_bss_8=0;
+*(int*)(self+0x22c)=0;
+*(char*)(self+0x230)=0;
+*(int*)(self+0x234)=0;
+*(char*)(self+0x238)=0;
+*(int*)(self+0x23c)=0;
+*(char*)(self+0x240)=0;
+for(int i=0;i<112;i++) ((Arr*)obj)->arr[i]=0;
+*(int*)(self+0x214)=0;
+*(int*)(self+0x218)=0;
+*(int*)(self+0x21c)=0;
+*(int*)(self+0x220)=0;
+memset(self+0x28c,0,0x5dc0);
+memset(self+0x254,0,12);
+memset(self+0x27c,0,12);
+memset(self+0x6154,0,12);
+return obj;
+}
