@@ -4764,3 +4764,41 @@ extern "C" void* fn_124_47AC(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_47AC
 // decomp-orchestrator: end fn_124_47AC
+
+// decomp-orchestrator: begin fn_124_1B20
+namespace decomp_orch_fn_124_1B20 {
+#pragma force_active on
+extern "C" void fn_124_1A60(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_1B20(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_124_1A60(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_1B20
+// decomp-orchestrator: end fn_124_1B20
+
+// decomp-orchestrator: begin fn_124_56FC
+namespace decomp_orch_fn_124_56FC {
+#pragma force_active on
+extern "C" void fn_124_5758(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_56FC(void* ptr, short flag)
+{
+    if (ptr != 0) {
+        fn_124_5758(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_56FC
+// decomp-orchestrator: end fn_124_56FC
