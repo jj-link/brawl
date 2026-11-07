@@ -285,6 +285,10 @@ mo_stage/st_earth/st_earth_function_2ddc.cpp:
 mo_stage/st_earth/st_earth_function_2f44.cpp:
 	.text       start:0x00002F44 end:0x00002F9C
 
+mo_stage/st_earth/st_earth_function_2f9c.cpp:
+	.text       start:0x00002F9C end:0x00003040
+	.data       start:0x00000818 end:0x00000868
+
 mo_stage/st_earth/st_earth_function_3040.cpp:
 	.text       start:0x00003040 end:0x000030B4
 
@@ -311,6 +315,9 @@ mo_stage/st_earth/st_earth_function_4ab8.cpp:
 
 mo_stage/st_earth/st_earth_function_4b58.cpp:
 	.text       start:0x00004B58 end:0x00004EAC
+
+mo_stage/st_earth/st_earth_function_4eac.cpp:
+	.text       start:0x00004EAC end:0x000052E8
 
 mo_stage/st_earth/st_earth_function_52e8.cpp:
 	.text       start:0x000052E8 end:0x00005370
