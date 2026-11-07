@@ -5287,3 +5287,16 @@ extern "C" void* fn_124_3BB4(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_3BB4
 // decomp-orchestrator: end fn_124_3BB4
+
+// decomp-orchestrator: begin fn_124_7D48
+#include <types.h>
+#pragma force_active on
+
+extern "C" {
+void fn_124_7D48(f32* p, f32 x, f32 y, f32 z) {
+    p[0] = x;
+    p[1] = y;
+    p[2] = z;
+}
+}
+// decomp-orchestrator: end fn_124_7D48
