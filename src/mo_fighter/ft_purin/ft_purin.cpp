@@ -4934,3 +4934,21 @@ extern "C" void fn_124_84EC(void* self, unsigned int mask, int index) {
     bits[index] &= ~mask;
 }
 // decomp-orchestrator: end fn_124_84EC
+
+// decomp-orchestrator: begin fn_124_312C
+namespace decomp_orch_fn_124_312C {
+#pragma force_active on
+extern "C" void* fn_124_3188(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_312C(void* p, short flag) {
+    if (p != 0) {
+        fn_124_3188(p, -1);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_312C
+// decomp-orchestrator: end fn_124_312C
