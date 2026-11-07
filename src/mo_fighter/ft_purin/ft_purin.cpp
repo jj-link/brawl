@@ -5037,3 +5037,35 @@ extern "C" void* fn_124_1A04(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_1A04
 // decomp-orchestrator: end fn_124_1A04
+
+// decomp-orchestrator: begin fn_124_4AA4
+namespace decomp_orch_fn_124_4AA4 {
+#pragma force_active on
+
+
+extern "C" {
+void* fn_27_150488(void*, short);
+void* fn_124_4B24(void*, short);
+void* fn_27_199A54(void*, short);
+}
+
+// Destroys the embedded members at +0x5B8 and +0x584 in reverse construction
+// order, then the object itself behind its null guard, and releases the storage
+// when the deleting form was requested.
+extern "C" void* fn_124_4AA4(void* object, short deleting) {
+    if (object != 0) {
+        unsigned char* storage = static_cast<unsigned char*>(object);
+        short destroy = -1;
+        fn_27_150488(storage + 0x5B8, destroy);
+        fn_124_4B24(storage + 0x584, destroy);
+        if (object != 0) {
+            fn_27_199A54(object, destroy);
+        }
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_4AA4
+// decomp-orchestrator: end fn_124_4AA4
