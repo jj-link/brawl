@@ -5110,3 +5110,75 @@ extern "C" void fn_124_7574(void* self, int a, int b, int c) {
 }
 }  // namespace decomp_orch_fn_124_7574
 // decomp-orchestrator: end fn_124_7574
+
+// decomp-orchestrator: begin fn_124_3FB4
+namespace decomp_orch_fn_124_3FB4 {
+#pragma force_active on
+extern "C" void* fn_27_1A1CFC(void*, short);
+extern "C" void fn_124_402C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3FB4(void* p, short flag) {
+    if (p != 0) {
+        fn_27_1A1CFC((char*)p + 0x524, (short)-1);
+        if (p != 0) {
+            fn_124_402C(p, (short)0);
+        }
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3FB4
+// decomp-orchestrator: end fn_124_3FB4
+
+// decomp-orchestrator: begin fn_124_66A4
+namespace decomp_orch_fn_124_66A4 {
+#pragma force_active on
+extern "C" void fn_27_198524(void*, int, int);
+extern "C" void fn_27_68888(void*, void*, void*, void*);
+extern "C" void* fn_124_66A4(void* a, void* b, void* c) {
+    fn_27_198524(a, 4, 0);
+    fn_27_68888(static_cast<char*>(a) + 0x7C, b, a, c);
+    return a;
+}
+}  // namespace decomp_orch_fn_124_66A4
+// decomp-orchestrator: end fn_124_66A4
+
+// decomp-orchestrator: begin fn_124_83B4
+#include <mt/mt_vector.h>
+namespace decomp_orch_fn_124_83B4 {
+namespace decomp_orch_fn_124_83B4 {
+#pragma force_active on
+struct Pair {
+    float x;
+    float y;
+};
+
+class Object_vptr_0 {
+public:
+    virtual void slot0();
+    virtual void slot1();
+    virtual Pair slot2();
+};
+
+extern "C" float lbl_124_rodata_8;
+
+extern "C" void fn_124_83B4(Vec3f* out, Object_vptr_0* source) {
+    Pair pos = source->slot2();
+    out->m_x = pos.x;
+    out->m_y = pos.y;
+    out->m_z = lbl_124_rodata_8;
+}
+}
+}  // namespace decomp_orch_fn_124_83B4
+// decomp-orchestrator: end fn_124_83B4
+
+// decomp-orchestrator: begin fn_124_85D0
+#pragma force_active on
+extern "C" void fn_124_85D0(void* self, int index) {
+    int* counts = *(int**)((char*)self + 0xc);
+    counts[index]--;
+}
+// decomp-orchestrator: end fn_124_85D0
