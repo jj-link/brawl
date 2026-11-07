@@ -1,0 +1,27 @@
+#pragma force_active on
+
+extern "C" void __dt__14Class_8027D01CFv(void*, int);
+
+struct SoHeapAllocator {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void free(void*, unsigned short, int);
+};
+
+extern SoHeapAllocator* lbl_805A0EB8;
+
+extern "C" void* fn_80332B2C(void* self, int flag) {
+    if (self) {
+        void* sub = (char*)self + 8;
+        if (sub) {
+            __dt__14Class_8027D01CFv(sub, -1);
+        }
+        if (flag > 0) {
+            lbl_805A0EB8->free(self, *(unsigned short*)((char*)self + 4), 0x13);
+        }
+    }
+    return self;
+}
