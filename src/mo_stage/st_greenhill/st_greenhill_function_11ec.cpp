@@ -1,0 +1,125 @@
+#pragma force_active on
+#include <string.h>
+extern "C" {
+void* __nw__FUlQ25Heaps8HeapType(unsigned long, int);
+void __ct__10grYakumonoFPCc(void*, const char*);
+extern unsigned char lbl_72_data_7E8[];
+extern unsigned char lbl_72_data_5C8[];
+extern const float lbl_72_rodata_38;
+}
+struct Object_vptr_3c_base { char pad[0x3c]; };
+class Object_vptr_3c : public Object_vptr_3c_base {
+public:
+    virtual void processDefault();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void processPreMapCorrection();
+    virtual void slot5();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void slot12();
+    virtual void processEffect();
+    virtual void slot14();
+    virtual void slot15();
+    virtual void slot16();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void slot20();
+    virtual void init();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void slot24();
+    virtual void slot25();
+    virtual void slot26();
+    virtual void slot27();
+    virtual void slot28();
+    virtual void slot29();
+    virtual void slot30();
+    virtual void slot31();
+    virtual void slot32();
+    virtual void slot33();
+    virtual void slot34();
+    virtual void slot35();
+    virtual void slot36();
+    virtual void slot37();
+    virtual void slot38();
+    virtual void slot39();
+    virtual void slot40();
+    virtual void slot41();
+    virtual void slot42(int);
+    virtual void slot43();
+    virtual void slot44();
+    virtual void slot45();
+    virtual void slot46();
+    virtual void slot47();
+    virtual void slot48();
+    virtual void slot49();
+    virtual void slot50();
+    virtual void slot51();
+    virtual void slot52();
+    virtual void slot53();
+    virtual void slot54();
+    virtual void slot55();
+    virtual void slot56();
+    virtual void slot57();
+    virtual void slot58();
+    virtual void slot59();
+    virtual void slot60();
+    virtual void slot61();
+    virtual void slot62();
+    virtual void slot63();
+    virtual void slot64();
+    virtual void slot65();
+    virtual void slot66();
+    virtual void slot67();
+    virtual void slot68();
+    virtual void slot69();
+    virtual void slot70();
+    virtual void slot71();
+    virtual void slot72();
+    virtual void slot73();
+    virtual void slot74();
+    virtual void slot75();
+    virtual void slot76();
+    virtual void slot77();
+    virtual void slot78(const char*);
+    char pad1[0x110];
+    unsigned char state;
+    char pad2[3];
+    float frame;
+    unsigned int field158, field15C;
+    char field160[0x24];
+    unsigned int field184, field188, field18C, field190, field194, field198, field19C;
+};
+extern "C" Object_vptr_3c* fn_72_11EC(int model, const char* node, const char* name) {
+    Object_vptr_3c* p = (Object_vptr_3c*)__nw__FUlQ25Heaps8HeapType(0x1a0, 15);
+    if (p) {
+        __ct__10grYakumonoFPCc(p, name);
+        *(void**)((char*)p + 0x3c) = lbl_72_data_7E8;
+        p->state = 0;
+        p->frame = lbl_72_rodata_38;
+        p->slot26();
+        *(void**)((char*)p + 0x3c) = lbl_72_data_5C8;
+        p->field158 = 0;
+        p->field15C = 0;
+        memset(p->field160, 0, 0x24);
+        p->field184 = 0;
+        p->field188 = 0;
+        p->field18C = 0;
+        p->field190 = 0;
+        p->field194 = 0;
+        p->field198 = 0;
+        p->field19C = 0;
+    }
+    if (p) {
+        p->slot42(model);
+        p->slot78(node);
+    }
+    return p;
+}
