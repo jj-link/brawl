@@ -5220,3 +5220,48 @@ extern "C" void fn_124_8538(Fn124Obj *self, int idx, float divisor) {
 }
 }  // namespace decomp_orch_fn_124_8538
 // decomp-orchestrator: end fn_124_8538
+
+// decomp-orchestrator: begin fn_124_1CEC
+#include <types.h>
+namespace decomp_orch_fn_124_1CEC {
+#pragma force_active on
+
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_1CEC(void* p, s16 size) {
+    if (p != 0 && size > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_1CEC
+// decomp-orchestrator: end fn_124_1CEC
+
+// decomp-orchestrator: begin fn_124_5758
+namespace decomp_orch_fn_124_5758 {
+#pragma force_active on
+extern "C" void* fn_27_1A1FE4(void*, short);
+extern "C" void __dl__FPv(void*);
+extern "C" void* fn_124_5758(void* ptr, short flag) {
+    if (ptr != 0) {
+        if (ptr != 0) {
+            fn_27_1A1FE4(ptr, -1);
+        }
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_5758
+// decomp-orchestrator: end fn_124_5758
+
+// decomp-orchestrator: begin fn_124_8158
+namespace decomp_orch_fn_124_8158 {
+#pragma force_active on
+extern "C" void fn_27_D4DF4(void*, short, void*, signed char);
+extern "C" void fn_124_8158(void* receiver, short id, int argument) {
+    fn_27_D4DF4(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_8158
+// decomp-orchestrator: end fn_124_8158
