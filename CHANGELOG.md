@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_iceclimber, ft_link and 11 more: 46 functions
+
+- Matched 46 functions in `ft_iceclimber, ft_link and 11 more` with decomp-orchestrator: glm-5-3-flash 1, haiku 12, terra 33.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_iceclimber, ft_kirby and 10 more: 33 functions
 
 - Matched 33 functions in `ft_iceclimber, ft_kirby and 10 more` with decomp-orchestrator: haiku 6, opus 1, terra 26.
