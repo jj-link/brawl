@@ -4742,3 +4742,25 @@ int fn_124_7C54(void* self, PurinInput* input) {
 }
 }  // namespace decomp_orch_fn_124_7C54
 // decomp-orchestrator: end fn_124_7C54
+
+// decomp-orchestrator: begin fn_124_47AC
+namespace decomp_orch_fn_124_47AC {
+#pragma force_active on
+extern "C" void* fn_27_1A1B88(void*, short);
+extern "C" void* fn_124_4824(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_47AC(void* p, short flag) {
+    if (p != 0) {
+        fn_27_1A1B88((char*)p + 0x88, -1);
+        if (p != 0) {
+            fn_124_4824(p, 0);
+        }
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_47AC
+// decomp-orchestrator: end fn_124_47AC
