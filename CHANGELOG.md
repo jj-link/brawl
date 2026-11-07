@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_falco, ft_marth and 5 more: 17 functions
+
+- Matched 17 functions in `ft_falco, ft_marth and 5 more` with decomp-orchestrator: haiku 4, terra 13.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_link, ft_purin and 11 more: 34 functions
 
 - Matched 34 functions in `ft_link, ft_purin and 11 more` with decomp-orchestrator: haiku 7, terra 27.

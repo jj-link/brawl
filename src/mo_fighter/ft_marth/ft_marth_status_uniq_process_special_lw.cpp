@@ -221,6 +221,45 @@ extern "C" void fn_106_C3A4(CounterProcess*, soModuleAccesser* accesser) {
 // The original stop callback intentionally performs no work.
 extern "C" void fn_106_C674(CounterProcess*, soModuleAccesser*) { }
 
+// decomp-orchestrator: begin fn_106_C678
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_C678(CounterProcess*, soModuleAccesser* accesser) {
+//|     switch (accesser->getStatusModule().getStatusKind()) {
+//|     case 0x115:
+//|         if (!accesser->getWorkManageModule().isFlag(0x22000012)) {
+//|             if (accesser->getWorkManageModule().isFlag(0x22000011)) {
+//|                 accesser->getCollisionShieldModule().setStatus(0, 1, 1);
+//|                 accesser->getWorkManageModule().onFlag(0x22000012);
+//|             }
+//|         } else if (!accesser->getWorkManageModule().isFlag(0x22000011)) {
+//|             accesser->getCollisionShieldModule().setStatus(0, 0, 1);
+//|             accesser->getWorkManageModule().offFlag(0x22000012);
+//|         }
+//|         break;
+//|     case 0x11d: {
+//|         soCollisionAttackModule* attack = &accesser->getCollisionAttackModule();
+//|         float power = accesser->getWorkManageModule().getFloat(0x21000004);
+//|         if (!(power <= lbl_106_rodata_38[0])) {
+//|             for (int index = 0; index < static_cast<int>(attack->getPartSize()); ++index) {
+//|                 if (attack->isAttack(index, false)) {
+//|                     attack->setPower(index, static_cast<int>(power), false);
+//|                 }
+//|             }
+//|         }
+//|         break;
+//|     }
+//|     }
+//| }
+#include <so/so_module_accesser.h>
+#pragma force_active on
+
+
+
+extern "C" {
+
+}
+
+#pragma scheduling off
 extern "C" void fn_106_C678(CounterProcess*, soModuleAccesser* accesser) {
     switch (accesser->getStatusModule().getStatusKind()) {
     case 0x115:
@@ -248,6 +287,8 @@ extern "C" void fn_106_C678(CounterProcess*, soModuleAccesser* accesser) {
     }
     }
 }
+#pragma scheduling reset
+// decomp-orchestrator: end fn_106_C678
 
 extern "C" void fn_106_C890(CounterProcess*, soModuleAccesser* accesser, int) {
     if (accesser->getWorkManageModule().isFlag(0x22000012)) {
