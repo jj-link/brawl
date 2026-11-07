@@ -1,0 +1,106 @@
+#pragma force_active on
+void operator delete(void*);
+extern "C" {
+void* fn_122_2B58(void*, short);
+void* fn_122_2BB4(void*, short);
+void* fn_122_2C10(void*, short);
+void* fn_122_2C6C(void*, short);
+void* fn_122_2CC8(void*, short);
+void* fn_122_2D24(void*, short);
+void* fn_122_2E00(void*, short);
+void* fn_122_2E5C(void*, short);
+void* fn_122_2EB8(void*, short);
+void* fn_122_2F2C(void*, short);
+void* fn_122_2FC4(void*, short);
+void* fn_122_3020(void*, short);
+void* fn_122_3170(void*, short);
+void* fn_122_8DB8(void*, short);
+void* fn_122_8E18(void*, short);
+void* fn_122_8EFC(void*, short);
+void* fn_122_9A6C(void*, short);
+void* fn_122_4440(void*, short);
+void* fn_122_9B48(void*, short);
+void* fn_122_9BBC(void*, short);
+void* fn_122_9C98(void*, short);
+void* fn_122_9CF4(void*, short);
+void* fn_122_9D60(void*, short);
+void* fn_122_9E0C(void*, short);
+void* fn_122_9E80(void*, short);
+void* fn_122_9EDC(void*, short);
+void* fn_122_9F38(void*, short);
+void* fn_122_9F94(void*, short);
+void* fn_122_9FF0(void*, short);
+void* fn_122_4754(void*, short);
+void* fn_122_A064(void*, short);
+void* fn_122_A0D0(void*, short);
+void* fn_122_A160(void*, short);
+void* fn_122_A1F0(void*, short);
+void* fn_122_A274(void*, short);
+void* fn_122_A2F8(void*, short);
+void* fn_122_491C(void*, short);
+void* fn_122_4978(void*, short);
+void* fn_122_5B54(void*, short);
+void* fn_122_A42C(void*, short);
+void* fn_122_A794(void*, short);
+void* fn_122_A868(void*, short);
+void* fn_122_A8E0(void*, short);
+void* fn_122_4CBC(void*, short);
+void* __dt__16soModuleAccesserFv(void*, short);
+void* fn_122_A93C(void*, short);
+}
+extern "C" void* fn_122_28AC(void* object, short deleting) {
+    if (object != 0) {
+        char* storage = static_cast<char*>(object);
+        short destroy = -1;
+        fn_122_2B58(storage + 0x2B0D4, destroy);
+        fn_122_2BB4(storage + 0x2B098, destroy);
+        fn_122_2C10(storage + 0x2B030, destroy);
+        fn_122_2C6C(storage + 0x2AFE4, destroy);
+        fn_122_2CC8(storage + 0x2AE90, destroy);
+        fn_122_2D24(storage + 0x2AD80, destroy);
+        fn_122_2E00(storage + 0x2AD38, destroy);
+        fn_122_2E5C(storage + 0x2ACB8, destroy);
+        fn_122_2EB8(storage + 0x2ABF4, destroy);
+        fn_122_2F2C(storage + 0x2A880, destroy);
+        fn_122_2FC4(storage + 0x2A850, destroy);
+        fn_122_3020(storage + 0x2A6AC, destroy);
+        fn_122_3170(storage + 0x5CC8, destroy);
+        fn_122_8DB8(storage + 0x5AE4, destroy);
+        fn_122_8E18(storage + 0x57DC, destroy);
+        fn_122_8EFC(storage + 0x4908, destroy);
+        fn_122_9A6C(storage + 0x4814, destroy);
+        fn_122_4440(storage + 0x47E0, destroy);
+        fn_122_9B48(storage + 0x476C, destroy);
+        fn_122_9BBC(storage + 0x4048, destroy);
+        fn_122_9C98(storage + 0x4018, destroy);
+        fn_122_9CF4(storage + 0x3E80, destroy);
+        fn_122_9D60(storage + 0x3E10, destroy);
+        fn_122_9E0C(storage + 0x3D78, destroy);
+        fn_122_9E80(storage + 0x3D40, destroy);
+        fn_122_9EDC(storage + 0x3D1C, destroy);
+        fn_122_9F38(storage + 0x3CE8, destroy);
+        fn_122_9F94(storage + 0x3C84, destroy);
+        fn_122_9FF0(storage + 0x3AD4, destroy);
+        fn_122_4754(storage + 0x38DC, destroy);
+        fn_122_A064(storage + 0x367C, destroy);
+        fn_122_A0D0(storage + 0x2C10, destroy);
+        fn_122_A160(storage + 0x29F8, destroy);
+        fn_122_A1F0(storage + 0x209C, destroy);
+        fn_122_A274(storage + 0x19E0, destroy);
+        fn_122_A2F8(storage + 0x196C, destroy);
+        fn_122_491C(storage + 0x1930, destroy);
+        fn_122_4978(storage + 0x1888, destroy);
+        fn_122_5B54(storage + 0x17D4, destroy);
+        fn_122_A42C(storage + 0x1440, destroy);
+        fn_122_A794(storage + 0x1180, destroy);
+        fn_122_A868(storage + 0x115C, destroy);
+        fn_122_A8E0(storage + 0xAC8, destroy);
+        fn_122_4CBC(storage + 0xAB0, destroy);
+        __dt__16soModuleAccesserFv(storage + 0x9D0, destroy);
+        fn_122_A93C(object, destroy);
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}

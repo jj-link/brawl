@@ -221,3 +221,17 @@ void fn_106_BFE0(void* self) {
 }
 }  // namespace decomp_orch_fn_106_BFE0
 // decomp-orchestrator: end fn_106_BFE0
+
+// decomp-orchestrator: begin fn_106_BF58
+namespace decomp_orch_fn_106_BF58 {
+#pragma force_active on
+#pragma scheduling off
+extern "C" void __dl__FPv(void*);
+extern "C" void* fn_106_BF58(void* p, int flags) {
+    if (p != 0 && (short)flags > 0) {
+        __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_106_BF58
+// decomp-orchestrator: end fn_106_BF58
