@@ -1,0 +1,71 @@
+#include <types.h>
+#pragma force_active on
+
+struct TaskBase { char pad[0x3c]; };
+class Task : public TaskBase {
+public:
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
+    virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
+    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void v36(); virtual void v37(); virtual void v38();
+    virtual int v39();
+    virtual int v40();
+};
+
+class Work {
+public:
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual int v4(u32); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void v8(u32); virtual void v9(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual int v17(u32); virtual void v18(); virtual void v19(u32);
+};
+
+class Model {
+public:
+    virtual void v0(); virtual void v1(); virtual void v2();
+    virtual void v3(s32, s32, s32);
+};
+
+struct Modules {
+    char pad[0x64];
+    Work* work;
+    char pad2[0x1c];
+    Model* model;
+};
+
+struct Object {
+    char pad[8];
+    Task* task;
+    char pad2[0xcc];
+    Modules* modules;
+};
+
+extern "C" void fn_27_33CE3C(void*, Object* obj) {
+    int first = obj->task->v39();
+    int second = obj->task->v40();
+    if (first == 0 && (second == 0xe || second == 5)) {
+        Modules* m = obj->modules;
+        Model* model = m->model;
+        Work* work = m->work;
+        if (work->v17(0x22000011)) {
+            work->v19(0x22000011);
+            if (work->v4(0x10000040) > 0) {
+                int r4 = 0;
+                if (second == 0xe) {
+                    r4 = 0;
+                } else if (second == 5) {
+                    r4 = 0xd;
+                }
+                model->v3(r4, 0, 0);
+                work->v8(0x10000040);
+            }
+        }
+    }
+}
