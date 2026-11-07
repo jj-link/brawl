@@ -579,6 +579,9 @@ sora/misc/fn_80023AC8.cpp:
 sora/misc/fn_80023AD0.cpp:
 	.text       start:0x80023AD0 end:0x80023AE4
 
+sora/misc/fn_80023AE4.cpp:
+	.text       start:0x80023AE4 end:0x80023C70
+
 sora/misc/fn_80023C70.cpp:
 	.text       start:0x80023C70 end:0x80023CA8
 
@@ -19479,6 +19482,11 @@ havok/fn_802A9BBC.cpp:
 	extabindex  start:0x8000A030 end:0x8000A03C
 	.text       start:0x802A9BBC end:0x802A9C88
 
+havok/fn_802A9C88.cpp:
+	extab       start:0x80006E34 end:0x80006E3C
+	extabindex  start:0x8000A03C end:0x8000A048
+	.text       start:0x802A9C88 end:0x802A9D54
+
 havok/fn_802A9D54.cpp:
 	extab       start:0x80006E3C end:0x80006E54
 	extabindex  start:0x8000A048 end:0x8000A054
@@ -20351,6 +20359,11 @@ havok/fn_802C106C.cpp:
 	extab       start:0x80007C50 end:0x80007C58
 	extabindex  start:0x8000A9C0 end:0x8000A9CC
 	.text       start:0x802C106C end:0x802C1110
+
+havok/fn_802C1110.cpp:
+	extab       start:0x80007C58 end:0x80007C60
+	extabindex  start:0x8000A9CC end:0x8000A9D8
+	.text       start:0x802C1110 end:0x802C1270
 
 havok/fn_802C15D0.cpp:
 	extab       start:0x80007C70 end:0x80007C78
@@ -22412,6 +22425,9 @@ havok/fn_802E61A0.cpp:
 havok/fn_802E6D08.cpp:
 	.text       start:0x802E6D08 end:0x802E6D10
 
+havok/fn_802E6D10.cpp:
+	.text       start:0x802E6D10 end:0x802E6F38
+
 havok/fn_802E6F38.cpp:
 	.text       start:0x802E6F38 end:0x802E6F40
 
@@ -24340,6 +24356,9 @@ network/fn_8034C604.c:
 
 network/fn_8034C674.c:
 	.text       start:0x8034C674 end:0x8034C6E0
+
+network/fn_8034C6E0.c:
+	.text       start:0x8034C6E0 end:0x8034C7CC
 
 network/fn_8034C984.c:
 	.text       start:0x8034C984 end:0x8034C99C
@@ -26817,6 +26836,9 @@ network/fn_803A494C.c:
 network/fn_803A49A8.c:
 	.text       start:0x803A49A8 end:0x803A49B0
 
+network/fn_803A4FCC.c:
+	.text       start:0x803A4FCC end:0x803A50EC
+
 network/fn_803A50EC.c:
 	.text       start:0x803A50EC end:0x803A5284
 
@@ -27014,6 +27036,9 @@ network/fn_803A9C74.c:
 
 network/fn_803A9D54.c:
 	.text       start:0x803A9D54 end:0x803A9DF8
+
+network/fn_803A9DF8.c:
+	.text       start:0x803A9DF8 end:0x803A9F10
 
 network/fn_803A9F10.c:
 	.text       start:0x803A9F10 end:0x803A9FF8
