@@ -4683,3 +4683,62 @@ extern "C" void* fn_124_5FC8(Byte* storage, Byte* accesser, void* parameters) {
 }
 }  // namespace decomp_orch_fn_124_5FC8
 // decomp-orchestrator: end fn_124_5FC8
+
+// decomp-orchestrator: begin fn_124_7C54
+#include <ft/ft_common_data_accesser.h>
+namespace decomp_orch_fn_124_7C54 {
+#pragma force_active on
+
+class Object_vptr_0 {
+public:
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void fn_124_B990();
+    virtual void fn_124_B98C();
+    virtual void slot7();
+    virtual void fn_124_B984();
+    virtual void fn_124_B97C();
+    virtual int fn_124_B978();
+};
+struct PurinFighter {
+    char pad[8];
+    virtual void f0();
+    virtual void f1();
+    virtual void f2();
+    virtual void f3();
+    virtual Object_vptr_0* f4();
+};
+struct PurinModules { PurinFighter* fighter; };
+struct PurinSub { char pad[0x28]; void* resource; };
+struct PurinInput {
+    char pad[8];
+    PurinSub* sub;
+    char pad2[0xcc];
+    PurinModules* modules;
+};
+extern "C" {
+extern float lbl_124_rodata_8;
+Vec3f* fn_124_7D48(Vec3f*, float, float, float);
+void fn_27_1E1B14(void*, void*, int, void*, bool, bool, Vec3f*, unsigned int,
+                 unsigned int, bool, bool, bool, int, bool, bool, int, bool, bool);
+int fn_124_7C54(void* self, PurinInput* input) {
+    Vec3f* p;
+    PurinFighter* fighter;
+    void* resource;
+    void** data;
+    Vec3f position;
+    data = *(void***)((char*)g_ftCommonDataAccesser.getData((ftKind)0x25) + 0x64);
+    fighter = input->modules->fighter;
+    resource = input->sub->resource;
+    p = fn_124_7D48(&position, lbl_124_rodata_8, lbl_124_rodata_8, lbl_124_rodata_8);
+    int value = fighter->f4()->fn_124_B978();
+    fn_27_1E1B14(self, resource, value, *data, 0, 1, p, 65535,
+                 65535, 0, 1, 0, -1, 0, 1, 2, 0, 1);
+    return 1;
+}
+}
+}  // namespace decomp_orch_fn_124_7C54
+// decomp-orchestrator: end fn_124_7C54

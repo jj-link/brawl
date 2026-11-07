@@ -1067,6 +1067,10 @@ mo_fighter/ft_pikachu/ft_pikachu_article_available.cpp:
 	.text       start:0x0000AAC8 end:0x0000AD94
 	.data       start:0x000030D4 end:0x00003118 align:4 rename:.data$pikachuAAC8
 
+mo_fighter/ft_pikachu/ft_pikachu_function_ad94.cpp:
+	.text       start:0x0000AD94 end:0x0000B0E0
+	.data       start:0x00003118 end:0x0000315C
+
 mo_fighter/ft_pikachu/ft_pikachu_function_b0e0.cpp:
 	.text       start:0x0000B0E0 end:0x0000B264
 	.data       start:0x0000315C end:0x000031A0 align:4 rename:.data$pikachuB0E0
