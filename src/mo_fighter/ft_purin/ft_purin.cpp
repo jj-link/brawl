@@ -5096,3 +5096,17 @@ extern "C" void* fn_124_1D2C(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_1D2C
 // decomp-orchestrator: end fn_124_1D2C
+
+// decomp-orchestrator: begin fn_124_7574
+namespace decomp_orch_fn_124_7574 {
+#pragma force_active on
+extern "C" char __vt__33soAnimCmdAddressPackArraySeparate[];
+extern "C" void fn_124_7574(void* self, int a, int b, int c) {
+    int* p = static_cast<int*>(self);
+    p[0] = reinterpret_cast<int>(__vt__33soAnimCmdAddressPackArraySeparate);
+    p[4] = a;
+    p[5] = b;
+    p[6] = c;
+}
+}  // namespace decomp_orch_fn_124_7574
+// decomp-orchestrator: end fn_124_7574
