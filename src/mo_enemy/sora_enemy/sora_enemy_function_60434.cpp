@@ -1,0 +1,67 @@
+#pragma force_active on
+struct emCreate;
+struct Sub { void* v0; void* v1; };
+extern "C" {
+extern char lbl_27_bss_A5C[], lbl_27_bss_69C[];
+extern char lbl_41_data_1A838[], lbl_41_data_1AA84[], lbl_41_data_1AC00[];
+extern char lbl_41_data_1ACE8[], lbl_41_data_1AD98[], lbl_41_data_1AE28[], lbl_41_data_1AEB8[];
+extern char lbl_41_data_1AF48[], lbl_41_data_1AFD8[], lbl_41_data_1B068[], lbl_41_data_1B0F8[];
+void fn_41_1F0(void*, unsigned long, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+void fn_27_D0D60(void*, int, int);
+void fn_27_CAFB8(void*, int, int);
+void fn_27_CB410(void*, int, int);
+void __construct_array(void*, void*, void*, int, int);
+void* __ct__18emTargetSearchUnitFv(void*);
+void* __dt__18emTargetSearchUnitFv(void*, short);
+void* fn_41_2A470(void*);
+void* fn_41_2A480(void*, short);
+void fn_41_608D4(void*, void*);
+}
+extern "C" void* __ct__7emPorkyFUlP8emCreate(char* self, unsigned long arg0, emCreate* arg1) {
+    fn_41_1F0(self, arg0, arg1, self + 0x5310, self + 0x5e8c, self + 0x5fdc, self + 0x60fc, self + 0x6144, self + 0x629c, lbl_27_bss_A5C, self + 0x624c, lbl_27_bss_69C);
+    char* p = lbl_41_data_1A838;
+    *(char**)(self + 0x3c) = p;
+    *(char**)(self + 0x40) = p + 0x64;
+    *(char**)(self + 0x48) = p + 0x70;
+    *(char**)(self + 0x54) = p + 0x84;
+    *(char**)(self + 0x64) = p + 0xdc;
+    *(char**)(self + 0x70) = p + 0xec;
+    *(char**)(self + 0x7c) = p + 0x100;
+    *(char**)(self + 0x88) = p + 0x114;
+    *(char**)(self + 0x94) = p + 0x124;
+    *(char**)(self + 0xa0) = p + 0x138;
+    fn_27_D0D60(self + 0x5310, 0x3d, 0);
+    fn_27_CAFB8(self + 0x5e8c, 9, 0);
+    __construct_array(self + 0x60fc, (void*)__ct__18emTargetSearchUnitFv, (void*)__dt__18emTargetSearchUnitFv, 0x18, 3);
+    __construct_array(self + 0x6144, (void*)fn_41_2A470, (void*)fn_41_2A480, 8, 0x21);
+    fn_27_CB410(self + 0x624c, 1, 0);
+    Sub* a0 = (Sub*)(self + 0x629c);
+    a0->v0 = lbl_41_data_1AA84;
+    a0->v1 = lbl_41_data_1AA84 + 0x10;
+    Sub *b, *c, *d, *a, *t, *u, *v;
+    a = a0 + 1;
+    a->v0 = lbl_41_data_1ACE8;
+    a->v1 = lbl_41_data_1AD98;
+    t = a + 2;
+    b = t - 1;
+    (t - 1)->v0 = lbl_41_data_1AE28;
+    b->v1 = lbl_41_data_1AEB8;
+    u = b + 2;
+    c = u - 1;
+    (u - 1)->v0 = lbl_41_data_1AF48;
+    c->v1 = lbl_41_data_1AFD8;
+    v = c + 2;
+    d = v - 1;
+    (v - 1)->v0 = lbl_41_data_1B068;
+    d->v1 = lbl_41_data_1B0F8;
+    fn_41_608D4((char*)d + 0xc, self + 0xdc);
+    fn_41_608D4((char*)d + 0x38, self + 0xdc);
+    fn_41_608D4((char*)c + 0x6c, self + 0xdc);
+    fn_41_608D4((char*)c + 0x98, self + 0xdc);
+    fn_41_608D4((char*)b + 0xcc, self + 0xdc);
+    fn_41_608D4((char*)b + 0xf8, self + 0xdc);
+    fn_41_608D4((char*)a + 0x12c, self + 0xdc);
+    a->v0 = lbl_41_data_1AC00;
+    self[0x63fc] = 0;
+    return self;
+}
