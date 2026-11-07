@@ -5182,3 +5182,21 @@ extern "C" void fn_124_85D0(void* self, int index) {
     counts[index]--;
 }
 // decomp-orchestrator: end fn_124_85D0
+
+// decomp-orchestrator: begin fn_124_5904
+namespace decomp_orch_fn_124_5904 {
+#pragma force_active on
+extern "C" void* fn_27_14B698(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5904(void* p, int flag) {
+    if (p != 0) {
+        fn_27_14B698(p, static_cast<short>(-1));
+        if ((short)flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_5904
+// decomp-orchestrator: end fn_124_5904
