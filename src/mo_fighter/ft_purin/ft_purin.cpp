@@ -5200,3 +5200,23 @@ extern "C" void* fn_124_5904(void* p, int flag) {
 }
 }  // namespace decomp_orch_fn_124_5904
 // decomp-orchestrator: end fn_124_5904
+
+// decomp-orchestrator: begin fn_124_8538
+namespace decomp_orch_fn_124_8538 {
+#pragma force_active on
+extern "C" const float lbl_124_rodata_8;
+
+struct Fn124Obj {
+    char pad[0x14];
+    float *arr;
+};
+
+extern "C" void fn_124_8538(Fn124Obj *self, int idx, float divisor) {
+    if (lbl_124_rodata_8 == divisor) {
+        return;
+    }
+    float *p = self->arr;
+    p[idx] = p[idx] / divisor;
+}
+}  // namespace decomp_orch_fn_124_8538
+// decomp-orchestrator: end fn_124_8538
