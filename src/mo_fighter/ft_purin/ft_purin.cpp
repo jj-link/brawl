@@ -5077,3 +5077,22 @@ extern "C" float fn_124_85B8(void* self, int index) {
     return arr[index];
 }
 // decomp-orchestrator: end fn_124_85B8
+
+// decomp-orchestrator: begin fn_124_1D2C
+namespace decomp_orch_fn_124_1D2C {
+#pragma force_active on
+extern "C" void* fn_124_1D88(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_1D2C(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_124_1D88(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_1D2C
+// decomp-orchestrator: end fn_124_1D2C
