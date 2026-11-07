@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_mansion/st_mansion_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_mansion/st_mansion_function_a4.cpp:
+	.text       start:0x000000A4 end:0x00000184
+
 mo_stage/st_mansion/st_mansion_function_184.cpp:
 	.text       start:0x00000184 end:0x000001F0
 
@@ -312,6 +315,9 @@ mo_stage/st_mansion/st_mansion_function_1dc4.cpp:
 
 mo_stage/st_mansion/st_mansion_function_1ea8.cpp:
 	.text       start:0x00001EA8 end:0x00001FAC
+
+mo_stage/st_mansion/st_mansion_function_22fc.cpp:
+	.text       start:0x000022FC end:0x0000245C
 
 mo_stage/st_mansion/st_mansion_function_2c0c.cpp:
 	.text       start:0x00002C0C end:0x00002C4C
@@ -858,6 +864,9 @@ mo_stage/st_mansion/st_mansion_function_509c.cpp:
 
 mo_stage/st_mansion/st_mansion_function_5320.cpp:
 	.text       start:0x00005320 end:0x000053DC
+
+mo_stage/st_mansion/st_mansion_function_53dc.cpp:
+	.text       start:0x000053DC end:0x00005650
 
 mo_stage/st_mansion/st_mansion_function_5650.cpp:
 	.text       start:0x00005650 end:0x0000570C

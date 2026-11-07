@@ -541,8 +541,15 @@ mo_stage/st_gw/st_gw_function_5ee8.cpp:
 mo_stage/st_gw/st_gw_function_6384.cpp:
 	.text       start:0x00006384 end:0x0000642C
 
+mo_stage/st_gw/st_gw_function_65c8.cpp:
+	.text       start:0x000065C8 end:0x000066AC
+
 mo_stage/st_gw/st_gw_function_66ac.cpp:
 	.text       start:0x000066AC end:0x00006750
+
+mo_stage/st_gw/st_gw_function_6750.cpp:
+	.text       start:0x00006750 end:0x00006BF8
+	.data       start:0x00002130 end:0x0000238C
 
 mo_stage/st_gw/st_gw_function_6bf8.cpp:
 	.text       start:0x00006BF8 end:0x000072C0
@@ -1725,6 +1732,9 @@ mo_stage/st_gw/st_gw_function_12024.cpp:
 
 mo_stage/st_gw/st_gw_function_1202c.cpp:
 	.text       start:0x0001202C end:0x000120B0
+
+mo_stage/st_gw/st_gw_function_1244c.cpp:
+	.text       start:0x0001244C end:0x00012570
 
 mo_stage/st_gw/st_gw_function_12570.cpp:
 	.text       start:0x00012570 end:0x000125F8

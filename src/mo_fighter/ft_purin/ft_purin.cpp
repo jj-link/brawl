@@ -4802,3 +4802,99 @@ extern "C" void* fn_124_56FC(void* ptr, short flag)
 }
 }  // namespace decomp_orch_fn_124_56FC
 // decomp-orchestrator: end fn_124_56FC
+
+// decomp-orchestrator: begin fn_124_1DC8
+namespace decomp_orch_fn_124_1DC8 {
+#pragma force_active on
+
+extern "C" {
+void fn_27_57BA0(void*, short);
+void fn_124_1E48(void*, short);
+void fn_124_1EA4(void*, short);
+}
+
+// Destroy the Jigglypuff storage: release the subobject at +0x20 when present,
+// the embedded helpers at +0x14 and +8, and the storage itself when a delete
+// was requested, preserving the original pointer either way.
+extern "C" void* fn_124_1DC8(void* object, short deleting) {
+    if (object != 0) {
+        char* storage = static_cast<char*>(object);
+        if (storage + 0x20 != 0) {
+            fn_27_57BA0(storage + 0x20, 0);
+        }
+        fn_124_1E48(storage + 0x14, 0);
+        fn_124_1EA4(storage + 8, 0);
+        if (deleting > 0) {
+            operator delete(object);
+        }
+    }
+    return object;
+}
+}  // namespace decomp_orch_fn_124_1DC8
+// decomp-orchestrator: end fn_124_1DC8
+
+// decomp-orchestrator: begin fn_124_39D8
+namespace decomp_orch_fn_124_39D8 {
+#pragma force_active on
+extern "C" void* fn_124_3A38(void*, short);
+extern "C" void __dl__FPv(void*);
+extern "C" void* fn_124_39D8(void* p, short flag) {
+    if (p != 0) {
+        fn_124_3A38((char*)p + 0xC, -1);
+        if (flag > 0)
+            __dl__FPv(p);
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_39D8
+// decomp-orchestrator: end fn_124_39D8
+
+// decomp-orchestrator: begin fn_124_4BDC
+#include <types.h>
+namespace decomp_orch_fn_124_4BDC {
+#pragma force_active on
+namespace decomp_orch_fn_124_4BDC {
+extern "C" void* fn_27_6A3D8(void*, short);
+extern "C" void* fn_27_199E3C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_4BDC(void* self, short del) {
+    if (self != 0) {
+        fn_27_6A3D8((char*)self + 0x144, -1);
+        fn_27_199E3C(self, -1);
+        if (del > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_4BDC
+}  // namespace decomp_orch_fn_124_4BDC
+// decomp-orchestrator: end fn_124_4BDC
+
+// decomp-orchestrator: begin fn_124_79E0
+#include <so/so_module_accesser.h>
+namespace decomp_orch_fn_124_79E0 {
+#pragma force_active on
+extern "C" void fn_27_131CD0(void*, int, int, soModuleAccesser*);
+extern "C" void fn_124_79E0(void* self, int situation, int previous, soModuleAccesser* accesser) {
+    switch (accesser->m_enumerationStart->m_statusModule->getStatusKind()) {
+    case 0x114:
+        accesser->m_enumerationStart->m_workManageModule->onFlag(0x22000012);
+        break;
+    }
+    fn_27_131CD0(self, situation, previous, accesser);
+}
+}  // namespace decomp_orch_fn_124_79E0
+// decomp-orchestrator: end fn_124_79E0
+
+// decomp-orchestrator: begin fn_124_816C
+namespace decomp_orch_fn_124_816C {
+#pragma force_active on
+extern "C" void fn_27_D443C(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_816C(void* receiver, short id, signed char argument) {
+    fn_27_D443C(receiver, id, receiver, argument);
+}
+}  // namespace decomp_orch_fn_124_816C
+// decomp-orchestrator: end fn_124_816C
