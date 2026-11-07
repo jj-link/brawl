@@ -1,0 +1,158 @@
+#pragma force_active on
+struct Ground_base { char pad[0x3c]; };
+class Ground : public Ground_base {
+public:
+    virtual void processDefault();
+    virtual void processBegin();
+    virtual void slot2();
+    virtual void processUpdate();
+    virtual void processPreMapCorrection();
+    virtual void processMapCorrection();
+    virtual void processFixPosition();
+    virtual void processPreCollision();
+    virtual void processCollision();
+    virtual void processCatch();
+    virtual void processHit();
+    virtual void processCamera();
+    virtual void processFixCamera();
+    virtual void processEffect();
+    virtual void processGameProc();
+    virtual void processEnd();
+    virtual void renderPre();
+    virtual void renderOpa();
+    virtual void renderXlu();
+    virtual void processDebug();
+    virtual void renderDebug();
+    virtual void init();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void loadGroundData();
+    virtual void bindData();
+    virtual void setupMelee();
+    virtual void setVisibility();
+    virtual void setVisibilityByClipping();
+    virtual void setVisibilityAttachedEffect();
+    virtual void receiveCollMsg();
+    virtual void receiveCollMsg_Landing();
+    virtual void receiveCollMsg_Heading();
+    virtual void receiveCollMsg_Wall();
+    virtual void receiveCollMsg_Attack();
+    virtual void unloadData();
+    virtual void fn_50_2324();
+    virtual void slot37(void*, int, int);
+    virtual void slot38();
+    virtual void fn_50_690(void*);
+    virtual void fn_50_231C();
+    virtual void fn_50_2318();
+    virtual void fn_50_1F70();
+    virtual void fn_50_2310();
+    virtual void fn_50_2304();
+    virtual void fn_50_22F4();
+    virtual void fn_50_22E4();
+    virtual void getNodeIndex();
+    virtual void getNodePosition();
+    virtual void getNodePosition_2();
+    virtual void getNodeMatrix();
+    virtual void getNodeMatrix_2();
+    virtual void setNodeVisibility();
+    virtual void setNodeVisibility_2();
+    virtual void setNodeVisibilityAll();
+    virtual void isNodeVisible();
+    virtual void setNodeCollision();
+    virtual void setNodeCollision_2();
+    virtual void getNodeScale();
+    virtual void getNodeScale_2();
+    virtual void setValid();
+    virtual void setValidAttachedEffect();
+    virtual void slot62();
+    virtual void fn_50_22DC();
+    virtual void fn_50_22D4();
+    virtual void setMotionRatio();
+    virtual void setMotionFrame();
+    virtual void getMotionFrame();
+    virtual void setMotionLoop();
+    virtual void setMatAlphaMul();
+    virtual void setMatAlpha();
+    virtual void updateG3dProcCalcWorld();
+    virtual void preExit();
+    virtual void fn_50_22CC();
+    virtual void invalidatedByCameraClipping();
+    virtual void setTransparencyFlag();
+    virtual void updateCallback();
+    virtual void fixedPosition();
+    virtual void setTgtNode();
+    virtual void getTgtNode();
+    virtual void fn_50_182C();
+    virtual void fn_50_2348();
+    virtual void changeNodeAnim();
+    virtual void createFadeVisibleProduction();
+    virtual void createSoundEffectVisibleProductionForExcel();
+    virtual void createEffectVisibleProductionForExcel();
+    virtual void setSimpleEffectVisibleProduction();
+    virtual void dbDispInvalidatedByCameraClippingSphere();
+    virtual void setTransparency();
+    virtual void fn_50_2340();
+    virtual void onDamage();
+    virtual void onInflict();
+    virtual void onInflictEach();
+    virtual void onGimmickEvent();
+    virtual void enableYakumono();
+    virtual void disableYakumono();
+    virtual void enableHit();
+    virtual void disableHit();
+    virtual void disableAttack();
+    virtual void enableArea();
+    virtual void disableArea();
+    virtual void setSleepArea();
+    virtual void setTeamYakumonoOwnerId();
+    virtual void setTeamYakumono();
+    virtual void getTeamYakumono();
+    virtual void setOffsetAttack();
+    virtual void setAreaGimmick__10grYakumonoFP10soAreaDataP19soSet_10soAreaData_P10ykAreaDatab();
+    virtual void setAttackGimmick();
+    virtual void setSoCollisionAttackData();
+    virtual void setAttackGimmickDetails();
+    virtual void isEnableAttackPersonAttacked();
+    virtual void isEnableAttackAttribute();
+    virtual void fn_50_20F4();
+    virtual void slot113();
+    virtual void slot114();
+    virtual void slot115();
+    virtual void slot116();
+    virtual void slot117();
+    virtual void slot118();
+    virtual void slot119();
+    virtual void slot120();
+    virtual void slot121(void*);
+    virtual void slot122(void*);
+};
+extern "C" {
+extern char lbl_50_data_0[];
+Ground* fn_50_8734(int, const char*, const char*);
+void addGround__5StageFP6Ground(void*, Ground*);
+void fn_50_AE4(char* self, int kind) {
+    char* data = lbl_50_data_0;
+    Ground* ground;
+    void* info;
+    switch (kind) {
+    case 10:
+        ground = fn_50_8734(3, data + 0x100, data + 0x108);
+        info = self + 0x414;
+        break;
+    case 11:
+        ground = fn_50_8734(3, data + 0x100, data + 0x118);
+        info = self + 0x415;
+        break;
+    default:
+        ground = 0;
+        break;
+    }
+    if (ground) {
+        addGround__5StageFP6Ground(self, ground);
+        ground->slot37(*(void**)(self + 0x1a0), 0, 0);
+        ground->fn_50_690(*(void**)(self + 0x9c));
+        ground->slot121(self + 0x1e4);
+        ground->slot122(info);
+    }
+}
+}
