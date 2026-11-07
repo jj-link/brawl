@@ -5069,3 +5069,11 @@ extern "C" void* fn_124_4AA4(void* object, short deleting) {
 }
 }  // namespace decomp_orch_fn_124_4AA4
 // decomp-orchestrator: end fn_124_4AA4
+
+// decomp-orchestrator: begin fn_124_85B8
+#pragma force_active on
+extern "C" float fn_124_85B8(void* self, int index) {
+    float* arr = *reinterpret_cast<float**>(static_cast<char*>(self) + 0x14);
+    return arr[index];
+}
+// decomp-orchestrator: end fn_124_85B8
