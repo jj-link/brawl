@@ -14,6 +14,9 @@ global_destructor_chain.c:
 mo_stage/st_gw/st_gw_function_70.cpp:
 	.text       start:0x00000070 end:0x000000A4
 
+mo_stage/st_gw/st_gw_function_a4.cpp:
+	.text       start:0x000000A4 end:0x00000244
+
 mo_stage/st_gw/st_gw_function_31c.cpp:
 	.text       start:0x0000031C end:0x00000324
 
@@ -1317,6 +1320,9 @@ mo_stage/st_gw/st_gw_function_e6cc.cpp:
 
 mo_stage/st_gw/st_gw_function_e788.cpp:
 	.text       start:0x0000E788 end:0x0000E844
+
+mo_stage/st_gw/st_gw_function_e844.cpp:
+	.text       start:0x0000E844 end:0x0000EB84
 
 mo_stage/st_gw/st_gw_function_eb84.cpp:
 	.text       start:0x0000EB84 end:0x0000EC5C
