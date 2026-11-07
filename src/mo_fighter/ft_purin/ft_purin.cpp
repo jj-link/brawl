@@ -5265,3 +5265,25 @@ extern "C" void fn_124_8158(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_8158
 // decomp-orchestrator: end fn_124_8158
+
+// decomp-orchestrator: begin fn_124_3BB4
+namespace decomp_orch_fn_124_3BB4 {
+#pragma force_active on
+extern "C" void* fn_124_89B8(void*, short);
+extern "C" void* fn_124_3C2C(void*, short);
+extern "C" void* fn_124_3C8C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_3BB4(void* p, short flag) {
+    if (p != 0) {
+        fn_124_89B8((char*)p + 0xE0, -1);
+        fn_124_3C2C((char*)p + 0x30, -1);
+        fn_124_3C8C(p, -1);
+        if (flag > 0) {
+            __dl__FPv(p);
+        }
+    }
+    return p;
+}
+}  // namespace decomp_orch_fn_124_3BB4
+// decomp-orchestrator: end fn_124_3BB4
