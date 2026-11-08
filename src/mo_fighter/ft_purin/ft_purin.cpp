@@ -5640,3 +5640,39 @@ extern "C" void fn_124_85A8(void* self, int index, float value) {
     values[index] = value;
 }
 // decomp-orchestrator: end fn_124_85A8
+
+// decomp-orchestrator: begin fn_124_1C34
+namespace decomp_orch_fn_124_1C34 {
+// decomp-orchestrator: begin fn_124_1C34
+#pragma force_active on
+namespace decomp_orch_fn_124_1C34 {
+namespace decomp_orch_fn_124_1C34 {
+extern "C" void fn_124_1A60(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_1C34(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_124_1A60(ptr, 0);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_1C34
+}  // namespace decomp_orch_fn_124_1C34
+// decomp-orchestrator: end fn_124_1C34
+}  // namespace decomp_orch_fn_124_1C34
+// decomp-orchestrator: end fn_124_1C34
+
+// decomp-orchestrator: begin fn_124_8560
+#include <types.h>
+#include <sr/sr_common.h>
+#pragma force_active on
+
+extern "C" void fn_124_8560(void* self, s32 index, f32 scale) {
+    f32* arr = *(f32**)((u8*)self + 0x14);
+    arr[index] *= scale;
+}
+// decomp-orchestrator: end fn_124_8560
