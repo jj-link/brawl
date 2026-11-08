@@ -3715,6 +3715,9 @@ mo_enemy/sora_enemy/popperam/em_popperam_param_accesser.cpp:
 	.data       start:0x00008F18 end:0x00008FB8
 	.bss        start:0x00000318 end:0x00000330
 
+mo_enemy/sora_enemy/sora_enemy_function_38f7c.cpp:
+	.text       start:0x00038F7C end:0x000390B0
+
 mo_enemy/sora_enemy/sora_enemy_function_390b0.cpp:
 	.text       start:0x000390B0 end:0x00039168
 
@@ -3727,6 +3730,9 @@ mo_enemy/sora_enemy/pacci/em_pacci_param_accesser.cpp:
 	.rodata     start:0x00000EB8 end:0x00000EC0
 	.data       start:0x00009208 end:0x00009268
 	.bss        start:0x00000330 end:0x00000348
+
+mo_enemy/sora_enemy/sora_enemy_function_39408.cpp:
+	.text       start:0x00039408 end:0x0003953C
 
 mo_enemy/sora_enemy/sora_enemy_function_3953c.cpp:
 	.text       start:0x0003953C end:0x000395F4

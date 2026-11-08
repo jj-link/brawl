@@ -5361,3 +5361,88 @@ extern "C" void fn_124_81AC(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_81AC
 // decomp-orchestrator: end fn_124_81AC
+
+// decomp-orchestrator: begin fn_124_46BC
+namespace decomp_orch_fn_124_46BC {
+#pragma force_active on
+extern "C" void* fn_124_4734(void* self, short flag);
+extern "C" void* fn_27_1A1B88(void* member, short deleteFlag);
+extern "C" void __dl__FPv(void* p);
+
+extern "C" void* fn_124_46BC(void* self, short flag) {
+    if (self != 0) {
+        fn_27_1A1B88((char*)self + 0xf0, -1);
+        if (self != 0) {
+            fn_124_4734(self, 0);
+        }
+        if (flag > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_46BC
+// decomp-orchestrator: end fn_124_46BC
+
+// decomp-orchestrator: begin fn_124_57B8
+#include <types.h>
+namespace decomp_orch_fn_124_57B8 {
+#pragma force_active on
+
+extern "C" void __dt__17soModelModuleImplFv(void*, short);
+extern "C" void* fn_124_5830(void* ptr, short flag);
+extern "C" void* fn_27_19A83C(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_57B8(void* self, short flag) {
+    if (self != 0) {
+        __dt__17soModelModuleImplFv((char*)self + 0x1F4, -1);
+        fn_124_5830((char*)self + 0x1AC, -1);
+        fn_27_19A83C(self, -1);
+        if (flag > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_57B8
+// decomp-orchestrator: end fn_124_57B8
+
+// decomp-orchestrator: begin fn_124_6270
+#include <new>
+#include <gf/gf_task.h>
+#include <so/collision/so_collision.h>
+#include <so/collision/so_collision_attack_part.h>
+#include <so/collision/so_collision_attack_module_impl.h>
+#include <so/so_module_accesser.h>
+#include <so/so_array.h>
+namespace decomp_orch_fn_124_6270 {
+#pragma force_active on
+#pragma use_simple_stdpnew on
+
+extern "C" {
+void fn_27_CD0B0(void* parts, int count, void* fill, int param);
+void fn_27_CB908(void* groups, int count, int param);
+void fn_27_1A121C(void* absolutes, int count, int param);
+}
+
+extern "C" void* fn_124_6270(void* object, soModuleAccesser* accesser, int taskId,
+                             unsigned char taskCategory,
+                             soEventObserverRegistrationDesc* desc) {
+    unsigned char* storage = static_cast<unsigned char*>(object);
+    {
+        soCollisionAttackPart attackPart(soCollision::Category_Fighter, true);
+        fn_27_CD0B0(object, 5, &attackPart, 0);
+    }
+    fn_27_CB908(storage + 0x2DC, 5, 0);
+    fn_27_1A121C(storage + 0x540, 2, 0);
+    new (storage + 0x61C) soCollisionAttackModuleImpl(
+        accesser, taskId, static_cast<gfTask::Category>(taskCategory),
+        reinterpret_cast<soArray<soCollisionAttackPart>*>(object),
+        reinterpret_cast<soArray<soCollisionGroup>*>(storage + 0x2DC),
+        reinterpret_cast<soArray<soCollisionAttackAbsolute>*>(storage + 0x540),
+        desc, true);
+    return object;
+}
+}  // namespace decomp_orch_fn_124_6270
+// decomp-orchestrator: end fn_124_6270
