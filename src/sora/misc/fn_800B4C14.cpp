@@ -1,0 +1,58 @@
+#pragma force_active on
+#include <gf/gf_model.h>
+#include <gf/gf_heap_manager.h>
+
+extern "C" {
+void* fn_8018DBEC(void* resFile);
+void fn_800B458C();
+extern int lbl_8059C648;
+}
+
+class MuObject {
+public:
+    char pad0[4];
+    nw4r::g3d::ResFile m_resFile;      // 0x04
+    nw4r::g3d::ResMdl m_resMdl;        // 0x08
+    nw4r::g3d::ScnMdl* m_scnMdl;       // 0x0C
+    nw4r::g3d::ScnMdl* m_sceneModel;   // 0x10
+    gfModelAnimation* m_modelAnim;     // 0x14
+    char unk18[0x3C];                  // 0x18
+    int m_heap;                        // 0x54
+
+    void changeTexPatAnimN(const char* animName);
+};
+
+void MuObject::changeTexPatAnimN(const char* animName) {
+    nw4r::g3d::ResAnmTexPat anim(fn_8018DBEC(&m_resFile));
+    if (!anim.IsValid()) {
+        return;
+    }
+    m_modelAnim->unbindTexAnim(m_sceneModel);
+    int instanceSize;
+    Heaps::HeapType heap = (Heaps::HeapType)m_heap;
+    nw4r::g3d::ResMdl model = m_resMdl;
+    gfModelAnimation* modelAnim = m_modelAnim;
+    if (anim.IsValid()) {
+        MEMAllocator* allocator = gfHeapManager::getMEMAllocator(heap);
+        nw4r::g3d::AnmObjTexPatRes* anmObj =
+            nw4r::g3d::AnmObjTexPatRes::Construct(allocator, &instanceSize, anim, model, false);
+        if (anmObj != NULL) {
+            anmObj->Bind(model);
+            if (modelAnim->m_anmObjTexPatRes != NULL) {
+                modelAnim->m_anmObjTexPatRes->Destroy();
+            }
+            modelAnim->m_anmObjTexPatRes = anmObj;
+        }
+    }
+    m_modelAnim->bindTexAnim(m_sceneModel);
+    nw4r::g3d::AnmObjTexPatRes* texPatObj = m_modelAnim->m_anmObjTexPatRes;
+    int idx = *(int*)((char*)texPatObj->m_anmTexPatFile.ptr() + 0x34);
+    void* cb;
+    if (idx == 0) {
+        cb = (void*)fn_800B458C;
+    } else {
+        cb = ((void**)&lbl_8059C648)[idx];
+    }
+    *(void**)((char*)texPatObj + 0x28) = cb;
+    m_sceneModel->SetScnObjOption(3, 0);
+}
