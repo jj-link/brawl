@@ -20733,6 +20733,11 @@ havok/fn_802C15D0.cpp:
 	extabindex  start:0x8000A9F0 end:0x8000A9FC
 	.text       start:0x802C15D0 end:0x802C1738
 
+havok/fn_802C1940.cpp:
+	extab       start:0x80007C80 end:0x80007C88
+	extabindex  start:0x8000AA08 end:0x8000AA14
+	.text       start:0x802C1940 end:0x802C1AB8
+
 havok/fn_802C1F7C.cpp:
 	extab       start:0x80007C98 end:0x80007CC0
 	extabindex  start:0x8000AA2C end:0x8000AA38
@@ -23022,6 +23027,9 @@ havok/fn_802EE65C.cpp:
 havok/fn_802EE6C8.cpp:
 	.text       start:0x802EE6C8 end:0x802EE718
 
+havok/fn_802EE718.cpp:
+	.text       start:0x802EE718 end:0x802EE82C
+
 havok/fn_802EFD3C.cpp:
 	.text       start:0x802EFD3C end:0x802EFE70
 
@@ -23136,6 +23144,9 @@ havok/fn_802F0C48.cpp:
 
 havok/fn_802F0DAC.cpp:
 	.text       start:0x802F0DAC end:0x802F0F4C
+
+havok/fn_802F11E0.cpp:
+	.text       start:0x802F11E0 end:0x802F12D8
 
 havok/fn_802F13FC.cpp:
 	.text       start:0x802F13FC end:0x802F1480
@@ -30411,6 +30422,9 @@ Runtime.PPCEABI.H/fn_80404D4C.c:
 
 Runtime.PPCEABI.H/fn_80404D98.c:
 	.text       start:0x80404D98 end:0x80405188
+
+Runtime.PPCEABI.H/fn_80405190.c:
+	.text       start:0x80405190 end:0x80405198
 
 Runtime.PPCEABI.H/fn_80405198.c:
 	.text       start:0x80405198 end:0x804051A0
