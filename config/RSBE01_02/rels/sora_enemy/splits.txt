@@ -2470,6 +2470,9 @@ mo_enemy/sora_enemy/sora_enemy_function_2bb54.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_2bc3c.cpp:
 	.text       start:0x0002BC3C end:0x0002BC5C
 
+mo_enemy/sora_enemy/sora_enemy_function_2bc5c.cpp:
+	.text       start:0x0002BC5C end:0x0002BDC0
+
 mo_enemy/sora_enemy/sora_enemy_function_2bdc0.cpp:
 	.text       start:0x0002BDC0 end:0x0002BDC4
 
@@ -4123,6 +4126,9 @@ mo_enemy/sora_enemy/mite/em_mite_param_accesser.cpp:
 	.data       start:0x0000BFF0 end:0x0000C088
 	.bss        start:0x00000428 end:0x00000440
 
+mo_enemy/sora_enemy/sora_enemy_function_3fab0.cpp:
+	.text       start:0x0003FAB0 end:0x0003FCFC
+
 mo_enemy/sora_enemy/sora_enemy_function_3fcfc.cpp:
 	.text       start:0x0003FCFC end:0x0003FD5C
 
@@ -4885,6 +4891,9 @@ mo_enemy/sora_enemy/bombhead/em_bombhead_param_accesser.cpp:
 	.rodata     start:0x00001098 end:0x000010A0
 	.data       start:0x000127F8 end:0x00012878
 	.bss        start:0x000005F8 end:0x00000610
+
+mo_enemy/sora_enemy/sora_enemy_function_4f7dc.cpp:
+	.text       start:0x0004F7DC end:0x0004F910
 
 mo_enemy/sora_enemy/sora_enemy_function_4f910.cpp:
 	.text       start:0x0004F910 end:0x0004F9C8
