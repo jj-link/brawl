@@ -5479,3 +5479,12 @@ extern "C" void fn_124_8668(void* self, void* value, int index) {
     table[index] = value;
 }
 // decomp-orchestrator: end fn_124_8668
+
+// decomp-orchestrator: begin fn_124_8620
+#include <types.h>
+#pragma force_active on
+extern "C" void fn_124_8620(void* self, s32 value, u32 index) {
+    int* arr = *reinterpret_cast<int**>(static_cast<char*>(self) + 0xc);
+    arr[index] *= value;
+}
+// decomp-orchestrator: end fn_124_8620
