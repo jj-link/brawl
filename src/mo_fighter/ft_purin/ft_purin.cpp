@@ -5676,3 +5676,67 @@ extern "C" void fn_124_8560(void* self, s32 index, f32 scale) {
     arr[index] *= scale;
 }
 // decomp-orchestrator: end fn_124_8560
+
+// decomp-orchestrator: begin fn_124_6D0C
+#include <so/anim/so_anim_cmd_event_presenter.h>
+#include <so/situation/so_situation_event_presenter.h>
+#include <so/so_heap_module_impl.h>
+#include <so/status/so_status_event_presenter.h>
+#include <so/so_null.h>
+#include <StaticAssert.h>
+#include <so/status/so_status_module_impl.h>
+#include <ft/fighter.h>
+#include <ft/ft_entry.h>
+#include <ft/ft_extend_param_accesser.h>
+#include <ft/ft_fighter_build_data.h>
+#include <ft/purin/ft_purin_extend_param_accesser.h>
+#include <so/so_array.h>
+#include <so/event/so_event_manage_module_impl.h>
+#include <so/event/so_event_system.h>
+#include <so/so_inside_event_manage_module_builder.h>
+#include <so/so_instance_unit.h>
+#include <so/so_module_accesser.h>
+#include <so/template_utils.h>
+#include <sr/sr_common.h>
+#include <types.h>
+#include <ft/ft_cancel_module.h>
+#include <ft/ft_param_customize_module_impl.h>
+#include <ft/ft_resource_id_accesser_impl.h>
+#include <ft/ft_status_uniq_process_gimmick.h>
+#include <ft/ft_virtual_node_matrix_pool.h>
+#include <so/so_module_accesser_builder.h>
+#include <ut/ut_uncopyable.h>
+#include <so/work/so_general_work_simple.h>
+namespace decomp_orch_fn_124_6D0C {
+#pragma force_active on
+
+extern "C" const float lbl_124_rodata_8;
+
+static inline s32 minimumSize(const s32& size, const u32& limit) {
+    return size >= limit ? limit : size;
+}
+
+extern "C" void fn_124_6D0C(soGeneralWorkSimple* work) {
+    s32 intIndex;
+    s32 intWorkSize = work->m_intWorkSize;
+    intWorkSize = minimumSize(intWorkSize, work->m_intWorkSize);
+    for (intIndex = 0; intIndex < intWorkSize; intIndex++) {
+        work->m_intWorks[intIndex] = 0;
+    }
+
+    s32 floatIndex;
+    s32 floatWorkSize = work->m_floatWorkSize;
+    floatWorkSize = minimumSize(floatWorkSize, work->m_floatWorkSize);
+    for (floatIndex = 0; floatIndex < floatWorkSize; floatIndex++) {
+        work->m_floatWorks[floatIndex] = lbl_124_rodata_8;
+    }
+
+    s32 flagIndex;
+    s32 flagWorkSize = work->m_flagWorkSize;
+    flagWorkSize = minimumSize(flagWorkSize, work->m_flagWorkSize);
+    for (flagIndex = 0; flagIndex < flagWorkSize; flagIndex++) {
+        work->m_flagWorks[flagIndex] = 0;
+    }
+}
+}  // namespace decomp_orch_fn_124_6D0C
+// decomp-orchestrator: end fn_124_6D0C
