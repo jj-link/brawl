@@ -5446,3 +5446,11 @@ extern "C" void* fn_124_6270(void* object, soModuleAccesser* accesser, int taskI
 }
 }  // namespace decomp_orch_fn_124_6270
 // decomp-orchestrator: end fn_124_6270
+
+// decomp-orchestrator: begin fn_124_8504
+#pragma force_active on
+extern "C" void fn_124_8504(void* self, int index) {
+    int* table = *(int**)((char*)self + 0x1c);
+    table[index] = 0;
+}
+// decomp-orchestrator: end fn_124_8504

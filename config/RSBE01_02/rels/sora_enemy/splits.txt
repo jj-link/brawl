@@ -2394,6 +2394,9 @@ mo_enemy/sora_enemy/sora_enemy_function_2b760.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_2b798.cpp:
 	.text       start:0x0002B798 end:0x0002B84C
 
+mo_enemy/sora_enemy/sora_enemy_function_2b84c.cpp:
+	.text       start:0x0002B84C end:0x0002B868
+
 mo_enemy/sora_enemy/sora_enemy_function_2b868.cpp:
 	.text       start:0x0002B868 end:0x0002B884
 
@@ -3883,6 +3886,9 @@ mo_enemy/sora_enemy/deathpod/em_deathpod_param_accesser.cpp:
 	.rodata     start:0x00000EE0 end:0x00000EE8
 	.data       start:0x0000A4E0 end:0x0000A578
 	.bss        start:0x000003A0 end:0x000003B8
+
+mo_enemy/sora_enemy/sora_enemy_function_3bc58.cpp:
+	.text       start:0x0003BC58 end:0x0003BD8C
 
 mo_enemy/sora_enemy/sora_enemy_function_3bd8c.cpp:
 	.text       start:0x0003BD8C end:0x0003BE44
@@ -5969,6 +5975,10 @@ mo_enemy/sora_enemy/sora_enemy_function_62fe8.cpp:
 
 mo_enemy/sora_enemy/sora_enemy_function_630cc.cpp:
 	.text       start:0x000630CC end:0x0006314C
+
+mo_enemy/sora_enemy/sora_enemy_function_6314c.cpp:
+	.text       start:0x0006314C end:0x00063600
+	.data       start:0x0001C544 end:0x0001C588
 
 mo_enemy/sora_enemy/sora_enemy_function_63600.cpp:
 	.text       start:0x00063600 end:0x000637F0

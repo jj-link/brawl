@@ -308,11 +308,36 @@ CounterRegistration lbl_106_bss_1B8;
 CounterProcess lbl_106_bss_1C4;
 }
 
+// decomp-orchestrator: begin fn_106_C944
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_C944() {
+//|     fn_106_C98C(&lbl_106_bss_1C4);
+//|     __register_global_object(&lbl_106_bss_1C4,
+//|         reinterpret_cast<void*>(fn_106_C904), &lbl_106_bss_1B8);
+//| }
+namespace decomp_orch_fn_106_C944 {
+#pragma force_active on
+
+
+
+extern "C" {
+extern CounterRegistration lbl_106_bss_1B8;
+extern CounterProcess lbl_106_bss_1C4;
+
+CounterProcess* fn_106_C904(CounterProcess*, short);
+
+}
+
+#pragma scheduling off
 extern "C" void fn_106_C944() {
     fn_106_C98C(&lbl_106_bss_1C4);
     __register_global_object(&lbl_106_bss_1C4,
         reinterpret_cast<void*>(fn_106_C904), &lbl_106_bss_1B8);
 }
+#pragma scheduling reset
+}  // namespace decomp_orch_fn_106_C944
+using decomp_orch_fn_106_C944::fn_106_C944;
+// decomp-orchestrator: end fn_106_C944
 
 #pragma dont_inline on
 extern "C" CounterProcess* fn_106_C98C(CounterProcess* process) {
