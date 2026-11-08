@@ -5508,6 +5508,9 @@ sora/misc/fn_800D2120.cpp:
 sora/misc/fn_800D2128.cpp:
 	.text       start:0x800D2128 end:0x800D2164
 
+sora/misc/fn_800D2164.cpp:
+	.text       start:0x800D2164 end:0x800D21D0
+
 sora/misc/fn_800D21D0.cpp:
 	.text       start:0x800D21D0 end:0x800D221C
 
@@ -13251,6 +13254,9 @@ nw4r/fn_801CA970.cpp:
 nw4r/fn_801CA9D4.cpp:
 	.text       start:0x801CA9D4 end:0x801CAA28
 
+nw4r/fn_801CAA28.cpp:
+	.text       start:0x801CAA28 end:0x801CAA9C
+
 nw4r/fn_801CAA9C.cpp:
 	.text       start:0x801CAA9C end:0x801CAB04
 
@@ -18250,6 +18256,9 @@ RVL_SDK/fn_8024F5B8.c:
 RVL_SDK/fn_8024F8C4.c:
 	.text       start:0x8024F8C4 end:0x8024F968
 
+RVL_SDK/fn_8024F968.c:
+	.text       start:0x8024F968 end:0x8024FA74
+
 RVL_SDK/fn_8024FA74.c:
 	.text       start:0x8024FA74 end:0x8024FC18
 
@@ -21066,6 +21075,11 @@ havok/fn_802B7A0C.cpp:
 
 havok/fn_802B7A10.cpp:
 	.text       start:0x802B7A10 end:0x802B7A14
+
+havok/fn_802B85EC.cpp:
+	extab       start:0x80007664 end:0x8000766C
+	extabindex  start:0x8000A5D0 end:0x8000A5DC
+	.text       start:0x802B85EC end:0x802B86B8
 
 havok/fn_802B86B8.cpp:
 	extab       start:0x8000766C end:0x80007684
@@ -28060,6 +28074,9 @@ network/fn_8039AA1C.c:
 network/fn_8039AC0C.c:
 	.text       start:0x8039AC0C end:0x8039AC70
 
+network/fn_8039AC70.c:
+	.text       start:0x8039AC70 end:0x8039ACE4
+
 network/fn_8039ACE4.c:
 	.text       start:0x8039ACE4 end:0x8039AE1C
 
@@ -29575,6 +29592,9 @@ network/fn_803CB410.c:
 network/fn_803CB620.c:
 	.text       start:0x803CB620 end:0x803CB83C
 
+network/fn_803CB83C.c:
+	.text       start:0x803CB83C end:0x803CB96C
+
 network/fn_803CB96C.c:
 	.text       start:0x803CB96C end:0x803CB978
 
@@ -30598,6 +30618,9 @@ network/fn_803EB72C.c:
 network/fn_803EB7A0.c:
 	.text       start:0x803EB7A0 end:0x803EB7C4
 
+network/fn_803EB7C4.c:
+	.text       start:0x803EB7C4 end:0x803EB824
+
 network/fn_803EB824.c:
 	.text       start:0x803EB824 end:0x803EB84C
 
@@ -30789,6 +30812,9 @@ network/fn_803EF038.c:
 
 network/fn_803EF044.c:
 	.text       start:0x803EF044 end:0x803EF108
+
+network/fn_803EF108.c:
+	.text       start:0x803EF108 end:0x803EF174
 
 network/fn_803EF174.c:
 	.text       start:0x803EF174 end:0x803EF188
