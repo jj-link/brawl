@@ -5454,3 +5454,28 @@ extern "C" void fn_124_8504(void* self, int index) {
     table[index] = 0;
 }
 // decomp-orchestrator: end fn_124_8504
+
+// decomp-orchestrator: begin fn_124_5AA4
+#include <types.h>
+namespace decomp_orch_fn_124_5AA4 {
+#pragma force_active on
+extern "C" {
+extern char lbl_124_data_1D2C[];
+
+void fn_124_5AA4(void* object, char isNull)
+{
+    *(void**)object = lbl_124_data_1D2C;
+    *(char*)(4 + (char*)object) = isNull;
+}
+}
+}  // namespace decomp_orch_fn_124_5AA4
+// decomp-orchestrator: end fn_124_5AA4
+
+// decomp-orchestrator: begin fn_124_8668
+#pragma force_active on
+
+extern "C" void fn_124_8668(void* self, void* value, int index) {
+    void** table = *reinterpret_cast<void***>(static_cast<char*>(self) + 0xC);
+    table[index] = value;
+}
+// decomp-orchestrator: end fn_124_8668
