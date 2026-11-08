@@ -5632,3 +5632,11 @@ extern "C" void fn_124_8130(void* receiver, short id, int argument) {
 }
 }  // namespace decomp_orch_fn_124_8130
 // decomp-orchestrator: end fn_124_8130
+
+// decomp-orchestrator: begin fn_124_85A8
+#pragma force_active on
+extern "C" void fn_124_85A8(void* self, int index, float value) {
+    float* values = *(float**)((char*)self + 0x14);
+    values[index] = value;
+}
+// decomp-orchestrator: end fn_124_85A8
