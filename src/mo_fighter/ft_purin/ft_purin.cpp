@@ -5621,3 +5621,14 @@ extern "C" void* fn_124_780C(void* self, int state)
 }
 }  // namespace decomp_orch_fn_124_780C
 // decomp-orchestrator: end fn_124_780C
+
+// decomp-orchestrator: begin fn_124_8130
+namespace decomp_orch_fn_124_8130 {
+#pragma force_active on
+extern "C" void fn_27_D5464(void* receiver, short id, void* owner, signed char argument);
+
+extern "C" void fn_124_8130(void* receiver, short id, int argument) {
+    fn_27_D5464(receiver, id, receiver, static_cast<signed char>(argument));
+}
+}  // namespace decomp_orch_fn_124_8130
+// decomp-orchestrator: end fn_124_8130

@@ -3703,6 +3703,10 @@ mo_enemy/sora_enemy/sora_enemy_function_37d18.cpp:
 mo_enemy/sora_enemy/sora_enemy_function_37ddc.cpp:
 	.text       start:0x00037DDC end:0x00037F04
 
+mo_enemy/sora_enemy/sora_enemy_function_380e0.cpp:
+	.text       start:0x000380E0 end:0x000383F0
+	.data       start:0x00008DC0 end:0x00008E04
+
 mo_enemy/sora_enemy/sora_enemy_function_383f0.cpp:
 	.text       start:0x000383F0 end:0x000385E0
 	.data       start:0x00008E04 end:0x00008E48
@@ -4955,6 +4959,9 @@ mo_enemy/sora_enemy/bitan/em_bitan_param_accesser.cpp:
 	.rodata     start:0x000010B0 end:0x000010B8
 	.data       start:0x00013070 end:0x00013100
 	.bss        start:0x00000640 end:0x00000658
+
+mo_enemy/sora_enemy/sora_enemy_function_50618.cpp:
+	.text       start:0x00050618 end:0x000507B4
 
 mo_enemy/sora_enemy/sora_enemy_function_507b4.cpp:
 	.text       start:0x000507B4 end:0x0005086C
