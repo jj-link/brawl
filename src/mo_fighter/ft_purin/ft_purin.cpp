@@ -5740,3 +5740,75 @@ extern "C" void fn_124_6D0C(soGeneralWorkSimple* work) {
 }
 }  // namespace decomp_orch_fn_124_6D0C
 // decomp-orchestrator: end fn_124_6D0C
+
+// decomp-orchestrator: begin fn_124_2C14
+namespace decomp_orch_fn_124_2C14 {
+#pragma force_active on
+extern "C" void fn_27_BED74(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_2C14(void* ptr, short flag)
+{
+    if (ptr) {
+        fn_27_BED74(ptr, -1);
+        if (flag > 0) {
+            __dl__FPv(ptr);
+        }
+    }
+    return ptr;
+}
+}  // namespace decomp_orch_fn_124_2C14
+// decomp-orchestrator: end fn_124_2C14
+
+// decomp-orchestrator: begin fn_124_5AB8
+namespace decomp_orch_fn_124_5AB8 {
+#pragma force_active on
+struct PurinResourceHandle {
+    void* vtable;
+    unsigned char state[0x10];
+};
+struct PurinTaggedResourceHandle {
+    PurinResourceHandle handle;
+    int index;
+};
+struct PurinSelf {
+    unsigned char prefix[4];
+    PurinResourceHandle primary;
+    PurinTaggedResourceHandle secondary;
+    unsigned char module[1];
+};
+struct PurinResourceAccesser {
+    unsigned char prefix[8];
+    void* stageObject;
+};
+struct PurinResourceFighter {
+    unsigned char prefix[0x10C];
+    void* resource;
+};
+extern "C" {
+extern const char lbl_124_data_1478[], lbl_124_data_1C70[];
+extern const char lbl_27_data_2AB90[], lbl_27_bss_A48[];
+void* __dynamic_cast(void*, long, const void*, const void*, short);
+void* fn_27_14033C(PurinResourceHandle*, void*);
+void* fn_27_B5048(void*, PurinResourceHandle*, PurinResourceHandle*,
+                 PurinTaggedResourceHandle*, PurinResourceAccesser*, const void*);
+}
+
+extern "C" PurinSelf* fn_124_5AB8(PurinSelf* self, int, PurinResourceAccesser* accesser) {
+    void* resource = static_cast<PurinResourceFighter*>(
+        __dynamic_cast(accesser->stageObject, 0x3C,
+                       lbl_124_data_1478, lbl_124_data_1C70, 1))->resource;
+    fn_27_14033C(&self->primary, resource);
+    resource = static_cast<PurinResourceFighter*>(
+        __dynamic_cast(accesser->stageObject, 0x3C,
+                       lbl_124_data_1478, lbl_124_data_1C70, 1))->resource;
+    PurinTaggedResourceHandle* secondary = &self->secondary;
+    fn_27_14033C(&secondary->handle, resource);
+    secondary->handle.vtable = const_cast<char*>(lbl_27_data_2AB90);
+    secondary->index = -1;
+    fn_27_B5048(self->module, &self->primary, &self->primary,
+                secondary, accesser, lbl_27_bss_A48);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_5AB8
+// decomp-orchestrator: end fn_124_5AB8
