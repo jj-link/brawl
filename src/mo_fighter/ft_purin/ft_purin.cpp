@@ -5488,3 +5488,37 @@ extern "C" void fn_124_8620(void* self, s32 value, u32 index) {
     arr[index] *= value;
 }
 // decomp-orchestrator: end fn_124_8620
+
+// decomp-orchestrator: begin fn_124_5450
+#include <types.h>
+namespace decomp_orch_fn_124_5450 {
+#pragma force_active on
+
+extern "C" void* fn_27_13C90(void*, short);
+extern "C" void* fn_124_5504(void*, short);
+extern "C" void* fn_27_21038(void*, short);
+extern "C" void* fn_124_5570(void*, short);
+extern "C" void* fn_124_55CC(void*, short);
+extern "C" void* fn_124_397C(void*, short);
+extern "C" void* fn_124_5628(void*, short);
+extern "C" void* fn_124_5684(void*, short);
+extern "C" void __dl__FPv(void*);
+
+extern "C" void* fn_124_5450(void* self, short del) {
+    if (self) {
+        fn_27_13C90((char*)self + 0x224, -1);
+        fn_124_5504((char*)self + 0x1E8, -1);
+        fn_27_21038((char*)self + 0x1D8, -1);
+        fn_124_5570((char*)self + 0x1B8, -1);
+        fn_124_55CC((char*)self + 0x198, -1);
+        fn_124_397C((char*)self + 0x160, -1);
+        fn_124_5628((char*)self + 0xC4, -1);
+        fn_124_5684(self, -1);
+        if (del > 0) {
+            __dl__FPv(self);
+        }
+    }
+    return self;
+}
+}  // namespace decomp_orch_fn_124_5450
+// decomp-orchestrator: end fn_124_5450
