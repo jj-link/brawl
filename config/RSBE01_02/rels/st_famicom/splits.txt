@@ -1433,6 +1433,9 @@ mo_stage/st_famicom/st_famicom_function_f7fc.cpp:
 mo_stage/st_famicom/st_famicom_function_fc1c.cpp:
 	.text       start:0x0000FC1C end:0x0000FE64
 
+mo_stage/st_famicom/st_famicom_function_fe64.cpp:
+	.text       start:0x0000FE64 end:0x0000FF9C
+
 mo_stage/st_famicom/st_famicom_function_ff9c.cpp:
 	.text       start:0x0000FF9C end:0x0000FFB4
 
