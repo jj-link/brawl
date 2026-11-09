@@ -1094,6 +1094,10 @@ mo_fighter/ft_zelda/ft_zelda_function_ae3c.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_ae98.cpp:
 	.text       start:0x0000AE98 end:0x0000AEF8
 
+mo_fighter/ft_zelda/ft_zelda_function_b454.cpp:
+	.text       start:0x0000B454 end:0x0000B720
+	.data       start:0x00003028 end:0x0000306C
+
 mo_fighter/ft_zelda/ft_zelda_function_b720.cpp:
 	.text       start:0x0000B720 end:0x0000BA6C
 	.data       start:0x0000306C end:0x000030B0
@@ -2493,6 +2497,9 @@ mo_fighter/ft_zelda/ft_zelda_function_1a9d8.cpp:
 mo_fighter/ft_zelda/ft_zelda_function_1aa6c.cpp:
 	.text       start:0x0001AA6C end:0x0001AAA8
 
+mo_fighter/ft_zelda/ft_zelda_function_1aaa8.cpp:
+	.text       start:0x0001AAA8 end:0x0001AB58
+
 mo_fighter/ft_zelda/ft_zelda_function_1ab58.cpp:
 	.text       start:0x0001AB58 end:0x0001AB68
 
@@ -2605,6 +2612,9 @@ mo_fighter/ft_zelda/ft_zelda_function_1d0c4.cpp:
 
 mo_fighter/ft_zelda/ft_zelda_function_1d0dc.cpp:
 	.text       start:0x0001D0DC end:0x0001D170
+
+mo_fighter/ft_zelda/ft_zelda_function_1d170.cpp:
+	.text       start:0x0001D170 end:0x0001D2CC
 
 mo_fighter/ft_zelda/ft_zelda_function_1d2cc.cpp:
 	.text       start:0x0001D2CC end:0x0001D560
