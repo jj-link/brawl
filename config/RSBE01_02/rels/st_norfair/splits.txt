@@ -107,6 +107,9 @@ mo_stage/st_norfair/st_norfair_function_1abc.cpp:
 mo_stage/st_norfair/st_norfair_function_1ac4.cpp:
 	.text       start:0x00001AC4 end:0x00001ACC
 
+mo_stage/st_norfair/st_norfair_function_1acc.cpp:
+	.text       start:0x00001ACC end:0x00001C10
+
 mo_stage/st_norfair/st_norfair_function_1c10.cpp:
 	.text       start:0x00001C10 end:0x00001C18
 
@@ -1454,6 +1457,10 @@ mo_stage/st_norfair/st_norfair_function_f494.cpp:
 
 mo_stage/st_norfair/st_norfair_function_f804.cpp:
 	.text       start:0x0000F804 end:0x0000F890
+
+mo_stage/st_norfair/st_norfair_function_f890.cpp:
+	.text       start:0x0000F890 end:0x0000FA44
+	.data       start:0x000033D8 end:0x00003528
 
 mo_stage/st_norfair/st_norfair_function_fde0.cpp:
 	.text       start:0x0000FDE0 end:0x0000FE98
