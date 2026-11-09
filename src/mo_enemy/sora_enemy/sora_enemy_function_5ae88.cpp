@@ -1,0 +1,62 @@
+#pragma force_active on
+struct emCreate;
+struct Sub { void* v0; void* v1; };
+extern "C" {
+void fn_41_1F0(void*, unsigned long, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+void fn_27_D1558(void*, int, int);
+void fn_27_CAC1C(void*, int, int);
+void fn_27_CB410(void*, int, int);
+void __construct_array(void*, void*, void*, unsigned long, unsigned long);
+void* __ct__18emTargetSearchUnitFv(void*);
+void* __dt__18emTargetSearchUnitFv(void*, short);
+void* fn_41_2A470(void*);
+void* fn_41_2A480(void*, short);
+void fn_41_5B21C(void*, void*);
+extern char lbl_27_bss_A5C[], lbl_27_bss_69C[];
+extern char lbl_41_data_17F08[], lbl_41_data_18158[], lbl_41_data_182D8[];
+extern char lbl_41_data_183C0[], lbl_41_data_18470[], lbl_41_data_18500[];
+extern char lbl_41_data_18590[], lbl_41_data_18620[], lbl_41_data_186B0[];
+}
+extern "C" void* __ct__9emGalleomFUlP8emCreate(char* self, unsigned long arg0, emCreate* arg1) {
+    char* s = self;
+    fn_41_1F0(self, arg0, arg1, s+0x5310, s+0x645c, s+0x6564, s+0x6644, s+0x665c, s+0x676c, lbl_27_bss_A5C, s+0x671c, lbl_27_bss_69C);
+    char* p = lbl_41_data_17F08;
+    *(char**)(s+0x3c)=p;
+    *(char**)(s+0x40)=p+0x64;
+    *(char**)(s+0x48)=p+0x70;
+    *(char**)(s+0x54)=p+0x84;
+    *(char**)(s+0x64)=p+0xdc;
+    *(char**)(s+0x70)=p+0xec;
+    *(char**)(s+0x7c)=p+0x100;
+    *(char**)(s+0x88)=p+0x114;
+    *(char**)(s+0x94)=p+0x124;
+    *(char**)(s+0xa0)=p+0x138;
+    fn_27_D1558(s+0x5310,0x5c,0);
+    fn_27_CAC1C(s+0x645c,7,0);
+    __construct_array(s+0x6644,(void*)__ct__18emTargetSearchUnitFv,(void*)__dt__18emTargetSearchUnitFv,0x18,1);
+    __construct_array(s+0x665c,(void*)fn_41_2A470,(void*)fn_41_2A480,8,0x18);
+    fn_27_CB410(s+0x671c,1,0);
+    Sub* a0=(Sub*)(s+0x676c);
+    a0->v0=lbl_41_data_18158;
+    a0->v1=lbl_41_data_18158+0x10;
+    Sub *b, *c, *a, *t, *u;
+    a=a0+1;
+    a->v0=lbl_41_data_183C0;
+    a->v1=lbl_41_data_18470;
+    t=a+2;
+    b=t-1;
+    (t-1)->v0=lbl_41_data_18500;
+    b->v1=lbl_41_data_18590;
+    u=b+2;
+    c=u-1;
+    (u-1)->v0=lbl_41_data_18620;
+    c->v1=lbl_41_data_186B0;
+    fn_41_5B21C((char*)c+0xc,s+0xdc);
+    fn_41_5B21C((char*)c+0x38,s+0xdc);
+    fn_41_5B21C((char*)b+0x6c,s+0xdc);
+    fn_41_5B21C((char*)b+0x98,s+0xdc);
+    fn_41_5B21C((char*)a+0xcc,s+0xdc);
+    a->v0=lbl_41_data_182D8;
+    s[0x686c]=0;
+    return self;
+}

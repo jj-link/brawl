@@ -1,0 +1,62 @@
+#include <types.h>
+#pragma force_active on
+extern int fn_803D6D64(void *);
+extern int fn_803D6D70(void *);
+extern void fn_803D6D7C(void *);
+extern int fn_803D6D8C(void *);
+extern void fn_803D6D98(void *);
+extern int fn_803D70F0(void *, int);
+extern void fn_803DBFD0(void *);
+extern void fn_803E5500(void *);
+extern int fn_803E94E8(void *);
+extern char lbl_805644C0[];
+static inline int finish(char *self, int flags) {
+    int status = fn_803D70F0(self, flags);
+    if (status != 0) return status;
+    if (*(u16 *)(self + 0x1F8C) & 8) {
+        *(int *)(self + 0x1654) = 0;
+        *(int *)(self + 0x189C) = 0;
+        *(int *)(self + 0x1AE4) = 0;
+        *(int *)(self + 0x1D2C) = 0;
+    }
+    *(u16 *)(self + 0x1F8C) &= ~8;
+    return 0;
+}
+static inline void unmount(char *self) {
+    if (fn_803D6D8C(self) && !(*(u16 *)(self + 0x1F8C) & 8)) {
+        fn_803E5500(self);
+        fn_803DBFD0(self);
+        finish(self, 1);
+        fn_803D6D98(self);
+        --*(int *)(lbl_805644C0 + 0x34);
+    }
+}
+static inline int mount(char *self) {
+    if (!(*(u16 *)(self + 0x1F8C) & 8)) {
+        int status = fn_803E94E8(self);
+        if (status != 0) return status;
+        *(u16 *)(self + 0x1FAC) &= 0xFFF8;
+        fn_803D6D98(self);
+        ++*(int *)(lbl_805644C0 + 0x34);
+    }
+    fn_803D6D7C(self);
+    return 0;
+}
+static inline int prepare(char *self) {
+    if (fn_803D6D64(self)) {
+        unmount(self);
+        if (fn_803D6D70(self)) {
+            int status = mount(self);
+            if (status != 0) return status;
+        }
+    } else {
+        unmount(self);
+        if (fn_803D6D70(self)) fn_803D6D7C(self);
+    }
+    return 0;
+}
+int fn_803E9974(char *self) {
+    int status = prepare(self);
+    if (status != 0) return status;
+    return (*(u16 *)(self + 0x1F8C) & 8) ? 0 : 9;
+}
