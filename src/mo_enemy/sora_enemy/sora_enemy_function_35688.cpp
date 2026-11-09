@@ -1,0 +1,71 @@
+#pragma force_active on
+#include <em/em_target_search_unit.h>
+struct emCreate;
+struct emSiralamos;
+struct Sub { void* v0; void* v1; };
+extern "C" {
+void fn_41_1F0(void*, unsigned long, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+void fn_27_CFD70(void*, int, int);
+void fn_27_CA8EC(void*, int, int);
+void fn_27_CB410(void*, int, int);
+void fn_41_358CC(void*, void*);
+void fn_41_35B50(void*, void*);
+void __construct_array(void*, void*, void*, unsigned long, unsigned long);
+void* __ct__18emTargetSearchUnitFv(void*);
+void* __dt__18emTargetSearchUnitFv(void*, short);
+void* fn_41_2A470(void*);
+void* fn_41_2A480(void*, short);
+extern char lbl_27_bss_A5C[];
+extern char lbl_27_bss_69C[];
+extern char lbl_41_data_71D0[];
+extern char lbl_41_data_7420[];
+extern char lbl_41_data_7B64[];
+extern char lbl_41_data_7C14[];
+extern char lbl_41_data_7CA4[];
+extern char lbl_41_data_77A4[];
+extern char lbl_41_data_790C[];
+extern char lbl_41_data_7998[];
+extern char lbl_41_data_7654[];
+}
+extern "C" emSiralamos* __ct__11emSiralamosFUlP8emCreate(emSiralamos* self, unsigned long arg0, emCreate* arg1) {
+unsigned char* s = (unsigned char*)self;
+fn_41_1F0(self,arg0,arg1,s+0x5310,s+0x594C,s+0x5B74,s+0x5D54,s+0x5DE4,s+0x5F04,lbl_27_bss_A5C,s+0x5EB4,lbl_27_bss_69C);
+char* p=lbl_41_data_71D0;
+*(char**)(s+0x3C)=p;
+*(char**)(s+0x40)=p+0x64;
+*(char**)(s+0x48)=p+0x70;
+*(char**)(s+0x54)=p+0x84;
+*(char**)(s+0x64)=p+0xDC;
+*(char**)(s+0x70)=p+0xEC;
+*(char**)(s+0x7C)=p+0x100;
+*(char**)(s+0x88)=p+0x114;
+*(char**)(s+0x94)=p+0x124;
+*(char**)(s+0xA0)=p+0x138;
+fn_27_CFD70(s+0x5310,0x21,0);
+fn_27_CA8EC(s+0x594C,0xF,0);
+__construct_array(s+0x5D54,(void*)__ct__18emTargetSearchUnitFv,(void*)__dt__18emTargetSearchUnitFv,0x18,6);
+__construct_array(s+0x5DE4,(void*)fn_41_2A470,(void*)fn_41_2A480,8,0x1A);
+fn_27_CB410(s+0x5EB4,1,0);
+unsigned char* t=s+0x5F04;
+*(char**)t=lbl_41_data_7420;
+*(char**)(t+4)=lbl_41_data_7420+0x10;
+*(char**)(t+8)=lbl_41_data_7B64;
+Sub* z=(Sub*)(t+4);
+Sub* v=z+2;
+Sub* a=v-1;
+(v-1)->v0=lbl_41_data_7C14;
+a->v1=lbl_41_data_7CA4;
+fn_41_358CC((char*)a+0xC,s+0xDC);
+fn_41_358CC((char*)a+0x38,s+0xDC);
+*(char**)(t+8)=lbl_41_data_77A4;
+Sub* w=(Sub*)(t+0x68);
+Sub* x=w+2;
+Sub* b=x-1;
+(x-1)->v0=lbl_41_data_790C;
+b->v1=lbl_41_data_7998;
+fn_41_35B50((char*)b+0xC,s+0xDC);
+fn_41_35B50((char*)b+0x2384,s+0xDC);
+*(char**)(t+8)=lbl_41_data_7654;
+t[0x476C]=0;
+return self;
+}
