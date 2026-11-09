@@ -6153,3 +6153,16 @@ extern "C" void* fn_124_4374(void* p, short flag) {
 }
 }  // namespace decomp_orch_fn_124_4374
 // decomp-orchestrator: end fn_124_4374
+
+// decomp-orchestrator: begin fn_124_8198
+#include <types.h>
+namespace decomp_orch_fn_124_8198 {
+#pragma force_active on
+
+extern "C" void fn_27_1A7B4C(void* receiver, s16 id, void* owner, s8 argument);
+
+extern "C" void fn_124_8198(void* receiver, s16 id, s32 argument) {
+    fn_27_1A7B4C(receiver, id, receiver, static_cast<s8>(argument));
+}
+}  // namespace decomp_orch_fn_124_8198
+// decomp-orchestrator: end fn_124_8198
