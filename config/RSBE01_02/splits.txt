@@ -223,6 +223,9 @@ sora/misc/fn_800121A8.cpp:
 sora/misc/fn_800122E8.cpp:
 	.text       start:0x800122E8 end:0x80012324
 
+sora/misc/fn_80012324.cpp:
+	.text       start:0x80012324 end:0x8001237C
+
 sora/misc/fn_8001237C.cpp:
 	.text       start:0x8001237C end:0x80012470
 
@@ -7409,6 +7412,9 @@ sora/misc/fn_80110368.cpp:
 sora/misc/fn_801104C4.cpp:
 	.text       start:0x801104C4 end:0x8011058C
 
+sora/misc/fn_8011058C.cpp:
+	.text       start:0x8011058C end:0x80110720
+
 sora/gr/collision/gr_collision_data.cpp:
 	.text       start:0x80110720 end:0x80110748
 
@@ -10373,6 +10379,9 @@ nw4r/fn_8018C1FC.cpp:
 nw4r/fn_8018C3FC.cpp:
 	.text       start:0x8018C3FC end:0x8018C464
 
+nw4r/fn_8018C464.cpp:
+	.text       start:0x8018C464 end:0x8018C4B8
+
 nw4r/fn_8018C4B8.cpp:
 	.text       start:0x8018C4B8 end:0x8018C59C
 
@@ -11767,6 +11776,9 @@ nw4r/fn_801AA0B4.cpp:
 
 nw4r/fn_801AA1A0.cpp:
 	.text       start:0x801AA1A0 end:0x801AA26C
+
+nw4r/fn_801AA26C.cpp:
+	.text       start:0x801AA26C end:0x801AA2C4
 
 nw4r/fn_801AA390.cpp:
 	.text       start:0x801AA390 end:0x801AA410
@@ -15297,6 +15309,12 @@ RVL_SDK/fn_801F3C30.c:
 
 RVL_SDK/fn_801F3C70.c:
 	.text       start:0x801F3C70 end:0x801F3CB0
+
+RVL_SDK/fn_801F3CB0.c:
+	.text       start:0x801F3CB0 end:0x801F3D08
+
+RVL_SDK/fn_801F3D08.c:
+	.text       start:0x801F3D08 end:0x801F3D60
 
 RVL_SDK/fn_801F3DC0.c:
 	.text       start:0x801F3DC0 end:0x801F3E24
@@ -27578,6 +27596,9 @@ network/fn_8037FA44.c:
 network/fn_8037FB20.c:
 	.text       start:0x8037FB20 end:0x8037FCCC
 
+network/fn_8037FCCC.c:
+	.text       start:0x8037FCCC end:0x8037FE60
+
 network/fn_8037FE60.c:
 	.text       start:0x8037FE60 end:0x8037FFA0
 
@@ -28614,6 +28635,9 @@ network/fn_8039B7A0.c:
 network/fn_8039BA88.c:
 	.text       start:0x8039BA88 end:0x8039BB3C
 
+network/fn_8039CCC8.c:
+	.text       start:0x8039CCC8 end:0x8039CDB4
+
 network/fn_8039D440.c:
 	.text       start:0x8039D440 end:0x8039D45C
 
@@ -29399,6 +29423,9 @@ network/fn_803B68D8.c:
 
 network/fn_803B6A08.c:
 	.text       start:0x803B6A08 end:0x803B6B18
+
+network/fn_803B6B18.c:
+	.text       start:0x803B6B18 end:0x803B6CA8
 
 network/fn_803B6CA8.c:
 	.text       start:0x803B6CA8 end:0x803B6DC8
