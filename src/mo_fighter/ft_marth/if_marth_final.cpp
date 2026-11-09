@@ -152,10 +152,20 @@ extern "C" void fn_106_D66C(MarthFinalInterface* interface, nw4r::g3d::ResFile* 
     interface->visible = 1;
 }
 #pragma dont_inline on
-extern "C" void fn_106_D720(IfMngr* manager, nw4r::g3d::ScnObj* object) {
-    nw4r::g3d::ScnGroup* scene = reinterpret_cast<FinalManagerView*>(manager)->scene;
-    scene->Insert(scene->sceneItemsCount, object);
-}
+// decomp-orchestrator: begin fn_106_D720
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D720(IfMngr* manager, nw4r::g3d::ScnObj* object) {
+//|     nw4r::g3d::ScnGroup* scene = reinterpret_cast<FinalManagerView*>(manager)->scene;
+//|     scene->Insert(scene->sceneItemsCount, object);
+//| }
+#include <if/if_mngr.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#pragma force_active on
+
+#pragma scheduling off
+extern "C" void fn_106_D720(IfMngr* manager, nw4r::g3d::ScnObj* object) { nw4r::g3d::ScnObj* inserted = object; nw4r::g3d::ScnGroup* scene = reinterpret_cast<FinalManagerView*>(manager)->scene; int sceneId = scene->sceneItemsCount; scene->Insert(sceneId, inserted); }
+#pragma scheduling reset
+// decomp-orchestrator: end fn_106_D720
 extern "C" void fn_106_D73C(MarthFinalInterface* interface) {
     interface->scene = 0;
     for (int i = 0; i < 1; ++i) interface->models[i] = 0;
