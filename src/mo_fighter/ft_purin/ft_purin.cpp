@@ -6116,3 +6116,18 @@ extern "C" void fn_124_8308(PairArray* array, void* argument) {
 }
 }  // namespace decomp_orch_fn_124_8308
 // decomp-orchestrator: end fn_124_8308
+
+// decomp-orchestrator: begin fn_124_8650
+#include <types.h>
+namespace decomp_orch_fn_124_8650 {
+// decomp-orchestrator: begin fn_124_8650
+#pragma force_active on
+namespace decomp_orch_fn_124_8650 {
+extern "C" void fn_124_8650(void* self, int value, int index) {
+    int* arr = *(int**)(static_cast<char*>(self) + 0xC);
+    arr[index] += value;
+}
+}  // namespace decomp_orch_fn_124_8650
+// decomp-orchestrator: end fn_124_8650
+}  // namespace decomp_orch_fn_124_8650
+// decomp-orchestrator: end fn_124_8650
