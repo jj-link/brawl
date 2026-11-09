@@ -1128,6 +1128,9 @@ sora/misc/fn_800305FC.cpp:
 sora/misc/fn_80030654.cpp:
 	.text       start:0x80030654 end:0x800306D0
 
+sora/misc/fn_800306D0.cpp:
+	.text       start:0x800306D0 end:0x800307B4
+
 sora/misc/fn_800307B4.cpp:
 	.text       start:0x800307B4 end:0x80030808
 
@@ -3260,6 +3263,9 @@ sora/misc/fn_8006EBCC.cpp:
 
 sora/misc/fn_8006EE1C.cpp:
 	.text       start:0x8006EE1C end:0x8006EE5C
+
+sora/misc/fn_8006EE5C.cpp:
+	.text       start:0x8006EE5C end:0x8006EED4
 
 sora/misc/fn_8006EED4.cpp:
 	.text       start:0x8006EED4 end:0x8006EEE4
@@ -12207,6 +12213,9 @@ nw4r/fn_801B07A0.cpp:
 nw4r/fn_801B0820.cpp:
 	.text       start:0x801B0820 end:0x801B089C
 
+nw4r/fn_801B089C.cpp:
+	.text       start:0x801B089C end:0x801B096C
+
 nw4r/fn_801B096C.cpp:
 	.text       start:0x801B096C end:0x801B0A28
 
@@ -14530,6 +14539,9 @@ RVL_SDK/fn_801DCF5C.c:
 
 RVL_SDK/fn_801DCF70.c:
 	.text       start:0x801DCF70 end:0x801DCF80
+
+RVL_SDK/fn_801DD044.c:
+	.text       start:0x801DD044 end:0x801DD2A0
 
 RVL_SDK/fn_801DD2A0.c:
 	.text       start:0x801DD2A0 end:0x801DD320
@@ -19182,6 +19194,9 @@ RVL_SDK/fn_8026037C.c:
 
 RVL_SDK/fn_8026045C.c:
 	.text       start:0x8026045C end:0x802605E0
+
+RVL_SDK/fn_802605E0.c:
+	.text       start:0x802605E0 end:0x80260730
 
 RVL_SDK/fn_80260730.c:
 	.text       start:0x80260730 end:0x802608BC
@@ -29169,6 +29184,9 @@ network/fn_803A7784.c:
 
 network/fn_803A7838.c:
 	.text       start:0x803A7838 end:0x803A7994
+
+network/fn_803A7994.c:
+	.text       start:0x803A7994 end:0x803A7AA0
 
 network/fn_803A7AA0.c:
 	.text       start:0x803A7AA0 end:0x803A7AF4
