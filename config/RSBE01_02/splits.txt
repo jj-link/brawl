@@ -4081,6 +4081,9 @@ sora/misc/fn_80098160.cpp:
 sora/misc/fn_80098188.cpp:
 	.text       start:0x80098188 end:0x80098388
 
+sora/misc/fn_80098388.cpp:
+	.text       start:0x80098388 end:0x80098578
+
 sora/misc/fn_80098578.cpp:
 	.text       start:0x80098578 end:0x80098588
 
@@ -17125,6 +17128,9 @@ RVL_SDK/fn_80224D18.c:
 RVL_SDK/fn_802250C8.c:
 	.text       start:0x802250C8 end:0x8022521C
 
+RVL_SDK/fn_8022521C.c:
+	.text       start:0x8022521C end:0x802252E8
+
 RVL_SDK/fn_80225454.c:
 	.text       start:0x80225454 end:0x8022550C
 
@@ -18183,6 +18189,9 @@ RVL_SDK/fn_8023E598.c:
 
 RVL_SDK/fn_8023E900.c:
 	.text       start:0x8023E900 end:0x8023EAE0
+
+RVL_SDK/fn_8023EAE0.c:
+	.text       start:0x8023EAE0 end:0x8023EC80
 
 RVL_SDK/fn_8023EC80.c:
 	.text       start:0x8023EC80 end:0x8023ED38
@@ -19788,6 +19797,9 @@ RVL_SDK/fn_8027C84C.c:
 
 RVL_SDK/fn_8027C854.c:
 	.text       start:0x8027C854 end:0x8027C878
+
+RVL_SDK/fn_8027C878.c:
+	.text       start:0x8027C878 end:0x8027C8E8
 
 RVL_SDK/fn_8027C8E8.c:
 	.text       start:0x8027C8E8 end:0x8027C8EC
@@ -25777,6 +25789,9 @@ havok/fn_8032FCAC.cpp:
 havok/fn_8032FCB4.cpp:
 	.text       start:0x8032FCB4 end:0x8032FD74
 
+havok/fn_8032FD74.cpp:
+	.text       start:0x8032FD74 end:0x8032FF60
+
 havok/fn_803301B0.cpp:
 	.text       start:0x803301B0 end:0x8033026C
 
@@ -26359,6 +26374,9 @@ network/fn_8034C4E4.c:
 
 network/fn_8034C604.c:
 	.text       start:0x8034C604 end:0x8034C60C
+
+network/fn_8034C60C.c:
+	.text       start:0x8034C60C end:0x8034C674
 
 network/fn_8034C674.c:
 	.text       start:0x8034C674 end:0x8034C6E0
@@ -28404,6 +28422,9 @@ network/fn_80391784.c:
 
 network/fn_80391888.c:
 	.text       start:0x80391888 end:0x80391960
+
+network/fn_80391960.c:
+	.text       start:0x80391960 end:0x80391A20
 
 network/fn_80391B8C.c:
 	.text       start:0x80391B8C end:0x80391C58
@@ -31077,6 +31098,9 @@ network/fn_803DA314.c:
 
 network/fn_803DA3DC.c:
 	.text       start:0x803DA3DC end:0x803DA454
+
+network/fn_803DA454.c:
+	.text       start:0x803DA454 end:0x803DA4CC
 
 network/fn_803DA4CC.c:
 	.text       start:0x803DA4CC end:0x803DA55C
