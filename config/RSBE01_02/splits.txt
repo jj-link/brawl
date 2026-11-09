@@ -11681,6 +11681,9 @@ nw4r/fn_801A8194.cpp:
 nw4r/fn_801A81B8.cpp:
 	.text       start:0x801A81B8 end:0x801A81D4
 
+nw4r/fn_801A85D8.cpp:
+	.text       start:0x801A85D8 end:0x801A8740
+
 nw4r/fn_801A8740.cpp:
 	.text       start:0x801A8740 end:0x801A8778
 
@@ -14718,6 +14721,9 @@ RVL_SDK/fn_801E369C.c:
 
 RVL_SDK/fn_801E3844.c:
 	.text       start:0x801E3844 end:0x801E38A8
+
+RVL_SDK/fn_801E38A8.c:
+	.text       start:0x801E38A8 end:0x801E38C0
 
 RVL_SDK/fn_801E41A8.c:
 	.text       start:0x801E41A8 end:0x801E41F4
@@ -20596,6 +20602,11 @@ havok/fn_802A3588.cpp:
 	extabindex  start:0x80009D54 end:0x80009D60
 	.text       start:0x802A3588 end:0x802A35D0
 
+havok/fn_802A35D0.cpp:
+	extab       start:0x800069E0 end:0x80006A08
+	extabindex  start:0x80009D60 end:0x80009D6C
+	.text       start:0x802A35D0 end:0x802A3730
+
 havok/fn_802A38CC.cpp:
 	.text       start:0x802A38CC end:0x802A38DC
 
@@ -20778,6 +20789,11 @@ havok/fn_802A95B8.cpp:
 	extab       start:0x80006DA4 end:0x80006DBC
 	extabindex  start:0x80009FDC end:0x80009FE8
 	.text       start:0x802A95B8 end:0x802A9600
+
+havok/fn_802A9600.cpp:
+	extab       start:0x80006DBC end:0x80006DE4
+	extabindex  start:0x80009FE8 end:0x80009FF4
+	.text       start:0x802A9600 end:0x802A9760
 
 havok/fn_802A98FC.cpp:
 	.text       start:0x802A98FC end:0x802A990C
@@ -22007,6 +22023,11 @@ havok/fn_802C846C.cpp:
 	extabindex  start:0x8000ACE4 end:0x8000ACF0
 	.text       start:0x802C846C end:0x802C84B4
 
+havok/fn_802C84B4.cpp:
+	extab       start:0x80007FE8 end:0x80008010
+	extabindex  start:0x8000ACF0 end:0x8000ACFC
+	.text       start:0x802C84B4 end:0x802C8614
+
 havok/fn_802C8C38.cpp:
 	.text       start:0x802C8C38 end:0x802C8C3C
 
@@ -22079,6 +22100,11 @@ havok/fn_802CA564.cpp:
 	extab       start:0x80008150 end:0x80008168
 	extabindex  start:0x8000AE10 end:0x8000AE1C
 	.text       start:0x802CA564 end:0x802CA5AC
+
+havok/fn_802CA5AC.cpp:
+	extab       start:0x80008168 end:0x80008190
+	extabindex  start:0x8000AE1C end:0x8000AE28
+	.text       start:0x802CA5AC end:0x802CA70C
 
 havok/fn_802CA8A8.cpp:
 	.text       start:0x802CA8A8 end:0x802CA8B8
