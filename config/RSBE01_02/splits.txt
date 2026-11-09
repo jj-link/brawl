@@ -325,6 +325,9 @@ sora/misc/fn_80016E70.cpp:
 sora/misc/fn_80016EA4.cpp:
 	.text       start:0x80016EA4 end:0x80016EE0
 
+sora/misc/fn_80016EE0.cpp:
+	.text       start:0x80016EE0 end:0x80016F8C
+
 sora/misc/fn_800177D4.cpp:
 	.text       start:0x800177D4 end:0x8001789C
 
@@ -3198,6 +3201,9 @@ sora/misc/fn_8006E7E0.cpp:
 sora/misc/fn_8006E7F0.cpp:
 	.text       start:0x8006E7F0 end:0x8006E830
 
+sora/misc/fn_8006E830.cpp:
+	.text       start:0x8006E830 end:0x8006E98C
+
 sora/misc/fn_8006EBC4.cpp:
 	.text       start:0x8006EBC4 end:0x8006EBC8
 
@@ -3489,6 +3495,9 @@ sora/misc/fn_80077174.cpp:
 
 sora/misc/fn_80077200.cpp:
 	.text       start:0x80077200 end:0x80077288
+
+sora/misc/fn_80077288.cpp:
+	.text       start:0x80077288 end:0x80077334
 
 sora/misc/fn_8007748C.cpp:
 	.text       start:0x8007748C end:0x80077490
@@ -7988,6 +7997,9 @@ sora/misc/fn_80145B78.cpp:
 
 sora/misc/fn_80145B88.cpp:
 	.text       start:0x80145B88 end:0x80145B98
+
+sora/misc/fn_80145B98.cpp:
+	.text       start:0x80145B98 end:0x80145D24
 
 sora/misc/fn_80145D24.cpp:
 	.text       start:0x80145D24 end:0x80145D38
@@ -20739,6 +20751,11 @@ havok/fn_802A990C.cpp:
 	extabindex  start:0x8000A000 end:0x8000A00C
 	.text       start:0x802A990C end:0x802A99B0
 
+havok/fn_802A99B0.cpp:
+	extab       start:0x80006DF4 end:0x80006E1C
+	extabindex  start:0x8000A00C end:0x8000A018
+	.text       start:0x802A99B0 end:0x802A9A54
+
 havok/fn_802A9A54.cpp:
 	.text       start:0x802A9A54 end:0x802A9A5C
 
@@ -20943,6 +20960,11 @@ havok/fn_802AE4B0.cpp:
 	extab       start:0x8000702C end:0x80007044
 	extabindex  start:0x8000A1E0 end:0x8000A1EC
 	.text       start:0x802AE4B0 end:0x802AE4F8
+
+havok/fn_802AE4F8.cpp:
+	extab       start:0x80007044 end:0x8000706C
+	extabindex  start:0x8000A1EC end:0x8000A1F8
+	.text       start:0x802AE4F8 end:0x802AE658
 
 havok/fn_802AEDFC.cpp:
 	.text       start:0x802AEDFC end:0x802AEE00
@@ -23173,6 +23195,9 @@ havok/fn_802DB620.cpp:
 
 havok/fn_802DB624.cpp:
 	.text       start:0x802DB624 end:0x802DB628
+
+havok/fn_802DB628.cpp:
+	.text       start:0x802DB628 end:0x802DB6D0
 
 havok/fn_802DB6D0.cpp:
 	.text       start:0x802DB6D0 end:0x802DB6E4
