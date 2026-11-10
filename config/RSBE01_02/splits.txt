@@ -138,6 +138,9 @@ sora/misc/fn_80010190.cpp:
 sora/misc/fn_80010208.cpp:
 	.text       start:0x80010208 end:0x8001025C
 
+sora/misc/fn_8001038C.cpp:
+	.text       start:0x8001038C end:0x80010598
+
 sora/misc/fn_800107A8.cpp:
 	.text       start:0x800107A8 end:0x800109D8
 
@@ -11296,6 +11299,9 @@ nw4r/fn_80198F00.cpp:
 nw4r/fn_80198F78.cpp:
 	.text       start:0x80198F78 end:0x80198FCC
 
+nw4r/fn_80198FCC.cpp:
+	.text       start:0x80198FCC end:0x801991C0
+
 nw4r/fn_801991C0.cpp:
 	.text       start:0x801991C0 end:0x80199228
 
@@ -17228,6 +17234,9 @@ RVL_SDK/fn_8021E47C.c:
 
 RVL_SDK/fn_8021F0B4.c:
 	.text       start:0x8021F0B4 end:0x8021F5A0
+
+RVL_SDK/fn_8021F5A0.c:
+	.text       start:0x8021F5A0 end:0x8021F890
 
 RVL_SDK/fn_8021F890.c:
 	.text       start:0x8021F890 end:0x8021FA20
@@ -24674,6 +24683,9 @@ havok/fn_802ED2B8.cpp:
 havok/fn_802ED3EC.cpp:
 	.text       start:0x802ED3EC end:0x802ED550
 
+havok/fn_802ED630.cpp:
+	.text       start:0x802ED630 end:0x802ED81C
+
 havok/fn_802ED81C.cpp:
 	.text       start:0x802ED81C end:0x802ED860
 
@@ -25174,6 +25186,11 @@ havok/fn_803010FC.cpp:
 
 havok/fn_80301778.cpp:
 	.text       start:0x80301778 end:0x80301780
+
+havok/fn_803020E0.cpp:
+	extab       start:0x80008794 end:0x8000879C
+	extabindex  start:0x8000B6B0 end:0x8000B6BC
+	.text       start:0x803020E0 end:0x803021C0
 
 havok/fn_803021C0.cpp:
 	extab       start:0x8000879C end:0x800087A4
@@ -27166,6 +27183,9 @@ network/fn_8035E380.c:
 
 network/fn_8035E390.c:
 	.text       start:0x8035E390 end:0x8035E494
+
+network/fn_8035E494.c:
+	.text       start:0x8035E494 end:0x8035E69C
 
 network/fn_8035E69C.c:
 	.text       start:0x8035E69C end:0x8035E76C
@@ -31456,6 +31476,9 @@ network/fn_803DC468.c:
 network/fn_803DCD34.c:
 	.text       start:0x803DCD34 end:0x803DCE4C
 
+network/fn_803DCE4C.c:
+	.text       start:0x803DCE4C end:0x803DCEBC
+
 network/fn_803DD390.c:
 	.text       start:0x803DD390 end:0x803DD64C
 
@@ -31909,6 +31932,9 @@ network/fn_803EBF98.c:
 network/fn_803EBF9C.c:
 	.text       start:0x803EBF9C end:0x803EBFCC
 
+network/fn_803EBFCC.c:
+	.text       start:0x803EBFCC end:0x803EC094
+
 network/fn_803EC094.c:
 	.text       start:0x803EC094 end:0x803EC0CC
 
@@ -31953,6 +31979,9 @@ network/fn_803EC45C.c:
 
 network/fn_803EC51C.c:
 	.text       start:0x803EC51C end:0x803EC6E8
+
+network/fn_803EC6E8.c:
+	.text       start:0x803EC6E8 end:0x803EC8F0
 
 network/fn_803ECA2C.c:
 	.text       start:0x803ECA2C end:0x803ECB5C
