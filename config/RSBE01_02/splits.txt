@@ -3021,6 +3021,9 @@ sora/misc/fn_800633B4.cpp:
 sora/misc/fn_80063498.cpp:
 	.text       start:0x80063498 end:0x80063538
 
+sora/misc/fn_80063538.cpp:
+	.text       start:0x80063538 end:0x80063AF4
+
 sora/misc/fn_80063AF4.cpp:
 	.text       start:0x80063AF4 end:0x80063D60
 
@@ -7849,6 +7852,9 @@ sora/misc/fn_80114ABC.cpp:
 
 sora/misc/fn_80114CBC.cpp:
 	.text       start:0x80114CBC end:0x80114DAC
+
+sora/misc/fn_80114DAC.cpp:
+	.text       start:0x80114DAC end:0x80114E9C
 
 sora/misc/fn_80114F30.cpp:
 	.text       start:0x80114F30 end:0x80115000
@@ -12695,6 +12701,9 @@ nw4r/fn_801B5D80.cpp:
 
 nw4r/fn_801B5DC0.cpp:
 	.text       start:0x801B5DC0 end:0x801B5DC8
+
+nw4r/fn_801B5DC8.cpp:
+	.text       start:0x801B5DC8 end:0x801B5E38
 
 nw4r/fn_801B5E38.cpp:
 	.text       start:0x801B5E38 end:0x801B5E8C
@@ -28018,6 +28027,9 @@ network/fn_8036C2B8.c:
 network/fn_8036C6B8.c:
 	.text       start:0x8036C6B8 end:0x8036C8F4
 
+network/fn_8036C8F4.c:
+	.text       start:0x8036C8F4 end:0x8036D1B4
+
 network/fn_8036D1B4.c:
 	.text       start:0x8036D1B4 end:0x8036D2C8
 
@@ -30103,6 +30115,9 @@ network/fn_803A7B0C.c:
 network/fn_803A7FF0.c:
 	.text       start:0x803A7FF0 end:0x803A8068
 
+network/fn_803A81A8.c:
+	.text       start:0x803A81A8 end:0x803A848C
+
 network/fn_803A848C.c:
 	.text       start:0x803A848C end:0x803A84F0
 
@@ -30582,6 +30597,9 @@ network/fn_803B5B40.c:
 
 network/fn_803B5CEC.c:
 	.text       start:0x803B5CEC end:0x803B5EB8
+
+network/fn_803B5EB8.c:
+	.text       start:0x803B5EB8 end:0x803B60DC
 
 network/fn_803B60DC.c:
 	.text       start:0x803B60DC end:0x803B6304
