@@ -1547,6 +1547,12 @@ sora/misc/fn_8003F074.cpp:
 sora/misc/fn_8003F0FC.cpp:
 	.text       start:0x8003F0FC end:0x8003F2AC
 
+sora/misc/fn_8003F4F8.cpp:
+	.text       start:0x8003F4F8 end:0x8003F5A0
+
+sora/misc/fn_8003F898.cpp:
+	.text       start:0x8003F898 end:0x8003F8FC
+
 sora/misc/fn_8003F8FC.cpp:
 	.text       start:0x8003F8FC end:0x8003F9A8
 
@@ -1599,6 +1605,9 @@ sora/misc/fn_80041D64.cpp:
 
 sora/misc/fn_80041DCC.cpp:
 	.text       start:0x80041DCC end:0x80041F44
+
+sora/misc/fn_80041F44.cpp:
+	.text       start:0x80041F44 end:0x80041F70
 
 sora/misc/fn_80041F70.cpp:
 	.text       start:0x80041F70 end:0x80042034
@@ -4019,6 +4028,9 @@ sora/misc/fn_80086470.cpp:
 
 sora/misc/fn_80086610.cpp:
 	.text       start:0x80086610 end:0x80086694
+
+sora/misc/fn_8008674C.cpp:
+	.text       start:0x8008674C end:0x800867E8
 
 sora/misc/fn_80088FB8.cpp:
 	.text       start:0x80088FB8 end:0x80089224
