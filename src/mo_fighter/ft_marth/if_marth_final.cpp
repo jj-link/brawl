@@ -134,10 +134,28 @@ extern "C" MarthFinalInterface* fn_106_D590(MarthFinalInterface* interface, void
     return interface;
 }
 #pragma dont_inline on
+// decomp-orchestrator: begin fn_106_D62C
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" FinalObjectCallback* fn_106_D62C(FinalObjectCallback* callback, short deleting) {
+//|     if (callback && deleting > 0) operator delete(callback);
+//|     return callback;
+//| }
+#pragma force_active on
+struct FinalObjectCallback;
+
+#pragma scheduling off
+#pragma optimization_level 2
+#pragma dont_inline on
 extern "C" FinalObjectCallback* fn_106_D62C(FinalObjectCallback* callback, short deleting) {
-    if (callback && deleting > 0) operator delete(callback);
+    if (callback && deleting > 0) {
+        operator delete(callback);
+    }
     return callback;
 }
+#pragma dont_inline reset
+#pragma optimization_level reset
+#pragma scheduling reset
+// decomp-orchestrator: end fn_106_D62C
 #pragma dont_inline reset
 extern "C" void fn_106_D66C(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource,
         nw4r::g3d::ScnGroup* scene, int priority, Heaps::HeapType heap) {
