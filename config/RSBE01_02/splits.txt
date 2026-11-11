@@ -26305,6 +26305,11 @@ havok/fn_8031D6C0.cpp:
 havok/fn_8031D8FC.cpp:
 	.text       start:0x8031D8FC end:0x8031D9AC
 
+havok/fn_8031D9AC.cpp:
+	extab       start:0x80008C94 end:0x80008C9C
+	extabindex  start:0x8000BC14 end:0x8000BC20
+	.text       start:0x8031D9AC end:0x8031DBD8
+
 havok/fn_8031EA8C.cpp:
 	extab       start:0x80008CBC end:0x80008CC4
 	extabindex  start:0x8000BC50 end:0x8000BC5C
