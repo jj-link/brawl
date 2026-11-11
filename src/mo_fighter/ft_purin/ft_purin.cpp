@@ -6166,3 +6166,159 @@ extern "C" void fn_124_8198(void* receiver, s16 id, s32 argument) {
 }
 }  // namespace decomp_orch_fn_124_8198
 // decomp-orchestrator: end fn_124_8198
+
+// decomp-orchestrator: begin fn_124_6DBC
+namespace decomp_orch_fn_124_6DBC {
+// decomp-orchestrator: begin fn_124_6DBC
+#pragma force_active on
+#pragma optimization_level 1
+namespace decomp_orch_fn_124_6DBC {
+class Object_vptr_0 {
+public:
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3(void*, int, short*, short);
+};
+
+struct EnergyFlag {
+    unsigned char disabled : 1;
+};
+
+extern "C" {
+extern char lbl_124_data_1ECC[];
+extern char lbl_124_data_565C[];
+extern char lbl_124_data_571C[];
+extern char lbl_124_data_57BC[];
+extern char lbl_124_data_52BC[];
+extern char lbl_124_data_5450[];
+extern char lbl_124_data_54F0[];
+extern char lbl_124_data_4E14[];
+extern char lbl_124_data_502C[];
+extern char lbl_124_data_50D0[];
+extern char lbl_124_data_4878[];
+extern char lbl_124_data_4B0C[];
+extern char lbl_124_data_4BA8[];
+extern char lbl_124_data_41DC[];
+extern char lbl_124_data_44F0[];
+extern char lbl_124_data_4590[];
+extern char lbl_124_data_5990[];
+extern char lbl_124_data_3A34[];
+extern char lbl_124_data_3DCC[];
+extern char lbl_124_data_3E70[];
+extern char lbl_124_data_3178[];
+extern char lbl_124_data_3598[];
+extern char lbl_124_data_3640[];
+extern char lbl_124_data_27C4[];
+extern char lbl_124_data_2C64[];
+extern char lbl_124_data_2D04[];
+extern char lbl_124_data_2338[];
+
+void* fn_27_B6DBC(void*, void*, void*, void*);
+void* fn_27_1ACD80(void*, unsigned char);
+void fn_27_15D8F8(void*);
+void fn_27_15CFE0(void*);
+void fn_27_15BD28(void*);
+void fn_27_15E6C8(void*);
+void fn_27_B7634(void*);
+void fn_27_B7148(void*);
+void fn_27_B7B54(void*);
+}
+
+extern "C" void* fn_124_6DBC(char* input, char* context) {
+    short a7, a6, a5, a4, a3, a2, a1, a0;
+    int minusOne;
+    int one;
+    char* p;
+    char* accesser;
+    char* self;
+
+    self = input;
+    accesser = context;
+    fn_27_B6DBC(input, context, input + 0x30, input + 0xe0);
+    fn_27_1ACD80(self + 0x30, 0);
+    *(void**)(self + 0xe0) = lbl_124_data_1ECC;
+    p = self + 0xe4;
+    *(void**)(self + 0xe4) = lbl_124_data_565C;
+    *(void**)(self + 0xe8) = lbl_124_data_571C;
+    char* q0 = p + 0xc;
+    *(void**)(self + 0xf0) = lbl_124_data_57BC;
+    fn_27_15D8F8(q0 + 4);
+    one = 1;
+    a0 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q0 + 4, 0, &a0, minusOne = -1);
+    ((EnergyFlag*)(q0 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_52BC;
+    *(void**)(p + 0x60) = lbl_124_data_5450;
+    char* q1 = p + 0x68;
+    *(void**)(p + 0x68) = lbl_124_data_54F0;
+    fn_27_15CFE0(q1 + 4);
+    a1 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q1 + 4, 1, &a1, minusOne);
+    ((EnergyFlag*)(q1 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_4E14;
+    *(void**)(p + 0x94) = lbl_124_data_502C;
+    char* q2 = p + 0x9c;
+    *(void**)(p + 0x9c) = lbl_124_data_50D0;
+    fn_27_15BD28(q2 + 4);
+    a2 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q2 + 4, 2, &a2, minusOne);
+    ((EnergyFlag*)(q2 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_4878;
+    *(void**)(p + 0xec) = lbl_124_data_4B0C;
+    char* q3 = p + 0xf4;
+    *(void**)(p + 0xf4) = lbl_124_data_4BA8;
+    fn_27_15E6C8(q3 + 4);
+    a3 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q3 + 4, 3, &a3, minusOne);
+    ((EnergyFlag*)(q3 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_41DC;
+    *(void**)(p + 0x134) = lbl_124_data_44F0;
+    char* q4 = p + 0x13c;
+    *(void**)(p + 0x13c) = lbl_124_data_4590;
+    char* energy = q4 + 4;
+    fn_27_15E6C8(energy);
+    *(void**)energy = lbl_124_data_5990;
+    a4 = 2;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(energy, 4, &a4, minusOne);
+    ((EnergyFlag*)(q4 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_3A34;
+    *(void**)(p + 0x17c) = lbl_124_data_3DCC;
+    char* q5 = p + 0x184;
+    *(void**)(p + 0x184) = lbl_124_data_3E70;
+    fn_27_B7634(q5 + 4);
+    one = 4;
+    a5 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q5 + 4, 5, &a5, minusOne);
+    ((EnergyFlag*)(q5 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_3178;
+    *(void**)(p + 0x1c8) = lbl_124_data_3598;
+    char* q6 = p + 0x1d0;
+    *(void**)(p + 0x1d0) = lbl_124_data_3640;
+    fn_27_B7148(q6 + 4);
+    a6 = 8;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q6 + 4, 6, &a6, minusOne);
+    ((EnergyFlag*)(q6 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_27C4;
+    *(void**)(p + 0x204) = lbl_124_data_2C64;
+    char* q7 = p + 0x20c;
+    *(void**)(p + 0x20c) = lbl_124_data_2D04;
+    fn_27_B7B54(q7 + 4);
+    a7 = one;
+    (*(Object_vptr_0**)(*(char**)(accesser + 0xd8) + 0x7c))->slot3(q7 + 4, 7, &a7, minusOne);
+    ((EnergyFlag*)(q7 + 9))->disabled = 0;
+
+    *(void**)p = lbl_124_data_2338;
+    return self;
+}
+}  // namespace decomp_orch_fn_124_6DBC
+// decomp-orchestrator: end fn_124_6DBC
+}  // namespace decomp_orch_fn_124_6DBC
+// decomp-orchestrator: end fn_124_6DBC
