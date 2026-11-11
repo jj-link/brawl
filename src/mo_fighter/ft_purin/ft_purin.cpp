@@ -6361,3 +6361,207 @@ extern "C" void* fn_124_619C(unsigned char* obj, soModuleAccesser* accesser, soE
 }
 }  // namespace decomp_orch_fn_124_619C
 // decomp-orchestrator: end fn_124_619C
+
+// decomp-orchestrator: begin fn_124_337C
+#include <so/event/so_event_system.h>
+#include <so/anim/so_anim_cmd_module_impl.h>
+#include <so/so_module_accesser.h>
+class soEventUnit;
+class soMotionEventObserver;
+class soItemManageEventObserver;
+class soCollisionSearchEventObserver;
+class soCollisionAbsorberEventObserver;
+class soCollisionReflectorEventObserver;
+class soCollisionShieldEventObserver;
+class soCaptureEventObserver;
+class soCollisionAttackEventObserver;
+class soCollisionHitEventObserver;
+class soSituationEventObserver;
+class soDamageEventObserver;
+namespace decomp_orch_fn_124_337C {
+#pragma optimization_level reset
+#pragma dont_inline on
+#ifndef STATIC_CHECK
+template<class T, int N>
+class soEventUnitWithWorkArea {
+public:
+    ~soEventUnitWithWorkArea();
+};
+
+template<class T> class soInstanceUnit {};
+template<class T, int N> class soArrayVector {};
+template<class T, class A>
+class soInstanceManagerSimpleEntity {
+public:
+    ~soInstanceManagerSimpleEntity();
+};
+#else
+
+
+
+#endif
+#pragma force_active on
+
+extern "C" {
+void* fn_124_20E0(void*, short);
+void __dt__33soAnimCmdAddressPackArraySeparateFv(void*, short);
+void* fn_124_21BC(void*, short);
+void* fn_27_C7770(void*, short);
+void* fn_27_5C674(void*, short);
+void* fn_27_BED74(void*, short);
+void* fn_124_2D4C(void*, short);
+void* fn_124_2E04(void*, short);
+void* fn_27_97968(void*, short);
+void* fn_27_1CCCC(void*, short);
+void* fn_124_304C(void*, short);
+void* fn_27_CBF58(void*, short);
+void* fn_124_3798(void*, short);
+void* fn_27_1A262C(void*, short);
+void* fn_124_3834(void*, short);
+void* fn_124_3874(void*, short);
+void* fn_124_38E0(void*, short);
+void* fn_27_5AE44(void*, short);
+void* fn_27_6A3D8(void*, short);
+void* fn_27_CBB00(void*, short);
+void* fn_27_6880C(void*, short);
+void* fn_27_B5324(void*, short);
+void* fn_124_393C(void*, short);
+void* fn_27_252D0(void*, short);
+void* fn_27_13C90(void*, short);
+void* fn_27_21038(void*, short);
+void* fn_124_397C(void*, short);
+void* fn_124_39D8(void*, short);
+void* fn_27_D2AA4(void*, short);
+void* fn_27_CD934(void*, short);
+void __dt__17soModelModuleImplFv(void*, short);
+void* fn_27_CBDE8(void*, short);
+void __dt__20soResourceModuleImplFv(void*, short);
+void* fn_124_3A78(void*, short);
+void* fn_124_3AB8(void*, short);
+void __dt__16soModuleAccesserFv(void*, short);
+void* fn_27_1D81C8(void*, short);
+void* fn_27_18D3DC(void*, short);
+void* fn_27_18D498(void*, short);
+void* fn_27_D597C(void*, short);
+void* fn_27_18D6CC(void*, short);
+void* fn_27_18D788(void*, short);
+void __dt__23soEventManageModuleImplFv(void*, short);
+}
+
+
+
+
+
+
+
+
+
+
+
+extern "C" void* fn_124_337C(void* object, short deleting) {
+ if (object != 0) {
+  short d = -1;
+  __dt__33soAnimCmdAddressPackArraySeparateFv(static_cast<char*>(object)+0x16ac,d);
+  char* p=static_cast<char*>(object);
+  fn_27_C7770(p+0x169c,d);
+  {
+   if(p) {
+    short d=-1;
+    if(p+0xcc) {
+     if((p+0x1564)&&(p+0x1568)) {
+      fn_124_20E0(p+0x1644,d);
+      __dt__33soAnimCmdAddressPackArraySeparateFv(p+0x1628,d);
+      fn_124_21BC(p+0x157c,d);
+      if(p+0x1568) fn_27_C7770(p+0x1568,d);
+     }
+     {
+      if(p+0xcc) {
+       short d=-1;
+       if(p+0x1548) fn_27_5C674(p+0x1548,d);
+       if(p+0x13f0) fn_27_BED74(p+0x13f0,d);
+       fn_124_2D4C(p+0x13a4,d);
+       fn_124_2E04(p+0x1354,d);
+       if(p+0x11b4) {
+        fn_27_97968(p+0x1218,d);
+        fn_27_1CCCC(p+0x1208,d);
+        fn_124_304C(p+0x11ec,d);
+        if(p+0x11b4) fn_27_CBF58(p+0x11b4,d);
+       }
+       if(p+0x1154) fn_124_3798(p+0x118c,d);
+       if(p+0x10ac) {
+        if(p+0x10d0) {
+         fn_27_1A262C(p+0x10e0,d);
+         fn_124_3834(p+0x10d0,0);
+        }
+        fn_124_3874(p+0x10ac,d);
+       }
+       fn_124_38E0(p+0x1078,d);
+       if(p+0x1060) fn_27_5AE44(p+0x1060,d);
+       if(p+0xefc) {
+        fn_27_6A3D8(p+0x100c,d);
+        fn_27_CBB00(p+0xefc,d);
+       }
+       if(p+0xeec) fn_27_6880C(p+0xef0,d);
+       if(p+0xe7c) {
+        fn_27_B5324(p+0xe9c,d);
+        if(p+0xe8c) fn_124_393C(p+0xe8c,0);
+        if(p+0xe7c) fn_124_393C(p+0xe7c,0);
+       }
+       if(p+0xe30) fn_27_252D0(p+0xe34,d);
+       if(p+0xbe8) {
+        fn_27_13C90(p+0xcc0,d);
+        fn_27_21038(p+0xcac,d);
+        fn_124_397C(p+0xc70,d);
+        if(p+0xbe8) {
+         fn_124_39D8(p+0xc54,d);
+         char* t=p+0xc08;
+         if(t!=0) {if(t!=0) {if(t!=0) fn_27_D2AA4(t,d);}}
+         fn_27_CD934(p+0xbe8,d);
+        }
+       }
+       if(p+0xa08) {
+        __dt__17soModelModuleImplFv(p+0xb1c,d);
+        fn_27_CBDE8(p+0xa08,d);
+       }
+       if(p+0x9d8) {
+        __dt__20soResourceModuleImplFv(p+0x9f0,d);
+        if(p+0x9d8) fn_124_3A78(p+0x9d8,0);
+       }
+       fn_124_3AB8(p+0x9b0,d);
+       __dt__16soModuleAccesserFv(p+0x8d0,d);
+       {
+        if(p+0xcc) {
+         short d=-1;
+         reinterpret_cast<soEventUnitWithWorkArea<soMotionEventObserver,1>*>(p+0x894)->soEventUnitWithWorkArea<soMotionEventObserver,1>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soItemManageEventObserver,1>*>(p+0x85c)->soEventUnitWithWorkArea<soItemManageEventObserver,1>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionSearchEventObserver,4>*>(p+0x800)->soEventUnitWithWorkArea<soCollisionSearchEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionAbsorberEventObserver,4>*>(p+0x7a4)->soEventUnitWithWorkArea<soCollisionAbsorberEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionReflectorEventObserver,4>*>(p+0x748)->soEventUnitWithWorkArea<soCollisionReflectorEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionShieldEventObserver,4>*>(p+0x6ec)->soEventUnitWithWorkArea<soCollisionShieldEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCaptureEventObserver,4>*>(p+0x690)->soEventUnitWithWorkArea<soCaptureEventObserver,4>::~soEventUnitWithWorkArea();
+         fn_27_18D3DC(p+0x64c,d);
+         fn_27_18D498(p+0x5e4,d);
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionAttackEventObserver,4>*>(p+0x588)->soEventUnitWithWorkArea<soCollisionAttackEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soCollisionHitEventObserver,4>*>(p+0x52c)->soEventUnitWithWorkArea<soCollisionHitEventObserver,4>::~soEventUnitWithWorkArea();
+         reinterpret_cast<soEventUnitWithWorkArea<soSituationEventObserver,4>*>(p+0x4d0)->soEventUnitWithWorkArea<soSituationEventObserver,4>::~soEventUnitWithWorkArea();
+         fn_27_D597C(p+0x48c,d);
+         reinterpret_cast<soEventUnitWithWorkArea<soDamageEventObserver,4>*>(p+0x430)->soEventUnitWithWorkArea<soDamageEventObserver,4>::~soEventUnitWithWorkArea();
+         fn_27_18D6CC(p+0x284,d);
+         fn_27_18D788(p+0x198,d);
+         __dt__23soEventManageModuleImplFv(p+0x184,d);
+         reinterpret_cast<soInstanceManagerSimpleEntity<soEventUnit*,soArrayVector<soInstanceUnit<soEventUnit*>,19> >*>(p+0xcc)->~soInstanceManagerSimpleEntity();
+        }
+       }
+      }
+     }
+    }
+    fn_27_1D81C8(p,0);
+   }
+  }
+  if(deleting>0) operator delete(object);
+ }
+ return object;
+}
+#pragma dont_inline reset
+}  // namespace decomp_orch_fn_124_337C
+// decomp-orchestrator: end fn_124_337C
