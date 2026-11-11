@@ -6322,3 +6322,42 @@ extern "C" void* fn_124_6DBC(char* input, char* context) {
 // decomp-orchestrator: end fn_124_6DBC
 }  // namespace decomp_orch_fn_124_6DBC
 // decomp-orchestrator: end fn_124_6DBC
+
+// decomp-orchestrator: begin fn_124_619C
+#include <new>
+#include <so/posture/so_posture_module_impl.h>
+namespace decomp_orch_fn_124_619C {
+#pragma force_active on
+#pragma use_simple_stdpnew on
+
+extern "C" void fn_27_19FF5C(void*, int, int);
+
+class PostureInterface {
+public:
+    virtual void v08() = 0;
+    virtual void v0C() = 0;
+    virtual void v10() = 0;
+    virtual void v14() = 0;
+    virtual void v18() = 0;
+    virtual void v1C() = 0;
+    virtual void v20() = 0;
+    virtual void v24() = 0;
+    virtual void v28() = 0;
+    virtual void v2C() = 0;
+    virtual void v30() = 0;
+    virtual void v34() = 0;
+    virtual void v38() = 0;
+};
+
+extern "C" void* fn_124_619C(unsigned char* obj, soModuleAccesser* accesser, soEventObserverRegistrationDesc* desc) {
+    fn_27_19FF5C(obj, 1, 0);
+    new (obj + 0x3C) soPostureModuleImpl(
+        accesser,
+        reinterpret_cast<soArray<soInterpolation<Vec3f> >*>(obj),
+        desc
+    );
+    reinterpret_cast<PostureInterface*>(obj + 0x3C)->v38();
+    return obj;
+}
+}  // namespace decomp_orch_fn_124_619C
+// decomp-orchestrator: end fn_124_619C
