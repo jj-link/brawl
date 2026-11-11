@@ -2384,6 +2384,10 @@ sora/misc/fn_80052D20.cpp:
 sora/misc/fn_80052DB0.cpp:
 	.text       start:0x80052DB0 end:0x80052DC0
 
+sora/misc/fn_80052DC0.cpp:
+	.text       start:0x80052DC0 end:0x80052F90
+	.data       start:0x8042C398 end:0x8042C490
+
 sora/misc/fn_80052F90.cpp:
 	.text       start:0x80052F90 end:0x80053004
 
