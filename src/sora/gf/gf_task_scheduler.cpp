@@ -431,14 +431,42 @@ void gfTaskScheduler::setPauseCategory(gfTask::Category ctgry, bool isPaused) {
 }
 
 // NONMATCHING regswaps, instruction order, dead store
+// decomp-orchestrator: begin changeTaskPriorityRequest__15gfTaskSchedulerFUlUc
+// decomp-orchestrator: it replaces the file's own definition:
+//| void gfTaskScheduler::changeTaskPriorityRequest(u32 id, u8 priority) {
+//|     gfTask* task = getTask(id);
+//|     if (task) {
+//|         UnkTaskRequest x(false);
+//|         x.m_category = task->m_taskCategory;
+//|         x.m_taskId = task->m_taskId;
+//|         x.m_priority = priority;
+//|         m_pendingPrioUpdates[m_numPendingPrioUpdates] = x;
+//|         m_numPendingPrioUpdates++;
+//|     }
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_task_scheduler.h>
+#include <types.h>
+#pragma force_active on
 void gfTaskScheduler::changeTaskPriorityRequest(u32 id, u8 priority) {
-    gfTask* task = getTask(id);
+    gfTask* task;
+    for (s32 i = 0; i < unk14Size; i++) {
+        for (gfTask* curr = unk14[i]; curr; curr = curr->m_next) {
+            if (id == curr->m_taskId) {
+                task = curr;
+                goto found;
+            }
+        }
+    }
+    task = nullptr;
+found:
     if (task) {
         UnkTaskRequest x(false);
-        x.m_category = task->m_taskCategory;
         x.m_taskId = task->m_taskId;
+        x.m_category = task->m_taskCategory;
         x.m_priority = priority;
         m_pendingPrioUpdates[m_numPendingPrioUpdates] = x;
         m_numPendingPrioUpdates++;
     }
 }
+// decomp-orchestrator: end changeTaskPriorityRequest__15gfTaskSchedulerFUlUc
