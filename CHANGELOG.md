@@ -7,6 +7,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Matched 1 functions in `main` with decomp-orchestrator: claude-fable-5-2 1.
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
+## main: 1 functions
+
+- Matched 1 functions in `main` with decomp-orchestrator: claude-fable-5-2 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_diddy, main and 3 more: 7 functions
 
 - Matched 7 functions in `ft_diddy, main and 3 more` with decomp-orchestrator: claude-fable-5-2 1, haiku 1, qwen3-8-flash-next 2, terra 3.
