@@ -25586,6 +25586,9 @@ havok/fn_802F0200.cpp:
 	.text       start:0x802F0200 end:0x802F031C
 	.data       start:0x80488390 end:0x804883B8
 
+havok/fn_802F031C.cpp:
+	.text       start:0x802F031C end:0x802F0358
+
 havok/fn_802F0358.cpp:
 	.text       start:0x802F0358 end:0x802F03A8
 	.ctors      start:0x8040673C end:0x80406740
@@ -30621,6 +30624,9 @@ network/fn_803ABA30.c:
 
 network/fn_803ABC88.c:
 	.text       start:0x803ABC88 end:0x803ABD7C
+
+network/fn_803ABD7C.c:
+	.text       start:0x803ABD7C end:0x803ABF18
 
 network/fn_803ABF18.c:
 	.text       start:0x803ABF18 end:0x803AC0F0
