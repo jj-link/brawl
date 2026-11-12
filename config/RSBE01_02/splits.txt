@@ -10259,6 +10259,9 @@ nw4r/fn_8017053C.cpp:
 	.text       start:0x8017053C end:0x80170594
 	.ctors      start:0x804065A0 end:0x804065A4
 
+nw4r/fn_80171F0C.cpp:
+	.text       start:0x80171F0C end:0x80172254
+
 nw4r/fn_80174434.cpp:
 	.text       start:0x80174434 end:0x80174618
 	.data       start:0x80465468 end:0x80465484
@@ -16124,6 +16127,9 @@ RVL_SDK/fn_801F50A8.c:
 
 RVL_SDK/fn_801F50EC.c:
 	.text       start:0x801F50EC end:0x801F5150
+
+RVL_SDK/fn_801F5150.c:
+	.text       start:0x801F5150 end:0x801F519C
 
 RVL_SDK/fn_801F519C.c:
 	.text       start:0x801F519C end:0x801F51DC
@@ -23397,6 +23403,9 @@ havok/fn_802CA914.cpp:
 
 havok/fn_802CA920.cpp:
 	.text       start:0x802CA920 end:0x802CA9D8
+
+havok/fn_802CA9D8.cpp:
+	.text       start:0x802CA9D8 end:0x802CAA50
 
 havok/fn_802CAA50.cpp:
 	extab       start:0x800081A0 end:0x800081A8
