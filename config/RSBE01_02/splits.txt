@@ -15440,6 +15440,9 @@ RVL_SDK/fn_801E5F48.c:
 RVL_SDK/fn_801E5F64.c:
 	.text       start:0x801E5F64 end:0x801E5F9C
 
+RVL_SDK/fn_801E66F4.c:
+	.text       start:0x801E66F4 end:0x801E67DC
+
 RVL_SDK/fn_801E67DC.c:
 	.text       start:0x801E67DC end:0x801E689C
 
@@ -27205,59 +27208,8 @@ network/fn_803369C0.c:
 	.text       start:0x803369C0 end:0x803369F0
 
 network/fn_803369F0.c:
-	.text       start:0x803369F0 end:0x80336AC8
-
-network/fn_80336AC8.c:
-	.text       start:0x80336AC8 end:0x80336AF0
-
-network/fn_80336AF0.c:
-	.text       start:0x80336AF0 end:0x80336BC0
-
-network/fn_80336BC0.c:
-	.text       start:0x80336BC0 end:0x80336E84
-
-network/fn_80336E84.c:
-	.text       start:0x80336E84 end:0x80336F14
-
-network/fn_80336F14.c:
-	.text       start:0x80336F14 end:0x80336FAC
-
-network/fn_80336FAC.c:
-	.text       start:0x80336FAC end:0x8033703C
-
-network/fn_8033703C.c:
-	.text       start:0x8033703C end:0x803370C0
-
-network/fn_803370C0.c:
-	.text       start:0x803370C0 end:0x803371DC
-
-network/fn_803371DC.c:
-	.text       start:0x803371DC end:0x80337248
-
-network/fn_80337248.c:
-	.text       start:0x80337248 end:0x80337310
-
-network/fn_80337310.c:
-	.text       start:0x80337310 end:0x80337350
-
-network/fn_80337468.c:
-	.text       start:0x80337468 end:0x80337474
-
-network/fn_8033790C.c:
-	.text       start:0x8033790C end:0x80337AF0
-
-network/fn_80337AF0.c:
-	.text       start:0x80337AF0 end:0x80337BBC
-
-network/fn_80337BBC.c:
-	.text       start:0x80337BBC end:0x80337CE4
-
-network/fn_80337CE4.c:
-	.text       start:0x80337CE4 end:0x80337E1C
-	.data       start:0x804896B0 end:0x804896D0
-
-network/fn_80338128.c:
-	.text       start:0x80338128 end:0x80338358
+	.text       start:0x803369F0 end:0x80338600
+	.data       start:0x80489460 end:0x80489A00
 
 network/fn_80338754.c:
 	.text       start:0x80338754 end:0x803387A0
@@ -28320,8 +28272,9 @@ network/fn_8036AAF0.c:
 network/fn_8036ABB0.c:
 	.text       start:0x8036ABB0 end:0x8036AC80
 
-network/fn_8036BB8C.c:
-	.text       start:0x8036BB8C end:0x8036C218
+network/fn_8036AFA8.c:
+	.text       start:0x8036AFA8 end:0x8036C218
+	.data       start:0x8048EDF8 end:0x8048F184
 
 network/fn_8036C218.c:
 	.text       start:0x8036C218 end:0x8036C2B8
