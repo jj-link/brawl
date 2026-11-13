@@ -23945,6 +23945,11 @@ havok/fn_802CEE7C.cpp:
 havok/fn_802CEE90.cpp:
 	.text       start:0x802CEE90 end:0x802CEED8
 
+havok/fn_802CEED8.cpp:
+	extab       start:0x80008370 end:0x80008378
+	extabindex  start:0x8000B0B0 end:0x8000B0BC
+	.text       start:0x802CEED8 end:0x802CF338
+
 havok/fn_802CF5D4.cpp:
 	extab       start:0x80008380 end:0x80008388
 	extabindex  start:0x8000B0C8 end:0x8000B0D4
@@ -27470,6 +27475,9 @@ network/fn_8033949C.c:
 
 network/fn_8033972C.c:
 	.text       start:0x8033972C end:0x80339894
+
+network/fn_80339894.c:
+	.text       start:0x80339894 end:0x80339B30
 
 network/fn_80339B30.c:
 	.text       start:0x80339B30 end:0x80339E98
