@@ -838,6 +838,9 @@ sora/misc/fn_8002646C.cpp:
 sora/gf/gf_memory_util.cpp:
 	.text       start:0x80026474 end:0x80026478
 
+sora/misc/fn_80026478.cpp:
+	.text       start:0x80026478 end:0x800264D8
+
 sora/misc/fn_800264D8.cpp:
 	.text       start:0x800264D8 end:0x80026828
 
@@ -2293,6 +2296,10 @@ sora/misc/fn_800506C0.cpp:
 
 sora/misc/fn_800506DC.cpp:
 	.text       start:0x800506DC end:0x80050738
+
+sora/misc/fn_80050BB0.cpp:
+	.text       start:0x80050BB0 end:0x8005136C
+	.data       start:0x8042C0D0 end:0x8042C398
 
 sora/misc/fn_8005136C.cpp:
 	.text       start:0x8005136C end:0x800513BC
@@ -25481,6 +25488,9 @@ havok/fn_802E7A60.cpp:
 
 havok/fn_802E7B00.cpp:
 	.text       start:0x802E7B00 end:0x802E7B08
+
+havok/fn_802E7B08.cpp:
+	.text       start:0x802E7B08 end:0x802E802C
 
 havok/fn_802E802C.cpp:
 	.text       start:0x802E802C end:0x802E8070
