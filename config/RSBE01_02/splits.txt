@@ -9586,6 +9586,9 @@ nw4r/fn_8015C490.cpp:
 nw4r/fn_8015C4AC.cpp:
 	.text       start:0x8015C4AC end:0x8015C4C8
 
+nw4r/fn_8015C4C8.cpp:
+	.text       start:0x8015C4C8 end:0x8015C528
+
 nw4r/fn_8015C528.cpp:
 	.text       start:0x8015C528 end:0x8015C538
 
@@ -27465,6 +27468,9 @@ network/fn_8033949C.c:
 network/fn_8033972C.c:
 	.text       start:0x8033972C end:0x80339894
 
+network/fn_80339B30.c:
+	.text       start:0x80339B30 end:0x80339E98
+
 network/fn_80339E98.c:
 	.text       start:0x80339E98 end:0x80339F84
 
@@ -27528,6 +27534,12 @@ network/fn_8033B134.c:
 
 network/fn_8033B1D4.c:
 	.text       start:0x8033B1D4 end:0x8033B208
+
+network/fn_8033B208.c:
+	.text       start:0x8033B208 end:0x8033B45C
+
+network/fn_8033B45C.c:
+	.text       start:0x8033B45C end:0x8033B8CC
 
 network/fn_8033BA3C.c:
 	.text       start:0x8033BA3C end:0x8033BA40
