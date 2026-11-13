@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_ganon, ft_marth and 1 more: 3 functions
+
+- Matched 3 functions in `ft_ganon, ft_marth and 1 more` with decomp-orchestrator: deepseek-v4-1-flash-1017 1, qwen3-8-flash-next 2.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main: 3 functions
 
 - Matched 3 functions in `main` with decomp-orchestrator: haiku 1, luna 1, sonnet 1.

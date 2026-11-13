@@ -118,6 +118,50 @@ extern "C" MarthFinalInterface* fn_106_D500(void* data, Heaps::HeapType heap, in
     fn_106_D66C(interface, reinterpret_cast<nw4r::g3d::ResFile*>(&interface->resource), scene, priority, heap);
     return interface;
 }
+// decomp-orchestrator: begin fn_106_D590
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" MarthFinalInterface* fn_106_D590(MarthFinalInterface* interface, void* data) {
+//|     __ct__6gfTaskFPCcQ26gfTask8Categoryiib(&interface->task, lbl_106_data_5730, gfTask::Category_Info, 14, 6, true);
+//|     *reinterpret_cast<void**>(reinterpret_cast<unsigned char*>(&interface->task) + 0x3c) = &lbl_106_data_5740;
+//|     interface->resource = static_cast<nw4r::g3d::ResFileData*>(data);
+//|     interface->resourceState = 0;
+//|     interface->callback.vtable = &lbl_106_data_57A4;
+//|     interface->callback.position.m_x = lbl_106_rodata_5C;
+//|     interface->callback.position.m_y = lbl_106_rodata_5C;
+//|     interface->callback.position.m_z = lbl_106_rodata_5C;
+//|     interface->callback.applied = 0;
+//|     interface->visible = 0;
+//|     interface->initialized = 0;
+//|     interface->connectedInterface = 0;
+//|     return interface;
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+namespace decomp_orch_fn_106_D590 {
+#pragma force_active on
+
+
+
+
+
+
+
+
+
+extern "C" {
+
+extern char lbl_106_data_5730[];
+
+
+
+}
+
+#pragma scheduling off
 extern "C" MarthFinalInterface* fn_106_D590(MarthFinalInterface* interface, void* data) {
     __ct__6gfTaskFPCcQ26gfTask8Categoryiib(&interface->task, lbl_106_data_5730, gfTask::Category_Info, 14, 6, true);
     *reinterpret_cast<void**>(reinterpret_cast<unsigned char*>(&interface->task) + 0x3c) = &lbl_106_data_5740;
@@ -133,6 +177,9 @@ extern "C" MarthFinalInterface* fn_106_D590(MarthFinalInterface* interface, void
     interface->connectedInterface = 0;
     return interface;
 }
+#pragma scheduling reset
+}  // namespace decomp_orch_fn_106_D590
+// decomp-orchestrator: end fn_106_D590
 #pragma dont_inline on
 // decomp-orchestrator: begin fn_106_D62C
 // decomp-orchestrator: it replaces the file's own definition:
