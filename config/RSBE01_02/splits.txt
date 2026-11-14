@@ -8100,6 +8100,9 @@ sora/misc/fn_80120500.cpp:
 sora/misc/fn_80120640.cpp:
 	.text       start:0x80120640 end:0x80120BB0
 
+sora/misc/fn_80120BB0.cpp:
+	.text       start:0x80120BB0 end:0x80121214
+
 sora/misc/fn_80121214.cpp:
 	.text       start:0x80121214 end:0x8012125C
 
@@ -13135,6 +13138,9 @@ nw4r/fn_801BA188.cpp:
 nw4r/fn_801BA3B8.cpp:
 	.text       start:0x801BA3B8 end:0x801BA494
 	.sdata2     start:0x805A3474 end:0x805A3478
+
+nw4r/fn_801BA624.cpp:
+	.text       start:0x801BA624 end:0x801BA7B4
 
 nw4r/fn_801BA7B4.cpp:
 	.text       start:0x801BA7B4 end:0x801BA8F0

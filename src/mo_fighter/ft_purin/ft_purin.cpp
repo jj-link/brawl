@@ -6565,3 +6565,35 @@ extern "C" void* fn_124_337C(void* object, short deleting) {
 #pragma dont_inline reset
 }  // namespace decomp_orch_fn_124_337C
 // decomp-orchestrator: end fn_124_337C
+
+// decomp-orchestrator: begin fn_124_78F8
+#include <ft/fighter.h>
+namespace decomp_orch_fn_124_78F8 {
+#pragma force_active on
+extern "C" unsigned char fn_27_1119B8(void*);
+extern "C" void fn_27_12BAF8(void*, int);
+class ResultObj { public: virtual int m1(); };
+class SubObj { public:
+virtual void m1(); virtual void m2(); virtual void m3();
+virtual ResultObj* m4(int, int, bool);
+virtual void m5(); virtual void m6(); virtual void m7(); virtual void m8();
+virtual void m9(); virtual void m10(); virtual void m11(); virtual void m12();
+virtual void m13(); virtual void m14(void*); virtual void m15(); virtual void m16();
+virtual void m17(int, int);
+};
+extern "C" void fn_124_78F8(Fighter* self, int arg1) {
+    if ((int)fn_27_1119B8(self->getOwner()) == 2) {
+        char* p = (char*)self;
+        SubObj* sub = *(SubObj**)(*(char**)(*(char**)(p + 0x60) + 0xd8) + 0x84);
+        sub->m17(0, 0);
+        sub = *(SubObj**)(*(char**)(*(char**)(p + 0x60) + 0xd8) + 0x84);
+        ResultObj* r = sub->m4(0, 0, false);
+        if (r->m1() == 0) {
+            sub = *(SubObj**)(*(char**)(*(char**)(p + 0x60) + 0xd8) + 0x84);
+            sub->m14(r);
+        }
+    }
+    fn_27_12BAF8(self, arg1);
+}
+}  // namespace decomp_orch_fn_124_78F8
+// decomp-orchestrator: end fn_124_78F8
