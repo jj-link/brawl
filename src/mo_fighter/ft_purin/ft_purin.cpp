@@ -6597,3 +6597,52 @@ extern "C" void fn_124_78F8(Fighter* self, int arg1) {
 }
 }  // namespace decomp_orch_fn_124_78F8
 // decomp-orchestrator: end fn_124_78F8
+
+// decomp-orchestrator: begin fn_124_71EC
+namespace decomp_orch_fn_124_71EC {
+#pragma force_active on
+#pragma optimization_level 1
+extern "C" {
+extern char lbl_124_data_AFC[], lbl_124_data_C70[], lbl_124_data_D4C[], lbl_124_data_DF0[], lbl_124_data_E74[];
+extern unsigned char g_ftCommonDataAccesser[];
+void fn_27_1A517C(void*, int);
+void fn_27_19EF6C(void*, int, int);
+void* fn_27_149B58(void*, int, unsigned char*);
+void fn_27_1DF5F8(void*, int, void*, void*, int);
+void fn_27_92F10(void*, void*, void*, void*, void*);
+}
+struct Args { unsigned char a, b; int c, d, e, f; int* g; void* h; };
+extern "C" void* fn_124_71EC(char* self, char* accesser) {
+    Args args;
+    int zero;
+    fn_27_1A517C(self, 0);
+    fn_27_19EF6C(self + 0x14, 2, 0);
+    void* vt = lbl_124_data_AFC;
+    *(void**)(self + 0x40) = vt;
+    *(void**)(self + 0x44) = (char*)vt + 0x10;
+    char* p = self + 0x48;
+    *(void**)p = lbl_124_data_D4C;
+    *(void**)(self + 0x4C) = lbl_124_data_DF0;
+    char* q = p + 0xc;
+    *(void**)(self + 0x54) = lbl_124_data_E74;
+    zero = 0;
+    args.a = zero;
+    args.b = zero;
+    args.c = zero;
+    int k = 0x25;
+    args.d = k;
+    void* value = *(void**)(*(char**)(accesser + 0xd8) + 0xc0);
+    args.e = zero;
+    args.f = k;
+    args.g = &args.e;
+    args.h = value;
+    void* common = fn_27_149B58(g_ftCommonDataAccesser, k, &args.b);
+    int index;
+    fn_27_1DF5F8(q + 4, index = 0, &args.g, common, index);
+    *(void**)p = lbl_124_data_C70;
+    *(unsigned char*)(self + 0x1720) = zero;
+    fn_27_92F10(self + 0x1724, accesser, self, self + 0x40, self + 0x14);
+    return self;
+}
+}  // namespace decomp_orch_fn_124_71EC
+// decomp-orchestrator: end fn_124_71EC
