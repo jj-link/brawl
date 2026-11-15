@@ -10364,6 +10364,9 @@ nw4r/fn_8016FBC8.cpp:
 nw4r/fn_8016FBF4.cpp:
 	.text       start:0x8016FBF4 end:0x8016FC34
 
+nw4r/fn_8016FC34.cpp:
+	.text       start:0x8016FC34 end:0x80170150
+
 nw4r/fn_80170150.cpp:
 	.text       start:0x80170150 end:0x80170224
 
@@ -21591,6 +21594,11 @@ RVL_SDK/fn_8028CFA4.c:
 
 RVL_SDK/fn_8028D184.c:
 	.text       start:0x8028D184 end:0x8028D18C
+
+RVL_SDK/fn_8028D18C.c:
+	extab       start:0x800065A8 end:0x800065B0
+	extabindex  start:0x8000988C end:0x80009898
+	.text       start:0x8028D18C end:0x8028D46C
 
 RVL_SDK/fn_8028D46C.c:
 	.text       start:0x8028D46C end:0x8028D474
