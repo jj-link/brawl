@@ -18003,6 +18003,9 @@ RVL_SDK/fn_802265FC.c:
 RVL_SDK/fn_802267B0.c:
 	.text       start:0x802267B0 end:0x80226924
 
+RVL_SDK/fn_80226D0C.c:
+	.text       start:0x80226D0C end:0x80227164
+
 RVL_SDK/fn_80227164.c:
 	.text       start:0x80227164 end:0x8022728C
 
@@ -21508,6 +21511,11 @@ sora/misc/fn_8028A040.cpp:
 
 RVL_SDK/fn_8028A52C.c:
 	.text       start:0x8028A52C end:0x8028A534
+
+RVL_SDK/fn_8028A534.c:
+	extab       start:0x80006528 end:0x80006530
+	extabindex  start:0x800097CC end:0x800097D8
+	.text       start:0x8028A534 end:0x8028A6F0
 
 RVL_SDK/fn_8028A6F0.c:
 	.text       start:0x8028A6F0 end:0x8028A6F8
