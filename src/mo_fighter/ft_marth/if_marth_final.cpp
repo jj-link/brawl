@@ -110,6 +110,38 @@ extern "C" Vec3f* fn_106_D4E4(Vec3f* destination, const Vec3f* source) {
     return destination;
 }
 #pragma dont_inline reset
+// decomp-orchestrator: begin fn_106_D500
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" MarthFinalInterface* fn_106_D500(void* data, Heaps::HeapType heap, int priority) {
+//|     MarthFinalInterface* interface = static_cast<MarthFinalInterface*>(operator new(sizeof(MarthFinalInterface), heap));
+//|     if (interface) interface = fn_106_D590(interface, data);
+//|     nw4r::g3d::ResFile::Init(&interface->resource);
+//|     nw4r::g3d::ScnGroup* scene = fn_801AB6CC(gfHeapManager::getMEMAllocator(heap), 0, 1);
+//|     fn_106_D66C(interface, reinterpret_cast<nw4r::g3d::ResFile*>(&interface->resource), scene, priority, heap);
+//|     return interface;
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+#pragma force_active on
+
+
+
+
+
+
+extern "C" {
+
+
+
+}
+
+#pragma optimize_for_size on
+#pragma scheduling off
 extern "C" MarthFinalInterface* fn_106_D500(void* data, Heaps::HeapType heap, int priority) {
     MarthFinalInterface* interface = static_cast<MarthFinalInterface*>(operator new(sizeof(MarthFinalInterface), heap));
     if (interface) interface = fn_106_D590(interface, data);
@@ -118,6 +150,7 @@ extern "C" MarthFinalInterface* fn_106_D500(void* data, Heaps::HeapType heap, in
     fn_106_D66C(interface, reinterpret_cast<nw4r::g3d::ResFile*>(&interface->resource), scene, priority, heap);
     return interface;
 }
+// decomp-orchestrator: end fn_106_D500
 // decomp-orchestrator: begin fn_106_D590
 // decomp-orchestrator: it replaces the file's own definition:
 //| extern "C" MarthFinalInterface* fn_106_D590(MarthFinalInterface* interface, void* data) {
