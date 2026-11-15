@@ -235,3 +235,22 @@ extern "C" void* fn_106_BF58(void* p, int flags) {
 }
 }  // namespace decomp_orch_fn_106_BF58
 // decomp-orchestrator: end fn_106_BF58
+
+// decomp-orchestrator: begin fn_106_BF98
+namespace decomp_orch_fn_106_BF98 {
+#pragma force_active on
+extern "C" {
+extern char lbl_106_bss_1B4[];
+extern char lbl_106_bss_1A8[];
+void fn_106_BFE0(void* self);
+void* fn_106_BF58(void* p, int flags);
+void __register_global_object(void* obj, void* dtor, void* handle);
+
+#pragma scheduling off
+void fn_106_BF98(void) {
+    fn_106_BFE0(lbl_106_bss_1B4);
+    __register_global_object(lbl_106_bss_1B4, (void*)fn_106_BF58, lbl_106_bss_1A8);
+}
+}
+}  // namespace decomp_orch_fn_106_BF98
+// decomp-orchestrator: end fn_106_BF98
