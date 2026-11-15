@@ -4540,6 +4540,9 @@ sora/misc/fn_8009D564.cpp:
 sora/misc/fn_8009DA18.cpp:
 	.text       start:0x8009DA18 end:0x8009DB90
 
+sora/misc/fn_8009DB90.cpp:
+	.text       start:0x8009DB90 end:0x8009DD40
+
 sora/misc/fn_8009DD40.cpp:
 	.text       start:0x8009DD40 end:0x8009DEE8
 
@@ -6437,6 +6440,9 @@ sora/misc/fn_800DF7DC.cpp:
 
 sora/misc/fn_800DF848.cpp:
 	.text       start:0x800DF848 end:0x800DF95C
+
+sora/misc/fn_800DF95C.cpp:
+	.text       start:0x800DF95C end:0x800DFAB4
 
 sora/misc/fn_800DFAB4.cpp:
 	.text       start:0x800DFAB4 end:0x800DFC08
@@ -33967,6 +33973,11 @@ Runtime.PPCEABI.H/fn_803FC618.c:
 	extab       start:0x8000971C end:0x80009724
 	extabindex  start:0x8000C7F0 end:0x8000C7FC
 	.text       start:0x803FC618 end:0x803FC704
+
+Runtime.PPCEABI.H/fn_803FC704.c:
+	extab       start:0x80009724 end:0x8000972C
+	extabindex  start:0x8000C7FC end:0x8000C808
+	.text       start:0x803FC704 end:0x803FC7C8
 
 Runtime.PPCEABI.H/fn_803FC7C8.c:
 	.text       start:0x803FC7C8 end:0x803FC8AC

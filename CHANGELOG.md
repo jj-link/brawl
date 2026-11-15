@@ -4,6 +4,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 
 ## main: 3 functions
 
+- Matched 3 functions in `main` with decomp-orchestrator: luna 1, terra 2.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
+## main: 3 functions
+
 - Matched 3 functions in `main` with decomp-orchestrator: haiku 1, terra 2.
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
