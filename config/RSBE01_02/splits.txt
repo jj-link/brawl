@@ -30042,6 +30042,9 @@ network/fn_80392994.c:
 network/fn_80392AB8.c:
 	.text       start:0x80392AB8 end:0x80392B58
 
+network/fn_80392B58.c:
+	.text       start:0x80392B58 end:0x80392CD4
+
 network/fn_80392CD4.c:
 	.text       start:0x80392CD4 end:0x80392D88
 
@@ -32502,6 +32505,9 @@ network/fn_803D51A4.c:
 
 network/fn_803D521C.c:
 	.text       start:0x803D521C end:0x803D5254
+
+network/fn_803D5254.c:
+	.text       start:0x803D5254 end:0x803D5340
 
 network/fn_803D54E0.c:
 	extab       start:0x8000947C end:0x80009484
