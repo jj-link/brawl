@@ -2829,6 +2829,9 @@ sora/misc/fn_8005C8F0.cpp:
 sora/misc/fn_8005CA18.cpp:
 	.text       start:0x8005CA18 end:0x8005CAA0
 
+sora/misc/fn_8005CE70.cpp:
+	.text       start:0x8005CE70 end:0x8005D118
+
 sora/misc/fn_8005D27C.cpp:
 	.text       start:0x8005D27C end:0x8005D2E4
 
@@ -20888,6 +20891,9 @@ RVL_SDK/fn_8027C914.c:
 RVL_SDK/fn_8027C97C.c:
 	.text       start:0x8027C97C end:0x8027CA38
 	.ctors      start:0x804065E4 end:0x804065E8
+
+RVL_SDK/fn_8027CB44.c:
+	.text       start:0x8027CB44 end:0x8027CC14
 
 RVL_SDK/fn_8027CC14.c:
 	.text       start:0x8027CC14 end:0x8027CC1C
