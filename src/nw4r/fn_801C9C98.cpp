@@ -57,6 +57,12 @@ struct Arg3 {
     u8 f10;
 };
 
+struct P3 {
+    s32 f0;
+    s32 f4;
+    u8 f8;
+};
+
 extern "C" {
 u32 fn_801BFF28(void*);
 void fn_801C2E84(void*, u32);
@@ -68,9 +74,11 @@ void fn_801C4738(void*, u32);
 void fn_801C4740(void*, u8);
 Object_vptr_0* fn_801C6C3C(void*, u32, void*, s32);
 s32 fn_801C96B8(void*, u32);
+s32 fn_801CF6C0(Object_vptr_0*, void*, s32, s32, s32, Object_vptr_0*);
+s32 fn_801D399C(void*, s32, s32, s32, s32, s32, s32, u32);
+void fn_801D3B14(void*, s32);
+void fn_801D3B1C(void*, u8);
 }
-
-extern f32 lbl_805A3620;
 
 inline u32 getFreeSize(u8* heap) {
     OSMutex* mutex = (OSMutex*)(heap + 4);
@@ -106,33 +114,33 @@ extern "C" s32 fn_801C9C98(Ctx* self, Object_vptr_0* arg1, Arg2* arg2, Arg3* arg
     s32 r = fn_801C43A4(arg1, self->f1c, arg3->f8, arg6, self->pad20);
     while (r != 0) {
         if (r == 1) {
-        u32 t = self->f3c;
-        if (t == 1) {
-            if (r28 != NULL) {
-                r28->slot2();
+            u32 t = self->f3c;
+            if (t == 1) {
+                if (r28 != NULL) {
+                    r28->slot2();
+                }
+                return 1;
             }
-            return 1;
-        }
-        Object_vptr_0* obj;
-        if (t == 0) {
-            obj = NULL;
-        } else {
-            obj = (Object_vptr_0*)(self->f40 - 0xb8);
-        }
-        if (arg1 == obj) {
-            if (r28 != NULL) {
-                r28->slot2();
+            Object_vptr_0* obj;
+            if (t == 0) {
+                obj = NULL;
+            } else {
+                obj = (Object_vptr_0*)(self->f40 - 0xb8);
             }
-            return 1;
-        }
-        obj->slot4(0);
-        r = fn_801C43A4(arg1, self->f1c, arg3->f8, arg6, self->pad20);
+            if (arg1 == obj) {
+                if (r28 != NULL) {
+                    r28->slot2();
+                }
+                return 1;
+            }
+            obj->slot4(0);
+            r = fn_801C43A4(arg1, self->f1c, arg3->f8, arg6, self->pad20);
         } else {
             return 0xFF;
         }
     }
 
-    arg1->slot11(arg2->f0c, (f32)arg2->f0c / lbl_805A3620);
+    arg1->slot11(arg2->f0c, (f32)arg2->f0c / 127.0f);
     fn_801C4738(arg1, arg3->fc);
     fn_801C4740(arg1, arg3->f10);
     arg1->slot18(arg2->f10);
@@ -163,5 +171,62 @@ extern "C" s32 fn_801C9C98(Ctx* self, Object_vptr_0* arg1, Arg2* arg2, Arg3* arg
     } else {
         fn_801C4474(arg1, r28, arg3->f0, r30, r26);
     }
+    return 0;
+}
+
+extern "C" s32 fn_801C9F9C(Ctx* self, Object_vptr_0* obj, Arg2* params, s32 unused, s32 mode, s32 a, s32 b) {
+    s32 flag;
+    switch (mode) {
+    case 0: flag = 1; break;
+    case 1: flag = 0; a = 0; break;
+    case 2: flag = 0; break;
+    default: flag = 0; a = 0; break;
+    }
+    Object_vptr_0* result = fn_801C6C3C(self->f10, params->id, (u8*)obj + 0x93c, 0x200);
+    if (!result) return 6;
+    if (!fn_801CF6C0(obj, (u8*)self + 0xbc, flag, a, b, result)) return 0xff;
+    obj->slot11(params->f0c, (f32)params->f0c / 127.0f);
+    obj->slot18(params->f10);
+    obj->slot19(params->f14);
+    obj->slot20(params->f18);
+    return 0;
+}
+
+extern "C" s32 fn_801CA0FC(void* self, Object_vptr_0* p1, Arg2* p2, P3* p3, s32 p4, s32 p5, s32 p6) {
+    s32 r;
+    s32 flag;
+    s32 r30;
+    s32 r31 = p6;
+
+    r = fn_801C96B8(self, p2->id);
+    if (r == 0) {
+        return 4;
+    }
+    r30 = p5;
+    switch (p4) {
+    case 0:
+        flag = 1;
+        break;
+    case 1:
+        flag = 0;
+        r30 = 0;
+        break;
+    case 2:
+        flag = 0;
+        break;
+    default:
+        flag = 0;
+        r30 = 0;
+        break;
+    }
+    if (fn_801D399C(p1, r, p3->f0, flag, r30, r31, (s32)self + 0x28, p2->id) == 0) {
+        return 0xFF;
+    }
+    p1->slot11(p2->f0c, (f32)p2->f0c / 127.0f);
+    fn_801D3B14(p1, p3->f4);
+    fn_801D3B1C(p1, p3->f8);
+    p1->slot18(p2->f10);
+    p1->slot19(p2->f14);
+    p1->slot20(p2->f18);
     return 0;
 }

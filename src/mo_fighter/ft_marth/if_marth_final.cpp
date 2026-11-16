@@ -281,22 +281,75 @@ extern "C" MarthFinalInterface* fn_106_D790(MarthFinalInterface* interface, shor
     }
     return interface;
 }
+// decomp-orchestrator: begin fn_106_D820
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D820(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource, int priority, Heaps::HeapType heap) {
+//|     int i;
+//|     int j;
+//|     const FinalModelInfo* info = &lbl_106_rodata_50;
+//|     for (i = 0; i < 1; ++i, ++info) {
+//|         int count = info->first < info->end ? info->end - info->first : 1;
+//|         for (j = 0; j < count; ++j) {
+//|             interface->models[info->first + j] = MuObject::create(resource, info->name, info->priority + priority, 0, heap);
+//|             interface->models[info->first + j]->m_modelAnim->setUpdateRate(lbl_106_rodata_5C);
+//|         }
+//|     }
+//|     nw4r::g3d::ScnObj* model = interface->models[0]->m_sceneModel;
+//|     *reinterpret_cast<FinalObjectCallback**>(reinterpret_cast<unsigned char*>(model) + 0xd4) = &interface->callback;
+//|     fn_801AB038(model, 1);
+//|     fn_801AB0B8(model, 1);
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+namespace decomp_orch_fn_106_D820 {
+#pragma force_active on
+
+
+
+
+extern "C" {
+
+extern const float lbl_106_rodata_5C;
+
+
+}
+
+static inline int modelCount(unsigned char first, unsigned char end) {
+    if (first < end)
+        return end - first;
+    return 1;
+}
+#pragma optimization_level 1
+#pragma scheduling off
 extern "C" void fn_106_D820(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource, int priority, Heaps::HeapType heap) {
+    int count;
     int i;
     int j;
     const FinalModelInfo* info = &lbl_106_rodata_50;
-    for (i = 0; i < 1; ++i, ++info) {
-        int count = info->first < info->end ? info->end - info->first : 1;
-        for (j = 0; j < count; ++j) {
+    i = 0;
+    while (i < 1) {
+        count = modelCount(info->first, info->end);
+        j = 0;
+        while (j < count) {
             interface->models[info->first + j] = MuObject::create(resource, info->name, info->priority + priority, 0, heap);
             interface->models[info->first + j]->m_modelAnim->setUpdateRate(lbl_106_rodata_5C);
+            j++;
         }
+        i++;
+        info++;
     }
     nw4r::g3d::ScnObj* model = interface->models[0]->m_sceneModel;
     *reinterpret_cast<FinalObjectCallback**>(reinterpret_cast<unsigned char*>(model) + 0xd4) = &interface->callback;
     fn_801AB038(model, 1);
     fn_801AB0B8(model, 1);
 }
+}  // namespace decomp_orch_fn_106_D820
+// decomp-orchestrator: end fn_106_D820
 extern "C" void fn_106_D92C(MarthFinalInterface* interface) {
     for (int i = 0; i < 1; ++i) {
         if (interface->sceneObjects[i]) {
