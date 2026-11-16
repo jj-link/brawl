@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main, sora_adv_stage and 2 more: 6 functions
+
+- Matched 6 functions in `main, sora_adv_stage and 2 more` with decomp-orchestrator: deepseek-v4-1-flash 1, luna 1, qwen27b 2, sol 1, terra 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## st_crayon and st_donkey: 2 functions
 
 - Matched 2 functions in `st_crayon and st_donkey` with decomp-orchestrator: deepseek-v4-1-flash 1, terra 1.
