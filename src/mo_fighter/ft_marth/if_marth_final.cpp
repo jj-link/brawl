@@ -442,6 +442,40 @@ extern "C" void fn_106_DAB0(Vec3f* position, MarthFinalInterface* interface, int
 extern "C" void fn_106_DAC0(MarthFinalInterface* interface, int index) {
     fn_800B3C5C(interface->models[index], &lbl_106_data_571C, 0);
 }
+// decomp-orchestrator: begin fn_106_DADC
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_DADC(MarthFinalInterface* interface, unsigned int visible) {
+//|     if (visible == 1 && !interface->visible) {
+//|         fn_106_D720(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
+//|         interface->visible = 1;
+//|     } else if (visible == 0 && interface->visible == 1) {
+//|         fn_106_DA78(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
+//|         interface->visible = 0;
+//|     }
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+
+
+
+
+
+
+extern "C" {
+
+
+}
+
+#pragma force_active on
+#pragma force_active on
+#pragma scheduling off
+#pragma optimize_for_size off
+#pragma optimization_level reset
 extern "C" void fn_106_DADC(MarthFinalInterface* interface, unsigned int visible) {
     if (visible == 1 && !interface->visible) {
         fn_106_D720(g_IfMngr, reinterpret_cast<nw4r::g3d::ScnObj*>(interface->scene));
@@ -451,6 +485,12 @@ extern "C" void fn_106_DADC(MarthFinalInterface* interface, unsigned int visible
         interface->visible = 0;
     }
 }
+#pragma optimization_level reset
+#pragma optimize_for_size reset
+#pragma scheduling reset
+#pragma force_active reset
+#pragma force_active off
+// decomp-orchestrator: end fn_106_DADC
 extern "C" unsigned long fn_106_DB60(MarthFinalInterface* interface) { return interface->callback.applied; }
 extern "C" void fn_106_DB68() {}
 extern "C" void fn_106_DB6C() {}
