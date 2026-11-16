@@ -1,0 +1,72 @@
+#include <types.h>
+#pragma force_active on
+extern "C" void* fn_80109600(void*, void*);
+struct Flags { unsigned char high : 4; unsigned char low : 4; };
+struct OneBit { unsigned char high : 1; unsigned char rest : 7; };
+extern "C" void* fn_80106810(void* self, void* a, void* b) {
+    unsigned char* p = (unsigned char*)self;
+    unsigned int off = 0;
+    unsigned int ctr = 2;
+    unsigned char* q;
+    *(unsigned int*)(p + 0x00) = 0;
+    ((OneBit*)(p + 4))->high = 1;
+    *(unsigned int*)(p + 0x8) = 0;
+    *(unsigned int*)(p + 0xc) = 0;
+    *(unsigned int*)(p + 0x10) = 0;
+    *(unsigned int*)(p + 0x14) = 0;
+    *(unsigned int*)(p + 0x18) = 0;
+    *(unsigned int*)(p + 0x1c) = 0;
+    *(unsigned int*)(p + 0x20) = 0;
+    *(unsigned int*)(p + 0x24) = 0;
+    *(unsigned int*)(p + 0x28) = 0;
+    *(unsigned int*)(p + 0x2c) = 0;
+    *(unsigned int*)(p + 0x30) = 0;
+    *(unsigned int*)(p + 0x34) = 0;
+    *(unsigned int*)(p + 0x38) = 0;
+    *(unsigned int*)(p + 0x3c) = 0;
+    *(unsigned int*)(p + 0x40) = 0;
+    *(unsigned int*)(p + 0x44) = 0;
+    ((Flags*)(p + 0x48))->high = 0;
+    *(unsigned int*)(p + 0x4c) = 0;
+    *(unsigned int*)(p + 0x50) = 0;
+    p[0x54] = 0;
+    p[0x55] = 0;
+    p[0x56] = 2;
+    p[0x57] = 0;
+    *(unsigned int*)(p + 0x58) = 0;
+    *(unsigned int*)(p + 0x5c) = 0;
+    *(unsigned int*)(p + 0x60) = 0;
+    *(unsigned int*)(p + 0x6c) = 0;
+    p[0x70] = 0;
+    *(unsigned int*)(p + 0x74) = 0;
+    *(unsigned int*)(p + 0x78) = 0;
+    *(unsigned int*)(p + 0xe0) = 0;
+    *(unsigned int*)(p + 0xe4) = 0;
+    *(unsigned int*)(p + 0x104) = 0;
+    *(unsigned int*)(p + 0x108) = 0;
+    *(unsigned int*)(p + 0x10c) = 0;
+    p[0x110] = 1;
+    p[0x111] = 0;
+    *(unsigned int*)(p + 0x114) = 2;
+    p[0x118] = 1;
+    for (off = 0; off < 99; ++off) {
+        *(p + off + 0x7c) = 0;
+    }
+    *(unsigned int*)(p + 0xe8) = 0;
+    *(unsigned int*)(p + 0xec) = 0;
+    *(unsigned int*)(p + 0xf0) = 0;
+    *(unsigned int*)(p + 0xf4) = 0;
+    *(unsigned int*)(p + 0xf8) = 0;
+    *(unsigned int*)(p + 0xfc) = 0;
+    *(unsigned int*)(p + 0x100) = 0;
+    p[0x68] = 0;
+    p[0x6a] = 0;
+    p[0x64] = 0;
+    p[0x66] = 0;
+    p[0x69] = 0;
+    p[0x6b] = 0;
+    p[0x65] = 0;
+    p[0x67] = 0;
+    *(void**)(p + 0x74) = fn_80109600(a, b);
+    return self;
+}
