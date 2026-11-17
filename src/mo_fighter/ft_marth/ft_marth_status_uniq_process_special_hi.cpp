@@ -254,3 +254,21 @@ void fn_106_BF98(void) {
 }
 }  // namespace decomp_orch_fn_106_BF98
 // decomp-orchestrator: end fn_106_BF98
+
+// decomp-orchestrator: begin fn_106_BEE4
+#include <so/so_module_accesser.h>
+namespace decomp_orch_fn_106_BEE4 {
+#pragma force_active on
+#pragma scheduling off
+
+extern "C" {
+extern const float lbl_106_rodata_28;
+
+bool fn_106_BEE4(void*, soModuleAccesser* moduleAccesser, float, float) {
+    moduleAccesser->getWorkManageModule().setFloat(lbl_106_rodata_28, 0x21000004);
+    moduleAccesser->getWorkManageModule().onFlag(0x22000016);
+    return true;
+}
+}
+}  // namespace decomp_orch_fn_106_BEE4
+// decomp-orchestrator: end fn_106_BEE4
