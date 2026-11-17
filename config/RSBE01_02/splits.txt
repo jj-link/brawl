@@ -634,6 +634,9 @@ sora/misc/fn_8001FFDC.cpp:
 sora/misc/fn_8002035C.cpp:
 	.text       start:0x8002035C end:0x80020558
 
+sora/misc/fn_800207FC.cpp:
+	.text       start:0x800207FC end:0x800208E8
+
 sora/misc/fn_800208E8.cpp:
 	.text       start:0x800208E8 end:0x80020AA8
 
@@ -1384,6 +1387,10 @@ sora/misc/fn_800374DC.cpp:
 
 sora/misc/fn_800377D4.cpp:
 	.text       start:0x800377D4 end:0x80037800
+
+sora/misc/fn_80037800.cpp:
+	.text       start:0x80037800 end:0x8003798C
+	.data       start:0x80423280 end:0x8042329C
 
 sora/misc/fn_8003798C.cpp:
 	.text       start:0x8003798C end:0x80037BE4
@@ -9705,6 +9712,9 @@ sora/misc/fn_8015A41C.cpp:
 sora/misc/fn_8015A424.cpp:
 	.text       start:0x8015A424 end:0x8015A434
 
+sora/misc/fn_8015A434.cpp:
+	.text       start:0x8015A434 end:0x8015A7C4
+
 sora/misc/fn_8015A7C4.cpp:
 	.text       start:0x8015A7C4 end:0x8015A7CC
 
@@ -11140,6 +11150,9 @@ nw4r/fn_8018B0D0.cpp:
 
 nw4r/fn_8018B110.cpp:
 	.text       start:0x8018B110 end:0x8018B1F8
+
+nw4r/fn_8018B1F8.cpp:
+	.text       start:0x8018B1F8 end:0x8018B3B4
 
 nw4r/fn_8018B3B4.cpp:
 	.text       start:0x8018B3B4 end:0x8018B3C0
@@ -16657,6 +16670,9 @@ RVL_SDK/fn_801F7008.c:
 RVL_SDK/fn_801F7138.c:
 	.text       start:0x801F7138 end:0x801F71FC
 
+RVL_SDK/fn_801F7BF4.c:
+	.text       start:0x801F7BF4 end:0x801F7F2C
+
 RVL_SDK/fn_801F8B8C.c:
 	.text       start:0x801F8B8C end:0x801F8C50
 	.data       start:0x80476824 end:0x804768D0
@@ -20394,6 +20410,9 @@ RVL_SDK/fn_8025A090.c:
 RVL_SDK/fn_8025A14C.c:
 	.text       start:0x8025A14C end:0x8025A1D4
 
+RVL_SDK/fn_8025A1D4.c:
+	.text       start:0x8025A1D4 end:0x8025A328
+
 RVL_SDK/fn_8025AEE4.c:
 	.text       start:0x8025AEE4 end:0x8025AF74
 
@@ -23894,6 +23913,11 @@ havok/fn_802C7D04.cpp:
 	extab       start:0x80007F78 end:0x80007F80
 	extabindex  start:0x8000ACA8 end:0x8000ACB4
 	.text       start:0x802C7D04 end:0x802C7EBC
+
+havok/fn_802C7EBC.cpp:
+	extab       start:0x80007F80 end:0x80007F88
+	extabindex  start:0x8000ACB4 end:0x8000ACC0
+	.text       start:0x802C7EBC end:0x802C8394
 
 havok/fn_802C8394.cpp:
 	extab       start:0x80007F88 end:0x80007FA0
@@ -27851,6 +27875,9 @@ havok/fn_80334160.cpp:
 havok/fn_803341E4.cpp:
 	.text       start:0x803341E4 end:0x80334324
 
+havok/fn_8033499C.cpp:
+	.text       start:0x8033499C end:0x80334B4C
+
 havok/fn_80334B4C.cpp:
 	.text       start:0x80334B4C end:0x80334B98
 
@@ -29069,14 +29096,9 @@ network/fn_80368BF4.c:
 network/fn_80368C10.c:
 	.text       start:0x80368C10 end:0x80368D50
 
-network/fn_80369C64.c:
-	.text       start:0x80369C64 end:0x80369D58
-
-network/fn_80369D58.c:
-	.text       start:0x80369D58 end:0x80369E90
-
-network/fn_8036A000.c:
-	.text       start:0x8036A000 end:0x8036A028
+network/fn_803691D8.c:
+	.text       start:0x803691D8 end:0x8036A1A4
+	.data       start:0x8048ECD8 end:0x8048ED80
 
 network/fn_8036A1A4.c:
 	.text       start:0x8036A1A4 end:0x8036A24C
