@@ -237,6 +237,37 @@ extern "C" FinalObjectCallback* fn_106_D62C(FinalObjectCallback* callback, short
 #pragma scheduling reset
 // decomp-orchestrator: end fn_106_D62C
 #pragma dont_inline reset
+// decomp-orchestrator: begin fn_106_D66C
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D66C(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource,
+//|         nw4r::g3d::ScnGroup* scene, int priority, Heaps::HeapType heap) {
+//|     reinterpret_cast<unsigned char*>(&interface->task)[0x2c] &= ~2;
+//|     fn_106_D73C(interface);
+//|     fn_106_D820(interface, resource, priority, heap);
+//|     interface->scene = scene;
+//|     nw4r::g3d::ScnObj* model = finalSceneModel(interface->models[0]);
+//|     scene->Insert(scene->sceneItemsCount, model);
+//|     nw4r::g3d::ScnGroup* parent = reinterpret_cast<FinalManagerView*>(g_IfMngr)->scene;
+//|     parent->Insert(parent->sceneItemsCount, reinterpret_cast<nw4r::g3d::ScnObj*>(scene));
+//|     interface->visible = 1;
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+#pragma force_active on
+
+
+
+
+
+
+
+#pragma optimization_level 1
+#pragma scheduling off
 extern "C" void fn_106_D66C(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource,
         nw4r::g3d::ScnGroup* scene, int priority, Heaps::HeapType heap) {
     reinterpret_cast<unsigned char*>(&interface->task)[0x2c] &= ~2;
@@ -249,6 +280,8 @@ extern "C" void fn_106_D66C(MarthFinalInterface* interface, nw4r::g3d::ResFile* 
     parent->Insert(parent->sceneItemsCount, reinterpret_cast<nw4r::g3d::ScnObj*>(scene));
     interface->visible = 1;
 }
+#pragma scheduling reset
+// decomp-orchestrator: end fn_106_D66C
 #pragma dont_inline on
 // decomp-orchestrator: begin fn_106_D720
 // decomp-orchestrator: it replaces the file's own definition:
