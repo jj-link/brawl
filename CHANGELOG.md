@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_fox, main and 2 more: 7 functions
+
+- Matched 7 functions in `ft_fox, main and 2 more` with decomp-orchestrator: sonnet 6, terra 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main, sora_adv_menu_result and 1 more: 3 functions
 
 - Matched 3 functions in `main, sora_adv_menu_result and 1 more` with decomp-orchestrator: astra 1, luna 1, sonnet 1.
