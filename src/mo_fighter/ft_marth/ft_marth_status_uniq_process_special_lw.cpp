@@ -389,3 +389,20 @@ extern "C" void fn_106_C890(void*, soModuleAccesser* accesser) {
 }
 }  // namespace decomp_orch_fn_106_C890
 // decomp-orchestrator: end fn_106_C890
+
+// decomp-orchestrator: begin fn_106_C904
+struct CounterProcess;
+namespace decomp_orch_fn_106_C904 {
+#pragma force_active on
+#pragma scheduling off
+extern "C" void __dl__FPv(void*);
+
+
+extern "C" CounterProcess* fn_106_C904(CounterProcess* process, int deleting) {
+    if (process != 0 && (short)deleting > 0) {
+        __dl__FPv(process);
+    }
+    return process;
+}
+}  // namespace decomp_orch_fn_106_C904
+// decomp-orchestrator: end fn_106_C904
