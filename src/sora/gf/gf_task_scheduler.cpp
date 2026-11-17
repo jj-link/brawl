@@ -276,29 +276,104 @@ void gfTaskScheduler::render() {
 // decomp-orchestrator: end render__15gfTaskSchedulerFv
 
 // NONMATCHING regswaps
+// decomp-orchestrator: begin updateStatus__15gfTaskSchedulerFv
+// decomp-orchestrator: it replaces the file's own definition:
+//| void gfTaskScheduler::updateStatus() {
+//|     unk0_1 = 4;
+//|     do {
+//|         gfTask* next;
+//|         unk2_b7 = false;
+//|         for (s32 i = 0; i < unk14Size; i++) {
+//|             for (gfTask* curr = unk14[i]; curr; curr = next) {
+//|                 next = curr->m_next;
+//|                 if (curr->m_alive && curr->getStatus() == 2) {
+//|                     curr->setStatus(1);
+//|                 }
+//|                 if (curr->getStatus() == 3) {
+//|                     curr->unlink();
+//|                     removeFromSuspendList(curr);
+//|                     m_numRegisteredTasks--;
+//|                     delete curr;
+//|                 }
+//|             }
+//|         }
+//|         for (gfTask* curr = m_suspendList; curr; curr = next) {
+//|             next = curr->m_next;
+//|             if (curr->getStatus() == 3) {
+//|                 removeFromSuspendList(curr);
+//|                 m_numRegisteredTasks--;
+//|                 delete curr;
+//|             }
+//|         }
+//|     } while (unk2_b7 == true);
+//|     unk0_1 = 0;
+//| }
+#include <StaticAssert.h>
+#include <cstring>
+#include <gf/gf_task.h>
+#include <gf/gf_task_scheduler.h>
+#include <sr/sr_common.h>
+#include <types.h>
+#pragma force_active on
 void gfTaskScheduler::updateStatus() {
+    gfTask* next;
+    gfTaskScheduler* p;
     unk0_1 = 4;
     do {
-        gfTask* next;
         unk2_b7 = false;
+        p = this;
         for (s32 i = 0; i < unk14Size; i++) {
-            for (gfTask* curr = unk14[i]; curr; curr = next) {
+            for (gfTask* curr = p->unk14[0]; curr; curr = next) {
                 next = curr->m_next;
                 if (curr->m_alive && curr->getStatus() == 2) {
                     curr->setStatus(1);
                 }
                 if (curr->getStatus() == 3) {
                     curr->unlink();
-                    removeFromSuspendList(curr);
+                    gfTask* nextTask = curr->m_next;
+                    gfTask* prev;
+                    if (m_suspendList == curr) {
+                        m_suspendList = nextTask;
+                        if (nextTask) {
+                            nextTask->m_prev = nullptr;
+                        }
+                    } else {
+                        prev = curr->m_prev;
+                        if (prev) {
+                            prev->m_next = nextTask;
+                        }
+                        if (nextTask) {
+                            nextTask->m_prev = prev;
+                        }
+                    }
+                    curr->m_prev = nullptr;
+                    curr->m_next = nullptr;
                     m_numRegisteredTasks--;
                     delete curr;
                 }
             }
+            p = (gfTaskScheduler*)((char*)p + 4);
         }
         for (gfTask* curr = m_suspendList; curr; curr = next) {
             next = curr->m_next;
             if (curr->getStatus() == 3) {
-                removeFromSuspendList(curr);
+                gfTask* prev;
+                if (m_suspendList == curr) {
+                    m_suspendList = next;
+                    if (next) {
+                        next->m_prev = nullptr;
+                    }
+                } else {
+                    prev = curr->m_prev;
+                    if (prev) {
+                        prev->m_next = next;
+                    }
+                    if (next) {
+                        next->m_prev = prev;
+                    }
+                }
+                curr->m_prev = nullptr;
+                curr->m_next = nullptr;
                 m_numRegisteredTasks--;
                 delete curr;
             }
@@ -306,6 +381,7 @@ void gfTaskScheduler::updateStatus() {
     } while (unk2_b7 == true);
     unk0_1 = 0;
 }
+// decomp-orchestrator: end updateStatus__15gfTaskSchedulerFv
 
 void gfTaskScheduler::removeFromSuspendList(gfTask* task) {
     gfTask* prev = task->m_prev;
