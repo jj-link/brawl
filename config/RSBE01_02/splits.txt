@@ -16591,6 +16591,9 @@ RVL_SDK/fn_801F48AC.c:
 RVL_SDK/fn_801F48DC.c:
 	.text       start:0x801F48DC end:0x801F4910
 
+RVL_SDK/fn_801F4910.c:
+	.text       start:0x801F4910 end:0x801F4980
+
 RVL_SDK/fn_801F4980.c:
 	.text       start:0x801F4980 end:0x801F4D50
 	.sdata2     start:0x805A38B0 end:0x805A38D0
@@ -33566,6 +33569,9 @@ network/fn_803DEE48.c:
 
 network/fn_803DEF54.c:
 	.text       start:0x803DEF54 end:0x803DF04C
+
+network/fn_803DF2A8.c:
+	.text       start:0x803DF2A8 end:0x803DF5E4
 
 network/fn_803DF5E4.c:
 	.text       start:0x803DF5E4 end:0x803DF748
