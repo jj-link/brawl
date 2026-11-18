@@ -24514,6 +24514,11 @@ havok/fn_802CAA50.cpp:
 	extabindex  start:0x8000AE40 end:0x8000AE4C
 	.text       start:0x802CAA50 end:0x802CAB20
 
+havok/fn_802CAB20.cpp:
+	extab       start:0x800081A8 end:0x800081B0
+	extabindex  start:0x8000AE4C end:0x8000AE58
+	.text       start:0x802CAB20 end:0x802CABFC
+
 havok/fn_802CABFC.cpp:
 	extab       start:0x800081B0 end:0x800081B8
 	extabindex  start:0x8000AE58 end:0x8000AE64
