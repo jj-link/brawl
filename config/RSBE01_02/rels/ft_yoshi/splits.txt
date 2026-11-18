@@ -11,6 +11,9 @@ global_destructor_chain.c:
 	.dtors      start:0x00000000 end:0x00000008
 	.bss        start:0x00000000 end:0x00000004
 
+mo_fighter/ft_yoshi/ft_yoshi_function_70.cpp:
+	.text       start:0x00000070 end:0x00001AA4
+
 mo_fighter/ft_yoshi/ft_yoshi_function_1aa4.cpp:
 	.text       start:0x00001AA4 end:0x00001B44
 
