@@ -103,12 +103,25 @@ extern "C" void fn_106_D410(FinalObjectCallback* callback, int timing, nw4r::g3d
     }
 }
 #pragma dont_inline on
+// decomp-orchestrator: begin fn_106_D4E4
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" Vec3f* fn_106_D4E4(Vec3f* destination, const Vec3f* source) {
+//|     destination->m_x = source->m_x;
+//|     destination->m_y = source->m_y;
+//|     destination->m_z = source->m_z;
+//|     return destination;
+//| }
+#include <mt/mt_vector.h>
+#pragma force_active on
+#pragma scheduling off
 extern "C" Vec3f* fn_106_D4E4(Vec3f* destination, const Vec3f* source) {
     destination->m_x = source->m_x;
     destination->m_y = source->m_y;
     destination->m_z = source->m_z;
     return destination;
 }
+#pragma scheduling on
+// decomp-orchestrator: end fn_106_D4E4
 #pragma dont_inline reset
 // decomp-orchestrator: begin fn_106_D500
 // decomp-orchestrator: it replaces the file's own definition:
