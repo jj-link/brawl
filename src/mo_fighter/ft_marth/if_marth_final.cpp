@@ -396,20 +396,163 @@ extern "C" void fn_106_D820(MarthFinalInterface* interface, nw4r::g3d::ResFile* 
 }
 }  // namespace decomp_orch_fn_106_D820
 // decomp-orchestrator: end fn_106_D820
+// decomp-orchestrator: begin fn_106_D92C
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D92C(MarthFinalInterface* interface) {
+//|     for (int i = 0; i < 1; ++i) {
+//|         if (interface->sceneObjects[i]) {
+//|             interface->sceneObjects[i]->Destroy();
+//|             interface->sceneObjects[i] = 0;
+//|         }
+//|     }
+//|     for (int i = 0; i < 1; ++i) {
+//|         if (interface->models[i]) {
+//|             delete interface->models[i];
+//|             interface->models[i] = 0;
+//|         }
+//|     }
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+namespace decomp_orch_fn_106_D92C {
+#pragma force_active on
+
+
+
+
+
+
+
+
+struct FinalCleanupPrefix {
+    unsigned char data[0x5c];
+};
+
+struct FinalCleanupObject : FinalCleanupPrefix {
+    virtual void release(short);
+};
+
+
+
+
+
+
+
+
+
+
+
+extern "C" {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MarthFinalInterface* fn_106_D500(void*, Heaps::HeapType, int);
+
+
+
+
+MarthFinalInterface* fn_106_D790(MarthFinalInterface*, short);
+
+
+void fn_106_D410(FinalObjectCallback*, int, nw4r::g3d::ScnObj*);
+
+void fn_106_D9DC(MarthFinalInterface*);
+void fn_106_D9E0(MarthFinalInterface*);
+void fn_106_DA2C(MarthFinalInterface*, int);
+
+void fn_106_DA94(MarthFinalInterface*);
+void fn_106_DA98(MarthFinalInterface*, const Vec3f*, int);
+Vec3f* fn_106_DAA8(MarthFinalInterface*, const Vec3f*);
+void fn_106_DAB0(Vec3f*, MarthFinalInterface*, int);
+void fn_106_DAC0(MarthFinalInterface*, int);
+void fn_106_DADC(MarthFinalInterface*, unsigned int);
+unsigned long fn_106_DB60(MarthFinalInterface*);
+void fn_106_DB68();
+void fn_106_DB6C();
+void fn_106_DB70();
+void fn_106_DB74();
+
+void processBegin__6gfTaskFv();
+void processAnim__6gfTaskFv();
+void processUpdate__6gfTaskFv();
+void processPreMapCorrection__6gfTaskFv();
+void processMapCorrection__6gfTaskFv();
+void processFixPosition__6gfTaskFv();
+void processPreCollision__6gfTaskFv();
+void processCollision__6gfTaskFv();
+void processCatch__6gfTaskFv();
+void processHit__6gfTaskFv();
+void processCamera__6gfTaskFv();
+void processFixCamera__6gfTaskFv();
+void processEffect__6gfTaskFv();
+void processGameProc__6gfTaskFv();
+void processEnd__6gfTaskFv();
+void renderPre__6gfTaskFv();
+void renderOpa__6gfTaskFv();
+void renderXlu__6gfTaskFv();
+void processDebug__6gfTaskFv();
+void renderDebug__6gfTaskFv();
+void init__6gfTaskFv();
+}
+
+#pragma optimization_level 1
+#pragma optimization_level 2
+#pragma optimize_for_size on
+#pragma scheduling off
 extern "C" void fn_106_D92C(MarthFinalInterface* interface) {
-    for (int i = 0; i < 1; ++i) {
-        if (interface->sceneObjects[i]) {
-            interface->sceneObjects[i]->Destroy();
-            interface->sceneObjects[i] = 0;
+    MarthFinalInterface* entry;
+    int i;
+    MarthFinalInterface* self = interface;
+
+    for (i = 0; i < 1; ++i) {
+        entry = reinterpret_cast<MarthFinalInterface*>(reinterpret_cast<char*>(self) + i * 4);
+        nw4r::g3d::G3dObj* object = entry->sceneObjects[0];
+        if (object) {
+            object->Destroy();
+            entry->sceneObjects[0] = 0;
         }
     }
-    for (int i = 0; i < 1; ++i) {
-        if (interface->models[i]) {
-            delete interface->models[i];
-            interface->models[i] = 0;
+
+    for (i = 0; i < 1; ++i) {
+        entry = reinterpret_cast<MarthFinalInterface*>(reinterpret_cast<char*>(self) + i * 4);
+        FinalCleanupObject* object = reinterpret_cast<FinalCleanupObject*>(entry->models[0]);
+        if (object) {
+            if (object) {
+                object->release(1);
+            }
+            entry->models[0] = 0;
         }
     }
 }
+#pragma scheduling reset
+#pragma optimization_level reset
+}  // namespace decomp_orch_fn_106_D92C
+// decomp-orchestrator: end fn_106_D92C
 // Empty inherited hooks and callback phases in the original interface.
 extern "C" void fn_106_D9DC(MarthFinalInterface*) {}
 // decomp-orchestrator: begin fn_106_D9E0
