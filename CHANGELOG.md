@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## ft_link, sora_enemy and 1 more: 3 functions
+
+- Matched 3 functions in `ft_link, sora_enemy and 1 more` with decomp-orchestrator: deepseek-v4-1-flash 2, luna 1.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main: 3 functions
 
 - Matched 3 functions in `main` with decomp-orchestrator: luna 1, sol 1, terra 1.
