@@ -272,3 +272,17 @@ bool fn_106_BEE4(void*, soModuleAccesser* moduleAccesser, float, float) {
 }
 }  // namespace decomp_orch_fn_106_BEE4
 // decomp-orchestrator: end fn_106_BEE4
+
+// decomp-orchestrator: begin fn_106_BE40
+#include <so/so_module_accesser.h>
+#include <so/so_value_accesser.h>
+#pragma force_active on
+#pragma scheduling off
+extern "C" void fn_106_BE40(void*, soModuleAccesser* moduleAccesser, int) {
+    float speed = soValueAccesser::getConstantFloat(moduleAccesser, 0xFA8, 0);
+    moduleAccesser->getWorkManageModule().setFloat(speed, 0x11000000);
+    float control = soValueAccesser::getConstantFloat(moduleAccesser, 0xFA7, 0);
+    moduleAccesser->getWorkManageModule().setFloat(control, 0x11000001);
+    moduleAccesser->getWorkManageModule().onFlag(0x12000003);
+}
+// decomp-orchestrator: end fn_106_BE40
