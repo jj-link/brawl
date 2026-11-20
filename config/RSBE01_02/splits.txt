@@ -11051,6 +11051,9 @@ nw4r/fn_8017BC34.cpp:
 nw4r/fn_8017C748.cpp:
 	.text       start:0x8017C748 end:0x8017CA88
 
+nw4r/fn_8017CA88.cpp:
+	.text       start:0x8017CA88 end:0x8017CE40
+
 nw4r/fn_8017CE40.cpp:
 	.text       start:0x8017CE40 end:0x8017D03C
 
@@ -33878,6 +33881,11 @@ network/fn_803D521C.c:
 
 network/fn_803D5254.c:
 	.text       start:0x803D5254 end:0x803D5340
+
+network/fn_803D5340.c:
+	extab       start:0x80009474 end:0x8000947C
+	extabindex  start:0x8000C448 end:0x8000C454
+	.text       start:0x803D5340 end:0x803D54E0
 
 network/fn_803D54E0.c:
 	extab       start:0x8000947C end:0x80009484
