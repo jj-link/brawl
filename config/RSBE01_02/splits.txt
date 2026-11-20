@@ -1724,6 +1724,9 @@ sora/misc/fn_80040F74.cpp:
 sora/misc/fn_8004104C.cpp:
 	.text       start:0x8004104C end:0x80041104
 
+sora/misc/fn_80041104.cpp:
+	.text       start:0x80041104 end:0x80041218
+
 sora/misc/fn_80041528.cpp:
 	.text       start:0x80041528 end:0x80041538
 
@@ -3905,6 +3908,9 @@ sora/misc/fn_800776FC.cpp:
 sora/misc/fn_8007776C.cpp:
 	.text       start:0x8007776C end:0x800777DC
 
+sora/misc/fn_800777DC.cpp:
+	.text       start:0x800777DC end:0x800778CC
+
 sora/misc/fn_800778CC.cpp:
 	.text       start:0x800778CC end:0x8007798C
 
@@ -4102,6 +4108,9 @@ sora/misc/fn_8007BE4C.cpp:
 
 sora/misc/fn_8007C168.cpp:
 	.text       start:0x8007C168 end:0x8007C1BC
+
+sora/misc/fn_8007C1BC.cpp:
+	.text       start:0x8007C1BC end:0x8007C2E4
 
 sora/misc/fn_8007C2E4.cpp:
 	.text       start:0x8007C2E4 end:0x8007C538
@@ -10905,6 +10914,9 @@ nw4r/fn_80171F0C.cpp:
 nw4r/fn_80172254.cpp:
 	.text       start:0x80172254 end:0x801728F4
 
+nw4r/fn_801728F4.cpp:
+	.text       start:0x801728F4 end:0x80172CAC
+
 nw4r/fn_80174434.cpp:
 	.text       start:0x80174434 end:0x80174618
 	.data       start:0x80465468 end:0x80465484
@@ -12105,6 +12117,9 @@ nw4r/fn_801958D8.cpp:
 
 nw4r/fn_8019597C.cpp:
 	.text       start:0x8019597C end:0x80195A14
+
+nw4r/fn_80195A14.cpp:
+	.text       start:0x80195A14 end:0x80195B54
 
 nw4r/fn_80195B54.cpp:
 	.text       start:0x80195B54 end:0x80195BD8
@@ -15217,6 +15232,9 @@ nw4r/fn_801CFB6C.cpp:
 
 nw4r/fn_801CFB8C.cpp:
 	.text       start:0x801CFB8C end:0x801CFC08
+
+nw4r/fn_801CFD64.cpp:
+	.text       start:0x801CFD64 end:0x801CFE70
 
 nw4r/fn_801CFE70.cpp:
 	.text       start:0x801CFE70 end:0x801CFEEC
@@ -19827,6 +19845,9 @@ RVL_SDK/fn_8023A038.c:
 
 RVL_SDK/fn_8023A0F0.c:
 	.text       start:0x8023A0F0 end:0x8023A178
+
+RVL_SDK/fn_8023A178.c:
+	.text       start:0x8023A178 end:0x8023A310
 
 RVL_SDK/fn_8023A310.c:
 	.text       start:0x8023A310 end:0x8023A3B0
@@ -34612,6 +34633,9 @@ network/fn_803E3120.c:
 
 network/fn_803E3244.c:
 	.text       start:0x803E3244 end:0x803E3350
+
+network/fn_803E3490.c:
+	.text       start:0x803E3490 end:0x803E3610
 
 network/fn_803E3610.c:
 	.text       start:0x803E3610 end:0x803E3614
