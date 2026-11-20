@@ -150,6 +150,9 @@ sora/misc/fn_80010190.cpp:
 sora/misc/fn_80010208.cpp:
 	.text       start:0x80010208 end:0x8001025C
 
+sora/misc/fn_8001025C.cpp:
+	.text       start:0x8001025C end:0x8001038C
+
 sora/misc/fn_8001038C.cpp:
 	.text       start:0x8001038C end:0x80010598
 
@@ -26114,6 +26117,10 @@ havok/fn_802DBF54.cpp:
 
 havok/fn_802DBFD0.cpp:
 	.text       start:0x802DBFD0 end:0x802DC0D4
+
+havok/fn_802DC23C.cpp:
+	.text       start:0x802DC23C end:0x802DC6F8
+	.data       start:0x80487A7C end:0x80487AE4
 
 havok/fn_802DC6F8.cpp:
 	.text       start:0x802DC6F8 end:0x802DC764

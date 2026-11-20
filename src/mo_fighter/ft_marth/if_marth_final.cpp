@@ -83,6 +83,47 @@ static inline nw4r::g3d::ScnObj* finalSceneModel(MuObject* model) {
     return model->m_sceneModel;
 }
 
+// decomp-orchestrator: begin fn_106_D410
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" void fn_106_D410(FinalObjectCallback* callback, int timing, nw4r::g3d::ScnObj* object) {
+//|     if (timing == 1 && !callback->applied) {
+//|         Matrix matrix(true);
+//|         Vec3f position;
+//|         Vec3f rotation;
+//|         Vec3f scale(lbl_106_rodata_58, lbl_106_rodata_58, lbl_106_rodata_58);
+//|         Vec3f projected;
+//|         fn_800DB360(&projected, &callback->position, 2);
+//|         fn_106_D4E4(&position, &projected);
+//|         float zero = lbl_106_rodata_5C;
+//|         matrix.setIdentity();
+//|         rotation.m_x = lbl_106_rodata_5C;
+//|         rotation.m_y = lbl_106_rodata_5C;
+//|         rotation.m_z = zero;
+//|         matrix.setSRT(scale, rotation, position);
+//|         fn_801AAF04(object, 0, &matrix);
+//|         callback->applied = 1;
+//|     }
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+
+
+
+extern "C" {
+
+
+
+
+}
+
+#pragma force_active on
+#pragma optimize_for_size on
+#pragma scheduling off
 extern "C" void fn_106_D410(FinalObjectCallback* callback, int timing, nw4r::g3d::ScnObj* object) {
     if (timing == 1 && !callback->applied) {
         Matrix matrix(true);
@@ -102,6 +143,10 @@ extern "C" void fn_106_D410(FinalObjectCallback* callback, int timing, nw4r::g3d
         callback->applied = 1;
     }
 }
+#pragma scheduling reset
+#pragma optimize_for_size reset
+#pragma force_active reset
+// decomp-orchestrator: end fn_106_D410
 #pragma dont_inline on
 // decomp-orchestrator: begin fn_106_D4E4
 // decomp-orchestrator: it replaces the file's own definition:
