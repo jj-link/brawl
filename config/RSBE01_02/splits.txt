@@ -18968,6 +18968,9 @@ RVL_SDK/fn_8021A874.c:
 RVL_SDK/fn_8021A920.c:
 	.text       start:0x8021A920 end:0x8021AAC0
 
+RVL_SDK/fn_8021AAC0.c:
+	.text       start:0x8021AAC0 end:0x8021AC3C
+
 RVL_SDK/fn_8021AC3C.c:
 	.text       start:0x8021AC3C end:0x8021AD00
 
@@ -25979,6 +25982,9 @@ havok/fn_802D65E0.cpp:
 	extab       start:0x8000862C end:0x80008634
 	extabindex  start:0x8000B494 end:0x8000B4A0
 	.text       start:0x802D65E0 end:0x802D66B8
+
+havok/fn_802D66B8.cpp:
+	.text       start:0x802D66B8 end:0x802D67D8
 
 havok/fn_802D67D8.cpp:
 	.text       start:0x802D67D8 end:0x802D67FC
@@ -36250,6 +36256,9 @@ Runtime.PPCEABI.H/fn_80405C14.c:
 
 Runtime.PPCEABI.H/fn_80405C5C.c:
 	.text       start:0x80405C5C end:0x80405CAC
+
+Runtime.PPCEABI.H/fn_80405CAC.c:
+	.text       start:0x80405CAC end:0x80405E80
 
 Runtime.PPCEABI.H/fn_80405E80.c:
 	.text       start:0x80405E80 end:0x80405EB8
