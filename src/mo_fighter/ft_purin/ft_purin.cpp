@@ -6646,3 +6646,55 @@ extern "C" void* fn_124_71EC(char* self, char* accesser) {
 }
 }  // namespace decomp_orch_fn_124_71EC
 // decomp-orchestrator: end fn_124_71EC
+
+// decomp-orchestrator: begin fn_124_7848
+#include <types.h>
+namespace decomp_orch_fn_124_7848 {
+#pragma force_active on
+
+class Object_vptr_0 {
+public:
+    virtual u32 slot0();
+    virtual int* slot1(int key);
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void fn_124_B990();
+    virtual void fn_124_B98C();
+    virtual void slot7();
+    virtual void fn_124_B984();
+    virtual void fn_124_B97C();
+    virtual void fn_124_B978();
+    virtual void fn_124_B970();
+    virtual void fn_124_B96C();
+    virtual int fn_124_B964();
+};
+
+struct Pair {
+    int key;
+    int value;
+};
+
+extern "C" void* fn_124_780C(void* self, int state);
+
+extern "C" void fn_124_7848(void* a, int b, Pair* c) {
+    Object_vptr_0* obj = (Object_vptr_0*)fn_124_780C(a, b);
+    if (obj->slot0() != 1 && c != 0) {
+        int i = 0;
+        while (true) {
+            if (i >= obj->fn_124_B964()) {
+                break;
+            }
+            Pair* p = c + i;
+            int key = p->key;
+            if (key < 0) {
+                break;
+            }
+            int value = p->value;
+            *obj->slot1(key) = value;
+            i++;
+        }
+    }
+}
+}  // namespace decomp_orch_fn_124_7848
+// decomp-orchestrator: end fn_124_7848
