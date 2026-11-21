@@ -16448,6 +16448,10 @@ RVL_SDK/fn_801E31D4.c:
 	.text       start:0x801E31D4 end:0x801E33E0
 	.data       start:0x80474C18 end:0x80474C40
 
+RVL_SDK/fn_801E33E0.c:
+	.text       start:0x801E33E0 end:0x801E3494
+	.data       start:0x80474C40 end:0x80474DA8
+
 RVL_SDK/fn_801E3494.c:
 	.text       start:0x801E3494 end:0x801E3544
 
@@ -17037,6 +17041,9 @@ RVL_SDK/fn_801F2400.c:
 
 RVL_SDK/fn_801F240C.c:
 	.text       start:0x801F240C end:0x801F2418
+
+RVL_SDK/fn_801F2418.c:
+	.text       start:0x801F2418 end:0x801F2494
 
 RVL_SDK/fn_801F2494.c:
 	.text       start:0x801F2494 end:0x801F256C
