@@ -1138,6 +1138,9 @@ sora/misc/fn_8002C11C.cpp:
 sora/misc/fn_8002C1B0.cpp:
 	.text       start:0x8002C1B0 end:0x8002C25C
 
+sora/misc/fn_8002C25C.cpp:
+	.text       start:0x8002C25C end:0x8002C384
+
 sora/misc/fn_8002C384.cpp:
 	.text       start:0x8002C384 end:0x8002C428
 
@@ -5374,6 +5377,9 @@ sora/misc/fn_800B46F0.cpp:
 
 sora/misc/fn_800B4844.cpp:
 	.text       start:0x800B4844 end:0x800B4988
+
+sora/misc/fn_800B4988.cpp:
+	.text       start:0x800B4988 end:0x800B4AD8
 
 sora/misc/fn_800B4AD8.cpp:
 	.text       start:0x800B4AD8 end:0x800B4C14
@@ -11844,11 +11850,17 @@ nw4r/fn_8018EE4C.cpp:
 nw4r/fn_8018EE80.cpp:
 	.text       start:0x8018EE80 end:0x8018EED0
 
+nw4r/fn_8018EF24.cpp:
+	.text       start:0x8018EF24 end:0x8018EF78
+
 nw4r/fn_8018EF78.cpp:
 	.text       start:0x8018EF78 end:0x8018EFAC
 
 nw4r/fn_8018EFAC.cpp:
 	.text       start:0x8018EFAC end:0x8018EFFC
+
+nw4r/fn_8018EFFC.cpp:
+	.text       start:0x8018EFFC end:0x8018F050
 
 nw4r/fn_8018F0A4.cpp:
 	.text       start:0x8018F0A4 end:0x8018F0D8
@@ -11862,6 +11874,9 @@ nw4r/fn_8018F17C.cpp:
 nw4r/fn_8018F1D0.cpp:
 	.text       start:0x8018F1D0 end:0x8018F204
 
+nw4r/fn_8018F204.cpp:
+	.text       start:0x8018F204 end:0x8018F258
+
 nw4r/fn_8018F258.cpp:
 	.text       start:0x8018F258 end:0x8018F29C
 
@@ -11870,6 +11885,9 @@ nw4r/fn_8018F29C.cpp:
 
 nw4r/fn_8018F394.cpp:
 	.text       start:0x8018F394 end:0x8018F3C8
+
+nw4r/fn_8018F3C8.cpp:
+	.text       start:0x8018F3C8 end:0x8018F41C
 
 nw4r/fn_8018F41C.cpp:
 	.text       start:0x8018F41C end:0x8018F470
@@ -15132,6 +15150,9 @@ nw4r/fn_801CC3A8.cpp:
 
 nw4r/fn_801CC550.cpp:
 	.text       start:0x801CC550 end:0x801CC650
+
+nw4r/fn_801CC650.cpp:
+	.text       start:0x801CC650 end:0x801CC75C
 
 nw4r/fn_801CC75C.cpp:
 	.text       start:0x801CC75C end:0x801CC7B0
