@@ -12,22 +12,59 @@
 NtSend* g_NtSend;
 
 // NONMATCHING regswap in unrolled for loop
+// decomp-orchestrator: begin create__6NtSendFv
+// decomp-orchestrator: it replaces the file's own definition:
+//| void NtSend::create() {
+//|     g_NtSend = this;
+//|     m_pktBuffer = static_cast<NtPacketArrPtr>(
+//|         gfHeapManager::alloc(Heaps::Network, Capacity * sizeof(NtPacket)));
+//|     m_pktMemory2.allocBuffer(sizeof(NtPacketData), Heaps::Network);
+//|     m_pktMemory.allocBuffer(Capacity * sizeof(NtPacketData), Heaps::Network);
+//|     memset(m_pktBuffer, 0, 4);
+//|     NtPacketArrPtr pktPtr = m_pktBuffer;
+//|     for (u32 i = 0; i < Capacity; i++) {
+//|         (*pktPtr)[i].rawData =
+//|             i + static_cast<NtPacketData*>(m_pktMemory.m_buf);
+//|     }
+//|     clearSendBuffer();
+//|     OSInitMutex(&m_mutex);
+//|     OSInitCond(&m_cond);
+//| }
+#include <cstring>
+#include <gf/gf_heap_manager.h>
+#include <nt/nt_send.h>
+#include <revolution/OS/OSMutex.h>
+#include <types.h>
+#pragma force_active on
 void NtSend::create() {
+    class NtBufferDispatch {
+    public:
+        virtual void reserved();
+        virtual void allocBuffer(u32 size, Heaps::HeapType heapType);
+    };
+
     g_NtSend = this;
     m_pktBuffer = static_cast<NtPacketArrPtr>(
         gfHeapManager::alloc(Heaps::Network, Capacity * sizeof(NtPacket)));
-    m_pktMemory2.allocBuffer(sizeof(NtPacketData), Heaps::Network);
-    m_pktMemory.allocBuffer(Capacity * sizeof(NtPacketData), Heaps::Network);
+
+    reinterpret_cast<NtBufferDispatch*>(&m_pktMemory2)->allocBuffer(
+        sizeof(NtPacketData), Heaps::Network);
+    reinterpret_cast<NtBufferDispatch*>(&m_pktMemory)->allocBuffer(
+        Capacity * sizeof(NtPacketData), Heaps::Network);
+
     memset(m_pktBuffer, 0, 4);
     NtPacketArrPtr pktPtr = m_pktBuffer;
     for (u32 i = 0; i < Capacity; i++) {
-        (*pktPtr)[i].rawData =
-            i + static_cast<NtPacketData*>(m_pktMemory.m_buf);
+        (*pktPtr)[i].rawData = reinterpret_cast<NtPacketData*>(
+            i * sizeof(NtPacketData) + reinterpret_cast<u32>(m_pktMemory.m_buf));
     }
-    clearSendBuffer();
+
+    m_endIdx = 0;
+    m_startIdx = 0;
     OSInitMutex(&m_mutex);
     OSInitCond(&m_cond);
 }
+// decomp-orchestrator: end create__6NtSendFv
 
 void NtSend::destroy() {
     m_pktMemory2.freeBuffer();

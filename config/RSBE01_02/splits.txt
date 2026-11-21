@@ -17273,6 +17273,9 @@ RVL_SDK/fn_801F3FD8.c:
 RVL_SDK/fn_801F4010.c:
 	.text       start:0x801F4010 end:0x801F409C
 
+RVL_SDK/fn_801F409C.c:
+	.text       start:0x801F409C end:0x801F41F8
+
 RVL_SDK/fn_801F41F8.c:
 	.text       start:0x801F41F8 end:0x801F421C
 
@@ -17469,6 +17472,9 @@ RVL_SDK/fn_801F8EA0.c:
 
 RVL_SDK/fn_801F8F84.c:
 	.text       start:0x801F8F84 end:0x801F904C
+
+RVL_SDK/fn_801F904C.c:
+	.text       start:0x801F904C end:0x801F928C
 
 RVL_SDK/fn_801F9664.c:
 	.text       start:0x801F9664 end:0x801F9688
@@ -21416,6 +21422,9 @@ RVL_SDK/fn_8025FCCC.c:
 RVL_SDK/fn_8025FFB8.c:
 	.text       start:0x8025FFB8 end:0x80260074
 
+RVL_SDK/fn_80260074.c:
+	.text       start:0x80260074 end:0x80260198
+
 RVL_SDK/fn_80260198.c:
 	.text       start:0x80260198 end:0x8026029C
 
@@ -22947,6 +22956,11 @@ RVL_SDK/fn_8028F8F4.c:
 
 RVL_SDK/fn_8028F960.c:
 	.text       start:0x8028F960 end:0x8028F9AC
+
+RVL_SDK/fn_8029098C.c:
+	extab       start:0x80006610 end:0x80006618
+	extabindex  start:0x80009928 end:0x80009934
+	.text       start:0x8029098C end:0x80290AC0
 
 RVL_SDK/fn_80290AC0.c:
 	.text       start:0x80290AC0 end:0x80290AC4
