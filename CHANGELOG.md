@@ -7,6 +7,11 @@ Historical records preserved from `PLAN.md`. Checkpoints, assignments, next acti
 - Matched 2 functions in `main and sora_melee` with decomp-orchestrator: terra 2.
 - Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
 
+## main and sora_melee: 2 functions
+
+- Matched 2 functions in `main and sora_melee` with decomp-orchestrator: terra 2.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## ft_donkey, ft_wario and 3 more: 6 functions
 
 - Matched 6 functions in `ft_donkey, ft_wario and 3 more` with decomp-orchestrator: terra 6.
