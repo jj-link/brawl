@@ -8949,6 +8949,9 @@ sora/misc/fn_8013804C.cpp:
 sora/misc/fn_8013807C.cpp:
 	.text       start:0x8013807C end:0x801380BC
 
+sora/misc/fn_80138348.cpp:
+	.text       start:0x80138348 end:0x8013848C
+
 sora/misc/fn_8013848C.cpp:
 	.text       start:0x8013848C end:0x801385AC
 
@@ -24489,6 +24492,11 @@ havok/fn_802BB3A8.cpp:
 	extab       start:0x800078E4 end:0x800078EC
 	extabindex  start:0x8000A780 end:0x8000A78C
 	.text       start:0x802BB3A8 end:0x802BB43C
+
+havok/fn_802BB43C.cpp:
+	extab       start:0x800078EC end:0x80007904
+	extabindex  start:0x8000A78C end:0x8000A798
+	.text       start:0x802BB43C end:0x802BB894
 
 havok/fn_802BB894.cpp:
 	extab       start:0x80007904 end:0x8000791C
