@@ -361,17 +361,62 @@ extern "C" void fn_106_D73C(MarthFinalInterface* interface) {
     for (int i = 0; i < 1; ++i) interface->sceneObjects[i] = 0;
 }
 #pragma dont_inline reset
+// decomp-orchestrator: begin fn_106_D790
+// decomp-orchestrator: it replaces the file's own definition:
+//| extern "C" MarthFinalInterface* fn_106_D790(MarthFinalInterface* interface, short deleting) {
+//|     if (interface) {
+//|         *reinterpret_cast<void**>(reinterpret_cast<unsigned char*>(&interface->task) + 0x3c) = &lbl_106_data_5740;
+//|         fn_106_D92C(interface);
+//|         if (interface->scene) reinterpret_cast<nw4r::g3d::G3dObj*>(interface->scene)->Destroy();
+//|         fn_106_D62C(&interface->callback, -1);
+//|         __dt__6gfTaskFv(&interface->task, 0);
+//|         if (deleting > 0) operator delete(interface);
+//|     }
+//|     return interface;
+//| }
+#include <gf/gf_task.h>
+#include <gf/gf_heap_manager.h>
+#include <if/if_mngr.h>
+#include <mu/mu_object.h>
+#include <mt/mt_matrix.h>
+#include <nw4r/g3d/g3d_scngroup.h>
+#include <nw4r/g3d/g3d_obj.h>
+namespace decomp_orch_fn_106_D790 {
+#pragma force_active on
+
+
+struct FinalTaskVtable { const void* type; unsigned long reserved; void (*methods[23])(); };
+extern "C" {
+extern FinalTaskVtable lbl_106_data_5740;
+
+
+
+}
+#pragma scheduling off
+#pragma peep_off
+#pragma optimization_level 1
+static inline void destroyMembers(MarthFinalInterface* interface) {
+    fn_106_D62C(&interface->callback, -1);
+    __dt__6gfTaskFv(&interface->task, 0);
+}
+#pragma optimization_level 2
 extern "C" MarthFinalInterface* fn_106_D790(MarthFinalInterface* interface, short deleting) {
-    if (interface) {
+    if (interface != 0) {
         *reinterpret_cast<void**>(reinterpret_cast<unsigned char*>(&interface->task) + 0x3c) = &lbl_106_data_5740;
         fn_106_D92C(interface);
-        if (interface->scene) reinterpret_cast<nw4r::g3d::G3dObj*>(interface->scene)->Destroy();
-        fn_106_D62C(&interface->callback, -1);
-        __dt__6gfTaskFv(&interface->task, 0);
+        nw4r::g3d::G3dObj* object = reinterpret_cast<nw4r::g3d::G3dObj*>(interface->scene);
+        if (object != 0) object->Destroy();
+        destroyMembers(interface);
         if (deleting > 0) operator delete(interface);
     }
     return interface;
 }
+#pragma optimization_level reset
+#pragma peep_on
+#pragma scheduling reset
+}  // namespace decomp_orch_fn_106_D790
+using decomp_orch_fn_106_D790::fn_106_D790;
+// decomp-orchestrator: end fn_106_D790
 // decomp-orchestrator: begin fn_106_D820
 // decomp-orchestrator: it replaces the file's own definition:
 //| extern "C" void fn_106_D820(MarthFinalInterface* interface, nw4r::g3d::ResFile* resource, int priority, Heaps::HeapType heap) {
