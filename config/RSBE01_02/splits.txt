@@ -379,6 +379,9 @@ sora/gf/gf_archive_manager.cpp:
 	.text       start:0x80016688 end:0x800167C4
 	.sbss       start:0x8059FFA0 end:0x8059FFA4
 
+sora/misc/fn_800167C4.cpp:
+	.text       start:0x800167C4 end:0x800168A8
+
 sora/misc/fn_800168A8.cpp:
 	.text       start:0x800168A8 end:0x80016900
 
@@ -7964,6 +7967,9 @@ sora/misc/fn_80105B3C.cpp:
 sora/misc/fn_80105C1C.cpp:
 	.text       start:0x80105C1C end:0x80105CC4
 
+sora/misc/fn_80105CC4.cpp:
+	.text       start:0x80105CC4 end:0x80105D8C
+
 sora/misc/fn_80105FC8.cpp:
 	.text       start:0x80105FC8 end:0x80106020
 
@@ -8238,6 +8244,9 @@ sora/misc/fn_8010C0C4.cpp:
 
 sora/misc/fn_8010C0DC.cpp:
 	.text       start:0x8010C0DC end:0x8010C0FC
+
+sora/misc/fn_8010C0FC.cpp:
+	.text       start:0x8010C0FC end:0x8010C38C
 
 sora/misc/fn_8010C38C.cpp:
 	.text       start:0x8010C38C end:0x8010C3D4
@@ -12494,6 +12503,9 @@ nw4r/fn_80197638.cpp:
 
 nw4r/fn_80197688.cpp:
 	.text       start:0x80197688 end:0x801976C8
+
+nw4r/fn_801976C8.cpp:
+	.text       start:0x801976C8 end:0x80197818
 
 nw4r/fn_80197818.cpp:
 	.text       start:0x80197818 end:0x8019787C
@@ -28047,6 +28059,11 @@ havok/fn_802FEDA0.cpp:
 	extabindex  start:0x8000B5E4 end:0x8000B5F0
 	.text       start:0x802FEDA0 end:0x802FEEBC
 
+havok/fn_802FF278.cpp:
+	extab       start:0x80008724 end:0x8000872C
+	extabindex  start:0x8000B608 end:0x8000B614
+	.text       start:0x802FF278 end:0x802FF394
+
 havok/fn_802FF394.cpp:
 	.text       start:0x802FF394 end:0x802FF3FC
 	.data       start:0x8048884C end:0x80488868
@@ -28290,6 +28307,11 @@ havok/fn_8030A6DC.cpp:
 	extab       start:0x800088E8 end:0x800088F0
 	extabindex  start:0x8000B83C end:0x8000B848
 	.text       start:0x8030A6DC end:0x8030AC0C
+
+havok/fn_8030AC0C.cpp:
+	extab       start:0x800088F0 end:0x800088F8
+	extabindex  start:0x8000B848 end:0x8000B854
+	.text       start:0x8030AC0C end:0x8030ACF8
 
 havok/fn_8030ACF8.cpp:
 	extab       start:0x800088F8 end:0x80008900
@@ -30438,6 +30460,9 @@ network/fn_80362F54.c:
 
 network/fn_80362F5C.c:
 	.text       start:0x80362F5C end:0x80362F64
+
+network/fn_80363840.c:
+	.text       start:0x80363840 end:0x80363A6C
 
 network/fn_80363A6C.c:
 	.text       start:0x80363A6C end:0x80363BDC
