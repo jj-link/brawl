@@ -1,0 +1,69 @@
+#include <types.h>
+#pragma force_active on
+
+void fn_8026905C(void *arg0, s32 arg1, s32 arg2)
+{
+    s32 tb;
+    u8 *obj;
+    s32 skip;
+    u16 *row;
+    s32 col;
+    u8 *dst;
+    u8 *src;
+    s32 x;
+    s32 x_end;
+    s32 y_end;
+    u32 pitch;
+    s32 x_count;
+    s32 y_count;
+    s32 pos;
+    s32 c;
+    s32 idx;
+    s32 b;
+    s32 a;
+
+    obj = *(u8 **)((u8 *)arg0 + 0x19D0);
+    dst = *(u8 **)(obj + 0x64);
+    pitch = *(u32 *)(obj + 0x48) >> 2;
+    src = (u8 *)arg0 + 0x1848;
+
+    if (*(u32 *)(obj + 0x24) == (u32)arg1)
+        x_count = *(u8 *)(obj + 0x22);
+    else
+        x_count = 8 / *(u8 *)(obj + 0x2C);
+
+    if (*(u32 *)(obj + 0x28) == (u32)arg2)
+        y_count = *(u8 *)(obj + 0x23);
+    else
+        y_count = 8 / *(u8 *)(obj + 0x2C);
+
+    x_end = arg1 + x_count;
+    y_end = arg2 + y_count;
+    skip = 8 - x_count;
+
+    for (; arg2 < y_end; arg2++) {
+        row = (u16 *)(dst + ((arg2 & 3) << 3));
+        col = (arg2 >> 2) * pitch;
+
+        for (x = arg1; x < x_end; x++) {
+            c = *src++;
+
+            if (c >> 8) {
+                a = c > 255 ? 255 : (c < 0 ? 0 : c);
+                b = c > 255 ? 255 : (c < 0 ? 0 : c);
+                c = c > 255 ? 255 : (c < 0 ? 0 : c);
+            } else {
+                a = c;
+                b = c;
+            }
+
+            pos = x & 3;
+            tb = x >> 2;
+            idx = tb + col;
+            row[pos + idx * 16] =
+                ((c << 8) & 0xF800) + ((b << 3) & 0x7E0) + ((a & 0xF8) >> 3);
+        }
+
+        src += skip;
+    }
+}
