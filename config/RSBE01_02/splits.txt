@@ -10858,6 +10858,9 @@ nw4r/fn_80160328.cpp:
 nw4r/fn_801605B0.cpp:
 	.text       start:0x801605B0 end:0x801607B4
 
+nw4r/fn_80160E3C.cpp:
+	.text       start:0x80160E3C end:0x80160F5C
+
 nw4r/fn_80162104.cpp:
 	.text       start:0x80162104 end:0x80162188
 	.ctors      start:0x80406590 end:0x80406594
@@ -18763,6 +18766,9 @@ RVL_SDK/fn_8020DB1C.c:
 
 RVL_SDK/fn_8020E0EC.c:
 	.text       start:0x8020E0EC end:0x8020E18C
+
+RVL_SDK/fn_8020E18C.c:
+	.text       start:0x8020E18C end:0x8020E2A8
 
 RVL_SDK/fn_8020E2A8.c:
 	.text       start:0x8020E2A8 end:0x8020E3BC
@@ -33515,6 +33521,9 @@ network/fn_803AE498.c:
 
 network/fn_803AE4F4.c:
 	.text       start:0x803AE4F4 end:0x803AE534
+
+network/fn_803AE534.c:
+	.text       start:0x803AE534 end:0x803AE7B4
 
 network/fn_803AE7B4.c:
 	.text       start:0x803AE7B4 end:0x803AE88C
