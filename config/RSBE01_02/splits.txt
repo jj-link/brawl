@@ -2410,6 +2410,9 @@ sora/misc/fn_8004F884.cpp:
 sora/misc/fn_8004F964.cpp:
 	.text       start:0x8004F964 end:0x8004F978
 
+sora/misc/fn_8004F978.cpp:
+	.text       start:0x8004F978 end:0x8004FB48
+
 sora/misc/fn_8004FB48.cpp:
 	.text       start:0x8004FB48 end:0x8004FC4C
 
@@ -4482,6 +4485,9 @@ sora/misc/fn_8008E374.cpp:
 
 sora/misc/fn_8008E3CC.cpp:
 	.text       start:0x8008E3CC end:0x8008E4E8
+
+sora/misc/fn_8008E4E8.cpp:
+	.text       start:0x8008E4E8 end:0x8008E89C
 
 sora/misc/fn_8008EB3C.cpp:
 	.text       start:0x8008EB3C end:0x8008F084
@@ -8452,6 +8458,9 @@ sora/misc/fn_80111BB8.cpp:
 
 sora/misc/fn_80111BD4.cpp:
 	.text       start:0x80111BD4 end:0x80111BF0
+
+sora/misc/fn_80111BF0.cpp:
+	.text       start:0x80111BF0 end:0x80111C54
 
 sora/misc/fn_80111C54.cpp:
 	.text       start:0x80111C54 end:0x80111C70
@@ -19236,6 +19245,9 @@ RVL_SDK/fn_8022558C.c:
 RVL_SDK/fn_80225760.c:
 	.text       start:0x80225760 end:0x802258F4
 
+RVL_SDK/fn_802258F4.c:
+	.text       start:0x802258F4 end:0x80225A88
+
 RVL_SDK/fn_80225A88.c:
 	.text       start:0x80225A88 end:0x80225BAC
 
@@ -26051,6 +26063,9 @@ havok/fn_802D54A0.cpp:
 	extabindex  start:0x8000B3C8 end:0x8000B3D4
 	.text       start:0x802D54A0 end:0x802D569C
 
+havok/fn_802D569C.cpp:
+	.text       start:0x802D569C end:0x802D5734
+
 havok/fn_802D5734.cpp:
 	extab       start:0x800085AC end:0x800085B4
 	extabindex  start:0x8000B3D4 end:0x8000B3E0
@@ -28470,6 +28485,11 @@ havok/fn_8031D6C0.cpp:
 	extab       start:0x80008C84 end:0x80008C8C
 	extabindex  start:0x8000BBFC end:0x8000BC08
 	.text       start:0x8031D6C0 end:0x8031D730
+
+havok/fn_8031D730.cpp:
+	extab       start:0x80008C8C end:0x80008C94
+	extabindex  start:0x8000BC08 end:0x8000BC14
+	.text       start:0x8031D730 end:0x8031D8FC
 
 havok/fn_8031D8FC.cpp:
 	.text       start:0x8031D8FC end:0x8031D9AC
@@ -31015,6 +31035,9 @@ network/fn_8037933C.c:
 
 network/fn_803793D4.c:
 	.text       start:0x803793D4 end:0x803794B8
+
+network/fn_80379650.c:
+	.text       start:0x80379650 end:0x80379A3C
 
 network/fn_80379D50.c:
 	.text       start:0x80379D50 end:0x8037A0A0
