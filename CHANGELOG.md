@@ -2,6 +2,11 @@
 
 Historical records preserved from `PLAN.md`. Checkpoints, assignments, next actions, and completion labels below describe the state when recorded; they are not current instructions. In particular, older assembly-transcription entries are not completed C/C++ reconstruction. The current plan and acceptance criteria are in [PLAN.md](PLAN.md).
 
+## main, sora_enemy and 2 more: 9 functions
+
+- Matched 9 functions in `main, sora_enemy and 2 more` with decomp-orchestrator: cxx-permuter 1, terra 8.
+- Each matched the original in the full build, and the build's hash check passed. `thunk` entries are compiler-generated multiple-inheritance thunks written as standalone C.
+
 ## main, sora_melee and 1 more: 4 functions
 
 - Matched 4 functions in `main, sora_melee and 1 more` with decomp-orchestrator: terra 4.
