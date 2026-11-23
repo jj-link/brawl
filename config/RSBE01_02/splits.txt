@@ -1773,6 +1773,9 @@ sora/misc/fn_8004058C.cpp:
 sora/misc/fn_800408C4.cpp:
 	.text       start:0x800408C4 end:0x8004094C
 
+sora/misc/fn_8004094C.cpp:
+	.text       start:0x8004094C end:0x800409D4
+
 sora/misc/fn_80040F74.cpp:
 	.text       start:0x80040F74 end:0x8004104C
 
@@ -7666,6 +7669,9 @@ sora/misc/fn_800FC3E4.cpp:
 sora/misc/fn_800FC43C.cpp:
 	.text       start:0x800FC43C end:0x800FC660
 	.data       start:0x8045C5B0 end:0x8045C678
+
+sora/misc/fn_800FC660.cpp:
+	.text       start:0x800FC660 end:0x800FC840
 
 sora/misc/fn_800FC840.cpp:
 	.text       start:0x800FC840 end:0x800FC920
