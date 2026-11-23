@@ -34909,6 +34909,11 @@ network/fn_803CE640.c:
 	extabindex  start:0x8000C238 end:0x8000C244
 	.text       start:0x803CE640 end:0x803CE924
 
+network/fn_803CE924.c:
+	.text       start:0x803CE924 end:0x803CEC14
+	extab       start:0x8000931C end:0x80009324
+	extabindex  start:0x8000C244 end:0x8000C250
+
 network/fn_803CEEFC.c:
 	extab       start:0x8000932C end:0x80009334
 	extabindex  start:0x8000C25C end:0x8000C268
