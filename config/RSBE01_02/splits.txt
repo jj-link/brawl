@@ -2783,6 +2783,10 @@ sora/misc/fn_80056E68.cpp:
 sora/misc/fn_80056FDC.cpp:
 	.text       start:0x80056FDC end:0x80057158
 
+sora/misc/fn_80057158.cpp:
+	.text       start:0x80057158 end:0x80057C64
+	.data       start:0x8042DEFC end:0x8042E0FC
+
 sora/misc/fn_80057C64.cpp:
 	.text       start:0x80057C64 end:0x80057EAC
 	.data       start:0x8042E0FC end:0x8042E2FC
