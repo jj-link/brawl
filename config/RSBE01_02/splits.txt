@@ -11614,6 +11614,10 @@ nw4r/fn_80180C74.cpp:
 nw4r/fn_801811DC.cpp:
 	.text       start:0x801811DC end:0x801813F4
 
+nw4r/fn_80181B3C.cpp:
+	.text       start:0x80181B3C end:0x80181CC4
+	.data       start:0x804655E8 end:0x8046564C
+
 nw4r/fn_80181CC4.cpp:
 	.text       start:0x80181CC4 end:0x80181D78
 	.data       start:0x8046564C end:0x80465668
@@ -15697,6 +15701,9 @@ nw4r/fn_801CCB80.cpp:
 
 nw4r/fn_801CCBF8.cpp:
 	.text       start:0x801CCBF8 end:0x801CCC08
+
+nw4r/fn_801CCC08.cpp:
+	.text       start:0x801CCC08 end:0x801CCCD4
 
 nw4r/fn_801CCCD4.cpp:
 	.text       start:0x801CCCD4 end:0x801CCE5C
