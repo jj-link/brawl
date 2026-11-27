@@ -28520,6 +28520,11 @@ havok/fn_802FBF70.cpp:
 havok/fn_802FBF74.cpp:
 	.text       start:0x802FBF74 end:0x802FBF78
 
+havok/fn_802FBF78.cpp:
+	.text       start:0x802FBF78 end:0x802FC6AC
+	extab       start:0x800086A4 end:0x800086AC
+	extabindex  start:0x8000B548 end:0x8000B554
+
 havok/fn_802FC988.cpp:
 	extab       start:0x800086BC end:0x800086C4
 	extabindex  start:0x8000B56C end:0x8000B578
