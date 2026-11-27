@@ -286,3 +286,175 @@ extern "C" void fn_106_BE40(void*, soModuleAccesser* moduleAccesser, int) {
     moduleAccesser->getWorkManageModule().onFlag(0x12000003);
 }
 // decomp-orchestrator: end fn_106_BE40
+
+// decomp-orchestrator: begin fn_106_B8E8
+#include <types.h>
+#include <math.h>
+#include <so/so_module_accesser.h>
+#include <so/so_value_accesser.h>
+namespace decomp_orch_fn_106_B8E8 {
+#pragma force_active on
+
+
+
+
+
+class MarthKineticSpeedView : public soNullable {
+public:
+    virtual void activate();
+    virtual void deactivate();
+    virtual void addEnergy(soKineticEnergy*, int, soKineticEnergy::AttributeFlag, short);
+    virtual void eraseEnergy(int);
+    virtual void eraseEnergyAll();
+    virtual soKineticEnergy* getEnergy(int);
+    virtual bool isContain(int);
+    virtual void updateEnergy(soModuleAccesser*, soKineticEnergy::AttributeFlag);
+    virtual void clearSpeedAll();
+    virtual void suspendEnergyAll();
+    virtual void resumeEnergyAll();
+    virtual void unableEnergyAll();
+    virtual u64 getSumSpeed(const unsigned short&);
+};
+
+extern "C" {
+extern const float lbl_106_rodata_28[];
+
+
+
+
+
+
+
+
+
+void fn_27_89DAC(int, soModuleAccesser*);
+
+
+float fn_106_BE30(double);
+}
+
+static inline soKineticEnergy* castMarthHiEnergy(
+    soKineticEnergy* energy, const void* type, int flag = 1) {
+    return static_cast<soKineticEnergy*>(
+        __dynamic_cast(energy, 0, type, lbl_106_data_EB4, flag));
+}
+
+static inline void enableMarthHiEnergy(soKineticEnergy* energy) {
+    reinterpret_cast<u8*>(energy)[5] |= 0x80;
+}
+
+static inline void disableMarthHiEnergy(soKineticEnergy* energy) {
+    struct EnableFlag { u8 enabled : 1; };
+    reinterpret_cast<EnableFlag*>(reinterpret_cast<u8*>(energy) + 5)->enabled = 0;
+}
+
+
+
+static inline void getSummedSpeed(Vec2f& result, Vec2f& summed, soKineticModule& kinetic, unsigned short attributes) {
+    u64 raw = reinterpret_cast<MarthKineticSpeedView&>(kinetic).getSumSpeed(attributes);
+    u32* words = reinterpret_cast<u32*>(&summed);
+    words[1] = static_cast<u32>(raw);
+    words[0] = static_cast<u32>(raw >> 32);
+    Vec2f::copy(result, summed);
+}
+
+#pragma scheduling off
+#pragma optimization_level 2
+#pragma optimize_for_size on
+#pragma opt_propagation off
+extern "C" void fn_106_B8E8(
+    ftMarthStatusUniqProcessSpecialHi*, soModuleAccesser* moduleAccesser) {
+    const float* constants = lbl_106_rodata_28;
+    MarthMotionEnergy* motion = static_cast<MarthMotionEnergy*>(
+        castMarthHiEnergy(moduleAccesser->getKineticModule().getEnergy(0),
+                   lbl_106_data_557C));
+    float stickMagnitude =
+        fn_106_BE30(moduleAccesser->getControllerModule().getStickX());
+    if (!moduleAccesser->getWorkManageModule().isFlag(0x22000016)) {
+        float threshold = soValueAccesser::getConstantFloat(moduleAccesser, 0xFAA, 0);
+        if (stickMagnitude > threshold) {
+            float angle = static_cast<float>(stickMagnitude - threshold) /
+                          (constants[1] - threshold);
+            angle *= soValueAccesser::getConstantFloat(moduleAccesser, 0xFAB, 0);
+            if (moduleAccesser->getControllerModule().getStickX() > constants[0]) {
+                angle = -(constants[2] * angle);
+            } else {
+                angle = constants[2] * angle;
+            }
+            float previousAngle =
+                moduleAccesser->getWorkManageModule().getFloat(0x21000004);
+            double previousMagnitude = fn_106_BE30(previousAngle);
+            if (fn_106_BE30(angle) > previousMagnitude) {
+                previousAngle = angle;
+            }
+            moduleAccesser->getWorkManageModule().setFloat(previousAngle, 0x21000004);
+        }
+    }
+
+    int flag = 1;
+    Vec2f sumSpeed;
+    Vec2f summed;
+    Vec2f gravitySpeed;
+    Vec2f controllerSpeed;
+    getSummedSpeed(sumSpeed, summed, moduleAccesser->getKineticModule(), flag);
+    if (moduleAccesser->getWorkManageModule().isFlag(0x22000010)) {
+        if (!moduleAccesser->getWorkManageModule().isFlag(0x22000013)) {
+            if (moduleAccesser->getMotionModule().getKind() == 0x1E9) {
+                motion->rotationAcceleration =
+                    soValueAccesser::getConstantFloat(moduleAccesser, 0xFAD, 0);
+            }
+            if (moduleAccesser->getWorkManageModule().isFlag(0x22000014) &&
+                sumSpeed.m_y < constants[0]) {
+                moduleAccesser->getWorkManageModule().onFlag(0x22000013);
+            }
+        } else {
+            bool gravityEnabled = moduleAccesser->getKineticModule().getEnergy(1)->isEnable();
+            if (!gravityEnabled) {
+                MarthGravityEnergy* gravity = static_cast<MarthGravityEnergy*>(
+                    castMarthHiEnergy(moduleAccesser->getKineticModule().getEnergy(1),
+                               lbl_106_data_544C, flag));
+                Vec3f rotation;
+                float vertical = sumSpeed.m_y;
+                float zero = constants[0];
+                gravitySpeed.m_x = zero;
+                gravitySpeed.m_y = vertical;
+                gravity->resetEnergy(0, &gravitySpeed,
+                    fn_106_77F4(&rotation, zero, zero, zero),
+                    moduleAccesser);
+                gravity->acceleration =
+                    -soValueAccesser::getConstantFloat(moduleAccesser, 0xFAE, 0);
+                gravity->terminalSpeed =
+                    soValueAccesser::getConstantFloat(moduleAccesser, 0xFAF, 0);
+                enableMarthHiEnergy(gravity);
+            }
+            bool controllerEnabled = moduleAccesser->getKineticModule().getEnergy(2)->isEnable();
+            if (!controllerEnabled) {
+                soKineticEnergy* controller = castMarthHiEnergy(
+                    moduleAccesser->getKineticModule().getEnergy(2),
+                    lbl_106_data_5530);
+                int resetType = 11;
+                Vec3f rotation;
+                controllerSpeed.m_x = sumSpeed.m_x;
+                controllerSpeed.m_y = constants[0];
+                controller->resetEnergy(resetType, &controllerSpeed,
+                    fn_106_77F4(&rotation, constants[0], constants[0], constants[0]),
+                    moduleAccesser);
+                fn_27_15CF90(controller,
+                    soValueAccesser::getConstantFloat(moduleAccesser, 0xFA7, 0));
+                fn_27_15CF5C(controller,
+                    soValueAccesser::getConstantFloat(moduleAccesser, 0xFA7, 0));
+                enableMarthHiEnergy(controller);
+            }
+            disableMarthHiEnergy(motion);
+        }
+        moduleAccesser->getWorkManageModule().onFlag(0x22000014);
+    }
+
+    if (moduleAccesser->getWorkManageModule().isFlag(0x22000015)) {
+        motion->rotationSpeed =
+            moduleAccesser->getWorkManageModule().getFloat(0x21000004);
+        moduleAccesser->getWorkManageModule().offFlag(0x22000015);
+    }
+}
+}  // namespace decomp_orch_fn_106_B8E8
+// decomp-orchestrator: end fn_106_B8E8
